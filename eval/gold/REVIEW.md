@@ -109,7 +109,24 @@ updated to match.
   usual convention. More generally, assume the usual convention when the
   metadata is silent, but flag it. The gold now carries an `assumed_convention`
   flag on such rows (17 rows, including every inferred unit).
-- **§4 rows 5, 6, 10, 11:** pending; the owner asked to see the values first.
+- **§4 rows 5, 6, 10, 11:** decided after the owner reviewed the values, by
+  applying the no-information-loss rule:
+  - Row 5 (`arm`): **pooled into `treatment`.** Arm names still identify the
+    regimen.
+  - Row 6 (`outcome`): **kept separate** from `mort30`. Pooling would lose the
+    30-day window.
+  - Row 10 (`time point`): **kept separate.** The "before" samples are labelled
+    "No treatment", so the meal-test reference event would be lost.
+  - Row 11 (`disease group` + `sampling (in) t2d stage`): **pooled into
+    `disease`.** Values remain diagnoses, and every GSE189007 sample now has
+    one.
+- **New:** GSE189007 `phenotype` is **split**. Its free-text notes stay in
+  `clinical_phenotype_notes`. The 10 `UARC: <value> (mg/g)` rows become a
+  `uacr` variable (EFO:0007778 urinary albumin to creatinine ratio).
+
+**Gold final for the generalization corpus as of 2026-10-05:** 141 column rows
+in 66 variables, 23 of which pool across datasets. No open REVIEW flags.
+
 
 ## What happens next
 

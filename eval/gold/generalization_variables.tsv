@@ -7,10 +7,9 @@ specimen_type	specimen type	broad	OBI:0100051	specimen		categorical	1	1	Kind of 
 subject_id	subject identifier	none				identifier	6	6	Identifiers of individuals. EFO has `individual` but no identifier class; the column names the individual, it is not one.
 sample_id	sample identifier	none				identifier	2	2	Identifiers of samples.
 ethnic_group	ethnic group	exact	EFO:0001799	ethnic group		categorical	2	2	Race/ethnicity or population of origin.
-disease	disease	exact	MONDO:0000001	disease		categorical	7	7	Values name the subject's diagnosis (incl. healthy/control). Pooling is lossless: every value is still a disease name.
+disease	disease	exact	MONDO:0000001	disease		categorical	10	8	Values name the subject's diagnosis (incl. healthy/control), sometimes with stage or complication detail kept verbatim. Pooling is lossless: every value is still a diagnosis.
 disease_duration	disease duration	broad	EFO:0000433	duration	"event_time_anchor=""diagnosis"" (ungrounded); unit=UO:0000036 [year]"	continuous	4	3	Time since diagnosis, any disease; the disease itself is carried by the disease column.
-treatment	treatment	exact	EFO:0000727	treatment		categorical	3	3	Administered intervention (drug, placebo, meal test, none). `treatment` is the most specific term true of all members; `compound based treatment` would be false for MMTT.
-treatment_arm	treatment arm	broad	OBI:0600015	group assignment		categorical	1	1	Assigned trial arm. Kept apart from treatment: an arm is an assignment, not the intervention.
+treatment	treatment	exact	EFO:0000727	treatment		categorical	4	4	Administered intervention (drug, placebo, meal test, none, trial arm name). `treatment` is the most specific term true of all members; `compound based treatment` would be false for MMTT. Arm names (MK2206 Arm / Control Arm) still identify the regimen, so they pool here.
 time_since_treatment_start	timepoint (since start of treatment)	exact	EFO:0000724	timepoint	"event_time_anchor=""start of treatment"" (ungrounded); unit=UO:0000034 [week]"	temporal	2	2	Weeks since start of biologic therapy (golimumab week 0/6; vedolizumab 0W/14W/54W).
 time_relative_to_meal_test	timepoint (relative to mixed meal tolerance test)	exact	EFO:0000724	timepoint	"event_time_anchor=""mixed meal tolerance test"" (ungrounded)"	temporal	1	1	Before vs 1 hour after a meal challenge. Different reference event from therapy start.
 sampling_time_hours	timepoint (hours, reference not stated)	exact	EFO:0000724	timepoint	unit=UO:0000032 [hour]	temporal	1	1	0 hr / 24 hrs; reference event not stated in metadata.
@@ -63,6 +62,6 @@ fasting_glucose	fasting glucose	broad	EFO:0004468	glucose measurement	"event_tim
 fasting_insulin	fasting insulin	broad	EFO:0004467	insulin measurement	"event_time_anchor=""fasting"" (ungrounded)"	continuous	1	1	
 fasting_c_peptide	fasting C-peptide	exact	EFO:0010813	fasting C-peptide measurement		continuous	1	1	
 homa_ir	HOMA-IR	exact	EFO:0004501	HOMA-IR		continuous	1	1	
-t2d_complication_group	T2D complication group	broad	MONDO:0000001	disease	object_class=MONDO:0005148 [type 2 diabetes mellitus]	categorical	3	1	Two sub-cohorts of GSE189007 record the same grouping under different keys.
 clinical_phenotype_notes	clinical phenotype notes	broad	EFO:0000352	clinical history		free_text	1	1	Free-text medical-record descriptions.
+uacr	urinary albumin to creatinine ratio	exact	EFO:0007778	urinary albumin to creatinine ratio		continuous	1	1	Split out of GSE189007 `phenotype`, where it appears as 'UARC: <value> (mg/g)'.
 recruitment_site	recruitment site	none				categorical	1	1	Hospital names.
