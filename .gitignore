@@ -1,0 +1,10 @@
+# Environment
+.venv/
+__pycache__/
+*.pyc
+
+# Run workspaces and spike projects (GEOmend projects are ~1.5 GB each)
+work/
+
+# OS
+.DS_Store

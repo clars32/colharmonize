@@ -1,0 +1,5172 @@
+{
+ "GSE192341": {
+  "area": "breast_cancer",
+  "n_samples": 87,
+  "channels": {
+   "1": 87
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue type": {
+    "n": 87,
+    "distinct": 1,
+    "top": [
+     [
+      "biopsy",
+      87
+     ]
+    ]
+   },
+   "pathological complete response (pcr)": {
+    "n": 85,
+    "distinct": 2,
+    "top": [
+     [
+      "No pCR",
+      61
+     ],
+     [
+      "pCR",
+      24
+     ]
+    ]
+   },
+   "subtype": {
+    "n": 87,
+    "distinct": 2,
+    "top": [
+     [
+      "TN",
+      52
+     ],
+     [
+      "LUM",
+      35
+     ]
+    ]
+   },
+   "sample_id": {
+    "n": 87,
+    "distinct": 87,
+    "top": [
+     [
+      "2123",
+      1
+     ],
+     [
+      "2288",
+      1
+     ],
+     [
+      "2292",
+      1
+     ],
+     [
+      "2300",
+      1
+     ]
+    ]
+   },
+   "age": {
+    "n": 72,
+    "distinct": 34,
+    "top": [
+     [
+      "51",
+      5
+     ],
+     [
+      "35",
+      4
+     ],
+     [
+      "54",
+      4
+     ],
+     [
+      "40",
+      4
+     ]
+    ]
+   },
+   "neoadjuvant response index (nri)": {
+    "n": 65,
+    "distinct": 15,
+    "top": [
+     [
+      "1",
+      20
+     ],
+     [
+      "0.33",
+      15
+     ],
+     [
+      "0.25",
+      5
+     ],
+     [
+      "0.2",
+      4
+     ]
+    ]
+   },
+   "t-stage": {
+    "n": 72,
+    "distinct": 4,
+    "top": [
+     [
+      "2",
+      48
+     ],
+     [
+      "3",
+      11
+     ],
+     [
+      "1",
+      8
+     ],
+     [
+      "4",
+      5
+     ]
+    ]
+   },
+   "n-stage (0, neg; 1, pos)": {
+    "n": 72,
+    "distinct": 2,
+    "top": [
+     [
+      "1",
+      55
+     ],
+     [
+      "0",
+      17
+     ]
+    ]
+   },
+   "recurrence": {
+    "n": 72,
+    "distinct": 2,
+    "top": [
+     [
+      "No",
+      58
+     ],
+     [
+      "Yes",
+      14
+     ]
+    ]
+   },
+   "rfs (years)": {
+    "n": 72,
+    "distinct": 34,
+    "top": [
+     [
+      "3.4",
+      10
+     ],
+     [
+      "2.9",
+      7
+     ],
+     [
+      "1.5",
+      3
+     ],
+     [
+      "1.8",
+      3
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "human breast",
+    87
+   ]
+  ],
+  "title_examples": [
+   "2123",
+   "2288",
+   "2292"
+  ]
+ },
+ "GSE181466": {
+  "area": "breast_cancer",
+  "n_samples": 97,
+  "channels": {
+   "1": 97
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 97,
+    "distinct": 1,
+    "top": [
+     [
+      "Breast tumor sample",
+      97
+     ]
+    ]
+   },
+   "age": {
+    "n": 97,
+    "distinct": 48,
+    "top": [
+     [
+      "38",
+      6
+     ],
+     [
+      "44",
+      5
+     ],
+     [
+      "55",
+      5
+     ],
+     [
+      "49",
+      4
+     ]
+    ]
+   },
+   "subtype": {
+    "n": 97,
+    "distinct": 4,
+    "top": [
+     [
+      "Basal",
+      81
+     ],
+     [
+      "Her2",
+      12
+     ],
+     [
+      "Normal",
+      3
+     ],
+     [
+      "LumB",
+      1
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "Breast tumor sample",
+    97
+   ]
+  ],
+  "title_examples": [
+   "HCSC-0009",
+   "HCSC-0025",
+   "HCSC-0026"
+  ]
+ },
+ "GSE167213": {
+  "area": "breast_cancer",
+  "n_samples": 124,
+  "channels": {
+   "1": 124
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 124,
+    "distinct": 1,
+    "top": [
+     [
+      "primary tumor",
+      124
+     ]
+    ]
+   },
+   "disease state": {
+    "n": 124,
+    "distinct": 1,
+    "top": [
+     [
+      "Triple-negative breast cancer",
+      124
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "breast cancer",
+    124
+   ]
+  ],
+  "title_examples": [
+   "TNBC_1",
+   "TNBC_2",
+   "TNBC_3"
+  ]
+ },
+ "GSE147472": {
+  "area": "breast_cancer",
+  "n_samples": 131,
+  "channels": {
+   "1": 131
+  },
+  "unparsed": 0,
+  "keys": {
+   "type": {
+    "n": 131,
+    "distinct": 1,
+    "top": [
+     [
+      "Primitive",
+      131
+     ]
+    ]
+   },
+   "origin_material": {
+    "n": 131,
+    "distinct": 1,
+    "top": [
+     [
+      "FFPE",
+      131
+     ]
+    ]
+   },
+   "grade": {
+    "n": 131,
+    "distinct": 1,
+    "top": [
+     [
+      "G3",
+      131
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "Primitve Breast Cancer Tumor",
+    131
+   ]
+  ],
+  "title_examples": [
+   "Primitive tumor [DNA10051-001]",
+   "Primitive tumor [DNA10051-004]",
+   "Primitive tumor [DNA10051-006]"
+  ]
+ },
+ "GSE126870": {
+  "area": "breast_cancer",
+  "n_samples": 178,
+  "channels": {
+   "1": 178
+  },
+  "unparsed": 0,
+  "keys": {
+   "Sex": {
+    "n": 178,
+    "distinct": 1,
+    "top": [
+     [
+      "female",
+      178
+     ]
+    ]
+   },
+   "timepoint": {
+    "n": 178,
+    "distinct": 1,
+    "top": [
+     [
+      "baseline (B)",
+      178
+     ]
+    ]
+   },
+   "her2": {
+    "n": 178,
+    "distinct": 2,
+    "top": [
+     [
+      "Negative",
+      155
+     ],
+     [
+      "Positive",
+      23
+     ]
+    ]
+   },
+   "pam50": {
+    "n": 178,
+    "distinct": 5,
+    "top": [
+     [
+      "LumA",
+      113
+     ],
+     [
+      "LumB",
+      40
+     ],
+     [
+      "Her2",
+      14
+     ],
+     [
+      "Normal",
+      6
+     ]
+    ]
+   },
+   "accession": {
+    "n": 178,
+    "distinct": 138,
+    "top": [
+     [
+      "NA",
+      41
+     ],
+     [
+      "GSM2827926",
+      1
+     ],
+     [
+      "GSM2827839",
+      1
+     ],
+     [
+      "GSM2827925",
+      1
+     ]
+    ]
+   },
+   "reanalysis": {
+    "n": 178,
+    "distinct": 138,
+    "top": [
+     [
+      "NA",
+      41
+     ],
+     [
+      "AI.Treated.174B [reanalysis]",
+      1
+     ],
+     [
+      "AI.Treated.56B [reanalysis]",
+      1
+     ],
+     [
+      "AI.Treated.173B [reanalysis]",
+      1
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "breast tumour",
+    178
+   ]
+  ],
+  "title_examples": [
+   "AI.Treated.174B [reanalysis]",
+   "AI.Treated.56B [reanalysis]",
+   "AI.Treated.173B [reanalysis]"
+  ]
+ },
+ "GSE129551": {
+  "area": "breast_cancer",
+  "n_samples": 147,
+  "channels": {
+   "1": 147
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 147,
+    "distinct": 1,
+    "top": [
+     [
+      "Breast cancer",
+      147
+     ]
+    ]
+   },
+   "immunohistochemistry subtype": {
+    "n": 147,
+    "distinct": 4,
+    "top": [
+     [
+      "HR+/HER2-",
+      75
+     ],
+     [
+      "ER+/HER2-",
+      53
+     ],
+     [
+      "HR+/HER2+",
+      15
+     ],
+     [
+      "ER+/HER2+",
+      4
+     ]
+    ]
+   },
+   "ajcc stage": {
+    "n": 147,
+    "distinct": 8,
+    "top": [
+     [
+      "IIA",
+      45
+     ],
+     [
+      "IIB",
+      35
+     ],
+     [
+      "NA",
+      26
+     ],
+     [
+      "IA",
+      20
+     ]
+    ]
+   },
+   "tissue type": {
+    "n": 147,
+    "distinct": 3,
+    "top": [
+     [
+      "Surgical tissue",
+      130
+     ],
+     [
+      "Fine needle aspiration",
+      13
+     ],
+     [
+      "Core biopsy",
+      4
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "breast cancer, hormone receptor-positive",
+    147
+   ]
+  ],
+  "title_examples": [
+   "Breast cancer sample [020_mda_set_ep]",
+   "Breast cancer sample [040_mda_set_ep]",
+   "Breast cancer sample [041_mda_set_ep]"
+  ]
+ },
+ "GSE131027": {
+  "area": "breast_cancer",
+  "n_samples": 92,
+  "channels": {
+   "1": 92
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 92,
+    "distinct": 1,
+    "top": [
+     [
+      "tumor biopsy",
+      92
+     ]
+    ]
+   },
+   "cancer": {
+    "n": 92,
+    "distinct": 23,
+    "top": [
+     [
+      "Colorectal cancer",
+      22
+     ],
+     [
+      "Breast cancer",
+      13
+     ],
+     [
+      "Mesothelioma",
+      7
+     ],
+     [
+      "Pancreatic cancer",
+      6
+     ]
+    ]
+   },
+   "mutated gene": {
+    "n": 92,
+    "distinct": 36,
+    "top": [
+     [
+      "CHEK2",
+      13
+     ],
+     [
+      "BRCA2",
+      11
+     ],
+     [
+      "ATM",
+      5
+     ],
+     [
+      "BLM",
+      5
+     ]
+    ]
+   },
+   "predicted": {
+    "n": 92,
+    "distinct": 2,
+    "top": [
+     [
+      "HRDEXP: HRD",
+      49
+     ],
+     [
+      "HRDEXP: NO_HRD",
+      43
+     ]
+    ]
+   },
+   "parp predicted": {
+    "n": 92,
+    "distinct": 2,
+    "top": [
+     [
+      "kmeans-2: PARP insensitive",
+      62
+     ],
+     [
+      "kmeans-2: PARP sensitive",
+      30
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "tumor biopsy",
+    92
+   ]
+  ],
+  "title_examples": [
+   "sample 01 [Breast cancer]",
+   "sample 02 [Colorectal cancer]",
+   "sample 03 [Colorectal cancer]"
+  ]
+ },
+ "GSE58984": {
+  "area": "breast_cancer",
+  "n_samples": 94,
+  "channels": {
+   "1": 94
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 94,
+    "distinct": 1,
+    "top": [
+     [
+      "HER2 breast cancer tumor",
+      94
+     ]
+    ]
+   },
+   "treatment": {
+    "n": 94,
+    "distinct": 1,
+    "top": [
+     [
+      "trastuzumab",
+      94
+     ]
+    ]
+   },
+   "age": {
+    "n": 94,
+    "distinct": 39,
+    "top": [
+     [
+      "49",
+      10
+     ],
+     [
+      "68",
+      6
+     ],
+     [
+      "52",
+      6
+     ],
+     [
+      "54",
+      5
+     ]
+    ]
+   },
+   "tumor size": {
+    "n": 94,
+    "distinct": 36,
+    "top": [
+     [
+      "45",
+      7
+     ],
+     [
+      "25",
+      7
+     ],
+     [
+      "20",
+      6
+     ],
+     [
+      "15",
+      5
+     ]
+    ]
+   },
+   "nodes positive": {
+    "n": 94,
+    "distinct": 16,
+    "top": [
+     [
+      "0",
+      42
+     ],
+     [
+      "1",
+      20
+     ],
+     [
+      "2",
+      8
+     ],
+     [
+      "4",
+      4
+     ]
+    ]
+   },
+   "er status": {
+    "n": 94,
+    "distinct": 2,
+    "top": [
+     [
+      "1",
+      60
+     ],
+     [
+      "0",
+      34
+     ]
+    ]
+   },
+   "pgr status": {
+    "n": 94,
+    "distinct": 2,
+    "top": [
+     [
+      "0",
+      47
+     ],
+     [
+      "1",
+      47
+     ]
+    ]
+   },
+   "distant metastasis": {
+    "n": 94,
+    "distinct": 2,
+    "top": [
+     [
+      "0",
+      83
+     ],
+     [
+      "1",
+      11
+     ]
+    ]
+   },
+   "time to ddfs": {
+    "n": 94,
+    "distinct": 92,
+    "top": [
+     [
+      "1774",
+      2
+     ],
+     [
+      "1492",
+      2
+     ],
+     [
+      "3645",
+      1
+     ],
+     [
+      "3729",
+      1
+     ]
+    ]
+   },
+   "intratumoral lymphocytic infiltration": {
+    "n": 94,
+    "distinct": 6,
+    "top": [
+     [
+      "0",
+      57
+     ],
+     [
+      "1",
+      25
+     ],
+     [
+      "3",
+      6
+     ],
+     [
+      "5",
+      4
+     ]
+    ]
+   },
+   "stromal lymphocytic infiltration": {
+    "n": 94,
+    "distinct": 18,
+    "top": [
+     [
+      "3",
+      21
+     ],
+     [
+      "10",
+      11
+     ],
+     [
+      "2",
+      10
+     ],
+     [
+      "5",
+      9
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "HER2 breast tumor sample",
+    94
+   ]
+  ],
+  "title_examples": [
+   "KUL_patient_1",
+   "KUL_patient_2",
+   "KUL_patient_3"
+  ]
+ },
+ "GSE87377": {
+  "area": "breast_cancer",
+  "n_samples": 71,
+  "channels": {
+   "1": 71
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 71,
+    "distinct": 1,
+    "top": [
+     [
+      "Breast tumor",
+      71
+     ]
+    ]
+   },
+   "age": {
+    "n": 71,
+    "distinct": 28,
+    "top": [
+     [
+      "45",
+      11
+     ],
+     [
+      "51",
+      6
+     ],
+     [
+      "52",
+      5
+     ],
+     [
+      "55",
+      5
+     ]
+    ]
+   },
+   "gender": {
+    "n": 71,
+    "distinct": 1,
+    "top": [
+     [
+      "F",
+      71
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "Breast tumor biopsied tissue",
+    71
+   ]
+  ],
+  "title_examples": [
+   "Sh239723_2",
+   "Sh240387",
+   "Sh241327_2"
+  ]
+ },
+ "GSE65095": {
+  "area": "breast_cancer",
+  "n_samples": 203,
+  "channels": {
+   "1": 203
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 203,
+    "distinct": 1,
+    "top": [
+     [
+      "breast tumor",
+      203
+     ]
+    ]
+   },
+   "Sex": {
+    "n": 203,
+    "distinct": 1,
+    "top": [
+     [
+      "female",
+      203
+     ]
+    ]
+   },
+   "batch": {
+    "n": 203,
+    "distinct": 4,
+    "top": [
+     [
+      "2",
+      58
+     ],
+     [
+      "1",
+      57
+     ],
+     [
+      "3",
+      56
+     ],
+     [
+      "5",
+      32
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "breast tumor",
+    203
+   ]
+  ],
+  "title_examples": [
+   "FinHER_tumor_her2pos_1",
+   "FinHER_tumor_her2pos_2",
+   "FinHER_tumor_her2pos_3"
+  ]
+ },
+ "GSE149322": {
+  "area": "breast_cancer",
+  "n_samples": 150,
+  "channels": {
+   "1": 150
+  },
+  "unparsed": 0,
+  "keys": {
+   "her2": {
+    "n": 150,
+    "distinct": 2,
+    "top": [
+     [
+      "0",
+      106
+     ],
+     [
+      "1",
+      44
+     ]
+    ]
+   },
+   "hr": {
+    "n": 150,
+    "distinct": 2,
+    "top": [
+     [
+      "0",
+      78
+     ],
+     [
+      "1",
+      72
+     ]
+    ]
+   },
+   "pcr": {
+    "n": 150,
+    "distinct": 3,
+    "top": [
+     [
+      "0",
+      105
+     ],
+     [
+      "1",
+      44
+     ],
+     [
+      "-1",
+      1
+     ]
+    ]
+   },
+   "arm": {
+    "n": 150,
+    "distinct": 2,
+    "top": [
+     [
+      "MK2206 Arm",
+      94
+     ],
+     [
+      "Control Arm",
+      56
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "Breast cancer biopsy (pre-treatment)",
+    150
+   ]
+  ],
+  "title_examples": [
+   "ISPY2_pre-treatment breast cancer tumor_107700",
+   "ISPY2_pre-treatment breast cancer tumor_547405",
+   "ISPY2_pre-treatment breast cancer tumor_797639"
+  ]
+ },
+ "GSE297605": {
+  "area": "breast_cancer",
+  "n_samples": 174,
+  "channels": {
+   "1": 174
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 174,
+    "distinct": 1,
+    "top": [
+     [
+      "breast cancer",
+      174
+     ]
+    ]
+   },
+   "treatment": {
+    "n": 174,
+    "distinct": 1,
+    "top": [
+     [
+      "aromatase inhibitor",
+      174
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "breast cancer",
+    174
+   ]
+  ],
+  "title_examples": [
+   "postRest_1",
+   "postRest_2",
+   "preSens_1"
+  ]
+ },
+ "GSE280902": {
+  "area": "breast_cancer",
+  "n_samples": 58,
+  "channels": {
+   "1": 58
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 58,
+    "distinct": 1,
+    "top": [
+     [
+      "Breast",
+      58
+     ]
+    ]
+   },
+   "molecular subtype": {
+    "n": 58,
+    "distinct": 5,
+    "top": [
+     [
+      "LumBHer2-",
+      19
+     ],
+     [
+      "TNBC",
+      13
+     ],
+     [
+      "LumBHer2+",
+      13
+     ],
+     [
+      "LumA",
+      8
+     ]
+    ]
+   },
+   "biopsy time": {
+    "n": 58,
+    "distinct": 1,
+    "top": [
+     [
+      "Baseline",
+      58
+     ]
+    ]
+   },
+   "treatment response": {
+    "n": 58,
+    "distinct": 2,
+    "top": [
+     [
+      "No Response",
+      29
+     ],
+     [
+      "Complete",
+      29
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "Breast",
+    58
+   ]
+  ],
+  "title_examples": [
+   "014B-Tn_S14",
+   "018B-Bp-C_S12",
+   "047B-Bn-C_S3"
+  ]
+ },
+ "GSE237290": {
+  "area": "breast_cancer",
+  "n_samples": 57,
+  "channels": {
+   "1": 57
+  },
+  "unparsed": 0,
+  "keys": {
+   "age": {
+    "n": 57,
+    "distinct": 34,
+    "top": [
+     [
+      "58",
+      5
+     ],
+     [
+      "46",
+      3
+     ],
+     [
+      "52",
+      3
+     ],
+     [
+      "65",
+      3
+     ]
+    ]
+   },
+   "pam50": {
+    "n": 57,
+    "distinct": 4,
+    "top": [
+     [
+      "Basal",
+      45
+     ],
+     [
+      "HER2",
+      6
+     ],
+     [
+      "LumA",
+      3
+     ],
+     [
+      "LumB",
+      3
+     ]
+    ]
+   },
+   "tumor_size": {
+    "n": 57,
+    "distinct": 21,
+    "top": [
+     [
+      "2.5",
+      8
+     ],
+     [
+      "1",
+      6
+     ],
+     [
+      "2",
+      5
+     ],
+     [
+      "3.5",
+      5
+     ]
+    ]
+   },
+   "tumor_grade": {
+    "n": 57,
+    "distinct": 3,
+    "top": [
+     [
+      "III",
+      45
+     ],
+     [
+      "II",
+      11
+     ],
+     [
+      "I",
+      1
+     ]
+    ]
+   },
+   "histology": {
+    "n": 57,
+    "distinct": 3,
+    "top": [
+     [
+      "IDC",
+      48
+     ],
+     [
+      "Other Infitrating Ca",
+      8
+     ],
+     [
+      "ILC",
+      1
+     ]
+    ]
+   },
+   "er": {
+    "n": 57,
+    "distinct": 2,
+    "top": [
+     [
+      "0",
+      53
+     ],
+     [
+      "1",
+      4
+     ]
+    ]
+   },
+   "pr": {
+    "n": 57,
+    "distinct": 2,
+    "top": [
+     [
+      "0",
+      52
+     ],
+     [
+      "1",
+      5
+     ]
+    ]
+   },
+   "her2": {
+    "n": 57,
+    "distinct": 2,
+    "top": [
+     [
+      "0",
+      54
+     ],
+     [
+      "1",
+      3
+     ]
+    ]
+   },
+   "chemo": {
+    "n": 57,
+    "distinct": 2,
+    "top": [
+     [
+      "0",
+      42
+     ],
+     [
+      "1",
+      15
+     ]
+    ]
+   },
+   "til": {
+    "n": 44,
+    "distinct": 13,
+    "top": [
+     [
+      "5",
+      12
+     ],
+     [
+      "10",
+      6
+     ],
+     [
+      "20",
+      5
+     ],
+     [
+      "30",
+      5
+     ]
+    ]
+   },
+   "tls": {
+    "n": 44,
+    "distinct": 4,
+    "top": [
+     [
+      "1+",
+      16
+     ],
+     [
+      "3+",
+      13
+     ],
+     [
+      "2+",
+      11
+     ],
+     [
+      "0",
+      4
+     ]
+    ]
+   },
+   "gc": {
+    "n": 42,
+    "distinct": 2,
+    "top": [
+     [
+      "0",
+      34
+     ],
+     [
+      "1",
+      8
+     ]
+    ]
+   },
+   "time.os": {
+    "n": 57,
+    "distinct": 56,
+    "top": [
+     [
+      "17.6",
+      2
+     ],
+     [
+      "10.25",
+      1
+     ],
+     [
+      "4.16",
+      1
+     ],
+     [
+      "19.06",
+      1
+     ]
+    ]
+   },
+   "event.os": {
+    "n": 57,
+    "distinct": 2,
+    "top": [
+     [
+      "0",
+      29
+     ],
+     [
+      "1",
+      28
+     ]
+    ]
+   },
+   "time.rfi": {
+    "n": 57,
+    "distinct": 54,
+    "top": [
+     [
+      "8.29",
+      4
+     ],
+     [
+      "9.61",
+      1
+     ],
+     [
+      "1.55",
+      1
+     ],
+     [
+      "9.45",
+      1
+     ]
+    ]
+   },
+   "event.rfi": {
+    "n": 57,
+    "distinct": 2,
+    "top": [
+     [
+      "0",
+      44
+     ],
+     [
+      "1",
+      13
+     ]
+    ]
+   },
+   "time.dss": {
+    "n": 57,
+    "distinct": 56,
+    "top": [
+     [
+      "17.6",
+      2
+     ],
+     [
+      "10.25",
+      1
+     ],
+     [
+      "4.16",
+      1
+     ],
+     [
+      "19.06",
+      1
+     ]
+    ]
+   },
+   "event.dss": {
+    "n": 57,
+    "distinct": 2,
+    "top": [
+     [
+      "0",
+      43
+     ],
+     [
+      "1",
+      14
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "primary breast cancer",
+    57
+   ]
+  ],
+  "title_examples": [
+   "Patient 004",
+   "Patient 042",
+   "Patient 128"
+  ]
+ },
+ "GSE272769": {
+  "area": "sepsis",
+  "n_samples": 161,
+  "channels": {
+   "1": 161
+  },
+  "unparsed": 0,
+  "keys": {
+   "age": {
+    "n": 161,
+    "distinct": 58,
+    "top": [
+     [
+      "65",
+      9
+     ],
+     [
+      "62",
+      7
+     ],
+     [
+      "75",
+      7
+     ],
+     [
+      "58",
+      7
+     ]
+    ]
+   },
+   "Sex": {
+    "n": 161,
+    "distinct": 2,
+    "top": [
+     [
+      "female",
+      87
+     ],
+     [
+      "male",
+      74
+     ]
+    ]
+   },
+   "mort30": {
+    "n": 161,
+    "distinct": 2,
+    "top": [
+     [
+      "No",
+      101
+     ],
+     [
+      "Yes",
+      60
+     ]
+    ]
+   },
+   "shock": {
+    "n": 161,
+    "distinct": 2,
+    "top": [
+     [
+      "Yes",
+      123
+     ],
+     [
+      "No",
+      38
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "whole blood",
+    161
+   ]
+  ],
+  "title_examples": [
+   "991666_mort30_No",
+   "991678_mort30_Yes",
+   "991679_mort30_Yes"
+  ]
+ },
+ "GSE279448": {
+  "area": "sepsis",
+  "n_samples": 207,
+  "channels": {
+   "1": 207
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 207,
+    "distinct": 1,
+    "top": [
+     [
+      "Peripheral blood",
+      207
+     ]
+    ]
+   },
+   "cell line": {
+    "n": 207,
+    "distinct": 1,
+    "top": [
+     [
+      "PBMCs",
+      207
+     ]
+    ]
+   },
+   "cell type": {
+    "n": 207,
+    "distinct": 1,
+    "top": [
+     [
+      "Immune cells",
+      207
+     ]
+    ]
+   },
+   "gender": {
+    "n": 207,
+    "distinct": 2,
+    "top": [
+     [
+      "Male",
+      138
+     ],
+     [
+      "Female",
+      69
+     ]
+    ]
+   },
+   "age": {
+    "n": 207,
+    "distinct": 72,
+    "top": [
+     [
+      "56",
+      8
+     ],
+     [
+      "81",
+      7
+     ],
+     [
+      "59",
+      7
+     ],
+     [
+      "74",
+      7
+     ]
+    ]
+   },
+   "sample collection_site": {
+    "n": 207,
+    "distinct": 3,
+    "top": [
+     [
+      "the First Affiliated Hospital of Chongqing Medical University, Chongqing, China",
+      162
+     ],
+     [
+      "Children's Hospital of Chongqing Medical University, Chongqing, China",
+      25
+     ],
+     [
+      "Chongqing Emergency Medical Center, Chongqing, China.",
+      20
+     ]
+    ]
+   },
+   "group": {
+    "n": 207,
+    "distinct": 6,
+    "top": [
+     [
+      "Adult Sepsis",
+      116
+     ],
+     [
+      "Adult Healthy Control",
+      43
+     ],
+     [
+      "Adult ICU Control",
+      23
+     ],
+     [
+      "Pediatric Sepsis",
+      16
+     ]
+    ]
+   },
+   "sepsis infection_source": {
+    "n": 207,
+    "distinct": 5,
+    "top": [
+     [
+      "NA",
+      75
+     ],
+     [
+      "Respiratory",
+      53
+     ],
+     [
+      "Abdominal",
+      46
+     ],
+     [
+      "Urinary",
+      20
+     ]
+    ]
+   },
+   "ethnicity": {
+    "n": 207,
+    "distinct": 1,
+    "top": [
+     [
+      "East Asian",
+      207
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "Peripheral blood",
+    207
+   ]
+  ],
+  "title_examples": [
+   "bulkRNA Abd-PS04",
+   "bulkRNA Abd-PS05",
+   "bulkRNA Abd-PS07"
+  ]
+ },
+ "GSE154918": {
+  "area": "sepsis",
+  "n_samples": 105,
+  "channels": {
+   "1": 105
+  },
+  "unparsed": 0,
+  "keys": {
+   "status": {
+    "n": 105,
+    "distinct": 6,
+    "top": [
+     [
+      "Hlty",
+      40
+     ],
+     [
+      "Seps_P",
+      20
+     ],
+     [
+      "Shock_P",
+      19
+     ],
+     [
+      "Inf1_P",
+      12
+     ]
+    ]
+   },
+   "Sex": {
+    "n": 105,
+    "distinct": 2,
+    "top": [
+     [
+      "M",
+      55
+     ],
+     [
+      "F",
+      50
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "blood",
+    105
+   ]
+  ],
+  "title_examples": [
+   "INFG_139",
+   "INFG_140",
+   "INFG_141"
+  ]
+ },
+ "GSE137340": {
+  "area": "sepsis",
+  "n_samples": 57,
+  "channels": {
+   "1": 57
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 57,
+    "distinct": 1,
+    "top": [
+     [
+      "Whole blood",
+      57
+     ]
+    ]
+   },
+   "age": {
+    "n": 57,
+    "distinct": 23,
+    "top": [
+     [
+      "50",
+      6
+     ],
+     [
+      "20",
+      4
+     ],
+     [
+      "30",
+      4
+     ],
+     [
+      "40",
+      4
+     ]
+    ]
+   },
+   "Sex": {
+    "n": 57,
+    "distinct": 3,
+    "top": [
+     [
+      "M",
+      37
+     ],
+     [
+      "F",
+      18
+     ],
+     [
+      "NA",
+      2
+     ]
+    ]
+   },
+   "diagnosis": {
+    "n": 57,
+    "distinct": 5,
+    "top": [
+     [
+      "Severe Sepsis",
+      26
+     ],
+     [
+      "Septic Shock",
+      13
+     ],
+     [
+      "Healthy",
+      12
+     ],
+     [
+      "Sepsis",
+      4
+     ]
+    ]
+   },
+   "time of sample collection": {
+    "n": 57,
+    "distinct": 3,
+    "top": [
+     [
+      "0 hr",
+      34
+     ],
+     [
+      "24 hrs",
+      22
+     ],
+     [
+      "NA",
+      1
+     ]
+    ]
+   },
+   "outcome": {
+    "n": 57,
+    "distinct": 3,
+    "top": [
+     [
+      "Survived",
+      50
+     ],
+     [
+      "NA",
+      4
+     ],
+     [
+      "Died",
+      3
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "Subject 1, Severe Sepsis,Day 1",
+    1
+   ],
+   [
+    "Subject 1, Severe Sepsis,Day 2",
+    1
+   ],
+   [
+    "Subject 5, Septic Shock, Day 1",
+    1
+   ]
+  ],
+  "title_examples": [
+   "1D1",
+   "1D2",
+   "5D1"
+  ]
+ },
+ "GSE119217": {
+  "area": "sepsis",
+  "n_samples": 134,
+  "channels": {
+   "1": 134
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 134,
+    "distinct": 1,
+    "top": [
+     [
+      "Whole peripheral blood",
+      134
+     ]
+    ]
+   },
+   "sepsis_severity": {
+    "n": 134,
+    "distinct": 4,
+    "top": [
+     [
+      "no_shock",
+      81
+     ],
+     [
+      "fluid_responsive",
+      30
+     ],
+     [
+      "control",
+      12
+     ],
+     [
+      "vasopressor-responsive",
+      11
+     ]
+    ]
+   },
+   "shock_status": {
+    "n": 134,
+    "distinct": 3,
+    "top": [
+     [
+      "no_shock",
+      81
+     ],
+     [
+      "shock",
+      41
+     ],
+     [
+      "control",
+      12
+     ]
+    ]
+   },
+   "infection_source": {
+    "n": 134,
+    "distinct": 5,
+    "top": [
+     [
+      "viral",
+      38
+     ],
+     [
+      "no_source",
+      34
+     ],
+     [
+      "NA",
+      29
+     ],
+     [
+      "bacterial",
+      28
+     ]
+    ]
+   },
+   "Sex": {
+    "n": 134,
+    "distinct": 2,
+    "top": [
+     [
+      "female",
+      73
+     ],
+     [
+      "male",
+      61
+     ]
+    ]
+   },
+   "race_ethnicity": {
+    "n": 134,
+    "distinct": 5,
+    "top": [
+     [
+      "white",
+      61
+     ],
+     [
+      "black",
+      26
+     ],
+     [
+      "Hispanic",
+      26
+     ],
+     [
+      "Asian",
+      13
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "Whole peripheral blood",
+    134
+   ]
+  ],
+  "title_examples": [
+   "9973_1",
+   "9973_2",
+   "9973_3"
+  ]
+ },
+ "GSE131411": {
+  "area": "sepsis",
+  "n_samples": 106,
+  "channels": {
+   "1": 106
+  },
+  "unparsed": 0,
+  "keys": {
+   "patient": {
+    "n": 106,
+    "distinct": 37,
+    "top": [
+     [
+      "E07",
+      3
+     ],
+     [
+      "E16",
+      3
+     ],
+     [
+      "E17",
+      3
+     ],
+     [
+      "E32",
+      3
+     ]
+    ]
+   },
+   "timepoint": {
+    "n": 106,
+    "distinct": 3,
+    "top": [
+     [
+      "T1",
+      37
+     ],
+     [
+      "T2",
+      37
+     ],
+     [
+      "T3",
+      32
+     ]
+    ]
+   },
+   "clinical classification": {
+    "n": 96,
+    "distinct": 2,
+    "top": [
+     [
+      "SS",
+      63
+     ],
+     [
+      "CS",
+      33
+     ]
+    ]
+   },
+   "tissue": {
+    "n": 106,
+    "distinct": 2,
+    "top": [
+     [
+      "Whole blood",
+      96
+     ],
+     [
+      "Whole Blood",
+      10
+     ]
+    ]
+   },
+   "Sex": {
+    "n": 10,
+    "distinct": 2,
+    "top": [
+     [
+      "Male",
+      6
+     ],
+     [
+      "Female",
+      4
+     ]
+    ]
+   },
+   "cell type": {
+    "n": 10,
+    "distinct": 1,
+    "top": [
+     [
+      "Whole Blood",
+      10
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "SepticShock_T1_whole blood",
+    21
+   ],
+   [
+    "SepticShock_T2_whole blood",
+    21
+   ],
+   [
+    "SepticShock_T3_whole blood",
+    21
+   ]
+  ],
+  "title_examples": [
+   "E07T1_SepticShock [re-analysis]",
+   "E07T2_SepticShock [re-analysis]",
+   "E07T3_SepticShock"
+  ]
+ },
+ "GSE69063": {
+  "area": "sepsis",
+  "n_samples": 153,
+  "channels": {
+   "1": 153
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 153,
+    "distinct": 1,
+    "top": [
+     [
+      "peripheral blood",
+      153
+     ]
+    ]
+   },
+   "study": {
+    "n": 153,
+    "distinct": 3,
+    "top": [
+     [
+      "Sepsis study",
+      68
+     ],
+     [
+      "Anaphylaxis study",
+      43
+     ],
+     [
+      "Trauma study",
+      42
+     ]
+    ]
+   },
+   "disease status": {
+    "n": 153,
+    "distinct": 4,
+    "top": [
+     [
+      "Sepsis",
+      57
+     ],
+     [
+      "Anaphylaxis",
+      33
+     ],
+     [
+      "Healthy control",
+      33
+     ],
+     [
+      "Head Trauma",
+      30
+     ]
+    ]
+   },
+   "severity": {
+    "n": 153,
+    "distinct": 6,
+    "top": [
+     [
+      "Severe",
+      44
+     ],
+     [
+      "Mild",
+      30
+     ],
+     [
+      "ALIVE",
+      29
+     ],
+     [
+      "N/A",
+      21
+     ]
+    ]
+   },
+   "time point": {
+    "n": 153,
+    "distinct": 4,
+    "top": [
+     [
+      "T0",
+      56
+     ],
+     [
+      "T1",
+      47
+     ],
+     [
+      "T2",
+      29
+     ],
+     [
+      "N/A",
+      21
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "Peripheral blood sample from healthy control C at Time T0",
+    12
+   ],
+   [
+    "Peripheral blood sample from anaphylaxis patient 249 at Time T0",
+    1
+   ],
+   [
+    "Peripheral blood sample from anaphylaxis patient 249 at Time T1",
+    1
+   ]
+  ],
+  "title_examples": [
+   "Peripheral blood sample from anaphylaxis patient 249 at Time T0",
+   "Peripheral blood sample from anaphylaxis patient 249 at Time T1",
+   "Peripheral blood sample from anaphylaxis patient 310 at Time T1"
+  ]
+ },
+ "GSE216902": {
+  "area": "sepsis",
+  "n_samples": 74,
+  "channels": {
+   "1": 74
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 74,
+    "distinct": 1,
+    "top": [
+     [
+      "PBMC",
+      74
+     ]
+    ]
+   },
+   "time": {
+    "n": 74,
+    "distinct": 2,
+    "top": [
+     [
+      "Day1",
+      37
+     ],
+     [
+      "Day8",
+      37
+     ]
+    ]
+   },
+   "condition": {
+    "n": 74,
+    "distinct": 2,
+    "top": [
+     [
+      "Responder",
+      46
+     ],
+     [
+      "Non-Responder",
+      28
+     ]
+    ]
+   },
+   "patient": {
+    "n": 74,
+    "distinct": 37,
+    "top": [
+     [
+      "13",
+      2
+     ],
+     [
+      "36",
+      2
+     ],
+     [
+      "93",
+      2
+     ],
+     [
+      "94",
+      2
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "PBMC",
+    74
+   ]
+  ],
+  "title_examples": [
+   "RICU190827-1_001A (PBMC)",
+   "RICU191223-1_001A (PBMC)",
+   "RICU200901-1_001A (PBMC)"
+  ]
+ },
+ "GSE110487": {
+  "area": "sepsis",
+  "n_samples": 62,
+  "channels": {
+   "1": 62
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 62,
+    "distinct": 1,
+    "top": [
+     [
+      "Whole blood cells collected from patient after septic shock",
+      62
+     ]
+    ]
+   },
+   "patient": {
+    "n": 62,
+    "distinct": 31,
+    "top": [
+     [
+      "E04",
+      2
+     ],
+     [
+      "E07",
+      2
+     ],
+     [
+      "E15",
+      2
+     ],
+     [
+      "E16",
+      2
+     ]
+    ]
+   },
+   "timepoint": {
+    "n": 62,
+    "distinct": 2,
+    "top": [
+     [
+      "T2",
+      34
+     ],
+     [
+      "T1",
+      28
+     ]
+    ]
+   },
+   "clinical classification": {
+    "n": 62,
+    "distinct": 2,
+    "top": [
+     [
+      "R",
+      34
+     ],
+     [
+      "NR",
+      28
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "Responder T1 patient1",
+    1
+   ],
+   [
+    "Responder T2 patient1",
+    1
+   ],
+   [
+    "Not Responder T1 patient1",
+    1
+   ]
+  ],
+  "title_examples": [
+   "E04T1",
+   "E04T2",
+   "E07T1"
+  ]
+ },
+ "GSE206171": {
+  "area": "ibd",
+  "n_samples": 152,
+  "channels": {
+   "1": 152
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 152,
+    "distinct": 1,
+    "top": [
+     [
+      "Sigmoid colonic tissue",
+      152
+     ]
+    ]
+   },
+   "Sex": {
+    "n": 152,
+    "distinct": 2,
+    "top": [
+     [
+      "F",
+      86
+     ],
+     [
+      "M",
+      66
+     ]
+    ]
+   },
+   "uc or healthy control": {
+    "n": 152,
+    "distinct": 3,
+    "top": [
+     [
+      "UC - Active disease",
+      81
+     ],
+     [
+      "Healthy control",
+      38
+     ],
+     [
+      "UC - Inactive disease",
+      33
+     ]
+    ]
+   },
+   "mayoscore": {
+    "n": 152,
+    "distinct": 13,
+    "top": [
+     [
+      "0",
+      46
+     ],
+     [
+      "6",
+      17
+     ],
+     [
+      "1",
+      15
+     ],
+     [
+      "8",
+      12
+     ]
+    ]
+   },
+   "diagnose duration (years)": {
+    "n": 152,
+    "distinct": 37,
+    "top": [
+     [
+      "0",
+      40
+     ],
+     [
+      "2",
+      10
+     ],
+     [
+      "8",
+      8
+     ],
+     [
+      "3",
+      8
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "Sigmoid colonic tissue",
+    152
+   ]
+  ],
+  "title_examples": [
+   "NNCSD-002.a",
+   "NNCSD-002.b",
+   "NNCSD-003.a"
+  ]
+ },
+ "GSE117993": {
+  "area": "ibd",
+  "n_samples": 190,
+  "channels": {
+   "1": 190
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 190,
+    "distinct": 1,
+    "top": [
+     [
+      "rectum",
+      190
+     ]
+    ]
+   },
+   "diagnosis": {
+    "n": 190,
+    "distinct": 3,
+    "top": [
+     [
+      "CD",
+      92
+     ],
+     [
+      "Control",
+      55
+     ],
+     [
+      "UC",
+      43
+     ]
+    ]
+   },
+   "location": {
+    "n": 190,
+    "distinct": 3,
+    "top": [
+     [
+      "na",
+      98
+     ],
+     [
+      "L3",
+      60
+     ],
+     [
+      "L2",
+      32
+     ]
+    ]
+   },
+   "population": {
+    "n": 190,
+    "distinct": 1,
+    "top": [
+     [
+      "pediatric",
+      190
+     ]
+    ]
+   },
+   "biopsy location": {
+    "n": 190,
+    "distinct": 1,
+    "top": [
+     [
+      "rectal",
+      190
+     ]
+    ]
+   },
+   "disease subtype": {
+    "n": 190,
+    "distinct": 4,
+    "top": [
+     [
+      "ileal CD",
+      60
+     ],
+     [
+      "not IBD",
+      55
+     ],
+     [
+      "UC",
+      43
+     ],
+     [
+      "colonic CD",
+      32
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "Rectal biopsy",
+    190
+   ]
+  ],
+  "title_examples": [
+   "1_RISK_Rectal_cCD",
+   "2_RISK_Rectal_cCD",
+   "3_RISK_Rectal_cCD"
+  ]
+ },
+ "GSE75214": {
+  "area": "ibd",
+  "n_samples": 194,
+  "channels": {
+   "1": 194
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 194,
+    "distinct": 2,
+    "top": [
+     [
+      "colon",
+      116
+     ],
+     [
+      "ileum",
+      78
+     ]
+    ]
+   },
+   "disease": {
+    "n": 194,
+    "distinct": 4,
+    "top": [
+     [
+      "ulcerative colitis",
+      97
+     ],
+     [
+      "CD",
+      67
+     ],
+     [
+      "control",
+      22
+     ],
+     [
+      "Crohn's disease",
+      8
+     ]
+    ]
+   },
+   "disease activity": {
+    "n": 194,
+    "distinct": 3,
+    "top": [
+     [
+      "active",
+      133
+     ],
+     [
+      "inactive",
+      39
+     ],
+     [
+      "normal",
+      22
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "Biopsy from inflamed colonic mucosa of active UC patient",
+    74
+   ],
+   [
+    "Biopsy from inflamed ileal mucosa of active CD patient",
+    51
+   ],
+   [
+    "Biopsy from uninflamed colonic mucosa of inactive UC patient",
+    23
+   ]
+  ],
+  "title_examples": [
+   "CD_colon_active_1",
+   "CD_colon_active_2",
+   "CD_colon_active_3"
+  ]
+ },
+ "GSE87466": {
+  "area": "ibd",
+  "n_samples": 108,
+  "channels": {
+   "1": 108
+  },
+  "unparsed": 0,
+  "keys": {
+   "subject": {
+    "n": 108,
+    "distinct": 108,
+    "top": [
+     [
+      "CO6_670606M",
+      1
+     ],
+     [
+      "1021",
+      1
+     ],
+     [
+      "CO10_481222V",
+      1
+     ],
+     [
+      "1014",
+      1
+     ]
+    ]
+   },
+   "diseaseextent": {
+    "n": 108,
+    "distinct": 3,
+    "top": [
+     [
+      "Limited",
+      60
+     ],
+     [
+      "Extensive",
+      27
+     ],
+     [
+      "--",
+      21
+     ]
+    ]
+   },
+   "disease": {
+    "n": 108,
+    "distinct": 2,
+    "top": [
+     [
+      "Ulcerative Colitis (UC)",
+      87
+     ],
+     [
+      "Normal",
+      21
+     ]
+    ]
+   },
+   "age": {
+    "n": 108,
+    "distinct": 43,
+    "top": [
+     [
+      "--",
+      21
+     ],
+     [
+      "27",
+      6
+     ],
+     [
+      "63",
+      6
+     ],
+     [
+      "51",
+      5
+     ]
+    ]
+   },
+   "tissue": {
+    "n": 108,
+    "distinct": 1,
+    "top": [
+     [
+      "Colon",
+      108
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "tissue biopsy",
+    108
+   ]
+  ],
+  "title_examples": [
+   "CO6_670606M",
+   "1021",
+   "CO10_481222V"
+  ]
+ },
+ "GSE166925": {
+  "area": "ibd",
+  "n_samples": 96,
+  "channels": {
+   "1": 96
+  },
+  "unparsed": 0,
+  "keys": {
+   "disease": {
+    "n": 96,
+    "distinct": 5,
+    "top": [
+     [
+      "Control",
+      42
+     ],
+     [
+      "CD",
+      34
+     ],
+     [
+      "UC",
+      13
+     ],
+     [
+      "OTHER",
+      6
+     ]
+    ]
+   },
+   "inflammation_status": {
+    "n": 96,
+    "distinct": 2,
+    "top": [
+     [
+      "uninflamed",
+      64
+     ],
+     [
+      "inflamed",
+      32
+     ]
+    ]
+   },
+   "site_taken": {
+    "n": 96,
+    "distinct": 2,
+    "top": [
+     [
+      "large_intestine",
+      77
+     ],
+     [
+      "small_intestine",
+      19
+     ]
+    ]
+   },
+   "gender": {
+    "n": 96,
+    "distinct": 2,
+    "top": [
+     [
+      "male",
+      49
+     ],
+     [
+      "female",
+      47
+     ]
+    ]
+   },
+   "patient_id": {
+    "n": 96,
+    "distinct": 80,
+    "top": [
+     [
+      "16",
+      3
+     ],
+     [
+      "17",
+      3
+     ],
+     [
+      "14",
+      2
+     ],
+     [
+      "24",
+      2
+     ]
+    ]
+   },
+   "sample_id": {
+    "n": 96,
+    "distinct": 96,
+    "top": [
+     [
+      "1",
+      1
+     ],
+     [
+      "2",
+      1
+     ],
+     [
+      "3",
+      1
+     ],
+     [
+      "4",
+      1
+     ]
+    ]
+   },
+   "nancy_score": {
+    "n": 96,
+    "distinct": 6,
+    "top": [
+     [
+      "0",
+      39
+     ],
+     [
+      "NA",
+      21
+     ],
+     [
+      "2",
+      14
+     ],
+     [
+      "1",
+      14
+     ]
+    ]
+   },
+   "patient_age": {
+    "n": 96,
+    "distinct": 45,
+    "top": [
+     [
+      "60",
+      5
+     ],
+     [
+      "73",
+      5
+     ],
+     [
+      "29",
+      4
+     ],
+     [
+      "25",
+      4
+     ]
+    ]
+   },
+   "sample_age(y)": {
+    "n": 96,
+    "distinct": 3,
+    "top": [
+     [
+      "1",
+      54
+     ],
+     [
+      "2",
+      35
+     ],
+     [
+      "3",
+      7
+     ]
+    ]
+   },
+   "disease_duration (y)": {
+    "n": 96,
+    "distinct": 8,
+    "top": [
+     [
+      "1",
+      49
+     ],
+     [
+      "20",
+      12
+     ],
+     [
+      "5",
+      11
+     ],
+     [
+      "10",
+      10
+     ]
+    ]
+   },
+   "qc": {
+    "n": 96,
+    "distinct": 2,
+    "top": [
+     [
+      "include",
+      81
+     ],
+     [
+      "EXCLUDE",
+      15
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "CRC_N_LI_M_whole intestinal tissue",
+    23
+   ],
+   [
+    "CRC_N_LI_F_whole intestinal tissue",
+    19
+   ],
+   [
+    "CD_I_SI_F_whole intestinal tissue",
+    6
+   ]
+  ],
+  "title_examples": [
+   "UC_I_LI_M_1",
+   "UC_NA_LI_F_2",
+   "CD_I_SI_F_3"
+  ]
+ },
+ "GSE158952": {
+  "area": "ibd",
+  "n_samples": 119,
+  "channels": {
+   "1": 119
+  },
+  "unparsed": 0,
+  "keys": {
+   "Sex": {
+    "n": 119,
+    "distinct": 2,
+    "top": [
+     [
+      "male",
+      60
+     ],
+     [
+      "female",
+      59
+     ]
+    ]
+   },
+   "ancestry": {
+    "n": 119,
+    "distinct": 2,
+    "top": [
+     [
+      "EA",
+      60
+     ],
+     [
+      "AA",
+      59
+     ]
+    ]
+   },
+   "age at sampling": {
+    "n": 119,
+    "distinct": 11,
+    "top": [
+     [
+      "17",
+      18
+     ],
+     [
+      "15",
+      17
+     ],
+     [
+      "14",
+      14
+     ],
+     [
+      "12",
+      14
+     ]
+    ]
+   },
+   "disease state (diagnosis)": {
+    "n": 119,
+    "distinct": 2,
+    "top": [
+     [
+      "Crohn's disease",
+      65
+     ],
+     [
+      "ulcerative colitis",
+      54
+     ]
+    ]
+   },
+   "tissue": {
+    "n": 119,
+    "distinct": 2,
+    "top": [
+     [
+      "ileum",
+      60
+     ],
+     [
+      "rectum",
+      59
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "ileum",
+    60
+   ],
+   [
+    "rectum",
+    59
+   ]
+  ],
+  "title_examples": [
+   "donor1_ileum_repA",
+   "donor1_rectum_repA",
+   "donor1_ileum_repB"
+  ]
+ },
+ "GSE112057": {
+  "area": "ibd",
+  "n_samples": 202,
+  "channels": {
+   "1": 202
+  },
+  "unparsed": 0,
+  "keys": {
+   "gender": {
+    "n": 202,
+    "distinct": 3,
+    "top": [
+     [
+      "Female",
+      110
+     ],
+     [
+      "Male",
+      80
+     ],
+     [
+      "NA",
+      12
+     ]
+    ]
+   },
+   "age at diagnosis": {
+    "n": 202,
+    "distinct": 24,
+    "top": [
+     [
+      "NA",
+      45
+     ],
+     [
+      "14",
+      16
+     ],
+     [
+      "9",
+      15
+     ],
+     [
+      "5",
+      14
+     ]
+    ]
+   },
+   "ancestry": {
+    "n": 202,
+    "distinct": 3,
+    "top": [
+     [
+      "White",
+      141
+     ],
+     [
+      "Black",
+      49
+     ],
+     [
+      "NA",
+      12
+     ]
+    ]
+   },
+   "disease state (diagnosis)": {
+    "n": 202,
+    "distinct": 6,
+    "top": [
+     [
+      "Crohn's Disease",
+      60
+     ],
+     [
+      "Polyarticular JIA",
+      46
+     ],
+     [
+      "Oligoarticular JIA",
+      43
+     ],
+     [
+      "Systemic JIA",
+      26
+     ]
+    ]
+   },
+   "tissue": {
+    "n": 202,
+    "distinct": 1,
+    "top": [
+     [
+      "Whole Blood",
+      202
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "Whole Blood",
+    202
+   ]
+  ],
+  "title_examples": [
+   "Sample001_Crohn's Disease",
+   "Sample002_Crohn's Disease",
+   "Sample003_Crohn's Disease"
+  ]
+ },
+ "GSE282580": {
+  "area": "ibd",
+  "n_samples": 60,
+  "channels": {
+   "1": 60
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 60,
+    "distinct": 1,
+    "top": [
+     [
+      "colonic mucosa",
+      60
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "colonic mucosa",
+    60
+   ]
+  ],
+  "title_examples": [
+   "subject 1, inf, 0W",
+   "subject 1, non-inf, 0W",
+   "subject 1, inf, 14W"
+  ]
+ },
+ "GSE92415": {
+  "area": "ibd",
+  "n_samples": 183,
+  "channels": {
+   "1": 183
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 183,
+    "distinct": 1,
+    "top": [
+     [
+      "colon mucosa",
+      183
+     ]
+    ]
+   },
+   "subject": {
+    "n": 162,
+    "distinct": 97,
+    "top": [
+     [
+      "6402-00008",
+      2
+     ],
+     [
+      "6502-00028",
+      2
+     ],
+     [
+      "7796-00003",
+      2
+     ],
+     [
+      "7602-00001",
+      2
+     ]
+    ]
+   },
+   "disease": {
+    "n": 183,
+    "distinct": 2,
+    "top": [
+     [
+      "Ulcerative Colitis (UC)",
+      162
+     ],
+     [
+      "Healthy",
+      21
+     ]
+    ]
+   },
+   "age": {
+    "n": 162,
+    "distinct": 43,
+    "top": [
+     [
+      "63",
+      11
+     ],
+     [
+      "27",
+      9
+     ],
+     [
+      "51",
+      9
+     ],
+     [
+      "46",
+      9
+     ]
+    ]
+   },
+   "treatment": {
+    "n": 183,
+    "distinct": 3,
+    "top": [
+     [
+      "golimumab",
+      109
+     ],
+     [
+      "Placebo",
+      53
+     ],
+     [
+      "Healthy",
+      21
+     ]
+    ]
+   },
+   "visit": {
+    "n": 183,
+    "distinct": 3,
+    "top": [
+     [
+      "Week 0",
+      87
+     ],
+     [
+      "Week 6",
+      75
+     ],
+     [
+      "Healthy",
+      21
+     ]
+    ]
+   },
+   "wk6response": {
+    "n": 183,
+    "distinct": 3,
+    "top": [
+     [
+      "Yes",
+      82
+     ],
+     [
+      "No",
+      80
+     ],
+     [
+      "Healthy",
+      21
+     ]
+    ]
+   },
+   "mayo score": {
+    "n": 183,
+    "distinct": 14,
+    "top": [
+     [
+      "7",
+      31
+     ],
+     [
+      "8",
+      26
+     ],
+     [
+      "9",
+      22
+     ],
+     [
+      ".",
+      21
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "tissue biopsy",
+    183
+   ]
+  ],
+  "title_examples": [
+   "T17p1_A8",
+   "T17p2_F4",
+   "T17p1_A11"
+  ]
+ },
+ "GSE164416": {
+  "area": "t2d",
+  "n_samples": 133,
+  "channels": {
+   "1": 133
+  },
+  "unparsed": 0,
+  "keys": {
+   "diabetes status": {
+    "n": 133,
+    "distinct": 5,
+    "top": [
+     [
+      "T2D",
+      39
+     ],
+     [
+      "IGT",
+      38
+     ],
+     [
+      "T3cD",
+      35
+     ],
+     [
+      "ND",
+      18
+     ]
+    ]
+   },
+   "in_ins_filtered_data_subset": {
+    "n": 133,
+    "distinct": 2,
+    "top": [
+     [
+      "TRUE",
+      92
+     ],
+     [
+      "FALSE",
+      41
+     ]
+    ]
+   },
+   "library_prep_date": {
+    "n": 133,
+    "distinct": 6,
+    "top": [
+     [
+      "24/07/2015",
+      53
+     ],
+     [
+      "27/03/2014",
+      31
+     ],
+     [
+      "24/11/2016",
+      28
+     ],
+     [
+      "30/06/2014",
+      13
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "Pancreatic islets (living donor, in situ)",
+    133
+   ]
+  ],
+  "title_examples": [
+   "Islets_DP002_T3cD",
+   "Islets_DP003_T2D",
+   "Islets_DP005_IGT"
+  ]
+ },
+ "GSE152111": {
+  "area": "t2d",
+  "n_samples": 66,
+  "channels": {
+   "1": 66
+  },
+  "unparsed": 0,
+  "keys": {
+   "cell type": {
+    "n": 66,
+    "distinct": 1,
+    "top": [
+     [
+      "Primary islet cells",
+      66
+     ]
+    ]
+   },
+   "donor gender (m=male; f=female)": {
+    "n": 66,
+    "distinct": 2,
+    "top": [
+     [
+      "M",
+      40
+     ],
+     [
+      "F",
+      26
+     ]
+    ]
+   },
+   "donor age (yrs)": {
+    "n": 66,
+    "distinct": 38,
+    "top": [
+     [
+      "51",
+      6
+     ],
+     [
+      "53",
+      4
+     ],
+     [
+      "56",
+      4
+     ],
+     [
+      "57",
+      4
+     ]
+    ]
+   },
+   "donor bmi (bmi kg/m2)": {
+    "n": 66,
+    "distinct": 59,
+    "top": [
+     [
+      "24.69",
+      3
+     ],
+     [
+      "23.15",
+      2
+     ],
+     [
+      "30.46",
+      2
+     ],
+     [
+      "27.55",
+      2
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "Human Islets",
+    66
+   ]
+  ],
+  "title_examples": [
+   "S21",
+   "S46",
+   "S115"
+  ]
+ },
+ "GSE201087": {
+  "area": "t2d",
+  "n_samples": 78,
+  "channels": {
+   "1": 78
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 78,
+    "distinct": 1,
+    "top": [
+     [
+      "blood",
+      78
+     ]
+    ]
+   },
+   "cell type": {
+    "n": 78,
+    "distinct": 1,
+    "top": [
+     [
+      "CD14+ monocytes",
+      78
+     ]
+    ]
+   },
+   "diagnosis": {
+    "n": 78,
+    "distinct": 1,
+    "top": [
+     [
+      "type 2 diabetes",
+      78
+     ]
+    ]
+   },
+   "cv group": {
+    "n": 78,
+    "distinct": 4,
+    "top": [
+     [
+      "CV1",
+      24
+     ],
+     [
+      "CV0",
+      21
+     ],
+     [
+      "CV2",
+      17
+     ],
+     [
+      "CV3",
+      16
+     ]
+    ]
+   },
+   "batch": {
+    "n": 78,
+    "distinct": 2,
+    "top": [
+     [
+      "2018",
+      44
+     ],
+     [
+      "2020",
+      34
+     ]
+    ]
+   },
+   "Sex": {
+    "n": 78,
+    "distinct": 1,
+    "top": [
+     [
+      "male",
+      78
+     ]
+    ]
+   },
+   "age": {
+    "n": 78,
+    "distinct": 41,
+    "top": [
+     [
+      "65",
+      6
+     ],
+     [
+      "61",
+      5
+     ],
+     [
+      "58",
+      4
+     ],
+     [
+      "53",
+      4
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "blood",
+    78
+   ]
+  ],
+  "title_examples": [
+   "Monocytes_CV0_M01",
+   "Monocytes_CV0_M02",
+   "Monocytes_CV0_M03"
+  ]
+ },
+ "GSE189007": {
+  "area": "t2d",
+  "n_samples": 130,
+  "channels": {
+   "1": 130
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 130,
+    "distinct": 2,
+    "top": [
+     [
+      "Blood",
+      90
+     ],
+     [
+      "Whole blood",
+      40
+     ]
+    ]
+   },
+   "disease group": {
+    "n": 40,
+    "distinct": 5,
+    "top": [
+     [
+      "Non-diabetes",
+      10
+     ],
+     [
+      "Type-2 Diabetes without complication",
+      10
+     ],
+     [
+      "Type-2 Diabetes with nephropathy",
+      10
+     ],
+     [
+      "Type-2 Diabetes with proliferative retinopathy",
+      6
+     ]
+    ]
+   },
+   "phenotype": {
+    "n": 40,
+    "distinct": 16,
+    "top": [
+     [
+      "Unrelated to T2D according to China Medical Hospital's medical records",
+      10
+     ],
+     [
+      "Hyperglycemia related to T2D without complication according to China Medical Hospital's medical records",
+      10
+     ],
+     [
+      "Mild NPDR (Microaneurysms only) in both eyes",
+      4
+     ],
+     [
+      "Pan retinal photocoagulation with non-neovascularization and Non-diabetic macular edema in both eyes",
+      4
+     ]
+    ]
+   },
+   "blood glucose": {
+    "n": 40,
+    "distinct": 31,
+    "top": [
+     [
+      "not available",
+      10
+     ],
+     [
+      "Glucose (AC): 158 mg/dL; HbA1C: 10%.",
+      1
+     ],
+     [
+      "Glucose (AC): 154 mg/dL; HbA1C: 6.6%.",
+      1
+     ],
+     [
+      "Glucose (AC): 149 mg/dL; HbA1C: 7.4%.",
+      1
+     ]
+    ]
+   },
+   "bmi (kg/m2)": {
+    "n": 40,
+    "distinct": 27,
+    "top": [
+     [
+      "not available",
+      11
+     ],
+     [
+      "28.0",
+      2
+     ],
+     [
+      "27.8",
+      2
+     ],
+     [
+      "29.4",
+      2
+     ]
+    ]
+   },
+   "duration (yr)": {
+    "n": 40,
+    "distinct": 15,
+    "top": [
+     [
+      "not applicable",
+      10
+     ],
+     [
+      "13",
+      5
+     ],
+     [
+      "9",
+      4
+     ],
+     [
+      "11",
+      3
+     ]
+    ]
+   },
+   "age (yr)": {
+    "n": 40,
+    "distinct": 23,
+    "top": [
+     [
+      "64",
+      4
+     ],
+     [
+      "60",
+      3
+     ],
+     [
+      "59",
+      3
+     ],
+     [
+      "71",
+      3
+     ]
+    ]
+   },
+   "gender": {
+    "n": 130,
+    "distinct": 4,
+    "top": [
+     [
+      "Male",
+      54
+     ],
+     [
+      "Female",
+      36
+     ],
+     [
+      "female",
+      20
+     ],
+     [
+      "male",
+      20
+     ]
+    ]
+   },
+   "population": {
+    "n": 40,
+    "distinct": 1,
+    "top": [
+     [
+      "Taiwanese",
+      40
+     ]
+    ]
+   },
+   "age": {
+    "n": 90,
+    "distinct": 27,
+    "top": [
+     [
+      "43 years old",
+      8
+     ],
+     [
+      "63 years old",
+      8
+     ],
+     [
+      "54 years old",
+      6
+     ],
+     [
+      "66 years old",
+      6
+     ]
+    ]
+   },
+   "t2d duration": {
+    "n": 90,
+    "distinct": 19,
+    "top": [
+     [
+      "Not applicable",
+      18
+     ],
+     [
+      "1 year",
+      10
+     ],
+     [
+      "5 years",
+      8
+     ],
+     [
+      "less than 1 year",
+      6
+     ]
+    ]
+   },
+   "hba1c (%) of the sample": {
+    "n": 90,
+    "distinct": 26,
+    "top": [
+     [
+      "Between 4.0% and 5.6%",
+      18
+     ],
+     [
+      "7.5%",
+      8
+     ],
+     [
+      "7.1%",
+      6
+     ],
+     [
+      "6.1%",
+      4
+     ]
+    ]
+   },
+   "bmi": {
+    "n": 90,
+    "distinct": 45,
+    "top": [
+     [
+      "20.52  kg/m2",
+      2
+     ],
+     [
+      "20.31  kg/m2",
+      2
+     ],
+     [
+      "18.90  kg/m2",
+      2
+     ],
+     [
+      "28.69  kg/m2",
+      2
+     ]
+    ]
+   },
+   "sampling in t2d stage": {
+    "n": 45,
+    "distinct": 8,
+    "top": [
+     [
+      "T2D with retinopathy",
+      10
+     ],
+     [
+      "Not applicable",
+      9
+     ],
+     [
+      "T2DN stage II (30 \u2264 ACR < 300 mg/g)",
+      7
+     ],
+     [
+      "T2D without complications (T2D duration < 5 years)",
+      6
+     ]
+    ]
+   },
+   "reference": {
+    "n": 90,
+    "distinct": 2,
+    "top": [
+     [
+      "Changhua Christian Hospital",
+      72
+     ],
+     [
+      "China Medical University Hospital",
+      18
+     ]
+    ]
+   },
+   "sampling t2d stage": {
+    "n": 45,
+    "distinct": 8,
+    "top": [
+     [
+      "T2D with retinopathy",
+      10
+     ],
+     [
+      "Not applicable",
+      9
+     ],
+     [
+      "T2DN stage II (30 \u2264 ACR < 300 mg/g)",
+      7
+     ],
+     [
+      "T2D without complications (T2D duration < 5 years)",
+      6
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "Non-diabetic patient was assigned to group A or control group by hierarchical clustering on principal components.",
+    18
+   ],
+   [
+    "Blood, Control",
+    10
+   ],
+   [
+    "Blood, T2D",
+    10
+   ]
+  ],
+  "title_examples": [
+   "Control [27160]",
+   "Control [27169]",
+   "Control [33067]"
+  ]
+ },
+ "GSE117339": {
+  "area": "t2d",
+  "n_samples": 214,
+  "channels": {
+   "1": 214
+  },
+  "unparsed": 0,
+  "keys": {
+   "ethnicity": {
+    "n": 214,
+    "distinct": 3,
+    "top": [
+     [
+      "Chinese",
+      75
+     ],
+     [
+      "Malay",
+      70
+     ],
+     [
+      "Indian",
+      69
+     ]
+    ]
+   },
+   "age": {
+    "n": 214,
+    "distinct": 20,
+    "top": [
+     [
+      "21",
+      23
+     ],
+     [
+      "23",
+      22
+     ],
+     [
+      "25",
+      20
+     ],
+     [
+      "24",
+      19
+     ]
+    ]
+   },
+   "tsh": {
+    "n": 214,
+    "distinct": 118,
+    "top": [
+     [
+      "1.41",
+      6
+     ],
+     [
+      "0.51",
+      6
+     ],
+     [
+      "1.72",
+      5
+     ],
+     [
+      "0.75",
+      5
+     ]
+    ]
+   },
+   "mstn": {
+    "n": 214,
+    "distinct": 148,
+    "top": [
+     [
+      "NA",
+      11
+     ],
+     [
+      "2.467435",
+      4
+     ],
+     [
+      "5.320567",
+      3
+     ],
+     [
+      "2.517138",
+      3
+     ]
+    ]
+   },
+   "ldh": {
+    "n": 214,
+    "distinct": 110,
+    "top": [
+     [
+      "367",
+      7
+     ],
+     [
+      "316",
+      6
+     ],
+     [
+      "349",
+      5
+     ],
+     [
+      "302",
+      5
+     ]
+    ]
+   },
+   "na": {
+    "n": 214,
+    "distinct": 9,
+    "top": [
+     [
+      "140",
+      57
+     ],
+     [
+      "141",
+      53
+     ],
+     [
+      "142",
+      35
+     ],
+     [
+      "139",
+      31
+     ]
+    ]
+   },
+   "mcp1": {
+    "n": 214,
+    "distinct": 129,
+    "top": [
+     [
+      "0",
+      35
+     ],
+     [
+      "403.1805",
+      4
+     ],
+     [
+      "529.6728",
+      3
+     ],
+     [
+      "497.132025",
+      3
+     ]
+    ]
+   },
+   "ast.alt": {
+    "n": 214,
+    "distinct": 119,
+    "top": [
+     [
+      "1",
+      6
+     ],
+     [
+      "1.23076923076923",
+      5
+     ],
+     [
+      "0.76",
+      4
+     ],
+     [
+      "1.16666666666667",
+      4
+     ]
+    ]
+   },
+   "alt": {
+    "n": 214,
+    "distinct": 54,
+    "top": [
+     [
+      "23",
+      15
+     ],
+     [
+      "18",
+      14
+     ],
+     [
+      "13",
+      12
+     ],
+     [
+      "14",
+      12
+     ]
+    ]
+   },
+   "ast": {
+    "n": 214,
+    "distinct": 36,
+    "top": [
+     [
+      "21",
+      28
+     ],
+     [
+      "19",
+      19
+     ],
+     [
+      "20",
+      18
+     ],
+     [
+      "16",
+      11
+     ]
+    ]
+   },
+   "chol.hdl": {
+    "n": 214,
+    "distinct": 123,
+    "top": [
+     [
+      "4.32",
+      5
+     ],
+     [
+      "4.37",
+      5
+     ],
+     [
+      "3.82",
+      4
+     ],
+     [
+      "3.74",
+      4
+     ]
+    ]
+   },
+   "hdl": {
+    "n": 214,
+    "distinct": 79,
+    "top": [
+     [
+      "1.2",
+      9
+     ],
+     [
+      "1",
+      8
+     ],
+     [
+      "1.19",
+      8
+     ],
+     [
+      "1.38",
+      8
+     ]
+    ]
+   },
+   "percentagesmclefat": {
+    "n": 214,
+    "distinct": 139,
+    "top": [
+     [
+      "NA",
+      23
+     ],
+     [
+      "31.805",
+      3
+     ],
+     [
+      "8.411",
+      3
+     ],
+     [
+      "12.24",
+      3
+     ]
+    ]
+   },
+   "weight": {
+    "n": 214,
+    "distinct": 118,
+    "top": [
+     [
+      "78.8",
+      6
+     ],
+     [
+      "61.1",
+      5
+     ],
+     [
+      "87.2",
+      4
+     ],
+     [
+      "71.7",
+      4
+     ]
+    ]
+   },
+   "hipcir": {
+    "n": 214,
+    "distinct": 91,
+    "top": [
+     [
+      "101",
+      13
+     ],
+     [
+      "104",
+      9
+     ],
+     [
+      "102",
+      8
+     ],
+     [
+      "94",
+      8
+     ]
+    ]
+   },
+   "waistcir": {
+    "n": 214,
+    "distinct": 98,
+    "top": [
+     [
+      "96",
+      7
+     ],
+     [
+      "81",
+      6
+     ],
+     [
+      "85",
+      6
+     ],
+     [
+      "80",
+      6
+     ]
+    ]
+   },
+   "percentagebf": {
+    "n": 214,
+    "distinct": 105,
+    "top": [
+     [
+      "24",
+      6
+     ],
+     [
+      "21.3",
+      5
+     ],
+     [
+      "26.2",
+      5
+     ],
+     [
+      "19.9",
+      5
+     ]
+    ]
+   },
+   "bmi": {
+    "n": 214,
+    "distinct": 156,
+    "top": [
+     [
+      "29.0315791",
+      3
+     ],
+     [
+      "21.70725164",
+      3
+     ],
+     [
+      "26.32532303",
+      2
+     ],
+     [
+      "27.72113941",
+      2
+     ]
+    ]
+   },
+   "leptin": {
+    "n": 214,
+    "distinct": 152,
+    "top": [
+     [
+      "NA",
+      6
+     ],
+     [
+      "4.560977942",
+      3
+     ],
+     [
+      "1.615110236",
+      3
+     ],
+     [
+      "7.168876103",
+      2
+     ]
+    ]
+   },
+   "fpg": {
+    "n": 214,
+    "distinct": 23,
+    "top": [
+     [
+      "4.7",
+      34
+     ],
+     [
+      "4.4",
+      19
+     ],
+     [
+      "5.1",
+      18
+     ],
+     [
+      "4.6",
+      18
+     ]
+    ]
+   },
+   "isi": {
+    "n": 214,
+    "distinct": 156,
+    "top": [
+     [
+      "3.175766",
+      3
+     ],
+     [
+      "8.620919",
+      3
+     ],
+     [
+      "6.657778",
+      2
+     ],
+     [
+      "3.860911",
+      2
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "Skeletal Muscle Biopsy",
+    214
+   ]
+  ],
+  "title_examples": [
+   "SkeletalMuscle_Indian_09S1-003_NoRep",
+   "SkeletalMuscle_Indian_09S1-004_Rep1",
+   "SkeletalMuscle_Indian_09S1-004_Rep2"
+  ]
+ },
+ "GSE245948": {
+  "area": "t2d",
+  "n_samples": 76,
+  "channels": {
+   "1": 76
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 76,
+    "distinct": 1,
+    "top": [
+     [
+      "subcutaneous adipose",
+      76
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "subcutaneous adipose",
+    76
+   ]
+  ],
+  "title_examples": [
+   "P4244",
+   "P4245",
+   "P4246"
+  ]
+ },
+ "GSE104674": {
+  "area": "t2d",
+  "n_samples": 48,
+  "channels": {
+   "1": 48
+  },
+  "unparsed": 0,
+  "keys": {
+   "subject status": {
+    "n": 48,
+    "distinct": 2,
+    "top": [
+     [
+      "Type 2 diabetes",
+      24
+     ],
+     [
+      "Healthy",
+      24
+     ]
+    ]
+   },
+   "subject id #": {
+    "n": 48,
+    "distinct": 12,
+    "top": [
+     [
+      "2",
+      4
+     ],
+     [
+      "5",
+      4
+     ],
+     [
+      "6",
+      4
+     ],
+     [
+      "10",
+      4
+     ]
+    ]
+   },
+   "gender": {
+    "n": 48,
+    "distinct": 1,
+    "top": [
+     [
+      "male",
+      48
+     ]
+    ]
+   },
+   "age": {
+    "n": 48,
+    "distinct": 11,
+    "top": [
+     [
+      "59",
+      8
+     ],
+     [
+      "58",
+      4
+     ],
+     [
+      "68",
+      4
+     ],
+     [
+      "57",
+      4
+     ]
+    ]
+   },
+   "bmi (kg/m2)": {
+    "n": 48,
+    "distinct": 6,
+    "top": [
+     [
+      "25",
+      16
+     ],
+     [
+      "31",
+      12
+     ],
+     [
+      "22",
+      8
+     ],
+     [
+      "29",
+      4
+     ]
+    ]
+   },
+   "hba1c (mmol/mol)": {
+    "n": 48,
+    "distinct": 10,
+    "top": [
+     [
+      "47",
+      8
+     ],
+     [
+      "36",
+      8
+     ],
+     [
+      "55",
+      4
+     ],
+     [
+      "51",
+      4
+     ]
+    ]
+   },
+   "timepoint": {
+    "n": 48,
+    "distinct": 4,
+    "top": [
+     [
+      "D2_ZT_15:30",
+      12
+     ],
+     [
+      "D3_ZT_0:15",
+      12
+     ],
+     [
+      "D3_ZT_5:45",
+      12
+     ],
+     [
+      "D3_ZT_11:15",
+      12
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "Subcutaneous adipose tissue",
+    48
+   ]
+  ],
+  "title_examples": [
+   "Subc. adipose tissue Type 2 diabetes patient-1 at ZT D2:1530",
+   "Subc. adipose tissue Type 2 diabetes patient-1 at ZT D3:015",
+   "Subc. adipose tissue Type 2 diabetes patient-1 at ZT D3:545"
+  ]
+ },
+ "GSE231509": {
+  "area": "t2d",
+  "n_samples": 42,
+  "channels": {
+   "1": 42
+  },
+  "unparsed": 0,
+  "keys": {
+   "tissue": {
+    "n": 42,
+    "distinct": 1,
+    "top": [
+     [
+      "musculus vastus lateralis",
+      42
+     ]
+    ]
+   },
+   "Sex": {
+    "n": 42,
+    "distinct": 2,
+    "top": [
+     [
+      "male",
+      22
+     ],
+     [
+      "female",
+      20
+     ]
+    ]
+   },
+   "individual": {
+    "n": 42,
+    "distinct": 21,
+    "top": [
+     [
+      "1",
+      2
+     ],
+     [
+      "2",
+      2
+     ],
+     [
+      "3",
+      2
+     ],
+     [
+      "4",
+      2
+     ]
+    ]
+   },
+   "treatment": {
+    "n": 42,
+    "distinct": 2,
+    "top": [
+     [
+      "No treatment",
+      21
+     ],
+     [
+      "MMTT",
+      21
+     ]
+    ]
+   },
+   "time point": {
+    "n": 42,
+    "distinct": 2,
+    "top": [
+     [
+      "before treatment",
+      21
+     ],
+     [
+      "1 hour after treatment",
+      21
+     ]
+    ]
+   },
+   "age": {
+    "n": 42,
+    "distinct": 16,
+    "top": [
+     [
+      "51",
+      4
+     ],
+     [
+      "43",
+      4
+     ],
+     [
+      "48",
+      4
+     ],
+     [
+      "41",
+      4
+     ]
+    ]
+   },
+   "diagnosis": {
+    "n": 42,
+    "distinct": 3,
+    "top": [
+     [
+      "T2D, Obesity",
+      14
+     ],
+     [
+      "Metabolically healthy",
+      14
+     ],
+     [
+      "Obesity",
+      14
+     ]
+    ]
+   },
+   "bmi": {
+    "n": 42,
+    "distinct": 21,
+    "top": [
+     [
+      "38.8",
+      2
+     ],
+     [
+      "44.6",
+      2
+     ],
+     [
+      "38.1",
+      2
+     ],
+     [
+      "39.8",
+      2
+     ]
+    ]
+   },
+   "fasting glucose,_mm": {
+    "n": 42,
+    "distinct": 21,
+    "top": [
+     [
+      "9.16",
+      2
+     ],
+     [
+      "6.07",
+      2
+     ],
+     [
+      "15.48",
+      2
+     ],
+     [
+      "4.86",
+      2
+     ]
+    ]
+   },
+   "fasting insulin,_miu/l": {
+    "n": 42,
+    "distinct": 21,
+    "top": [
+     [
+      "5.06",
+      2
+     ],
+     [
+      "19.65",
+      2
+     ],
+     [
+      "15.25",
+      2
+     ],
+     [
+      "37.52",
+      2
+     ]
+    ]
+   },
+   "fasting c-peptid,_ng/ml": {
+    "n": 42,
+    "distinct": 21,
+    "top": [
+     [
+      "3.08",
+      2
+     ],
+     [
+      "3.71",
+      2
+     ],
+     [
+      "3.19",
+      2
+     ],
+     [
+      "6.11",
+      2
+     ]
+    ]
+   },
+   "hba1c, %": {
+    "n": 42,
+    "distinct": 12,
+    "top": [
+     [
+      "5.5",
+      6
+     ],
+     [
+      "5.8",
+      6
+     ],
+     [
+      "5.3",
+      6
+     ],
+     [
+      "NA",
+      4
+     ]
+    ]
+   },
+   "homa ir": {
+    "n": 42,
+    "distinct": 19,
+    "top": [
+     [
+      "2.1",
+      4
+     ],
+     [
+      "8.1",
+      4
+     ],
+     [
+      "5.3",
+      2
+     ],
+     [
+      "10.5",
+      2
+     ]
+    ]
+   }
+  },
+  "source_names": [
+   [
+    "musculus vastus lateralis",
+    42
+   ]
+  ],
+  "title_examples": [
+   "T2D_before_MMTT_1",
+   "T2D_1h_after_MMTT_1",
+   "T2D_before_MMTT_2"
+  ]
+ }
+}

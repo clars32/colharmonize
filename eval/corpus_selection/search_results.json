@@ -1,0 +1,2125 @@
+{
+ "breast_cancer": [
+  {
+   "acc": "GSE237290",
+   "n": 57,
+   "gpl": "33583",
+   "type": "Expression profiling by array",
+   "pdat": "2025/12/31",
+   "title": "Immune gene expression profiling to inform individualized treatment of early-stage basal-like breast cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE295462",
+   "n": 47,
+   "gpl": "21697",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/12/20",
+   "title": "Surface marker identification to capture live circulating tumor cells in metastatic triple negative breast cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE280902",
+   "n": 58,
+   "gpl": "30173",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/12/17",
+   "title": "Identification of neoadjuvant chemotherapy response transcriptomic meta-signatures in invasive breast cancer in Latino patients",
+   "subseries": false
+  },
+  {
+   "acc": "GSE280899",
+   "n": 112,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing; Other",
+   "pdat": "2025/12/15",
+   "title": "PUF60-Mediated Splicing Is a Key Driver of Triple Negative Breast Cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE280897",
+   "n": 40,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/12/15",
+   "title": "PUF60-Mediated Splicing Is a Key Driver of Triple Negative Breast Cancer [RNA-seq]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE286174",
+   "n": 36,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/12/11",
+   "title": "A systems approach reveals SMARCD3 regulon drives alternate growth signaling and vulnerability to MEK inhibitors in everolimus resistant breast cancer cells",
+   "subseries": false
+  },
+  {
+   "acc": "GSE309004",
+   "n": 54,
+   "gpl": "18573",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/12/02",
+   "title": "Molecular determinants of neoadjuvant chemotherapy resistance in breast cancer: An analysis of gene expression and tumor microenvironment",
+   "subseries": false
+  },
+  {
+   "acc": "GSE249945",
+   "n": 30,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing",
+   "pdat": "2025/12/01",
+   "title": "Breast cancer cells can recognize and respond to different levels of progestins to achieve different phenotypic outputs",
+   "subseries": false
+  },
+  {
+   "acc": "GSE310423",
+   "n": 167,
+   "gpl": "24676;36324",
+   "type": "Other; Expression profiling by high throughput sequencing",
+   "pdat": "2025/11/28",
+   "title": "Determinants of long-term response to patritumab deruxtecan (HER3-DXd) in breast cancer patient-derived xenografts.",
+   "subseries": false
+  },
+  {
+   "acc": "GSE307574",
+   "n": 58,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/11/28",
+   "title": "Determinants of long-term response to patritumab deruxtecan (HER3-DXd) in breast cancer patient-derived xenografts",
+   "subseries": false
+  },
+  {
+   "acc": "GSE303684",
+   "n": 41,
+   "gpl": "16791",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/11/25",
+   "title": "YAP1 dysfunction promotes molecular properties linked to breast cancer susceptibility",
+   "subseries": false
+  },
+  {
+   "acc": "GSE303648",
+   "n": 57,
+   "gpl": "34284",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/11/21",
+   "title": "Rb1 deficiency induces synthetic lethality with ATR and PKMYT1 co-inhibition in breast cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE282705",
+   "n": 90,
+   "gpl": "24676;34284",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/11/18",
+   "title": "BLU-222, a Potent CDK2 Inhibitor, Synergizes with CDK4/6 Inhibitors to Overcome Drug Resistance in HR\u2013Positive and Triple-Negative Breast Cancer by Inducing p21 and p27",
+   "subseries": false
+  },
+  {
+   "acc": "GSE304997",
+   "n": 32,
+   "gpl": "11154",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/11/12",
+   "title": "CDK4/6 Inhibition reprograms the Breast Cancer immunopeptidome via Rb-Dependent chromatin and transcriptomic remodeling",
+   "subseries": false
+  },
+  {
+   "acc": "GSE281194",
+   "n": 44,
+   "gpl": "30209",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/11/01",
+   "title": "RNA seq of breast cancer cells treated with different concentration gradients of Thapsigargin (TG), Tunicamycin (TM), and FCCP.",
+   "subseries": false
+  },
+  {
+   "acc": "GSE217624",
+   "n": 84,
+   "gpl": "20301",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/11/01",
+   "title": "Mapping Individual Chemoresistome in Breast Cancer Patients Unravels Diversity in Dynamic Transcriptional Adaptation",
+   "subseries": false
+  },
+  {
+   "acc": "GSE266566",
+   "n": 52,
+   "gpl": "28038",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/10/21",
+   "title": "RNA Sequencing dataset of Claudin-low Breast Cancer Cell Lines with Neuropilin-1 Knockdown",
+   "subseries": false
+  },
+  {
+   "acc": "GSE286892",
+   "n": 41,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing",
+   "pdat": "2025/10/15",
+   "title": "Activated Glucocorticoid Receptor is an Estrogen Receptor Silencer in ER\u03b1+ metastatic breast cancer.",
+   "subseries": false
+  },
+  {
+   "acc": "GSE260486",
+   "n": 85,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing",
+   "pdat": "2025/10/14",
+   "title": "Fasting boosts breast cancer therapy efficacy via glucocorticoid activation",
+   "subseries": false
+  },
+  {
+   "acc": "GSE292364",
+   "n": 37,
+   "gpl": "21697;34284;34281",
+   "type": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing",
+   "pdat": "2025/10/13",
+   "title": "p53 regulates the expression of histone modifiers to restrict stemness and maintain differentiated luminal identity in breast cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE215290",
+   "n": 43,
+   "gpl": "28038;24676",
+   "type": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing",
+   "pdat": "2025/10/10",
+   "title": "HOTAIR-YTHDF3 interaction in promoting breast cancer cell metastasis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE297605",
+   "n": 174,
+   "gpl": "21290",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/10/07",
+   "title": "CD8+ T cells in the tumor immune microenvironment modulate resistance to endocrine therapy in hormone receptor-positive breast cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE267444",
+   "n": 32,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing; Other",
+   "pdat": "2025/10/07",
+   "title": "Identification of CLIC3 as a novel prognostic biomarker in triple-negative breast cancer via characteristic analysis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE304350",
+   "n": 30,
+   "gpl": "34281",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/09/30",
+   "title": "Distinct and convergent effects of SF3B1 mutations in human breast cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE295502",
+   "n": 36,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/09/29",
+   "title": "The Effects of miR-526b, miR655 and COX-2 Overexpression on Oxidative and Genotoxic Stress in MCF7 Breast Cancer Cells",
+   "subseries": false
+  },
+  {
+   "acc": "GSE254558",
+   "n": 46,
+   "gpl": "20301",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/09/25",
+   "title": "Chemotherapy-driven de novo Wnt pathway activation dictates a dynamic shift to a drug-tolerant state in breast cancer cells",
+   "subseries": false
+  },
+  {
+   "acc": "GSE303203",
+   "n": 59,
+   "gpl": "570",
+   "type": "Expression profiling by array",
+   "pdat": "2025/09/22",
+   "title": "Identification of a shared drug-tolerant persister program in triple-negactive breast cancer across treatments and patients [array]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE301535",
+   "n": 36,
+   "gpl": "20301;18573",
+   "type": "Expression profiling by high throughput sequencing; Other",
+   "pdat": "2025/09/02",
+   "title": "Integrative analysis of mRNA stability regulation uncovers a metastasis-suppressive program in breast cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE289411",
+   "n": 36,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/08/27",
+   "title": "JNK pathway suppression drives resistance to combination endocrine therapy and CDK4/6 inhibition in ER+ breast cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE261989",
+   "n": 54,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/08/27",
+   "title": "SWI/SNF is a gatekeeper of chromatin access at enhancer networks controlling triple-negative breast cancer progression [RNA-Seq]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE305293",
+   "n": 42,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/08/20",
+   "title": "Defining Functional Hub Genes in Basal-like Breast Cancer Networks",
+   "subseries": false
+  },
+  {
+   "acc": "GSE300839",
+   "n": 30,
+   "gpl": "24676;24247",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/08/20",
+   "title": "Lean breast adipocytes secrete an oxylipin that suppresses breast cancer via ferroptosis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE290738",
+   "n": 182,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing; Non-coding RNA profiling by high throughput sequencing; Methylation profiling by high throughput sequencing",
+   "pdat": "2025/08/15",
+   "title": "Molecular Portraits of Social Adversity in Breast Cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE290733",
+   "n": 66,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/08/15",
+   "title": "Molecular Portraits of Social Adversity in Breast Cancer [RNA-Seq]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE246796",
+   "n": 67,
+   "gpl": "24676;16791",
+   "type": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing",
+   "pdat": "2025/08/01",
+   "title": "TRIM24 as therapeutic target in endocrine treatment resistant breast cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE245869",
+   "n": 85,
+   "gpl": "34295;30173;24676;18573",
+   "type": "Expression profiling by high throughput sequencing; Other; Genome binding/occupancy profiling by high throughput sequencing",
+   "pdat": "2025/08/01",
+   "title": "Study of MED1 acetylation in ER positive breast cancer cells",
+   "subseries": false
+  },
+  {
+   "acc": "GSE303369",
+   "n": 45,
+   "gpl": "34284",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/07/23",
+   "title": "Targeting DNA Polymerase Epsilon Leads to Tumor Clearance and Activation of an NF-\u03baB-mediated inflammatory response in Triple Negative Breast Cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE291966",
+   "n": 92,
+   "gpl": "20301;11154",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/07/23",
+   "title": "An annotated biobank of triple negative breast cancer patient-derived xenografts featuring treatment-na\u00efve and longitudinal samples throughout neoadjuvant chemotherapy",
+   "subseries": false
+  },
+  {
+   "acc": "GSE277607",
+   "n": 220,
+   "gpl": "32605",
+   "type": "Expression profiling by array",
+   "pdat": "2025/07/17",
+   "title": "NanoString BC360 gene signatures in luminal breast cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE300475",
+   "n": 32,
+   "gpl": "24676",
+   "type": "Other; Expression profiling by high throughput sequencing",
+   "pdat": "2025/07/09",
+   "title": "Single cell RNA sequencing for longitudinal human peripheral blood from HR+ breast cancer patients treated with immunotherapy",
+   "subseries": false
+  },
+  {
+   "acc": "GSE299631",
+   "n": 50,
+   "gpl": "24676;24247",
+   "type": "Expression profiling by high throughput sequencing; Other",
+   "pdat": "2025/06/19",
+   "title": "Spatiotemporal organisation of residual disease in mouse and human BRCA1-deficient mammary tumors and breast cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE292823",
+   "n": 52,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/05/22",
+   "title": "Macrophage sensitivity to reprogramming by bexmarilimab is shaped by the tumor microenvironment [RNA-Seq]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE296967",
+   "n": 30,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/05/16",
+   "title": "CD105+ fibroblasts support an immunosuppressive niche in women at high risk of breast cancer initiation",
+   "subseries": false
+  },
+  {
+   "acc": "GSE296805",
+   "n": 50,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/05/09",
+   "title": "An immunological mechanism of resistance to CDK4/6 inhibitors in breast cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE287953",
+   "n": 45,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/05/07",
+   "title": "Investigating therapy-induced senescence as a reversible escape mechanism of drug resistance in breast cancer cells using high-dose doxorubicin treatment [RNA-seq]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE270769",
+   "n": 38,
+   "gpl": "18573",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/05/01",
+   "title": "EZH2-targeted PROTACs target the EZH2/FOXM1 axis and reduce breast cancer cell growth",
+   "subseries": false
+  },
+  {
+   "acc": "GSE264728",
+   "n": 144,
+   "gpl": "18573",
+   "type": "Expression profiling by high throughput sequencing; Other",
+   "pdat": "2025/04/30",
+   "title": "Combined inhibition of KAT6A/B and Menin reverses estrogen receptor-driven gene expression programs in breast cancer (RNA-Seq)",
+   "subseries": false
+  },
+  {
+   "acc": "GSE265870",
+   "n": 63,
+   "gpl": "32605",
+   "type": "Expression profiling by array",
+   "pdat": "2025/04/25",
+   "title": "Immune-based changes in gene expression determine clinical efficacy of CDK4/6i in metastatic breast cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE295024",
+   "n": 72,
+   "gpl": "34281",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/04/18",
+   "title": "Imlunestrant: A next-generation oral SERD overcomes ESR1 mutant resistance in estrogen receptor-positive breast cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE294399",
+   "n": 33,
+   "gpl": "20301",
+   "type": "Expression profiling by high throughput sequencing; Other",
+   "pdat": "2025/04/18",
+   "title": "Rare Subset of T Cells Form Integrin-dependent Clustering with Circulating Tumor Cells to Foster Metastasis in Breast Cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE282443",
+   "n": 84,
+   "gpl": "6244",
+   "type": "Expression profiling by array",
+   "pdat": "2025/04/16",
+   "title": "Topical TLR7 agonist and radiotherapy in patients with metastatic breast cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE263474",
+   "n": 39,
+   "gpl": "16791",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/04/03",
+   "title": "Large-scale characterisation of cell line xenografts identifies SMAD4 as key regulator of breast cancer morphology and aggressiveness",
+   "subseries": false
+  },
+  {
+   "acc": "GSE250562",
+   "n": 150,
+   "gpl": "24676",
+   "type": "Genome binding/occupancy profiling by high throughput sequencing; Other; Expression profiling by high throughput sequencing",
+   "pdat": "2025/03/27",
+   "title": "ANP32E drives vulnerabiliy to ATR inhibitors in Triple Negative Breast Cancer by accumulation of R-loops",
+   "subseries": false
+  },
+  {
+   "acc": "GSE199913",
+   "n": 231,
+   "gpl": "18573;24676",
+   "type": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing; Other",
+   "pdat": "2025/03/23",
+   "title": "KDM4C inhibition blocks tumor growth in basal breast cancer by promoting cathepsin L-mediated histone H3 cleavage",
+   "subseries": false
+  },
+  {
+   "acc": "GSE291679",
+   "n": 36,
+   "gpl": "18573;24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/03/18",
+   "title": "Lineage Tracing Reveals Clone-Specific Responses to Doxorubicin in Triple-Negative Breast Cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE274815",
+   "n": 48,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/03/15",
+   "title": "Snord67 promotes breast cancer metastasis by guiding U6 modification and modulating the splicing landscape",
+   "subseries": false
+  },
+  {
+   "acc": "GSE210007",
+   "n": 40,
+   "gpl": "24676",
+   "type": "Genome binding/occupancy profiling by high throughput sequencing; Expression profiling by high throughput sequencing",
+   "pdat": "2025/02/20",
+   "title": "Estrogen Receptor alpha CUT&RUN analysis of estrogen receptor positive breast cancer cell lines MCF7 and UCD12 with 1h hormone E2 treatment",
+   "subseries": false
+  },
+  {
+   "acc": "GSE274142",
+   "n": 89,
+   "gpl": "18573;24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/02/18",
+   "title": "Single-Cell RNA Sequencing Identifies Molecular Biomarkers Predicting Late Progression to CDK4/6 Inhibition in Patients with HR+/HER2- Metastatic Breast Cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE274141",
+   "n": 54,
+   "gpl": "18573",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/02/18",
+   "title": "Single-Cell RNA Sequencing Identifies Molecular Biomarkers Predicting Late Progression to CDK4/6 Inhibition in Patients with HR+/HER2- Metastatic Breast Cancer [FFPE]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE274139",
+   "n": 35,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/02/18",
+   "title": "Single-Cell RNA Sequencing Identifies Molecular Biomarkers Predicting Late Progression to CDK4/6 Inhibition in Patients with HR+/HER2- Metastatic Breast Cancer [tissue]",
+   "subseries": false
+  }
+ ],
+ "sepsis": [
+  {
+   "acc": "GSE290679",
+   "n": 47,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/11/21",
+   "title": "Metabolic Adaptations Rewire CD4 T Cells in a Subset-Specific Manner in Human Critical Illness with and without Sepsis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE272769",
+   "n": 161,
+   "gpl": "17692",
+   "type": "Expression profiling by array",
+   "pdat": "2025/11/03",
+   "title": "Whole blood transcriptomic profiling identifies expression signatures for sepsis mortality",
+   "subseries": false
+  },
+  {
+   "acc": "GSE279451",
+   "n": 40,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing; Other",
+   "pdat": "2025/09/28",
+   "title": "Multiomics Analyses Unveil Immune Landscape in Pediatric and Adult Sepsis [CITE-seq]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE279448",
+   "n": 207,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/09/28",
+   "title": "Multiomics Analyses Unveil Immune Landscape in Pediatric and Adult Sepsis [bulk RNA-seq]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE228542",
+   "n": 58,
+   "gpl": "24676;28038",
+   "type": "Non-coding RNA profiling by high throughput sequencing; Expression profiling by high throughput sequencing",
+   "pdat": "2025/04/09",
+   "title": "Integrated analysis of messenger RNA and microRNA in patients with community-acquired pneumonia associated sepsis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE171741",
+   "n": 139,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/04/08",
+   "title": "Albumin treatment transcriptionally reprograms circulating immune cells in patients with acutely decompensated cirrhosis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE270838",
+   "n": 36,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/01/15",
+   "title": "Fucosylated haptoglobin drives inflammation via Mincle in sepsis: an observational study",
+   "subseries": false
+  },
+  {
+   "acc": "GSE216011",
+   "n": 106,
+   "gpl": "18573;24676",
+   "type": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing",
+   "pdat": "2024/10/16",
+   "title": "Immature neutrophil subsets and emergency granulopoiesis drive sepsis immune suppression and a specific extreme response to infection",
+   "subseries": false
+  },
+  {
+   "acc": "GSE216009",
+   "n": 96,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2024/10/16",
+   "title": "Immature neutrophil subsets and emergency granulopoiesis drive sepsis immune suppression and a specific extreme response to infection [WB_ECG]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE208587",
+   "n": 61,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2024/08/30",
+   "title": "Risk assessment with gene expression markers in sepsis development",
+   "subseries": false
+  },
+  {
+   "acc": "GSE243219",
+   "n": 144,
+   "gpl": "24676;30209",
+   "type": "Expression profiling by high throughput sequencing; Non-coding RNA profiling by high throughput sequencing",
+   "pdat": "2024/08/28",
+   "title": "Comparative Analysis of Host Responses Between Sepsis and COVID-19: A Prospective Observational Study of Whole Blood Transcriptome",
+   "subseries": false
+  },
+  {
+   "acc": "GSE243217",
+   "n": 72,
+   "gpl": "30209",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2024/08/28",
+   "title": "Comparative Analysis of Host Responses Between Sepsis and COVID-19: A Prospective Observational Study of Whole Blood Transcriptome (RNA-Seq)",
+   "subseries": false
+  },
+  {
+   "acc": "GSE240861",
+   "n": 100,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2024/06/13",
+   "title": "Ketogenicdiet versus standard high-carbohydrate nutrition in sepsis: a randomized controlled trial",
+   "subseries": false
+  },
+  {
+   "acc": "GSE245131",
+   "n": 32,
+   "gpl": "18573",
+   "type": "Expression profiling by high throughput sequencing; Other",
+   "pdat": "2024/05/08",
+   "title": "Fetal-derived activated CD83+ \u03b3\u03b4 T cells expand in preterm infants with sepsis.",
+   "subseries": false
+  },
+  {
+   "acc": "GSE252331",
+   "n": 34,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2024/04/17",
+   "title": "The post-septic peripheral myeloid compartment reveals unexpected diversity in myeloid-derived suppressor cells",
+   "subseries": false
+  },
+  {
+   "acc": "GSE252275",
+   "n": 40,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2024/02/12",
+   "title": "Gene expression analysis in platelets of septic patients",
+   "subseries": false
+  },
+  {
+   "acc": "GSE237861",
+   "n": 82,
+   "gpl": "18573",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2023/09/21",
+   "title": "Transcriptome analysis of six tissues obtained post mortem from sepsis patients",
+   "subseries": false
+  },
+  {
+   "acc": "GSE223458",
+   "n": 32,
+   "gpl": "23159",
+   "type": "Expression profiling by array",
+   "pdat": "2023/06/13",
+   "title": "Anti-miR-93-5p therapy prolongs sepsis survival by restoring the peripheral immune response",
+   "subseries": false
+  },
+  {
+   "acc": "GSE222393",
+   "n": 58,
+   "gpl": "16791",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2023/03/24",
+   "title": "Unresolved Immune Dysfunction is Lethal in Both COVID-19 and non-COVID-19 Sepsis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE221234",
+   "n": 124,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2022/12/18",
+   "title": "Predicting severity in COVID-19 disease using sepsis blood gene expression signatures",
+   "subseries": false
+  },
+  {
+   "acc": "GSE216902",
+   "n": 74,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2022/11/03",
+   "title": "Whole transcriptome analysis of critically ill elderly patients with sepsis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE137342",
+   "n": 67,
+   "gpl": "16686;10558",
+   "type": "Expression profiling by array",
+   "pdat": "2022/09/12",
+   "title": "Blood transcriptome of human sepsis in an Indian cohort",
+   "subseries": false
+  },
+  {
+   "acc": "GSE137340",
+   "n": 57,
+   "gpl": "10558",
+   "type": "Expression profiling by array",
+   "pdat": "2022/09/12",
+   "title": "Blood transcriptome of human sepsis in an Indian cohort [Illumina array]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE198103",
+   "n": 55,
+   "gpl": "23126",
+   "type": "Expression profiling by array",
+   "pdat": "2022/09/01",
+   "title": "Expression data for tumor and normal tissue samples from deceased sepsis and non-sepsis colorectal cancer patients",
+   "subseries": false
+  },
+  {
+   "acc": "GSE189401",
+   "n": 138,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2022/08/03",
+   "title": "Integrated host-microbe metagenomics of cell-free nucleic acid for sepsis diagnosis in critically ill adults [plasma]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE189400",
+   "n": 221,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2022/08/03",
+   "title": "Integrated host-microbe metagenomics of cell-free nucleic acid for sepsis diagnosis in critically ill adults [paxgene]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE196117",
+   "n": 40,
+   "gpl": "20301",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2022/06/30",
+   "title": "Transcriptional profiling of whole blood leukocytes obtained from critically ill patients with sepsis treated with clarithromycin, or not, and healthy particpants",
+   "subseries": false
+  },
+  {
+   "acc": "GSE69063",
+   "n": 153,
+   "gpl": "19983",
+   "type": "Expression profiling by array",
+   "pdat": "2021/09/12",
+   "title": "Gene expression patterns in blood during human anaphylaxis, trauma, and sepsis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE182522",
+   "n": 72,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2021/08/23",
+   "title": "Using RNA-Seq to investigate immune-metabolism features in immunocompromised patients with sepsis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE168442",
+   "n": 184,
+   "gpl": "17586",
+   "type": "Expression profiling by array",
+   "pdat": "2021/07/12",
+   "title": "Genomic biomarkers from urine cells indicate a unique metabolomic difference between sepsis and sterile inflammation (discovery cohort)",
+   "subseries": false
+  },
+  {
+   "acc": "GSE168440",
+   "n": 80,
+   "gpl": "17586",
+   "type": "Expression profiling by array",
+   "pdat": "2021/07/12",
+   "title": "Genomic biomarkers from urine cells indicate a unique metabolomic difference between sepsis and sterile inflammation (validation cohort)",
+   "subseries": false
+  },
+  {
+   "acc": "GSE150707",
+   "n": 42,
+   "gpl": "17586",
+   "type": "Expression profiling by array",
+   "pdat": "2021/05/16",
+   "title": "IFNg Signature in Plasma Proteome Distinguishes Pediatric Hemophagocytic Lymphohistiocytosis from Sepsis and SIRS",
+   "subseries": false
+  },
+  {
+   "acc": "GSE160022",
+   "n": 31,
+   "gpl": "24676;21273;24247",
+   "type": "Expression profiling by high throughput sequencing; Non-coding RNA profiling by high throughput sequencing",
+   "pdat": "2021/02/17",
+   "title": "TREM2 sustains macrophage-hepatocyte metabolic coordination in NAFLD and sepsis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE154918",
+   "n": 105,
+   "gpl": "20301",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2020/12/17",
+   "title": "RNAseq analysis of blood from sepsis patients and healthy controls",
+   "subseries": false
+  },
+  {
+   "acc": "GSE163219",
+   "n": 75,
+   "gpl": "20795",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2020/12/15",
+   "title": "Transcriptome sequencing of cerebrospinal fluid unravels cell landscape and neuroinflammatory signatures in the bacterial meningitis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE136200",
+   "n": 40,
+   "gpl": "16791",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2020/07/20",
+   "title": "RNA-sequencing of specific peripheral blood mononuclear cells in sepsis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE100159",
+   "n": 47,
+   "gpl": "6884",
+   "type": "Expression profiling by array",
+   "pdat": "2020/06/16",
+   "title": "A Transcriptome Fingerprinting Assay for Clinical Immune Monitoring (Sepsis Datasets)",
+   "subseries": false
+  },
+  {
+   "acc": "GSE121349",
+   "n": 44,
+   "gpl": "22462",
+   "type": "Expression profiling by array",
+   "pdat": "2020/03/30",
+   "title": "Modulation of LTR-retrotransposons expression in mHLA-DR stratified septic shock patients: a pilot study [IS]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE112100",
+   "n": 250,
+   "gpl": "17586",
+   "type": "Expression profiling by array",
+   "pdat": "2020/02/20",
+   "title": "Discovery and validation of urinary molecular signature of early sepsis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE112099",
+   "n": 177,
+   "gpl": "17586",
+   "type": "Expression profiling by array",
+   "pdat": "2020/02/20",
+   "title": "Discovery and validation of urinary molecular signature of early sepsis (discovery cohort)",
+   "subseries": false
+  },
+  {
+   "acc": "GSE112098",
+   "n": 73,
+   "gpl": "17586",
+   "type": "Expression profiling by array",
+   "pdat": "2020/02/20",
+   "title": "Discovery and validation of urinary molecular signature of early sepsis (validation cohort)",
+   "subseries": false
+  },
+  {
+   "acc": "GSE141864",
+   "n": 44,
+   "gpl": "17586",
+   "type": "Expression profiling by array",
+   "pdat": "2020/01/14",
+   "title": "Extensive changes in transcriptomic \u201cfingerprints\u201d and immunological cells in the large organs of patients dying of acute septic shock and multiple organ failure caused by Neisseria meningitidis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE131411",
+   "n": 106,
+   "gpl": "10999;16791",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2020/01/08",
+   "title": "Whole blood transcriptome analysis of Septic shock and Cardiogenic shock patients over one week of ICU stay",
+   "subseries": false
+  },
+  {
+   "acc": "GSE119217",
+   "n": 134,
+   "gpl": "16686",
+   "type": "Expression profiling by array",
+   "pdat": "2020/01/01",
+   "title": "Gene Expression Profiles in Children with Suspected Sepsis in the Emergency Department",
+   "subseries": false
+  },
+  {
+   "acc": "GSE106878",
+   "n": 94,
+   "gpl": "10295",
+   "type": "Expression profiling by array",
+   "pdat": "2019/10/01",
+   "title": "IFN\u03b3/IL10 ratio stratifies corticosteroids therapy for septic shock",
+   "subseries": false
+  },
+  {
+   "acc": "GSE133822",
+   "n": 231,
+   "gpl": "16791",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2019/07/29",
+   "title": "T cell and Monocyte Specific RNAseq Analysis in Septic and Non Septic Critically-Ill Patients and in Patients with Cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE123731",
+   "n": 87,
+   "gpl": "21970;19803",
+   "type": "Expression profiling by array",
+   "pdat": "2019/06/10",
+   "title": "AKIRIN1 is a suitable reference gene in natural killer cells and granulocytes from patients with SIRS and septic shock",
+   "subseries": false
+  },
+  {
+   "acc": "GSE123730",
+   "n": 45,
+   "gpl": "19803",
+   "type": "Expression profiling by array",
+   "pdat": "2019/06/10",
+   "title": "AKIRIN1 is a suitable reference gene in natural killer cells and granulocytes from patients with SIRS and septic shock [NK cells]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE123729",
+   "n": 42,
+   "gpl": "21970",
+   "type": "Expression profiling by array",
+   "pdat": "2019/06/10",
+   "title": "AKIRIN1 is a suitable reference gene in natural killer cells and granulocytes from patients with SIRS and septic shock [granulocytes]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE110487",
+   "n": 62,
+   "gpl": "16791;10999",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2018/12/03",
+   "title": "Whole blood transcriptome analysis of Septic shock patients according to early therapy response",
+   "subseries": false
+  },
+  {
+   "acc": "GSE95233",
+   "n": 124,
+   "gpl": "570",
+   "type": "Expression profiling by array",
+   "pdat": "2017/11/27",
+   "title": "Fractalkine receptor CX3CR1 and leukocyte Ig-like receptor B2 LILRB2 are prognostic biomarkers in septic shock",
+   "subseries": false
+  },
+  {
+   "acc": "GSE33119",
+   "n": 40,
+   "gpl": "570",
+   "type": "Expression profiling by array",
+   "pdat": "2017/09/08",
+   "title": "Transcriptome of the septic shock after treatment by activated protein C (Xigris)",
+   "subseries": false
+  },
+  {
+   "acc": "GSE79962",
+   "n": 51,
+   "gpl": "6244",
+   "type": "Expression profiling by array",
+   "pdat": "2016/09/22",
+   "title": "Widespread downregulation of cardiac mitochondrial and sarcomeric genes in patients with sepsis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE80496",
+   "n": 45,
+   "gpl": "6883",
+   "type": "Expression profiling by array",
+   "pdat": "2016/08/29",
+   "title": "Diagnosis of childhood bacterial and viral infection using host RNA expression - Meningococcal validation cohort",
+   "subseries": false
+  },
+  {
+   "acc": "GSE82316",
+   "n": 32,
+   "gpl": "6244",
+   "type": "Expression profiling by array",
+   "pdat": "2016/06/08",
+   "title": "Expression data from human monocytes stimulated with wild-type N. meningitidis and recombinant IL-10",
+   "subseries": false
+  }
+ ],
+ "ibd": [
+  {
+   "acc": "GSE236055",
+   "n": 143,
+   "gpl": "21185",
+   "type": "Expression profiling by array",
+   "pdat": "2025/10/20",
+   "title": "Colonic mucosal gene expression profile associated with neoplastic progression in longstanding ulcerative colitis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE304649",
+   "n": 59,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/10/11",
+   "title": "Myeloid Cell Adhesion Molecule 1 (CADM1) promotes pro-inflammatory signaling in human Inflammatory Bowel Diseases",
+   "subseries": false
+  },
+  {
+   "acc": "GSE288179",
+   "n": 105,
+   "gpl": "30173",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/10/01",
+   "title": "Differential response of patient-derived intestinal organoids to site-specific mucosal bacteria in pediatric inflammatory bowel disease",
+   "subseries": false
+  },
+  {
+   "acc": "GSE276170",
+   "n": 48,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/09/19",
+   "title": "Transcriptomic profiles of biopsy-derived colon epithelial organoids from pediatric patients with ulcerative colitis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE282580",
+   "n": 60,
+   "gpl": "32271",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/08/25",
+   "title": "Colon tissue gene expression associated with vedolizumab treatment effectiveness in ulcerative colitis.",
+   "subseries": false
+  },
+  {
+   "acc": "GSE270663",
+   "n": 238,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing; Non-coding RNA profiling by high throughput sequencing",
+   "pdat": "2025/07/16",
+   "title": "Characterisation of the regulatory landscape in Crohn\u2019s disease reveals miRNA-associated alterations that shape anti-TNF response",
+   "subseries": false
+  },
+  {
+   "acc": "GSE270661",
+   "n": 119,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/07/16",
+   "title": "Characterisation of the regulatory landscape in Crohn\u2019s disease reveals miRNA-associated alterations that shape anti-TNF response (CIBER-120)",
+   "subseries": false
+  },
+  {
+   "acc": "GSE266963",
+   "n": 38,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/05/30",
+   "title": "Tauroursodeoxycholic Acid (TUDCA) Reduces ER Stress and Lessens Disease Activity in Ulcerative Colitis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE277964",
+   "n": 66,
+   "gpl": "16791",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/01/02",
+   "title": "Contribution of Stroma to Inflammatory Bowel Disease Progression Revealed in Patient-Derived Human Colon Chips",
+   "subseries": false
+  },
+  {
+   "acc": "GSE282122",
+   "n": 216,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2024/11/19",
+   "title": "A longitudinal single-cell atlas of anti-tumour necrosis factor treatment in inflammatory bowel disease",
+   "subseries": false
+  },
+  {
+   "acc": "GSE245890",
+   "n": 51,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2024/10/01",
+   "title": "Analysis of rectal transcriptome in ulcerative colitis (UC) patients who received tofacitinib",
+   "subseries": false
+  },
+  {
+   "acc": "GSE206171",
+   "n": 152,
+   "gpl": "19211",
+   "type": "Expression profiling by array",
+   "pdat": "2024/07/01",
+   "title": "Gene expression profiling of sigmoid colonic tissue form patients with ulcerative colitis and healthy controls",
+   "subseries": false
+  },
+  {
+   "acc": "GSE243625",
+   "n": 45,
+   "gpl": "16791",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2024/03/19",
+   "title": "Inflammatory transcriptomic signatures and cell type compositions in inflamed and non-inflamed colonic mucosa of ulcerative colitis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE233900",
+   "n": 40,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2024/02/15",
+   "title": "Diet and multi-omics characterization in the Study of Urban and Rural Crohn Disease Evolution (SOURCE) cohort",
+   "subseries": false
+  },
+  {
+   "acc": "GSE221161",
+   "n": 203,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2024/02/07",
+   "title": "\u200b\u200b\u200bDeveloping biomarkers incorporating high throughput RNA, DNA, small RNA sequencing and protein expression in Inflammatory Bowel Disease using formalin-fixed, paraffin-embedded (FFPE) tissue samples.\u200b\u200b\u00a0",
+   "subseries": false
+  },
+  {
+   "acc": "GSE222070",
+   "n": 43,
+   "gpl": "23934",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2023/10/27",
+   "title": "MUCOSAL EXPRESSION OF GENES PI3, ANXA1, AND VDR DESCRIMINATES CROHN\u2019S DISEASE FROM ULCERATIVE COLITIS IN INFLAMMATORY BOWEL DISEASE PATIENTS",
+   "subseries": false
+  },
+  {
+   "acc": "GSE228122",
+   "n": 115,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2023/08/22",
+   "title": "Bulk RNA-seq of whole biopsies and enteroids/colonoids from terminal ileum and rectum of inflammatory bowel disease patients or control subjects",
+   "subseries": false
+  },
+  {
+   "acc": "GSE227638",
+   "n": 36,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing; Other",
+   "pdat": "2023/08/15",
+   "title": "Selection of cross-reactive T cells by commensal and food-derived yeasts drives pathogenic cytotoxic Th1 responses in Crohn\u00b4s disease",
+   "subseries": false
+  },
+  {
+   "acc": "GSE235236",
+   "n": 56,
+   "gpl": "21290",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2023/06/20",
+   "title": "Bulk RNAseq expression data of colon biopsies from intestinal mucosa of non-IBD controls and patients with Crohn's disease or ulcerative colitis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE228165",
+   "n": 54,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2023/06/15",
+   "title": "Responsiveness to vedolizumab therapy in ulcerative colitis is associated with alterations in immune cell-cell communications",
+   "subseries": false
+  },
+  {
+   "acc": "GSE169360",
+   "n": 56,
+   "gpl": "16791",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2023/05/24",
+   "title": "Anti-apoptotic genes and non-coding RNAs are potential outcome predictors for ulcerative colitis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE212849",
+   "n": 84,
+   "gpl": "570",
+   "type": "Expression profiling by array",
+   "pdat": "2022/09/08",
+   "title": "Prediction of Golimumab Response in the PROgECT Phase 2a Open-Label Trial of Patients With Ulcerative Colitis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE175685",
+   "n": 143,
+   "gpl": "11154",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2022/09/06",
+   "title": "Transcriptomic profiling of THP-1 stable cell lines overexpressing genes associated with inflammatory bowel diseases (IBD)",
+   "subseries": false
+  },
+  {
+   "acc": "GSE191328",
+   "n": 201,
+   "gpl": "20301",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2022/07/26",
+   "title": "Longitudinal multi-omics analysis identifies early blood-based predictors of anti-TNF therapy response in inflammatory bowel disease [RNA-Seq]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE123088",
+   "n": 204,
+   "gpl": "25864",
+   "type": "Expression profiling by array",
+   "pdat": "2021/11/23",
+   "title": "A validated single-cell-based strategy to identify diagnostic and therapeutic targets in complex diseases",
+   "subseries": false
+  },
+  {
+   "acc": "GSE123086",
+   "n": 166,
+   "gpl": "25864",
+   "type": "Expression profiling by array",
+   "pdat": "2021/11/23",
+   "title": "A validated single-cell-based strategy to identify diagnostic and therapeutic targets in complex diseases [study of 13 diseases]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE164918",
+   "n": 36,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2021/10/06",
+   "title": "Colonic mucosal injury responses",
+   "subseries": false
+  },
+  {
+   "acc": "GSE166928",
+   "n": 215,
+   "gpl": "20301",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2021/07/01",
+   "title": "IL-1-driven stromal-neutrophil interactions define a subset of patients with inflammatory bowel disease that does not respond to therapies ",
+   "subseries": false
+  },
+  {
+   "acc": "GSE166925",
+   "n": 96,
+   "gpl": "20301",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2021/07/01",
+   "title": "RNA-sequencing of whole tissue samples from patients with inflammatory bowel disease and colorectal cancer",
+   "subseries": false
+  },
+  {
+   "acc": "GSE159010",
+   "n": 78,
+   "gpl": "20301",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2021/05/03",
+   "title": "Transcriptomic profiling of collagenous colitis identifies hallmarks of non-destructive inflammatory bowel disease",
+   "subseries": false
+  },
+  {
+   "acc": "GSE159008",
+   "n": 44,
+   "gpl": "20301",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2021/05/03",
+   "title": "Transcriptomic profiling of collagenous colitis identifies hallmarks of non-destructive inflammatory bowel disease [Whole mucosa]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE159007",
+   "n": 34,
+   "gpl": "20301",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2021/05/03",
+   "title": "Transcriptomic profiling of collagenous colitis identifies hallmarks of non-destructive inflammatory bowel disease [Microdissected IEC]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE171770",
+   "n": 176,
+   "gpl": "20301;21290",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2021/04/10",
+   "title": "Therapeutic IL-6 trans-signalling inhibition by olamkicept (sgp130Fc) in patients with active inflammatory bowel disease",
+   "subseries": false
+  },
+  {
+   "acc": "GSE158952",
+   "n": 119,
+   "gpl": "20301;16791",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2020/10/08",
+   "title": "Transcriptome Profiling of Rectal and Ileal Tissues in Inflammatory Bowel Disease",
+   "subseries": false
+  },
+  {
+   "acc": "GSE125527",
+   "n": 103,
+   "gpl": "24676;20301",
+   "type": "Expression profiling by high throughput sequencing; Other",
+   "pdat": "2020/07/16",
+   "title": "Single-Cell Analyses Elucidate the Cellular and Molecular Landscape of Ulcerative Colitis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE137344",
+   "n": 195,
+   "gpl": "21697",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2020/04/15",
+   "title": "Ileum Transcriptomic Profiling in Inflammatory Bowel Disease",
+   "subseries": false
+  },
+  {
+   "acc": "GSE128682",
+   "n": 44,
+   "gpl": "21697",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2020/01/18",
+   "title": "Transcriptional signatures that define Ulcerative Colitis in remission",
+   "subseries": false
+  },
+  {
+   "acc": "GSE126124",
+   "n": 176,
+   "gpl": "6244",
+   "type": "Expression profiling by array",
+   "pdat": "2019/10/29",
+   "title": "Concordance between gene expression in peripheral whole blood and colonic tissue in children with inflammatory bowel disease.",
+   "subseries": false
+  },
+  {
+   "acc": "GSE133061",
+   "n": 32,
+   "gpl": "19117;4133",
+   "type": "Non-coding RNA profiling by array; Expression profiling by array",
+   "pdat": "2019/10/07",
+   "title": "Gene and miRNA expression data from a cohort of Chilean Ulcerative Colitis human intestinal samples",
+   "subseries": false
+  },
+  {
+   "acc": "GSE92415",
+   "n": 183,
+   "gpl": "13158",
+   "type": "Expression profiling by array",
+   "pdat": "2018/12/03",
+   "title": "Characterization of molecular response to Golimumab in Ulcerative Colitis by mucosal biopsy mRNA expression profiling: results from PURSUIT-SC induction study",
+   "subseries": false
+  },
+  {
+   "acc": "GSE87473",
+   "n": 127,
+   "gpl": "13158",
+   "type": "Expression profiling by array",
+   "pdat": "2018/12/01",
+   "title": "Gene expression profiling of mucosal biopsies from pediatric or adult patients with moderately to severely active ulcerative colitis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE87466",
+   "n": 108,
+   "gpl": "13158",
+   "type": "Expression profiling by array",
+   "pdat": "2018/12/01",
+   "title": "Gene expression profiling of mucosal biopsies from adult patients with moderately to severely active ulcerative colitis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE117993",
+   "n": 190,
+   "gpl": "16791",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2018/11/27",
+   "title": "Transcription profiles of rectal biopsies obtained during diagnostic colonoscopy for pediatric inflammatory bowel diseases.",
+   "subseries": false
+  },
+  {
+   "acc": "GSE114603",
+   "n": 76,
+   "gpl": "15456;14951",
+   "type": "Expression profiling by high throughput sequencing; Non-coding RNA profiling by high throughput sequencing",
+   "pdat": "2018/11/06",
+   "title": "A systems biology approach identifies ANP32E and other biomarkers of glucocorticoid refractoriness in ulcerative colitis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE114527",
+   "n": 38,
+   "gpl": "14951",
+   "type": "Expression profiling by array",
+   "pdat": "2018/11/06",
+   "title": "A systems biology approach identifies ANP32E and other biomarkers of glucocorticoid refractoriness in ulcerative colitis [microarray]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE105074",
+   "n": 57,
+   "gpl": "10558",
+   "type": "Expression profiling by array",
+   "pdat": "2018/11/01",
+   "title": "Elevation in cell cycle and protein metabolism gene transcription in inactive colonic tissue from Icelandic patients with ulcerative colitis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE95450",
+   "n": 192,
+   "gpl": "20301",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2018/09/26",
+   "title": "Structural Remodeling of the Human Colonic Mesenchyme in Inflammatory Bowel Disease [3]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE95446",
+   "n": 192,
+   "gpl": "16791",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2018/09/26",
+   "title": "Structural Remodeling of the Human Colonic Mesenchyme in Inflammatory Bowel Disease [2]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE95435",
+   "n": 96,
+   "gpl": "16791",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2018/09/26",
+   "title": "Structural Remodeling of the Human Colonic Mesenchyme in Inflammatory Bowel Disease [1]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE112057",
+   "n": 202,
+   "gpl": "11154",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2018/05/29",
+   "title": "Whole Blood Transcriptome Profiling in Juvenile Idiopathic Arthritis and Inflammatory Bowel Disease",
+   "subseries": false
+  },
+  {
+   "acc": "GSE107597",
+   "n": 167,
+   "gpl": "18573;15207",
+   "type": "Expression profiling by array; Expression profiling by high throughput sequencing",
+   "pdat": "2018/04/01",
+   "title": "Ulcerative Colitis subjects",
+   "subseries": false
+  },
+  {
+   "acc": "GSE107593",
+   "n": 48,
+   "gpl": "18573",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2018/04/01",
+   "title": "UC Colon RNAseq subset analysis",
+   "subseries": false
+  },
+  {
+   "acc": "GSE107499",
+   "n": 119,
+   "gpl": "15207",
+   "type": "Expression profiling by array",
+   "pdat": "2018/04/01",
+   "title": "Expression data from Ulcerative Colitis subjects",
+   "subseries": false
+  },
+  {
+   "acc": "GSE95437",
+   "n": 94,
+   "gpl": "11154",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2018/03/14",
+   "title": "The transcription start site and enhancer landscape of the descending colon in inflammatory bowel disease",
+   "subseries": false
+  },
+  {
+   "acc": "GSE102524",
+   "n": 30,
+   "gpl": "16956",
+   "type": "Expression profiling by array",
+   "pdat": "2018/03/01",
+   "title": "Inflammatory Bowel Disease-specific alterations in adipose-derived stroma cell transcriptional profiles",
+   "subseries": false
+  },
+  {
+   "acc": "GSE97012",
+   "n": 68,
+   "gpl": "13607",
+   "type": "Expression profiling by array",
+   "pdat": "2017/11/12",
+   "title": "Integrated Analysis Of Biopsies From Inflammatory Bowel Disease Patients Identifies SAA1 As A Link Between Mucosal Microbes With TH17 And TH22 Cells",
+   "subseries": false
+  },
+  {
+   "acc": "GSE96665",
+   "n": 41,
+   "gpl": "13607",
+   "type": "Expression profiling by array",
+   "pdat": "2017/11/11",
+   "title": "Integrated analysis Of Biopsies From Inflammatory Bowel Disease Patients Identifies SAA1 As A Link Between Mucosal Microbes With TH17 And TH22 Cells [diseased subjects]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE75214",
+   "n": 194,
+   "gpl": "6244",
+   "type": "Expression profiling by array",
+   "pdat": "2017/09/14",
+   "title": "Mucosal gene expression profiling in patients with inflammatory bowel disease study",
+   "subseries": false
+  },
+  {
+   "acc": "GSE74265",
+   "n": 30,
+   "gpl": "570",
+   "type": "Expression profiling by array",
+   "pdat": "2017/07/12",
+   "title": "Gene expression signature and mitochondrial DNA copy number variation in ulcerative colitis patients",
+   "subseries": false
+  },
+  {
+   "acc": "GSE83687",
+   "n": 134,
+   "gpl": "16791",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2017/07/07",
+   "title": "A functional genomics predictive network model identifies regulators of inflammatory bowel disease: Mount Sinai Hospital (MSH) Population Specimen Collection and Profiling of Inflammatory Bowel Disease",
+   "subseries": false
+  }
+ ],
+ "t2d": [
+  {
+   "acc": "GSE277813",
+   "n": 99,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/09/10",
+   "title": "VAV3 antagonizes Skeletal Muscle Disulfidptosis to maintain Glucose Homeostasis in Type 2 Diabetes",
+   "subseries": false
+  },
+  {
+   "acc": "GSE278204",
+   "n": 30,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/02/19",
+   "title": "CircRNA-mediated ceRNA regulatory networks: transcriptomic insights into obesity type 2 diabetes progression and treatment strategies.",
+   "subseries": false
+  },
+  {
+   "acc": "GSE249298",
+   "n": 30,
+   "gpl": "24539",
+   "type": "Expression profiling by array",
+   "pdat": "2025/02/04",
+   "title": "Subcutaneous adipose gene expression comparison between NW, OW, PT2, and T2D individuals",
+   "subseries": false
+  },
+  {
+   "acc": "GSE270220",
+   "n": 81,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025/01/15",
+   "title": "Limitations in mitochondrial programming restrain the maturation of human stem cell-derived \u03b2 cells",
+   "subseries": false
+  },
+  {
+   "acc": "GSE280267",
+   "n": 199,
+   "gpl": "18573",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2024/12/02",
+   "title": "Glycine Receptor Activity in \u03b2 Cells Is Downregulated in Type 2 Diabetes and After High Glucose Culture",
+   "subseries": false
+  },
+  {
+   "acc": "GSE283118",
+   "n": 38,
+   "gpl": "23227;24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2024/12/01",
+   "title": "A pancreas\u2013hippocampus feedback mechanism regulates circadian changes in depression-related behaviors",
+   "subseries": false
+  },
+  {
+   "acc": "GSE245948",
+   "n": 76,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2024/10/19",
+   "title": "A dynamic subcutaneous adipose transcriptome of human insulin resistance identifies a molecular predisposition shared with visceral adipose tissue",
+   "subseries": false
+  },
+  {
+   "acc": "GSE246318",
+   "n": 49,
+   "gpl": "24676;24247",
+   "type": "Expression profiling by high throughput sequencing; Other",
+   "pdat": "2024/10/07",
+   "title": "Decoding the immune checkpoint signatures in human atherosclerosis: implications of type 2 diabetes and lipid-lowering intervention",
+   "subseries": false
+  },
+  {
+   "acc": "GSE262484",
+   "n": 35,
+   "gpl": "24676;20301",
+   "type": "Genome binding/occupancy profiling by high throughput sequencing; Expression profiling by high throughput sequencing; Other",
+   "pdat": "2024/07/26",
+   "title": "Implicating type 2 diabetes effector genes in relevant metabolic cellular models using promoter-focused Capture-C",
+   "subseries": false
+  },
+  {
+   "acc": "GSE272133",
+   "n": 52,
+   "gpl": "28038",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2024/07/17",
+   "title": "Different effects of bariatric surgery on epigenetic plasticity in skeletal muscle of individuals with and without type 2 diabetes",
+   "subseries": false
+  },
+  {
+   "acc": "GSE271700",
+   "n": 73,
+   "gpl": "34684",
+   "type": "Expression profiling by array",
+   "pdat": "2024/07/09",
+   "title": "Transcriptome Changes and Metabolic Outcomes After Bariatric Surgery in Adults With Obesity and Type 2 Diabetes",
+   "subseries": false
+  },
+  {
+   "acc": "GSE268210",
+   "n": 30,
+   "gpl": "16791",
+   "type": "Expression profiling by high throughput sequencing; Other",
+   "pdat": "2024/06/12",
+   "title": "Single-cell analysis of human PBMCs in healthy and type 2 diabetes populations: Dysregulated immune networks in type 2 diabetes unveiled through single-cell profiling",
+   "subseries": false
+  },
+  {
+   "acc": "GSE250283",
+   "n": 69,
+   "gpl": "36360;28098",
+   "type": "Expression profiling by array",
+   "pdat": "2024/03/01",
+   "title": "Transcriptional profiles associated with coronary artery disease in Type 2 diabetes mellitus",
+   "subseries": false
+  },
+  {
+   "acc": "GSE185152",
+   "n": 89,
+   "gpl": "24676;24247",
+   "type": "Genome binding/occupancy profiling by high throughput sequencing; Expression profiling by high throughput sequencing",
+   "pdat": "2024/03/01",
+   "title": "The RANBP2/Importin-7-FOXO1 axis provides superior cold protection to aid islet transplantation",
+   "subseries": false
+  },
+  {
+   "acc": "GSE251913",
+   "n": 92,
+   "gpl": "24676",
+   "type": "Genome binding/occupancy profiling by high throughput sequencing; Expression profiling by high throughput sequencing",
+   "pdat": "2024/01/15",
+   "title": "Comparative Multi-omic Mapping of Human Pancreatic Islet Endoplasmic Reticulum and Cytokine Stress Responses Provide Insights into Type 2 Diabetes Genetics",
+   "subseries": false
+  },
+  {
+   "acc": "GSE251911",
+   "n": 58,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2024/01/15",
+   "title": "Comparative Multi-omic Mapping of Human Pancreatic Islet Endoplasmic Reticulum and Cytokine Stress Responses Provide Insights into Type 2 Diabetes Genetics [RNA-seq]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE201087",
+   "n": 78,
+   "gpl": "18573",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2024/01/08",
+   "title": "Cardiovascular risk in patients with type 2 diabetes is associated with alteration of blood monocyte phenotype and plasma metabolome",
+   "subseries": false
+  },
+  {
+   "acc": "GSE228662",
+   "n": 67,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2023/10/13",
+   "title": "Functional interrogation of twenty Type 2 Diabetes-associated genes using isogenic hESC-derived \u03b2-like cells [RNA-Seq]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE228665",
+   "n": 139,
+   "gpl": "24676;25201",
+   "type": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing; SNP genotyping by SNP array",
+   "pdat": "2023/10/10",
+   "title": "Functional interrogation of twenty Type 2 Diabetes-associated genes using isogenic hESC-derived \u03b2-like cells",
+   "subseries": false
+  },
+  {
+   "acc": "GSE189005",
+   "n": 45,
+   "gpl": "23126",
+   "type": "Expression profiling by array",
+   "pdat": "2023/07/07",
+   "title": "RNA expression profiles of whole blood cells from a Han Chinese population with or without Type-2 Diabetes Mellitus or/and its complications in nephropathy and retinopathy",
+   "subseries": false
+  },
+  {
+   "acc": "GSE231509",
+   "n": 42,
+   "gpl": "21697",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2023/05/05",
+   "title": "Dysregulation of mixed meal-induced gene expression in skeletal muscle in obesity and type 2 diabetes",
+   "subseries": false
+  },
+  {
+   "acc": "GSE168705",
+   "n": 96,
+   "gpl": "16791",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2023/04/19",
+   "title": "Ten-hour time-restricted eating improves glycaemic control and alters transcriptomic profile in adipose tissue in men at increased risk of type 2 diabetes",
+   "subseries": false
+  },
+  {
+   "acc": "GSE199636",
+   "n": 36,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing",
+   "pdat": "2023/03/25",
+   "title": "Single nuclei multiomics of human stem cell-derived islets identifies deficiencies in lineage specification",
+   "subseries": false
+  },
+  {
+   "acc": "GSE202500",
+   "n": 41,
+   "gpl": "18573;24676",
+   "type": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing",
+   "pdat": "2023/03/02",
+   "title": "Improving stem cell-derived pancreatic islets using single-cell multiome-inferred regulomes",
+   "subseries": false
+  },
+  {
+   "acc": "GSE134901",
+   "n": 131,
+   "gpl": "24247;20301;21103;31136",
+   "type": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing",
+   "pdat": "2023/02/24",
+   "title": "Nutrient regulation of the islet epigenome controls adaptive insulin secretion",
+   "subseries": false
+  },
+  {
+   "acc": "GSE200044",
+   "n": 40,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing",
+   "pdat": "2023/02/07",
+   "title": "Single-cell multiome (ATAC and RNA) landscapes of human islets in normoglycemia, prediabetes and type 2 diabetes",
+   "subseries": false
+  },
+  {
+   "acc": "GSE171153",
+   "n": 110,
+   "gpl": "24676;16104",
+   "type": "Genome binding/occupancy profiling by high throughput sequencing; Genome variation profiling by genome tiling array; Expression profiling by high throughput sequencing",
+   "pdat": "2023/02/07",
+   "title": "Integration of human genetics with single cell accessible chromatin profiles across phenotypes identifies islet cell type-specific regulatory programs of type 2 diabetes progression",
+   "subseries": false
+  },
+  {
+   "acc": "GSE205891",
+   "n": 62,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2022/09/08",
+   "title": "Worksite-based intensive lifestyle therapy has profound cardiometabolic benefits in people with obesity and type 2 diabetes",
+   "subseries": false
+  },
+  {
+   "acc": "GSE176216",
+   "n": 48,
+   "gpl": "18573",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2022/07/22",
+   "title": "RNA-sequencing of IRF5+ and IRF5- circulating monocytes from patients with Type-2 Diabetes",
+   "subseries": false
+  },
+  {
+   "acc": "GSE202295",
+   "n": 111,
+   "gpl": "16791",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2022/07/06",
+   "title": "Distinctive exercise-induced inflammatory response and exerkine induction in skeletal muscle of people with type 2 diabetes",
+   "subseries": false
+  },
+  {
+   "acc": "GSE153315",
+   "n": 30,
+   "gpl": "17303",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2022/06/30",
+   "title": "Transcriptome analysis of Newly Diagnosed Type 2 Diabetes Subjects identifies genes to predict Metformin drug Response",
+   "subseries": false
+  },
+  {
+   "acc": "GSE185191",
+   "n": 89,
+   "gpl": "18573",
+   "type": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing",
+   "pdat": "2022/03/09",
+   "title": "Transcriptional and chromatin accessibility changes underlying progression from islet autoantibody positivity to type 1 diabetes",
+   "subseries": false
+  },
+  {
+   "acc": "GSE185190",
+   "n": 80,
+   "gpl": "18573",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2022/03/09",
+   "title": "Transcriptional changes underlying progression from islet autoantibody positivity to type 1 diabetes",
+   "subseries": false
+  },
+  {
+   "acc": "GSE174475",
+   "n": 43,
+   "gpl": "18573",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2022/01/11",
+   "title": "Epigenomic and Transcriptional Basis of Human Insulin Resistance",
+   "subseries": false
+  },
+  {
+   "acc": "GSE152111",
+   "n": 66,
+   "gpl": "16791",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2021/12/08",
+   "title": "Human islet sample RNA-seq",
+   "subseries": false
+  },
+  {
+   "acc": "GSE189007",
+   "n": 130,
+   "gpl": "23126;5082;19117",
+   "type": "Expression profiling by array; Non-coding RNA profiling by array",
+   "pdat": "2021/11/17",
+   "title": "Gene-expression profiles of whole blood cells from a Han Chinese population with or without Type-2 Diabetes Mellitus or/and its complications in nephropathy and retinopathy",
+   "subseries": false
+  },
+  {
+   "acc": "GSE182121",
+   "n": 235,
+   "gpl": "20795;17586",
+   "type": "Expression profiling by high throughput sequencing; Expression profiling by array",
+   "pdat": "2021/08/17",
+   "title": "Disrupted Circadian Oscillations in Type 2 Diabetes are Linked to Altered Rhythmic Mitochondrial Metabolism in Skeletal Muscle",
+   "subseries": false
+  },
+  {
+   "acc": "GSE182120",
+   "n": 49,
+   "gpl": "17586",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2021/08/17",
+   "title": "Disrupted Circadian Oscillations in Type 2 Diabetes are Linked to Altered Rhythmic Mitochondrial Metabolism in Skeletal Muscle [Affymetrix]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE182117",
+   "n": 186,
+   "gpl": "20795",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2021/08/17",
+   "title": "Disrupted Circadian Oscillations in Type 2 Diabetes are Linked to Altered Rhythmic Mitochondrial Metabolism in Skeletal Muscle [RNA-seq]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE164416",
+   "n": 133,
+   "gpl": "16791",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2021/04/13",
+   "title": "Multi-omics profiling of living human pancreatic islet donors reveals heterogeneous beta cell trajectories toward type 2 diabetes",
+   "subseries": false
+  },
+  {
+   "acc": "GSE167250",
+   "n": 36,
+   "gpl": "20301;24676",
+   "type": "Genome binding/occupancy profiling by high throughput sequencing; Expression profiling by high throughput sequencing",
+   "pdat": "2021/03/20",
+   "title": "Glucocorticoid signaling in pancreatic islets modulates gene regulatory programs and genetic risk of type 2 diabetes",
+   "subseries": false
+  },
+  {
+   "acc": "GSE166502",
+   "n": 52,
+   "gpl": "10558",
+   "type": "Expression profiling by array",
+   "pdat": "2021/02/10",
+   "title": "mRNA expression data throughout human muscle cell differentiation in individuals with type 2 diabetes and controls",
+   "subseries": false
+  },
+  {
+   "acc": "GSE166467",
+   "n": 52,
+   "gpl": "10558",
+   "type": "Expression profiling by array",
+   "pdat": "2021/02/10",
+   "title": "mRNA expression data for human muscle cells from individuals with type 2 diabetes and controls",
+   "subseries": false
+  },
+  {
+   "acc": "GSE157546",
+   "n": 39,
+   "gpl": "24014",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2021/01/25",
+   "title": "Transcriptional profiles of human islet and exocrine endothelial cells in subjects with or without impaired glucose metabolism",
+   "subseries": false
+  },
+  {
+   "acc": "GSE149148",
+   "n": 70,
+   "gpl": "20301",
+   "type": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing",
+   "pdat": "2021/01/19",
+   "title": "Pancreatic progenitor epigenome maps prioritize type 2 diabetes risk genes with roles in development",
+   "subseries": false
+  },
+  {
+   "acc": "GSE161355",
+   "n": 33,
+   "gpl": "570",
+   "type": "Expression profiling by array",
+   "pdat": "2021/01/11",
+   "title": "Type 2 Diabetes Mellitus is Associated with Transcriptome Alterations in Cortical Neurones and Associated Neurovascular Unit Cells in the Ageing Brain",
+   "subseries": false
+  },
+  {
+   "acc": "GSE152991",
+   "n": 45,
+   "gpl": "24676",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2020/12/07",
+   "title": "Decreased adipose tissue oxygenation is associated with insulin resistance in people with obesity",
+   "subseries": false
+  },
+  {
+   "acc": "GSE159984",
+   "n": 131,
+   "gpl": "9115;16791",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2020/10/24",
+   "title": "Persistent or Transient Human \u03b2-cell Dysfunction Induced by Metabolic Stress Associated with Specific Signatures and Shared Gene Expression of Type 2 Diabetes",
+   "subseries": false
+  },
+  {
+   "acc": "GSE132831",
+   "n": 224,
+   "gpl": "18573",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2020/10/19",
+   "title": "Type 2 Diabetes reduces the enteroendocrine GLP-1 cell lineage in human obesity:  characterization in enriched human enteroendocrine cells",
+   "subseries": false
+  },
+  {
+   "acc": "GSE156993",
+   "n": 30,
+   "gpl": "570",
+   "type": "Expression profiling by array",
+   "pdat": "2020/08/28",
+   "title": "Transcriptomic analysis of peripheral blood mononuclear cells (PBMC) of patients with type 2 Diabetes Melittus(T2DM), Dyslipidemia (DL) and Periodontitis (P)",
+   "subseries": false
+  },
+  {
+   "acc": "GSE134355",
+   "n": 141,
+   "gpl": "20795;21273",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2020/02/10",
+   "title": "Construction of A Human Cell Landscape by Single-cell mRNA-seq",
+   "subseries": false
+  },
+  {
+   "acc": "GSE115327",
+   "n": 43,
+   "gpl": "11154;16791;20301",
+   "type": "Non-coding RNA profiling by high throughput sequencing; Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing",
+   "pdat": "2019/11/14",
+   "title": "Identification of microRNA-dependent gene regulatory networks driving human pancreatic endocrine cell differentiation",
+   "subseries": false
+  },
+  {
+   "acc": "GSE139817",
+   "n": 169,
+   "gpl": "20301;18573;16791",
+   "type": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing; Methylation profiling by high throughput sequencing",
+   "pdat": "2019/11/02",
+   "title": "Chromatin dynamics reveal circadian control of human in vitro islet maturation",
+   "subseries": false
+  },
+  {
+   "acc": "GSE139816",
+   "n": 101,
+   "gpl": "16791;18573",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2019/11/02",
+   "title": "Chromatin dynamics reveal circadian control of human in vitro islet maturation [RNA-seq]",
+   "subseries": false
+  },
+  {
+   "acc": "GSE131320",
+   "n": 40,
+   "gpl": "16791",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2019/10/30",
+   "title": "Human Islet Response to Selected Type 1 Diabetes Associated Bacteria",
+   "subseries": false
+  },
+  {
+   "acc": "GSE117339",
+   "n": 214,
+   "gpl": "10558",
+   "type": "Expression profiling by array",
+   "pdat": "2019/07/23",
+   "title": "Ethnicity-specific Skeletal Muscle Transcriptional Signatures and Their Relevance to Insulin Resistance in Singapore",
+   "subseries": false
+  },
+  {
+   "acc": "GSE113165",
+   "n": 56,
+   "gpl": "16791",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2019/02/18",
+   "title": "Using RNA sequencing to examine age-dependent skeletal muscle transcriptome response to bed rest-induced atrophy, and age independent disuse-induced insulin resistance",
+   "subseries": false
+  },
+  {
+   "acc": "GSE104674",
+   "n": 48,
+   "gpl": "16558",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2019/01/24",
+   "title": "The diurnal rhythm of adipose tissue gene expression is reduced in obese patients with type 2 diabetes",
+   "subseries": false
+  },
+  {
+   "acc": "GSE116753",
+   "n": 185,
+   "gpl": "16791",
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2019/01/11",
+   "title": "PyMINEr Finds Gene and Autocrine/Paracrine Networks from Human Islet scRNAseq",
+   "subseries": false
+  },
+  {
+   "acc": "GSE106800",
+   "n": 47,
+   "gpl": "17692",
+   "type": "Expression profiling by array",
+   "pdat": "2018/08/10",
+   "title": "Circadian misalignment induces fatty acid metabolism gene profiles and induces insulin resistance in human skeletal muscle.",
+   "subseries": false
+  }
+ ]
+}

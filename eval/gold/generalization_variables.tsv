@@ -1,0 +1,68 @@
+variable_id	name	predicate	primary_curie	primary_label	qualifiers	value_type	n_members	n_datasets	rationale
+sex	biological sex	exact	PATO:0000047	biological sex		categorical	10	10	Sex/gender columns; values male/female in every member.
+age	age	exact	EFO:0000246	age		continuous	12	11	Age of the subject at sampling. Reference event never stated, so not inferred as age at diagnosis.
+organism_part	organism part	exact	EFO:0000635	organism part		categorical	11	10	Anatomical source of the sample (blood, colonic mucosa, vastus lateralis, intestine).
+cell_type	cell type	exact	EFO:0000324	cell type		categorical	1	1	Values name a cell population (primary islet cells).
+specimen_type	specimen type	broad	OBI:0100051	specimen		categorical	1	1	Kind of specimen (biopsy), not its anatomical source.
+subject_id	subject identifier	none				identifier	6	6	Identifiers of individuals. EFO has `individual` but no identifier class; the column names the individual, it is not one.
+sample_id	sample identifier	none				identifier	2	2	Identifiers of samples.
+ethnic_group	ethnic group	exact	EFO:0001799	ethnic group		categorical	2	2	Race/ethnicity or population of origin.
+disease	disease	exact	MONDO:0000001	disease		categorical	7	7	Values name the subject's diagnosis (incl. healthy/control). Pooling is lossless: every value is still a disease name.
+disease_duration	disease duration	broad	EFO:0000433	duration	"event_time_anchor=""diagnosis"" (ungrounded); unit=UO:0000036 [year]"	continuous	4	3	Time since diagnosis, any disease; the disease itself is carried by the disease column.
+treatment	treatment	exact	EFO:0000727	treatment		categorical	3	3	Administered intervention (drug, placebo, meal test, none). `treatment` is the most specific term true of all members; `compound based treatment` would be false for MMTT.
+treatment_arm	treatment arm	broad	OBI:0600015	group assignment		categorical	1	1	Assigned trial arm. Kept apart from treatment: an arm is an assignment, not the intervention.
+time_since_treatment_start	timepoint (since start of treatment)	exact	EFO:0000724	timepoint	"event_time_anchor=""start of treatment"" (ungrounded); unit=UO:0000034 [week]"	temporal	2	2	Weeks since start of biologic therapy (golimumab week 0/6; vedolizumab 0W/14W/54W).
+time_relative_to_meal_test	timepoint (relative to mixed meal tolerance test)	exact	EFO:0000724	timepoint	"event_time_anchor=""mixed meal tolerance test"" (ungrounded)"	temporal	1	1	Before vs 1 hour after a meal challenge. Different reference event from therapy start.
+sampling_time_hours	timepoint (hours, reference not stated)	exact	EFO:0000724	timepoint	unit=UO:0000032 [hour]	temporal	1	1	0 hr / 24 hrs; reference event not stated in metadata.
+timepoint_coded	timepoint (coded T1-T3)	exact	EFO:0000724	timepoint		ordinal	1	1	Coded visits with no interval in metadata; not convertible to the hours variable.
+study_day	study day	exact	EFO:0000724	timepoint	"event_time_anchor=""study start"" (ungrounded); unit=UO:0000033 [day]"	temporal	1	1	Day part of D2_ZT_15:30.
+zeitgeber_time	zeitgeber time	exact	EFO:0000724	timepoint	"event_time_anchor=""lights on (zeitgeber)"" (ungrounded); unit=UO:0000032 [hour]"	temporal	1	1	Circadian clock part of D2_ZT_15:30.
+er_status	estrogen receptor status	exact	EFO:0005512	estrogen receptor status		categorical	2	2	0/1 coded in both members.
+pr_status	progesterone receptor status	exact	EFO:0005513	progesterone receptor status		categorical	2	2	`pr` and `pgr status`.
+her2_status	HER2 status	exact	EFO:0005514	HER2 status		categorical	2	2	0/1 coded.
+hormone_receptor_status	hormone receptor status	none				categorical	1	1	`hr`: ER or PR positive. Broader than either receptor term; EFO has no combined term.
+pam50_subtype	PAM50 subtype	broad	MONDO:0000001	disease	"method=""PAM50"" (ungrounded)"	categorical	1	1	Basal/HER2/LumA/LumB are breast carcinoma subtypes from the PAM50 classifier.
+receptor_subtype	receptor-defined subtype	broad	MONDO:0000001	disease	"method=""receptor status (IHC)"" (ungrounded)"	categorical	1	1	TN vs LUM. Different classification system from PAM50, so a different variable.
+histological_type	histological type	broad	MONDO:0000001	disease	"method=""histopathology"" (ungrounded)"	categorical	1	1	IDC/ILC/other.
+tumor_size	tumor size	exact	EFO:0004134	tumor size		continuous	2	2	Units unstated: values imply cm in GSE237290 and mm in GSE58984. Pools after conversion.
+tumor_grade	tumor grade	none				ordinal	1	1	I/II/III. EFO has only grade instances (MONDO tumor grade 1..4), no grade category; `disease staging` is stage, not grade.
+t_stage	T stage	exact	EFO:0004928	T stage		ordinal	1	1	1-4.
+nodal_status	nodal status	broad	EFO:0004927	N stage		categorical	1	1	0 = node negative, 1 = node positive: a coarsening of N stage.
+positive_lymph_node_count	number of positive lymph nodes	none				continuous	1	1	A count. Derivable into nodal status but not equivalent to it, so not pooled.
+pcr	pathological complete response	indicator	EFO:0009697	pathological complete response		categorical	2	2	pCR/No pCR and 0/1/-1.
+neoadjuvant_response_index	neoadjuvant response index	broad	EFO:0008383	treatment outcome measurement	"method=""neoadjuvant response index"" (ungrounded)"	continuous	1	1	NRI score.
+chemotherapy_received	chemotherapy received	indicator	EFO:0000727	treatment	"object_class=""chemotherapy"" (ungrounded)"	categorical	1	1	0/1.
+stromal_til	stromal tumour-infiltrating lymphocytes	broad	EFO:0009832	cellular infiltration	"object_class=""stromal lymphocytes"" (ungrounded); unit=UO:0000187 [percent]"	continuous	2	2	Percent stromal TILs. GSE237290 `til` states no compartment; the usual convention (International TILs Working Group scores stromal TILs) is assumed and flagged.
+intratumoral_til	intratumoral lymphocytic infiltration	broad	EFO:0009832	cellular infiltration	"object_class=""intratumoral lymphocytes"" (ungrounded)"	continuous	1	1	
+tls_score	tertiary lymphoid structure score	none				ordinal	1	1	0/1+/2+/3+.
+gc	gc (meaning not stated)	none				categorical	1	1	0/1; the abbreviation is not explained in the metadata.
+os_time	overall survival time	exact	EFO:0000638	overall survival		continuous	1	1	Units unstated (years by magnitude).
+os_event	overall survival event (death)	indicator	EFO:0000480	event death		categorical	1	1	0/1.
+rfi_time	recurrence-free interval	broad	EFO:0000409	disease free survival		continuous	1	1	RFI does not count death as an event; RFS does. Different endpoints, so not pooled with rfs_time.
+rfs_time	relapse-free survival time	broad	EFO:0000409	disease free survival	unit=UO:0000036 [year]	continuous	1	1	
+recurrence_event	recurrence	indicator	EFO:0004952	disease recurrence		categorical	2	2	event.rfi 0/1 and recurrence No/Yes.
+dss_time	disease-specific survival time	broad	EFO:0000714	survival time	object_class=EFO:0030050 [death from disease]	continuous	1	1	
+dss_event	disease-specific death	indicator	EFO:0030050	death from disease		categorical	1	1	0/1.
+ddfs_time	distant disease-free survival time	exact	EFO:0000412	distant metastasis free survival		continuous	1	1	Units unstated (days by magnitude).
+distant_metastasis_event	distant metastasis	indicator	EFO:0009708	metastasis	"object_class=""distant"" (ungrounded)"	categorical	1	1	0/1.
+septic_shock_status	septic shock	indicator	EFO:0006834	septic shock		categorical	2	2	shock Yes/No and shock_status shock/no_shock/control.
+sepsis_severity	sepsis severity	exact	EFO:0007863	illness severity status	"object_class=""sepsis"" (ungrounded)"	categorical	1	1	no_shock / fluid_responsive / vasopressor-responsive / control.
+infection_type	infection type	broad	EFO:0000544	infection		categorical	1	1	viral / bacterial / viral_bacterial / no_source.
+mortality_30d	30-day mortality	indicator	EFO:0000480	event death	"event_time_anchor=""within 30 days"" (ungrounded)"	categorical	1	1	Fixed 30-day window, so not pooled with follow_up_status (window not stated).
+follow_up_status	follow-up status	exact	EFO:0030038	follow-up status		categorical	1	1	Survived/Died.
+inflammation_status	inflammation status	none				categorical	2	2	inflamed/uninflamed sample site. No general inflammation term in the allowlisted pool.
+mayo_score	Mayo score	broad	EFO:0007863	illness severity status	"method=""Mayo score"" (ungrounded)"	ordinal	2	2	UC disease-activity index, 0-12.
+nancy_index	Nancy histological index	broad	EFO:0007863	illness severity status	"method=""Nancy histological index"" (ungrounded)"	ordinal	1	1	Different instrument from the Mayo score, so a different variable.
+uc_activity_status	UC activity status	broad	EFO:0007863	illness severity status	object_class=MONDO:0005101 [ulcerative colitis]	categorical	1	1	Active/Inactive part of a combined column.
+treatment_response_wk6	treatment response at week 6	broad	EFO:0008383	treatment outcome measurement	"event_time_anchor=""week 6 of treatment"" (ungrounded)"	categorical	1	1	
+sample_age	sample age (meaning unclear)	none				continuous	1	1	`sample_age(y)` 1/2/3, alongside a separate patient_age. Probably storage time; not stated.
+qc_status	QC status	none				categorical	1	1	include/EXCLUDE.
+bmi	body mass index	exact	EFO:0004340	body mass index		continuous	5	4	kg/m2 (ungrounded unit).
+hba1c	HbA1c	exact	EFO:0004541	HbA1c measurement		continuous	4	3	Reported in % (NGSP) and mmol/mol (IFCC); convertible.
+fasting_glucose	fasting glucose	broad	EFO:0004468	glucose measurement	"event_time_anchor=""fasting"" (ungrounded)"	continuous	2	2	mmol/L in one series, mg/dL ('Glucose (AC)', before meals) in the other; convertible.
+fasting_insulin	fasting insulin	broad	EFO:0004467	insulin measurement	"event_time_anchor=""fasting"" (ungrounded)"	continuous	1	1	
+fasting_c_peptide	fasting C-peptide	exact	EFO:0010813	fasting C-peptide measurement		continuous	1	1	
+homa_ir	HOMA-IR	exact	EFO:0004501	HOMA-IR		continuous	1	1	
+t2d_complication_group	T2D complication group	broad	MONDO:0000001	disease	object_class=MONDO:0005148 [type 2 diabetes mellitus]	categorical	3	1	Two sub-cohorts of GSE189007 record the same grouping under different keys.
+clinical_phenotype_notes	clinical phenotype notes	broad	EFO:0000352	clinical history		free_text	1	1	Free-text medical-record descriptions.
+recruitment_site	recruitment site	none				categorical	1	1	Hospital names.

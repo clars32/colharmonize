@@ -1,0 +1,17 @@
+accession	area	platform	n_samples	soft_bytes	why_selected
+GSE237290	breast_cancer	array	57	253631	Dense 18-key panel of abbreviations and 0/1 codes (er, pr, her2, til, time.os/event.os); pools with GSE58984 on ER/PR/age/tumour size
+GSE58984	breast_cancer	array	94	47125236	Spelled-out keys (er status, pgr status, nodes positive, time to ddfs); same concepts as GSE237290 under different names and encodings
+GSE192341	breast_cancer	RNA-seq	87	10023	"Code legend inside a key (""n-stage (0, neg; 1, pos)""), unit in a key (""rfs (years)""), pcr; pools pcr with GSE149322"
+GSE149322	breast_cancer	array	150	37500856	"Ambiguous abbreviation ""hr"" (hormone receptor), pcr coded 0/1/-1, treatment arm"
+GSE272769	sepsis	array	161	105138775	Sparse and abbreviated (mort30, shock); pools shock with GSE119217
+GSE137340	sepsis	array	57	39466668	diagnosis, outcome, time of sample collection; pools outcome with GSE272769 mort30
+GSE119217	sepsis	array	134	61919717	Paediatric; severity, shock_status, infection_source, race_ethnicity
+GSE131411	sepsis	RNA-seq	106	8176	Patient IDs, T1-T3 time points, coded SS/CS classes, Sex present for only 10/106 samples, re-analysis samples
+GSE166925	ibd	RNA-seq	96	9551	11 keys incl. patient_age vs sample_age(y), disease_duration (y), nancy_score, inflammation_status
+GSE206171	ibd	array	152	399254	uc or healthy control (key names a contrast), mayoscore, diagnose duration (years)
+GSE92415	ibd	array	183	68096715	mayo score vs GSE206171 mayoscore, visit, wk6response, treatment
+GSE282580	ibd	RNA-seq	60	4126	Only one characteristic (tissue); subject, inflammation status and week live in sample titles - tests title extraction
+GSE152111	t2d	RNA-seq	66	6254	"Legend and unit inside keys (""donor gender (m=male; f=female)"", ""donor bmi (bmi kg/m2)"", ""donor age (yrs)"")"
+GSE104674	t2d	RNA-seq	48	7379	"hba1c (mmol/mol) - same variable as GSE231509 ""hba1c, %"" in a different unit"
+GSE231509	t2d	RNA-seq	42	6865	"Units after commas (""fasting glucose,_mm"", ""fasting insulin,_miu/l"", ""hba1c, %""), homa ir"
+GSE189007	t2d	array	130	87815599	"Two sub-cohorts with different conventions in one series: age (yr) vs age, bmi (kg/m2) vs bmi with unit in value, two variables in one cell (""Glucose (AC): 158 mg/dL; HbA1C: 10%""), typo duplicate keys, ranges (""Between 4.0% and 5.6%"")"

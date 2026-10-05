@@ -1,0 +1,140 @@
+accession	raw_key	source	variable_id	unit	flags	note
+GSE237290	age	characteristic	age	UO:0000036 (inferred)	assumed_convention	
+GSE237290	pam50	characteristic	pam50_subtype			
+GSE237290	tumor_size	characteristic	tumor_size	UO:0000015 (inferred)	assumed_convention	unit inferred from magnitude; owner accepted 2026-10-05
+GSE237290	tumor_grade	characteristic	tumor_grade			
+GSE237290	histology	characteristic	histological_type			
+GSE237290	er	characteristic	er_status			0/1
+GSE237290	pr	characteristic	pr_status			0/1
+GSE237290	her2	characteristic	her2_status			0/1
+GSE237290	chemo	characteristic	chemotherapy_received			
+GSE237290	til	characteristic	stromal_til	UO:0000187	assumed_convention	compartment not stated; stromal assumed (TIL Working Group convention). Owner decision 2026-10-05
+GSE237290	tls	characteristic	tls_score			
+GSE237290	gc	characteristic	gc			meaning unknown; owner accepted 2026-10-05
+GSE237290	time.os	characteristic	os_time	UO:0000036 (inferred)	assumed_convention	
+GSE237290	event.os	characteristic	os_event			
+GSE237290	time.rfi	characteristic	rfi_time	UO:0000036 (inferred)	assumed_convention	
+GSE237290	event.rfi	characteristic	recurrence_event			
+GSE237290	time.dss	characteristic	dss_time	UO:0000036 (inferred)	assumed_convention	
+GSE237290	event.dss	characteristic	dss_event			
+GSE58984	tissue	characteristic	organism_part			value 'HER2 breast cancer tumor' folds disease state into the anatomical source; owner accepted 2026-10-05
+GSE58984	treatment	characteristic	treatment			constant: trastuzumab
+GSE58984	age	characteristic	age	UO:0000036 (inferred)	assumed_convention	
+GSE58984	tumor size	characteristic	tumor_size	UO:0000016 (inferred)	assumed_convention	unit inferred from magnitude; owner accepted 2026-10-05
+GSE58984	nodes positive	characteristic	positive_lymph_node_count			
+GSE58984	er status	characteristic	er_status			0/1
+GSE58984	pgr status	characteristic	pr_status			0/1
+GSE58984	distant metastasis	characteristic	distant_metastasis_event			
+GSE58984	time to ddfs	characteristic	ddfs_time	UO:0000033 (inferred)	assumed_convention	
+GSE58984	intratumoral lymphocytic infiltration	characteristic	intratumoral_til			
+GSE58984	stromal lymphocytic infiltration	characteristic	stromal_til			
+GSE192341	tissue type	characteristic	specimen_type			constant: biopsy
+GSE192341	pathological complete response (pcr)	characteristic	pcr			
+GSE192341	subtype	characteristic	receptor_subtype			
+GSE192341	sample_id	characteristic	sample_id			
+GSE192341	age	characteristic	age	UO:0000036 (inferred)	assumed_convention	
+GSE192341	neoadjuvant response index (nri)	characteristic	neoadjuvant_response_index			
+GSE192341	t-stage	characteristic	t_stage			
+GSE192341	n-stage (0, neg; 1, pos)	characteristic	nodal_status			legend inside the key
+GSE192341	recurrence	characteristic	recurrence_event			
+GSE192341	rfs (years)	characteristic	rfs_time	UO:0000036		
+GSE149322	her2	characteristic	her2_status			0/1
+GSE149322	hr	characteristic	hormone_receptor_status			
+GSE149322	pcr	characteristic	pcr			-1 for one sample (missing?)
+GSE149322	arm	characteristic	treatment_arm		REVIEW	could pool with treatment
+GSE272769	age	characteristic	age	UO:0000036 (inferred)	assumed_convention	
+GSE272769	Sex	characteristic	sex			
+GSE272769	mort30	characteristic	mortality_30d			
+GSE272769	shock	characteristic	septic_shock_status			
+GSE137340	tissue	characteristic	organism_part			
+GSE137340	age	characteristic	age	UO:0000036 (inferred)	assumed_convention	
+GSE137340	Sex	characteristic	sex			
+GSE137340	diagnosis	characteristic	disease			
+GSE137340	time of sample collection	characteristic	sampling_time_hours	UO:0000032		
+GSE137340	outcome	characteristic	follow_up_status		REVIEW	not pooled with 30-day mortality
+GSE119217	tissue	characteristic	organism_part			
+GSE119217	sepsis_severity	characteristic	sepsis_severity			
+GSE119217	shock_status	characteristic	septic_shock_status			
+GSE119217	infection_source	characteristic	infection_type			
+GSE119217	Sex	characteristic	sex			
+GSE119217	race_ethnicity	characteristic	ethnic_group			
+GSE131411	patient	characteristic	subject_id			
+GSE131411	timepoint	characteristic	timepoint_coded			
+GSE131411	clinical classification	characteristic	disease			SS/CS = septic vs cardiogenic shock
+GSE131411	tissue	characteristic	organism_part			
+GSE131411	Sex	characteristic	sex			present for 10/106 samples
+GSE131411	cell type	characteristic	organism_part		duplicate_encoding	identical to tissue on all 10 shared samples; owner accepted 2026-10-05
+GSE166925	disease	characteristic	disease			
+GSE166925	inflammation_status	characteristic	inflammation_status			
+GSE166925	site_taken	characteristic	organism_part			large/small intestine
+GSE166925	gender	characteristic	sex			
+GSE166925	patient_id	characteristic	subject_id			
+GSE166925	sample_id	characteristic	sample_id			
+GSE166925	nancy_score	characteristic	nancy_index			
+GSE166925	patient_age	characteristic	age	UO:0000036 (inferred)	assumed_convention	
+GSE166925	sample_age(y)	characteristic	sample_age	UO:0000036		meaning unclear; owner accepted 2026-10-05
+GSE166925	disease_duration (y)	characteristic	disease_duration	UO:0000036		
+GSE166925	qc	characteristic	qc_status			
+GSE206171	tissue	characteristic	organism_part			
+GSE206171	Sex	characteristic	sex			
+GSE206171	uc or healthy control	characteristic	SPLIT			two things: diagnosis and activity
+GSE206171	uc or healthy control#diagnosis	split:uc or healthy control	disease			UC / Healthy control
+GSE206171	uc or healthy control#activity	split:uc or healthy control	uc_activity_status			Active / Inactive
+GSE206171	mayoscore	characteristic	mayo_score			
+GSE206171	diagnose duration (years)	characteristic	disease_duration	UO:0000036		
+GSE92415	tissue	characteristic	organism_part			
+GSE92415	subject	characteristic	subject_id			
+GSE92415	disease	characteristic	disease			
+GSE92415	age	characteristic	age	UO:0000036 (inferred)	assumed_convention	
+GSE92415	treatment	characteristic	treatment			
+GSE92415	visit	characteristic	time_since_treatment_start	UO:0000034		Week 0 / Week 6 / Healthy
+GSE92415	wk6response	characteristic	treatment_response_wk6			
+GSE92415	mayo score	characteristic	mayo_score			'.' marks missing
+GSE282580	tissue	characteristic	organism_part			
+GSE282580	title#subject	title	subject_id			'subject 1, inf, 14W'
+GSE282580	title#inflammation	title	inflammation_status			inf / non-inf
+GSE282580	title#week	title	time_since_treatment_start	UO:0000034		0W / 14W / 54W
+GSE152111	cell type	characteristic	cell_type			islets are also an organism part (UBERON:0000006); owner accepted 2026-10-05
+GSE152111	donor gender (m=male; f=female)	characteristic	sex			legend inside the key
+GSE152111	donor age (yrs)	characteristic	age	UO:0000036		
+GSE152111	donor bmi (bmi kg/m2)	characteristic	bmi	kg/m2 (ungrounded)		
+GSE104674	subject status	characteristic	disease			
+GSE104674	subject id #	characteristic	subject_id			
+GSE104674	gender	characteristic	sex			constant: male
+GSE104674	age	characteristic	age	UO:0000036 (inferred)	assumed_convention	
+GSE104674	bmi (kg/m2)	characteristic	bmi	kg/m2 (ungrounded)		
+GSE104674	hba1c (mmol/mol)	characteristic	hba1c	mmol/mol (ungrounded)		
+GSE104674	timepoint	characteristic	SPLIT			two things: study day and zeitgeber time
+GSE104674	timepoint#day	split:timepoint	study_day	UO:0000033		D2 / D3
+GSE104674	timepoint#zeitgeber_time	split:timepoint	zeitgeber_time	UO:0000032		ZT 0:15 .. 15:30
+GSE231509	tissue	characteristic	organism_part			
+GSE231509	Sex	characteristic	sex			
+GSE231509	individual	characteristic	subject_id			
+GSE231509	treatment	characteristic	treatment			No treatment / MMTT
+GSE231509	time point	characteristic	time_relative_to_meal_test		REVIEW	not pooled with therapy timepoints
+GSE231509	age	characteristic	age	UO:0000036 (inferred)	assumed_convention	
+GSE231509	diagnosis	characteristic	disease			
+GSE231509	bmi	characteristic	bmi	kg/m2 (inferred, ungrounded)	assumed_convention	
+GSE231509	fasting glucose,_mm	characteristic	fasting_glucose	UO:0000063		mM = mmol/L
+GSE231509	fasting insulin,_miu/l	characteristic	fasting_insulin	mIU/L (ungrounded)		
+GSE231509	fasting c-peptid,_ng/ml	characteristic	fasting_c_peptide	UO:0000275		
+GSE231509	hba1c, %	characteristic	hba1c	UO:0000187		
+GSE231509	homa ir	characteristic	homa_ir			
+GSE189007	tissue	characteristic	organism_part			
+GSE189007	disease group	characteristic	t2d_complication_group		REVIEW	could instead join `disease`
+GSE189007	phenotype	characteristic	clinical_phenotype_notes			
+GSE189007	blood glucose	characteristic	SPLIT			two things: fasting glucose and HbA1c
+GSE189007	blood glucose#glucose	split:blood glucose	fasting_glucose	mg/dL (ungrounded)		'Glucose (AC): 158 mg/dL'
+GSE189007	blood glucose#hba1c	split:blood glucose	hba1c	UO:0000187		'HbA1C: 10%'
+GSE189007	bmi (kg/m2)	characteristic	bmi	kg/m2 (ungrounded)		sub-cohort A
+GSE189007	duration (yr)	characteristic	disease_duration	UO:0000036		sub-cohort A
+GSE189007	age (yr)	characteristic	age	UO:0000036		sub-cohort A
+GSE189007	gender	characteristic	sex			Male/male casing
+GSE189007	population	characteristic	ethnic_group			'Taiwanese' is a nationality as much as an ethnic group; owner accepted 2026-10-05
+GSE189007	age	characteristic	age	UO:0000036		sub-cohort B; '43 years old'
+GSE189007	t2d duration	characteristic	disease_duration	UO:0000036		sub-cohort B
+GSE189007	hba1c (%) of the sample	characteristic	hba1c	UO:0000187		sub-cohort B; includes ranges
+GSE189007	bmi	characteristic	bmi	kg/m2 (ungrounded)		sub-cohort B; unit inside the value
+GSE189007	sampling in t2d stage	characteristic	t2d_complication_group			sub-cohort B, first half
+GSE189007	reference	characteristic	recruitment_site			
+GSE189007	sampling t2d stage	characteristic	t2d_complication_group			sub-cohort B, second half; typo duplicate
