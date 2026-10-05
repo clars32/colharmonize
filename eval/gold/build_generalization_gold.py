@@ -1,62 +1,27 @@
-"""Build and validate the gold standard for the sealed generalization corpus.
+"""Gold standard for the sealed generalization corpus.
 
 Curated 2026-10-02 from sample characteristics and titles only
 (`eval/snapshots/generalization_characteristics.json`), before any candidate
 generation ran on these series. Terms were sought across the full allowlisted
 pool of pinned EFO v3.94.0, not a restricted search space, so that candidate
-recall measured against this gold cannot be circular.
+recall measured against this gold cannot be circular. Owner review completed
+2026-10-05 (see REVIEW.md).
 
-The gold has two layers:
-
-* a partition: every (dataset, column) belongs to exactly one gold variable.
-  Columns in one variable are the ones a careful curator would stack into a
-  single column of a pooled table without losing meaning.
-* an annotation per variable: primary term, predicate and qualifiers.
-
-Predicates:
-  exact      the variable means the term; its values are instances or
-             measurements of it (sex -> biological sex)
-  broad      the term is broader; the variable keeps its own name and the term
-             is an anchor (Mayo score -> illness severity status)
-  indicator  the variable is a yes/no or 0/1 indicator of the term
-             (shock: Yes/No -> septic shock)
-  none       no adequate term in the pinned pool; the variable still pools
-
-Partition rules:
-  1. Same property, same referent, same reference event, compatible value
-     domain (convertible units or a lossless recode).
-  2. Columns that both have values on the same samples are never pooled,
-     unless their values are identical on every shared sample
-     (duplicate encoding, flagged).
-  3. Columns of one dataset covering disjoint samples may pool.
-  4. Different classification systems or scoring instruments are different
-     variables even when they share an anchor term.
+Format, predicates and partition rules are documented in goldlib.py.
 
 Run: python eval/gold/build_generalization_gold.py
-Writes generalization_variables.tsv and generalization_columns.tsv next to
-this file, and exits non-zero on any validation failure.
 """
+
 from __future__ import annotations
 
-import csv
-import itertools
-import json
-import re
 import sys
-from collections import Counter, defaultdict
 from pathlib import Path
 
-import pandas as pd
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import goldlib  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parent.parent
-SNAPSHOT = ROOT / "eval/snapshots/generalization_characteristics.json"
-INDEX = ROOT.parent / "efo-column-mapping/data/ontology/efo_index_v3.94.0.parquet"
-ALLOWED = {"EFO", "UBERON", "CL", "MONDO", "PATO", "NCIT", "OBI", "CHEBI", "UO"}
-PREDICATES = {"exact", "broad", "indicator", "none"}
-SLOTS = {"subject", "object_class", "event_time_anchor", "method", "unit"}
-CURIE = re.compile(r"^[A-Za-z]+:\d+$")
-FLAGS = {"REVIEW", "assumed_convention", "duplicate_encoding"}
+SNAPSHOT = goldlib.ROOT / "eval/snapshots/generalization_characteristics.json"
 
 # (variable_id, name, predicate, primary_curie, qualifiers, value_type, rationale)
 # qualifiers: list of (slot, curie-or-text); text is recorded as ungrounded.
@@ -358,96 +323,5 @@ C = [
 ]
 
 
-def main() -> int:
-    errors: list[str] = []
-    snap = json.loads(SNAPSHOT.read_text())
-    ix = pd.read_parquet(INDEX).set_index("curie")
-
-    def check_curie(c: str, where: str) -> str:
-        if c not in ix.index:
-            errors.append(f"{where}: {c} not in pinned file"); return ""
-        row = ix.loc[c]
-        if bool(row.deprecated): errors.append(f"{where}: {c} is deprecated")
-        if c.split(":")[0] not in ALLOWED: errors.append(f"{where}: {c} prefix not allowlisted")
-        return str(row.label)
-
-    var = {}
-    for vid, name, pred, prim, quals, vtype, why in V:
-        if vid in var: errors.append(f"duplicate variable {vid}")
-        if pred not in PREDICATES: errors.append(f"{vid}: bad predicate {pred}")
-        if (pred == "none") != (prim == ""): errors.append(f"{vid}: predicate/term mismatch")
-        label = check_curie(prim, vid) if prim else ""
-        qs = []
-        for slot, val in quals:
-            if slot not in SLOTS: errors.append(f"{vid}: bad slot {slot}")
-            if CURIE.match(val):
-                qs.append(f"{slot}={val} [{check_curie(val, vid)}]")
-            else:
-                qs.append(f'{slot}="{val}" (ungrounded)')
-        var[vid] = dict(variable_id=vid, name=name, predicate=pred, primary_curie=prim,
-                        primary_label=label, qualifiers="; ".join(qs), value_type=vtype, rationale=why)
-
-    seen = Counter((a, k) for a, k, src, *_ in C if src == "characteristic")
-    for (a, k), n in seen.items():
-        if n > 1: errors.append(f"{a}/{k} listed {n} times")
-    for acc, x in snap.items():
-        for k in x["characteristics"]:
-            if (acc, k) not in seen: errors.append(f"{acc}/{k} has no gold row")
-    rows = []
-    for a, k, src, vid, unit, flags, note in C:
-        fl = [f for f in flags.split(",") if f]
-        if "inferred" in unit and "assumed_convention" not in fl:
-            fl.append("assumed_convention")
-        for f in fl:
-            if f not in FLAGS: errors.append(f"{a}/{k}: unknown flag {f}")
-        rows.append((a, k, src, vid, unit, ",".join(fl), note))
-    for a, k, src, vid, *_ in C:
-        if src == "characteristic" and k not in snap[a]["characteristics"]:
-            errors.append(f"{a}/{k} not in snapshot")
-        if vid != "SPLIT" and vid not in var: errors.append(f"{a}/{k}: unknown variable {vid}")
-        if src.startswith("split:") and (a, src[6:]) not in seen: errors.append(f"{a}/{k}: split parent missing")
-
-    # co-occurrence: two characteristic members of one variable from the same
-    # dataset must cover disjoint samples unless flagged duplicate_encoding.
-    members = defaultdict(list)
-    for a, k, src, vid, unit, flags, note in C:
-        if vid != "SPLIT": members[vid].append((a, k, src, flags))
-    for vid, ms in members.items():
-        for (a1, k1, s1, f1), (a2, k2, s2, f2) in itertools.combinations(ms, 2):
-            if a1 != a2: continue
-            if s1.startswith("split:") and s1 == s2:
-                errors.append(f"{vid}: two parts of one split column in one variable"); continue
-            if s1 == s2 == "characteristic":
-                disjoint = (f"{k1} || {k2}" in snap[a1]["disjoint_pairs"]
-                            or f"{k2} || {k1}" in snap[a1]["disjoint_pairs"])
-                if not disjoint and "duplicate_encoding" not in f1 + f2:
-                    errors.append(f"{vid}: {a1} '{k1}' and '{k2}' co-occur")
-    for vid in var:
-        if vid not in members: errors.append(f"variable {vid} has no members")
-
-    if errors:
-        print("\n".join(errors)); return 1
-
-    for vid, v in var.items():
-        ms = members[vid]
-        v["n_members"] = len(ms)
-        v["n_datasets"] = len({a for a, *_ in ms})
-    cols = ["variable_id", "name", "predicate", "primary_curie", "primary_label", "qualifiers",
-            "value_type", "n_members", "n_datasets", "rationale"]
-    with open(HERE / "generalization_variables.tsv", "w", newline="") as f:
-        w = csv.DictWriter(f, cols, delimiter="\t", lineterminator="\n"); w.writeheader()
-        w.writerows(var.values())
-    with open(HERE / "generalization_columns.tsv", "w", newline="") as f:
-        w = csv.writer(f, delimiter="\t", lineterminator="\n")
-        w.writerow(["accession", "raw_key", "source", "variable_id", "unit", "flags", "note"])
-        w.writerows(rows)
-
-    pooled = [v for v in var.values() if v["n_datasets"] > 1]
-    print(f"OK: {len(C)} column rows, {len(var)} variables, {len(pooled)} span >1 dataset")
-    print(f"predicates: {dict(Counter(v['predicate'] for v in var.values()))}")
-    print(f"flags: {dict(Counter(f for r in rows for f in r[5].split(',') if f))}")
-    return 0
-
-
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(goldlib.build(V, C, SNAPSHOT, HERE, "generalization"))

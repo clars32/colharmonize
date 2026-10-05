@@ -1,0 +1,51 @@
+variable_id	name	predicate	primary_curie	primary_label	qualifiers	value_type	n_members	n_datasets	rationale
+sex	biological sex	exact	PATO:0000047	biological sex		categorical	7	7	
+age	age	exact	EFO:0000246	age		continuous	4	4	Age of the subject at sampling. 'age at draw' belongs here because the draw is the sampling event.
+age_at_diagnosis	age at diagnosis	exact	EFO:0004918	age at diagnosis	unit=UO:0000033 [day]	continuous	1	1	
+age_at_dissection	age at dissection	broad	EFO:0000246	age	"event_time_anchor=""dissection"" (ungrounded); unit=UO:0000033 [day]"	continuous	1	1	D59..D136. Fetal samples count from conception and organoids from the start of culture, so not pooled with postnatal age.
+gestational_age	gestational age	exact	EFO:0005112	gestational age	unit=UO:0000034 [week]	continuous	2	2	
+developmental_stage	developmental stage	exact	EFO:0000399	developmental stage		categorical	1	1	fetus.
+organism_part	organism part	exact	EFO:0000635	organism part		categorical	7	7	
+specimen_source	specimen source	broad	OBI:0100051	specimen		categorical	3	3	What the specimen was derived from: primary fetal tissue, stem-cell-derived organoids, cell lines.
+cell_type	cell type	exact	EFO:0000324	cell type		categorical	4	4	
+cell_line	cell line	exact	CL:0000010	cultured cell		categorical	2	2	Values are named lines (K562, AG05397, par/dis): each is a cultured cell, coarse but well formed (iteration 2 decision 8.3).
+karyotype	karyotype	exact	EFO:0004426	karyotype		categorical	5	5	Chromosome-21 complement: WT/Trisomy 21, T21/D21, Euploid/TS21/TS13, trisomic/disomic.
+disease	disease	exact	MONDO:0000001	disease		categorical	6	6	
+down_syndrome_status	Down syndrome status	indicator	MONDO:0008608	Down syndrome		categorical	1	1	Records only the presence of Down syndrome.
+congenital_abnormality	congenital abnormality	exact	MONDO:0019755	developmental defect during embryogenesis		categorical	1	1	None / Downs / Other / Unknown (iteration 2 decision 4.8).
+cohort	cohort	exact	EFO:0004445	cohort		categorical	3	3	Study, registry or consortium a sample came from.
+batch	batch	exact	EFO:0005067	block		categorical	2	2	EFO:0005067 is defined as 'a block or batch'.
+amplification_batch	amplification batch	broad	EFO:0005067	block	"method=""amplification"" (ungrounded)"	categorical	1	1	
+hybridization_batch	hybridization batch	broad	EFO:0005067	block	"method=""hybridization"" (ungrounded)"	categorical	1	1	
+subject_id	subject identifier	none				identifier	1	1	
+replicate	replicate	broad	EFO:0000683	replicate		ordinal	1	1	Replicate number.
+group_assignment	comparison group	broad	OBI:0600015	group assignment		categorical	1	1	Iteration 2 decision 4.8.
+treatment	treatment	exact	EFO:0000727	treatment		categorical	1	1	
+chip_antibody	ChIP antibody	broad	EFO:0000264	antibody	method=EFO:0004176 [ChIP]	categorical	1	1	
+library_type	library type	broad	OBI:0000711	library preparation		categorical	1	1	strand-specific.
+sample_pooling	pooled or single sample	broad	OBI:0000747	material sample		categorical	1	1	pooled organoids / single organoid.
+days_in_vitro	days in vitro	broad	EFO:0000433	duration	"event_time_anchor=""start of culture"" (ungrounded); unit=UO:0000033 [day]"	continuous	1	1	
+braak_stage	Braak stage	broad	EFO:0000410	disease staging	"method=""Braak staging"" (ungrounded)"	ordinal	1	1	Iteration 2 gold: disease staging.
+cause_of_death	cause of death	none				categorical	1	1	No adequate term (iteration 2 gold).
+post_mortem_interval	post mortem interval	broad	EFO:0000433	duration	"event_time_anchor=""death"" (ungrounded); unit=UO:0000032 [hour]"	continuous	1	1	
+bcr_abl	BCR-ABL1 t(9;22) status	indicator	EFO:0004024	translocation	"object_class=""BCR-ABL1 t(9;22)"" (ungrounded)"	categorical	1	1	EFO has no BCR-ABL1 fusion term, only diseases defined by it.
+e2a_pbx	E2A-PBX1 t(1;19) status	indicator	EFO:0004024	translocation	"object_class=""E2A-PBX1 (TCF3-PBX1) t(1;19)"" (ungrounded)"	categorical	1	1	
+mll_rearrangement	MLL rearrangement status	indicator	EFO:0004024	translocation	"object_class=""MLL (KMT2A) rearrangement"" (ungrounded)"	categorical	1	1	MLL rearrangements in ALL are almost always translocations.
+tel_aml1	TEL-AML1 t(12;21) status	indicator	EFO:0004024	translocation	"object_class=""TEL-AML1 (ETV6-RUNX1) t(12;21)"" (ungrounded)"	categorical	1	1	
+trisomy_4_10	trisomy 4 and 10 status	indicator	EFO:0000336	chromosomal aberration	"object_class=""trisomy 4 and 10"" (ungrounded)"	categorical	1	1	
+flt3_itd	FLT3-ITD status	indicator	EFO:0004015	duplication	"object_class=""FLT3 internal tandem duplication"" (ungrounded)"	categorical	1	1	EFO:0004015 duplication: 'part of the genome is duplicated'.
+cns_status	CNS status	broad	EFO:0000410	disease staging	object_class=UBERON:0001017 [central nervous system]	ordinal	1	1	Degree of central nervous system involvement (CNS1-3), a leukaemia staging element.
+testicular_involvement	testicular involvement	none				categorical	1	1	No term for testicular involvement by leukaemia.
+wbc_count	white blood cell count	broad	EFO:0004586	complete blood cell count	"object_class=CL:0000738 [leukocyte]; unit=""10^3/uL"" (ungrounded)"	continuous	1	1	EFO:0004308 leukocyte count is deprecated in v3.94.0 (iteration 2 decision 6a.5); complete blood cell count + leukocyte expresses it without the deprecated term.
+blast_count	blast count	exact	EFO:0009232	Blast Count	unit=UO:0000187 [percent]	continuous	1	1	-1 marks missing.
+viability	sample viability	exact	PATO:0000169	viability	unit=UO:0000187 [percent]	continuous	1	1	-1 marks missing.
+training_test_set	training or test set	none				categorical	1	1	Analysis artefact.
+ethnic_group	ethnic group	exact	EFO:0001799	ethnic group		categorical	1	1	
+crlf2_expression_array	CRLF2 expression (arrays)	broad	EFO:0009865	transcriptome measurement	"object_class=""CRLF2"" (ungrounded); method=""expression microarray"" (ungrounded); unit=""log2"" (ungrounded)"	continuous	1	1	
+crlf2_expression_qpcr	CRLF2 expression (qRT-PCR)	broad	EFO:0009865	transcriptome measurement	"object_class=""CRLF2"" (ungrounded); method=""qRT-PCR"" (ungrounded); unit=""relative to SI-DS-ALL-12"" (ungrounded)"	continuous	1	1	Different method and scale from the array values, so a different variable.
+crlf2_expression_strata	CRLF2 expression stratum	broad	EFO:0009865	transcriptome measurement	"object_class=""CRLF2"" (ungrounded); method=""expression stratification"" (ungrounded)"	categorical	1	1	
+crlf2_fish	CRLF2 FISH result	broad	EFO:0000336	chromosomal aberration	"object_class=""CRLF2"" (ungrounded); method=""FISH"" (ungrounded)"	categorical	1	1	Deletion / IGH@-CRLF2 / Normal.
+crlf2_mutation	CRLF2 mutation	broad	EFO:0000513	genotype	"object_class=""CRLF2"" (ungrounded)"	categorical	1	1	
+jak2_r683_mutation	JAK2 R683 mutation	broad	EFO:0000513	genotype	"object_class=""JAK2 R683"" (ungrounded)"	categorical	1	1	
+genetic_aberration	genetic aberration	exact	EFO:0000336	chromosomal aberration		categorical	1	1	TEL-AML1 / High Hyperdiploid / BCR-ABL / MLL / E2A-PBX1.
+snp_dataset	SNP dataset	none				categorical	1	1	Co-occurs with 'gene expression dataset', so it cannot join cohort.
