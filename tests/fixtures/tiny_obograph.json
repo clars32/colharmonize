@@ -1,0 +1,20 @@
+{"graphs": [{
+  "id": "http://example.org/tiny.owl",
+  "meta": {"version": "http://example.org/tiny/releases/1.0/tiny.owl"},
+  "nodes": [
+    {"id": "http://www.ebi.ac.uk/efo/EFO_0000727", "lbl": "treatment", "type": "CLASS",
+     "meta": {"definition": {"val": "A planned process intended to modify a condition."}}},
+    {"id": "http://www.ebi.ac.uk/efo/EFO_0000369", "lbl": "compound based treatment", "type": "CLASS",
+     "meta": {"synonyms": [{"pred": "hasExactSynonym", "val": "drug treatment"}]}},
+    {"id": "http://purl.obolibrary.org/obo/PATO_0000047", "lbl": "biological sex", "type": "CLASS"},
+    {"id": "http://www.ebi.ac.uk/efo/EFO_0004308", "lbl": "obsolete_leukocyte count", "type": "CLASS",
+     "meta": {"deprecated": true}},
+    {"id": "http://purl.obolibrary.org/obo/BTO_0000141", "lbl": "bone marrow", "type": "CLASS"},
+    {"id": "http://purl.obolibrary.org/obo/HP_0000118", "lbl": "Phenotypic abnormality", "type": "CLASS"},
+    {"id": "http://dbpedia.org/resource/Albania", "lbl": "Albania", "type": "CLASS"},
+    {"id": "http://dbpedia.org/resource/Algeria", "lbl": "Algeria", "type": "CLASS"}
+  ],
+  "edges": [
+    {"sub": "http://www.ebi.ac.uk/efo/EFO_0000369", "pred": "is_a", "obj": "http://www.ebi.ac.uk/efo/EFO_0000727"}
+  ]
+}]}

@@ -38,9 +38,24 @@ colharmonize.
 
 | Path | Contents |
 |---|---|
+| `src/colharmonize/` | The package. `ontology.py` holds the pinned release and validator, `geomend_bridge.py` the only GEOmend imports, `detect.py` value-shape hints, and `cli.py` the `colharmonize` command |
+| `tests/` | pytest suite: regression cases from iteration 2 and contract tests for the GEOmend boundary |
 | `docs/` | Design notes, including proposed GEOmend changes |
 | `eval/` | Sealed evaluation corpora, gold standards and how they were selected. Self-contained so it can move to `geomend-research`. |
 | `work/` | Run workspaces and scratch projects (git-ignored; a GEOmend project is ~1.5 GB) |
+
+## Setup
+
+```bash
+/opt/anaconda3/bin/conda create -p ./.venv --override-channels -c conda-forge python=3.13
+./.venv/bin/python -m pip install -e ".[dev]"
+./.venv/bin/python -m pytest
+./.venv/bin/colharmonize ontology pin --json efo.json --tag v3.94.0 --out work/ontology/efo-v3.94.0
+./.venv/bin/colharmonize ontology store --ontology work/ontology/efo-v3.94.0 --out work/ontology/efo-v3.94.0.sqlite
+```
+
+GEOmend requires Python 3.13. The pinned ontology directory and the store are
+regenerable and kept under `work/`.
 
 ## Status
 

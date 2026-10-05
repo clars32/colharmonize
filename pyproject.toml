@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "colharmonize"
+version = "0.1.0.dev0"
+description = "Decide which metadata columns pool across datasets and what they mean in the ontology"
+readme = "README.md"
+requires-python = ">=3.13"
+authors = [{ name = "Carter Larsen" }]
+dependencies = [
+  # GEOmend prepares the data; colharmonize talks to it only through geomend_bridge.py.
+  "geomend[reconcile,ontology,transform,cohort]==0.0.2",
+  "pandas>=2.2",
+  "pyarrow>=15",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+colharmonize = "colharmonize.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/colharmonize"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
