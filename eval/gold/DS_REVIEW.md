@@ -88,6 +88,19 @@ variable.
   qualified by leukocyte. `leukocyte count` is deprecated in this EFO release,
   but its parent plus a cell-type qualifier says the same thing without it.
 
+## Owner decisions, 2026-10-05
+
+- **A, C, D, E, F, G:** accepted as drafted.
+- **B:** GSE16176 `condition` (euploid | Down syndrome) moves to **`karyotype`**.
+  That describes the column as written and fits the other chromosome-21
+  columns. Pooling recodes "Down syndrome" to "Trisomy 21". Nothing is lost,
+  because every output keeps the raw value verbatim next to the harmonized one.
+  This is the first gold call that needs a value recode, so the pipeline's
+  reconciliation step has to be able to propose recodes, not only groupings.
+
+**Tuning gold final as of 2026-10-05:** 84 column rows in 50 variables, 11 of
+which pool across datasets. No open REVIEW flags.
+
 ## What happens next
 
 Once you've ruled on these, the tuning gold is final. I'll then re-score

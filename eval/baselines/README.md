@@ -17,7 +17,7 @@ colharmonize eval --gold-columns eval/gold/ds_tuning_columns.tsv \
   --predictions eval/baselines/iteration2_ds_tuning.tsv --report eval/baselines/iteration2_ds_tuning.md
 ```
 
-**The tuning gold is still a draft** (15 calls await owner review), so these
-numbers are provisional until it is final. The sealed generalization corpus
+Scored against the final tuning gold (owner review completed 2026-10-05).
+The sealed generalization corpus
 has no baselines yet: iteration 2 never ran on it, and GEOmend's grouping
 needs the corpus ingested, which waits for the single final measurement.

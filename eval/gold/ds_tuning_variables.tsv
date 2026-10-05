@@ -9,8 +9,8 @@ organism_part	organism part	exact	EFO:0000635	organism part		categorical	7	7
 specimen_source	specimen source	broad	OBI:0100051	specimen		categorical	3	3	What the specimen was derived from: primary fetal tissue, stem-cell-derived organoids, cell lines.
 cell_type	cell type	exact	EFO:0000324	cell type		categorical	4	4	
 cell_line	cell line	exact	CL:0000010	cultured cell		categorical	2	2	Values are named lines (K562, AG05397, par/dis): each is a cultured cell, coarse but well formed (iteration 2 decision 8.3).
-karyotype	karyotype	exact	EFO:0004426	karyotype		categorical	5	5	Chromosome-21 complement: WT/Trisomy 21, T21/D21, Euploid/TS21/TS13, trisomic/disomic.
-disease	disease	exact	MONDO:0000001	disease		categorical	6	6	
+karyotype	karyotype	exact	EFO:0004426	karyotype		categorical	6	6	Chromosome-21 complement: WT/Trisomy 21, T21/D21, Euploid/TS21/TS13, trisomic/disomic, euploid/Down syndrome. Pooling recodes values to one vocabulary; raw values are kept.
+disease	disease	exact	MONDO:0000001	disease		categorical	5	5	
 down_syndrome_status	Down syndrome status	indicator	MONDO:0008608	Down syndrome		categorical	1	1	Records only the presence of Down syndrome.
 congenital_abnormality	congenital abnormality	exact	MONDO:0019755	developmental defect during embryogenesis		categorical	1	1	None / Downs / Other / Unknown (iteration 2 decision 4.8).
 cohort	cohort	exact	EFO:0004445	cohort		categorical	3	3	Study, registry or consortium a sample came from.

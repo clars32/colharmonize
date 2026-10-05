@@ -1,27 +1,27 @@
 accession	raw_key	source	variable_id	unit	flags	note
 GSE11877	BCR-ABL, t(9;22)	characteristic	bcr_abl			was NO_MATCH (decision 8.1); indicator now expresses it
-GSE11877	CNS status	characteristic	cns_status		REVIEW	was NO_MATCH
+GSE11877	CNS status	characteristic	cns_status			was NO_MATCH; owner accepted 2026-10-05
 GSE11877	E2A-PBX, t(1;19)	characteristic	e2a_pbx			was NO_MATCH (decision 8.1)
 GSE11877	MLL	characteristic	mll_rearrangement			was NO_MATCH (decision 8.1)
 GSE11877	TEL-AML,t(12;21)	characteristic	tel_aml1			was NO_MATCH (decision 8.1)
-GSE11877	WBC, 1000/microliter	characteristic	wbc_count	10^3/uL	REVIEW	was NO_MATCH
+GSE11877	WBC, 1000/microliter	characteristic	wbc_count	10^3/uL		was NO_MATCH; owner accepted 2026-10-05
 GSE11877	age in days at diagnosis	characteristic	age_at_diagnosis	UO:0000033		
-GSE11877	amplification set	characteristic	amplification_batch		REVIEW	was NO_MATCH
+GSE11877	amplification set	characteristic	amplification_batch			was NO_MATCH; owner accepted 2026-10-05
 GSE11877	blast count, % of sample, -1=unavailable	characteristic	blast_count	UO:0000187		
 GSE11877	congenital abnormality	characteristic	congenital_abnormality			
 GSE11877	gender	characteristic	sex			
-GSE11877	hybridization set	characteristic	hybridization_batch		REVIEW	was NO_MATCH
+GSE11877	hybridization set	characteristic	hybridization_batch			was NO_MATCH; owner accepted 2026-10-05
 GSE11877	race	characteristic	ethnic_group			
 GSE11877	sample viability, % of sample, -1=unavailable	characteristic	viability	UO:0000187		
 GSE11877	testicular involvement	characteristic	testicular_involvement			
 GSE11877	tissue type	characteristic	organism_part			
 GSE11877	training or test set	characteristic	training_test_set			
 GSE11877	trisomy 4 and 10	characteristic	trisomy_4_10			was NO_MATCH (decision 8.1)
-GSE124252	age at dissection (day)	characteristic	age_at_dissection	UO:0000033	REVIEW	was age
+GSE124252	age at dissection (day)	characteristic	age_at_dissection	UO:0000033		was age; owner accepted 2026-10-05
 GSE124252	days in vitro	characteristic	days_in_vitro	UO:0000033		
 GSE124252	karyotype	characteristic	karyotype			
 GSE124252	tissue	characteristic	organism_part			
-GSE124252	tissue origin	characteristic	specimen_source		REVIEW	was NO_MATCH
+GSE124252	tissue origin	characteristic	specimen_source			was NO_MATCH; owner accepted 2026-10-05
 GSE128621	Sex	characteristic	sex			
 GSE128621	age	characteristic	age	UO:0000036 (inferred)	assumed_convention	
 GSE128621	cell type	characteristic	cell_type			WBC
@@ -32,9 +32,9 @@ GSE1397	title#comparison group	title	group_assignment
 GSE1397	source_name#gestational age	title	gestational_age	UO:0000034		
 GSE1397	title#karyotype	title	karyotype			
 GSE1397	title#replicate	title	replicate			
-GSE1397	source_name#source material	title	specimen_source		REVIEW	was organism part; co-occurs with title#tissue with different values, so it cannot share organism part
+GSE1397	source_name#source material	title	specimen_source			was organism part; co-occurs with title#tissue with different values, so it cannot share organism part; owner accepted 2026-10-05
 GSE1397	title#tissue	title	organism_part			
-GSE16176	condition	characteristic	disease		REVIEW	euploid / Down syndrome: a karyotype contrasted with a disease
+GSE16176	condition	characteristic	karyotype			euploid / Down syndrome; pools with value recode 'Down syndrome' -> 'Trisomy 21' (raw value kept); owner decision 2026-10-05
 GSE16176	developmental stage	characteristic	developmental_stage			
 GSE16176	gestational age (weeks, days)	characteristic	gestational_age	UO:0000034		'21 3/7' = weeks and days
 GSE16176	sex	characteristic	sex			
@@ -51,7 +51,7 @@ GSE17459	genetic aberration	characteristic	genetic_aberration
 GSE17459	jak2 r683 mutation	characteristic	jak2_r683_mutation			was genotype; now qualified with JAK2 R683
 GSE17459	snp dataset	characteristic	snp_dataset			
 GSE183701	Sex	characteristic	sex			
-GSE183701	age at draw	characteristic	age	UO:0000036 (inferred)	REVIEW,assumed_convention	the draw is the sampling event, so this is plain age
+GSE183701	age at draw	characteristic	age	UO:0000036 (inferred)	assumed_convention	the draw is the sampling event, so this is plain age; owner accepted 2026-10-05
 GSE183701	registry	characteristic	cohort			
 GSE183701	tissue	characteristic	organism_part			
 GSE185192	cell line	characteristic	cell_line			
@@ -59,12 +59,12 @@ GSE185192	cell type	characteristic	cell_type
 GSE185192	chip antibody	characteristic	chip_antibody			constant 'none'
 GSE185192	strain	characteristic	disease			values over name (decision 6a.4)
 GSE185192	treatment	characteristic	treatment			
-GSE222365	batch	characteristic	batch		REVIEW	was NO_MATCH
+GSE222365	batch	characteristic	batch			was NO_MATCH; owner accepted 2026-10-05
 GSE222365	cell line	characteristic	cell_line			
-GSE222365	cell type	characteristic	specimen_source		REVIEW	was cell type; an organoid is not a cell type
-GSE222365	genotype	characteristic	karyotype		REVIEW	was ploidy
+GSE222365	cell type	characteristic	specimen_source			was cell type; an organoid is not a cell type; owner accepted 2026-10-05
+GSE222365	genotype	characteristic	karyotype			was ploidy; owner accepted 2026-10-05
 GSE222365	sample type	characteristic	sample_pooling			
-GSE222365	study	characteristic	cohort		REVIEW	was NO_MATCH; expanded / pilot
+GSE222365	study	characteristic	cohort			was NO_MATCH; expanded / pilot; owner accepted 2026-10-05
 GSE4119	title#diagnosis	title	disease			
 GSE4119	title#down syndrome status	title	down_syndrome_status			was disease
 GSE4119	title#patient id	title	subject_id			
@@ -80,6 +80,6 @@ GSE61804	flt3-itd	characteristic	flt3_itd			was NO_MATCH (decision 8.1)
 GSE61804	gender	characteristic	sex			
 GSE61804	tissue	characteristic	organism_part			
 GSE79842	age	characteristic	age	UO:0000036		unit in values ('1 Year old', '2 Day old')
-GSE79842	batch	characteristic	batch		REVIEW	was NO_MATCH
-GSE79842	condition	characteristic	karyotype		REVIEW	was ploidy
+GSE79842	batch	characteristic	batch			was NO_MATCH; owner accepted 2026-10-05
+GSE79842	condition	characteristic	karyotype			was ploidy; owner accepted 2026-10-05
 GSE79842	gender	characteristic	sex			
