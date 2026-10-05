@@ -5,6 +5,7 @@
     colharmonize ontology check --ontology DIR CURIE [--label LABEL]
     colharmonize ingest  --project DIR SOURCE...
     colharmonize columns --project DIR [--out TSV]
+    colharmonize eval    --gold-columns TSV --gold-variables TSV --predictions TSV [--report MD] [--json JSON]
 
 Later stages (task files, ingesting subagent answers, reconciliation, review,
 publish) are added as they are built.
@@ -59,6 +60,20 @@ def cmd_columns(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_eval(args: argparse.Namespace) -> int:
+    from dataclasses import asdict
+    from colharmonize.evaluate import load_gold, load_predictions, report, score
+    s = score(load_gold(args.gold_columns, args.gold_variables), load_predictions(args.predictions))
+    text = report(s, args.title or f"Evaluation of {Path(args.predictions).name}")
+    if args.report:
+        Path(args.report).write_text(text)
+    else:
+        print(text)
+    if args.json:
+        Path(args.json).write_text(json.dumps(asdict(s), indent=1, default=str))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="colharmonize", description=__doc__.splitlines()[0])
     sub = p.add_subparsers(dest="command", required=True)
@@ -92,6 +107,14 @@ def build_parser() -> argparse.ArgumentParser:
     col.add_argument("--project", required=True)
     col.add_argument("--out")
     col.set_defaults(func=cmd_columns)
+    ev = sub.add_parser("eval", help="score predictions against a gold standard")
+    ev.add_argument("--gold-columns", required=True)
+    ev.add_argument("--gold-variables", required=True)
+    ev.add_argument("--predictions", required=True)
+    ev.add_argument("--title")
+    ev.add_argument("--report", help="write the markdown report here instead of stdout")
+    ev.add_argument("--json", help="also write the full score as JSON")
+    ev.set_defaults(func=cmd_eval)
     return p
 
 

@@ -1,0 +1,85 @@
+accession	raw_key	variable_id	predicate	primary_curie	qualifiers
+GSE11877	age in days at diagnosis	EFO:0004918	exact	EFO:0004918	
+GSE11877	amplification set	nomatch:GSE11877:amplification set	none		
+GSE11877	BCR-ABL, t(9;22)	nomatch:GSE11877:BCR-ABL, t(9;22)	none		
+GSE11877	blast count, % of sample, -1=unavailable	EFO:0009232	exact	EFO:0009232	
+GSE11877	CNS status	EFO:0007863	exact	EFO:0007863	
+GSE11877	congenital abnormality	MONDO:0000001	exact	MONDO:0000001	
+GSE11877	E2A-PBX, t(1;19)	nomatch:GSE11877:E2A-PBX, t(1;19)	none		
+GSE11877	gender	PATO:0000047	exact	PATO:0000047	
+GSE11877	hybridization set	nomatch:GSE11877:hybridization set	none		
+GSE11877	MLL	nomatch:GSE11877:MLL	none		
+GSE11877	race	EFO:0001799	exact	EFO:0001799	
+GSE11877	sample viability, % of sample, -1=unavailable	PATO:0000169	exact	PATO:0000169	
+GSE11877	TEL-AML,t(12;21)	nomatch:GSE11877:TEL-AML,t(12;21)	none		
+GSE11877	testicular involvement	nomatch:GSE11877:testicular involvement	none		
+GSE11877	tissue type	EFO:0000635	exact	EFO:0000635	
+GSE11877	training or test set	nomatch:GSE11877:training or test set	none		
+GSE11877	trisomy 4 and 10	nomatch:GSE11877:trisomy 4 and 10	none		
+GSE11877	WBC, 1000/microliter	nomatch:GSE11877:WBC, 1000/microliter	none		
+GSE124252	age at dissection (day)	EFO:0000246	exact	EFO:0000246	
+GSE124252	days in vitro	EFO:0000433	exact	EFO:0000433	
+GSE124252	karyotype	EFO:0004426	exact	EFO:0004426	
+GSE124252	tissue	EFO:0000635	exact	EFO:0000635	
+GSE124252	tissue origin	OBI:0100051	exact	OBI:0100051	
+GSE128621	age	EFO:0000246	exact	EFO:0000246	
+GSE128621	cell type	EFO:0000324	exact	EFO:0000324	
+GSE128621	karyotype	EFO:0004426	exact	EFO:0004426	
+GSE128621	library type	EFO:0004184	exact	EFO:0004184	
+GSE128621	Sex	PATO:0000047	exact	PATO:0000047	
+GSE1397	title#cell type	EFO:0000324	exact	EFO:0000324	
+GSE1397	title#comparison group	OBI:0600015	exact	OBI:0600015	
+GSE1397	source_name#gestational age	EFO:0005112	exact	EFO:0005112	
+GSE1397	title#karyotype	EFO:0004426	exact	EFO:0004426	
+GSE1397	title#replicate	EFO:0000683	exact	EFO:0000683	
+GSE1397	source_name#source material	EFO:0000635	exact	EFO:0000635	
+GSE1397	title#tissue	EFO:0000635	exact	EFO:0000635	
+GSE16176	condition	MONDO:0000001	exact	MONDO:0000001	
+GSE16176	developmental stage	EFO:0000399	exact	EFO:0000399	
+GSE16176	gestational age (weeks, days)	EFO:0005112	exact	EFO:0005112	
+GSE16176	sex	PATO:0000047	exact	PATO:0000047	
+GSE16176	tissue	EFO:0000635	exact	EFO:0000635	
+GSE17459	cell type	EFO:0000324	exact	EFO:0000324	
+GSE17459	condition	MONDO:0000001	exact	MONDO:0000001	
+GSE17459	crlf2 expression levels (gene expression arrays - log2)	EFO:0009865	exact	EFO:0009865	
+GSE17459	crlf2 expression levels (qrt-pcr - relative to si-ds-all-12)	EFO:0009865	exact	EFO:0009865	
+GSE17459	crlf2 expression levels stratification	EFO:0009865	exact	EFO:0009865	
+GSE17459	crlf2 fish	EFO:0000336	exact	EFO:0000336	
+GSE17459	crlf2 mutation	EFO:0000513	exact	EFO:0000513	
+GSE17459	gene expression dataset	EFO:0004445	exact	EFO:0004445	
+GSE17459	genetic aberration	EFO:0000336	exact	EFO:0000336	
+GSE17459	jak2 r683 mutation	EFO:0004972	exact	EFO:0004972	
+GSE17459	snp dataset	nomatch:GSE17459:snp dataset	none		
+GSE183701	age at draw	EFO:0000246	exact	EFO:0000246	
+GSE183701	registry	MONDO:0000001	exact	MONDO:0000001	
+GSE183701	Sex	PATO:0000047	exact	PATO:0000047	
+GSE183701	tissue	EFO:0000635	exact	EFO:0000635	
+GSE185192	cell line	nomatch:GSE185192:cell line	none		
+GSE185192	cell type	EFO:0000324	exact	EFO:0000324	
+GSE185192	chip antibody	EFO:0000264	exact	EFO:0000264	
+GSE185192	strain	MONDO:0000001	exact	MONDO:0000001	
+GSE185192	treatment	EFO:0000727	exact	EFO:0000727	
+GSE222365	batch	nomatch:GSE222365:batch	none		
+GSE222365	cell line	nomatch:GSE222365:cell line	none		
+GSE222365	cell type	EFO:0000324	exact	EFO:0000324	
+GSE222365	genotype	PATO:0001374	exact	PATO:0001374	
+GSE222365	sample type	OBI:0100051	exact	OBI:0100051	
+GSE222365	study	nomatch:GSE222365:study	none		
+GSE4119	title#diagnosis	MONDO:0000001	exact	MONDO:0000001	
+GSE4119	title#down syndrome status	MONDO:0000001	exact	MONDO:0000001	
+GSE4119	title#patient id	nomatch:GSE4119:title#patient id	none		
+GSE4119	source_name#tissue	EFO:0000635	exact	EFO:0000635	
+GSE5390	Age (years)	EFO:0000246	exact	EFO:0000246	
+GSE5390	Braak stage	nomatch:GSE5390:Braak stage	none		
+GSE5390	Cause of death	nomatch:GSE5390:Cause of death	none		
+GSE5390	Disease_status	MONDO:0000001	exact	MONDO:0000001	
+GSE5390	Gender	PATO:0000047	exact	PATO:0000047	
+GSE5390	Post mortem interval (hours)	EFO:0000433	exact	EFO:0000433	
+GSE61804	condition	MONDO:0000001	exact	MONDO:0000001	
+GSE61804	flt3-itd	nomatch:GSE61804:flt3-itd	none		
+GSE61804	gender	PATO:0000047	exact	PATO:0000047	
+GSE61804	tissue	EFO:0000635	exact	EFO:0000635	
+GSE79842	age	EFO:0000246	exact	EFO:0000246	
+GSE79842	batch	EFO:0005067	exact	EFO:0005067	
+GSE79842	condition	PATO:0001374	exact	PATO:0001374	
+GSE79842	gender	PATO:0000047	exact	PATO:0000047	

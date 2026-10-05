@@ -1,0 +1,73 @@
+accession	raw_key	variable_id
+GSE128621	age	geomend:cohort-variable:f0bc9cad22f2cae496082b81
+GSE5390	Age (years)	geomend:cohort-variable:f0bc9cad22f2cae496082b81
+GSE79842	age	geomend:cohort-variable:f0bc9cad22f2cae496082b81
+GSE124252	age at dissection (day)	geomend:cohort-variable:16cbcf0d3c8d955e73610cbc
+GSE183701	age at draw	geomend:cohort-variable:cfcace735067ad2eb53520b7
+GSE11877	age in days at diagnosis	geomend:cohort-variable:fb1ef969aa0a6be6c573ab38
+GSE11877	amplification set	geomend:cohort-variable:20619dff9d19670c55ba3001
+GSE222365	batch	geomend:cohort-variable:c1209c8942a1090374c0cf91
+GSE79842	batch	geomend:cohort-variable:c1209c8942a1090374c0cf91
+GSE11877	BCR-ABL, t(9;22)	geomend:cohort-variable:afc5eacf12c34a61bbffee5b
+GSE11877	blast count, % of sample, -1=unavailable	geomend:cohort-variable:2191d0ed89494ea08f3b27dc
+GSE5390	Braak stage	geomend:cohort-variable:f11ca916a267ca19120c00d7
+GSE5390	Cause of death	geomend:cohort-variable:97c59db66ed9e956acfbeb75
+GSE185192	cell line	geomend:cohort-variable:57a55f89f6412ee5077558db
+GSE222365	cell line	geomend:cohort-variable:57a55f89f6412ee5077558db
+GSE128621	cell type	geomend:cohort-variable:3e41b1287152d1fdab42d486
+GSE17459	cell type	geomend:cohort-variable:3e41b1287152d1fdab42d486
+GSE185192	cell type	geomend:cohort-variable:3e41b1287152d1fdab42d486
+GSE222365	cell type	geomend:cohort-variable:3e41b1287152d1fdab42d486
+GSE185192	chip antibody	geomend:cohort-variable:77633331b06cf6ece7fea7a9
+GSE11877	CNS status	geomend:cohort-variable:6d7291387119026f242e7299
+GSE16176	condition	geomend:cohort-variable:8b14c23ad2f649bb049623ec
+GSE17459	condition	geomend:cohort-variable:3cc9a3095508210834960d73
+GSE61804	condition	geomend:cohort-variable:62cc1f32a56409d7f181771a
+GSE79842	condition	geomend:cohort-variable:98594bf58c7f7132b1091ccc
+GSE11877	congenital abnormality	geomend:cohort-variable:a2290d6016c7c0412729c787
+GSE17459	crlf2 expression levels (gene expression arrays - log2)	geomend:cohort-variable:a137cfcbc518944fb501d446
+GSE17459	crlf2 expression levels (qrt-pcr - relative to si-ds-all-12)	geomend:cohort-variable:35b034eb6294adc068410bba
+GSE17459	crlf2 expression levels stratification	geomend:cohort-variable:e2ece9d0d164870f65b02096
+GSE17459	crlf2 fish	geomend:cohort-variable:5c8e7ed32eaf0d0e370bc761
+GSE17459	crlf2 mutation	geomend:cohort-variable:12108f519a432b79de469eca
+GSE124252	days in vitro	geomend:cohort-variable:3086516458509a4b37592b94
+GSE16176	developmental stage	geomend:cohort-variable:218d2a1705c331bc606b5079
+GSE5390	Disease_status	geomend:cohort-variable:9cdb5f3a827c9e1fbe447caa
+GSE11877	E2A-PBX, t(1;19)	geomend:cohort-variable:12365f4a575171285c351277
+GSE61804	flt3-itd	geomend:cohort-variable:ab598945a0f9b5d9438e6363
+GSE17459	gene expression dataset	geomend:cohort-variable:6dcf72881f0f9485bc12b81c
+GSE17459	genetic aberration	geomend:cohort-variable:600949c7dfa35e8af0ecdd9b
+GSE222365	genotype	geomend:cohort-variable:acb7e10f3eb7a8a72fb49ecd
+GSE11877	hybridization set	geomend:cohort-variable:88d93bf0b172dc0943aa9ee6
+GSE17459	jak2 r683 mutation	geomend:cohort-variable:1091eb8076730ff5bbb80cad
+GSE124252	karyotype	geomend:cohort-variable:4b4a72e2ba3302dc0ca4c2ba
+GSE128621	karyotype	geomend:cohort-variable:4b4a72e2ba3302dc0ca4c2ba
+GSE128621	library type	geomend:cohort-variable:b604e366e342f8b86fa9550b
+GSE11877	MLL	geomend:cohort-variable:3e211315db1744a4a613188b
+GSE5390	Post mortem interval (hours)	geomend:cohort-variable:12d36bcac8ab8a8df914ca54
+GSE11877	race	geomend:cohort-variable:d47e1e72f1e73653e56e35a7
+GSE183701	registry	geomend:cohort-variable:5592023d8d80c7caa9ac9d18
+GSE222365	sample type	geomend:cohort-variable:56ec45d6ee405273136bec33
+GSE11877	sample viability, % of sample, -1=unavailable	geomend:cohort-variable:45d3f5cd8756232888136c44
+GSE11877	gender	geomend:cohort-variable:e0666f0f73e5c279de0fbcec
+GSE128621	Sex	geomend:cohort-variable:e0666f0f73e5c279de0fbcec
+GSE16176	sex	geomend:cohort-variable:e0666f0f73e5c279de0fbcec
+GSE183701	Sex	geomend:cohort-variable:e0666f0f73e5c279de0fbcec
+GSE5390	Gender	geomend:cohort-variable:e0666f0f73e5c279de0fbcec
+GSE61804	gender	geomend:cohort-variable:e0666f0f73e5c279de0fbcec
+GSE79842	gender	geomend:cohort-variable:e0666f0f73e5c279de0fbcec
+GSE17459	snp dataset	geomend:cohort-variable:5a81cdbea3f3fd281b9c7e7e
+GSE185192	strain	geomend:cohort-variable:4e5a05ea9d145762bfaa09a1
+GSE222365	study	geomend:cohort-variable:7c19d47f764672647cda7d2d
+GSE11877	TEL-AML,t(12;21)	geomend:cohort-variable:5b479598783b04346e2edbd8
+GSE11877	testicular involvement	geomend:cohort-variable:aafd0d3d5fde55bb172bbb49
+GSE124252	tissue	geomend:cohort-variable:36f43c599c3a6bdf82e98b24
+GSE16176	tissue	geomend:cohort-variable:36f43c599c3a6bdf82e98b24
+GSE183701	tissue	geomend:cohort-variable:36f43c599c3a6bdf82e98b24
+GSE61804	tissue	geomend:cohort-variable:36f43c599c3a6bdf82e98b24
+GSE124252	tissue origin	geomend:cohort-variable:8553caa24bd00799dc1ec4da
+GSE11877	tissue type	geomend:cohort-variable:68c973d9efb5ca01955f6a90
+GSE11877	training or test set	geomend:cohort-variable:c9f695ca771639f6bd5cd6e4
+GSE185192	treatment	geomend:cohort-variable:199c25d09c43db66f461f79d
+GSE11877	trisomy 4 and 10	geomend:cohort-variable:7020600a709ba4fa2cbfccc4
+GSE11877	WBC, 1000/microliter	geomend:cohort-variable:0393a5a669c3d4bd6a66fff5
