@@ -128,3 +128,67 @@ doesn't compile, now fails `tasks collect`, so the skill re-tasks the batch.
 Previously it was dropped silently at apply time. Found in the pilot: GSE124252
 `tissue origin` ("H9-derived retinal organoids") holds a cell line and a
 specimen type, and the agent extracted one without declaring the split.
+
+### 4.4: repair-3 stops over-splitting and reads unparsed characteristics
+On the 13 tuning series, repair-2 split GSE61804 and GSE17459 `condition`
+("AML with t(8;21)", "Down's syndrome with ALL") into a diagnosis and a
+karyotype. The owner-approved gold treats those as single diagnoses. repair-3
+adds a test: split only when the parts vary independently across samples, and
+a named category that mentions several features is one variable (the example,
+"EGFR-mutant adenocarcinoma", is from neither corpus). It also tells the agent
+that GEOmend's "unresolved characteristic" holds raw `key: value` text to
+recover. GSE16176's gestational age, which GEOmend's parser could not split,
+is now recovered for 14/14 samples.
+
+One regression: repair-3 captured GSE1397's replicate as "Euploid sample 1"
+(karyotype and number together), where repair-2 captured "1". Repair runs once
+per workspace, so this run-to-run variation is uncorrected. A second repair
+run with agreement checking would catch it; noted, not built.
+
+## Candidates
+
+### 5.1: Values propose their own category
+Each column's most common values are matched to ontology terms, and the
+property-space ancestors those terms share become candidates
+(`value_category`). Values are instances of the column's category, so
+"Control / Down syndrome" proposes `disease` for a column named `strain`.
+That was iteration 2's trap (its 6a.4), where every name-based source agreed on
+the wrong `strain`. The same mechanism proposes organism part for tissue
+values, biological sex for male/female, and cultured cell for K562/NALM6.
+
+### 5.2: Entity subtrees are enforced; `disposition` added as a category root
+The property space's design rule is that entity roots' subtrees never enter
+it, but iteration 2's builder relied on roots not overlapping. Enforcing the
+rule removes 129 terms iteration 2 had admitted through side routes: specific
+developmental stages such as "Theiler stage 12", and specific diseases. With
+the rule enforced, a `disposition` root (BFO) admits 70 terms:
+- staging and grading categories (`disease staging`, `tumor stage`,
+  `T/N/M stage`, `Clark level`)
+- `remission`, `risk factor`, `toxicity`
+- about 30 injury and fracture terms, accepted as the smaller cost
+
+Prompted by tuning misses (`Braak stage`, `CNS status` -> disease staging),
+not by the sealed corpus.
+
+### 5.3: Retrieval recall on the tuning gold
+| | pool | displayed |
+|---|---|---|
+| primary term, before 5.2 | 84.8% | 78.5% |
+| primary term, after 5.2 | 88.6% | 79.7% |
+| primary term, display 40 category + 16 entity (was 30 + 12) | 88.6% | 84.8% |
+| grounded qualifiers | 81.8% | 81.8% |
+
+Of the 9 remaining primary misses:
+- 2 have no column to retrieve for (GSE1397 replicate and source material, see 4.4).
+- 6 need domain knowledge no retrieval provides: `E2A-PBX`/`MLL` -> translocation,
+  `flt3-itd` -> duplication, `amplification set`/`hybridization set` -> block,
+  `gene expression dataset` -> cohort. The annotator can still propose these by name.
+- 1 is GSE222365 `cell type` = "iPSC-derived cerebral organoid" -> specimen.
+
+Iteration 2 reached 76% displayed recall on its own gold.
+
+### 5.4: Annotation prompt examples come from neither corpus
+The obvious examples for the new predicates (`shock: Yes/No`, the Mayo score,
+PAM50, HbA1c) are all in the sealed corpus, and `strain` and CRLF2 are in the
+tuning gold. annotate-1 uses outside examples (NYHA class, hypertension yes/no,
+TP53 expression), so neither measurement is flattered by its own prompt.

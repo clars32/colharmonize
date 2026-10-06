@@ -52,8 +52,33 @@ Show the user the coverage table and any PROBLEM lines. A rule that matched
 fewer samples than expected is not an error to hide: say which samples it
 missed.
 
+## 3. Candidates
+
+    colharmonize candidates --workspace <workspace> --ontology <pinned ontology dir>
+
+Use the pinned ontology directory the user names; ask if none is given. Add
+`--remote` only to let ZOOMA and OLS4 be queried for names not already cached.
+
+## 4. Annotate (two independent runs)
+
+    colharmonize tasks write annotate --workspace <workspace> --run 1 --batch-size 12
+    colharmonize tasks write annotate --workspace <workspace> --run 2 --batch-size 12
+    colharmonize tasks status annotate --workspace <workspace> --run 1
+    colharmonize tasks status annotate --workspace <workspace> --run 2
+
+Launch one `colharmonize:annotator` subagent per pending batch path, each
+with a message containing only that path. Both runs can go in one message.
+A subagent must answer one batch of one run; never give one subagent batches
+from both runs, because the runs are only useful if they are independent.
+Collect each run as in step 2 (re-task failing batches at most twice), then:
+
+    colharmonize annotate apply --workspace <workspace> --runs 1 2
+
+Report how many columns were annotated, the share where the two runs agree,
+and the number of variables before reconciliation.
+
 ## Later stages
 
-Annotation (two independent runs), reconciliation, scoring, review and publish
-will be added here as the colharmonize package gains them. Until then, stop
-after repair and summarise what was recovered.
+Reconciliation, scoring, review and publish will be added here as the
+colharmonize package gains them. Until then, stop after annotation and
+summarise.

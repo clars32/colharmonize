@@ -87,9 +87,9 @@ def write_batches(
             "run": run, "batch": b, "instructions": instructions, "items": chunk,
             "answer_schema": schema, "answer_file": f"{name}.answer.json",
         }
-        body["content_sha256"] = hashlib.sha256(_canonical(body).encode()).hexdigest()
+        body["content_sha256"] = hashlib.sha256(_canonical(body).encode()).hexdigest()  # NaN raises below
         path = directory / f"{name}.json"
-        path.write_text(json.dumps(body, indent=1, ensure_ascii=False))
+        path.write_text(json.dumps(body, indent=1, ensure_ascii=False, allow_nan=False))
         paths.append(path)
         manifest.append({"batch_file": path.name, "answer_file": body["answer_file"],
                          "items": [it["item_id"] for it in chunk]})

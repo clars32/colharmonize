@@ -55,3 +55,27 @@ def build(ws: Workspace) -> dict[str, int]:
     studies["n_samples"] = studies.study_id.map(n_study).fillna(0).astype(int)
     studies.to_parquet(ws.studies, index=False)
     return {"studies": len(studies), "samples": len(samples), "columns": len(columns)}
+
+
+def annotation_columns(ws: Workspace) -> pd.DataFrame:
+    """Every column that gets an annotation: characteristics, plus columns recovered
+    by repair, minus characteristics that repair split (their parts replace them)."""
+    cols = pd.read_parquet(ws.columns).assign(origin="characteristic")
+    if not ws.derived.exists():
+        return cols
+    derived = pd.read_parquet(ws.derived)
+    split_parents = set(zip(derived[derived.source == "characteristic"].study_id,
+                            derived[derived.source == "characteristic"].source_column))
+    cols = cols[[(s, c) not in split_parents for s, c in zip(cols.study_id, cols.column)]]
+    n_study = pd.read_parquet(ws.studies).set_index("study_id").n_samples.to_dict()
+    rows = []
+    for (study, column), grp in derived.groupby(["study_id", "column"], sort=True):
+        vc = value_counts(grp.value)
+        rows.append({
+            "study_id": study, "column": column, "source": grp.source.iloc[0],
+            "n_samples": grp.sample_id.nunique(), "n_study_samples": n_study.get(study, 0),
+            "n_distinct": len(vc), "values": json.dumps(vc[:MAX_VALUES], ensure_ascii=False),
+            "shape_hint": shape_hint(v for v, _ in vc), "unit": None,
+            "origin": "split" if grp.source.iloc[0] == "characteristic" else grp.source.iloc[0],
+        })
+    return pd.concat([cols, pd.DataFrame(rows)], ignore_index=True)

@@ -9,6 +9,8 @@
     colharmonize tasks status  STAGE --workspace DIR --run N   pending batch files, one absolute path per line
     colharmonize tasks collect STAGE --workspace DIR --run N   validate answers
     colharmonize repair apply --workspace DIR --run N          apply validated repair rules
+    colharmonize candidates --workspace DIR --ontology DIR [--remote]
+    colharmonize annotate apply --workspace DIR --runs 1 2      resolve, combine runs, write annotations
     colharmonize eval    --gold-columns TSV --gold-variables TSV --predictions TSV [--report MD] [--json JSON]
 
 Later stages (task files, ingesting subagent answers, reconciliation, review,
@@ -66,7 +68,7 @@ def cmd_columns(args: argparse.Namespace) -> int:
     return 0
 
 
-STAGES = {"repair": "colharmonize.repair"}
+STAGES = {"repair": "colharmonize.repair", "annotate": "colharmonize.annotate"}
 
 
 def _stage(name: str):
@@ -82,7 +84,10 @@ def cmd_tasks(args: argparse.Namespace) -> int:
     ws, mod = Workspace(args.workspace), _stage(args.stage)
     directory = ws.tasks(args.stage, args.run)
     if args.action == "write":
-        items = mod.build_items(ws, args.studies or None)
+        if hasattr(mod, "prepare"):
+            items = mod.prepare(ws, args.studies or None, args.run)
+        else:
+            items = mod.build_items(ws, args.studies or None)
         paths = tasks.write_batches(
             directory, stage=mod.STAGE, run=args.run, prompt_version=mod.PROMPT_VERSION,
             instructions=mod.INSTRUCTIONS, items=items, answer_model=mod.ANSWER_MODEL,
@@ -101,7 +106,7 @@ def cmd_tasks(args: argparse.Namespace) -> int:
     # Stage-specific checks (e.g. a repair rule that does not compile) run here,
     # so the skill can re-task the batch instead of discovering it at apply time.
     if hasattr(mod, "validate_answers"):
-        got.problems += mod.validate_answers(ws, got.answers)
+        got.problems += mod.validate_answers(ws, got.answers, run=args.run)
     print(json.dumps({"answers": len(got.answers), "pending": got.pending, "problems": got.problems}, indent=1))
     return 0 if got.complete else 1
 
@@ -120,6 +125,45 @@ def cmd_repair_apply(args: argparse.Namespace) -> int:
     print(report[["study_id", "column", "expected", "matched", "eligible"]].to_string(index=False) if len(report) else "no rules")
     for p in problems:
         print("PROBLEM", p)
+    return 0
+
+
+def cmd_candidates(args: argparse.Namespace) -> int:
+    from colharmonize import candidates as cd, profile, property_space
+    from colharmonize.ontology import Ontology
+    from colharmonize.workspace import Workspace
+    ws = Workspace(args.workspace)
+    onto = Ontology.from_dir(args.ontology)
+    cache = Path(args.cache)
+    retriever = cd.Retriever(onto, property_space.build(onto), cache / "embeddings",
+                             cd.RemoteCache(cache / "remote.json", enabled=args.remote))
+    cols = profile.annotation_columns(ws)
+    c = cd.generate(retriever, cols)
+    c.to_parquet(ws.candidates, index=False)
+    ws.remember(ontology=str(Path(args.ontology).resolve()))
+    print(f"{len(c)} candidates for {len(cols)} columns; displayed {int(c.displayed.sum())}")
+    print(c.groupby("pool").size().to_string())
+    return 0
+
+
+def cmd_annotate_apply(args: argparse.Namespace) -> int:
+    from colharmonize import annotate, tasks
+    from colharmonize.workspace import Workspace
+    ws = Workspace(args.workspace)
+    resolver = annotate.make_resolver(ws)
+    runs = []
+    for run in args.runs:
+        got = tasks.collect(ws.tasks(annotate.STAGE, run), annotate.AnnotateAnswer)
+        got.problems += annotate.validate_answers(ws, got.answers, run=run, resolver=resolver)
+        if not got.complete:
+            print(json.dumps({"run": run, "pending": got.pending, "problems": got.problems}, indent=1))
+            return 1
+        runs.append(annotate.resolve_run(ws, got.answers, run, resolver))
+    combined = annotate.combine(runs[0], runs[1] if len(runs) > 1 else runs[0])
+    combined.to_parquet(ws.root / "annotations.parquet", index=False)
+    annotate.predictions(combined).to_csv(ws.root / "predictions.tsv", sep="\t", index=False)
+    print(f"{len(combined)} columns; primary+predicate agree across runs: {combined.agree_primary.mean():.1%}; "
+          f"{combined.variable_id.nunique()} variables before reconciliation")
     return 0
 
 
@@ -186,6 +230,19 @@ def build_parser() -> argparse.ArgumentParser:
     rp.add_argument("--workspace", required=True)
     rp.add_argument("--run", type=int, default=1)
     rp.set_defaults(func=cmd_repair_apply)
+
+    cd = sub.add_parser("candidates", help="retrieve candidate terms for every column")
+    cd.add_argument("--workspace", required=True)
+    cd.add_argument("--ontology", required=True, help="pinned ontology directory")
+    cd.add_argument("--cache", default="work/cache", help="embedding and remote-service cache directory")
+    cd.add_argument("--remote", action="store_true", help="query ZOOMA and OLS4 for names not already cached")
+    cd.set_defaults(func=cmd_candidates)
+
+    an = sub.add_parser("annotate", help="resolve and combine annotation runs")
+    an.add_argument("action", choices=["apply"])
+    an.add_argument("--workspace", required=True)
+    an.add_argument("--runs", type=int, nargs="+", default=[1, 2])
+    an.set_defaults(func=cmd_annotate_apply)
 
     ev = sub.add_parser("eval", help="score predictions against a gold standard")
     ev.add_argument("--gold-columns", required=True)

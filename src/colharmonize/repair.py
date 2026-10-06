@@ -26,9 +26,11 @@ from colharmonize.normalise import normalise_key
 from colharmonize.workspace import Workspace
 
 STAGE = "repair"
-PROMPT_VERSION = "repair-2"
+PROMPT_VERSION = "repair-3"
 MAX_TITLES = 200
 MAX_CHAR_VALUES = 12
+# GEOmend's name for characteristics it could not split into key and value.
+UNRESOLVED = "unresolved characteristic"
 
 INSTRUCTIONS = """\
 You are preparing sample metadata from public gene-expression studies so their
@@ -58,8 +60,15 @@ characteristic columns do not already provide:
    in one value: "UC - Active disease" is a diagnosis and an activity state;
    "D2_ZT_15:30" is a study day and a clock time; "Glucose (AC): 158 mg/dL;
    HbA1C: 10%" is two measurements. Propose one rule per variable on that column
-   and list the column in `split_columns`. A value that is one variable with a
-   unit, a range or a qualifier is not combined.
+   and list the column in `split_columns`. Split only when the parts vary
+   independently across the study's samples. A value that is one variable with
+   a unit, a range or a qualifier is not combined, and neither is a named
+   category that happens to mention several features: a tumour subtype named
+   after its mutation ("EGFR-mutant adenocarcinoma") is one diagnosis.
+3. Unparsed characteristics. A characteristic column named "unresolved
+   characteristic" holds raw "key: value" text the parser could not split.
+   Recover each distinct key as its own rule on that column (list the column
+   in `split_columns`), naming the rule after the key.
 
 Each rule is a Python regular expression applied with re.search to one text per
 sample. When the same value is spelled several ways across samples ("Female", "F"),
@@ -170,7 +179,7 @@ def check(answer: RepairAnswer, characteristic_names: set[str]) -> list[str]:
     for c in answer.split_columns:
         if c not in characteristic_names:
             problems.append(f"{answer.item_id}: split column {c!r} does not exist")
-        elif sum(r.column == c for r in answer.rules) < 2:
+        elif c != UNRESOLVED and sum(r.column == c for r in answer.rules) < 2:
             problems.append(f"{answer.item_id}: split column {c!r} needs at least two rules")
     return problems
 
@@ -223,7 +232,7 @@ def apply(ws: Workspace, answers: list[RepairAnswer], values: pd.DataFrame) -> t
     return pd.DataFrame(derived, columns=cols), pd.DataFrame(report), problems
 
 
-def validate_answers(ws: Workspace, answers: list[RepairAnswer]) -> list[str]:
+def validate_answers(ws: Workspace, answers: list[RepairAnswer], **_) -> list[str]:
     """Rule problems found at collection time, so the batch can be re-tasked before apply."""
     cols = pd.read_parquet(ws.columns)
     names = cols.groupby("study_id").column.agg(set).to_dict()
