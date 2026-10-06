@@ -11,6 +11,7 @@
     colharmonize repair apply --workspace DIR --run N          apply validated repair rules
     colharmonize candidates --workspace DIR --ontology DIR [--remote]
     colharmonize annotate apply --workspace DIR --runs 1 2      resolve, combine runs, write annotations
+    colharmonize reconcile apply --workspace DIR --runs 1 2     partition groups, write final variables
     colharmonize eval    --gold-columns TSV --gold-variables TSV --predictions TSV [--report MD] [--json JSON]
 
 Later stages (task files, ingesting subagent answers, reconciliation, review,
@@ -68,7 +69,7 @@ def cmd_columns(args: argparse.Namespace) -> int:
     return 0
 
 
-STAGES = {"repair": "colharmonize.repair", "annotate": "colharmonize.annotate"}
+STAGES = {"repair": "colharmonize.repair", "annotate": "colharmonize.annotate", "reconcile": "colharmonize.reconcile"}
 
 
 def _stage(name: str):
@@ -161,9 +162,35 @@ def cmd_annotate_apply(args: argparse.Namespace) -> int:
         runs.append(annotate.resolve_run(ws, got.answers, run, resolver))
     combined = annotate.combine(runs[0], runs[1] if len(runs) > 1 else runs[0])
     combined.to_parquet(ws.root / "annotations.parquet", index=False)
-    annotate.predictions(combined).to_csv(ws.root / "predictions.tsv", sep="\t", index=False)
+    annotate.predictions(combined).to_csv(ws.root / "predictions_annotate.tsv", sep="\t", index=False)
     print(f"{len(combined)} columns; primary+predicate agree across runs: {combined.agree_primary.mean():.1%}; "
           f"{combined.variable_id.nunique()} variables before reconciliation")
+    return 0
+
+
+def cmd_reconcile_apply(args: argparse.Namespace) -> int:
+    from colharmonize import annotate, reconcile, tasks
+    from colharmonize.workspace import Workspace
+    ws = Workspace(args.workspace)
+    resolver = annotate.make_resolver(ws)
+    runs = []
+    for run in args.runs:
+        got = tasks.collect(ws.tasks(reconcile.STAGE, run), reconcile.ReconcileAnswer)
+        got.problems += reconcile.validate_answers(ws, got.answers, run=run, resolver=resolver)
+        if not got.complete:
+            print(json.dumps({"run": run, "pending": got.pending, "problems": got.problems}, indent=1))
+            return 1
+        runs.append(reconcile.resolve_run(ws, got.answers, run, resolver))
+    ann = pd.read_parquet(ws.root / "annotations.parquet")
+    final = reconcile.finalize(ann, runs[0], runs[1] if len(runs) > 1 else None)
+    final.to_parquet(ws.root / "variables.parquet", index=False)
+    pred = pd.DataFrame({"accession": final.study_id, "raw_key": final.column, "variable_id": final.variable_id,
+                         "predicate": final.predicate, "primary_curie": final.primary_curie,
+                         "qualifiers": final.qualifiers.map(lambda q: "; ".join(f"{a}={b}" for a, b in json.loads(q)))})
+    pred.to_csv(ws.root / "predictions_reconcile.tsv", sep="\t", index=False)
+    grouped = final[final.reconciled]
+    print(f"{len(final)} columns -> {final.variable_id.nunique()} variables; {len(grouped)} columns reconciled; "
+          f"partition agreement across runs {grouped.partition_agreement.mean():.1%}")
     return 0
 
 
@@ -243,6 +270,12 @@ def build_parser() -> argparse.ArgumentParser:
     an.add_argument("--workspace", required=True)
     an.add_argument("--runs", type=int, nargs="+", default=[1, 2])
     an.set_defaults(func=cmd_annotate_apply)
+
+    rcp = sub.add_parser("reconcile", help="partition candidate groups into variables")
+    rcp.add_argument("action", choices=["apply"])
+    rcp.add_argument("--workspace", required=True)
+    rcp.add_argument("--runs", type=int, nargs="+", default=[1, 2])
+    rcp.set_defaults(func=cmd_reconcile_apply)
 
     ev = sub.add_parser("eval", help="score predictions against a gold standard")
     ev.add_argument("--gold-columns", required=True)

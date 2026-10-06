@@ -79,3 +79,36 @@ def annotation_columns(ws: Workspace) -> pd.DataFrame:
             "origin": "split" if grp.source.iloc[0] == "characteristic" else grp.source.iloc[0],
         })
     return pd.concat([cols, pd.DataFrame(rows)], ignore_index=True)
+
+
+def sample_values(ws: Workspace) -> pd.DataFrame:
+    """Per-sample values of every annotation column: study_id, sample_id, column, value.
+
+    Characteristics come from GEOmend (first value per sample); recovered
+    columns from repair. Split parents are dropped, as in annotation_columns.
+    """
+    from colharmonize import geomend_bridge as gb
+    chars = gb.sample_values(ws.geomend)
+    chars = chars[chars.ordinal == 0].rename(columns={"name": "column"})[["study_id", "sample_id", "column", "value"]]
+    keep = set(zip(*annotation_columns(ws)[["study_id", "column"]].T.values))
+    parts = [chars[[(s, c) in keep for s, c in zip(chars.study_id, chars.column)]]]
+    if ws.derived.exists():
+        parts.append(pd.read_parquet(ws.derived)[["study_id", "sample_id", "column", "value"]])
+    return pd.concat(parts, ignore_index=True)
+
+
+def cooccurrence(values: pd.DataFrame) -> dict[tuple[str, str, str], str]:
+    """For each pair of columns in one study that share samples: 'identical' when
+    their values agree on every shared sample, else 'conflicting'. Keys are
+    (study, column_a, column_b) with a < b. Pairs on disjoint samples are absent."""
+    out = {}
+    for study, grp in values.groupby("study_id"):
+        by_col = {c: dict(zip(g.sample_id, g.value)) for c, g in grp.groupby("column")}
+        cols = sorted(by_col)
+        for i, a in enumerate(cols):
+            for b in cols[i + 1:]:
+                shared = by_col[a].keys() & by_col[b].keys()
+                if shared:
+                    same = all(str(by_col[a][s]).strip().casefold() == str(by_col[b][s]).strip().casefold() for s in shared)
+                    out[(study, a, b)] = "identical" if same else "conflicting"
+    return out

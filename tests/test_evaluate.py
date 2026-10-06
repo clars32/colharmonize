@@ -83,3 +83,13 @@ def test_unsplit_parent_is_reported():
     s = score(gold, pred)
     assert s.unsplit_parents == ["D/t"] and s.n_predicted == 0
     assert not s.annotation["scored"]
+
+
+def test_qualifiers_match_by_meaning_not_spelling():
+    from colharmonize.evaluate import qualifier_match
+    labels = {"EFO:0003856": "dissection"}
+    assert qualifier_match(("object_class", "crlf2"), ("object_class", "crlf2 gene"))
+    assert qualifier_match(("method", "fish"), ("method", "fluorescence in situ hybridization (fish)"))
+    assert qualifier_match(("event_time_anchor", "dissection"), ("event_time_anchor", "EFO:0003856"), labels)
+    assert not qualifier_match(("method", "fish"), ("object_class", "fish"))          # slot differs
+    assert not qualifier_match(("object_class", "crlf2"), ("object_class", "jak2 r683"))

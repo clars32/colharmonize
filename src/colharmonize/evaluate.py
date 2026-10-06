@@ -15,7 +15,8 @@ pairwise scores are dominated by the largest variables.
 **Annotation** asks whether each column's term is right: primary-term
 accuracy, predicate accuracy, both together, NO_MATCH precision and recall, and
 micro-averaged qualifier precision and recall (unit excluded; units are scored
-per column where predictions supply them).
+per column where predictions supply them). Qualifiers match by meaning, not
+spelling (`qualifier_match`).
 
 The universe is the gold columns. A gold column with no prediction counts as an
 unpooled singleton with no annotation, so missing output is never free.
@@ -60,6 +61,33 @@ def parse_qualifiers(text: object) -> frozenset[tuple[str, str]]:
             continue
         out.add((slot, value if _CURIE.match(value) else normalise_key(value)))
     return frozenset(out)
+
+
+_FILLER = {"gene", "genes", "locus", "the", "of", "a", "an", "in", "fusion", "status", "level", "levels"}
+
+
+def _words(text: str) -> set[str]:
+    return {w for w in re.findall(r"[a-z0-9]+", text.casefold()) if w not in _FILLER}
+
+
+def qualifier_match(gold: tuple[str, str], pred: tuple[str, str], labels: dict[str, str] | None = None) -> bool:
+    """Same slot, and the same term, or text that says the same thing.
+
+    Free-text qualifiers are written by different hands ("crlf2" vs "crlf2
+    gene", "fish" vs "fluorescence in situ hybridization (fish)"), and a
+    grounded term may face free text ("dissection" vs EFO:0003856). Values
+    match when, after mapping CURIEs to labels and dropping filler words, one
+    word set contains the other or they share at least half their words.
+    """
+    if gold[0] != pred[0]:
+        return False
+    if gold[1] == pred[1]:
+        return True
+    a = _words((labels or {}).get(gold[1], gold[1]))
+    b = _words((labels or {}).get(pred[1], pred[1]))
+    if not a or not b:
+        return False
+    return a <= b or b <= a or len(a & b) / len(a | b) >= 0.5
 
 
 def _clean(v: object) -> str:
@@ -115,7 +143,7 @@ class Score:
     unsplit_parents: list = field(default_factory=list)
 
 
-def score(gold: pd.DataFrame, pred: pd.DataFrame) -> Score:
+def score(gold: pd.DataFrame, pred: pd.DataFrame, labels: dict[str, str] | None = None) -> Score:
     items = list(zip(gold.accession, gold.raw_key))
     g = dict(zip(items, gold.variable_id))
     pred_by_item = {(r.accession, r.raw_key): r for r in pred.itertuples(index=False)}
@@ -164,7 +192,12 @@ def score(gold: pd.DataFrame, pred: pd.DataFrame) -> Score:
         nm_tp += gold_none and pred_none
         gq = {q for q in parse_qualifiers(row.qualifiers) if q[0] != "unit"}
         pq = {q for q in parse_qualifiers(getattr(pr, "qualifiers", "")) if q[0] != "unit"} if pr is not None else set()
-        q_tp += len(gq & pq)
+        unmatched = list(pq)
+        for g_q in gq:
+            hit = next((x for x in unmatched if qualifier_match(g_q, x, labels)), None)
+            if hit is not None:
+                unmatched.remove(hit)
+                q_tp += 1
         q_pred += len(pq)
         q_gold += len(gq)
         if pr is not None and "unit" in pred.columns and _unit(row.unit):

@@ -77,8 +77,20 @@ Collect each run as in step 2 (re-task failing batches at most twice), then:
 Report how many columns were annotated, the share where the two runs agree,
 and the number of variables before reconciliation.
 
+## 5. Reconcile (two independent runs)
+
+    colharmonize tasks write reconcile --workspace <workspace> --run 1 --batch-size 6
+    colharmonize tasks write reconcile --workspace <workspace> --run 2 --batch-size 6
+
+Launch one `colharmonize:reconciler` subagent per pending batch, one batch
+each and never mixing runs, exactly as in step 4. Collect both runs, then:
+
+    colharmonize reconcile apply --workspace <workspace> --runs 1 2
+
+Report the number of variables, how many columns were reconciled, and the
+partition agreement between runs.
+
 ## Later stages
 
-Reconciliation, scoring, review and publish will be added here as the
-colharmonize package gains them. Until then, stop after annotation and
-summarise.
+Scoring, review and publish will be added here as the colharmonize package
+gains them. Until then, stop after reconciliation and summarise.

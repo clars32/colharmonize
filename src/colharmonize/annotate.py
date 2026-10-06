@@ -29,7 +29,7 @@ from colharmonize.text import loose
 from colharmonize.workspace import Workspace
 
 STAGE = "annotate"
-PROMPT_VERSION = "annotate-1"
+PROMPT_VERSION = "annotate-2"
 MAX_VALUES = 15
 DEFINITION_CHARS = 180
 
@@ -67,6 +67,21 @@ For each column decide the following.
    broader term loses information that pooling cannot recover. For exact and
    broad, the primary term is usually a candidate with role "category"; an
    indicator's term is usually a candidate with role "entity".
+   Specific cases:
+   - When the values say whether a genetic lesion, mutation or chromosomal
+     abnormality is present, the indicator's term is the kind of lesion
+     (translocation, mutation, duplication, chromosomal aberration) and the
+     specific lesion goes in object_class ("KRAS G12D: yes/no" -> indicator of
+     mutation, object_class "KRAS G12D"). Do not use a disease that happens to
+     be named after the lesion.
+   - An age, time or duration needs an event_time_anchor only when it is
+     measured from something other than the taking of the sample. Age at
+     sampling, at collection or at biopsy is plain age (exact); age at
+     diagnosis or time since treatment is anchored.
+   - Processing batches (sequencing run, extraction batch, array lot, plate)
+     are blocks in the experimental-design sense.
+   - Identifier columns (subject, patient or sample codes) have predicate none
+     unless a candidate is defined as exactly that kind of identifier.
 
 3. Qualifiers: what distinguishes this column from others with the same primary
    term. Add only qualifiers the column actually carries.
@@ -74,7 +89,7 @@ For each column decide the following.
    - object_class: what the column is about when the primary term is general:
      the gene in "TP53 expression", the lesion in "BRAF V600E status"
    - event_time_anchor: the reference event of a time, age or duration
-     ("diagnosis", "blood draw", "start of treatment")
+     ("diagnosis", "death", "start of treatment")
    - method: how values were measured or classified, when that changes them
      (RT-qPCR vs microarray, one scoring system vs another)
    - unit: the unit of numeric values, from the name, the values, or the usual
@@ -94,10 +109,13 @@ For each column decide the following.
 
 6. A one-sentence rationale that names the evidence.
 
-Refer to candidates by `ref`. If the right term is not among the candidates and
-you are confident of its exact label in the ontology, give that label as
-`name`; it will be looked up and rejected if it does not exist. Never write an
-ontology identifier.
+Refer to candidates by `ref`. Before proposing a name, read the candidates'
+definitions: a candidate whose definition covers the column is better than a
+label you remember, because remembered labels are often missing or obsolete in
+this ontology release (a "smoker" column is covered by a candidate such as
+"smoking status" even if you would have worded it differently). Only if nothing fits and you are confident
+of a term's exact label, give it as `name`; it will be looked up and rejected
+if it does not exist. Never write an ontology identifier.
 
 Write one answer per item to the batch's `answer_file`, following
 `answer_schema`, and copy the batch's `content_sha256` into it.
@@ -304,10 +322,11 @@ def validate_answers(ws: Workspace, answers: list[AnnotateAnswer], run: int, res
                 continue
             if t.ref and t.ref not in r:
                 problems.append(f"{a.item_id}/{where}: unknown ref {t.ref}")
-            elif t.name:
-                res = resolver.resolve(t, r)
-                if not res.curie or res.reason:
-                    problems.append(f"{a.item_id}/{where}: {res.reason or 'unresolvable'}")
+            # An unresolvable proposed name is not a batch failure: models
+            # reliably propose the same missing terms ("cell line", the
+            # deprecated "leukocyte count"), so re-tasking repeats them. The
+            # proposal is kept as a hint and the column goes to full review
+            # (iteration 2, decision 7.2).
     return problems
 
 
@@ -318,6 +337,8 @@ def resolve_run(ws: Workspace, answers: list[AnnotateAnswer], run: int, resolver
     for a in answers:
         r = refs.get(a.item_id, {})
         prim = resolver.resolve(a.primary, r) if a.primary else Resolution("", "", "", False, "")
+        unresolved = a.primary.name if (a.primary and a.primary.name and not prim.curie) else ""
+        predicate = "none" if unresolved else a.predicate
         quals, ambiguous = [], prim.ambiguous
         for q in a.qualifiers:
             if q.text:
@@ -328,8 +349,9 @@ def resolve_run(ws: Workspace, answers: list[AnnotateAnswer], run: int, resolver
                 quals.append((q.slot, res.curie or (q.name or "").casefold()))
         study, column = a.item_id.split("::", 1)
         rows.append({
-            "study_id": study, "column": column, "run": run, "predicate": a.predicate,
-            "primary_curie": prim.curie if a.predicate != "none" else "", "primary_label": prim.label,
+            "study_id": study, "column": column, "run": run, "predicate": predicate,
+            "primary_curie": prim.curie if predicate != "none" else "", "primary_label": prim.label,
+            "unresolved_proposal": unresolved,
             "primary_how": prim.how, "primary_proposed": bool(a.primary and a.primary.name),
             "outside_space": bool(prim.curie and prim.curie not in resolver.in_space),
             "qualifiers": json.dumps(sorted(quals)), "ambiguous": ambiguous,
