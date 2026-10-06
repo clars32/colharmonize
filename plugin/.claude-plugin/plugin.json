@@ -1,0 +1,14 @@
+{
+  "name": "colharmonize",
+  "version": "0.1.0",
+  "description": "Runs colharmonize's judgment stages (repair, annotation, reconciliation) with Claude Code subagents",
+  "author": {
+    "name": "Carter Larsen"
+  },
+  "keywords": [
+    "metadata",
+    "ontology",
+    "GEO",
+    "harmonization"
+  ]
+}

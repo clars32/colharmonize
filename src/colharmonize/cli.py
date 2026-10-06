@@ -3,8 +3,12 @@
     colharmonize ontology pin   --json efo.json --tag v3.94.0 --out DIR
     colharmonize ontology store --ontology DIR --out efo.sqlite
     colharmonize ontology check --ontology DIR CURIE [--label LABEL]
-    colharmonize ingest  --project DIR SOURCE...
-    colharmonize columns --project DIR [--out TSV]
+    colharmonize ingest  --workspace DIR SOURCE...          GEOmend project + column profiles
+    colharmonize columns --workspace DIR [--out TSV]
+    colharmonize tasks write   STAGE --workspace DIR --run N [--batch-size K] [--seed S] [--studies ...]
+    colharmonize tasks status  STAGE --workspace DIR --run N   pending batch files, one absolute path per line
+    colharmonize tasks collect STAGE --workspace DIR --run N   validate answers
+    colharmonize repair apply --workspace DIR --run N          apply validated repair rules
     colharmonize eval    --gold-columns TSV --gold-variables TSV --predictions TSV [--report MD] [--json JSON]
 
 Later stages (task files, ingesting subagent answers, reconciliation, review,
@@ -42,21 +46,80 @@ def cmd_check(args: argparse.Namespace) -> int:
 
 
 def cmd_ingest(args: argparse.Namespace) -> int:
+    from colharmonize import profile
     from colharmonize.geomend_bridge import create_cohort, namespace_counts
-    create_cohort(args.project, args.sources, offline=not args.online, workers=args.workers)
-    for (scope, ns), n in sorted(namespace_counts(args.project).items()):
+    from colharmonize.workspace import Workspace
+    ws = Workspace(args.workspace)
+    ws.root.mkdir(parents=True, exist_ok=True)
+    create_cohort(ws.geomend, args.sources, offline=not args.online, workers=args.workers)
+    for (scope, ns), n in sorted(namespace_counts(ws.geomend).items()):
         print(f"{scope:9} {ns:15} {n}")
+    print(json.dumps(profile.build(ws)))
     return 0
 
 
 def cmd_columns(args: argparse.Namespace) -> int:
-    from colharmonize.geomend_bridge import field_table
-    t = field_table(args.project)
-    t = t[(t.scope == "sample") & (t.namespace == "characteristic")]
-    if args.out:
-        t.to_csv(args.out, sep="\t", index=False)
-    else:
-        t.to_csv(sys.stdout, sep="\t", index=False)
+    import pandas as pd
+    from colharmonize.workspace import Workspace
+    t = pd.read_parquet(Workspace(args.workspace).columns)
+    t.to_csv(args.out or sys.stdout, sep="\t", index=False)
+    return 0
+
+
+STAGES = {"repair": "colharmonize.repair"}
+
+
+def _stage(name: str):
+    import importlib
+    if name not in STAGES:
+        raise SystemExit(f"unknown stage {name!r}; known: {', '.join(STAGES)}")
+    return importlib.import_module(STAGES[name])
+
+
+def cmd_tasks(args: argparse.Namespace) -> int:
+    from colharmonize import tasks
+    from colharmonize.workspace import Workspace
+    ws, mod = Workspace(args.workspace), _stage(args.stage)
+    directory = ws.tasks(args.stage, args.run)
+    if args.action == "write":
+        items = mod.build_items(ws, args.studies or None)
+        paths = tasks.write_batches(
+            directory, stage=mod.STAGE, run=args.run, prompt_version=mod.PROMPT_VERSION,
+            instructions=mod.INSTRUCTIONS, items=items, answer_model=mod.ANSWER_MODEL,
+            batch_size=args.batch_size, seed=args.seed if args.seed is not None else 1000 * args.run + 1,
+        )
+        print(f"{len(items)} items in {len(paths)} batches under {directory}")
+        return 0
+    if args.action == "status":
+        manifest = json.loads((directory / "manifest.json").read_text())
+        for e in manifest["batches"]:
+            if not (directory / e["answer_file"]).exists():
+                print((directory / e["batch_file"]).resolve())
+        print(json.dumps(tasks.status(directory)), file=sys.stderr)
+        return 0
+    got = tasks.collect(directory, mod.ANSWER_MODEL)
+    # Stage-specific checks (e.g. a repair rule that does not compile) run here,
+    # so the skill can re-task the batch instead of discovering it at apply time.
+    if hasattr(mod, "validate_answers"):
+        got.problems += mod.validate_answers(ws, got.answers)
+    print(json.dumps({"answers": len(got.answers), "pending": got.pending, "problems": got.problems}, indent=1))
+    return 0 if got.complete else 1
+
+
+def cmd_repair_apply(args: argparse.Namespace) -> int:
+    from colharmonize import geomend_bridge as gb, repair, tasks
+    from colharmonize.workspace import Workspace
+    ws = Workspace(args.workspace)
+    got = tasks.collect(ws.tasks(repair.STAGE, args.run), repair.RepairAnswer)
+    if not got.complete:
+        print(json.dumps({"pending": got.pending, "problems": got.problems}, indent=1))
+        return 1
+    derived, report, problems = repair.apply(ws, got.answers, gb.sample_values(ws.geomend))
+    derived.to_parquet(ws.derived, index=False)
+    report.to_csv(ws.root / "repair_report.tsv", sep="\t", index=False)
+    print(report[["study_id", "column", "expected", "matched", "eligible"]].to_string(index=False) if len(report) else "no rules")
+    for p in problems:
+        print("PROBLEM", p)
     return 0
 
 
@@ -96,17 +159,34 @@ def build_parser() -> argparse.ArgumentParser:
     check.add_argument("--label")
     check.set_defaults(func=cmd_check)
 
-    ing = sub.add_parser("ingest", help="create a GEOmend project from SOFT files, tables or accessions")
-    ing.add_argument("--project", required=True)
+    ing = sub.add_parser("ingest", help="create a workspace: GEOmend project from SOFT files, tables or accessions, then profiles")
+    ing.add_argument("--workspace", required=True)
     ing.add_argument("--workers", type=int, default=4)
     ing.add_argument("--online", action="store_true", help="allow downloading accessions (default: offline)")
     ing.add_argument("sources", nargs="+")
     ing.set_defaults(func=cmd_ingest)
 
-    col = sub.add_parser("columns", help="list the characteristic columns of a project")
-    col.add_argument("--project", required=True)
+    col = sub.add_parser("columns", help="list a workspace's characteristic columns")
+    col.add_argument("--workspace", required=True)
     col.add_argument("--out")
     col.set_defaults(func=cmd_columns)
+
+    tk = sub.add_parser("tasks", help="write, list and collect task batches for Claude Code subagents")
+    tk.add_argument("action", choices=["write", "status", "collect"])
+    tk.add_argument("stage")
+    tk.add_argument("--workspace", required=True)
+    tk.add_argument("--run", type=int, required=True)
+    tk.add_argument("--batch-size", type=int, default=8)
+    tk.add_argument("--seed", type=int)
+    tk.add_argument("--studies", nargs="*")
+    tk.set_defaults(func=cmd_tasks)
+
+    rp = sub.add_parser("repair", help="apply validated repair rules")
+    rp.add_argument("action", choices=["apply"])
+    rp.add_argument("--workspace", required=True)
+    rp.add_argument("--run", type=int, default=1)
+    rp.set_defaults(func=cmd_repair_apply)
+
     ev = sub.add_parser("eval", help="score predictions against a gold standard")
     ev.add_argument("--gold-columns", required=True)
     ev.add_argument("--gold-variables", required=True)

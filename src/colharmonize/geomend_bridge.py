@@ -188,3 +188,17 @@ def column_coverage(values: pd.DataFrame) -> dict[str, dict[str, set[str]]]:
 def namespace_counts(project: str | Path) -> Counter:
     """(scope, namespace) counts, a cheap smoke check after ingest."""
     return Counter((r.scope, r.namespace) for r in field_table(project).itertuples(index=False))
+
+
+def study_attributes(project: str | Path, names: Iterable[str] = ("title", "summary", "overall_design")) -> pd.DataFrame:
+    """One row per study with the requested study-scope attributes (first value of each)."""
+    keep = list(names)
+    rows = []
+    for inv in _inventories(project):
+        row = {"study_id": inv.study_id}
+        for f in inv.fields:
+            if f.scope == "study" and f.name in keep and f.name not in row:
+                first = next((v for vals in f.values.values() for v in vals if v is not None), None)
+                row[f.name] = None if first is None else str(first)
+        rows.append(row)
+    return pd.DataFrame(rows, columns=["study_id", *keep])

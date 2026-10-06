@@ -1,0 +1,12 @@
+{
+  "name": "colharmonize",
+  "owner": { "name": "Carter Larsen" },
+  "description": "Claude Code plugin for colharmonize: harmonize dataset metadata columns across studies",
+  "plugins": [
+    {
+      "name": "colharmonize",
+      "source": "./plugin",
+      "description": "Runs colharmonize's judgment stages with Claude Code subagents"
+    }
+  ]
+}
