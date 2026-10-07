@@ -86,6 +86,36 @@ def _derived_fp(parent_fp: str, member: str) -> str:
     return hashlib.sha256(f"{parent_fp}+{member}".encode()).hexdigest()[:16]
 
 
+def rekey(decisions: dict, fps: dict[str, str]) -> tuple[dict, dict[str, str]]:
+    """Move decisions whose variable id no longer exists to the variable they judged.
+
+    Ids can change between runs while the content does not (singleton
+    numbering, group order). A decision follows its content when its
+    fingerprint matches exactly one current variable; columns split out of a
+    renamed variable (`<old>+<member>`) follow their parent. Returns the
+    re-keyed decisions and the renames applied.
+    """
+    def fp_of(d) -> str:
+        return d.fp if isinstance(d, Decision) else d.get("fp", "")
+    owner: dict[str, list[str]] = {}
+    for vid, fp in fps.items():
+        owner.setdefault(fp, []).append(vid)
+    renames = {}
+    for vid, d in decisions.items():
+        if vid not in fps and len(owner.get(fp_of(d), [])) == 1 and owner[fp_of(d)][0] not in decisions:
+            renames[vid] = owner[fp_of(d)][0]
+    out = {}
+    for vid, d in decisions.items():
+        new = renames.get(vid)
+        if new is None:
+            parent = next((old for old in renames if vid.startswith(old + "+")), None)
+            new = renames[parent] + vid[len(parent):] if parent else vid
+            if parent:
+                renames[vid] = new
+        out[new] = d
+    return out, renames
+
+
 def load_overlay(ws: Workspace) -> dict[str, Decision]:
     path = ws.root / "review.json"
     if not path.exists():
@@ -111,6 +141,7 @@ def current(scored: pd.DataFrame, overlay: dict[str, Decision]) -> tuple[pd.Data
     rows["key"] = [_key(s, c) for s, c in zip(rows.study_id, rows.column)]
     rows["moved"] = False
     fps = fingerprints(scored)
+    overlay, _ = rekey(overlay, fps)
     base = {vid: g.iloc[0][ANNOTATION].to_dict() for vid, g in scored.groupby("variable_id", sort=False)}
     valid = {vid: d for vid, d in overlay.items() if fps.get(vid) == d.fp}
     for vid, d in list(valid.items()):
@@ -170,7 +201,7 @@ def validate_export(ws: Workspace, export: dict, scored: pd.DataFrame, ontology,
     fps = fingerprints(scored)
     members = {vid: set(_key(s, c) for s, c in zip(g.study_id, g.column)) for vid, g in scored.groupby("variable_id")}
     ok, stale, problems = {}, [], []
-    decisions = export.get("decisions", {})
+    decisions, renamed = rekey(export.get("decisions", {}), fps)
     parents_new = {derived_id(vid, m): vid for vid, d in decisions.items() for m, t in d.get("moves", {}).items() if t == NEW}
     for vid, raw in decisions.items():
         try:
@@ -180,7 +211,7 @@ def validate_export(ws: Workspace, export: dict, scored: pd.DataFrame, ontology,
             continue
         if vid in parents_new:
             parent = parents_new[vid]
-            expected = _derived_fp(fps.get(parent, ""), vid.split("+", 1)[1])
+            expected = _derived_fp(fps.get(parent, ""), vid[len(parent) + 1:])
         else:
             expected = fps.get(vid)
         if expected != d.fp:
@@ -223,12 +254,15 @@ def validate_export(ws: Workspace, export: dict, scored: pd.DataFrame, ontology,
 def apply_export(ws: Workspace, export_path: Path, ontology, conflicts=None) -> dict:
     """Merge a page export into the workspace overlay. Later decisions replace earlier ones."""
     scored = pd.read_parquet(ws.root / "scored.parquet")
-    ok, stale, problems = validate_export(ws, json.loads(Path(export_path).read_text()), scored, ontology, conflicts)
-    overlay = load_overlay(ws)
+    export = json.loads(Path(export_path).read_text())
+    ok, stale, problems = validate_export(ws, export, scored, ontology, conflicts)
+    fps = fingerprints(scored)
+    _, renamed = rekey(export.get("decisions", {}), fps)
+    overlay, _ = rekey(load_overlay(ws), fps)
     overlay.update(ok)
     if not problems:
         save_overlay(ws, overlay)
-    return {"applied": len(ok), "stale": stale, "problems": problems, "saved": not problems,
+    return {"applied": len(ok), "renamed": renamed, "stale": stale, "problems": problems, "saved": not problems,
             "overlay_decisions": len(overlay)}
 
 

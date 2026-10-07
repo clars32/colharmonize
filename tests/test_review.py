@@ -103,3 +103,16 @@ def test_sssom_maps_predicates_and_skips_rejected():
     assert [r["subject_id"] for r in rows] == ["col:GSE1/gender", "col:GSE1/batch%20%23"]
     assert rows[0]["predicate_id"] == "skos:exactMatch" and rows[0]["mapping_justification"] == "semapv:ManualMappingCuration"
     assert rows[1]["object_id"] == "sssom:NoTermFound"
+
+
+def test_decisions_follow_a_renamed_variable_by_fingerprint():
+    s = scored()
+    old = {"OLD-SEX": review.Decision(action="edit", fp=review.fingerprints(s)["SEX"], moves={"C::Sex": "new"}),
+           "OLD-SEX+C::Sex": review.Decision(action="reject", fp="x"),
+           "GONE": review.Decision(action="accept", fp="no-such-content")}
+    moved, renames = review.rekey(old, review.fingerprints(s))
+    assert renames == {"OLD-SEX": "SEX", "OLD-SEX+C::Sex": "SEX+C::Sex"}
+    assert set(moved) == {"SEX", "SEX+C::Sex", "GONE"}
+    rows, stale = review.current(s, old)
+    assert rows.set_index("key").loc["C::Sex", "variable_id"] == "SEX+C::Sex"
+    assert "GONE" in stale and "SEX" not in stale
