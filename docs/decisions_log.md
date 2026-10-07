@@ -54,6 +54,16 @@ boundary needs an owners' decision. Options: GEOmend keeps it as the
 local-model path and colharmonize stays the Claude path; or one tool owns
 cross-study pooling. Decision 1.2 stands until then.
 
+### 1.6: Settled: colharmonize stays separate; GEOmend output is preprocessing (owners, 2026-10-07)
+Resolves 1.5. colharmonize stays a separate tool and takes whatever help
+GEOmend offers. GEOmend goes less deep, so everything colharmonize takes from
+it is preprocessing: evidence that feeds colharmonize's own stages, never a
+decision colharmonize adopts unchecked. That covers parsed fields, units,
+lexical concept candidates and merge suggestions. When GEOmend runs with a
+local model, it covers its categorical groups too. Cross-study pooling and
+annotation stay colharmonize's decisions, made by its own runs and
+reconciliation rules (the co-occurrence rule included).
+
 ## Gold standards
 
 ### 2.1: Bucket principle, operational form (owner-confirmed)

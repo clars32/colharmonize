@@ -56,8 +56,9 @@ is the decision colharmonize's reconcile stage makes with Claude. They differ:
 - GEOmend treats co-occurring fields as evidence; colharmonize refuses to pool
   them.
 
-Which tool should own cross-study pooling is an open question for the two
-maintainers (decisions log 1.5).
+Settled by the owners (decisions log 1.6): colharmonize stays separate and
+takes any help GEOmend offers, as preprocessing. GEOmend's output is evidence
+for colharmonize's stages. It never replaces their decisions.
 
 **Where a change belongs.** Would it help a GEOmend user who never runs Claude?
 Then it goes to GEOmend as a pull request: a parser fix, better unit detection,
