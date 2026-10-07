@@ -146,6 +146,11 @@ Every result recorded above therefore stands. The field table now reports
 GEOmend's `reported_count` rather than counting values itself, because its only
 consumer reads units.
 
+GEOmend's own suite at `f0a8fcc` is the new baseline for any PR: 1,463 passed,
+4 skipped, 0 failed. Six tests fail until `npm run contracts` generates the
+client assets, which a fresh pull doesn't include. That environmental class
+also caused failures at 0.0.2 (3.3).
+
 ## Repair stage
 
 ### 4.1: Rules, not values
