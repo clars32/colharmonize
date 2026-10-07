@@ -14,6 +14,7 @@ Pinned against geomend==0.0.8.
 """
 from __future__ import annotations
 
+import json
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -224,3 +225,115 @@ def study_attributes(project: str | Path, names: Iterable[str] = ("title", "summ
         row[f["name"]] = None if first is None else str(first)
     studies = sorted({f["study_id"] for f in _fields(project, with_values=False)})
     return pd.DataFrame([rows.get(s, {"study_id": s}) for s in studies], columns=["study_id", *keep])
+
+
+# ---------------------------------------------------------------------------
+# Preprocessing evidence (decisions log 1.6): what GEOmend can tell colharmonize
+# about a project. All offline, no model, ontology restricted to the pinned store.
+
+def store_ids(ontology: Ontology) -> dict[str, str]:
+    """GEOmend store node id (`efo:0004426`) -> pinned CURIE (`EFO:0004426`)."""
+    out = {}
+    for iri, curie in zip(ontology.terms.iri, ontology.terms.curie):
+        if not curie:
+            continue
+        try:
+            out[canonical_identifier(iri)] = curie
+        except ValueError:
+            continue
+    return out
+
+
+def enable_concepts(project: str | Path, store: str | Path, *, workers: int = 4) -> dict:
+    """Turn on GEOmend's lexical concept retrieval against the pinned store only, and run it.
+
+    Offline and with no model: GEOmend then searches only the local store
+    (hosted OLS4 needs `offline=False`). `configure` replaces the whole config,
+    so the settings colharmonize relies on are restated.
+    """
+    client = ProjectClient.open(project)
+    client.administration.configure(CohortConfig(offline=True, workers=workers, concept_enrichment=True,
+                                                 ontology_stores=[str(Path(store).resolve())]))
+    return client.concepts.enrich(use_model=False)
+
+
+def concept_candidates(project: str | Path) -> pd.DataFrame:
+    """Per sample characteristic field, GEOmend's lexical candidates with their evidence.
+
+    GEOmend's own `rank` mixes channels and ties, so the strongest evidence score
+    is kept for ranking (5 exact label/synonym, 2.4 substring, 1 definition only).
+    """
+    client = ProjectClient.open(project)
+    rows = []
+    for f in _fields(project, lambda f: f["scope"] == "sample" and f["namespace"] == "characteristic",
+                     with_values=False):
+        for c in _pages(lambda o: client.concepts.candidates(f["field_id"], offset=o, limit=PAGE), "candidates"):
+            ev = c.get("evidence") or []
+            best = max(ev, key=lambda e: e.get("score") or 0, default={})
+            rows.append({"study_id": f["study_id"], "name": f["name"], "concept_id": c["concept_id"],
+                         "label": c.get("label"), "best_score": float(best.get("score") or 0),
+                         "surface": best.get("retrieval_surface"), "query_source": best.get("query_source"),
+                         "n_evidence": len(ev)})
+    return pd.DataFrame(rows, columns=["study_id", "name", "concept_id", "label", "best_score", "surface",
+                                       "query_source", "n_evidence"])
+
+
+def merge_suggestions(project: str | Path, *, max_pairs: int = 10000) -> pd.DataFrame:
+    """GEOmend's suggested joins between its variables, as pairs of sample characteristic fields."""
+    client = ProjectClient.open(project)
+    chars = _fields(project, lambda f: f["scope"] == "sample" and f["namespace"] == "characteristic",
+                    with_values=False)
+    variable_ids = sorted({f["mapping"]["variable_id"] for f in chars if f.get("mapping")})
+    if len(variable_ids) < 2:
+        return pd.DataFrame(columns=["left_study", "left_name", "right_study", "right_name", "header_overlap",
+                                     "agreement_fraction", "blockers", "rank"])
+    result = client.mappings.suggestions(variable_ids=variable_ids, max_pairs=max_pairs)
+    keep = {f["field_id"]: f for f in chars}
+    rows = []
+    for p in result.get("pairs", []):
+        for lf in p.get("left_field_ids", []):
+            for rf in p.get("right_field_ids", []):
+                if lf in keep and rf in keep:
+                    rows.append({"left_study": keep[lf]["study_id"], "left_name": keep[lf]["name"],
+                                 "right_study": keep[rf]["study_id"], "right_name": keep[rf]["name"],
+                                 "header_overlap": p.get("header_token_overlap"),
+                                 "agreement_fraction": p.get("agreement_fraction"),
+                                 "blockers": json.dumps(p.get("compatibility_blockers") or []), "rank": p.get("rank")})
+    return pd.DataFrame(rows, columns=["left_study", "left_name", "right_study", "right_name", "header_overlap",
+                                       "agreement_fraction", "blockers", "rank"])
+
+
+def _units_in(spec: object, found: set[str]) -> None:
+    """Every unit named in a mapping specification: conversions and per-value normalizations."""
+    if isinstance(spec, dict):
+        for k, v in spec.items():
+            if k in ("source_unit", "target_unit", "unit") and isinstance(v, str) and v:
+                found.add(v)
+            else:
+                _units_in(v, found)
+    elif isinstance(spec, list):
+        for v in spec:
+            _units_in(v, found)
+    elif isinstance(spec, str) and spec.startswith("{") and '"unit' in spec:
+        try:
+            _units_in(json.loads(spec), found)
+        except ValueError:
+            pass
+
+
+def field_units(project: str | Path) -> pd.DataFrame:
+    """Per sample characteristic field, the units GEOmend found: on the field, its variable,
+    and in its mapping (unit conversion, per-value unit normalization)."""
+    client = ProjectClient.open(project)
+    rows = []
+    for f in _fields(project, lambda f: f["scope"] == "sample" and f["namespace"] == "characteristic",
+                     with_values=False):
+        d = client.mappings.field(f["field_id"], limit=1)
+        found: set[str] = set()
+        if f.get("unit"):
+            found.add(f["unit"])
+        if (d.get("variable") or {}).get("unit"):
+            found.add(d["variable"]["unit"])
+        _units_in((d.get("mapping") or {}).get("specification"), found)
+        rows.append({"study_id": f["study_id"], "name": f["name"], "units": json.dumps(sorted(found))})
+    return pd.DataFrame(rows, columns=["study_id", "name", "units"])

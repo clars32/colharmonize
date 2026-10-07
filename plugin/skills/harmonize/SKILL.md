@@ -30,6 +30,17 @@ It reads offline by default. Add `--online` only if the user gave GSE
 accessions that are not available locally. Report the number of studies,
 samples and columns it prints.
 
+## 1b. Preprocess (GEOmend evidence)
+
+    colharmonize preprocess --workspace <workspace> --store <pinned store .sqlite>
+
+This collects what GEOmend can tell colharmonize, offline and with no model:
+lexical concept candidates from the pinned store, suggested merges between
+columns, and units. It is evidence only; later stages decide. If the user has
+no store file yet, build it from the pinned ontology directory first:
+
+    colharmonize ontology store --ontology <pinned ontology dir> --out <store .sqlite>
+
 ## 2. Repair (one run)
 
     colharmonize tasks write repair --workspace <workspace> --run 1

@@ -476,3 +476,79 @@ against the batch's items, not trusted.
 
 Columns no candidate group reached now get plain singleton ids (`S001`)
 instead of their internal annotation key.
+
+### 7.4: An unresolvable term name in reconciliation is a review hint
+Reconciliation used to reject an answer whose part named a term not in the
+pinned file. On run 3 (12.3) the reconciler named "cell line" twice in a row.
+That is the pattern decision 6.2 describes: re-tasking repeats the same
+missing name. Reconciliation now follows annotation's rule:
+- An unknown candidate ref is still an error.
+- An unresolvable name gives the part predicate `none` and keeps the name as
+  `unresolved_proposal`. Score then sends the column to manual review.
+
+Runs 1 and 2 never hit this case, so their results are unchanged.
+
+## GEOmend preprocessing (decisions log 1.6)
+
+### 12.1: What is collected
+`colharmonize preprocess` runs after ingest, offline and with no model. It
+turns on GEOmend's concept retrieval against the pinned store only; hosted
+OLS4 needs `offline=False`, and the subagent that mapped the API confirmed no
+network calls. It saves three files in `geomend_evidence/`:
+- **concepts:** lexical candidates per characteristic, with evidence scores
+- **merges:** suggested joins between characteristics
+- **units:** units found on fields, variables and mapping specifications
+
+On the 13 tuning series: 3,100 candidates (all mapping to pinned terms), 86
+merge pairs, and units for 5 fields. It takes 50 s. Per-sample values are
+unchanged afterwards (42,578).
+
+Each kind was measured on the tuning set and used only if it helped.
+
+### 12.2: Concept candidates and units are collected but not used
+GEOmend's evidence scores are 5 for an exact field-name match, 4 for a value
+match, 2.4 for a substring and 1 or less for a definition-only hit. Its own
+`rank` is not meaningful: definition-only hits can outrank exact matches, and
+for `Sex` it never offered "biological sex".
+
+| GEOmend concept candidates used | gold term in pool | gold term shown |
+|---|---|---|
+| none (current) | 88.6% | 84.8% |
+| exact only (score >= 4) | 88.6% | 84.8% |
+| substring too (>= 2.4) | 88.6% | 83.5% |
+| all | 88.6% | 83.5% |
+
+They add no gold term, and substring matches push correct terms out of the
+display.
+
+Units: GEOmend reported units for 5 fields, which colharmonize's own unit
+spotting already finds. Gold-unit recall stays 8 of 12. Across 13 series,
+GEOmend puts every `age` into one text variable, so it never normalizes the
+per-value units ("1 Year old") it finds in smaller projects.
+
+### 12.3: Merge suggestions are used, as extra links for reconciliation groups
+GEOmend's suggestions link variables by shared header words, plus value
+agreement within one study. As extra grouping links they raise the gold pairs
+reaching one group from 82 to 84 of 88. They also merge 16 groups into 7, two
+at the 30-column cap; "stage" links `developmental stage` with `Braak stage`.
+Reconcile ran twice more with the links (runs 3 and 4, prompt reconcile-2)
+and was compared with runs 1 and 2 (reconcile-1, no links):
+
+| | run 1 | run 2 | run 3 (links) | run 4 (links) |
+|---|---|---|---|---|
+| pooling precision | 84.5% | 78.9% | 85.5% | 88.9% |
+| pooling recall | 80.7% | 85.2% | 80.7% | 81.8% |
+| pooling F1 | 82.6% | 82.0% | 83.0% | 85.2% |
+| partition agreement | 92.5% | 92.5% | 98.9% | 98.9% |
+| pairs where both runs agree: correct | 53/53 | 53/53 | 61/61 | 61/61 |
+| primary term | 76.2% | 75.0% | 70.2% | 79.8% |
+
+With the links, precision is up, recall is unchanged, and eight more pooled
+pairs are ones both runs agree on, all correct. Every false pair still
+involves a column the runs disagree on. The four gold variables split before
+are still split: the two extra pairs grouped were not pooled.
+
+With two runs per side, the F1 difference is about the size of run-to-run
+variation, so this is "helps a little, does no harm", not a firm gain. The
+links stay on (`preprocess.USE_MERGES`). The tuning workspace's runs of record
+are still 1 and 2, because the review decisions are fingerprinted against them.

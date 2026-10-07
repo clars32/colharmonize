@@ -70,3 +70,16 @@ def test_registered_parts_keep_their_annotation_and_id(tmp_path, tiny):
     out = rc.resolve_run(ws, [good], 1, res).set_index("column")
     assert out.loc["gender", "part"] == "R0001" and out.loc["gender", "variable_name"] == "biological sex"
     assert out.loc["sex2", "part"] == "G001.2" and "R0002" not in out.part.values   # nothing joined R0002
+
+
+def test_unresolvable_part_name_is_a_review_hint_not_a_failure(tmp_path, tiny):
+    ws = reconcile_ws(tmp_path)
+    res = an.Resolver(tiny, pd.DataFrame({"curie": ["PATO:0000047", "EFO:0000727"]}))
+    named = rc.Part(members=["M3"], variable_name="cell line", predicate="exact",
+                    primary=an.Term(name="cell line"), rationale="")
+    answer = rc.ReconcileAnswer(item_id="G001", parts=[part(["M1", "M2"], "T1"), named, part(["M4"], "T2")])
+    assert rc.validate_answers(ws, [answer], run=1, resolver=res) == []
+    row = rc.resolve_run(ws, [answer], 1, res).set_index("column").loc["sex2"]
+    assert (row.predicate, row.primary_curie, row.unresolved_proposal) == ("none", "", "cell line")
+    bad_ref = rc.ReconcileAnswer(item_id="G001", parts=[part(["M1", "M2"], "T1"), part(["M3"], "T9"), part(["M4"], "T2")])
+    assert any("T9" in p for p in rc.validate_answers(ws, [bad_ref], run=1, resolver=res))

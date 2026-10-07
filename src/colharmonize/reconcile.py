@@ -165,9 +165,11 @@ def distinctive(values) -> set[str]:
 
 
 def candidate_groups(annotations: pd.DataFrame, ontology: Ontology,
-                     values: dict[str, set[str]] | None = None) -> list[list[str]]:
+                     values: dict[str, set[str]] | None = None,
+                     links: list[tuple[str, str]] | None = None) -> list[list[str]]:
     """Connected components (size >= 2) of columns that might pool. Members are 'study::column'.
-    `values` maps a member to its distinctive values (see `distinctive`)."""
+    `values` maps a member to its distinctive values (see `distinctive`); `links` are
+    extra member pairs to join, such as GEOmend's merge suggestions (`extra_links`)."""
     parents = _parents(ontology)
     ids = [f"{s}::{c}" for s, c in zip(annotations.study_id, annotations.column)]
     root = {i: i for i in ids}
@@ -204,6 +206,9 @@ def candidate_groups(annotations: pd.DataFrame, ontology: Ontology,
         for anc in _ancestors(parents, curie, ADJACENT_HOPS):
             for other in primaries.get(anc, []):
                 union(members[0], other)
+    for a, b in links or []:
+        if a in root and b in root:
+            union(a, b)
     comps: dict[str, list[str]] = defaultdict(list)
     for i in ids:
         comps[find(i)].append(i)
@@ -221,6 +226,16 @@ def candidate_groups(annotations: pd.DataFrame, ontology: Ontology,
             sub[prim[m] or m].append(m)
         out.extend(sorted(s) for s in sub.values())
     return sorted(out, key=lambda g: (-len(g), g[0]))
+
+
+def extra_links(ws: Workspace) -> list[tuple[str, str]]:
+    """GEOmend's merge suggestions between characteristics, as member pairs (preprocessing evidence)."""
+    from colharmonize import preprocess
+    merges = preprocess.load(ws, "merges") if preprocess.USE_MERGES else None
+    if merges is None:
+        return []
+    return [(f"{a}::{b}", f"{c}::{d}") for a, b, c, d in
+            zip(merges.left_study, merges.left_name, merges.right_study, merges.right_name)]
 
 
 def prepare(ws: Workspace, studies: list[str] | None, run: int) -> list[dict]:
@@ -243,7 +258,7 @@ def prepare(ws: Workspace, studies: list[str] | None, run: int) -> list[dict]:
             registered[key] = {"predicate": r.predicate, "primary_curie": r.primary_curie, "name": r.name,
                                "qualifiers": r.qualifiers, "values": json.loads(r.values)}
     # A group needs a column from this workspace; registered variables alone have nothing to decide.
-    groups = [g for g in candidate_groups(ann, onto, member_values)
+    groups = [g for g in candidate_groups(ann, onto, member_values, extra_links(ws))
               if any(not m.startswith(f"{registry.REGISTRY_STUDY}::") for m in g)]
     st = pd.read_parquet(ws.studies).set_index("study_id")
     co = profile.cooccurrence(profile.sample_values(ws))
@@ -357,8 +372,11 @@ def validate_answers(ws: Workspace, answers: list[ReconcileAnswer], run: int, re
                 problems.append(f"{a.item_id}: part {p.variable_name!r} has predicate {p.predicate!r} and "
                                 f"{'no ' if p.predicate != 'none' else 'a '}primary term")
             for t in ([p.primary] if p.primary else []) + list(p.qualifiers):
-                if (t.ref or t.name) and not resolver.resolve(t, refs.get(a.item_id, {})).curie:
-                    problems.append(f"{a.item_id}: term {t.ref or t.name!r} does not resolve")
+                # As in annotation (decisions log 6.2), a proposed name with no term in
+                # the pinned file is a review hint, not a failure: models repeat the same
+                # missing names ("cell line") when re-tasked. An unknown ref is an error.
+                if t.ref and not resolver.resolve(t, refs.get(a.item_id, {})).curie:
+                    problems.append(f"{a.item_id}: term ref {t.ref!r} does not resolve")
             for rc in p.recodes:
                 if rc.member not in p.members:
                     problems.append(f"{a.item_id}: recode for {rc.member}, which is not in part {p.variable_name!r}")
@@ -379,6 +397,8 @@ def resolve_run(ws: Workspace, answers: list[ReconcileAnswer], run: int, resolve
             r = refs.get(a.item_id, {})
             fixed = next((members[a.item_id][m] for m in p.members if members[a.item_id][m] in registered), None)
             prim = resolver.resolve(p.primary, r) if p.primary else None
+            unresolved = p.primary.name if (p.primary and p.primary.name and not (prim and prim.curie)) else ""
+            predicate = "none" if unresolved else p.predicate
             ambiguous = bool(prim and prim.ambiguous)
             quals = []
             for q in p.qualifiers:
@@ -405,7 +425,8 @@ def resolve_run(ws: Workspace, answers: list[ReconcileAnswer], run: int, resolve
                 study, column = members[a.item_id][m].split("::", 1)
                 rows.append({"study_id": study, "column": column, "run": run, "group": a.item_id,
                              "part": part, "variable_name": name,
-                             "predicate": p.predicate, "primary_curie": prim.curie if prim else "",
+                             "predicate": predicate, "primary_curie": prim.curie if prim else "",
+                             "unresolved_proposal": unresolved,
                              "outside_space": bool(prim and prim.curie and prim.curie not in resolver.in_space),
                              "ambiguous": ambiguous,
                              "qualifiers": json.dumps(quals), "recodes": json.dumps(recodes.get(m, [])),
@@ -469,7 +490,8 @@ def finalize(annotations: pd.DataFrame, run1: pd.DataFrame, run2: pd.DataFrame |
                          "annotation_agree": q is not None and (q.predicate, q.primary_curie) == (p.predicate, p.primary_curie),
                          "qualifiers_agree": q is not None and qualifiers_agree(p.qualifiers, q.qualifiers, labels),
                          "outside_space": bool(p.get("outside_space", False)),
-                         "ambiguous": bool(p.get("ambiguous", False)), "unresolved_proposal": "",
+                         "ambiguous": bool(p.get("ambiguous", False)),
+                         "unresolved_proposal": p.get("unresolved_proposal", "") or "",
                          "flags": json.dumps(sorted(flags | set(json.loads(p["flags"])))),
                          "alt_predicate": q.predicate if q is not None else "",
                          "alt_primary_curie": q.primary_curie if q is not None else "",

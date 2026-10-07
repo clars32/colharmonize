@@ -9,6 +9,7 @@
     colharmonize tasks status  STAGE --workspace DIR --run N   pending batch files, one absolute path per line
     colharmonize tasks collect STAGE --workspace DIR --run N   validate answers
     colharmonize repair apply --workspace DIR --run N          apply validated repair rules
+    colharmonize preprocess --workspace DIR --store SQLITE        GEOmend evidence: concepts, merges, units
     colharmonize candidates --workspace DIR --ontology DIR [--remote]
     colharmonize annotate apply --workspace DIR --runs 1 2      resolve, combine runs, write annotations
     colharmonize reconcile apply --workspace DIR --runs 1 2     partition groups, write final variables
@@ -133,6 +134,16 @@ def cmd_repair_apply(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_preprocess(args: argparse.Namespace) -> int:
+    from colharmonize import preprocess
+    from colharmonize.ontology import Ontology
+    from colharmonize.workspace import Workspace
+    ws = Workspace(args.workspace)
+    onto = Ontology.from_dir(args.ontology) if args.ontology else Ontology.from_dir(ws.ontology_dir())
+    print(json.dumps(preprocess.run(ws, args.store, onto), indent=1))
+    return 0
+
+
 def cmd_candidates(args: argparse.Namespace) -> int:
     from colharmonize import candidates as cd, profile, property_space
     from colharmonize.ontology import Ontology
@@ -143,7 +154,8 @@ def cmd_candidates(args: argparse.Namespace) -> int:
     retriever = cd.Retriever(onto, property_space.build(onto), cache / "embeddings",
                              cd.RemoteCache(cache / "remote.json", enabled=args.remote))
     cols = profile.annotation_columns(ws)
-    c = cd.generate(retriever, cols)
+    from colharmonize import preprocess
+    c = cd.generate(retriever, cols, preprocess.hints(ws))
     c.to_parquet(ws.candidates, index=False)
     ws.remember(ontology=str(Path(args.ontology).resolve()))
     print(f"{len(c)} candidates for {len(cols)} columns; displayed {int(c.displayed.sum())}")
@@ -337,6 +349,12 @@ def build_parser() -> argparse.ArgumentParser:
     rp.add_argument("--workspace", required=True)
     rp.add_argument("--run", type=int, default=1)
     rp.set_defaults(func=cmd_repair_apply)
+
+    pp = sub.add_parser("preprocess", help="collect GEOmend evidence (concept candidates, merge suggestions, units)")
+    pp.add_argument("--workspace", required=True)
+    pp.add_argument("--store", required=True, help="the pinned ontology as a GEOmend store (colharmonize ontology store)")
+    pp.add_argument("--ontology", help="pinned ontology directory (default: the one the workspace recorded)")
+    pp.set_defaults(func=cmd_preprocess)
 
     cd = sub.add_parser("candidates", help="retrieve candidate terms for every column")
     cd.add_argument("--workspace", required=True)

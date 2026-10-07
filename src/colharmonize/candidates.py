@@ -248,9 +248,13 @@ class Retriever:
                     out[v] = [c]
         return out
 
-    def for_column(self, column: str, values: list[str], unit: str | None) -> list[dict]:
-        """All candidates for one column: dicts with curie, pool, sources {source: rank}."""
+    def for_column(self, column: str, values: list[str], unit: str | None, hints: dict | None = None) -> list[dict]:
+        """All candidates for one column: dicts with curie, pool, sources {source: rank}.
+
+        `hints` is GEOmend preprocessing evidence for this column (decisions log
+        1.6): `terms`, its lexical candidates in rank order, and `units`."""
         found: dict[str, dict] = {}
+        hints = hints or {}
 
         def add(curie: str, pool: str, source: str, rank: int) -> None:
             c = found.setdefault(curie, {"curie": curie, "pool": pool, "sources": {}})
@@ -287,6 +291,16 @@ class Retriever:
         for u in unit_strings(column, unit):
             for rank, c in enumerate(self.unit_ix.exact(u), 1):
                 add(c, "unit", "unit", rank)
+        for u in hints.get("units", []):
+            for rank, c in enumerate(self.unit_ix.exact(u), 1):
+                add(c, "unit", "geomend_unit", rank)
+        rank = 0
+        for ident in hints.get("terms", []):
+            v = self.ontology.validate(ident)
+            if v.valid:
+                rank += 1
+                pool = "space" if v.curie in self.in_space else ("unit" if v.prefix == "UO" else "entity")
+                add(v.curie, pool, "geomend", rank)
         if self.remote is not None:
             for source, hits in (("zooma", self.remote.zooma(forms["raw"])), ("ols4", self.remote.ols4(forms["raw"]))):
                 rank = 0
@@ -313,12 +327,14 @@ def rank_and_display(cands: list[dict]) -> list[dict]:
     return out
 
 
-def generate(retriever: Retriever, columns: pd.DataFrame) -> pd.DataFrame:
-    """Candidates for every row of a columns table (study_id, column, values json, unit)."""
+def generate(retriever: Retriever, columns: pd.DataFrame, hints: dict | None = None) -> pd.DataFrame:
+    """Candidates for every row of a columns table (study_id, column, values json, unit).
+    `hints` maps (study_id, column) to GEOmend evidence (see `Retriever.for_column`)."""
     rows = []
     for r in columns.itertuples(index=False):
         values = [v for v, _ in json.loads(r.values)]
-        for c in rank_and_display(retriever.for_column(r.column, values, getattr(r, "unit", None))):
+        h = (hints or {}).get((r.study_id, r.column))
+        for c in rank_and_display(retriever.for_column(r.column, values, getattr(r, "unit", None), h)):
             rows.append({"study_id": r.study_id, "column": r.column, "curie": c["curie"],
                          "label": retriever.ontology.label(c["curie"]), "pool": c["pool"],
                          "sources": json.dumps(c["sources"], sort_keys=True), "n_sources": c["n_sources"],

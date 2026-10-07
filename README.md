@@ -22,6 +22,7 @@ runs every stage. The only human step is review.
 | Stage | Command | Who judges |
 |---|---|---|
 | Ingest | `colharmonize ingest` | GEOmend parses and profiles (offline by default) |
+| Preprocess | `colharmonize preprocess` | GEOmend, offline and with no model: concept candidates, merge suggestions, units, kept as evidence |
 | Repair | `tasks write repair`, then `repair apply` | One subagent run: variables hidden in titles, columns that encode two things |
 | Candidates | `colharmonize candidates` | Code: exact match, two embedding models, values-to-category, ZOOMA/OLS4 cache |
 | Annotate | `tasks write annotate` (runs 1 and 2), then `annotate apply` | Two independent subagent runs, one answer per column |
