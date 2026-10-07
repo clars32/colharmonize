@@ -67,4 +67,5 @@ def test_field_table_shape(project):
     t = gb.field_table(project)
     chars = t[(t.scope == "sample") & (t.namespace == "characteristic")]
     assert set(chars.study_id) == set(EXPECTED_SAMPLES)
-    assert {"study_id", "field_id", "name", "unit", "n_entities"} <= set(t.columns)
+    assert {"study_id", "field_id", "name", "unit", "n_reported"} <= set(t.columns)
+    assert (chars.n_reported > 0).all()

@@ -95,6 +95,30 @@ TypeScript clients, and 1 inference test (flaky). After installing both, with
 owner approval, the suite has 1,240 passed, 4 skipped and 0 failed. Any PR is
 compared against that.
 
+### 3.4: GEOmend 0.0.2 to 0.0.8 (2026-10-07)
+GEOmend moved from 0.0.2 to 0.0.8 (14 commits, 227 files). The cohort module
+became private (`_cohort._CohortEngine`), and the public entry point is now
+`geomend.project.ProjectClient`, with operation groups (`inputs`, `mappings`,
+`concepts`, `review`, `exports`). The bridge now uses only that public API:
+- `ProjectClient.create` builds a project.
+- `mappings.fields` lists fields, and `mappings.field` pages their per-sample
+  values, 200 entities at a time. It refuses any truncated value list rather
+  than drop values.
+
+`CohortConfig`, `OntologyStore.replace_all`, `resolve_local_ontology`, the
+graph models and the `text` helpers are unchanged.
+
+Verified against both workspaces before anything downstream was trusted:
+- **Tuning set (13 series):** re-ingesting under 0.0.8 gives the same columns,
+  samples and study tables (1,050 samples, 74 columns) and identical per-sample
+  values (42,578).
+- **End-to-end set (3 series):** also identical.
+- **Old projects:** 0.0.8 reads projects written by 0.0.2 without migration.
+
+Every result recorded above therefore stands. The field table now reports
+GEOmend's `reported_count` rather than counting values itself, because its only
+consumer reads units.
+
 ## Repair stage
 
 ### 4.1: Rules, not values
