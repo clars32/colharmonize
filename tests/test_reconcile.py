@@ -47,3 +47,18 @@ def test_finalize_prefers_reconciled_parts():
     out = rc.finalize(a, run, None).set_index("column")
     assert out.loc["x", "variable_id"] == "G1.1" and out.loc["x", "reconciled"]
     assert out.loc["y", "variable_id"] == "exact|EFO:2|" and not out.loc["y", "reconciled"]
+
+
+def test_shared_distinctive_values_link_columns(tiny):
+    a = ann([
+        {"study_id": "S1", "column": "karyotype", "primary_curie": "EFO:0000727", "variable_name": "karyotype"},
+        {"study_id": "S2", "column": "condition", "primary_curie": "PATO:0000047", "variable_name": "status"},
+        {"study_id": "S3", "column": "group", "primary_curie": "", "variable_name": "arm"},
+    ])
+    values = {"S1::karyotype": rc.distinctive(["Euploid", "TS21"]),
+              "S2::condition": rc.distinctive(["euploid", "Down syndrome"]),
+              "S3::group": rc.distinctive(["control", "1", "Yes"])}
+    assert values["S3::group"] == set()                                  # generic and numeric values do not link
+    groups = rc.candidate_groups(a, tiny, values)
+    assert any({"S1::karyotype", "S2::condition"} <= set(g) for g in groups)
+    assert not any("S3::group" in g for g in groups)

@@ -8,7 +8,9 @@ group into poolable variables; code checks the partition.
 Candidate groups are connected components over these links:
   - the same primary term
   - primary terms one or two `is_a` steps apart (`compound based treatment` is_a `treatment`)
-  - the same normalised column name or variable name, across studies
+  - the same normalised column name or variable name
+  - a shared distinctive value ("Euploid" in two columns annotated differently),
+    so columns that annotation read differently can still meet
 
 The subagent sees every member's values side by side, with its annotation,
 and which members cannot pool because they have conflicting values on the same
@@ -24,6 +26,7 @@ from __future__ import annotations
 
 import json
 import random
+import re
 from collections import defaultdict
 from typing import Literal
 
@@ -140,8 +143,25 @@ def _parents(ontology: Ontology) -> dict[str, list[str]]:
     return out
 
 
-def candidate_groups(annotations: pd.DataFrame, ontology: Ontology) -> list[list[str]]:
-    """Connected components (size >= 2) of columns that might pool. Members are 'study::column'."""
+# Values too common to show two columns record the same thing.
+GENERIC_VALUES = {"control", "controls", "case", "yes", "no", "none", "unknown", "na", "n/a", "nd", "not available",
+                  "normal", "other", "positive", "negative", "true", "false", "healthy", "untreated", "wt", "wild type"}
+
+
+def distinctive(values) -> set[str]:
+    """Normalised values that can link columns: not generic, not purely numeric, at least 3 characters."""
+    out = set()
+    for v in values:
+        k = normalise_key(v)
+        if len(k) >= 3 and k not in GENERIC_VALUES and not re.fullmatch(r"[-+.\d\s/]+", k):
+            out.add(k)
+    return out
+
+
+def candidate_groups(annotations: pd.DataFrame, ontology: Ontology,
+                     values: dict[str, set[str]] | None = None) -> list[list[str]]:
+    """Connected components (size >= 2) of columns that might pool. Members are 'study::column'.
+    `values` maps a member to its distinctive values (see `distinctive`)."""
     parents = _parents(ontology)
     ids = [f"{s}::{c}" for s, c in zip(annotations.study_id, annotations.column)]
     root = {i: i for i in ids}
@@ -163,6 +183,9 @@ def candidate_groups(annotations: pd.DataFrame, ontology: Ontology) -> list[list
             primaries[r.primary_curie].append(i)
         by_key[("name", normalise_key(r.column.split("#", 1)[-1]))].append(i)
         by_key[("name", normalise_key(r.variable_name))].append(i)
+    for m, vals in (values or {}).items():
+        for v in vals:
+            by_key[("value", v)].append(m)
     # Columns in the same study are grouped too: sub-cohorts recorded under
     # different keys may pool, and cannot_pool keeps co-occurring ones apart.
     for members in by_key.values():
@@ -201,8 +224,10 @@ def prepare(ws: Workspace, studies: list[str] | None, run: int) -> list[dict]:
     if studies:
         ann = ann[ann.study_id.isin(studies)]
     onto = Ontology.from_dir(ws.ontology_dir())
-    groups = candidate_groups(ann, onto)
     cols = profile.annotation_columns(ws).set_index(["study_id", "column"])
+    member_values = {f"{s}::{c}": distinctive(v for v, _ in json.loads(r["values"]))
+                     for (s, c), r in cols.iterrows()}
+    groups = candidate_groups(ann, onto, member_values)
     st = pd.read_parquet(ws.studies).set_index("study_id")
     co = profile.cooccurrence(profile.sample_values(ws))
     parents = _parents(onto)
@@ -229,7 +254,7 @@ def prepare(ws: Workspace, studies: list[str] | None, run: int) -> list[dict]:
             shown.append({
                 "member": mref[m], "study": study, "study_title": str(st.loc[study].get("title") or "")[:160],
                 "column": column.split("#", 1)[-1], "n_samples": int(c.n_samples),
-                "values": json.loads(c.values)[:MAX_VALUES], "n_distinct": int(c.n_distinct),
+                "values": json.loads(c["values"])[:MAX_VALUES], "n_distinct": int(c.n_distinct),
                 "annotation": {"variable_name": a.variable_name, "predicate": a.predicate,
                                "primary": onto.label(a.primary_curie) if a.primary_curie else None,
                                "qualifiers": [[s, onto.label(v) or v] for s, v in quals],
