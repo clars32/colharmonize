@@ -46,7 +46,7 @@ def test_finalize_prefers_reconciled_parts():
                          "qualifiers": "[]", "recodes": json.dumps([["a", "b"]]), "flags": "[]", "rationale": ""}])
     out = rc.finalize(a, run, None).set_index("column")
     assert out.loc["x", "variable_id"] == "G1.1" and out.loc["x", "reconciled"]
-    assert out.loc["y", "variable_id"] == "exact|EFO:2|" and not out.loc["y", "reconciled"]
+    assert out.loc["y", "variable_id"] == "S001" and not out.loc["y", "reconciled"]
 
 
 def test_shared_distinctive_values_link_columns(tiny):

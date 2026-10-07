@@ -386,3 +386,27 @@ the paragraph is inert; the tuning results in 7.3 are reconcile-1's.
 Known gap: a registered variable keeps value counts but not per-sample values,
 so co-occurrence between a new column and a registered column from the same
 study can't be checked.
+
+## End-to-end run
+
+### 11.1: From an empty workspace, following the skill (2026-10-06)
+GSE1397, GSE4119 and GSE128621 ran through ingest, repair, candidates,
+annotate (two runs), reconcile (two runs), score, the review page and publish.
+Subagents answered every judgment batch, using the plugin's agent instructions
+and models; the plugin wasn't installed in the session, so they ran as
+general-purpose agents. Everything else was the `colharmonize` command.
+
+- 3 studies, 122 samples; repair recovered 13 columns from titles and source
+  names, and every rule covered the samples it claimed.
+- 19 columns became 15 variables. The annotate runs agreed on 84.2% of
+  columns, and the reconcile runs on every partition.
+- Tiers: 8 columns pre-accepted, 8 quick, 3 manual.
+
+One answer was misfiled. An annotator wrote the item id
+`GSE4119::title#unresolved characteristic` for `GSE4119::unresolved
+characteristic`. Collection refused it, the batch was re-tasked once as the
+skill says, and the second answer was clean. This is why answers are checked
+against the batch's items, not trusted.
+
+Columns no candidate group reached now get plain singleton ids (`S001`)
+instead of their internal annotation key.

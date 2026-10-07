@@ -489,4 +489,10 @@ def finalize(annotations: pd.DataFrame, run1: pd.DataFrame, run2: pd.DataFrame |
                          "alt_predicate": _text(getattr(r, "predicate_run2", "")),
                          "alt_primary_curie": _text(getattr(r, "primary_curie_run2", "")),
                          "alt_mates": "[]"})
-    return pd.DataFrame(rows)
+    out = pd.DataFrame(rows)
+    # A column no group reached pools with nothing (a shared annotation would have
+    # grouped it), so it gets a plain singleton id instead of its annotation key.
+    alone = sorted(out.loc[~out.reconciled, "variable_id"].unique())
+    singleton = {vid: f"S{n:03d}" for n, vid in enumerate(alone, 1)}
+    out.loc[~out.reconciled, "variable_id"] = out.loc[~out.reconciled, "variable_id"].map(singleton)
+    return out
