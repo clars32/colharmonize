@@ -192,3 +192,91 @@ The obvious examples for the new predicates (`shock: Yes/No`, the Mayo score,
 PAM50, HbA1c) are all in the sealed corpus, and `strain` and CRLF2 are in the
 tuning gold. annotate-1 uses outside examples (NYHA class, hypertension yes/no,
 TP53 expression), so neither measurement is flattered by its own prompt.
+
+## Annotate stage
+
+### 6.1: Qualifiers are scored by meaning, not text
+The annotator writes qualifiers as terms or free text, and the gold writes them
+as curated phrases. Exact-text matching scored annotate-1's qualifiers at 10.5%
+while most were right ("blood draw" vs "blood sample collection"). The scorer
+now matches qualifiers in the same slot when one word set contains the other or
+their Jaccard similarity is at least 0.5, after dropping filler words, and
+compares terms by label. annotate-1 rescored at 68.4% precision / 52.0% recall.
+
+### 6.2: An unresolvable proposed name is a review hint, not a failure
+annotate-1 proposed names with no term in the pinned file (`cell line`,
+`leukocyte count`, which is deprecated). Failing the batch made the subagent
+guess a nearby term. Now an unknown ref is still a problem, but an unresolvable
+name resolves to predicate `none` with the name kept as a hint for review.
+
+### 6.3: annotate-1 to annotate-2
+Changes, each prompted by a tuning miss and illustrated with outside examples:
+- a lesion indicator targets the lesion class, with the specific lesion as
+  `object_class`
+- age at sampling, collection or biopsy is plain age; other events are anchors
+- processing batches are `block`
+- identifiers get predicate `none`
+- term definitions are shown, and the agent reads them before proposing a name
+
+| tuning gold | annotate-1 | annotate-2 |
+|---|---|---|
+| pooling precision / recall | 81.5% / 75.0% | 76.9% / 79.5% |
+| pooling F1 | 78.1% | 78.2% |
+| primary term | 66.7% | 72.6% |
+| predicate | 76.2% | 77.4% |
+| primary and predicate together | — | 66.7% |
+| NO_MATCH precision / recall | — | 37.5% / 60.0% |
+| qualifiers precision / recall | 68.4% / 52.0% | 81.0% / 68.0% |
+| runs agree on primary and predicate | — | 84.8% |
+
+annotate-2 beats iteration 2's primary-term accuracy (69.0%), the phase 3
+gate. Pooling recall rose and precision fell: annotation alone pools any two
+columns with the same annotation, so `age at dissection` joins `age` and a
+hybridization set joins a generic batch. Reconciliation, which sees the
+columns side by side, is the stage meant to separate them.
+
+## Reconcile stage
+
+### 7.1: Candidate groups link on shared distinctive values
+Groups start from the same term, the same normalised name, and a primary
+within two hops of another column's primary. That missed karyotype columns
+annotated as `disease` or `trisomy`, whose names share nothing. Columns that
+share a distinctive value (not yes/no, control, male/female or a number) are
+now linked too, including within one study. The 13 tuning series give 16
+groups of 2 to 15 columns.
+
+### 7.2: Run 1's partition is the answer; run 2 measures confidence
+As in annotation, the second run doesn't vote. Each column records the share
+of its group-mates whose same-variable status matches in both runs.
+
+### 7.3: reconcile-1 on the tuning gold
+| tuning gold | annotate-2 | reconcile run 1 | reconcile run 2 |
+|---|---|---|---|
+| pooling precision | 76.9% | 84.5% | 78.9% |
+| pooling recall | 79.5% | 80.7% | 85.2% |
+| pooling F1 | 78.2% | 82.6% | 82.0% |
+| B-cubed F1 | — | 92.1% | 92.9% |
+| primary term | 72.6% | 76.2% | 75.0% |
+| predicate | 77.4% | 78.6% | 79.8% |
+
+Reconciliation beats iteration 2 (59.5% / 78.4%) on precision and recall at
+once. It beats GEOmend's `propose()` (92.3% / 40.9%) on recall and F1 but not
+on precision, because `propose()` barely pools.
+
+**The disagreement between runs locates every error.** 53 predicted pairs
+join two columns whose partition agreed across runs, and all 53 are correct.
+All 13 false pairs involve one of the 18 columns where the runs disagree.
+They fall in two groups:
+- **Disease, karyotype and Down syndrome status** (15 columns). Run 1 split it
+  much as the gold does but kept GSE16176 `condition` ("euploid / Down
+  syndrome") with disease status, and recoded `registry`'s "DSRegistry" as a
+  diagnosis. Run 2 recoded "Control" to "euploid" and folded two disease-status
+  columns into karyotype. That infers a karyotype from a diagnosis: arguable,
+  and not what the owner decided.
+- **GSE222365 `cell type`** ("iPSC-derived cerebral organoid"), which gold
+  treats as a specimen source; its agreement is 0.
+
+The prompt was not tuned on this group: it is one cluster of genuinely close
+calls, and the agreement signal already routes it to review. Both runs also
+kept leukemia diagnoses apart from Down syndrome / control columns, which the
+gold pools as `disease`. That is a conservative split and costs only recall.

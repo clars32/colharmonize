@@ -169,6 +169,7 @@ def cmd_annotate_apply(args: argparse.Namespace) -> int:
 
 
 def cmd_reconcile_apply(args: argparse.Namespace) -> int:
+    import pandas as pd
     from colharmonize import annotate, reconcile, tasks
     from colharmonize.workspace import Workspace
     ws = Workspace(args.workspace)
