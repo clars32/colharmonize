@@ -425,6 +425,19 @@ export with any problem saves nothing.
 - **License:** defaults to SSSOM's "unspecified" URL. The owner has not chosen
   a license, and the tool doesn't choose one for them.
 
+### 9.4: A non-clinical reviewer can't settle the manual tier (owner, 2026-10-07)
+The owner reviewed the tuning set's 21 manual-tier variables and accepted all
+of them. 2 match the tuning gold in full. The others differ, mostly in
+exact-vs-broad choices, and in two pooling calls the gold rules out (disease
+status vs karyotype vs cohort; an organoid "cell type"). Asked about it, the
+owner said these calls "could go either way" without a clinical background.
+The acceptances stand as the review of record, and the gold stays as curated.
+
+Implication: the manual tier is where run disagreement concentrates real
+errors, and it needs domain judgment. Review is a safeguard only as strong as
+the reviewer's domain knowledge, and measurements of the pipeline should not
+assume review fixes the manual tier.
+
 ## Registry
 
 ### 10.1: A registry carries interoperability across runs
