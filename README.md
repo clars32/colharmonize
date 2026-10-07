@@ -14,6 +14,27 @@ The judgment steps run through Claude Code subagents. The package itself never
 calls a model. It writes task files, validates the answers, and records every
 decision with its provenance.
 
+## How a run goes
+
+In Claude Code with the plugin installed, `/harmonize <workspace> <sources...>`
+runs every stage. The only human step is review.
+
+| Stage | Command | Who judges |
+|---|---|---|
+| Ingest | `colharmonize ingest` | GEOmend parses and profiles (offline by default) |
+| Repair | `tasks write repair`, then `repair apply` | One subagent run: variables hidden in titles, columns that encode two things |
+| Candidates | `colharmonize candidates` | Code: exact match, two embedding models, values-to-category, ZOOMA/OLS4 cache |
+| Annotate | `tasks write annotate` (runs 1 and 2), then `annotate apply` | Two independent subagent runs, one answer per column |
+| Reconcile | `tasks write reconcile` (runs 1 and 2), then `reconcile apply` | Two independent subagent runs: related columns side by side, partitioned into variables |
+| Score | `colharmonize score` | Code: run agreement and checks set each column's review tier |
+| Review | `review page`, then `review apply EXPORT` | A person, on a local HTML page |
+| Publish | `colharmonize publish` | Code: `variables.tsv`, `columns.tsv`, `mappings.sssom.tsv`, review overlay applied last |
+| Registry | `registry use` before reconcile, `registry add` after review | Code: carries reviewed variables to later runs |
+
+Every identifier is validated against the pinned ontology file, never a live
+service. Answers are checked against a content hash of the batch they answer,
+so stale or misfiled answers are refused.
+
 ## colharmonize and GEOmend are separate tools
 
 [GEOmend](https://github.com/prestonraab/GEOmend) prepares the data;
@@ -40,7 +61,8 @@ colharmonize.
 |---|---|
 | `src/colharmonize/` | The package. `ontology.py` holds the pinned release and validator, `geomend_bridge.py` the only GEOmend imports, `detect.py` value-shape hints, and `cli.py` the `colharmonize` command |
 | `tests/` | pytest suite: regression cases from iteration 2 and contract tests for the GEOmend boundary |
-| `docs/` | Design notes, including proposed GEOmend changes |
+| `plugin/` | The Claude Code plugin: the `/harmonize` skill and the repairer, annotator and reconciler agents |
+| `docs/` | The decisions log and proposed GEOmend changes |
 | `eval/` | Sealed evaluation corpora, gold standards and how they were selected. Self-contained so it can move to `geomend-research`. |
 | `work/` | Run workspaces and scratch projects (git-ignored; a GEOmend project is ~1.5 GB) |
 
@@ -59,6 +81,11 @@ regenerable and kept under `work/`.
 
 ## Status
 
-Iteration 3, in progress. The Down syndrome corpus (64 series) from iteration 2
+Iteration 3, in progress. The Down syndrome corpus from iteration 2
 (`../efo-column-mapping`) is the tuning set. A 16-series corpus in four other
 disease areas is sealed for a single final measurement.
+
+On the tuning gold (13 series, 84 columns), pooling F1 is 82.6%, against 67.7%
+for iteration 2 and 56.7% for GEOmend's `propose()`. Every pre-accepted column
+was correct. These numbers come from the data the pipeline was tuned on; see
+`docs/decisions_log.md` sections 7 and 8.
