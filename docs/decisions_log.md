@@ -324,3 +324,37 @@ gave still counts as disagreement.
 | manual | 36 | 34 | 44.1% | 19 / 32 |
 
 All 13 false pooled pairs are in the manual tier.
+
+## Review and publish
+
+### 9.1: Decisions are an overlay, applied last, with fingerprints
+Iteration 2's reviewer decisions never reached its harmonized output: s09
+edited `mappings.tsv`, then s08 rebuilt it. Here the page export is validated
+into `review.json`, and publish recomputes everything from `scored.parquet`
+plus that overlay on every run. Each decision records a fingerprint of the
+variable it judged: its members, annotation and recodes, but not its name or
+tier. A re-run that changes the variable makes the decision stale; publish
+skips it and the page shows the variable again.
+
+### 9.2: The review unit is a variable, and reviewers can move columns
+A decision accepts, edits (name, predicate, primary, qualifiers), rejects, or
+moves member columns. A column can move to a variable of its own
+(`<parent>+<study>::<column>`, reviewable in turn) or into another variable,
+where it takes that variable's annotation and loses recodes written for the
+old one. A move that would pool columns with conflicting values on shared
+samples is refused, because the co-occurrence rule binds reviewers too. Every
+identifier a reviewer types is validated against the pinned file, and an
+export with any problem saves nothing.
+
+### 9.3: SSSOM choices
+- **Subjects** are columns, as `col:<study>/<column>` under
+  `urn:colharmonize:column:`, because GEO columns have no IRIs.
+  `subject_source` is the series' GEO page.
+- **Predicates:** `indicator` maps to `skos:relatedMatch`, and no-term to
+  object `sssom:NoTermFound`.
+- **Qualifiers** have no SSSOM slot. They go in `comment`, and stay structured
+  in `variables.tsv`.
+- **Justification:** an edit is `semapv:ManualMappingCuration`, with the
+  reviewer as author; anything else is `semapv:CompositeMatching`.
+- **License:** defaults to SSSOM's "unspecified" URL. The owner has not chosen
+  a license, and the tool doesn't choose one for them.

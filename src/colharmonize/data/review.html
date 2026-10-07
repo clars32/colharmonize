@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>colharmonize review</title>
+<style>
+:root{--bg:#fbfbfa;--fg:#1a1a18;--mut:#6b6b66;--line:#e2e2dd;--card:#fff;
+--pre:#0f7b4f;--quick:#9a6b00;--manual:#b3261e;--accent:#2f5fd0;--chg:#fff4c2}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){
+--bg:#16161a;--fg:#e9e9e6;--mut:#9a9a94;--line:#2c2c31;--card:#1e1e23;
+--pre:#4ade80;--quick:#fbbf24;--manual:#f87171;--accent:#7aa2f7;--chg:#3b3415}}
+:root[data-theme=dark]{--bg:#16161a;--fg:#e9e9e6;--mut:#9a9a94;--line:#2c2c31;--card:#1e1e23;
+--pre:#4ade80;--quick:#fbbf24;--manual:#f87171;--accent:#7aa2f7;--chg:#3b3415}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 ui-sans-serif,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 16px}
+h1{font-size:16px;margin:0 0 6px}
+.bar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--mut)}
+.pill{padding:2px 8px;border-radius:99px;border:1px solid var(--line);cursor:pointer;white-space:nowrap}
+.pill.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+main{padding:16px;max-width:1180px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:12px}
+.card.sel{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 25%,transparent)}
+.card.done:not(.sel){opacity:.6}
+.card.stale{border-color:var(--quick)}
+.hd{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.name{font-weight:650;font-size:16px}
+.mut{color:var(--mut);font-size:13px}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:var(--mut)}
+.tier{font-size:11px;padding:1px 7px;border-radius:99px;border:1px solid currentColor}
+.t-pre_accepted{color:var(--pre)}.t-quick{color:var(--quick)}.t-manual{color:var(--manual)}
+.badge{font-size:11px;padding:1px 7px;border-radius:99px;background:var(--mut);color:var(--bg)}
+.b-accepted,.b-edited{background:var(--pre)}.b-rejected{background:var(--manual)}.b-stale{background:var(--quick)}
+.lbl{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);margin:10px 0 3px}
+.ann{display:grid;grid-template-columns:110px 1fr;gap:4px 12px;font-size:14px;margin-top:8px}
+.ann>div:nth-child(odd){color:var(--mut);font-size:12px;padding-top:2px}
+.chg{background:var(--chg);border-radius:4px;padding:0 4px}
+.preds span{cursor:pointer;margin-right:6px;padding:1px 8px;border-radius:99px;border:1px solid var(--line);font-size:12px}
+.preds span.on{border-color:var(--accent);color:var(--accent);font-weight:600}
+.reasons{font-size:12px;color:var(--mut);margin-top:6px}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;font-weight:500;color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.04em;padding:4px 6px}
+td{padding:5px 6px;border-top:1px solid var(--line);vertical-align:top}
+td.vals{max-width:360px;word-break:break-word}
+.alt{color:var(--quick);font-size:12px}
+.cands td{cursor:pointer}
+.cands tr:hover{background:color-mix(in srgb,var(--accent) 8%,transparent)}
+input,textarea,select{font:inherit;font-size:13px;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:3px 6px}
+textarea{width:100%;min-height:44px;font-family:ui-monospace,Menlo,monospace;font-size:12px}
+input.wide{width:100%}
+button{font:inherit;font-size:13px;padding:4px 12px;border-radius:7px;border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer}
+button.primary{border-color:var(--accent);color:var(--accent)}
+.acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+kbd{font:11px ui-monospace,monospace;border:1px solid var(--line);border-radius:4px;padding:0 4px;background:var(--bg)}
+footer{padding:20px 16px;color:var(--mut);font-size:12px;text-align:center}
+@media(max-width:700px){.ann{grid-template-columns:1fr}.ann>div:nth-child(odd){padding-top:6px}}
+</style></head><body>
+<header>
+<h1>colharmonize review <span id="sub" class="mut"></span></h1>
+<div class="bar">
+  <span id="prog"></span>
+  <span id="filters"></span>
+  <label>reviewer <input id="who" size="12"></label>
+  <button id="exp" class="primary">Export decisions</button>
+</div>
+<div class="bar" style="margin-top:4px"><span><kbd>j</kbd>/<kbd>k</kbd> move · <kbd>a</kbd> accept (with any edits) ·
+<kbd>r</kbd> reject · <kbd>u</kbd> undo · <kbd>e</kbd>/<kbd>b</kbd>/<kbd>i</kbd>/<kbd>n</kbd> predicate ·
+<kbd>1</kbd>–<kbd>9</kbd> primary term from candidates</span></div>
+</header>
+<main id="main"></main>
+<footer id="foot"></footer>
+<script>
+const DATA = __PAYLOAD__;
+const KEY = "colharmonize_review_" + DATA.workspace;
+const FILTERS = [["all","all"],["manual","manual"],["quick","quick"],["pre_accepted","pre-accepted"],
+                 ["todo","undecided"],["done","decided"],["stale","changed since decided"]];
+let store = {decisions: {}, drafts: {}, reviewer: ""};
+try { const s = JSON.parse(localStorage.getItem(KEY) || "null"); if (s) store = s; } catch (e) {}
+// The workspace overlay is the record; the browser copy only adds what has not been applied yet.
+for (const [vid, d] of Object.entries(DATA.decisions)) if (!store.decisions[vid]) store.decisions[vid] = d;
+let filter = "all", cur = 0, visible = [];
+const byId = Object.fromEntries(DATA.variables.map(v => [v.id, v]));
+
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {} }
+function esc(s){ return (s == null ? "" : String(s)).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function dec(v){ const d = store.decisions[v.id]; return d && d.fp === v.fp ? d : null; }
+function isStale(v){ const d = store.decisions[v.id]; return !!(d && d.fp !== v.fp) || DATA.stale.includes(v.id); }
+function draft(v){ return store.drafts[v.id] || (store.drafts[v.id] = {edit: {}, moves: {}, note: ""}); }
+function changed(v){ const d = store.drafts[v.id]; return !!d && (Object.keys(d.edit).length > 0 || Object.keys(d.moves).length > 0); }
+function shown(v){
+  if (filter === "all") return true;
+  if (filter === "todo") return !dec(v);
+  if (filter === "done") return !!dec(v);
+  if (filter === "stale") return isStale(v);
+  return v.tier === filter;
+}
+function label(curie){
+  for (const v of DATA.variables) {
+    if (v.primary.curie === curie) return v.primary.label;
+    for (const c of v.candidates) if (c.curie === curie) return c.label;
+  }
+  return "";
+}
+function quals(list){ return list.map(q => `${q[0]} = ${q[1]}${q[2] ? "  # " + q[2] : ""}`).join("\n"); }
+function parseQuals(text){
+  return text.split("\n").map(l => l.replace(/#.*$/, "").trim()).filter(Boolean).map(l => {
+    const i = l.indexOf("="); return i < 0 ? ["object_class", l.trim()] : [l.slice(0, i).trim(), l.slice(i + 1).trim()]; });
+}
+
+function render(){
+  visible = DATA.variables.filter(shown);
+  if (cur >= visible.length) cur = Math.max(0, visible.length - 1);
+  let html = "";
+  visible.forEach((v, i) => {
+    const d = dec(v), dr = store.drafts[v.id] || {edit: {}, moves: {}, note: ""}, e = dr.edit;
+    const pred = e.predicate ?? v.predicate;
+    const prim = e.primary !== undefined ? (e.primary ? {curie: e.primary, label: label(e.primary)} : {}) : v.primary;
+    const studies = new Set(v.members.map(m => m.study)).size;
+    const status = d ? d.action : (isStale(v) ? "stale" : v.status);
+    html += `<div class="card ${i === cur ? "sel" : ""} ${d ? "done" : ""} ${isStale(v) && !d ? "stale" : ""}" data-i="${i}" id="card${i}">
+    <div class="hd"><span class="name">${esc(e.name ?? v.name)}</span><span class="mono">${esc(v.id)}</span>
+      <span class="tier t-${esc(v.tier)}">${esc(v.tier.replace("_", " "))}</span>
+      <span class="badge b-${esc(status)}">${esc(status.replace("_", " "))}</span>
+      <span class="mut">${v.members.length} column${v.members.length > 1 ? "s" : ""} · ${studies} stud${studies > 1 ? "ies" : "y"}</span></div>
+    ${v.reasons.length ? `<div class="reasons">why: ${v.reasons.map(esc).join(" · ")}</div>` : ""}
+    <div class="ann">
+      <div>name</div><div><input class="wide ${e.name !== undefined ? "chg" : ""}" data-f="name" data-v="${i}" value="${esc(e.name ?? v.name)}"></div>
+      <div>predicate</div><div class="preds">${["exact","broad","indicator","none"].map(p =>
+        `<span class="${p === pred ? "on" : ""} ${p === pred && e.predicate !== undefined ? "chg" : ""}" data-p="${p}" data-v="${i}">${p}</span>`).join("")}</div>
+      <div>primary term</div><div class="${e.primary !== undefined ? "chg" : ""}">${prim.curie
+        ? `<b>${esc(prim.label)}</b> <span class="mono">${esc(prim.curie)}</span>${v.in_space || e.primary !== undefined ? "" : ' <span class="alt">outside the property space</span>'}
+           ${prim.def ? `<div class="mut">${esc(prim.def)}</div>` : ""}` : "<i>no term</i>"}
+        <div><input size="18" placeholder="or type a CURIE" data-f="primary" data-v="${i}"></div></div>
+      <div>qualifiers</div><div><textarea data-f="qualifiers" data-v="${i}" class="${e.qualifiers ? "chg" : ""}"
+        placeholder="slot = CURIE or text, one per line">${esc(e.qualifiers ? quals(e.qualifiers) : quals(v.qualifiers))}</textarea>
+        <div class="mut">slots: subject, object_class, event_time_anchor, method, unit</div></div>
+    </div>
+    <div class="lbl">columns</div>
+    <div class="scroll"><table><tr><th>study</th><th>column</th><th>values</th><th>recodes</th><th>other run</th><th>column goes to</th></tr>
+    ${v.members.map(m => `<tr><td title="${esc(DATA.studies[m.study] || "")}">${esc(m.study)}</td>
+      <td><b>${esc(m.column)}</b><div class="mut">${m.n_samples}/${m.n_study_samples} samples · <span class="t-${esc(m.tier)}">${esc(m.tier.replace("_", " "))}</span>${m.moved ? " · moved here by review" : ""}</div></td>
+      <td class="vals">${m.values.map(x => `${esc(x[0])} <span class="mut">(${x[1]})</span>`).join(" · ")}</td>
+      <td class="vals">${m.recodes.map(x => `${esc(x[0])} → ${esc(x[1])}`).join("<br>")}</td>
+      <td class="alt">${m.alt.predicate ? `${esc(m.alt.predicate)} ${esc(m.alt.label || "")} <span class="mono">${esc(m.alt.curie || "")}</span>` : ""}
+        ${m.alt_mates.length ? `<div class="mut">with ${m.alt_mates.map(esc).join(", ")}</div>` : ""}</td>
+      <td><select data-move="${esc(m.key)}" data-v="${i}" class="${dr.moves[m.key] ? "chg" : ""}">
+        <option value="">stays</option><option value="new" ${dr.moves[m.key] === "new" ? "selected" : ""}>own variable</option>
+        ${DATA.variables.filter(o => o.id !== v.id && !o.id.includes("+")).map(o =>
+          `<option value="${esc(o.id)}" ${dr.moves[m.key] === o.id ? "selected" : ""}>${esc(o.name)} (${esc(o.id)})</option>`).join("")}
+      </select></td></tr>`).join("")}</table></div>
+    ${v.candidates.length ? `<div class="lbl">candidate terms</div><div class="scroll"><table class="cands">${v.candidates.slice(0, 9).map((c, j) =>
+      `<tr data-c="${esc(c.curie)}" data-v="${i}"><td class="mut" style="width:16px">${j + 1}</td><td><b>${esc(c.label)}</b> <span class="mono">${esc(c.curie)}</span>
+       <div class="mut">${esc(c.def)}</div></td></tr>`).join("")}</table></div>` : ""}
+    <div class="acts"><button data-act="accept" data-v="${i}" class="primary">${changed(v) ? "Save edits" : "Accept"} (a)</button>
+      <button data-act="reject" data-v="${i}">Reject (r)</button><button data-act="undo" data-v="${i}">Undo (u)</button>
+      <input size="40" placeholder="note" data-f="note" data-v="${i}" value="${esc(dr.note)}">
+      ${d ? `<span class="mut">${esc(d.action)} ${esc(d.at || "")}</span>` : ""}</div>
+    </div>`;
+  });
+  const main = document.getElementById("main");
+  main.innerHTML = html || "<p>Nothing matches this filter.</p>";
+  const done = DATA.variables.filter(dec).length;
+  document.getElementById("prog").textContent = `${done}/${DATA.variables.length} variables decided · showing ${visible.length}`;
+  document.getElementById("sub").textContent = `${DATA.workspace} · ${DATA.ontology}`;
+  document.getElementById("foot").textContent = `Generated ${DATA.generated}. Every identifier is validated against ${DATA.ontology} when decisions are applied.`;
+  document.getElementById("filters").innerHTML = FILTERS.map(([k, t]) =>
+    `<span class="pill ${k === filter ? "on" : ""}" data-filter="${k}">${t}</span>`).join(" ");
+}
+function at(i){ return visible[+i]; }
+function setEdit(v, field, value){ const dr = draft(v); if (value === undefined) delete dr.edit[field]; else dr.edit[field] = value; save(); }
+function setPred(v, p){
+  setEdit(v, "predicate", p === v.predicate ? undefined : p);
+  if (p === "none") setEdit(v, "primary", "");
+  else if (draft(v).edit.primary === "") setEdit(v, "primary", undefined);
+}
+function decide(v, action){
+  const dr = draft(v);
+  const edit = Object.keys(dr.edit).length ? dr.edit : undefined;
+  const moves = dr.moves;
+  store.decisions[v.id] = {action: action === "reject" ? "reject" : (edit || Object.keys(moves).length ? "edit" : "accept"),
+    fp: v.fp, at: new Date().toISOString(), reviewer: store.reviewer || "", ...(edit && action !== "reject" ? {edit} : {}),
+    moves: action === "reject" ? {} : moves, note: dr.note || ""};
+  save(); advanceFrom(v.id);
+}
+function undo(v){ delete store.decisions[v.id]; delete store.drafts[v.id]; save(); render(); scrollToCur(); }
+function advanceFrom(id){
+  const before = visible.map(x => x.id), i = before.indexOf(id), next = i >= 0 && i + 1 < before.length ? before[i + 1] : null;
+  visible = DATA.variables.filter(shown);
+  const after = visible.map(x => x.id);
+  let ni = next ? after.indexOf(next) : -1;
+  if (ni < 0) ni = Math.min(i, after.length - 1);
+  cur = Math.max(0, ni); render(); scrollToCur();
+}
+function scrollToCur(){ const el = document.getElementById("card" + cur); if (el) el.scrollIntoView({block: "start", behavior: "auto"}); }
+
+document.addEventListener("click", ev => {
+  const t = ev.target;
+  if (t.dataset.filter) { filter = t.dataset.filter; cur = 0; render(); return; }
+  const card = t.closest(".card"); if (!card) return;
+  const v = at(card.dataset.i);
+  if (+card.dataset.i !== cur && !t.closest("input,textarea,select,button,[data-p],tr[data-c]")) { cur = +card.dataset.i; render(); return; }
+  if (t.dataset.p) { cur = +card.dataset.i; setPred(v, t.dataset.p); render(); return; }
+  const row = t.closest("tr[data-c]");
+  if (row) { cur = +card.dataset.i; setEdit(v, "primary", row.dataset.c === v.primary.curie ? undefined : row.dataset.c); render(); return; }
+  if (t.dataset.act) { cur = +card.dataset.i; if (t.dataset.act === "undo") undo(v); else decide(v, t.dataset.act); }
+});
+document.addEventListener("change", ev => {
+  const t = ev.target, v = t.dataset.v !== undefined ? at(t.dataset.v) : null;
+  if (t.id === "who") { store.reviewer = t.value.trim(); save(); return; }
+  if (!v) return;
+  if (t.dataset.move !== undefined) { const dr = draft(v); if (t.value) dr.moves[t.dataset.move] = t.value; else delete dr.moves[t.dataset.move]; save(); render(); return; }
+  const f = t.dataset.f;
+  if (f === "name") setEdit(v, "name", t.value.trim() && t.value.trim() !== v.name ? t.value.trim() : undefined);
+  else if (f === "primary") { const c = t.value.trim(); if (c) setEdit(v, "primary", c); }
+  else if (f === "qualifiers") { const q = parseQuals(t.value); setEdit(v, "qualifiers", quals(q.map(x => [...x, ""])) === quals(v.qualifiers.map(x => [x[0], x[1], ""])) ? undefined : q); }
+  else if (f === "note") { draft(v).note = t.value; save(); return; }
+  render();
+});
+document.addEventListener("keydown", ev => {
+  if (ev.metaKey || ev.ctrlKey || ev.altKey || (ev.target.closest && ev.target.closest("input,textarea,select"))) return;
+  const v = visible[cur]; if (!v) return;
+  const k = ev.key;
+  if (k === "j") { cur = Math.min(cur + 1, visible.length - 1); render(); scrollToCur(); }
+  else if (k === "k") { cur = Math.max(cur - 1, 0); render(); scrollToCur(); }
+  else if (k === "a") decide(v, "accept");
+  else if (k === "r") decide(v, "reject");
+  else if (k === "u") undo(v);
+  else if ("ebin".includes(k) && k.length === 1) { setPred(v, {e: "exact", b: "broad", i: "indicator", n: "none"}[k]); render(); }
+  else if (/^[1-9]$/.test(k)) { const c = v.candidates[+k - 1]; if (c) { setEdit(v, "primary", c.curie === v.primary.curie ? undefined : c.curie); render(); } }
+});
+document.getElementById("exp").onclick = () => {
+  const out = {format: DATA.format, workspace: DATA.workspace, reviewer: store.reviewer || "",
+               exported: new Date().toISOString(), decisions: store.decisions};
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(out, null, 1)], {type: "application/json"}));
+  a.download = `review_${DATA.workspace}.json`; a.click();
+};
+document.getElementById("who").value = store.reviewer || "";
+render();
+</script></body></html>

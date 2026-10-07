@@ -164,6 +164,12 @@ class Ontology:
     def label(self, curie: str) -> str:
         return str(self._index.at[curie, "label"]) if curie in self._index.index else ""
 
+    def definition(self, curie: str) -> str:
+        if curie not in self._index.index:
+            return ""
+        d = self._index.at[curie, "definition"]
+        return "" if d is None or (isinstance(d, float) and d != d) else str(d)
+
     def label_map(self) -> dict[str, str]:
         """CURIE -> label for every term with a CURIE."""
         return dict(zip(self._index.index, self._index.label))

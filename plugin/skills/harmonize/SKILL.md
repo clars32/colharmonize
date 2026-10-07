@@ -99,7 +99,29 @@ agreement and a fixed set of checks: `pre_accepted`, `quick` or `manual`.
 Report the counts per tier. Nothing is accepted without review; the tier sets
 the order and depth of review.
 
-## Later stages
+## 7. Review (the human step)
 
-Review and publish will be added here as the colharmonize package gains them.
-Until then, stop after scoring and summarise.
+    colharmonize review page --workspace <workspace>
+
+Tell the user where the page is (`<workspace>/review.html`). Ask them to
+review it in a browser, starting with the manual tier, and export their
+decisions. Do not review on their behalf. When they give you the exported
+file:
+
+    colharmonize review apply --workspace <workspace> <export.json>
+
+If it reports problems (an identifier not in the pinned ontology, a move that
+pools columns that conflict on the same samples), show them to the user;
+nothing is saved until the export is clean. Stale decisions were made on
+output that has since changed, so the variable needs another look. If the user
+split columns out, rebuild the page so they can review the new variables.
+
+## 8. Publish
+
+    colharmonize publish --workspace <workspace> [--license URL]
+
+This writes `variables.tsv`, `columns.tsv` and `mappings.sssom.tsv` under
+`<workspace>/published/`, and always applies the review overlay last. Ask the
+user for a license before publishing mappings they will share; without one,
+the SSSOM header records the license as unspecified. Report the count of
+variables per review status.

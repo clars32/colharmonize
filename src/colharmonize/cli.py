@@ -13,10 +13,11 @@
     colharmonize annotate apply --workspace DIR --runs 1 2      resolve, combine runs, write annotations
     colharmonize reconcile apply --workspace DIR --runs 1 2     partition groups, write final variables
     colharmonize score   --workspace DIR                        review tiers (pre_accepted / quick / manual)
+    colharmonize review page  --workspace DIR [--out HTML]      write the local review page
+    colharmonize review apply --workspace DIR EXPORT            validate a page export into the review overlay
+    colharmonize publish --workspace DIR [--out DIR] [--license URL] [--mapping-set-id URI]
     colharmonize eval    --gold-columns TSV --gold-variables TSV --predictions TSV [--report MD] [--json JSON]
 
-Later stages (task files, ingesting subagent answers, reconciliation, review,
-publish) are added as they are built.
 """
 from __future__ import annotations
 
@@ -217,6 +218,37 @@ def cmd_score(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_review(args: argparse.Namespace) -> int:
+    from colharmonize import review
+    from colharmonize.ontology import Ontology
+    from colharmonize.workspace import Workspace
+    ws = Workspace(args.workspace)
+    onto = Ontology.from_dir(ws.ontology_dir())
+    if args.action == "page":
+        out = review.write_page(ws, onto, Path(args.out) if args.out else None)
+        print(f"wrote {out}")
+        return 0
+    if not args.export:
+        sys.exit("review apply needs the exported decisions file")
+    from colharmonize import profile
+    conflicts = profile.cooccurrence(profile.sample_values(ws))
+    result = review.apply_export(ws, Path(args.export).expanduser(), onto, conflicts)
+    print(json.dumps(result, indent=1))
+    return 0 if result["saved"] else 1
+
+
+def cmd_publish(args: argparse.Namespace) -> int:
+    from colharmonize import publish
+    from colharmonize.ontology import Ontology
+    from colharmonize.workspace import Workspace
+    ws = Workspace(args.workspace)
+    out = Path(args.out) if args.out else ws.root / "published"
+    result = publish.publish(ws, Ontology.from_dir(ws.ontology_dir()), out, args.mapping_set_id, args.license)
+    print(json.dumps(result, indent=1))
+    print(f"wrote {out}")
+    return 0
+
+
 def cmd_eval(args: argparse.Namespace) -> int:
     from dataclasses import asdict
     from colharmonize.evaluate import load_gold, load_predictions, report, score
@@ -303,6 +335,21 @@ def build_parser() -> argparse.ArgumentParser:
     sc = sub.add_parser("score", help="assign review tiers from run agreement and checks")
     sc.add_argument("--workspace", required=True)
     sc.set_defaults(func=cmd_score)
+
+    rv = sub.add_parser("review", help="write the review page, or apply its exported decisions")
+    rv.add_argument("action", choices=["page", "apply"])
+    rv.add_argument("export", nargs="?", help="decisions file exported from the page (for apply)")
+    rv.add_argument("--workspace", required=True)
+    rv.add_argument("--out", help="where to write the page (default: <workspace>/review.html)")
+    rv.set_defaults(func=cmd_review)
+
+    pb = sub.add_parser("publish", help="write variables.tsv, columns.tsv and mappings.sssom.tsv")
+    pb.add_argument("--workspace", required=True)
+    pb.add_argument("--out", help="output directory (default: <workspace>/published)")
+    pb.add_argument("--license", default="https://w3id.org/sssom/license/unspecified",
+                    help="license URL for the SSSOM mapping set")
+    pb.add_argument("--mapping-set-id", help="URI identifying the SSSOM mapping set")
+    pb.set_defaults(func=cmd_publish)
 
     ev = sub.add_parser("eval", help="score predictions against a gold standard")
     ev.add_argument("--gold-columns", required=True)

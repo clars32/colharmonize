@@ -372,6 +372,10 @@ def pair_agreement(run1: pd.DataFrame, run2: pd.DataFrame) -> pd.Series:
     return pd.Series(out)
 
 
+def _text(v) -> str:
+    return "" if v is None or (isinstance(v, float) and v != v) else str(v)
+
+
 def finalize(annotations: pd.DataFrame, run1: pd.DataFrame, run2: pd.DataFrame | None,
              labels: dict[str, str] | None = None) -> pd.DataFrame:
     """Final variable for every column: its reconciled part when grouped, else its own annotation.
@@ -381,10 +385,15 @@ def finalize(annotations: pd.DataFrame, run1: pd.DataFrame, run2: pd.DataFrame |
     annotation and qualifiers, whether the primary is outside the property
     space or was picked among same-label terms, and flags. Without a second run
     nothing counts as agreed, and partition agreement is NaN (not measured).
+    The second run's answer is kept beside it (`alt_*`) for the review page.
     """
     rec = run1.set_index(["study_id", "column"])
     other = run2.set_index(["study_id", "column"]) if run2 is not None else None
     agree = pair_agreement(run1, run2) if run2 is not None else pd.Series(dtype=float)
+    mates2 = defaultdict(list)
+    if run2 is not None:
+        for s_, c_, part in zip(run2.study_id, run2.column, run2.part):
+            mates2[part].append(f"{s_}::{c_}")
     rows = []
     for r in annotations.itertuples(index=False):
         key = (r.study_id, r.column)
@@ -401,7 +410,11 @@ def finalize(annotations: pd.DataFrame, run1: pd.DataFrame, run2: pd.DataFrame |
                          "qualifiers_agree": q is not None and qualifiers_agree(p.qualifiers, q.qualifiers, labels),
                          "outside_space": bool(p.get("outside_space", False)),
                          "ambiguous": bool(p.get("ambiguous", False)), "unresolved_proposal": "",
-                         "flags": json.dumps(sorted(flags | set(json.loads(p["flags"]))))})
+                         "flags": json.dumps(sorted(flags | set(json.loads(p["flags"])))),
+                         "alt_predicate": q.predicate if q is not None else "",
+                         "alt_primary_curie": q.primary_curie if q is not None else "",
+                         "alt_mates": json.dumps([m for m in mates2.get(q.part, []) if m != f"{r.study_id}::{r.column}"]
+                                                 if q is not None else [])})
         else:
             rows.append({"study_id": r.study_id, "column": r.column, "variable_id": r.variable_id,
                          "variable_name": r.variable_name, "predicate": r.predicate,
@@ -412,5 +425,8 @@ def finalize(annotations: pd.DataFrame, run1: pd.DataFrame, run2: pd.DataFrame |
                          "outside_space": bool(getattr(r, "outside_space", False)),
                          "ambiguous": bool(getattr(r, "ambiguous", False)),
                          "unresolved_proposal": getattr(r, "unresolved_proposal", "") or "",
-                         "flags": json.dumps(sorted(flags))})
+                         "flags": json.dumps(sorted(flags)),
+                         "alt_predicate": _text(getattr(r, "predicate_run2", "")),
+                         "alt_primary_curie": _text(getattr(r, "primary_curie_run2", "")),
+                         "alt_mates": "[]"})
     return pd.DataFrame(rows)
