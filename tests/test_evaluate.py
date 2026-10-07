@@ -93,3 +93,14 @@ def test_qualifiers_match_by_meaning_not_spelling():
     assert qualifier_match(("event_time_anchor", "dissection"), ("event_time_anchor", "EFO:0003856"), labels)
     assert not qualifier_match(("method", "fish"), ("object_class", "fish"))          # slot differs
     assert not qualifier_match(("object_class", "crlf2"), ("object_class", "jak2 r683"))
+
+
+def test_tier_calibration_puts_a_pair_in_its_worse_tier():
+    pred = PRED.assign(tier=["pre_accepted", "manual", "pre_accepted", "quick"])
+    t = {r["tier"]: r for r in score(GOLD, pred).tiers}
+    # pre: Ax, Bx both right; pair (Ax,Bx) right.  manual: Ay wrong; pairs (Ax,Ay), (Ay,Bx) wrong.
+    assert (t["pre_accepted"]["columns"], t["pre_accepted"]["annotation_correct"]) == (2, 2)
+    assert (t["pre_accepted"]["pairs"], t["pre_accepted"]["pairs_correct"]) == (1, 1)
+    assert (t["manual"]["pairs"], t["manual"]["pairs_correct"]) == (2, 0)
+    assert (t["quick"]["columns"], t["quick"]["annotation_correct"]) == (1, 0)   # Bz: broad, gold exact
+    assert "## Review tiers" in report(score(GOLD, pred))

@@ -90,7 +90,16 @@ each and never mixing runs, exactly as in step 4. Collect both runs, then:
 Report the number of variables, how many columns were reconciled, and the
 partition agreement between runs.
 
+## 6. Score
+
+    colharmonize score --workspace <workspace>
+
+This assigns every column and variable a review tier from the two runs'
+agreement and a fixed set of checks: `pre_accepted`, `quick` or `manual`.
+Report the counts per tier. Nothing is accepted without review; the tier sets
+the order and depth of review.
+
 ## Later stages
 
-Scoring, review and publish will be added here as the colharmonize package
-gains them. Until then, stop after reconciliation and summarise.
+Review and publish will be added here as the colharmonize package gains them.
+Until then, stop after scoring and summarise.

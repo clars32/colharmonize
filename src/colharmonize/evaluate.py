@@ -40,6 +40,7 @@ from pathlib import Path
 import pandas as pd
 
 from colharmonize.normalise import normalise_key
+from colharmonize.text import same_meaning
 
 _QUAL = re.compile(r'(\w+)=(?:"([^"]*)"(?: \(ungrounded\))?|([A-Za-z]+:\d+)(?: \[[^\]]*\])?|([^;]+))')
 _CURIE = re.compile(r"^[A-Za-z]+:\d+$")
@@ -63,31 +64,18 @@ def parse_qualifiers(text: object) -> frozenset[tuple[str, str]]:
     return frozenset(out)
 
 
-_FILLER = {"gene", "genes", "locus", "the", "of", "a", "an", "in", "fusion", "status", "level", "levels"}
-
-
-def _words(text: str) -> set[str]:
-    return {w for w in re.findall(r"[a-z0-9]+", text.casefold()) if w not in _FILLER}
-
-
 def qualifier_match(gold: tuple[str, str], pred: tuple[str, str], labels: dict[str, str] | None = None) -> bool:
     """Same slot, and the same term, or text that says the same thing.
 
     Free-text qualifiers are written by different hands ("crlf2" vs "crlf2
-    gene", "fish" vs "fluorescence in situ hybridization (fish)"), and a
-    grounded term may face free text ("dissection" vs EFO:0003856). Values
-    match when, after mapping CURIEs to labels and dropping filler words, one
-    word set contains the other or they share at least half their words.
+    gene"), and a grounded term may face free text ("dissection" vs
+    EFO:0003856). CURIEs are compared by label, then `text.same_meaning` decides.
     """
     if gold[0] != pred[0]:
         return False
     if gold[1] == pred[1]:
         return True
-    a = _words((labels or {}).get(gold[1], gold[1]))
-    b = _words((labels or {}).get(pred[1], pred[1]))
-    if not a or not b:
-        return False
-    return a <= b or b <= a or len(a & b) / len(a | b) >= 0.5
+    return same_meaning((labels or {}).get(gold[1], gold[1]), (labels or {}).get(pred[1], pred[1]))
 
 
 def _clean(v: object) -> str:
@@ -141,6 +129,37 @@ class Score:
     breadth: list = field(default_factory=list)
     gold_breadth: list = field(default_factory=list)
     unsplit_parents: list = field(default_factory=list)
+    tiers: list = field(default_factory=list)
+
+
+TIER_ORDER = ["pre_accepted", "quick", "manual"]
+
+
+def tier_calibration(gold: pd.DataFrame, pred: pd.DataFrame, p: dict, g: dict) -> list[dict]:
+    """Per review tier: how many gold columns it holds, how many of their
+    annotations are right, and how many of the pairs it pools are right. A pair
+    belongs to the worse tier of its two columns."""
+    tier = {(r.accession, r.raw_key): r.tier for r in pred.itertuples(index=False)}
+    rank = {t: i for i, t in enumerate(TIER_ORDER)}
+    by = {(r.accession, r.raw_key): r for r in pred.itertuples(index=False)}
+    rows = {t: {"tier": t, "columns": 0, "annotation_correct": 0, "pairs": 0, "pairs_correct": 0} for t in TIER_ORDER}
+    for row in gold.itertuples(index=False):
+        it = (row.accession, row.raw_key)
+        if it not in tier:
+            continue
+        r = rows[tier[it]]
+        r["columns"] += 1
+        pr = by[it]
+        r["annotation_correct"] += (_clean(pr.primary_curie) == _clean(row.primary_curie)
+                                    and _clean(pr.predicate) == _clean(row.predicate))
+    items = [it for it in zip(gold.accession, gold.raw_key) if it in tier]
+    for a, b in itertools.combinations(items, 2):
+        if p[a] != p[b]:
+            continue
+        r = rows[max(tier[a], tier[b], key=rank.get)]
+        r["pairs"] += 1
+        r["pairs_correct"] += g[a] == g[b]
+    return [rows[t] for t in TIER_ORDER]
 
 
 def score(gold: pd.DataFrame, pred: pd.DataFrame, labels: dict[str, str] | None = None) -> Score:
@@ -253,6 +272,7 @@ def score(gold: pd.DataFrame, pred: pd.DataFrame, labels: dict[str, str] | None 
         false_merges=sorted(false_merges, key=lambda r: -sum(r["gold_variables"].values())),
         missed_merges=sorted(missed_merges, key=lambda r: -r["split_into"]),
         breadth=breadth(p_members), gold_breadth=breadth(g_members), unsplit_parents=unsplit,
+        tiers=tier_calibration(gold, pred, p, g) if {"tier", "predicate", "primary_curie"} <= set(pred.columns) else [],
     )
 
 
@@ -287,6 +307,14 @@ def report(s: Score, title: str = "Evaluation") -> str:
             lines.append(f"- unit ({a['unit_scored']} columns): {_pct(a['unit_accuracy'])}")
     else:
         lines.append("Not scored: predictions carry no predicate or primary term.")
+    if s.tiers:
+        lines += ["", "## Review tiers", "",
+                  "| tier | columns | annotation correct | pooled pairs correct |", "|---|---|---|---|"]
+        for t in s.tiers:
+            ac = t["annotation_correct"] / t["columns"] if t["columns"] else float("nan")
+            pc = t["pairs_correct"] / t["pairs"] if t["pairs"] else float("nan")
+            lines.append(f"| {t['tier']} | {t['columns']} | {t['annotation_correct']} ({_pct(ac)}) | "
+                         f"{t['pairs_correct']} / {t['pairs']} ({_pct(pc)}) |")
     lines += ["", "## Broadest predicted variables (distinct column names)", ""]
     for r in s.breadth[:5]:
         lines.append(f"- `{r['variable']}`: {r['distinct_names']} names, {r['columns']} columns: {', '.join(r['names'])}")

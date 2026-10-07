@@ -25,7 +25,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from colharmonize import profile
 from colharmonize.ontology import Ontology
-from colharmonize.text import loose
+from colharmonize.text import loose, same_meaning
 from colharmonize.workspace import Workspace
 
 STAGE = "annotate"
@@ -370,13 +370,34 @@ def identity(row) -> str:
     return f"{row['predicate']}|{row['primary_curie']}|" + ";".join(f"{s}={v}" for s, v in sorted(quals))
 
 
-def combine(run1: pd.DataFrame, run2: pd.DataFrame) -> pd.DataFrame:
-    """Run 1 is the answer of record; run 2 measures agreement."""
+def qualifiers_agree(a: str | None, b: str | None, labels: dict[str, str] | None = None) -> bool:
+    """Whether two runs' qualifiers (JSON [slot, value] lists) say the same thing.
+
+    Every non-unit qualifier on each side must match one on the other in the
+    same slot, by `text.same_meaning` after mapping CURIEs to labels: "crlf2"
+    and "crlf2 gene" agree; a qualifier only one run gave does not.
+    """
+    if a is None or b is None:
+        return False
+    labels = labels or {}
+
+    def side(q: str) -> list[tuple[str, str]]:
+        return [(s, labels.get(v, v)) for s, v in json.loads(q) if s != "unit"]
+
+    x, y = side(a), side(b)
+    covered = lambda p, q: all(any(s == t and same_meaning(v, w) for t, w in q) for s, v in p)
+    return covered(x, y) and covered(y, x)
+
+
+def combine(run1: pd.DataFrame, run2: pd.DataFrame | None, labels: dict[str, str] | None = None) -> pd.DataFrame:
+    """Run 1 is the answer of record; run 2 measures agreement. Without run 2 nothing agrees."""
     keys = ["study_id", "column"]
+    if run2 is None:
+        run2 = run1[keys].assign(predicate=None, primary_curie=None, qualifiers=None)
     m = run1.merge(run2[keys + ["predicate", "primary_curie", "qualifiers"]], on=keys, how="left", suffixes=("", "_run2"))
     m["agree_primary"] = (m.predicate == m.predicate_run2) & (m.primary_curie == m.primary_curie_run2)
-    m["agree_qualifiers"] = m.qualifiers.map(lambda q: sorted(x for x in json.loads(q) if x[0] != "unit")) == \
-        m.qualifiers_run2.fillna("[]").map(lambda q: sorted(x for x in json.loads(q) if x[0] != "unit"))
+    m["agree_qualifiers"] = [qualifiers_agree(a, None if pd.isna(b) else b, labels)
+                             for a, b in zip(m.qualifiers, m.qualifiers_run2)]
     m["variable_id"] = m.apply(identity, axis=1)
     return m
 

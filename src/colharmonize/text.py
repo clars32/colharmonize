@@ -29,3 +29,28 @@ def strip_parenthetical(s: str) -> str:
 def parenthetical(s: str) -> list[str]:
     """Contents of parentheses or brackets: 'age (years)' -> ['years']."""
     return [m.strip() for m in re.findall(r"[\(\[]([^)\]]*)[\)\]]", str(s)) if m.strip()]
+
+
+# Words that don't change what a short qualifier phrase refers to.
+_FILLER = {"gene", "genes", "locus", "the", "of", "a", "an", "in", "fusion", "status", "level", "levels"}
+
+
+def _words(text: str) -> set[str]:
+    return {w for w in re.findall(r"[a-z0-9]+", text.casefold()) if w not in _FILLER}
+
+
+def same_meaning(a: str, b: str) -> bool:
+    """Whether two short phrases written by different hands name the same thing.
+
+    "crlf2" and "crlf2 gene", "fish" and "fluorescence in situ hybridization
+    (fish)" do: after dropping filler words, one word set contains the other or
+    they share at least half their words. Used both to score qualifiers against
+    gold and to decide whether two runs' qualifiers agree, so the confidence
+    signal and the measurement apply one rule.
+    """
+    if a == b:
+        return True
+    x, y = _words(a), _words(b)
+    if not x or not y:
+        return False
+    return x <= y or y <= x or len(x & y) / len(x | y) >= 0.5

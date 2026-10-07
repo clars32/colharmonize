@@ -164,6 +164,10 @@ class Ontology:
     def label(self, curie: str) -> str:
         return str(self._index.at[curie, "label"]) if curie in self._index.index else ""
 
+    def label_map(self) -> dict[str, str]:
+        """CURIE -> label for every term with a CURIE."""
+        return dict(zip(self._index.index, self._index.label))
+
     def validate(self, ident: str, expected_label: str | None = None) -> Verdict:
         """Validate an identifier, and its label when one is supplied.
 

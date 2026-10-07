@@ -34,7 +34,7 @@ def main(workspace: str, predictions: str | None = None) -> None:
         if not pred_path.exists():
             sys.exit(f"no predictions file {predictions}")
     else:
-        names = ["predictions_reconcile.tsv", "predictions_annotate.tsv"]
+        names = ["predictions_scored.tsv", "predictions_reconcile.tsv", "predictions_annotate.tsv"]
         pred_path = next((ws / n for n in names if (ws / n).exists()), ws / names[0])
     if pred_path.exists():
         pred = pd.read_csv(pred_path, sep="\t", dtype=str, keep_default_na=False)

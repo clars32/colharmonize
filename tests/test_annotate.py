@@ -48,3 +48,19 @@ def test_combine_measures_agreement():
     assert m.agree_primary.tolist() == [True, True]
     assert m.agree_qualifiers.tolist() == [True, False]
     assert m.variable_id.nunique() == 2
+
+
+def test_qualifiers_agree_by_meaning():
+    q = lambda *pairs: json.dumps([list(p) for p in pairs])
+    assert an.qualifiers_agree(q(("object_class", "crlf2")), q(("object_class", "crlf2 gene")))
+    assert an.qualifiers_agree(q(("unit", "UO:0000036")), q())                       # units don't count
+    assert an.qualifiers_agree(q(("event_time_anchor", "EFO:1")), q(("event_time_anchor", "dissection")),
+                               {"EFO:1": "dissection"})
+    assert not an.qualifiers_agree(q(("subject", "fetus")), q(("subject", "fetus"), ("event_time_anchor", "birth")))
+    assert not an.qualifiers_agree(q(("method", "fish")), q(("object_class", "fish")))  # slot differs
+    assert not an.qualifiers_agree(q(), None)                                          # no second run
+
+
+def test_single_run_never_agrees():
+    m = an.combine(pd.DataFrame([row(column="a")]), None)
+    assert not m.agree_primary.iloc[0] and not m.agree_qualifiers.iloc[0]

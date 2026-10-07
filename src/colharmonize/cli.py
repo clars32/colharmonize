@@ -12,6 +12,7 @@
     colharmonize candidates --workspace DIR --ontology DIR [--remote]
     colharmonize annotate apply --workspace DIR --runs 1 2      resolve, combine runs, write annotations
     colharmonize reconcile apply --workspace DIR --runs 1 2     partition groups, write final variables
+    colharmonize score   --workspace DIR                        review tiers (pre_accepted / quick / manual)
     colharmonize eval    --gold-columns TSV --gold-variables TSV --predictions TSV [--report MD] [--json JSON]
 
 Later stages (task files, ingesting subagent answers, reconciliation, review,
@@ -160,7 +161,7 @@ def cmd_annotate_apply(args: argparse.Namespace) -> int:
             print(json.dumps({"run": run, "pending": got.pending, "problems": got.problems}, indent=1))
             return 1
         runs.append(annotate.resolve_run(ws, got.answers, run, resolver))
-    combined = annotate.combine(runs[0], runs[1] if len(runs) > 1 else runs[0])
+    combined = annotate.combine(runs[0], runs[1] if len(runs) > 1 else None, resolver.ontology.label_map())
     combined.to_parquet(ws.root / "annotations.parquet", index=False)
     annotate.predictions(combined).to_csv(ws.root / "predictions_annotate.tsv", sep="\t", index=False)
     print(f"{len(combined)} columns; primary+predicate agree across runs: {combined.agree_primary.mean():.1%}; "
@@ -183,15 +184,36 @@ def cmd_reconcile_apply(args: argparse.Namespace) -> int:
             return 1
         runs.append(reconcile.resolve_run(ws, got.answers, run, resolver))
     ann = pd.read_parquet(ws.root / "annotations.parquet")
-    final = reconcile.finalize(ann, runs[0], runs[1] if len(runs) > 1 else None)
+    final = reconcile.finalize(ann, runs[0], runs[1] if len(runs) > 1 else None, resolver.ontology.label_map())
     final.to_parquet(ws.root / "variables.parquet", index=False)
+    _predictions(final).to_csv(ws.root / "predictions_reconcile.tsv", sep="\t", index=False)
+    grouped = final[final.reconciled]
+    agreement = "not measured (one run)" if len(runs) < 2 else f"{grouped.partition_agreement.mean():.1%}"
+    print(f"{len(final)} columns -> {final.variable_id.nunique()} variables; {len(grouped)} columns reconciled; "
+          f"partition agreement across runs {agreement}")
+    return 0
+
+
+def _predictions(final, tier: bool = False):
+    """Rows for `colharmonize eval`: (accession, raw_key) -> variable and annotation."""
+    import pandas as pd
     pred = pd.DataFrame({"accession": final.study_id, "raw_key": final.column, "variable_id": final.variable_id,
                          "predicate": final.predicate, "primary_curie": final.primary_curie,
                          "qualifiers": final.qualifiers.map(lambda q: "; ".join(f"{a}={b}" for a, b in json.loads(q)))})
-    pred.to_csv(ws.root / "predictions_reconcile.tsv", sep="\t", index=False)
-    grouped = final[final.reconciled]
-    print(f"{len(final)} columns -> {final.variable_id.nunique()} variables; {len(grouped)} columns reconciled; "
-          f"partition agreement across runs {grouped.partition_agreement.mean():.1%}")
+    if tier:
+        pred["tier"] = final.tier
+    return pred
+
+
+def cmd_score(args: argparse.Namespace) -> int:
+    import pandas as pd
+    from colharmonize import score
+    from colharmonize.workspace import Workspace
+    ws = Workspace(args.workspace)
+    scored = score.tiers(pd.read_parquet(ws.root / "variables.parquet"))
+    scored.to_parquet(ws.root / "scored.parquet", index=False)
+    _predictions(scored, tier=True).to_csv(ws.root / "predictions_scored.tsv", sep="\t", index=False)
+    print(score.summary(scored))
     return 0
 
 
@@ -277,6 +299,10 @@ def build_parser() -> argparse.ArgumentParser:
     rcp.add_argument("--workspace", required=True)
     rcp.add_argument("--runs", type=int, nargs="+", default=[1, 2])
     rcp.set_defaults(func=cmd_reconcile_apply)
+
+    sc = sub.add_parser("score", help="assign review tiers from run agreement and checks")
+    sc.add_argument("--workspace", required=True)
+    sc.set_defaults(func=cmd_score)
 
     ev = sub.add_parser("eval", help="score predictions against a gold standard")
     ev.add_argument("--gold-columns", required=True)

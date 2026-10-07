@@ -34,7 +34,7 @@ import pandas as pd
 from pydantic import BaseModel, ConfigDict, Field
 
 from colharmonize import profile
-from colharmonize.annotate import FLAGS, SLOTS, Qualifier, Resolver, Term, make_resolver
+from colharmonize.annotate import FLAGS, SLOTS, Qualifier, Resolver, Term, make_resolver, qualifiers_agree
 from colharmonize.normalise import normalise_key
 from colharmonize.ontology import Ontology
 from colharmonize.workspace import Workspace
@@ -324,10 +324,20 @@ def resolve_run(ws: Workspace, answers: list[ReconcileAnswer], run: int, resolve
     rows = []
     for a in answers:
         for k, p in enumerate(a.parts, 1):
-            prim = resolver.resolve(p.primary, refs.get(a.item_id, {})) if p.primary else None
-            quals = sorted((q.slot, q.text.strip().casefold() if q.text else
-                            resolver.resolve(q, refs.get(a.item_id, {})).curie or (q.name or "").casefold())
-                           for q in p.qualifiers if q.slot != "unit")
+            r = refs.get(a.item_id, {})
+            prim = resolver.resolve(p.primary, r) if p.primary else None
+            ambiguous = bool(prim and prim.ambiguous)
+            quals = []
+            for q in p.qualifiers:
+                if q.slot == "unit":
+                    continue
+                if q.text:
+                    quals.append((q.slot, q.text.strip().casefold()))
+                else:
+                    res = resolver.resolve(q, r)
+                    ambiguous |= res.ambiguous
+                    quals.append((q.slot, res.curie or (q.name or "").casefold()))
+            quals.sort()
             recodes = {rc.member: [] for rc in p.recodes}
             for rc in p.recodes:
                 recodes[rc.member].append([rc.from_value, rc.to_value])
@@ -336,6 +346,8 @@ def resolve_run(ws: Workspace, answers: list[ReconcileAnswer], run: int, resolve
                 rows.append({"study_id": study, "column": column, "run": run, "group": a.item_id,
                              "part": f"{a.item_id}.{k}", "variable_name": p.variable_name,
                              "predicate": p.predicate, "primary_curie": prim.curie if prim else "",
+                             "outside_space": bool(prim and prim.curie and prim.curie not in resolver.in_space),
+                             "ambiguous": ambiguous,
                              "qualifiers": json.dumps(quals), "recodes": json.dumps(recodes.get(m, [])),
                              "flags": json.dumps(sorted(p.flags)), "rationale": p.rationale})
     return pd.DataFrame(rows)
@@ -360,24 +372,45 @@ def pair_agreement(run1: pd.DataFrame, run2: pd.DataFrame) -> pd.Series:
     return pd.Series(out)
 
 
-def finalize(annotations: pd.DataFrame, run1: pd.DataFrame, run2: pd.DataFrame | None) -> pd.DataFrame:
-    """Final variable for every column: its reconciled part when grouped, else its own annotation."""
+def finalize(annotations: pd.DataFrame, run1: pd.DataFrame, run2: pd.DataFrame | None,
+             labels: dict[str, str] | None = None) -> pd.DataFrame:
+    """Final variable for every column: its reconciled part when grouped, else its own annotation.
+
+    Each column also carries the confidence signals of the stage that produced
+    its final annotation, for `score`: whether the second run agreed on the
+    annotation and qualifiers, whether the primary is outside the property
+    space or was picked among same-label terms, and flags. Without a second run
+    nothing counts as agreed, and partition agreement is NaN (not measured).
+    """
     rec = run1.set_index(["study_id", "column"])
-    agree = pair_agreement(run1, run2 if run2 is not None else run1)
+    other = run2.set_index(["study_id", "column"]) if run2 is not None else None
+    agree = pair_agreement(run1, run2) if run2 is not None else pd.Series(dtype=float)
     rows = []
     for r in annotations.itertuples(index=False):
         key = (r.study_id, r.column)
+        flags = set(json.loads(getattr(r, "flags", "[]") or "[]"))
         if key in rec.index:
             p = rec.loc[key]
+            q = other.loc[key] if other is not None and key in other.index else None
             rows.append({"study_id": r.study_id, "column": r.column, "variable_id": p.part,
                          "variable_name": p.variable_name, "predicate": p.predicate,
                          "primary_curie": p.primary_curie, "qualifiers": p.qualifiers, "recodes": p.recodes,
-                         "reconciled": True, "partition_agreement": float(agree.get(key, 1.0)),
-                         "annotation_runs_agree": bool(r.agree_primary)})
+                         "reconciled": True,
+                         "partition_agreement": float(agree.get(key, 1.0)) if other is not None else float("nan"),
+                         "annotation_agree": q is not None and (q.predicate, q.primary_curie) == (p.predicate, p.primary_curie),
+                         "qualifiers_agree": q is not None and qualifiers_agree(p.qualifiers, q.qualifiers, labels),
+                         "outside_space": bool(p.get("outside_space", False)),
+                         "ambiguous": bool(p.get("ambiguous", False)), "unresolved_proposal": "",
+                         "flags": json.dumps(sorted(flags | set(json.loads(p["flags"]))))})
         else:
             rows.append({"study_id": r.study_id, "column": r.column, "variable_id": r.variable_id,
                          "variable_name": r.variable_name, "predicate": r.predicate,
                          "primary_curie": r.primary_curie, "qualifiers": r.qualifiers, "recodes": "[]",
-                         "reconciled": False, "partition_agreement": 1.0,
-                         "annotation_runs_agree": bool(r.agree_primary)})
+                         "reconciled": False, "partition_agreement": float("nan"),
+                         "annotation_agree": bool(getattr(r, "agree_primary", False)),
+                         "qualifiers_agree": bool(getattr(r, "agree_qualifiers", False)),
+                         "outside_space": bool(getattr(r, "outside_space", False)),
+                         "ambiguous": bool(getattr(r, "ambiguous", False)),
+                         "unresolved_proposal": getattr(r, "unresolved_proposal", "") or "",
+                         "flags": json.dumps(sorted(flags))})
     return pd.DataFrame(rows)

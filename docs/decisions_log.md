@@ -280,3 +280,47 @@ The prompt was not tuned on this group: it is one cluster of genuinely close
 calls, and the agreement signal already routes it to review. Both runs also
 kept leukemia diagnoses apart from Down syndrome / control columns, which the
 gold pools as `disease`. That is a conservative split and costs only recall.
+
+## Score stage
+
+### 8.1: Pre-accepted means every check passed, not a confidence threshold
+Iteration 2 accepted on a score. Here a column starts pre-accepted and each
+failed check demotes it, so a reviewer always sees why a column needs a look.
+Checks that suggest the answer is wrong send it to manual review:
+- the runs disagree on the annotation
+- the runs disagree on the partition
+- the proposed term isn't in the pinned file
+- the primary is outside the property space
+
+Checks for claims that deserve a glance send it to quick review:
+- qualifiers differ between runs
+- the term was picked among same-label terms
+- the annotator flagged it
+- the predicate is `indicator` or `none`
+- values were recoded
+- the variable pools 4 or more column names
+
+A variable's tier is its worst member's. With one run, nothing counts as
+agreed.
+
+The primary-outside-space check comes from the data: all 5 such columns among
+those both runs agreed on were wrong. The others have reasons that don't
+depend on the tuning data. All were chosen on the tuning corpus, so its
+numbers are optimistic.
+
+### 8.2: Qualifier agreement uses the scorer's meaning rule
+Runs word free-text qualifiers differently ("kmt2a (mll) gene rearrangement"
+vs "mll (kmt2a) gene rearrangement"). Exact comparison counted that as
+disagreement and held back 18 columns. Agreement now uses `text.same_meaning`,
+the rule the scorer uses against gold, so the confidence signal and the
+measurement agree on what "the same qualifier" means. A qualifier only one run
+gave still counts as disagreement.
+
+### 8.3: Tier calibration on the tuning gold
+| tier | columns (all 105) | gold columns | annotation correct | pooled pairs correct |
+|---|---|---|---|---|
+| pre_accepted | 26 | 18 | 100% | 9 / 9 |
+| quick | 43 | 30 | 83.3% | 43 / 43 |
+| manual | 36 | 34 | 44.1% | 19 / 32 |
+
+All 13 false pooled pairs are in the manual tier.

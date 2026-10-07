@@ -8,6 +8,10 @@
       tasks/<stage>/run<k>/ task batches for Claude Code subagents and their answers
       derived.parquet       columns recovered by the repair stage
       candidates.parquet    candidate terms per annotation column
+      annotations.parquet   per-column annotation, run 1 of record, with run 2 agreement
+      variables.parquet     final variable per column after reconciliation, with confidence signals
+      scored.parquet        variables plus review tier and the reasons for it
+      predictions_*.tsv     the same, in the scorer's (accession, raw_key) format
       workspace.json        settings recorded by earlier commands (pinned ontology directory)
 """
 from __future__ import annotations
