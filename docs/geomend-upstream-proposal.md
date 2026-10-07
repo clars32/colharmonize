@@ -2,6 +2,27 @@
 
 Draft for Preston, 2026-10-02. Written against GEOmend `main` at `989ec3d` (v0.0.2).
 
+## Status at GEOmend 0.0.8 (`main` at `f0a8fcc`, checked 2026-10-07)
+
+None of the changes below has landed. Paths are the current ones.
+
+| Item | Status at 0.0.8 | Where |
+|---|---|---|
+| Change 1, directed relations | Still applicable: the same six undirected relations | `cohort_models.py:226-229`; interchange maps only exact/related (`_cohort.py:1216-1222`) |
+| Change 2, qualifier slots | Still applicable: `CohortConceptDecision` has no qualifiers, and `SemanticFacets` has no `method` | `cohort_models.py:254-262`, `models.py:93-117` |
+| Change 3, pre-accepted state | Still applicable: every unreviewed mapping is a priority-4 `mapping_inspection` task | `project_navigation.py:338-356` |
+| Fix 1, concept IDs not validated | Still applicable: any non-empty locator is accepted, and provider `ontology_references` are unchecked | `_cohort.py:1482-1510`, `cohort_models.py:121` |
+| Fix 2, `_KEY` regex | Still applicable: byte-identical | `geo_profile.py:41-42` |
+| Fix 3, `propose()` merges "unresolved characteristic" | Still applicable: moved, same label set | `cohort_mapping_core.py:34-36, 137` |
+| Fix 4, units lost | Partly done: header suffixes now give units (`(hours)`, `(years)`), but `WBC, 1000/microliter` still has none, and the inventory field's `unit` is never set from the header | `cohort_units.py:49-116`, `cohort_profile.py:308-316` |
+| Fix 5, store keeps CURIEs only | Still applicable: local candidates have no IRI, so interchange writes URNs | `ontology.py:19-22`, `_cohort.py:1226` |
+| Fix 6, neighbour cutoff | Partly obsolete: the GEO term inspector was removed in `f0a8fcc`; the cutoff remains in `one_hop_context`, used by value groups | `ontology.py:175-206` |
+
+Command names changed: the `geomend cohort` group is now `geomend project`.
+Concept decisions are written with `project concepts` and transformations
+with `project transformations` (provider proposals). In Python, the entry
+point is `geomend.project.ProjectClient`.
+
 ## Why these changes
 
 The next stage after GEOmend uses Claude to decide two things for each column.
@@ -139,8 +160,8 @@ for its own runtime is unaffected:
 - the persistent variable registry
 - SSSOM/TSV export
 
-GEOmend sees only the results, written through `cohort concepts`,
-`cohort provider` and the review packets. Nothing in GEOmend depends on
+GEOmend sees only the results, written through `project concepts`,
+`project transformations` provider proposals and the review packets. Nothing in GEOmend depends on
 colharmonize. The test for where a change belongs: if it helps a GEOmend user
 who never runs Claude, it is a GEOmend PR.
 

@@ -27,6 +27,33 @@ and the package validates the answers. The plugin lives in `plugin/`.
 Units, splitting combined columns, and variables hidden in titles. Mapping
 values to ontology terms is deferred.
 
+### 1.5: GEOmend 0.0.7 overlaps the reconcile stage (open, 2026-10-07)
+Decision 1.2 called GEOmend the deterministic precursor. That was already
+inexact at 0.0.2, where an optional Ollama model could reassign fields to
+variables. At 0.0.8 it is wrong. With `llm_model` set, `cohort_categorical_inference.py`
+does the following:
+- shows a local model a categorical field and up to seven peers from other
+  studies
+- gets back a shared trait, its states, and a state for every source value
+- compiles that into one variable with per-source recodes
+
+Best-guess export uses the top group unreviewed. That is cross-study pooling
+with recodes: reconcile's job.
+
+| | GEOmend categorical inference | colharmonize reconcile |
+|---|---|---|
+| Model | Local Ollama, opt-in | Claude subagents |
+| Runs | One | Two; disagreement routes to review |
+| Fields | Unitless, at most 32 distinct values | Any |
+| Co-occurring fields | Pooled; evidence intersected | Never pooled unless identical (2.3) |
+| Annotation | Trait label and predicates | Primary term, directed predicate, qualifiers |
+
+colharmonize is unaffected today: it ingests with `llm_model` unset and
+concept enrichment off, so it reads raw fields, not GEOmend's groups. But the
+boundary needs an owners' decision. Options: GEOmend keeps it as the
+local-model path and colharmonize stays the Claude path; or one tool owns
+cross-study pooling. Decision 1.2 stands until then.
+
 ## Gold standards
 
 ### 2.1: Bucket principle, operational form (owner-confirmed)

@@ -44,14 +44,25 @@ useful on its own.
 | | GEOmend | colharmonize |
 |---|---|---|
 | Purpose | Turn GEO series and local tables into profiled, reviewable, exportable cohort projects | Decide which columns pool across datasets and what they mean in the ontology |
-| Owns | SOFT/table parsing, profiling (types, units, missingness, reference events), lexical retrieval, the concept-decision data model, review packets, cohort export and replay | Claude task files and the Claude Code plugin, property-space retrieval (embeddings, ZOOMA, OLS4), annotation, cross-dataset reconciliation, scoring, the persistent variable registry, SSSOM/TSV export, evaluation |
-| Models | Local and loopback-only | Claude, via Claude Code subagents |
-| Knows about the other | No | Reads GEOmend projects; writes back only through GEOmend's public commands (`cohort concepts`, `cohort provider`, review packets) |
+| Owns | SOFT/table parsing, profiling (types, units, missingness, reference events), unit normalization, lexical retrieval, the concept-decision data model, review packets, project export and replay | Claude task files and the Claude Code plugin, property-space retrieval (embeddings, ZOOMA, OLS4), annotation, cross-dataset reconciliation, scoring, the persistent variable registry, SSSOM/TSV export, evaluation |
+| Models | Optional, local and loopback-only (Ollama), off unless a model is configured. colharmonize ingests with it off | Claude, via Claude Code subagents |
+| Knows about the other | No | Reads GEOmend projects through `geomend.project.ProjectClient`; writes back only through GEOmend's public operations (`project concepts`, `project transformations` provider proposals, review packets) |
+
+**Overlap since GEOmend 0.0.7.** With a local model configured, GEOmend's
+categorical inference proposes cross-study variables with value recodes. That
+is the decision colharmonize's reconcile stage makes with Claude. They differ:
+- GEOmend's is opt-in, runs once, and handles unitless fields with at most 32
+  categories.
+- GEOmend treats co-occurring fields as evidence; colharmonize refuses to pool
+  them.
+
+Which tool should own cross-study pooling is an open question for the two
+maintainers (decisions log 1.5).
 
 **Where a change belongs.** Would it help a GEOmend user who never runs Claude?
 Then it goes to GEOmend as a pull request: a parser fix, better unit detection,
-ID validation, a richer concept-relation model. Does it need model judgment or
-memory across projects? Then it belongs here. colharmonize never edits
+ID validation, a richer concept-relation model. Does it need Claude, agreement
+between independent runs, or memory across projects? Then it belongs here. colharmonize never edits
 GEOmend's files or databases directly, and nothing in GEOmend depends on
 colharmonize.
 
