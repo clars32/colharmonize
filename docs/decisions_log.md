@@ -358,3 +358,31 @@ export with any problem saves nothing.
   reviewer as author; anything else is `semapv:CompositeMatching`.
 - **License:** defaults to SSSOM's "unspecified" URL. The owner has not chosen
   a license, and the tool doesn't choose one for them.
+
+## Registry
+
+### 10.1: A registry carries interoperability across runs
+Reconciliation pools columns within one run. For a column harmonized later to
+get the same label, later runs must see earlier variables. A registry is a
+directory with `variables.tsv` and `members.tsv`, plain text so a lab can
+version and share it. Only reviewed variables (accepted or edited) are
+registered by default, so the registry is an emergent schema of vetted
+variables, never a hand-written one.
+
+### 10.2: Registered variables are fixed members of candidate groups
+In a workspace that uses a registry, registered variables join candidate
+grouping through the same links as columns: term, name, distinctive values.
+The reconciler can put new columns in a registered variable's part, and those
+columns take the registry's id, name and qualifiers. It can't change the
+registered predicate or primary term, or put two registered variables in one
+part; validation sends such answers back. The registry is snapshotted when
+tasks are written (`registered.json`), so answers are checked against what the
+reconciler saw.
+
+The instructions gained one paragraph about registered members, so the prompt
+is now reconcile-2. Without a registry, no item has a registered member and
+the paragraph is inert; the tuning results in 7.3 are reconcile-1's.
+
+Known gap: a registered variable keeps value counts but not per-sample values,
+so co-occurrence between a new column and a registered column from the same
+study can't be checked.

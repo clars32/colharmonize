@@ -33,14 +33,14 @@ from typing import Literal
 import pandas as pd
 from pydantic import BaseModel, ConfigDict, Field
 
-from colharmonize import profile
+from colharmonize import profile, registry
 from colharmonize.annotate import FLAGS, SLOTS, Qualifier, Resolver, Term, make_resolver, qualifiers_agree
 from colharmonize.normalise import normalise_key
 from colharmonize.ontology import Ontology
 from colharmonize.workspace import Workspace
 
 STAGE = "reconcile"
-PROMPT_VERSION = "reconcile-1"
+PROMPT_VERSION = "reconcile-2"
 MAX_GROUP = 30
 MAX_VALUES = 10
 ADJACENT_HOPS = 2
@@ -90,6 +90,12 @@ For each part give:
 
 A part with one member is a valid answer: it means that column pools with
 nothing in this group.
+
+Members marked `registered` are variables established in earlier runs; their
+values summarize every column already in them. Put a column in a registered
+member's part only if it pools with that variable under the same rule. A part
+with a registered member must use that member's predicate and primary term, and
+two registered members never share a part. A registered member may stand alone.
 
 Write one answer per item to the batch's `answer_file`, following
 `answer_schema`, and copy the batch's `content_sha256` into it.
@@ -227,7 +233,18 @@ def prepare(ws: Workspace, studies: list[str] | None, run: int) -> list[dict]:
     cols = profile.annotation_columns(ws).set_index(["study_id", "column"])
     member_values = {f"{s}::{c}": distinctive(v for v, _ in json.loads(r["values"]))
                      for (s, c), r in cols.iterrows()}
-    groups = candidate_groups(ann, onto, member_values)
+    reg = registry.load(ws.settings()["registry"])[0] if ws.settings().get("registry") else None
+    registered = {}
+    if reg is not None and len(reg):
+        ann = pd.concat([ann, registry.as_annotations(reg)], ignore_index=True)
+        for r in reg.itertuples(index=False):
+            key = registry.member_key(r.registry_id)
+            member_values[key] = distinctive(v for v, _ in json.loads(r.values))
+            registered[key] = {"predicate": r.predicate, "primary_curie": r.primary_curie, "name": r.name,
+                               "qualifiers": r.qualifiers, "values": json.loads(r.values)}
+    # A group needs a column from this workspace; registered variables alone have nothing to decide.
+    groups = [g for g in candidate_groups(ann, onto, member_values)
+              if any(not m.startswith(f"{registry.REGISTRY_STUDY}::") for m in g)]
     st = pd.read_parquet(ws.studies).set_index("study_id")
     co = profile.cooccurrence(profile.sample_values(ws))
     parents = _parents(onto)
@@ -245,7 +262,20 @@ def prepare(ws: Workspace, studies: list[str] | None, run: int) -> list[dict]:
         shown = []
         for m in order:
             study, column = m.split("::", 1)
-            a, c = ann_ix.loc[(study, column)], cols.loc[(study, column)]
+            a = ann_ix.loc[(study, column)]
+            if m in registered:
+                g = registered[m]
+                if g["primary_curie"]:
+                    terms.add(g["primary_curie"])
+                shown.append({
+                    "member": mref[m], "registered": True, "study": "registry", "column": g["name"],
+                    "values": g["values"][:MAX_VALUES], "n_distinct": len(g["values"]),
+                    "annotation": {"variable_name": g["name"], "predicate": g["predicate"],
+                                   "primary": onto.label(g["primary_curie"]) if g["primary_curie"] else None,
+                                   "qualifiers": [[s_, onto.label(v) or v] for s_, v in json.loads(g["qualifiers"])]},
+                })
+                continue
+            c = cols.loc[(study, column)]
             if a.primary_curie:
                 terms.add(a.primary_curie)
                 terms |= _ancestors(parents, a.primary_curie, ADJACENT_HOPS)
@@ -274,6 +304,8 @@ def prepare(ws: Workspace, studies: list[str] | None, run: int) -> list[dict]:
     d.mkdir(parents=True, exist_ok=True)
     (d / "members.json").write_text(json.dumps(members_map, indent=1))
     (d / "refs.json").write_text(json.dumps(refs_map, indent=1))
+    # The registry may change after this run is written; answers are checked against this snapshot.
+    (d / "registered.json").write_text(json.dumps(registered, indent=1, ensure_ascii=False))
     return items
 
 
@@ -282,11 +314,17 @@ def _maps(ws: Workspace, run: int) -> tuple[dict, dict]:
     return json.loads((d / "members.json").read_text()), json.loads((d / "refs.json").read_text())
 
 
+def _registered(ws: Workspace, run: int) -> dict:
+    f = ws.tasks(STAGE, run) / "registered.json"
+    return json.loads(f.read_text()) if f.exists() else {}
+
+
 def validate_answers(ws: Workspace, answers: list[ReconcileAnswer], run: int, resolver: Resolver | None = None,
                      **_) -> list[str]:
     """A partition must cover every member once, keep cannot_pool pairs apart, and use resolvable terms."""
     resolver = resolver or make_resolver(ws)
     members, refs = _maps(ws, run)
+    registered = _registered(ws, run)
     batch_items = {}
     for path in sorted(ws.tasks(STAGE, run).glob("batch_*.json")):
         if path.name.endswith(".answer.json"):
@@ -306,6 +344,15 @@ def validate_answers(ws: Workspace, answers: list[ReconcileAnswer], run: int, re
                 for y in p.members[i + 1:]:
                     if tuple(sorted((x, y))) in cannot:
                         problems.append(f"{a.item_id}: {x} and {y} cannot pool but share a part")
+            fixed = [x for x in p.members if members.get(a.item_id, {}).get(x) in registered]
+            if len(fixed) > 1:
+                problems.append(f"{a.item_id}: registered members {fixed} share a part")
+            elif fixed:
+                g = registered[members[a.item_id][fixed[0]]]
+                prim = resolver.resolve(p.primary, refs.get(a.item_id, {})).curie if p.primary else ""
+                if (p.predicate, prim or "") != (g["predicate"], g["primary_curie"]):
+                    problems.append(f"{a.item_id}: part with registered member {fixed[0]} must keep its predicate "
+                                    f"{g['predicate']!r} and primary term")
             if (p.predicate == "none") != (p.primary is None or not (p.primary.ref or p.primary.name)):
                 problems.append(f"{a.item_id}: part {p.variable_name!r} has predicate {p.predicate!r} and "
                                 f"{'no ' if p.predicate != 'none' else 'a '}primary term")
@@ -319,12 +366,18 @@ def validate_answers(ws: Workspace, answers: list[ReconcileAnswer], run: int, re
 
 
 def resolve_run(ws: Workspace, answers: list[ReconcileAnswer], run: int, resolver: Resolver) -> pd.DataFrame:
-    """One row per grouped column: the part it joined and that part's annotation."""
+    """One row per grouped column: the part it joined and that part's annotation.
+
+    A part holding a registered member is that registered variable: its
+    columns take the registry id, name and qualifiers (validation already
+    checked the predicate and primary term match)."""
     members, refs = _maps(ws, run)
+    registered = _registered(ws, run)
     rows = []
     for a in answers:
         for k, p in enumerate(a.parts, 1):
             r = refs.get(a.item_id, {})
+            fixed = next((members[a.item_id][m] for m in p.members if members[a.item_id][m] in registered), None)
             prim = resolver.resolve(p.primary, r) if p.primary else None
             ambiguous = bool(prim and prim.ambiguous)
             quals = []
@@ -341,10 +394,17 @@ def resolve_run(ws: Workspace, answers: list[ReconcileAnswer], run: int, resolve
             recodes = {rc.member: [] for rc in p.recodes}
             for rc in p.recodes:
                 recodes[rc.member].append([rc.from_value, rc.to_value])
+            part, name = f"{a.item_id}.{k}", p.variable_name
+            if fixed:
+                g = registered[fixed]
+                part, name = fixed.split("::", 1)[1], g["name"]
+                quals = [tuple(q) for q in json.loads(g["qualifiers"]) if q[0] != "unit"]
             for m in p.members:
+                if members[a.item_id][m] in registered:
+                    continue
                 study, column = members[a.item_id][m].split("::", 1)
                 rows.append({"study_id": study, "column": column, "run": run, "group": a.item_id,
-                             "part": f"{a.item_id}.{k}", "variable_name": p.variable_name,
+                             "part": part, "variable_name": name,
                              "predicate": p.predicate, "primary_curie": prim.curie if prim else "",
                              "outside_space": bool(prim and prim.curie and prim.curie not in resolver.in_space),
                              "ambiguous": ambiguous,

@@ -16,6 +16,8 @@
     colharmonize review page  --workspace DIR [--out HTML]      write the local review page
     colharmonize review apply --workspace DIR EXPORT            validate a page export into the review overlay
     colharmonize publish --workspace DIR [--out DIR] [--license URL] [--mapping-set-id URI]
+    colharmonize registry use --workspace DIR REGISTRY          reconcile this workspace against a registry
+    colharmonize registry add --workspace DIR [--registry DIR] [--include-pre-accepted]
     colharmonize eval    --gold-columns TSV --gold-variables TSV --predictions TSV [--report MD] [--json JSON]
 
 """
@@ -249,6 +251,29 @@ def cmd_publish(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_registry(args: argparse.Namespace) -> int:
+    import pandas as pd
+    from colharmonize import profile, registry, review
+    from colharmonize.workspace import Workspace
+    ws = Workspace(args.workspace)
+    if args.action == "use":
+        if not args.path:
+            sys.exit("registry use needs the registry directory")
+        ws.remember(registry=str(Path(args.path).resolve()))
+        print(f"{ws.root} reconciles against {Path(args.path).resolve()} (takes effect when reconcile tasks are written)")
+        return 0
+    path = args.path or args.registry or ws.settings().get("registry")
+    if not path:
+        sys.exit("no registry: pass --registry DIR or run `colharmonize registry use` first")
+    rows, stale = review.current(pd.read_parquet(ws.root / "scored.parquet"), review.load_overlay(ws))
+    cols = profile.annotation_columns(ws)
+    values = {(s_, c): json.loads(v) for s_, c, v in zip(cols.study_id, cols.column, cols["values"])}
+    statuses = ("accepted", "edited", "pre_accepted") if args.include_pre_accepted else ("accepted", "edited")
+    result = registry.add(path, ws.root.name, rows, values, statuses)
+    print(json.dumps({**result, "stale_decisions_skipped": stale}, indent=1))
+    return 0
+
+
 def cmd_eval(args: argparse.Namespace) -> int:
     from dataclasses import asdict
     from colharmonize.evaluate import load_gold, load_predictions, report, score
@@ -350,6 +375,15 @@ def build_parser() -> argparse.ArgumentParser:
                     help="license URL for the SSSOM mapping set")
     pb.add_argument("--mapping-set-id", help="URI identifying the SSSOM mapping set")
     pb.set_defaults(func=cmd_publish)
+
+    rg = sub.add_parser("registry", help="share variables across runs")
+    rg.add_argument("action", choices=["use", "add"])
+    rg.add_argument("path", nargs="?", help="registry directory")
+    rg.add_argument("--workspace", required=True)
+    rg.add_argument("--registry", help="registry directory for add (default: the one the workspace uses)")
+    rg.add_argument("--include-pre-accepted", action="store_true",
+                    help="also register variables no one has reviewed but every check passed")
+    rg.set_defaults(func=cmd_registry)
 
     ev = sub.add_parser("eval", help="score predictions against a gold standard")
     ev.add_argument("--gold-columns", required=True)

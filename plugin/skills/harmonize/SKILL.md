@@ -79,6 +79,12 @@ and the number of variables before reconciliation.
 
 ## 5. Reconcile (two independent runs)
 
+If the user keeps a registry of variables from earlier runs (ask once, if
+you don't know), point the workspace at it first, so columns can join
+variables that already exist:
+
+    colharmonize registry use --workspace <workspace> <registry-dir>
+
     colharmonize tasks write reconcile --workspace <workspace> --run 1 --batch-size 6
     colharmonize tasks write reconcile --workspace <workspace> --run 2 --batch-size 6
 
@@ -125,3 +131,11 @@ This writes `variables.tsv`, `columns.tsv` and `mappings.sssom.tsv` under
 user for a license before publishing mappings they will share; without one,
 the SSSOM header records the license as unspecified. Report the count of
 variables per review status.
+
+If the workspace uses a registry, offer to register the reviewed variables so
+later runs can join them:
+
+    colharmonize registry add --workspace <workspace>
+
+Only accepted and edited variables are registered unless the user asks for
+`--include-pre-accepted`.
