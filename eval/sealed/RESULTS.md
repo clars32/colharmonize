@@ -109,3 +109,23 @@ error after writing their answers; no answer was lost.
 
 These numbers are final for this corpus. Fixes made in response to them must
 be measured on new data, not re-run here as a headline.
+
+## Post-hoc analysis (added after the measurement; no headline numbers change)
+
+**Why annotation alone outscored reconciliation.** Reconciling only the
+groups annotation can't settle (`eval/tuning/selective_reconcile.py`) changes
+nothing. 20 of the 36 sealed groups were settled, and reconciliation had split
+none of them. The recall difference comes from two mixed groups, where the
+co-occurrence rule forced a choice:
+- **GSE166925:** repair extracted `title#diagnosis` from sample titles. It
+  conflicts on the same samples with the study's own `disease`
+  characteristic, so only one can join the disease variable, and the
+  reconciler kept the title-derived one.
+- **GSE131411:** the same thing happened between `title#group` and
+  `clinical classification`.
+
+Annotation alone ignores the co-occurrence rule and pools both columns, which
+the scorer rewards because the gold lists only the characteristic. So part of
+annotation's apparent advantage comes from breaking a pooling rule. The cause
+is redundant repair output, and the fix belongs in repair or in the
+reconciler's tie-break, not in which groups are reconciled.

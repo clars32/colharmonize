@@ -618,3 +618,27 @@ gold column among them (13.1). The protocol now works item by item:
 Read against the sealed repair answers, per-item collection keeps 15 of 16
 studies' rules; only GSE189007 would have been retried. This is a
 consequence, not a new measurement.
+
+### 14.2: Reconciling only unsettled groups was tested and not adopted
+Proposed after 13.1: send to reconciliation only groups whose members'
+annotations differ or that contain conflicting columns, and let annotation
+pool the rest. Tested offline with existing answers, no new runs:
+
+| | groups settled by annotation | pooling F1, all groups | pooling F1, unsettled only |
+|---|---|---|---|
+| tuning, runs 1/2 | 4 of 16 | 82.6% | 82.6% |
+| tuning, runs 3/4 | 2 of 7 | 83.0% | 83.0% |
+| sealed, runs 1/2 (post hoc) | 20 of 36 | 83.0% | 83.0% |
+
+Reconciliation never split a settled group, so the rule changes nothing. The
+sealed gap with annotation alone comes from co-occurrence conflicts. Repair
+had extracted title variables (GSE166925 `title#diagnosis`, GSE131411
+`title#group`) that conflict with the study's own characteristic, and the
+reconciler kept the derived column.
+
+Candidate fixes, to be measured on a new corpus:
+- repair skips a title variable whose values duplicate an existing
+  characteristic's meaning (the current check catches only same-name
+  duplicates)
+- or, between conflicting same-study columns, the reconciler prefers the one
+  the authors recorded as a characteristic
