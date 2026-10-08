@@ -62,3 +62,13 @@ def test_shared_distinctive_values_link_columns(tiny):
     groups = rc.candidate_groups(a, tiny, values)
     assert any({"S1::karyotype", "S2::condition"} <= set(g) for g in groups)
     assert not any("S3::group" in g for g in groups)
+
+
+def test_part_qualifiers_are_those_every_member_carries():
+    label = {"EFO:1": "dissection"}.get
+    a = [["object_class", "crlf2"], ["event_time_anchor", "EFO:1"], ["unit", "UO:0000033"]]
+    b = [["object_class", "crlf2 gene"], ["event_time_anchor", "dissection"]]
+    c = [["object_class", "crlf2"], ["method", "fish"]]
+    assert rc.shared_qualifiers([a, b], lambda v: label(v) or "") == [("event_time_anchor", "EFO:1"), ("object_class", "crlf2")]
+    assert rc.shared_qualifiers([a, b, c], lambda v: label(v) or "") == [("object_class", "crlf2")]
+    assert rc.shared_qualifiers([c], lambda v: "") == [("method", "fish"), ("object_class", "crlf2")]

@@ -42,7 +42,11 @@ import pandas as pd
 from colharmonize.normalise import normalise_key
 from colharmonize.text import same_meaning
 
-_QUAL = re.compile(r'(\w+)=(?:"([^"]*)"(?: \(ungrounded\))?|([A-Za-z]+:\d+)(?: \[[^\]]*\])?|([^;]+))')
+# A bare value runs to the next "; slot=" or the end, so free text may contain
+# ";" ("t(9;22)") without being cut.
+_SLOTS = "subject|object_class|event_time_anchor|method|unit"
+_QUAL = re.compile(r'(\w+)=(?:"([^"]*)"(?: \(ungrounded\))?|([A-Za-z]+:\d+)(?: \[[^\]]*\])?(?=;|$)|(.+?)(?=;\s*(?:'
+                   + _SLOTS + r')=|$))')
 _CURIE = re.compile(r"^[A-Za-z]+:\d+$")
 
 

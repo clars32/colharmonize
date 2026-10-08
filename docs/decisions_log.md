@@ -642,3 +642,54 @@ Candidate fixes, to be measured on a new corpus:
   duplicates)
 - or, between conflicting same-study columns, the reconciler prefers the one
   the authors recorded as a characteristic
+
+### 14.3: A part's qualifiers are the ones its members share, computed in code
+A read-only analysis of the sealed qualifier drop (13.1) found:
+- **The drop starts before reconciliation:** annotation alone already scores
+  34.3% precision on sealed.
+- **Precision is mostly the models.** Of 27 unmatched predicted qualifiers,
+  21 were added, put in the wrong slot, or wrong. Survival endpoints account
+  for 10, and the three breast cancer studies for most.
+- **Recall is mostly coverage and gold conventions:** 7 of the 18 misses are
+  columns never produced.
+- **The reconciler adds qualifiers.** It was asked for "qualifiers shared by
+  every member" and wrote new ones instead, including on tuning, where it
+  added "specimen collection" anchors to plain age (against the annotation
+  rule in 6.3).
+
+A part's qualifiers are now the non-unit qualifiers all its members' own
+annotations carry, matched by slot and meaning (`reconcile.shared_qualifiers`).
+What the reconciler wrote is kept as `proposed_qualifiers`. Its partition
+decisions are untouched, and so is the prompt (reconcile-2).
+
+| qualifiers, precision / recall | before | after |
+|---|---|---|
+| tuning, runs 1/2 | 61.5% / 64.0% | 89.5% / 68.0% |
+| sealed (post hoc, not a headline) | 28.9% / 37.9% | 35.3% / 41.4% |
+
+Pooling and primary-term scores are unchanged.
+
+The scorer's qualifier parser no longer cuts free text at ";" (`t(9;22)`). No
+score changes.
+
+### 14.4: Recommended for the next corpus, not done here
+- **Annotator instructions:**
+  - The `object_class` examples are only genes and lesions. Add a cell
+    population example that doesn't come from either corpus.
+  - Say not to restate the primary term, name the study's disease, or describe
+    the values.
+  - Say that a qualifier must come from the column's name or values; the study
+    summary explains a column but is not a source. Several sealed false
+    positives (disease context, an ICU-admission anchor) came from the summary.
+  - Prefer a term for the whole concept (overall survival) as the primary over
+    restating it as a qualifier.
+- **Gold conventions to settle:**
+  - whether `event_time_anchor` covers states, windows and assessment weeks
+  - whether survival times get anchors
+  - whether severity scores name their disease (the sealed gold does both)
+  - whether assumed conventions extend beyond units
+  - that variables with predicate `none` carry no qualifiers (both golds
+    already do this, but it isn't written down)
+
+These need new annotation runs and a new corpus to measure honestly, so they
+wait.

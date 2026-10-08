@@ -37,6 +37,7 @@ from colharmonize import profile, registry
 from colharmonize.annotate import FLAGS, SLOTS, Qualifier, Resolver, Term, make_resolver, qualifiers_agree
 from colharmonize.normalise import normalise_key
 from colharmonize.ontology import Ontology
+from colharmonize.text import same_meaning
 from colharmonize.workspace import Workspace
 
 STAGE = "reconcile"
@@ -383,14 +384,34 @@ def validate_answers(ws: Workspace, answers: list[ReconcileAnswer], run: int, re
     return problems
 
 
+def shared_qualifiers(member_quals: list[list], label) -> list[tuple[str, str]]:
+    """Non-unit qualifiers every member's own annotation carries, matched by slot and meaning."""
+    lists = [[(s, v) for s, v in q if s != "unit"] for q in member_quals]
+    if not lists:
+        return []
+    def text(v: str) -> str:
+        return label(v) or v
+    return sorted({(s, v) for s, v in lists[0]
+                   if all(any(s2 == s and same_meaning(text(v), text(v2)) for s2, v2 in other) for other in lists[1:])})
+
+
 def resolve_run(ws: Workspace, answers: list[ReconcileAnswer], run: int, resolver: Resolver) -> pd.DataFrame:
     """One row per grouped column: the part it joined and that part's annotation.
 
-    A part holding a registered member is that registered variable: its
-    columns take the registry id, name and qualifiers (validation already
-    checked the predicate and primary term match)."""
+    A part's qualifiers are not the reconciler's: they are the qualifiers its
+    members' own annotations share (`shared_qualifiers`). Asked for "qualifiers
+    shared by every member", the reconciler added new ones instead (decisions
+    log 14.3); what it wrote is kept as `proposed_qualifiers`. A part holding a
+    registered member is that registered variable: its columns take the
+    registry id, name and qualifiers (validation already checked the predicate
+    and primary term match)."""
     members, refs = _maps(ws, run)
     registered = _registered(ws, run)
+    ann_path = ws.root / "annotations.parquet"
+    own = {}
+    if ann_path.exists():
+        a_ = pd.read_parquet(ann_path)
+        own = {f"{s_}::{c_}": json.loads(q_) for s_, c_, q_ in zip(a_.study_id, a_.column, a_.qualifiers)}
     rows = []
     for a in answers:
         for k, p in enumerate(a.parts, 1):
@@ -411,6 +432,10 @@ def resolve_run(ws: Workspace, answers: list[ReconcileAnswer], run: int, resolve
                     ambiguous |= res.ambiguous
                     quals.append((q.slot, res.curie or (q.name or "").casefold()))
             quals.sort()
+            proposed = json.dumps(quals)
+            column_members = [members[a.item_id][m] for m in p.members if members[a.item_id][m] not in registered]
+            if own and all(c in own for c in column_members):
+                quals = shared_qualifiers([own[c] for c in column_members], resolver.ontology.label)
             recodes = {rc.member: [] for rc in p.recodes}
             for rc in p.recodes:
                 recodes[rc.member].append([rc.from_value, rc.to_value])
@@ -429,7 +454,8 @@ def resolve_run(ws: Workspace, answers: list[ReconcileAnswer], run: int, resolve
                              "unresolved_proposal": unresolved,
                              "outside_space": bool(prim and prim.curie and prim.curie not in resolver.in_space),
                              "ambiguous": ambiguous,
-                             "qualifiers": json.dumps(quals), "recodes": json.dumps(recodes.get(m, [])),
+                             "qualifiers": json.dumps(quals), "proposed_qualifiers": proposed,
+                             "recodes": json.dumps(recodes.get(m, [])),
                              "flags": json.dumps(sorted(p.flags)), "rationale": p.rationale})
     return pd.DataFrame(rows)
 

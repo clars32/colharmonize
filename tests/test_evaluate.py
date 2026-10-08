@@ -104,3 +104,8 @@ def test_tier_calibration_puts_a_pair_in_its_worse_tier():
     assert (t["manual"]["pairs"], t["manual"]["pairs_correct"]) == (2, 0)
     assert (t["quick"]["columns"], t["quick"]["annotation_correct"]) == (1, 0)   # Bz: broad, gold exact
     assert "## Review tiers" in report(score(GOLD, pred))
+
+
+def test_bare_qualifier_text_may_contain_semicolons():
+    q = parse_qualifiers("object_class=bcr-abl1 t(9;22); method=EFO:0001234; event_time_anchor=diagnosis")
+    assert q == {("object_class", "bcr-abl1 t(9;22)"), ("method", "EFO:0001234"), ("event_time_anchor", "diagnosis")}
