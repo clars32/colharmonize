@@ -12,7 +12,7 @@ None of the changes below has landed. Paths are the current ones.
 | Change 2, qualifier slots | Still applicable: `CohortConceptDecision` has no qualifiers, and `SemanticFacets` has no `method` | `cohort_models.py:254-262`, `models.py:93-117` |
 | Change 3, pre-accepted state | Still applicable: every unreviewed mapping is a priority-4 `mapping_inspection` task | `project_navigation.py:338-356` |
 | Fix 1, concept IDs not validated | Still applicable: any non-empty locator is accepted, and provider `ontology_references` are unchecked | `_cohort.py:1482-1510`, `cohort_models.py:121` |
-| Fix 2, `_KEY` regex | Still applicable: byte-identical | `geo_profile.py:41-42` |
+| Fix 2, `_KEY` regex | **Fixed on branch `fix/characteristic-key-punctuation` (`e617f01`, pushed 2026-10-08), PR pending.** Root cause: the parser split at the first `:` or `=` and validated keys against `_KEY`; it now splits at a colon followed by whitespace when the key is valid. 537 of 151,653 attributes in 79 SOFT files change; GEOmend suite 1,481 passed | `geo_profile.py:41-48, 211-245` |
 | Fix 3, `propose()` merges "unresolved characteristic" | Still applicable: moved, same label set | `cohort_mapping_core.py:34-36, 137` |
 | Fix 4, units lost | Partly done: header suffixes now give units (`(hours)`, `(years)`), but `WBC, 1000/microliter` still has none, and the inventory field's `unit` is never set from the header | `cohort_units.py:49-116`, `cohort_profile.py:308-316` |
 | Fix 5, store keeps CURIEs only | Still applicable: local candidates have no IRI, so interchange writes URNs | `ontology.py:19-22`, `_cohort.py:1226` |
