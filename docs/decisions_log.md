@@ -597,3 +597,24 @@ are still 1 and 2, because the review decisions are fingerprinted against them.
 - Agreement is a reliable precision signal for pooling, but not enough for
   annotation. A per-column annotation check is needed to keep the
   pre-accepted tier honest.
+
+## After the sealed measurement
+
+### 14.1: Answers are validated and retried per item, not per batch
+On the sealed corpus, one repair item (GSE189007) failed validation three
+times, and re-tasking per batch dropped all 8 studies' rules, every derived
+gold column among them (13.1). The protocol now works item by item:
+- **Collection:** an answer that is missing, duplicated or off-schema fails
+  only its item, and the batch's other answers stand. A file that can't be
+  trusted at all (invalid JSON, wrong content hash) fails each of its items.
+- **Stage checks:** problems are attributed to the item ids they start with.
+- **Retries:** `tasks retry` writes a batch holding only the failed items,
+  each with its original data. A retry's answer replaces the earlier one.
+  Each item gets at most two retries.
+- **Apply:** refuses while items are failing, unless given `--drop-failed`,
+  which applies the rest and lists what was dropped. No answer is ever edited
+  by hand.
+
+Read against the sealed repair answers, per-item collection keeps 15 of 16
+studies' rules; only GSE189007 would have been retried. This is a
+consequence, not a new measurement.

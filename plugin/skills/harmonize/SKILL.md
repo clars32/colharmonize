@@ -53,11 +53,20 @@ parallel. Then validate:
 
     colharmonize tasks collect repair --workspace <workspace> --run 1
 
-If it reports problems, delete the answer files of the batches whose items
-they name and launch the repairer again for those batches, at most twice. If problems remain, show them
-to the user and stop. When collection is clean, apply the rules:
+Collection is per item: one bad answer fails only its own item, and the
+rest of its batch stands. If it reports `failed_items`, re-task just those:
 
-    colharmonize repair apply --workspace <workspace> --run 1
+    colharmonize tasks retry repair --workspace <workspace> --run 1
+
+This writes a retry batch holding only the failed items and prints its path.
+Launch the same subagent on it, then collect again. Never edit or delete
+answer files yourself. The tool allows two retries per item; after that
+`retry` reports the item as given up. Show those items and their reasons to
+the user, then apply without them:
+
+    colharmonize repair apply --workspace <workspace> --run 1 [--drop-failed]
+
+Without `--drop-failed`, apply refuses while any item is failing.
 
 Show the user the coverage table and any PROBLEM lines. A rule that matched
 fewer samples than expected is not an error to hide: say which samples it
@@ -81,7 +90,7 @@ Launch one `colharmonize:annotator` subagent per pending batch path, each
 with a message containing only that path. Both runs can go in one message.
 A subagent must answer one batch of one run; never give one subagent batches
 from both runs, because the runs are only useful if they are independent.
-Collect each run as in step 2 (re-task failing batches at most twice), then:
+Collect each run as in step 2 (retry failed items with `tasks retry annotate`, at most twice each), then:
 
     colharmonize annotate apply --workspace <workspace> --runs 1 2
 

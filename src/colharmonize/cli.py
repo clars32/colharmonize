@@ -7,7 +7,8 @@
     colharmonize columns --workspace DIR [--out TSV]
     colharmonize tasks write   STAGE --workspace DIR --run N [--batch-size K] [--seed S] [--studies ...]
     colharmonize tasks status  STAGE --workspace DIR --run N   pending batch files, one absolute path per line
-    colharmonize tasks collect STAGE --workspace DIR --run N   validate answers
+    colharmonize tasks collect STAGE --workspace DIR --run N   validate answers, item by item
+    colharmonize tasks retry   STAGE --workspace DIR --run N   a batch of just the failed items (at most 2 per item)
     colharmonize repair apply --workspace DIR --run N          apply validated repair rules
     colharmonize preprocess --workspace DIR --store SQLITE        GEOmend evidence: concepts, merges, units
     colharmonize candidates --workspace DIR --ontology DIR [--remote]
@@ -108,22 +109,57 @@ def cmd_tasks(args: argparse.Namespace) -> int:
                 print((directory / e["batch_file"]).resolve())
         print(json.dumps(tasks.status(directory)), file=sys.stderr)
         return 0
-    got = tasks.collect(directory, mod.ANSWER_MODEL)
-    # Stage-specific checks (e.g. a repair rule that does not compile) run here,
-    # so the skill can re-task the batch instead of discovering it at apply time.
-    if hasattr(mod, "validate_answers"):
-        got.problems += mod.validate_answers(ws, got.answers, run=args.run)
-    print(json.dumps({"answers": len(got.answers), "pending": got.pending, "problems": got.problems}, indent=1))
+    got = _collect(ws, mod, args.run)
+    if args.action == "retry":
+        if got.pending:
+            sys.exit(f"answer the pending batches first: {got.pending}")
+        path, given_up = tasks.write_retry(directory, sorted(got.failed))
+        print(json.dumps({"retry_batch": str(path.resolve()) if path else None, "items": len(got.failed) - len(given_up),
+                          "given_up": {i: got.failed[i] for i in given_up}}, indent=1))
+        return 0 if path or not given_up else 1
+    print(json.dumps({"answers": len(got.answers), "pending": got.pending, "failed_items": got.failed,
+                      "problems": got.problems}, indent=1))
     return 0 if got.complete else 1
+
+
+def _collect(ws, mod, run: int, **kw):
+    """Collect a run's answers and run the stage's own checks, item by item.
+
+    Stage checks (a repair rule that does not compile, an unknown term ref)
+    run here so a failing item can be re-tasked instead of being discovered at
+    apply time; problems are attributed to the items they name.
+    """
+    from colharmonize import tasks
+    got = tasks.collect(ws.tasks(mod.STAGE, run), mod.ANSWER_MODEL)
+    if hasattr(mod, "validate_answers"):
+        manifest = json.loads((ws.tasks(mod.STAGE, run) / "manifest.json").read_text())
+        ids = [i for e in manifest["batches"] for i in e["items"]]
+        by_item, general = tasks.split_problems(mod.validate_answers(ws, got.answers, run=run, **kw), ids)
+        got.reject(by_item)
+        got.problems += general
+    return got
+
+
+def _ready(got, run: int, drop_failed: bool) -> bool:
+    """Whether a run can be applied. Failed items block it unless dropped on purpose."""
+    if got.pending or got.problems or (got.failed and not drop_failed):
+        print(json.dumps({"run": run, "pending": got.pending, "failed_items": got.failed, "problems": got.problems},
+                         indent=1))
+        if got.failed and not got.pending and not got.problems:
+            print("re-task them with `colharmonize tasks retry`, or pass --drop-failed to apply without them",
+                  file=sys.stderr)
+        return False
+    if got.failed:
+        print(f"run {run}: applying without {len(got.failed)} failed item(s): {sorted(got.failed)}", file=sys.stderr)
+    return True
 
 
 def cmd_repair_apply(args: argparse.Namespace) -> int:
     from colharmonize import geomend_bridge as gb, repair, tasks
     from colharmonize.workspace import Workspace
     ws = Workspace(args.workspace)
-    got = tasks.collect(ws.tasks(repair.STAGE, args.run), repair.RepairAnswer)
-    if not got.complete:
-        print(json.dumps({"pending": got.pending, "problems": got.problems}, indent=1))
+    got = _collect(ws, repair, args.run)
+    if not _ready(got, args.run, args.drop_failed):
         return 1
     derived, report, problems = repair.apply(ws, got.answers, gb.sample_values(ws.geomend))
     derived.to_parquet(ws.derived, index=False)
@@ -170,10 +206,8 @@ def cmd_annotate_apply(args: argparse.Namespace) -> int:
     resolver = annotate.make_resolver(ws)
     runs = []
     for run in args.runs:
-        got = tasks.collect(ws.tasks(annotate.STAGE, run), annotate.AnnotateAnswer)
-        got.problems += annotate.validate_answers(ws, got.answers, run=run, resolver=resolver)
-        if not got.complete:
-            print(json.dumps({"run": run, "pending": got.pending, "problems": got.problems}, indent=1))
+        got = _collect(ws, annotate, run, resolver=resolver)
+        if not _ready(got, run, args.drop_failed):
             return 1
         runs.append(annotate.resolve_run(ws, got.answers, run, resolver))
     combined = annotate.combine(runs[0], runs[1] if len(runs) > 1 else None, resolver.ontology.label_map())
@@ -192,10 +226,8 @@ def cmd_reconcile_apply(args: argparse.Namespace) -> int:
     resolver = annotate.make_resolver(ws)
     runs = []
     for run in args.runs:
-        got = tasks.collect(ws.tasks(reconcile.STAGE, run), reconcile.ReconcileAnswer)
-        got.problems += reconcile.validate_answers(ws, got.answers, run=run, resolver=resolver)
-        if not got.complete:
-            print(json.dumps({"run": run, "pending": got.pending, "problems": got.problems}, indent=1))
+        got = _collect(ws, reconcile, run, resolver=resolver)
+        if not _ready(got, run, args.drop_failed):
             return 1
         runs.append(reconcile.resolve_run(ws, got.answers, run, resolver))
     ann = pd.read_parquet(ws.root / "annotations.parquet")
@@ -335,7 +367,7 @@ def build_parser() -> argparse.ArgumentParser:
     col.set_defaults(func=cmd_columns)
 
     tk = sub.add_parser("tasks", help="write, list and collect task batches for Claude Code subagents")
-    tk.add_argument("action", choices=["write", "status", "collect"])
+    tk.add_argument("action", choices=["write", "status", "collect", "retry"])
     tk.add_argument("stage")
     tk.add_argument("--workspace", required=True)
     tk.add_argument("--run", type=int, required=True)
@@ -347,6 +379,8 @@ def build_parser() -> argparse.ArgumentParser:
     rp = sub.add_parser("repair", help="apply validated repair rules")
     rp.add_argument("action", choices=["apply"])
     rp.add_argument("--workspace", required=True)
+    rp.add_argument("--drop-failed", action="store_true",
+                    help="apply without items that still fail after retries (they are listed)")
     rp.add_argument("--run", type=int, default=1)
     rp.set_defaults(func=cmd_repair_apply)
 
@@ -366,12 +400,16 @@ def build_parser() -> argparse.ArgumentParser:
     an = sub.add_parser("annotate", help="resolve and combine annotation runs")
     an.add_argument("action", choices=["apply"])
     an.add_argument("--workspace", required=True)
+    an.add_argument("--drop-failed", action="store_true",
+                    help="apply without items that still fail after retries (they are listed)")
     an.add_argument("--runs", type=int, nargs="+", default=[1, 2])
     an.set_defaults(func=cmd_annotate_apply)
 
     rcp = sub.add_parser("reconcile", help="partition candidate groups into variables")
     rcp.add_argument("action", choices=["apply"])
     rcp.add_argument("--workspace", required=True)
+    rcp.add_argument("--drop-failed", action="store_true",
+                    help="apply without items that still fail after retries (they are listed)")
     rcp.add_argument("--runs", type=int, nargs="+", default=[1, 2])
     rcp.set_defaults(func=cmd_reconcile_apply)
 
