@@ -1,0 +1,128 @@
+accession	raw_key	variable_id
+GSE166925	qc	name:qc
+GSE119217	Sex	name:sex
+GSE237290	er	name:er
+GSE189007	bmi	name:bmi
+GSE231509	Sex	name:sex
+GSE237290	event.rfi	name:event.rfi
+GSE231509	age	name:age
+GSE237290	tls	name:tls
+GSE166925	inflammation_status	name:inflammation_status
+GSE192341	sample_id	name:sample_id
+GSE206171	diagnose duration (years)	name:diagnose duration (years)
+GSE166925	sample_id	name:sample_id
+GSE272769	Sex	name:sex
+GSE58984	tissue	name:tissue
+GSE104674	gender	name:gender
+GSE189007	age (yr)	name:age (yr)
+GSE272769	mort30	name:mort30
+GSE237290	tumor_size	name:tumor_size
+GSE119217	shock_status	name:shock_status
+GSE92415	visit	name:visit
+GSE131411	tissue	name:tissue
+GSE131411	Sex	name:sex
+GSE192341	age	name:age
+GSE152111	donor bmi (bmi kg/m2)	name:donor bmi (bmi kg/m2)
+GSE192341	recurrence	name:recurrence
+GSE189007	bmi (kg/m2)	name:bmi (kg/m2)
+GSE272769	shock	name:shock
+GSE92415	treatment	name:treatment
+GSE192341	pathological complete response (pcr)	name:pathological complete response (pcr)
+GSE192341	tissue type	name:tissue type
+GSE231509	tissue	name:tissue
+GSE58984	er status	name:er status
+GSE149322	arm	name:arm
+GSE58984	distant metastasis	name:distant metastasis
+GSE92415	tissue	name:tissue
+GSE189007	sampling in t2d stage	name:sampling in t2d stage
+GSE166925	nancy_score	name:nancy_score
+GSE237290	pam50	name:pam50
+GSE166925	disease	name:disease
+GSE149322	hr	name:hr
+GSE104674	timepoint	name:timepoint
+GSE137340	Sex	name:sex
+GSE58984	tumor size	name:tumor size
+GSE137340	outcome	name:outcome
+GSE58984	nodes positive	name:nodes positive
+GSE119217	tissue	name:tissue
+GSE58984	intratumoral lymphocytic infiltration	name:intratumoral lymphocytic infiltration
+GSE231509	individual	name:individual
+GSE189007	sampling t2d stage	name:sampling t2d stage
+GSE231509	diagnosis	name:diagnosis
+GSE104674	hba1c (mmol/mol)	name:hba1c (mmol/mol)
+GSE206171	uc or healthy control	name:uc or healthy control
+GSE189007	population	name:population
+GSE92415	disease	name:disease
+GSE166925	disease_duration (y)	name:disease_duration (y)
+GSE189007	gender	name:gender
+GSE189007	reference	name:reference
+GSE237290	event.dss	name:event.dss
+GSE131411	cell type	name:cell type
+GSE189007	age	name:age
+GSE237290	tumor_grade	name:tumor_grade
+GSE189007	duration (yr)	name:duration (yr)
+GSE137340	age	name:age
+GSE152111	donor age (yrs)	name:donor age (yrs)
+GSE237290	pr	name:pr
+GSE189007	unresolved characteristic	name:unresolved characteristic
+GSE92415	wk6response	name:wk6response
+GSE206171	tissue	name:tissue
+GSE166925	site_taken	name:site_taken
+GSE237290	age	name:age
+GSE137340	tissue	name:tissue
+GSE58984	pgr status	name:pgr status
+GSE231509	time point	name:time point
+GSE92415	mayo score	name:mayo score
+GSE166925	patient_id	name:patient_id
+GSE58984	time to ddfs	name:time to ddfs
+GSE237290	til	name:til
+GSE189007	tissue	name:tissue
+GSE152111	cell type	name:cell type
+GSE192341	rfs (years)	name:rfs (years)
+GSE166925	gender	name:gender
+GSE189007	t2d duration	name:t2d duration
+GSE272769	age	name:age
+GSE119217	infection_source	name:infection_source
+GSE231509	unresolved characteristic	name:unresolved characteristic
+GSE58984	age	name:age
+GSE104674	subject status	name:subject status
+GSE149322	her2	name:her2
+GSE237290	time.rfi	name:time.rfi
+GSE237290	time.dss	name:time.dss
+GSE166925	sample_age(y)	name:sample_age(y)
+GSE237290	event.os	name:event.os
+GSE282580	tissue	name:tissue
+GSE131411	timepoint	name:timepoint
+GSE58984	stromal lymphocytic infiltration	name:stromal lymphocytic infiltration
+GSE231509	bmi	name:bmi
+GSE149322	pcr	name:pcr
+GSE206171	Sex	name:sex
+GSE231509	treatment	name:treatment
+GSE119217	race_ethnicity	name:race_ethnicity
+GSE92415	age	name:age
+GSE237290	chemo	name:chemo
+GSE58984	treatment	name:treatment
+GSE192341	t-stage	name:t-stage
+GSE152111	donor gender (m	name:donor gender (m
+GSE231509	homa ir	name:homa ir
+GSE192341	subtype	name:subtype
+GSE237290	gc	name:gc
+GSE104674	bmi (kg/m2)	name:bmi (kg/m2)
+GSE192341	unresolved characteristic	name:unresolved characteristic
+GSE237290	histology	name:histology
+GSE192341	neoadjuvant response index (nri)	name:neoadjuvant response index (nri)
+GSE237290	her2	name:her2
+GSE92415	subject	name:subject
+GSE131411	clinical classification	name:clinical classification
+GSE131411	patient	name:patient
+GSE119217	sepsis_severity	name:sepsis_severity
+GSE189007	blood glucose	name:blood glucose
+GSE166925	patient_age	name:patient_age
+GSE104674	unresolved characteristic	name:unresolved characteristic
+GSE237290	time.os	name:time.os
+GSE104674	age	name:age
+GSE137340	time of sample collection	name:time of sample collection
+GSE189007	phenotype	name:phenotype
+GSE189007	disease group	name:disease group
+GSE206171	mayoscore	name:mayoscore
+GSE137340	diagnosis	name:diagnosis

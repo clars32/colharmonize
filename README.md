@@ -98,7 +98,11 @@ Iteration 3, in progress. The Down syndrome corpus from iteration 2
 (`../efo-column-mapping`) is the tuning set. A 16-series corpus in four other
 disease areas is sealed for a single final measurement.
 
-On the tuning gold (13 series, 84 columns), pooling F1 is 82.6%, against 67.7%
-for iteration 2 and 56.7% for GEOmend's `propose()`. Every pre-accepted column
-was correct. These numbers come from the data the pipeline was tuned on; see
-`docs/decisions_log.md` sections 7 and 8.
+On the sealed corpus (16 series, 137 gold columns, measured once), pooling
+precision is 100%, recall 70.9% and F1 83.0%. The baselines score 53.8%
+(identical names) and 45.8% (GEOmend's `propose()`). Primary-term accuracy is
+71.5%. Full results, including what didn't generalize, are in
+`eval/sealed/RESULTS.md`.
+
+On the tuning set (13 series, 84 columns), pooling F1 is 82.6%, against 67.7%
+for iteration 2.

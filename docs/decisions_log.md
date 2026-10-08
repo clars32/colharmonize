@@ -565,3 +565,35 @@ With two runs per side, the F1 difference is about the size of run-to-run
 variation, so this is "helps a little, does no harm", not a firm gain. The
 links stay on (`preprocess.USE_MERGES`). The tuning workspace's runs of record
 are still 1 and 2, because the review decisions are fingerprinted against them.
+
+## Sealed measurement (eval/sealed/RESULTS.md)
+
+### 13.1: Measured once at tag `sealed-run`, 2026-10-08
+- **Pooling:** precision 100.0%, recall 70.9%, F1 83.0%, against baselines
+  of 53.8% (identical names) and 45.8% (GEOmend `propose()`). Tuning F1 was
+  82.6%.
+- **Primary term:** 71.5% (tuning 76.2%).
+- **Qualifiers:** precision 28.9%, recall 37.9% (tuning 61.5% / 64.0%).
+- **Reconciliation:** annotation alone scored F1 84.7%, so reconciliation
+  did not help on this corpus.
+- **Tiers:** discriminated less. Pre-accepted columns were 87% correct, and
+  agreement left only 9 columns in the manual tier.
+
+18 of 137 gold columns were never produced, which caps recall at 86.6%:
+- 11 because one repair batch failed validation three times, and re-tasking
+  drops whole batches
+- 7 because of GEOmend's key-parsing bug (upstream fix 2)
+
+### 13.2: Follow-ups, to be measured on new data, never on the sealed corpus
+- Validate and re-task repair per item, not per batch: one item cost seven
+  studies' valid rules.
+- Send GEOmend fix 2 (keys with commas, `#`, `%`, `=`) upstream. Needs the
+  owner's go-ahead to push.
+- Find out why qualifiers fell: the annotator, or a gap in how the two gold
+  standards write qualifiers.
+- Reconciliation helps where look-alike variables exist (tuning) and slightly
+  hurts where they don't (sealed). Consider running it only on groups whose
+  annotations disagree.
+- Agreement is a reliable precision signal for pooling, but not enough for
+  annotation. A per-column annotation check is needed to keep the
+  pre-accepted tier honest.

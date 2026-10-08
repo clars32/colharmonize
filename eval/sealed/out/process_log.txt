@@ -1,0 +1,6 @@
+repair run1 batch_01: re-task 1 (GSE189007: rule duplicates a characteristic; split 'phenotype' with one rule)
+repair run1 batch_01: re-task 2 (GSE189007 split 'phenotype' with one rule; GSE152111 split 'donor gender (m' with one rule)
+repair run1 batch_01: still failing after 2 re-tasks (GSE189007/disease group: already recorded as a characteristic). Per protocol its 8 studies get no repair rules: GSE237290 GSE104674 GSE189007 GSE282580 GSE149322 GSE231509 GSE152111 GSE206171
+annotate run1: 10 of 12 subagents reported a session-limit error after writing their answer files; no relaunch was needed
+annotate run2 batch_07: re-task 1 (answer omitted item GSE206171::tissue)
+141 columns -> 83 variables; 121 columns reconciled; partition agreement across runs 98.3%

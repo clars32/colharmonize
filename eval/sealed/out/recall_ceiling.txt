@@ -1,0 +1,4 @@
+gold pairs 268; both columns predicted 232 (86.6% = recall ceiling)
+pooled among available pairs: 190/232 = 81.9%
+pooled pairs with both columns' partition agreed: 189/189 correct; others 1/1
+columns with partition disagreement: 2 of 141

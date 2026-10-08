@@ -1,0 +1,4 @@
+tier           columns  variables
+pre_accepted        27         12
+quick              103         62
+manual              11          9

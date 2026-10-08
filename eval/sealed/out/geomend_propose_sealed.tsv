@@ -1,0 +1,128 @@
+accession	raw_key	variable_id
+GSE166925	qc	geomend:cohort-variable:c94554f03f380ecae62dcc69
+GSE119217	Sex	geomend:cohort-variable:e0666f0f73e5c279de0fbcec
+GSE237290	er	geomend:cohort-variable:5b78611b7f7e345df579abbf
+GSE189007	bmi	geomend:cohort-variable:2a734a60eae633549bbdc3e5
+GSE231509	Sex	geomend:cohort-variable:e0666f0f73e5c279de0fbcec
+GSE237290	event.rfi	geomend:cohort-variable:b46b489674a1b07ce444e1f7
+GSE231509	age	geomend:cohort-variable:cb16a20c5caf21a84216cfef
+GSE237290	tls	geomend:cohort-variable:f2263c08735419876a71f700
+GSE166925	inflammation_status	geomend:cohort-variable:f990963e9890ffab84e74c91
+GSE192341	sample_id	geomend:cohort-variable:e1c56360eb3b259fb897ade3
+GSE206171	diagnose duration (years)	geomend:cohort-variable:fefa93ebd3094c8f16e30477
+GSE166925	sample_id	geomend:cohort-variable:e1c56360eb3b259fb897ade3
+GSE272769	Sex	geomend:cohort-variable:e0666f0f73e5c279de0fbcec
+GSE58984	tissue	geomend:cohort-variable:36f43c599c3a6bdf82e98b24
+GSE104674	gender	geomend:cohort-variable:e0666f0f73e5c279de0fbcec
+GSE189007	age (yr)	geomend:cohort-variable:f0bc9cad22f2cae496082b81
+GSE272769	mort30	geomend:cohort-variable:574740afa3feee7af438635f
+GSE237290	tumor_size	geomend:cohort-variable:f5fce9a76cff2d8b8527658e
+GSE119217	shock_status	geomend:cohort-variable:ec5312c77f64f0249d9f8154
+GSE92415	visit	geomend:cohort-variable:552ae77350a6f2c733f453c5
+GSE131411	tissue	geomend:cohort-variable:36f43c599c3a6bdf82e98b24
+GSE131411	Sex	geomend:cohort-variable:e0666f0f73e5c279de0fbcec
+GSE192341	age	geomend:cohort-variable:1c08069deaa0d05c5ef6315a
+GSE152111	donor bmi (bmi kg/m2)	geomend:cohort-variable:6d53200ca7fe7e1f8e15d4a6
+GSE192341	recurrence	geomend:cohort-variable:60579aedc897653144d03c25
+GSE189007	bmi (kg/m2)	geomend:cohort-variable:f96e646eec2ec0e215a1cb84
+GSE272769	shock	geomend:cohort-variable:7234b10729d81bf417636a07
+GSE92415	treatment	geomend:cohort-variable:0553c8f281edbacf40d130ad
+GSE192341	pathological complete response (pcr)	geomend:cohort-variable:5f0b78f8e0d7f039c04bfc5d
+GSE192341	tissue type	geomend:cohort-variable:68c973d9efb5ca01955f6a90
+GSE231509	tissue	geomend:cohort-variable:36f43c599c3a6bdf82e98b24
+GSE58984	er status	geomend:cohort-variable:bcb38e18e5bc2caa355d0822
+GSE149322	arm	geomend:cohort-variable:bffc5aa8cede611b641909df
+GSE58984	distant metastasis	geomend:cohort-variable:f34355bad8c05c7798d71024
+GSE92415	tissue	geomend:cohort-variable:36f43c599c3a6bdf82e98b24
+GSE189007	sampling in t2d stage	geomend:cohort-variable:c6e3cd66cdcddcc7c5c444c9
+GSE166925	nancy_score	geomend:cohort-variable:1bdd6e2cdc1de168c4b9ea20
+GSE237290	pam50	geomend:cohort-variable:04bc5e83be0200057bb359a4
+GSE166925	disease	geomend:cohort-variable:4d2af43c0222aaead2fe393a
+GSE149322	hr	geomend:cohort-variable:705188fb477ff06c3d32f91f
+GSE104674	timepoint	geomend:cohort-variable:e2bca141126979eaa5ee27b4
+GSE137340	Sex	geomend:cohort-variable:e0666f0f73e5c279de0fbcec
+GSE58984	tumor size	geomend:cohort-variable:f5fce9a76cff2d8b8527658e
+GSE137340	outcome	geomend:cohort-variable:da7977f0fe2869cd84524a5d
+GSE58984	nodes positive	geomend:cohort-variable:cf6a2db874887806cccfb786
+GSE119217	tissue	geomend:cohort-variable:36f43c599c3a6bdf82e98b24
+GSE58984	intratumoral lymphocytic infiltration	geomend:cohort-variable:96ca1939f9b0ebe24630a352
+GSE231509	individual	geomend:cohort-variable:c10eae9350c8b34a93404673
+GSE189007	sampling t2d stage	geomend:cohort-variable:bbabbb0b4f62410deb8f2355
+GSE231509	diagnosis	geomend:cohort-variable:81d71d51ce2a148f665320e8
+GSE104674	hba1c (mmol/mol)	geomend:cohort-variable:77f130e76049118b96374c96
+GSE206171	uc or healthy control	geomend:cohort-variable:1da29626c60d770d933d65e0
+GSE189007	population	geomend:cohort-variable:445a2248d1d7c1874877b59c
+GSE92415	disease	geomend:cohort-variable:4d2af43c0222aaead2fe393a
+GSE166925	disease_duration (y)	geomend:cohort-variable:dba6f8f275df561a54313ed9
+GSE189007	gender	geomend:cohort-variable:e0666f0f73e5c279de0fbcec
+GSE189007	reference	geomend:cohort-variable:f743e385cf9e74c01943ad27
+GSE237290	event.dss	geomend:cohort-variable:0013caf7c3b5a6e57ee73027
+GSE131411	cell type	geomend:cohort-variable:3e41b1287152d1fdab42d486
+GSE189007	age	geomend:cohort-variable:f0bc9cad22f2cae496082b81
+GSE237290	tumor_grade	geomend:cohort-variable:2f0805f950af5df92827ec1e
+GSE189007	duration (yr)	geomend:cohort-variable:eaf51b02f00bd07b17f8f180
+GSE137340	age	geomend:cohort-variable:00567ade89de6ea3fb2e96de
+GSE152111	donor age (yrs)	geomend:cohort-variable:acb79f5ca0a4086d5324f232
+GSE237290	pr	geomend:cohort-variable:95e8e25302bb846b8021694e
+GSE189007	unresolved characteristic	geomend:cohort-variable:37c6690f446027799749e5af
+GSE92415	wk6response	geomend:cohort-variable:cae75ce0a357b107c5e38d82
+GSE206171	tissue	geomend:cohort-variable:36f43c599c3a6bdf82e98b24
+GSE166925	site_taken	geomend:cohort-variable:da6ebd04d587decde199d8b7
+GSE237290	age	geomend:cohort-variable:7dad36aefe2773ee978cb107
+GSE137340	tissue	geomend:cohort-variable:36f43c599c3a6bdf82e98b24
+GSE58984	pgr status	geomend:cohort-variable:96da3f87ea90051245767af7
+GSE231509	time point	geomend:cohort-variable:1fabda41315f616fec16b2dd
+GSE92415	mayo score	geomend:cohort-variable:19ecadc25e2cdb37dc5af2eb
+GSE166925	patient_id	geomend:cohort-variable:39e9ba2b019284520bb45e63
+GSE58984	time to ddfs	geomend:cohort-variable:f7e02a0d9d6ab60a60c408a8
+GSE237290	til	geomend:cohort-variable:87ba42bf2aa24d1a578235b2
+GSE189007	tissue	geomend:cohort-variable:36f43c599c3a6bdf82e98b24
+GSE152111	cell type	geomend:cohort-variable:3e41b1287152d1fdab42d486
+GSE192341	rfs (years)	geomend:cohort-variable:b6ec9b037a39672367aada68
+GSE166925	gender	geomend:cohort-variable:e0666f0f73e5c279de0fbcec
+GSE189007	t2d duration	geomend:cohort-variable:0f7f8f47a70dae6f8d2b8101
+GSE272769	age	geomend:cohort-variable:86924362a4be35d2f96b3c33
+GSE119217	infection_source	geomend:cohort-variable:07562d641bfbc9c080943ca6
+GSE231509	unresolved characteristic	geomend:cohort-variable:37c6690f446027799749e5af
+GSE58984	age	geomend:cohort-variable:3b7e5d33d56cc4f25bc9b5ca
+GSE104674	subject status	geomend:cohort-variable:8f93060afd7eb2061aa1983c
+GSE149322	her2	geomend:cohort-variable:f5840d41d643cbc06b70a2b1
+GSE237290	time.rfi	geomend:cohort-variable:9d92c87d5a682512384e807e
+GSE237290	time.dss	geomend:cohort-variable:ca225a47990e42f6c754c4cb
+GSE166925	sample_age(y)	geomend:cohort-variable:4da42cd5ab40b2a77325c922
+GSE237290	event.os	geomend:cohort-variable:25fe331865ff3f9ec90274dd
+GSE282580	tissue	geomend:cohort-variable:36f43c599c3a6bdf82e98b24
+GSE131411	timepoint	geomend:cohort-variable:e2bca141126979eaa5ee27b4
+GSE58984	stromal lymphocytic infiltration	geomend:cohort-variable:b51d3ecc1fc1f1b961dc6f11
+GSE231509	bmi	geomend:cohort-variable:2a734a60eae633549bbdc3e5
+GSE149322	pcr	geomend:cohort-variable:c3db0dad17a9d8e2b50d641b
+GSE206171	Sex	geomend:cohort-variable:e0666f0f73e5c279de0fbcec
+GSE231509	treatment	geomend:cohort-variable:cc36b67afb2782c9a9d37149
+GSE119217	race_ethnicity	geomend:cohort-variable:b914ba15b713cefbea542010
+GSE92415	age	geomend:cohort-variable:e424cd0a7380069aec79edec
+GSE237290	chemo	geomend:cohort-variable:1c6bda1183fc85d0a2b6a02e
+GSE58984	treatment	geomend:cohort-variable:6d35450343d12ef3e1082593
+GSE192341	t-stage	geomend:cohort-variable:61b9d4d87abd3a1a33124701
+GSE152111	donor gender (m	geomend:cohort-variable:a57c9fab37217dd25b541fc3
+GSE231509	homa ir	geomend:cohort-variable:828824c900e03114f257c090
+GSE192341	subtype	geomend:cohort-variable:b17d41018be4ab14c8a9547a
+GSE237290	gc	geomend:cohort-variable:20558e83332c4d9ab91a36a5
+GSE104674	bmi (kg/m2)	geomend:cohort-variable:f96e646eec2ec0e215a1cb84
+GSE192341	unresolved characteristic	geomend:cohort-variable:37c6690f446027799749e5af
+GSE237290	histology	geomend:cohort-variable:273b2e13e48ad022edf4b18d
+GSE192341	neoadjuvant response index (nri)	geomend:cohort-variable:b037b28ba321071b67c686f9
+GSE237290	her2	geomend:cohort-variable:f5840d41d643cbc06b70a2b1
+GSE92415	subject	geomend:cohort-variable:a6a4545f3efcafb3f23e7bb4
+GSE131411	clinical classification	geomend:cohort-variable:e841e76e098cdbd890168fd9
+GSE131411	patient	geomend:cohort-variable:5b324eb18b7baba60dde176e
+GSE119217	sepsis_severity	geomend:cohort-variable:e46ddc2e6dd0f02dd4f21bc0
+GSE189007	blood glucose	geomend:cohort-variable:652f459f7a40ff339c372a1f
+GSE166925	patient_age	geomend:cohort-variable:8c25c2a5add6f36e13ab978d
+GSE104674	unresolved characteristic	geomend:cohort-variable:37c6690f446027799749e5af
+GSE237290	time.os	geomend:cohort-variable:3d7aac1de49596eec1920eb9
+GSE104674	age	geomend:cohort-variable:2c8191a04239ad0c134bbe62
+GSE137340	time of sample collection	geomend:cohort-variable:a21c7d022c74ae68e4ff706b
+GSE189007	phenotype	geomend:cohort-variable:97b32979bae0eba81f777536
+GSE189007	disease group	geomend:cohort-variable:5083e8d932f0bd0a38bc4407
+GSE206171	mayoscore	geomend:cohort-variable:ebab052f68dc3941e862b6de
+GSE137340	diagnosis	geomend:cohort-variable:81d71d51ce2a148f665320e8

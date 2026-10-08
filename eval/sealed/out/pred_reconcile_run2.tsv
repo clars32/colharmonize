@@ -1,0 +1,142 @@
+accession	raw_key	variable_id	predicate	primary_curie	qualifiers
+GSE237290	er	G019.1	exact	EFO:0005512	
+GSE237290	tls	S017	none		
+GSE189007	population	G013.1	exact	OBI:0000181	
+GSE92415	title#well	S019	none		
+GSE137340	source_name#subject	G027.1	none		
+GSE137340	tissue	G001.1	exact	EFO:0000635	
+GSE92415	tissue	G001.1	exact	EFO:0000635	
+GSE231509	age	G002.1	exact	EFO:0000246	
+GSE137340	Sex	G003.1	exact	PATO:0000047	
+GSE189007	sampling t2d stage	G017.1	broad	EFO:0000410	event_time_anchor=sample collection; object_class=MONDO:0005148
+GSE166925	patient_age	G002.1	exact	EFO:0000246	
+GSE119217	sepsis_severity	G011.3	broad	EFO:0007863	object_class=sepsis
+GSE206171	diagnose duration (years)	G010.2	broad	EFO:0000433	event_time_anchor=diagnosis of inflammatory bowel disease; object_class=inflammatory bowel disease
+GSE192341	unresolved characteristic#n-stage	G031.1	exact	EFO:0004927	
+GSE58984	intratumoral lymphocytic infiltration	G024.1	broad	EFO:0009832	object_class=CL:0000542
+GSE152111	donor gender (m	G003.1	exact	PATO:0000047	
+GSE206171	tissue	G001.1	exact	EFO:0000635	
+GSE206171	mayoscore	G011.1	broad	EFO:0007863	method=mayo score (0-12); object_class=MONDO:0005101
+GSE104674	hba1c (mmol/mol)	G005.2	exact	EFO:0004541	
+GSE166925	disease	G004.3	exact	MONDO:0000001	
+GSE237290	chemo	S006	indicator	CHEBI:35610	
+GSE231509	unresolved characteristic	G005.5	none		
+GSE119217	infection_source	S001	broad	EFO:0000544	object_class=causative pathogen class (viral, bacterial, viral and bacterial, none)
+GSE58984	title#patient	G034.1	none		
+GSE137340	diagnosis	G004.1	exact	MONDO:0000001	
+GSE237290	tumor_size	G012.2	exact	EFO:0004134	object_class=MONDO:0004989
+GSE237290	gc	S014	none		
+GSE166925	inflammation_status	G028.1	none		subject=tissue sample
+GSE58984	treatment	G009.1	exact	EFO:0000727	
+GSE272769	age	G002.1	exact	EFO:0000246	
+GSE92415	title#plate	S004	exact	EFO:0005067	
+GSE231509	tissue	G001.1	exact	EFO:0000635	
+GSE119217	title#subject	G025.1	none		
+GSE231509	bmi	G006.1	exact	EFO:0004340	
+GSE152111	donor age (yrs)	G002.1	exact	EFO:0000246	
+GSE272769	source_name#tissue	G001.1	exact	EFO:0000635	
+GSE237290	histology	G008.1	broad	EFO:0008513	object_class=MONDO:0004989
+GSE237290	age	G002.1	exact	EFO:0000246	
+GSE189007	unresolved characteristic	G005.2	exact	EFO:0004541	
+GSE58984	er status	G019.1	exact	EFO:0005512	
+GSE231509	treatment	G009.3	exact	EFO:0000727	object_class=mixed meal tolerance test (mmtt)
+GSE58984	nodes positive	S018	none		object_class=tumor-positive lymph nodes
+GSE189007	phenotype	G008.3	broad	EFO:0000651	
+GSE149322	her2	G015.1	exact	EFO:0005514	
+GSE131411	title#group	G004.1	exact	MONDO:0000001	
+GSE92415	source_name#specimen type	G001.3	exact	OBI:0600005	
+GSE237290	til	S016	none		object_class=tumor-infiltrating lymphocytes; unit=%
+GSE237290	time.os	G022.2	exact	EFO:0000714	object_class=death from any cause
+GSE231509	homa ir	G005.4	exact	EFO:0004501	
+GSE189007	sampling in t2d stage	G017.1	broad	EFO:0000410	event_time_anchor=sample collection; object_class=MONDO:0005148
+GSE231509	Sex	G003.1	exact	PATO:0000047	
+GSE189007	t2d duration	G010.1	broad	EFO:0000433	event_time_anchor=diagnosis of type 2 diabetes mellitus; object_class=type 2 diabetes mellitus
+GSE152111	donor bmi (bmi kg/m2)	G006.1	exact	EFO:0004340	
+GSE237290	her2	G015.1	exact	EFO:0005514	
+GSE149322	hr	S010	none		
+GSE282580	tissue	G001.1	exact	EFO:0000635	
+GSE166925	title#diagnosis	G004.1	exact	MONDO:0000001	
+GSE58984	pgr status	G021.1	exact	EFO:0005513	
+GSE104674	bmi (kg/m2)	G006.1	exact	EFO:0004340	
+GSE192341	rfs (years)	S012	none		object_class=disease recurrence; unit=UO:0000036
+GSE189007	bmi (kg/m2)	G006.1	exact	EFO:0004340	
+GSE104674	unresolved characteristic	G005.1	none		
+GSE189007	bmi	G006.1	exact	EFO:0004340	
+GSE189007	tissue	G001.1	exact	EFO:0000635	
+GSE152111	cell type	G001.4	exact	EFO:0000324	
+GSE58984	tissue	G001.1	exact	EFO:0000635	
+GSE92415	wk6response	S020	none		
+GSE131411	timepoint	G007.3	exact	EFO:0000724	event_time_anchor=icu admission
+GSE58984	distant metastasis	S007	indicator	EFO:0009708	object_class=distant metastasis
+GSE231509	diagnosis	G004.1	exact	MONDO:0000001	
+GSE189007	gender	G003.1	exact	PATO:0000047	
+GSE58984	tumor size	G012.2	exact	EFO:0004134	object_class=MONDO:0004989
+GSE189007	reference	S003	exact	EFO:0001738	
+GSE166925	sample_id	G016.1	exact	EFO:0920100	
+GSE192341	age	G002.1	exact	EFO:0000246	
+GSE149322	arm	G009.2	broad	EFO:0000727	
+GSE237290	time.rfi	G023.2	broad	EFO:0004949	object_class=recurrence-free interval (any breast cancer recurrence)
+GSE104674	timepoint	G007.5	exact	EFO:0000724	event_time_anchor=zeitgeber time zero (zt0) on each study day
+GSE231509	time point	G007.1	exact	EFO:0000724	event_time_anchor=mixed meal ingestion
+GSE192341	neoadjuvant response index (nri)	G008.4	broad	EFO:0008383	method=neoadjuvant response index; object_class=MONDO:0004989
+GSE166925	sample_age(y)	G002.2	broad	EFO:0000719	event_time_anchor=sample collection; subject=biological sample
+GSE131411	Sex	G003.1	exact	PATO:0000047	
+GSE92415	treatment	G009.1	exact	EFO:0000727	
+GSE92415	subject	G036.1	none		
+GSE166925	site_taken	G001.1	exact	EFO:0000635	
+GSE92415	age	G002.1	exact	EFO:0000246	
+GSE237290	tumor_grade	G012.1	exact	MONDO:0024489	object_class=MONDO:0004989
+GSE192341	subtype	S013	none		object_class=breast cancer
+GSE237290	event.rfi	G018.1	indicator	EFO:0004952	object_class=breast cancer
+GSE189007	duration (yr)	G010.1	broad	EFO:0000433	event_time_anchor=diagnosis of type 2 diabetes mellitus; object_class=type 2 diabetes mellitus
+GSE192341	pathological complete response (pcr)	G008.2	indicator	EFO:0009697	object_class=MONDO:0004989
+GSE131411	patient	G026.1	none		
+GSE137340	outcome	S005	exact	EFO:0030038	
+GSE166925	patient_id	G029.1	none		
+GSE192341	t-stage	G030.1	exact	EFO:0004928	
+GSE272769	shock	G014.1	indicator	EFO:0006834	
+GSE104674	age	G002.1	exact	EFO:0000246	
+GSE137340	time of sample collection	G007.4	exact	EFO:0000724	
+GSE206171	Sex	G003.1	exact	PATO:0000047	
+GSE58984	age	G002.1	exact	EFO:0000246	
+GSE131411	tissue	G001.1	exact	EFO:0000635	
+GSE104674	subject status	G004.1	exact	MONDO:0000001	
+GSE189007	age (yr)	G002.1	exact	EFO:0000246	
+GSE131411	title#reanalysis	S009	none		
+GSE166925	qc	S011	none		
+GSE166925	gender	G003.1	exact	PATO:0000047	
+GSE119217	shock_status	G014.1	indicator	EFO:0006834	
+GSE92415	mayo score	G035.1	none		method=mayo score; object_class=ulcerative colitis disease activity
+GSE237290	pam50	S015	none		method=pam50 gene-expression classifier
+GSE192341	sample_id	G016.1	exact	EFO:0920100	
+GSE192341	recurrence	G018.1	indicator	EFO:0004952	object_class=breast cancer
+GSE119217	race_ethnicity	G013.2	exact	EFO:0001799	
+GSE192341	tissue type	G001.3	exact	OBI:0600005	
+GSE189007	disease group	G004.1	exact	MONDO:0000001	
+GSE149322	pcr	G008.2	indicator	EFO:0009697	object_class=MONDO:0004989
+GSE58984	time to ddfs	G023.1	broad	EFO:0004949	object_class=distant disease-free survival (distant recurrence or death)
+GSE272769	Sex	G003.1	exact	PATO:0000047	
+GSE58984	stromal lymphocytic infiltration	G024.2	broad	EFO:0009832	object_class=CL:0000542
+GSE131411	clinical classification	G004.2	exact	MONDO:0000001	
+GSE231509	individual	G032.1	none		
+GSE189007	blood glucose	G005.3	broad	EFO:0004468	
+GSE272769	title#subject	G033.1	none		
+GSE206171	uc or healthy control	G004.1	exact	MONDO:0000001	
+GSE92415	disease	G004.1	exact	MONDO:0000001	
+GSE272769	mort30	S008	indicator	PATO:0001422	
+GSE192341	source_name#tissue	G001.1	exact	EFO:0000635	
+GSE104674	gender	G003.1	exact	PATO:0000047	
+GSE166925	disease_duration (y)	G010.2	broad	EFO:0000433	event_time_anchor=diagnosis of inflammatory bowel disease; object_class=inflammatory bowel disease
+GSE166925	source_name#tissue	G001.2	exact	EFO:0000635	
+GSE58984	title#center	S002	broad	OBI:0000245	
+GSE119217	Sex	G003.1	exact	PATO:0000047	
+GSE119217	tissue	G001.1	exact	EFO:0000635	
+GSE92415	visit	G007.2	broad	EFO:0000724	event_time_anchor=start of golimumab induction treatment
+GSE237290	pr	G021.1	exact	EFO:0005513	
+GSE237290	event.dss	G020.1	indicator	EFO:0000480	object_class=death due to breast cancer (disease-specific survival endpoint)
+GSE237290	time.dss	G022.1	broad	EFO:0000714	object_class=breast cancer-specific death
+GSE166925	nancy_score	G011.2	broad	EFO:0007863	method=nancy histological index (0-4)
+GSE237290	event.os	G020.2	indicator	EFO:0000480	object_class=death from any cause (overall survival endpoint)
+GSE137340	age	G002.1	exact	EFO:0000246	
+GSE189007	age	G002.1	exact	EFO:0000246	
+GSE131411	cell type	G001.1	exact	EFO:0000635	

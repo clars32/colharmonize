@@ -1,0 +1,20 @@
+GSE192341  n-stage (0, neg; 1, pos)                   -> unresolved characteristic#n-stage 0.33
+GSE206171  uc or healthy control#diagnosis            -> None 
+GSE206171  uc or healthy control#activity             -> None 
+GSE282580  title#subject                              -> None 
+GSE282580  title#inflammation                         -> None 
+GSE282580  title#week                                 -> None 
+GSE152111  donor gender (m=male; f=female)            -> None 
+GSE104674  subject id #                               -> None 
+GSE104674  timepoint#day                              -> None 
+GSE104674  timepoint#zeitgeber_time                   -> None 
+GSE231509  fasting glucose,_mm                        -> None 
+GSE231509  fasting insulin,_miu/l                     -> None 
+GSE231509  fasting c-peptid,_ng/ml                    -> None 
+GSE231509  hba1c, %                                   -> None 
+GSE189007  phenotype#notes                            -> None 
+GSE189007  phenotype#uacr                             -> None 
+GSE189007  blood glucose#glucose                      -> None 
+GSE189007  blood glucose#hba1c                        -> None 
+GSE189007  hba1c (%) of the sample                    -> None 
+123/141 gold columns matched; 18 missing
