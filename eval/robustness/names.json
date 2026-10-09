@@ -1,0 +1,362 @@
+[
+ {
+  "id": "GSE11877::BCR-ABL, t(9;22)",
+  "study": "GSE11877",
+  "column": "BCR-ABL, t(9;22)"
+ },
+ {
+  "id": "GSE11877::CNS status",
+  "study": "GSE11877",
+  "column": "CNS status"
+ },
+ {
+  "id": "GSE11877::E2A-PBX, t(1;19)",
+  "study": "GSE11877",
+  "column": "E2A-PBX, t(1;19)"
+ },
+ {
+  "id": "GSE11877::MLL",
+  "study": "GSE11877",
+  "column": "MLL"
+ },
+ {
+  "id": "GSE11877::TEL-AML,t(12;21)",
+  "study": "GSE11877",
+  "column": "TEL-AML,t(12;21)"
+ },
+ {
+  "id": "GSE11877::WBC, 1000/microliter",
+  "study": "GSE11877",
+  "column": "WBC, 1000/microliter"
+ },
+ {
+  "id": "GSE11877::age in days at diagnosis",
+  "study": "GSE11877",
+  "column": "age in days at diagnosis"
+ },
+ {
+  "id": "GSE11877::amplification set",
+  "study": "GSE11877",
+  "column": "amplification set"
+ },
+ {
+  "id": "GSE11877::blast count, % of sample, -1=unavailable",
+  "study": "GSE11877",
+  "column": "blast count, % of sample, -1=unavailable"
+ },
+ {
+  "id": "GSE11877::congenital abnormality",
+  "study": "GSE11877",
+  "column": "congenital abnormality"
+ },
+ {
+  "id": "GSE11877::gender",
+  "study": "GSE11877",
+  "column": "gender"
+ },
+ {
+  "id": "GSE11877::hybridization set",
+  "study": "GSE11877",
+  "column": "hybridization set"
+ },
+ {
+  "id": "GSE11877::race",
+  "study": "GSE11877",
+  "column": "race"
+ },
+ {
+  "id": "GSE11877::sample viability, % of sample, -1=unavailable",
+  "study": "GSE11877",
+  "column": "sample viability, % of sample, -1=unavailable"
+ },
+ {
+  "id": "GSE11877::testicular involvement",
+  "study": "GSE11877",
+  "column": "testicular involvement"
+ },
+ {
+  "id": "GSE11877::tissue type",
+  "study": "GSE11877",
+  "column": "tissue type"
+ },
+ {
+  "id": "GSE11877::training or test set",
+  "study": "GSE11877",
+  "column": "training or test set"
+ },
+ {
+  "id": "GSE11877::trisomy 4 and 10",
+  "study": "GSE11877",
+  "column": "trisomy 4 and 10"
+ },
+ {
+  "id": "GSE124252::age at dissection (day)",
+  "study": "GSE124252",
+  "column": "age at dissection (day)"
+ },
+ {
+  "id": "GSE124252::days in vitro",
+  "study": "GSE124252",
+  "column": "days in vitro"
+ },
+ {
+  "id": "GSE124252::karyotype",
+  "study": "GSE124252",
+  "column": "karyotype"
+ },
+ {
+  "id": "GSE124252::tissue",
+  "study": "GSE124252",
+  "column": "tissue"
+ },
+ {
+  "id": "GSE124252::tissue origin",
+  "study": "GSE124252",
+  "column": "tissue origin"
+ },
+ {
+  "id": "GSE128621::Sex",
+  "study": "GSE128621",
+  "column": "Sex"
+ },
+ {
+  "id": "GSE128621::age",
+  "study": "GSE128621",
+  "column": "age"
+ },
+ {
+  "id": "GSE128621::cell type",
+  "study": "GSE128621",
+  "column": "cell type"
+ },
+ {
+  "id": "GSE128621::karyotype",
+  "study": "GSE128621",
+  "column": "karyotype"
+ },
+ {
+  "id": "GSE128621::library type",
+  "study": "GSE128621",
+  "column": "library type"
+ },
+ {
+  "id": "GSE16176::condition",
+  "study": "GSE16176",
+  "column": "condition"
+ },
+ {
+  "id": "GSE16176::developmental stage",
+  "study": "GSE16176",
+  "column": "developmental stage"
+ },
+ {
+  "id": "GSE16176::sex",
+  "study": "GSE16176",
+  "column": "sex"
+ },
+ {
+  "id": "GSE16176::tissue",
+  "study": "GSE16176",
+  "column": "tissue"
+ },
+ {
+  "id": "GSE17459::cell type",
+  "study": "GSE17459",
+  "column": "cell type"
+ },
+ {
+  "id": "GSE17459::condition",
+  "study": "GSE17459",
+  "column": "condition"
+ },
+ {
+  "id": "GSE17459::crlf2 expression levels (gene expression arrays - log2)",
+  "study": "GSE17459",
+  "column": "crlf2 expression levels (gene expression arrays - log2)"
+ },
+ {
+  "id": "GSE17459::crlf2 expression levels (qrt-pcr - relative to si-ds-all-12)",
+  "study": "GSE17459",
+  "column": "crlf2 expression levels (qrt-pcr - relative to si-ds-all-12)"
+ },
+ {
+  "id": "GSE17459::crlf2 expression levels stratification",
+  "study": "GSE17459",
+  "column": "crlf2 expression levels stratification"
+ },
+ {
+  "id": "GSE17459::crlf2 fish",
+  "study": "GSE17459",
+  "column": "crlf2 fish"
+ },
+ {
+  "id": "GSE17459::crlf2 mutation",
+  "study": "GSE17459",
+  "column": "crlf2 mutation"
+ },
+ {
+  "id": "GSE17459::gene expression dataset",
+  "study": "GSE17459",
+  "column": "gene expression dataset"
+ },
+ {
+  "id": "GSE17459::genetic aberration",
+  "study": "GSE17459",
+  "column": "genetic aberration"
+ },
+ {
+  "id": "GSE17459::jak2 r683 mutation",
+  "study": "GSE17459",
+  "column": "jak2 r683 mutation"
+ },
+ {
+  "id": "GSE17459::snp dataset",
+  "study": "GSE17459",
+  "column": "snp dataset"
+ },
+ {
+  "id": "GSE183701::Sex",
+  "study": "GSE183701",
+  "column": "Sex"
+ },
+ {
+  "id": "GSE183701::age at draw",
+  "study": "GSE183701",
+  "column": "age at draw"
+ },
+ {
+  "id": "GSE183701::registry",
+  "study": "GSE183701",
+  "column": "registry"
+ },
+ {
+  "id": "GSE183701::tissue",
+  "study": "GSE183701",
+  "column": "tissue"
+ },
+ {
+  "id": "GSE185192::cell line",
+  "study": "GSE185192",
+  "column": "cell line"
+ },
+ {
+  "id": "GSE185192::cell type",
+  "study": "GSE185192",
+  "column": "cell type"
+ },
+ {
+  "id": "GSE185192::chip antibody",
+  "study": "GSE185192",
+  "column": "chip antibody"
+ },
+ {
+  "id": "GSE185192::strain",
+  "study": "GSE185192",
+  "column": "strain"
+ },
+ {
+  "id": "GSE185192::treatment",
+  "study": "GSE185192",
+  "column": "treatment"
+ },
+ {
+  "id": "GSE222365::batch",
+  "study": "GSE222365",
+  "column": "batch"
+ },
+ {
+  "id": "GSE222365::cell line",
+  "study": "GSE222365",
+  "column": "cell line"
+ },
+ {
+  "id": "GSE222365::cell type",
+  "study": "GSE222365",
+  "column": "cell type"
+ },
+ {
+  "id": "GSE222365::genotype",
+  "study": "GSE222365",
+  "column": "genotype"
+ },
+ {
+  "id": "GSE222365::sample type",
+  "study": "GSE222365",
+  "column": "sample type"
+ },
+ {
+  "id": "GSE222365::study",
+  "study": "GSE222365",
+  "column": "study"
+ },
+ {
+  "id": "GSE5390::Age (years)",
+  "study": "GSE5390",
+  "column": "Age (years)"
+ },
+ {
+  "id": "GSE5390::Braak stage",
+  "study": "GSE5390",
+  "column": "Braak stage"
+ },
+ {
+  "id": "GSE5390::Cause of death",
+  "study": "GSE5390",
+  "column": "Cause of death"
+ },
+ {
+  "id": "GSE5390::Disease_status",
+  "study": "GSE5390",
+  "column": "Disease_status"
+ },
+ {
+  "id": "GSE5390::Gender",
+  "study": "GSE5390",
+  "column": "Gender"
+ },
+ {
+  "id": "GSE5390::Post mortem interval (hours)",
+  "study": "GSE5390",
+  "column": "Post mortem interval (hours)"
+ },
+ {
+  "id": "GSE61804::condition",
+  "study": "GSE61804",
+  "column": "condition"
+ },
+ {
+  "id": "GSE61804::flt3-itd",
+  "study": "GSE61804",
+  "column": "flt3-itd"
+ },
+ {
+  "id": "GSE61804::gender",
+  "study": "GSE61804",
+  "column": "gender"
+ },
+ {
+  "id": "GSE61804::tissue",
+  "study": "GSE61804",
+  "column": "tissue"
+ },
+ {
+  "id": "GSE79842::age",
+  "study": "GSE79842",
+  "column": "age"
+ },
+ {
+  "id": "GSE79842::batch",
+  "study": "GSE79842",
+  "column": "batch"
+ },
+ {
+  "id": "GSE79842::condition",
+  "study": "GSE79842",
+  "column": "condition"
+ },
+ {
+  "id": "GSE79842::gender",
+  "study": "GSE79842",
+  "column": "gender"
+ }
+]
