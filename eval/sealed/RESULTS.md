@@ -132,3 +132,17 @@ the scorer rewards because the gold lists only the characteristic. So part of
 annotation's apparent advantage comes from breaking a pooling rule. The cause
 is redundant repair output, and the fix belongs in repair or in the
 reconciler's tie-break, not in which groups are reconciled.
+
+**Intervals, memorization and renaming (added 2026-10-09; post hoc, no headline changes).**
+- **Intervals** (`eval/stats/RESULTS.md`), 95% bootstrap over studies:
+  - pooling F1: 83.0% (75.3–91.6)
+  - primary term: 71.5% (63.5–81.4)
+  - final minus identical-names baseline: +29.2 points (+12.3 to +46.0)
+  - final minus annotation alone: −1.8 (−5.7 to +3.9), so reading 4's
+    difference is within noise
+  - no annotation signal discriminates on this corpus (tier AUC 0.54), which
+    sharpens reading 5
+- **Memorization:** a probe found no recall of these series' metadata
+  (`eval/memorization/RESULTS.md`).
+- **Renaming:** on tuning, paraphrased column names cost about 2.4 points of
+  primary-term accuracy, within noise (`eval/robustness/RESULTS.md`).
