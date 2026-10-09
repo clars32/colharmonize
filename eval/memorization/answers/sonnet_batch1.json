@@ -1,0 +1,73 @@
+{
+  "GSE137340": {
+    "title": null,
+    "confidence": "none",
+    "characteristics": []
+  },
+  "GSE206171": {
+    "title": null,
+    "confidence": "none",
+    "characteristics": []
+  },
+  "GSE131411": {
+    "title": null,
+    "confidence": "none",
+    "characteristics": []
+  },
+  "GSE149322": {
+    "title": null,
+    "confidence": "none",
+    "characteristics": []
+  },
+  "GSE282580": {
+    "title": null,
+    "confidence": "none",
+    "characteristics": []
+  },
+  "GSE92415": {
+    "title": "Gene expression in colonic biopsies of ulcerative colitis patients treated with golimumab (PURSUIT)",
+    "confidence": "low",
+    "characteristics": [
+      {
+        "key": "tissue",
+        "numeric": false,
+        "values": [
+          "colon"
+        ]
+      },
+      {
+        "key": "disease",
+        "numeric": false,
+        "values": [
+          "ulcerative colitis"
+        ]
+      },
+      {
+        "key": "week",
+        "numeric": false,
+        "values": [
+          "Week 0",
+          "Week 6"
+        ]
+      },
+      {
+        "key": "response",
+        "numeric": false,
+        "values": [
+          "Responder",
+          "Non-responder"
+        ]
+      }
+    ]
+  },
+  "GSE16176": {
+    "title": null,
+    "confidence": "none",
+    "characteristics": []
+  },
+  "GSE4119": {
+    "title": null,
+    "confidence": "none",
+    "characteristics": []
+  }
+}

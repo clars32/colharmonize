@@ -1,0 +1,84 @@
+{
+  "GSE137340": {
+    "title": null,
+    "confidence": "none",
+    "characteristics": []
+  },
+  "GSE206171": {
+    "title": null,
+    "confidence": "none",
+    "characteristics": []
+  },
+  "GSE131411": {
+    "title": null,
+    "confidence": "none",
+    "characteristics": []
+  },
+  "GSE149322": {
+    "title": null,
+    "confidence": "none",
+    "characteristics": []
+  },
+  "GSE282580": {
+    "title": null,
+    "confidence": "none",
+    "characteristics": []
+  },
+  "GSE92415": {
+    "title": "Colonic mucosal gene expression in ulcerative colitis patients treated with golimumab (PURSUIT)",
+    "confidence": "low",
+    "characteristics": [
+      {
+        "key": "disease",
+        "numeric": false,
+        "values": [
+          "Ulcerative Colitis",
+          "Normal"
+        ]
+      },
+      {
+        "key": "treatment",
+        "numeric": false,
+        "values": [
+          "Placebo",
+          "Golimumab"
+        ]
+      },
+      {
+        "key": "visit",
+        "numeric": false,
+        "values": [
+          "Week 0",
+          "Week 6"
+        ]
+      },
+      {
+        "key": "mayo response at week 6",
+        "numeric": false,
+        "values": [
+          "Yes",
+          "No"
+        ]
+      }
+    ]
+  },
+  "GSE16176": {
+    "title": "Down syndrome (trisomy 21) versus euploid gene expression",
+    "confidence": "low",
+    "characteristics": [
+      {
+        "key": "karyotype",
+        "numeric": false,
+        "values": [
+          "trisomy 21",
+          "euploid"
+        ]
+      }
+    ]
+  },
+  "GSE4119": {
+    "title": null,
+    "confidence": "none",
+    "characteristics": []
+  }
+}

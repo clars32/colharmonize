@@ -1,0 +1,59 @@
+model	accession	corpus	answered	confidence	n_true	n_pred	key_recall_strict	key_recall_strict_control	key_recall_loose	key_recall_loose_control	key_precision_strict	key_precision_loose	value_recall	value_recall_control	title_sim	title_sim_control	recalled
+opus	GSE104674	sealed	True	none	7	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE11877	tuning	True	none	18	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE119217	sealed	True	none	6	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE124252	tuning	True	none	5	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE128621	tuning	True	none	5	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE131411	sealed	True	none	6	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE137340	sealed	True	none	6	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE1397	tuning	True	low	0	2		0.118		0.123	0.000	0.000		0.005	0.188	0.084	False
+opus	GSE149322	sealed	True	none	4	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE152111	sealed	True	none	4	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE16176	tuning	True	low	5	1	0.000	0.040	0.000	0.040	0.000	0.000	0.000	0.006	0.222	0.079	False
+opus	GSE166925	sealed	True	none	11	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE17459	tuning	True	none	11	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE183701	tuning	True	none	4	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE185192	tuning	True	none	5	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE189007	sealed	True	none	16	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE192341	sealed	True	none	10	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE206171	sealed	True	none	5	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE222365	tuning	True	none	6	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE231509	sealed	True	none	13	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE237290	sealed	True	none	18	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE272769	sealed	True	none	4	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE282580	sealed	True	none	1	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE4119	tuning	True	none	0	0		0.000		0.000				0.000	0.000	0.000	False
+opus	GSE5390	tuning	True	low	6	2	0.000	0.090	0.167	0.096	0.000	0.500	0.077	0.000	0.333	0.064	False
+opus	GSE58984	sealed	True	none	11	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE61804	tuning	True	none	4	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE79842	tuning	True	none	4	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+opus	GSE92415	sealed	True	low	8	4	0.375	0.017	0.375	0.021	0.750	0.750	0.333	0.000	0.269	0.139	False
+sonnet	GSE104674	sealed	True	none	7	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE11877	tuning	True	none	18	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE119217	sealed	True	none	6	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE124252	tuning	True	none	5	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE128621	tuning	True	none	5	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE131411	sealed	True	none	6	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE137340	sealed	True	none	6	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE1397	tuning	True	none	0	0		0.000		0.000				0.000	0.000	0.000	False
+sonnet	GSE149322	sealed	True	none	4	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE152111	sealed	True	none	4	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE16176	tuning	True	none	5	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE166925	sealed	True	none	11	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE17459	tuning	True	none	11	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE183701	tuning	True	none	4	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE185192	tuning	True	none	5	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE189007	sealed	True	none	16	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE192341	sealed	True	none	10	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE206171	sealed	True	none	5	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE222365	tuning	True	none	6	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE231509	sealed	True	none	13	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE237290	sealed	True	none	18	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE272769	sealed	True	none	4	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE282580	sealed	True	none	1	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE4119	tuning	True	none	0	0		0.000		0.000				0.000	0.000	0.000	False
+sonnet	GSE5390	tuning	True	none	6	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE58984	sealed	True	none	11	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE61804	tuning	True	none	4	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE79842	tuning	True	none	4	0	0.000	0.000	0.000	0.000			0.000	0.000	0.000	0.000	False
+sonnet	GSE92415	sealed	True	low	8	4	0.250	0.135	0.250	0.152	0.500	0.500	0.000	0.000	0.259	0.170	False

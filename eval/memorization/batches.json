@@ -1,0 +1,73 @@
+{
+ "seed": 20261008,
+ "corpus": {
+  "GSE11877": "tuning",
+  "GSE124252": "tuning",
+  "GSE128621": "tuning",
+  "GSE1397": "tuning",
+  "GSE16176": "tuning",
+  "GSE17459": "tuning",
+  "GSE183701": "tuning",
+  "GSE185192": "tuning",
+  "GSE222365": "tuning",
+  "GSE4119": "tuning",
+  "GSE5390": "tuning",
+  "GSE61804": "tuning",
+  "GSE79842": "tuning",
+  "GSE237290": "sealed",
+  "GSE58984": "sealed",
+  "GSE192341": "sealed",
+  "GSE149322": "sealed",
+  "GSE272769": "sealed",
+  "GSE137340": "sealed",
+  "GSE119217": "sealed",
+  "GSE131411": "sealed",
+  "GSE166925": "sealed",
+  "GSE206171": "sealed",
+  "GSE92415": "sealed",
+  "GSE282580": "sealed",
+  "GSE152111": "sealed",
+  "GSE104674": "sealed",
+  "GSE231509": "sealed",
+  "GSE189007": "sealed"
+ },
+ "batches": [
+  [
+   "GSE137340",
+   "GSE206171",
+   "GSE131411",
+   "GSE149322",
+   "GSE282580",
+   "GSE92415",
+   "GSE16176",
+   "GSE4119"
+  ],
+  [
+   "GSE152111",
+   "GSE5390",
+   "GSE272769",
+   "GSE17459",
+   "GSE1397",
+   "GSE183701",
+   "GSE185192"
+  ],
+  [
+   "GSE58984",
+   "GSE231509",
+   "GSE237290",
+   "GSE166925",
+   "GSE104674",
+   "GSE128621",
+   "GSE119217"
+  ],
+  [
+   "GSE189007",
+   "GSE61804",
+   "GSE79842",
+   "GSE11877",
+   "GSE192341",
+   "GSE222365",
+   "GSE124252"
+  ]
+ ]
+}

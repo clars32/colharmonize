@@ -1,0 +1,72 @@
+{
+  "GSE152111": {
+    "title": null,
+    "confidence": "none",
+    "characteristics": []
+  },
+  "GSE5390": {
+    "title": "Gene expression profiling in the adult Down syndrome brain",
+    "confidence": "low",
+    "characteristics": [
+      {
+        "key": "disease state",
+        "numeric": false,
+        "values": [
+          "Down syndrome",
+          "control"
+        ]
+      },
+      {
+        "key": "tissue",
+        "numeric": false,
+        "values": [
+          "dorsolateral prefrontal cortex"
+        ]
+      }
+    ]
+  },
+  "GSE272769": {
+    "title": null,
+    "confidence": "none",
+    "characteristics": []
+  },
+  "GSE17459": {
+    "title": null,
+    "confidence": "none",
+    "characteristics": []
+  },
+  "GSE1397": {
+    "title": "Trisomy 21 fetal brain and heart (primary and secondary transcriptional effects in the developing Down syndrome brain and heart)",
+    "confidence": "low",
+    "characteristics": [
+      {
+        "key": "tissue",
+        "numeric": false,
+        "values": [
+          "cerebrum",
+          "cerebellum",
+          "heart",
+          "astrocytes"
+        ]
+      },
+      {
+        "key": "karyotype",
+        "numeric": false,
+        "values": [
+          "trisomy 21",
+          "normal"
+        ]
+      }
+    ]
+  },
+  "GSE183701": {
+    "title": null,
+    "confidence": "none",
+    "characteristics": []
+  },
+  "GSE185192": {
+    "title": null,
+    "confidence": "none",
+    "characteristics": []
+  }
+}
