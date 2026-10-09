@@ -85,9 +85,12 @@ error after writing their answers; no answer was lost.
    The sealed corpus is easier on precision, though: the baselines also reach
    99%. It has few look-alike variables such as tuning's disease status vs
    karyotype.
-2. **Primary-term accuracy fell by 4.7 points** (76.2% to 71.5%), well under
-   the 12–24 point drops reported for LLM matchers on unseen targets
-   (MetaHarmonizer, 2026). Term and predicate together held at 69.3%.
+2. **Primary-term accuracy fell by 4.7 points** (76.2% to 71.5%), and term
+   and predicate together held at 69.3%. (Corrected 2026-10-08: an earlier
+   version compared this with MetaHarmonizer's 12–24 point drop. That drop
+   comes from renaming the targets of a public benchmark that LLMs had
+   memorized, a different experiment, so the two numbers are not
+   comparable.)
 3. **Qualifiers did not generalize** (precision 28.9%, against 61.5% on
    tuning). This needs a look at whether the cause is the annotator or a
    difference in how the two gold standards write qualifiers. The sealed gold
