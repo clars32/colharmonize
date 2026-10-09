@@ -760,3 +760,19 @@ file.
 - Pre-registered: if the pipeline scores at least 10 points higher against
   the gold than against the person, the sealed numbers partly measure
   agreement with Claude's conventions.
+
+### 15.5: The easy-first fast path is safe but not worth building yet (`eval/fastpath/`)
+Handoff task 12, measured from existing outputs. Code annotates a column as
+exact when two conditions hold:
+- its name equals exactly one property-space label
+- its values agree with that term: it is their top proposed category, or
+  the values are numeric and propose none
+
+It takes about 10% of columns: 12 of 105 on tuning, 14 of 141 on sealed (post
+hoc). On those columns it matches the pipeline exactly (6/6 and 12/14 right).
+The value guard is what makes it safe. Without it, accuracy falls to 82% and
+74%.
+
+It saves about one annotate batch per run, roughly 5% of subagent calls, on
+columns the subagents already get right. That doesn't pay for a second
+annotation path and its review mechanics. Revisit for large corpora.
