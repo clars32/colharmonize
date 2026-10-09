@@ -1,8 +1,8 @@
 # Handoff brief: colharmonize, iteration 3
 
-Written 2026-10-08 for a fresh Claude instance. Read this first. It replaces
-the root `../CLAUDE.md` and `../BRIEFING.md`, which describe iteration 2's plan
-and are stale. Updating them is task 21.
+Written 2026-10-08 for a fresh Claude instance, updated 2026-10-09. Read
+this first, then the root `../BRIEFING.md` for the stable background (settled
+decisions, environment, traps).
 
 ## What this is
 
@@ -30,7 +30,7 @@ GEOmend only through `src/colharmonize/geomend_bridge.py`.
 
 Read these, in order:
 1. `README.md`
-2. `docs/decisions_log.md`: every judgment call; sections 13–14 are the latest
+2. `docs/decisions_log.md`: every judgment call; sections 13–15 are the latest
 3. `eval/sealed/PROTOCOL.md` and `eval/sealed/RESULTS.md`
 4. `docs/geomend-upstream-proposal.md`
 5. `plugin/skills/harmonize/SKILL.md`: how a run is driven
@@ -52,6 +52,15 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
   - a fix for the scorer's qualifier parser
 - **Pushed but no PR yet:** a GEOmend fix for keys with punctuation, on branch
   `fix/characteristic-key-punctuation`.
+- **Evaluation checks, 2026-10-09** (decisions log 15; `eval/memorization`,
+  `eval/stats`, `eval/robustness`, `eval/curation`):
+  - no model recalls these series' metadata
+  - pooling beats every baseline with intervals that exclude zero; the
+    gains from reconciliation and merge links are within noise
+  - no confidence signal discriminates annotation correctness on sealed
+    (tier AUC 0.54); partition agreement catches false merges, not missed ones
+  - renamed columns cost about 2.4 points of primary term, within noise
+  - a blind 44-column curation sheet is ready for a person
 - **Tests:** `./.venv/bin/python -m pytest -q` passes 77.
 
 ## Constraints: do not break these
@@ -61,7 +70,10 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
   the confidence signal.
   - Models: Sonnet for repair and annotate, Opus for reconcile.
   - The plugin isn't installed, so launch general-purpose agents with the
-    prompt template in `plugin/agents/*.md`.
+    prompt template in `plugin/agents/*.md`. **Add: use only the Read and
+    Write tools, and write nothing but the answer file.** The plugin's agents
+    have only those tools; stand-ins that can run shell commands share the
+    session scratchpad and collided there once (decisions log 15.3).
 - **Never edit answer files by hand.** Re-task with
   `colharmonize tasks retry STAGE --run N`. Apply with `--drop-failed` only
   after two retries, and report what was dropped.
@@ -130,29 +142,30 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
    variables, and only 2 matched gold.
 3. **Choose a license for the SSSOM output.** Ask the PI.
 4. **Decide whether to un-defer value→ontology mapping** (see task 19).
+5. **Find a person to fill the curation sheet** (task 6):
+   `eval/curation/curation_sheet.xlsx`. Send them only that file. Ideally
+   they have clinical background and haven't seen the gold. Then run
+   `eval/curation/agreement.py FILLED.xlsx`.
 
 ### B. Make the evaluation trustworthy
 
 These ideas come from MetaHarmonizer, Li et al., bioRxiv 2026.06.13.732088.
 
-5. **Memorization probe.** Ask Claude with no data to list each sealed and
-   tuning series' characteristic keys and values. Report the recall rate. High
-   recall means the sealed numbers may be inflated.
-6. **Circular grading.** The sealed gold was drafted by Claude and then
-   reviewed by the owner, and the pipeline is also Claude. Prepare a curation
-   sheet for a person to independently annotate a subset (about 40 columns
-   from about 5 series), then measure agreement with the gold. Needs a human.
-7. **Robustness to renamed columns.** On tuning, paraphrase column names
-   (keep values), regenerate candidates, and re-annotate. Compare primary-term
-   accuracy and pooling.
-8. **Statistics.**
-   - Report each confidence signal's AUC and Cohen's d against correctness
-     (annotation agreement, partition agreement, tier).
-   - Put bootstrap confidence intervals over columns or pairs on pooling F1.
-   - Redo the merge-link comparison (decisions log 12.3) with paired tests.
+5. ~~**Memorization probe.**~~ Done 2026-10-09 (`eval/memorization/`): no
+   series recalled; Opus recognises GSE92415 by name only.
+6. **Circular grading.** Sheet and scorer done 2026-10-09
+   (`eval/curation/`, pre-registered in its PROTOCOL.md): 44 columns from 5
+   sealed series. **Waiting for a person** (A5).
+7. ~~**Robustness to renamed columns.**~~ Done 2026-10-09
+   (`eval/robustness/`): primary term −2.4 points (CI −7.0 to +1.2), pooling
+   unchanged. Not run through reconciliation.
+8. ~~**Statistics.**~~ Done 2026-10-09 (`eval/stats/`; decisions log 15.2).
+   It revised four claims: reconciliation's and the merge links' gains are
+   within noise, and annotation signals fail on sealed.
 9. **A new sealed corpus,** once the fixes below are in. Curate the gold before
    any run, preferably by a person, and pre-register it as
-   `eval/sealed/PROTOCOL.md` did.
+   `eval/sealed/PROTOCOL.md` did. Size it for power: at about 15 studies a
+   pooling-F1 interval is 8–14 points wide on each side (decisions log 15.2).
 
 ### C. Pipeline improvements
 
@@ -183,7 +196,8 @@ Measure each on tuning first.
     columns conflict.
 15. **Different models for run 1 and run 2,** so the runs' errors are less
     alike. GEOMeta uses consensus across models. Check whether the tiers
-    discriminate better.
+    discriminate better: on sealed, no current signal does (AUC 0.51–0.59), and
+    partition agreement can't see missed merges (decisions log 15.2).
 16. **Cost.** Record tokens and time per stage; both papers report cost.
 17. **Optional:** fill missing values within a study when all of that study's
     non-missing values agree (GEOMeta's QA1).
@@ -204,9 +218,10 @@ Measure each on tuning first.
     a pre-registered test on unseen data. GEOMeta's released labels could
     serve as an outside check of sex, age, tissue and disease on overlapping
     series.
-21. **Refresh the root docs.** Update `../CLAUDE.md`, `../BRIEFING.md` and
-    `../briefing.html` for iteration 3. The plan required it, and they're
-    stale.
+21. ~~**Refresh the root docs.**~~ Done 2026-10-09. `../BRIEFING.md` is
+    rewritten for iteration 3; `../briefing.html` is generated from it by
+    `../build_briefing.py`. Iteration 2's versions are archived in
+    `../efo-column-mapping/docs/`.
 22. **Write results back to GEOmend** through the public provider seam,
     `transformations.propose_provider` (decisions log 1.5 and 1.6).
 23. **The other planned GEOmend changes:** directed relations, qualifier
