@@ -693,3 +693,70 @@ score changes.
 
 These need new annotation runs and a new corpus to measure honestly, so they
 wait.
+
+## Making the evaluation trustworthy (handoff tasks 5–8, 2026-10-09)
+
+### 15.1: The models don't remember these series (`eval/memorization/`)
+Sonnet and Opus were given each tuning and sealed accession, with no data
+and no tools, and asked to list the series' characteristic keys and values.
+- They declined 53 of 58 series-model pairs.
+- No series met the pre-registered recall rule: at least 50% of keys, and at
+  least 30 points above a same-corpus control.
+- The one real recognition is GSE92415 (golimumab, PURSUIT). Opus named 3 of
+  its 8 keys, all generic. The pipeline scored no better on that series
+  (75.0%) than on the rest of the sealed corpus (69.0%).
+
+The gold itself was never public. The sealed numbers show no sign of
+memorization.
+
+### 15.2: Intervals and paired tests revise four earlier claims (`eval/stats/`)
+Study-level bootstrap intervals, paired comparisons, and AUCs for each
+confidence signal:
+- **Stands:** pooling F1 beats every baseline on both corpora, and every
+  paired interval excludes zero. For example, sealed final minus identical
+  names is +29.2 points (+12.3 to +46.0).
+- **Not established:**
+  - reconciliation's gain on tuning (7.3): +4.3 points (−11.9 to +18.5)
+  - merge links (12.3), which have no detectable effect: +1.9 F1 points
+    (−3.4 to +9.0), against run-to-run noise of 0.6 and 2.2 points
+  - "generalization held": tuning F1 has a 95% interval of 66–95%
+- **Confidence signals fail on unseen data for annotation.**
+  - On tuning, tier AUC is 0.80, but the tier checks were chosen on tuning
+    (8.1).
+  - On sealed, tier AUC is 0.54, and annotation agreement 0.53, so neither
+    is distinguishable from chance.
+- **Partition agreement detects false merges (AUC 0.94 on tuning) and is
+  blind to missed ones.** Both runs miss the same merges. Every sealed
+  pooling error is a missed merge, so the tiers can't route them to review.
+- At about 15 studies, a pooling-F1 interval has a half-width of 8–14
+  points. A new sealed corpus (task 9) should be sized, and its comparisons
+  pre-registered, with that in mind.
+
+### 15.3: Renamed columns cost little; stand-in subagents get Read and Write only (`eval/robustness/`)
+All 72 tuning characteristic names were paraphrased, values were kept, and
+the columns were re-annotated (annotate-2, two runs). Against the original
+runs:
+- primary term: −2.4 points (−7.0 to +1.2), smaller than run-to-run noise of
+  6 points
+- pooling F1: +0.2
+- run agreement: −5.8 points
+- qualifiers: fell the most, because they are read from the name
+
+The pipeline relies on values and context more than on names.
+
+Process change. The plugin's agents have only Read and Write. The
+general-purpose agents launched in their place can also run shell commands
+and share the session scratchpad. In this run, three of them overwrote one
+another's helper script, and one printed another batch's input items. No
+answer crossed runs (transcripts audited). From now on, a stand-in prompt
+says: use only the Read and Write tools, and write nothing but the answer
+file.
+
+### 15.4: An independent curation sheet is ready, waiting for a person (`eval/curation/`)
+- 44 columns from 5 sealed series, chosen by a fixed rule. Values are taken
+  from raw SOFT. No gold or pipeline output is in it.
+- `agreement.py` scores three comparisons: person vs gold, pipeline vs gold,
+  and pipeline vs person.
+- Pre-registered: if the pipeline scores at least 10 points higher against
+  the gold than against the person, the sealed numbers partly measure
+  agreement with Claude's conventions.
