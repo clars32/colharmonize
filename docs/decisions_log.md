@@ -776,3 +776,15 @@ The value guard is what makes it safe. Without it, accuracy falls to 82% and
 It saves about one annotate batch per run, roughly 5% of subagent calls, on
 columns the subagents already get right. That doesn't pay for a second
 annotation path and its review mechanics. Revisit for large corpora.
+
+### 15.6: What a run costs (`eval/cost/`)
+Handoff task 16. From the subagent transcripts, the sealed run used:
+- 41 agents
+- 17.9M input tokens, 76% of them cached reads
+- 430k output tokens
+- 58 agent-minutes
+
+Stages run in parallel, so the agent time on the critical path is about 7
+minutes. That is about 130k input and 3k output tokens per gold column.
+Annotation is 82% of input. Under Claude Code this is plan usage, not billed
+tokens, so cost is reported in tokens and time.
