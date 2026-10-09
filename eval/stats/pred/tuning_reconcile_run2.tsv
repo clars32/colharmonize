@@ -1,0 +1,106 @@
+accession	raw_key	variable_id	predicate	primary_curie	qualifiers
+GSE222365	batch	G008.3	exact	EFO:0005067	
+GSE11877	BCR-ABL, t(9;22)	G005.4	indicator	EFO:0004024	object_class=bcr-abl t(9;22)
+GSE11877	source_name#preservation	G006.2	broad	OBI:0001472	
+GSE185192	title#replicate	G010.1	exact	EFO:0000683	
+GSE124252	age at dissection (day)	G003.2	broad	EFO:0000246	
+GSE128621	library type	S004	broad	EFO:0004184	
+GSE185192	chip antibody	S001	broad	EFO:0000264	
+GSE185192	title#assay	S015	exact	OBI:0000070	
+GSE11877	testicular involvement	S017	indicator	MONDO:0005447	
+GSE4119	title#down syndrome	G001.1	exact	EFO:0004426	
+GSE183701	age at draw	G003.4	exact	EFO:0000246	
+GSE1397	source_name#gestational age (weeks)	G003.3	exact	EFO:0005112	
+GSE11877	WBC, 1000/microliter	S018	none		unit=thousand cells per microliter (1000/microliter)
+GSE1397	title#cell type	G007.1	exact	EFO:0000324	
+GSE11877	age in days at diagnosis	S011	exact	EFO:0004918	event_time_anchor=diagnosis; unit=UO:0000033
+GSE5390	Disease_status	G001.1	exact	EFO:0004426	
+GSE222365	cell line	G016.1	broad	CL:0000010	
+GSE128621	title#subject	G009.1	none		
+GSE5390	source_name#specimen type	G006.5	exact	EFO:0007063	
+GSE79842	age	G003.4	exact	EFO:0000246	
+GSE16176	sex	G004.1	exact	PATO:0000047	
+GSE185192	title#pair	S022	none		
+GSE61804	condition	G001.2	exact	MONDO:0000001	
+GSE16176	developmental stage	G011.2	exact	EFO:0000399	
+GSE128621	karyotype	G001.1	exact	EFO:0004426	
+GSE124252	tissue origin	G011.1	none		
+GSE61804	gender	G004.1	exact	PATO:0000047	
+GSE5390	Age (years)	G003.4	exact	EFO:0000246	
+GSE11877	amplification set	G008.4	exact	EFO:0005067	object_class=target amplification
+GSE4119	source_name#tissue	G002.1	exact	EFO:0000635	
+GSE16176	tissue	G002.1	exact	EFO:0000635	
+GSE11877	TEL-AML,t(12;21)	G005.6	indicator	EFO:0004024	object_class=tel-aml1 (etv6-runx1) t(12;21)
+GSE11877	sample viability, % of sample, -1=unavailable	S008	broad	PATO:0000169	unit=UO:0000187
+GSE11877	source_name#sample type	G006.1	broad	OBI:0100051	
+GSE222365	title#replicate	G010.1	exact	EFO:0000683	
+GSE17459	genetic aberration	G005.2	exact	EFO:0000336	
+GSE222365	cell type	G007.2	broad	EFO:0000001	
+GSE185192	cell line	G016.1	broad	CL:0000010	
+GSE185192	strain	G001.1	exact	EFO:0004426	
+GSE183701	tissue	G002.1	exact	EFO:0000635	
+GSE1397	title#comparison group	G001.5	broad	EFO:0004426	
+GSE17459	title#subject	G009.1	none		
+GSE17459	title#dataset	G015.1	exact	EFO:0004445	
+GSE5390	Cause of death	S003	broad	EFO:0000480	
+GSE11877	E2A-PBX, t(1;19)	G005.5	indicator	EFO:0004024	object_class=e2a-pbx1 (tcf3-pbx1) fusion, t(1;19)
+GSE11877	trisomy 4 and 10	G001.4	indicator	MONDO:0700065	object_class=chromosomes 4 and 10
+GSE1397	title#tissue	G002.1	exact	EFO:0000635	
+GSE17459	crlf2 expression levels (qrt-pcr - relative to si-ds-all-12)	S006	broad	EFO:0009865	method=qrt-pcr, relative to sample si-ds-all-12; object_class=crlf2; unit=fold relative to si-ds-all-12
+GSE11877	congenital abnormality	S007	broad	MONDO:0019755	
+GSE79842	title#replicate	G010.1	exact	EFO:0000683	
+GSE17459	crlf2 mutation	G014.1	broad	EFO:0000513	object_class=crlf2
+GSE17459	crlf2 expression levels stratification	G013.2	broad	EFO:0020306	
+GSE11877	tissue type	G002.1	exact	EFO:0000635	
+GSE16176	condition	G001.1	exact	EFO:0004426	
+GSE185192	treatment	S009	exact	EFO:0000727	
+GSE17459	condition	G001.2	exact	MONDO:0000001	
+GSE11877	blast count, % of sample, -1=unavailable	S013	exact	EFO:0009232	unit=UO:0000187
+GSE5390	source_name#tissue	G002.1	exact	EFO:0000635	
+GSE124252	tissue	G002.1	exact	EFO:0000635	
+GSE16176	unresolved characteristic#gestational age (weeks, days)	G003.3	exact	EFO:0005112	
+GSE128621	age	G003.4	exact	EFO:0000246	
+GSE79842	condition	G001.1	exact	EFO:0004426	
+GSE5390	title#sample id	S014	exact	EFO:0920100	
+GSE11877	gender	G004.1	exact	PATO:0000047	
+GSE11877	race	S010	exact	EFO:0001799	
+GSE222365	genotype	G001.1	exact	EFO:0004426	
+GSE79842	source_name#cell type	G007.1	exact	EFO:0000324	
+GSE124252	days in vitro	G012.1	broad	EFO:0000433	event_time_anchor=start of in vitro culture
+GSE61804	source_name#subject	G009.1	none		
+GSE222365	title#organoid number	S023	none		
+GSE61804	flt3-itd	S024	none		object_class=flt3 internal tandem duplication (flt3-itd)
+GSE128621	Sex	G004.1	exact	PATO:0000047	
+GSE183701	registry	G001.3	exact	MONDO:0000001	
+GSE16176	source_name#trimester	G003.1	broad	EFO:0005112	
+GSE11877	CNS status	S005	broad	EFO:0007863	object_class=UBERON:0001017
+GSE17459	gene expression dataset	G015.2	broad	EFO:0004445	
+GSE17459	snp dataset	S021	none		
+GSE17459	crlf2 fish	G005.3	broad	EFO:0000336	method=fluorescence in situ hybridization (fish); object_class=crlf2
+GSE1397	source_name#specimen type	G006.3	broad	OBI:0100051	
+GSE124252	karyotype	G001.1	exact	EFO:0004426	
+GSE5390	Post mortem interval (hours)	G012.2	broad	EFO:0000433	event_time_anchor=death
+GSE79842	gender	G004.1	exact	PATO:0000047	
+GSE4119	unresolved characteristic#sample type	G006.1	broad	OBI:0100051	
+GSE185192	cell type	G007.1	exact	EFO:0000324	
+GSE11877	MLL	G005.1	indicator	EFO:0000336	object_class=mll (kmt2a) gene rearrangement
+GSE4119	title#subject	G009.1	none		
+GSE222365	sample type	G006.4	indicator	EFO:0005316	
+GSE11877	hybridization set	G008.1	exact	EFO:0005067	
+GSE128621	cell type	G007.1	exact	EFO:0000324	
+GSE17459	cell type	G007.1	exact	EFO:0000324	
+GSE4119	title#diagnosis	G001.2	exact	MONDO:0000001	
+GSE222365	study	S012	exact	EFO:0007554	
+GSE17459	crlf2 expression levels (gene expression arrays - log2)	G013.1	exact	EFO:0020306	method=gene expression microarray
+GSE61804	tissue	G002.1	exact	EFO:0000635	
+GSE183701	Sex	G004.1	exact	PATO:0000047	
+GSE16176	source_name#analyte	S016	exact	OBI:0000275	
+GSE5390	Braak stage	S002	broad	EFO:0000410	method=braak staging
+GSE79842	batch	G008.2	exact	EFO:0005067	
+GSE1397	title#karyotype	G001.1	exact	EFO:0004426	
+GSE1397	source_name#developmental stage	G011.2	exact	EFO:0000399	
+GSE16176	title#replicate	G010.1	exact	EFO:0000683	
+GSE11877	training or test set	S019	none		
+GSE17459	jak2 r683 mutation	G014.2	broad	EFO:0000513	object_class=jak2 r683
+GSE5390	Gender	G004.1	exact	PATO:0000047	
+GSE1397	title#sample number	S020	none		
