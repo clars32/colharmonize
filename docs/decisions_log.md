@@ -788,3 +788,26 @@ Stages run in parallel, so the agent time on the critical path is about 7
 minutes. That is about 130k input and 3k output tokens per gold column.
 Annotation is 82% of input. Under Claude Code this is plan usage, not billed
 tokens, so cost is reported in tokens and time.
+
+### 15.7: No value-based duplicate check for title variables (handoff task 14)
+Proposed in 14.2: repair should skip a title variable whose values duplicate
+an existing characteristic. Every derived column that recodes a same-study
+characteristic one-to-one was checked:
+
+| workspace | derived column | characteristic | what the derived column adds |
+|---|---|---|---|
+| tuning | GSE128621 `title#subject` | `age` | It is a subject ID. 14 subjects happen to have 14 different ages |
+| sealed | GSE166925 `title#diagnosis` | `disease` | "CRC" where the characteristic says "Control": the controls are colorectal cancer patients |
+| sealed | GSE131411 `title#group` | `clinical classification` | "Control" for 10 samples the characteristic doesn't cover |
+
+The rule would drop a tuning identifier and lose sealed information, and it
+wouldn't fire on GSE131411. Not built.
+
+What remains is a convention question for the owner. When a title variable
+and the authors' own characteristic conflict on the same samples, which joins
+the shared variable? The sealed gold chose the characteristic both times,
+even where the title says more. If the owner confirms that, the reconciler
+can be told to prefer the characteristic and keep the title variable as its
+own variable, so nothing is lost. That would be a reconcile-3 prompt
+change, measured on a new corpus. Tuning has no such conflict to measure it
+on.

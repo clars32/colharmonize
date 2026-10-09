@@ -177,11 +177,10 @@ Measure each on tuning first.
     shown. MetaHarmonizer found a small model as good as a large one here, and
     that large models add off-target aliases.
 11. **SapBERT** as a third embedding model in `candidates.py`. Measure recall.
-12. **Easy-first fast path.** Code annotates columns whose name exactly
-    matches a term and whose values agree (`sex`: male/female); a person
-    spot-checks them. Guard against values that contradict the name (`strain`
-    holding diseases; decision 5.1). Measure accuracy and AI tasks saved: the
-    sealed run took 41 subagent runs.
+12. ~~**Easy-first fast path.**~~ Measured 2026-10-09 (`eval/fastpath/`,
+    decisions log 15.5): safe with a value guard, but it takes only about 10%
+    of columns and saves about 5% of subagent calls. Not built; revisit for
+    large corpora.
 13. **Annotator instructions, as annotate-3** (decisions log 14.4):
     - Add a non-gene `object_class` example from neither corpus.
     - Don't restate the primary term or name the study's disease.
@@ -190,15 +189,18 @@ Measure each on tuning first.
     - Prefer a whole-concept primary term (overall survival).
 
     Settle the gold-convention questions in 14.4 with the owner.
-14. **Duplicate title variables** (decisions log 14.2). Repair should skip a
-    title variable that duplicates an existing characteristic by value, or
-    the reconciler should prefer the authors' own characteristic when two
-    columns conflict.
+14. **Duplicate title variables** (decisions log 14.2, 15.7). The
+    value-based repair check was tested and rejected: it would drop a tuning
+    subject ID and lose sealed information. **Ask the owner** whether the
+    authors' characteristic should win a conflict with a title variable. If
+    yes, add it to reconcile-3 and measure it on a new corpus.
 15. **Different models for run 1 and run 2,** so the runs' errors are less
     alike. GEOMeta uses consensus across models. Check whether the tiers
     discriminate better: on sealed, no current signal does (AUC 0.51–0.59), and
     partition agreement can't see missed merges (decisions log 15.2).
-16. **Cost.** Record tokens and time per stage; both papers report cost.
+16. ~~**Cost.**~~ Done 2026-10-09 (`eval/cost/`, decisions log 15.6). The
+    sealed run used 41 agents, 17.9M input tokens (76% cached) and 430k
+    output tokens, with about 7 minutes of agent time on the critical path.
 17. **Optional:** fill missing values within a study when all of that study's
     non-missing values agree (GEOMeta's QA1).
 
