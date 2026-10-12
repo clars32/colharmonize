@@ -216,14 +216,12 @@ Measure each on tuning first.
     be a post-hoc baseline.
 19. **Value mapping.** If un-deferred, reuse MetaHarmonizer's OntologyMapper
     (EFO, SapBERT, staged) rather than building one.
-20. **Related work.** Position colharmonize against MetaHarmonizer (maps to a
-    given schema; AI used sparingly), GEOMeta (bioRxiv 2026.08.19.745739; fills
-    a fixed 27-field schema at about 595k samples, compressing detail) and
-    Magneto. Our contribution: pooling across studies without a target schema
-    and without losing information, directed annotations with qualifiers, and
-    a pre-registered test on unseen data. GEOMeta's released labels could
-    serve as an outside check of sex, age, tissue and disease on overlapping
-    series.
+20. ~~**Related work.**~~ Drafted 2026-10-12 in `docs/related-work.md`
+    from the abstracts and listings of MetaHarmonizer, GEOMeta and Magneto.
+    Details that need the full texts are marked "to verify": GEOMeta's field
+    count, whether it uses model consensus, whether its labels are released,
+    and the GDC benchmark's origin. GEOMeta's released labels could still
+    serve as an outside check on overlapping series.
 21. ~~**Refresh the root docs.**~~ Done 2026-10-09. `../BRIEFING.md` is
     rewritten for iteration 3; `../briefing.html` is generated from it by
     `../build_briefing.py`. Iteration 2's versions are archived in
