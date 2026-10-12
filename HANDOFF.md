@@ -233,5 +233,10 @@ Measure each on tuning first.
 23. **The other planned GEOmend changes:** directed relations, qualifier
     slots, a pre-accepted review state, and fixes 1, 3, 4 and 5. One PR each,
     each only with the user's go-ahead.
-24. **Package the plugin** for others: install instructions and the
-    marketplace entry in `.claude-plugin/marketplace.json`.
+24. **Package the plugin.** Done 2026-10-12 locally: `docs/INSTALL.md`,
+    with the plugin layout and commands checked against the Claude Code
+    docs. The missing runtime dependencies (sentence-transformers and
+    others) are now declared. Still open, for the user: host the repository
+    on GitHub so others can run `claude plugin marketplace add
+    OWNER/colharmonize`, and run `claude plugin validate ./plugin --strict`
+    on a machine with the `claude` command (not available here).

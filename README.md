@@ -81,6 +81,11 @@ colharmonize.
 
 ## Setup
 
+To use colharmonize on your own datasets, follow
+[docs/INSTALL.md](docs/INSTALL.md): install the command, pin the ontology,
+install the Claude Code plugin, and run `/colharmonize:harmonize`. The steps
+below set up this repository for development.
+
 ```bash
 /opt/anaconda3/bin/conda create -p ./.venv --override-channels -c conda-forge python=3.13
 ./.venv/bin/python -m pip install -e ".[dev]"
