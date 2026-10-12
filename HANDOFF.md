@@ -166,6 +166,8 @@ These ideas come from MetaHarmonizer, Li et al., bioRxiv 2026.06.13.732088.
    any run, preferably by a person, and pre-register it as
    `eval/sealed/PROTOCOL.md` did. Size it for power: at about 15 studies a
    pooling-F1 interval is 8–14 points wide on each side (decisions log 15.2).
+   Pre-register the three-run agreement count (decisions log 15.8) as a
+   candidate confidence signal next to the current tiers.
 
 ### C. Pipeline improvements
 
@@ -194,10 +196,12 @@ Measure each on tuning first.
     subject ID and lose sealed information. **Ask the owner** whether the
     authors' characteristic should win a conflict with a title variable. If
     yes, add it to reconcile-3 and measure it on a new corpus.
-15. **Different models for run 1 and run 2,** so the runs' errors are less
-    alike. GEOMeta uses consensus across models. Check whether the tiers
-    discriminate better: on sealed, no current signal does (AUC 0.51–0.59), and
-    partition agreement can't see missed merges (decisions log 15.2).
+15. ~~**Different models for run 1 and run 2.**~~ Tested 2026-10-12
+    (`eval/models/`, decisions log 15.8). Under the pre-registered rule, run 2
+    stays Sonnet: Sonnet–Opus agreement was a better error signal on sealed
+    (+0.11 AUC) and a worse one on tuning (−0.17), where the prompt was tuned
+    with Sonnet. A three-run count (two Sonnet runs plus one Opus) holds on
+    both corpora. Pre-register it for task 9.
 16. ~~**Cost.**~~ Done 2026-10-09 (`eval/cost/`, decisions log 15.6). The
     sealed run used 41 agents, 17.9M input tokens (76% cached) and 430k
     output tokens, with about 7 minutes of agent time on the critical path.

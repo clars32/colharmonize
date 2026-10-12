@@ -811,3 +811,25 @@ can be told to prefer the characteristic and keep the title variable as its
 own variable, so nothing is lost. That would be a reconcile-3 prompt
 change, measured on a new corpus. Tuning has no such conflict to measure it
 on.
+
+### 15.8: Cross-model agreement helps on unseen data and hurts on tuning; run 2 stays Sonnet (`eval/models/`)
+Handoff task 15, pre-registered. Opus annotated tuning and sealed (post hoc)
+once each. Agreement with the Sonnet run of record was then compared with
+agreement between two Sonnet runs, as a signal that the annotation is right.
+
+AUC, cross-model minus same-model:
+- sealed: +0.11 (95% CI +0.04 to +0.18)
+- tuning: −0.17 (−0.29 to −0.01)
+
+The rule required no loss on tuning, so run 2 stays Sonnet.
+
+The tuning loss has a clear cause. The prompt was tuned on tuning with
+Sonnet, and on tuning Opus is 10–18 points less accurate than Sonnet, mostly
+on convention calls (exact vs broad, more specific terms). On sealed it is as
+accurate as Sonnet, and it flags 14 of Sonnet's 28 errors where a second
+Sonnet run flags 8.
+
+An exploratory signal does well on both corpora: the number of partners
+(Sonnet run 2, Opus) that agree with the run of record. It scores −0.04
+(−0.12 to +0.08) on tuning and +0.10 (+0.04 to +0.17) on sealed. Pre-register
+it for the next sealed corpus. It costs a third annotate run.

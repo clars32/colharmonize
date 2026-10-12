@@ -88,15 +88,18 @@ def main() -> None:
 
         studies = sorted(set(df.study))
         idx = {s: np.flatnonzero(df.study.to_numpy() == s) for s in studies}
-        diffs = []
+        diffs, diffs3 = [], []
         for _ in range(B):
             take = np.concatenate([idx[s] for s in rng.choice(studies, len(studies))])
             yb = y[take]
-            diffs.append(auc(df.agree_cross.to_numpy()[take].astype(float), yb)
-                         - auc(df.agree_same.to_numpy()[take].astype(float), yb))
+            same_b = auc(df.agree_same.to_numpy()[take].astype(float), yb)
+            diffs.append(auc(df.agree_cross.to_numpy()[take].astype(float), yb) - same_b)
+            diffs3.append(auc(x3[take], yb) - same_b)
         lo, hi = ci(np.array(diffs))
+        lo3, hi3 = ci(np.array(diffs3))
         lines += ["", f"Run of record (Sonnet run {spec['record']}) accuracy: {pct(y.mean())}. "
-                  f"AUC, cross minus same: {aucs['cross'] - aucs['same']:+.2f} (95% CI {lo:+.2f} to {hi:+.2f}).", ""]
+                  f"AUC, cross minus same: {aucs['cross'] - aucs['same']:+.2f} (95% CI {lo:+.2f} to {hi:+.2f}). "
+                  f"Exploratory, count minus same: {a3 - aucs['same']:+.2f} (95% CI {lo3:+.2f} to {hi3:+.2f}).", ""]
     out = ROOT / "eval/models/out"
     out.mkdir(parents=True, exist_ok=True)
     (out / "score.md").write_text("\n".join(lines) + "\n")
