@@ -1,0 +1,692 @@
+{
+ "stage": "aliases",
+ "instructions": "Each item is an ontology term that a column of sample metadata in a gene\nexpression study can mean. Write up to 5 aliases for each term: other ways a\nresearcher would write that same variable as a column header in sample\nmetadata.\n\nGood aliases:\n- common abbreviations and acronyms (\"sbp\" for systolic blood pressure)\n- shorter everyday phrasings (\"systolic bp\", \"visual acuity\")\n- the plain name of the quantity when the term's label is wordy\n  (\"intraocular pressure\" for \"intraocular pressure measurement\")\n\nRules:\n- An alias must mean the same variable as the term: not a broader or narrower\n  one, and not a related one.\n- No values (\"male\", \"high\"), units on their own, gene or tool names, or\n  dataset-specific codes.\n- No alias that only rewords the label trivially (plural, case,\n  punctuation). Those are matched already.\n- Fewer is better than wrong. If a term has no natural alias, return an empty\n  list.\n\nExamples:\n- systolic blood pressure -> [\"sbp\", \"systolic bp\", \"systolic pressure\"]\n- intraocular pressure measurement -> [\"intraocular pressure\", \"iop\"]\n- visual acuity measurement -> [\"visual acuity\", \"va\"]\n",
+ "items": [
+  {
+   "item_id": "EFO:0009702",
+   "label": "intra-individual reaction time variability measurement",
+   "definition": "Quantification of the variability in reaction time (the interval of time between the presentation of a stimulus to a subject and the beginning of the subject's response to that stimulus) of an individual, over successive tasks. An increase in intra-individual reaction time variability is a hallmark ",
+   "synonyms": [
+    "IIRTV measurement",
+    "intra-individual response time variability measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0009707",
+   "label": "fractures, ununited",
+   "definition": "Delayed union due to failure of healing following a skeletal fracture.",
+   "synonyms": [
+    "Nonunion"
+   ]
+  },
+  {
+   "item_id": "EFO:0009708",
+   "label": "metastasis",
+   "definition": "The spread or migration of cancer cells from one part of the body (where they first appeared) to another. The secondary tumor contains cells that are like those in the original (primary) tumor. [ NCI ]",
+   "synonyms": [
+    "cancer metastasis",
+    "neoplasm metastasis",
+    "tumor cell migration",
+    "tumor metastasis"
+   ]
+  },
+  {
+   "item_id": "EFO:0009711",
+   "label": "Townsend deprivation index",
+   "definition": "A measure of material deprivation. It incorporates four variables: unemployment, non-car ownership, non-home ownership and household overcrowding.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009712",
+   "label": "father's age at death",
+   "definition": "The age of a person's father at which father's death occurred.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009713",
+   "label": "number of siblings",
+   "definition": "An individual's total number of brothers and sisters. [ NCI ]",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009716",
+   "label": "age at first facial hair",
+   "definition": "The age of onset of first facial hair.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009718",
+   "label": "peak expiratory flow",
+   "definition": "The maximum rate of gas flow, beginning at the point of peak inspiratory capacity, that can be sustained during forced exhalation for a defined period of time. This test is most often used in combination with other studies of lung function to diagnose and monitor obstructive and restrictive lung dis",
+   "synonyms": [
+    "PEF"
+   ]
+  },
+  {
+   "item_id": "EFO:0009720",
+   "label": "able to hear with hearing aids",
+   "definition": "A measurement indicating ability of an individual to hear what was said with hearing aids.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009721",
+   "label": "mother's age at death",
+   "definition": "The age of a person's mother at which mother's death occurred.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009722",
+   "label": "number of stillbirths",
+   "definition": "A measurement of the total number of birth events at which the fetus is of at least 20 weeks gestation, or of a birth weight of at least 350 grams if the gestational age is unknown, which is born without signs of life at the time of delivery, and with an Apgar score of zero at both one and five minu",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009727",
+   "label": "shortness of breath",
+   "definition": "A difficulty in breathing.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009735",
+   "label": "co-investigator",
+   "definition": "One of two or more scientists working together on a research project. A person that equally contributes to the preparation of the protocol, and shares the responsibilities of this position, including medical monitoring (particularly toxicity/safety), liaison with statisticians over analysis, and the",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009736",
+   "label": "principal investigator",
+   "definition": "The principal or lead person who carries out a formal inquiry or investigation.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009737",
+   "label": "data curator",
+   "definition": "A person who organizes, integrates, and annotates data collected from various sources in order that the value of the data is maintained over time and the data remains available for reuse and preservation.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009738",
+   "label": "pathologist",
+   "definition": "A person who studies the causes and effects of diseases, especially one who examines laboratory samples of body tissue for diagnostic or forensic purposes.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009739",
+   "label": "technician",
+   "definition": "A person employed to look after technical equipment or do practical work in a laboratory.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009740",
+   "label": "clinician",
+   "definition": "A doctor having direct contact with patients rather than being involved with theoretical or laboratory studies.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009741",
+   "label": "experimental scientist",
+   "definition": "A scientist who performs experiments in a laboratory equipped with appropriate plumbing, ventilation, and equipment to allow for hands-on scientific research and experimentation.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009742",
+   "label": "computational scientist",
+   "definition": "A scientist who performs experiments in a laboratory for making computer simulations or for data analysis especially by computers.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009743",
+   "label": "administrator",
+   "definition": "A person responsible for carrying out the administration of a business or organization",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009749",
+   "label": "age at first sexual intercourse measurement",
+   "definition": "A measurement of the age at which a person has the first sexual intercourse.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009750",
+   "label": "dissociation measurement",
+   "definition": "Quantification of some aspect of the psychological experience of dissociation. Dissociation in community samples is most commonly measured by the Dissociative Experiences Scale. The DSM-IV considers symptoms such as depersonalization, derealization and psychogenic amnesia to be core features of diss",
+   "synonyms": [
+    "dissociative symptom measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0009751",
+   "label": "facial asymmetry measurement",
+   "definition": "Quantification of assymetry of the face.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009762",
+   "label": "healthspan",
+   "definition": "The period of a person's life during which they are generally healthy and free from serious or chronic illness.",
+   "synonyms": [
+    "health span",
+    "health-span"
+   ]
+  },
+  {
+   "item_id": "EFO:0009764",
+   "label": "eye colour measurement",
+   "definition": "The quantification of some aspect of eye colour, such as hue, saturation or brightness.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009765",
+   "label": "alanine measurement",
+   "definition": "Quantification of the amount of the amino acid alanine in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009766",
+   "label": "asparagine measurement",
+   "definition": "Quantification of the amount of the amino acid asparagine in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009767",
+   "label": "glycine measurement",
+   "definition": "Quantification of the amount of the amino acid glycine in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009768",
+   "label": "glutamine measurement",
+   "definition": "Quantification of the amount of the amino acid glutamine in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009769",
+   "label": "histidine measurement",
+   "definition": "Quantification of the amount of the amino acid histidine in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009770",
+   "label": "leucine measurement",
+   "definition": "Quantification of the amount of the amino acid leucine in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009771",
+   "label": "methionine measurement",
+   "definition": "Quantification of the amount of the amino acid methionine in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009774",
+   "label": "serine measurement",
+   "definition": "Quantification of the amount of the amino acid serine in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009775",
+   "label": "threonine measurement",
+   "definition": "Quantification of the amount of the amino acid threonine in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009776",
+   "label": "ornithine measurement",
+   "definition": "Quantification of the amount of the amino acid ornithine in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009777",
+   "label": "citrulline measurement",
+   "definition": "Quantification of the amount of the amino acid citrulline in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009779",
+   "label": "tri-iodothyronine/thyroxine ratio measurement",
+   "definition": "Quantification of the thyroid hormone tri-iodothyronine (T3)/ thyroxine (T4) ratio in the blood, usually as an indicator of thyroid function.",
+   "synonyms": [
+    "T3/T4 ratio measurement",
+    "thyroid T3/T4 ratio measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0009785",
+   "label": "remission",
+   "definition": "A disease stage which is characterized by the lack of a manifestation of a disease.",
+   "synonyms": [
+    "disease remission"
+   ]
+  },
+  {
+   "item_id": "EFO:0009786",
+   "label": "encounter with health service",
+   "definition": "Reason by which a person encounters a health service; useful to classify cases when the encounter is due to circumstances other than a disease or injury. This may happen (a) when a person who may or may not be sick encounters the health services for some specific purpose, such as to receive limited ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009787",
+   "label": "encounter with health service related to reproduction",
+   "definition": "An encounter with members of a health service related to reproduction issues.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009788",
+   "label": "encounter with health service related to socioeconomic and psychosocial circumstances",
+   "definition": "An encounter with members of a health service related to socioeconomic and psychosocial circumstances.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009789",
+   "label": "encounter with health service related to previous surgical history",
+   "definition": "An encounter with members of a health service related to previous surgical history.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009792",
+   "label": "valine measurement",
+   "definition": "Quantification of the amount of the amino acid valine in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009793",
+   "label": "isoleucine measurement",
+   "definition": "Quantification of the amount of the amino acid isoleucine in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009799",
+   "label": "self-reported trait",
+   "definition": "Characteristics of an individual that are reported by the individual, usually to medical staff, including via questionnaires, rather than observed or measured directly by medical staff.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009800",
+   "label": "number of cancers, self-reported",
+   "definition": "Number of cancer occurrences in an individual, as reported by the individual.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009801",
+   "label": "number of non-cancer illnesses, self-reported",
+   "definition": "Number of non-cancer illness occurrences in an individual, as reported by the individual.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009802",
+   "label": "number of operations, self-reported",
+   "definition": "Number of surgical procedures performed on an individual, as reported by the individual.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009803",
+   "label": "number of treatments or medications taken, self-reported",
+   "definition": "Number of treatments undergone by an individual (including medications taken), as reported by the individual.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009804",
+   "label": "pulse wave reflection index measurement",
+   "definition": "Quantification of some aspect of cardiovascular system; reflection index is a measure of reflection. A digital volume pulse can be considered to be the summation of a direct and a reflected component. The direct component is due to transmission of a pressure wave from the left ventricle to the finge",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009805",
+   "label": "whole body water mass",
+   "definition": "The weight of an individual's body water, i.e. the water content of a body that is contained in the tissues, the blood, the bones and elsewhere. The percentages of body water contained in various fluid compartments add up to total body water (TBW).",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009814",
+   "label": "number of children fathered measurement",
+   "definition": "A measurement of the number of children fathered by a male individual.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009815",
+   "label": "CASCOT confidence score measurement",
+   "definition": "CASCOT stands for Computer Assisted Structure COding Tool. This is used to translate free-text job descriptions into Standard Occupational Classification (SOC) 2000 codes. The CASCOT programme generates a confidence score (1-100%) for each job description, which represents the Bayesian probability t",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009816",
+   "label": "perineal laceration during delivery",
+   "definition": "A laceration of the skin and other soft tissue structures which, in women, separate the vagina from the anus, occurring during childbirth.",
+   "synonyms": [
+    "perineal tear"
+   ]
+  },
+  {
+   "item_id": "EFO:0009817",
+   "label": "ease of getting up in the morning, self-reported",
+   "definition": "Ease of getting up in the morning, as reported by an individual.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009818",
+   "label": "nap during day, self-reported",
+   "definition": "Having a nap during the day, as reported by an individual.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009819",
+   "label": "comparative body size at age 10, self-reported",
+   "definition": "Description of an individual's body size at age 10 compared to average, as reported by the individual.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009820",
+   "label": "seeing a general practitioner for nerves, anxiety, tension or depression, self-reported",
+   "definition": "Seeing a general practitioner for nerves, anxiety, tension or depression, as reported by an individual.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009821",
+   "label": "seeing a psychiatrist for nerves, anxiety, tension or depression, self-reported",
+   "definition": "Seeing a psychiatrist for nerves, anxiety, tension or depression, as reported by an individual.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009822",
+   "label": "ability to walk or cycle unaided for 10 minutes, self-reported",
+   "definition": "Ability to walk or cycle unaided for 10 minutes, as reported by an individual.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009823",
+   "label": "achievement of target heart rate, self-reported",
+   "definition": "Indication of whether a target heart rate was achieved by an individual, e.g. during a fitness test, as reported by the individual.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009824",
+   "label": "bringing up phlegm, sputum or mucus on most days, self-reported",
+   "definition": "Indication of whether an individual brings up phlegm, sputum or mucus on most days, as reported by the individual.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009825",
+   "label": "sign or symptom concerning food and fluid intake",
+   "definition": "A sign or symptom concerning the intake of food and/or fluids.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009827",
+   "label": "abnormal result of diagnostic imaging",
+   "definition": "Abnormal result of a diagnostic imaging test.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009832",
+   "label": "cellular infiltration",
+   "definition": "Normal or pathologic migration and accumulation of cells within tissues. [  NCI  ]",
+   "synonyms": [
+    "Cellular Infiltration"
+   ]
+  },
+  {
+   "item_id": "EFO:0009833",
+   "label": "kidney injury",
+   "definition": "Trauma to the kidney.",
+   "synonyms": [
+    "injury to kidney"
+   ]
+  },
+  {
+   "item_id": "EFO:0009834",
+   "label": "respiratory process",
+   "definition": "A Respiratory Process involves the function of components of the respiratory tract involved in breathing, which include the nose, throat, larynx, trachea, bronchi, and lungs.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009835",
+   "label": "increased respiratory secretion",
+   "definition": "An increase in respiratory secretions.",
+   "synonyms": [
+    "Increased Respiratory Secretions"
+   ]
+  },
+  {
+   "item_id": "EFO:0009836",
+   "label": "bronchoconstriction",
+   "definition": "Bronchoconstriction involves narrowing of air passage lumina, typically due to bronchial smooth muscle contraction, and leads to decreased air flow.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009837",
+   "label": "bronchodilation",
+   "definition": "Bronchodilation involves widening of air passage lumina, typically due to bronchial smooth muscle relaxation, and leads to increased air flow.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009838",
+   "label": "alteration in respiration",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009844",
+   "label": "nightmare",
+   "definition": "A disturbing dream that occurs during rapid eye movement sleep and results in feelings of strong terror, fear, distress, or anxiety.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009846",
+   "label": "muscle cramp",
+   "definition": "A sustained, sudden and involuntary contraction of a muscle or group of muscles.",
+   "synonyms": [
+    "Cramp",
+    "Cramp(s)",
+    "Muscle Cramping",
+    "Spasm"
+   ]
+  },
+  {
+   "item_id": "EFO:0009847",
+   "label": "dizziness",
+   "definition": "A sensation of lightheadedness, unsteadiness, turning, spinning or rocking.",
+   "synonyms": [
+    "dizzy",
+    "lightheadedness"
+   ]
+  },
+  {
+   "item_id": "EFO:0009848",
+   "label": "antiemetic effect",
+   "definition": "An antiemetic effect involves suppression of nausea and vomiting. Emesis is a complex process coordinated by a central emesis center located in the lateral reticular formation of the mid-brainstem. Inhibition of certain neurotransmitters (e.g., 5-HT) or their receptors located in this region inhibit",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009849",
+   "label": "sexual arousal",
+   "definition": "Heightened urges of sexual desires in preparation for sexual behavior.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009851",
+   "label": "muscle atrophy",
+   "definition": "The loss of muscle tissue due to inactivity or disease.",
+   "synonyms": [
+    "muscle wasting"
+   ]
+  },
+  {
+   "item_id": "EFO:0009860",
+   "label": "chromosomal aberration frequency",
+   "definition": "Frequency of chromosomal aberrations in human peripheral blood.",
+   "synonyms": [
+    "CA"
+   ]
+  },
+  {
+   "item_id": "EFO:0009861",
+   "label": "chromosome-type aberration frequency",
+   "definition": "Frequency of chromosome-type chromosomal aberrations in human peripheral blood (typically resulting in damage to both chromatids).",
+   "synonyms": [
+    "CSA"
+   ]
+  },
+  {
+   "item_id": "EFO:0009862",
+   "label": "chromatid-type aberration frequency",
+   "definition": "Frequency of chromatid-type chromosomal aberrations in human peripheral blood (typically resulting in damage to a single chromatid).",
+   "synonyms": [
+    "CTA"
+   ]
+  },
+  {
+   "item_id": "EFO:0009864",
+   "label": "metabolic network measurement",
+   "definition": "Quantification of some high level aspect of a metabolic network.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009865",
+   "label": "transcriptome measurement",
+   "definition": "Quantification of some aspect of the transcriptome.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009878",
+   "label": "drug interaction",
+   "definition": "Alteration of the disposition and/or effect of a drug, owing to the presence of another factor such as a second drug, or food.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009880",
+   "label": "teratogenicity",
+   "definition": "A toxicity disposition that inheres in a substance that is capable of causing adverse effects on a developing embryo or foetus.",
+   "synonyms": [
+    "pre-natal developmental toxicity"
+   ]
+  },
+  {
+   "item_id": "EFO:0009885",
+   "label": "frailty measurement",
+   "definition": "Quantification of some aspect of frailty.  Frailty is usually described as clinical state of heightened vulnerability to poor resolution of homeostasis after a stressor event, which thereby increases the risk of adverse outcomes, including falls, delirium, disability and mortality.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009887",
+   "label": "intrathoracic organ injury",
+   "definition": "Damage inflicted to an intrathoracic organ.",
+   "synonyms": [
+    "injury of intrathoracic organ"
+   ]
+  },
+  {
+   "item_id": "EFO:0009892",
+   "label": "facial attractiveness measurement",
+   "definition": "Quantiication of some aspect of facial attractiveness, typically via a rating scale.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009923",
+   "label": "Peptic ulcer and gastro-oesophageal reflux disease (GORD) drug use measurement",
+   "definition": "Quantification of some aspect of the use of drugs for peptic ulcer and gastro-oesophageal reflux disease (GORD).",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009924",
+   "label": "Drugs used in diabetes use measurement",
+   "definition": "Quantification of some aspect of the use of drugs used in diabetes.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009925",
+   "label": "Antithrombotic agent use measurement",
+   "definition": "Quantification of some aspect of the use of antithrombotic agents.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009926",
+   "label": "Vasodilators used in cardiac diseases use measurement",
+   "definition": "Quantification of some aspect of the use of vasodilators used in cardiac diseases.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009927",
+   "label": "Antihypertensive use measurement",
+   "definition": "Quantification of some aspect of the use of antihypertensives.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009928",
+   "label": "Diuretic use measurement",
+   "definition": "Quantification of some aspect of the use of diuretic drugs.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009929",
+   "label": "Beta blocking agent use measurement",
+   "definition": "Quantification of some aspect of the use of beta blocking agents.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009930",
+   "label": "Calcium channel blocker use measurement",
+   "definition": "Quantification of some aspect of the use of calcium channel blockers.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009931",
+   "label": "Agents acting on the renin-angiotensin system use measurement",
+   "definition": "Quantification of some aspect of the use of agents acting on the renin-angiotensin system.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009932",
+   "label": "HMG CoA reductase inhibitor use measurement",
+   "definition": "Quantification of some aspect of the use of HMG CoA reductase inhibitors.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009933",
+   "label": "Thyroid preparation use measurement",
+   "definition": "Quantification of some aspect of the use of thyroid preparations.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009934",
+   "label": "Immunosuppressant use measurement",
+   "definition": "Quantification of some aspect of the use of immunosuppressant drugs.",
+   "synonyms": []
+  }
+ ],
+ "answer_file": "batch_13.answer.json",
+ "answer_schema": {
+  "type": "object",
+  "required": [
+   "content_sha256",
+   "answers"
+  ],
+  "properties": {
+   "content_sha256": {
+    "type": "string"
+   },
+   "answers": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "item_id",
+      "aliases"
+     ],
+     "properties": {
+      "item_id": {
+       "type": "string"
+      },
+      "aliases": {
+       "type": "array",
+       "maxItems": 5,
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "content_sha256": "07e97d015323dde0e01bf8a5c9745b6ba4d290b843284e55548012a2d91c5178"
+}

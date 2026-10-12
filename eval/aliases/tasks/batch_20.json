@@ -1,0 +1,717 @@
+{
+ "stage": "aliases",
+ "instructions": "Each item is an ontology term that a column of sample metadata in a gene\nexpression study can mean. Write up to 5 aliases for each term: other ways a\nresearcher would write that same variable as a column header in sample\nmetadata.\n\nGood aliases:\n- common abbreviations and acronyms (\"sbp\" for systolic blood pressure)\n- shorter everyday phrasings (\"systolic bp\", \"visual acuity\")\n- the plain name of the quantity when the term's label is wordy\n  (\"intraocular pressure\" for \"intraocular pressure measurement\")\n\nRules:\n- An alias must mean the same variable as the term: not a broader or narrower\n  one, and not a related one.\n- No values (\"male\", \"high\"), units on their own, gene or tool names, or\n  dataset-specific codes.\n- No alias that only rewords the label trivially (plural, case,\n  punctuation). Those are matched already.\n- Fewer is better than wrong. If a term has no natural alias, return an empty\n  list.\n\nExamples:\n- systolic blood pressure -> [\"sbp\", \"systolic bp\", \"systolic pressure\"]\n- intraocular pressure measurement -> [\"intraocular pressure\", \"iop\"]\n- visual acuity measurement -> [\"visual acuity\", \"va\"]\n",
+ "items": [
+  {
+   "item_id": "OBI:0000950",
+   "label": "paraffin specimen",
+   "definition": "a specimen that is output of a paraffin storage process in which specimen is embedded in paraffin",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0000971",
+   "label": "fresh specimen",
+   "definition": "a specimen that is output of a specimen creation process used for an investigation without storage.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0000981",
+   "label": "agar stab specimen",
+   "definition": "a specimen that is output of a process that cell culture inoculated into agar for long term storage.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0001140",
+   "label": "spike-in quality control role",
+   "definition": "a reference substance role that is borne by a material entity with a known amount which is mixed into the evaluant of assays for quality control or data normalization purposes",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0001142",
+   "label": "dye swap quality control role",
+   "definition": "a reference substance role that is borne by a material entity used in a dye swap design experiment for quality control or data normalization purposes",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0001162",
+   "label": "validation by reverse transcription PCR design",
+   "definition": "a study design in which checks the accuracy or the quality of the result of an assay  by comparing with reverse transcription PCR results",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0001166",
+   "label": "validation by real time PCR design",
+   "definition": "a study design in which the accuracy or the quality of the result of an assay is checked by comparing with real time PCR results",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0001442",
+   "label": "q-value",
+   "definition": "A quantitative confidence value that measures the minimum false discovery rate that is incurred when calling that test significant. \nTo compute q-values, it is necessary to know the p-value produced by a test and possibly set a false discovery rate level.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0001468",
+   "label": "cell specimen",
+   "definition": "A specimen primarily composed of cells collected from a multicellular organism or a cell culture",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0001472",
+   "label": "specimen with known storage state",
+   "definition": "A specimen for which it is known whether it has been subjected to storage of a specified type.",
+   "synonyms": [
+    "biosource type"
+   ]
+  },
+  {
+   "item_id": "OBI:0001620",
+   "label": "latitude coordinate measurement datum",
+   "definition": "A measurement datum that is the measure of the latitude coordinate of a site.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0001621",
+   "label": "longitude coordinate measurement datum",
+   "definition": "A measurement datum that is the measure of the longitude coordinate of a site.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0001686",
+   "label": "in-situ hybridization assay",
+   "definition": "An assay that localizes a specific DNA or RNA sequence within a portion or section of tissue using artificially induced nucleic hybridization.",
+   "synonyms": [
+    "ISH",
+    "in situ hybridization"
+   ]
+  },
+  {
+   "item_id": "OBI:0001700",
+   "label": "immunoprecipitation assay",
+   "definition": "An analyte assay in which an input material is mixed with antibodies and bound antigen:antibody complexes are separated out using immunoprecipitation. Either the antibody has known specificy, and the antigen mixture is tested for the presence of a specific antigen, or the antigen solution is well de",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0002174",
+   "label": "immunocytochemistry",
+   "definition": "An immuno staining assay in which samples of intact cells are examined that have had most, if not all, of their surrounding extracellular matrix removed",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0002197",
+   "label": "tissue section thickness",
+   "definition": "A length measurement datum that is the result of an assay measuring the thickness of a tissue section.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0002584",
+   "label": "differential expression analysis data",
+   "definition": "The results of a differential expression analysis.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0002969",
+   "label": "cyclic immunofluoroescence assay",
+   "definition": "A type of microscopy assay resulting in highly multiplexed immunofluorescence imaging through sequential rounds of imaging followed by fluorophore inactivation.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0003087",
+   "label": "autofluorescence assay",
+   "definition": "A fluorescence detection assay in which the light that is naturally emitted by a sample is visualized after excitation of the sample with light at a suitable wavelength.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0003093",
+   "label": "co-detection by indexing assay",
+   "definition": "A multiplexed fluorescent antibody imaging assay that involves a highly multiplexed analysis of up to 40 proteins in a tissue using cyclic detection of DNA-indexed antibody panels.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0003097",
+   "label": "liquid chromatography mass spectrometry assay",
+   "definition": "A mass spectrometry assay where a sample mixture is first separated by liquid chromatography before being converted into ions which are characterized by using mass spectrometry based on their mass-to-charge ratio and relative abundance.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0003098",
+   "label": "lightsheet fluorescence microscopy assay",
+   "definition": "A fluorescence microscopy that involves capturing of photons emitted by fluorophores excited with a thin sheet of laser light in a sample only in a relatively narrow plane by a detection objective oriented perpendicularly to the light sheet and imaged onto a detection device such as a CCD camera.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0003099",
+   "label": "matrix assisted laser desorption ionization imaging mass spectrometry assay",
+   "definition": "A mass spectrometry assay that involves collection of spatially resolved mass spectra of a sample during microscopy where a pulse laser is used to produce both ionisation and vaporization. The sample is held in a matrix (such as dihydrobenzoic acid) to protect it from direct laser illumination and t",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0003100",
+   "label": "multiplexed ion beam imaging assay",
+   "definition": "A cytometry time of flight assay in which molecules of interest on or in cells are imaged through a system in which samples are labeled with multiple different rare-earth tagged antibodies. A primary ion beam is ued to rasterize sections under vacuum, releasing showers of secondary ions detected by ",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0003105",
+   "label": "single-cell combinatorial indexing RNA sequencing assay",
+   "definition": "A single-cell transcription profiling by RNA sequencing assay that involves single cell combinatorial indexing ('sci-') strategy to profile the transcriptomes of single cells or nuclei without single cell isolation.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0003112",
+   "label": "Olink assay",
+   "definition": "A proximity extension assay that uses quantitative polymerase chain reaction (qPCR) technology to determine the concentration/presence of proteins using a high-multiplex, high-throughput protein biomarker platform. The assay utilizes two distinct oligonucleotide-labeled antibodies (\u2018probes\u2019) that bi",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0003369",
+   "label": "assay kit",
+   "definition": "A device that consists of reagents and devices that enable the performance of a specific type of assay, which could, in addition, require specific instruments not included in the kit.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0100051",
+   "label": "specimen",
+   "definition": "A material entity that is collected for potential use as an input upon which measurements or observations are performed.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0200000",
+   "label": "data transformation",
+   "definition": "A data transformation is a process which produces output data from input data - e.g. the application of a clustering protocol to microarray data or the application of a statistical testing method on a primary data set to determine a p-value.",
+   "synonyms": [
+    "data analysis",
+    "data processing"
+   ]
+  },
+  {
+   "item_id": "OBI:0200006",
+   "label": "biexponential transformation",
+   "definition": "A biexponential transformation is a data transformation that, for each (one dimensional) real number input x, outputs an approximation (found, e.g. with the Newton's method) to a solution y of the equation B(y)-x=0, where B denotes a b transformation.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0200071",
+   "label": "loess transformation",
+   "definition": "A loess transformation is a data transformation that takes as input a collection of real number pairs (x, y) and, after performing (one or more) loess fittings, utilizes the resulting curves to transform each (x, y) in the input into (x, y-f(x)) where f(x) is one of the fitted curves.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0200169",
+   "label": "normalization data transformation",
+   "definition": "A normalization data transformation is a data transformation that has objective normalization.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0302903",
+   "label": "nucleic acid hybridization",
+   "definition": "a planned process by which totally or partially complementary, single-stranded nucleic acids are  combined into a single molecule called heteroduplex or homoduplex to an extent depending on the amount of complementarity.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0400103",
+   "label": "DNA sequencer",
+   "definition": "A DNA sequencer is an instrument that determines the order of deoxynucleotides in deoxyribonucleic acid sequences.",
+   "synonyms": [
+    "DNA_sequencer"
+   ]
+  },
+  {
+   "item_id": "OBI:0400104",
+   "label": "array scanner",
+   "definition": "An processed material which acquires images of fluorescence (induced with lasers) from labeled molecules on the surface of the microarray chip",
+   "synonyms": [
+    "array_scanner"
+   ]
+  },
+  {
+   "item_id": "OBI:0400105",
+   "label": "arrayer",
+   "definition": "a device which deposits biological material onto a substrate in a defined pattern.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0400106",
+   "label": "centrifuge",
+   "definition": "A device with a rapidly rotating container that applies centrifugal force to its contents",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0400107",
+   "label": "computer",
+   "definition": "A computer is an instrument which manipulates (stores, retrieves, and processes) data according to a list of instructions.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0400108",
+   "label": "heating block",
+   "definition": "A heating block is an instrument or part of an instrument which raises or maintains the temperature of a sample to a defined constant temperature during certain parts of an assay",
+   "synonyms": [
+    "heating_block"
+   ]
+  },
+  {
+   "item_id": "OBI:0400109",
+   "label": "homogenizer",
+   "definition": "A homogenizer is an instrument for the homogenization of various types of material, such as tissue, plant, food, soil, and many others.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0400110",
+   "label": "hybridization chamber",
+   "definition": "A device which is used to maintain constant contact of a liquid on an array.  This can be either a glass vial or slide.",
+   "synonyms": [
+    "hybridization_chamber"
+   ]
+  },
+  {
+   "item_id": "OBI:0400111",
+   "label": "hybridization station",
+   "definition": "An instrument which is used to maintain the temperature of one or more hybridization_chamber(s) at a defined, constant temperature.",
+   "synonyms": [
+    "hybridization_station"
+   ]
+  },
+  {
+   "item_id": "OBI:0400112",
+   "label": "liquid handler",
+   "definition": "A device that is used for automated liquid transfer and handling.",
+   "synonyms": [
+    "liquid_handler",
+    "liquid_handling_instrument"
+   ]
+  },
+  {
+   "item_id": "OBI:0400113",
+   "label": "oligonucleotide synthesizer",
+   "definition": "An instrument used to chemically synthesize oligonucleotides.",
+   "synonyms": [
+    "oligo_synthesizer"
+   ]
+  },
+  {
+   "item_id": "OBI:0400114",
+   "label": "sonicator",
+   "definition": "An instrument that converts a variable electrical current to mechanical vibration of a metallic probe. The instrument is used for the lysis of cells, the mixing of compounds or solutions, or to create emulsions.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0400115",
+   "label": "spectrophotometer",
+   "definition": "A spectrophotometer is an instrument that measures the intensity of light as a function of the color, or more specifically, the wavelength of light, transmitted by a substance.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0400116",
+   "label": "thermal cycler",
+   "definition": "An instrument that is capable of repeatedly altering and maintaining specific temperatures for defined periods of time.",
+   "synonyms": [
+    "DNA_amplifier",
+    "PCR_machine",
+    "Polymerase_Chain_Reaction_ machine",
+    "thermal_cycler",
+    "thermocycler"
+   ]
+  },
+  {
+   "item_id": "OBI:0400117",
+   "label": "vacuum dryer",
+   "definition": "An instrument which removes liquid by the application of negative pressure,  i.e. vacuum.",
+   "synonyms": [
+    "vacuum_dryer"
+   ]
+  },
+  {
+   "item_id": "OBI:0400118",
+   "label": "vortexer",
+   "definition": "A vortexer is an instrument that mixes small vials of liquid by creating a rotation of the liquid around its own center. It consists of an electric motor with the drive shaft oriented vertically and attached to a cupped rubber piece mounted slightly off-center. As the motor runs the rubber piece osc",
+   "synonyms": [
+    "vortex_mixer"
+   ]
+  },
+  {
+   "item_id": "OBI:0400155",
+   "label": "water bath",
+   "definition": "A water bath is a temperature control bath in which a water acts as contact medium enabling temperature transfer from the heating element or cooling element to the sample. The temperature can be controlled in the 0 to 100 degree centigrade range (under normal pressure).",
+   "synonyms": [
+    "waterbath"
+   ]
+  },
+  {
+   "item_id": "OBI:0600002",
+   "label": "tumor grading",
+   "definition": "An assay that determines the grade (severity/stage) of a tumor sample, used in cancer biology to describe abnormalities/qualities of tumor cells or tissues. Values can be described by terms from NCI Thesaurus.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0600005",
+   "label": "collecting specimen from organism",
+   "definition": "a process with the objective to obtain a material entity that was part of an organism for potential future use in an investigation",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0600015",
+   "label": "group assignment",
+   "definition": "group assignment is a process which has an organism as specified input and during which a role is assigned",
+   "synonyms": [
+    "cohort assignment",
+    "study assignment"
+   ]
+  },
+  {
+   "item_id": "OBI:0600020",
+   "label": "histological assay",
+   "definition": "An assay that uses visual examination of cells or tissue (or images of them) to make an assessment regarding a quality of the cells or tissue. This assay can include steps of staining, imaging, and judgement.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0600044",
+   "label": "lavage",
+   "definition": "A protocol application to separate cells and/or cellular secretions from an anatomical space by the introduction and removal of fluid",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:1000023",
+   "label": "cell culture supernatant",
+   "definition": "Supernatant of a cell culture is a material entity which contains media, supplements, and secreted products of the cells and becomes the environment of cultivated cell.",
+   "synonyms": [
+    "culture supernatant"
+   ]
+  },
+  {
+   "item_id": "OBI:1110021",
+   "label": "infection process",
+   "definition": "the detrimental process in which an infectious agent colonizes or replicates in a host environment",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:1110122",
+   "label": "pathologic process",
+   "definition": "abnormal, harmful processes caused by or associated with a disease",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0000033",
+   "label": "concentration of",
+   "definition": "A quality inhering in a substance by virtue of the amount of the bearer's there is mixed with another substance.",
+   "synonyms": [
+    "concentration"
+   ]
+  },
+  {
+   "item_id": "PATO:0000047",
+   "label": "biological sex",
+   "definition": "An organismal quality inhering in a bearer by virtue of the bearer's ability to undergo sexual reproduction in order to differentiate the individuals or types involved. [ MGED:MGED ]",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0000051",
+   "label": "morphology",
+   "definition": "A property of a single physical entity describing the entity's size or shape or structure.",
+   "synonyms": [
+    "histology"
+   ]
+  },
+  {
+   "item_id": "PATO:0000068",
+   "label": "qualitative",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0000069",
+   "label": "deviation(from_normal)",
+   "definition": "A quality inhering in a bearer by virtue of the whether the bearer differs from normal or average.",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0000070",
+   "label": "amount",
+   "definition": "The number of entities of this type that are part of the whole organism. ",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0000125",
+   "label": "mass",
+   "definition": "A physical quality of the amount of matter in a material.",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0000161",
+   "label": "rate",
+   "definition": "A quality of a single process inhering in a bearer by virtue of the bearer's occurrence per unit time.",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0000169",
+   "label": "viability",
+   "definition": "An organismal quality inhering in a bearer or a population by virtue of the bearer's disposition to survive and develop normally or the number of surviving individuals in a given population.",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0000274",
+   "label": "fertility",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0000383",
+   "label": "female",
+   "definition": "A biological sex quality inhering in an individual or a population that only produces gametes that can be fertilised by male gametes.",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0000384",
+   "label": "male",
+   "definition": "A biological sex quality inhering in an individual or a population whose sex organs contain only male gametes.",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0000460",
+   "label": "abnormal",
+   "definition": "A quality inhering in a bearer by virtue of the bearer's deviation from normal or average.",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0000461",
+   "label": "normal",
+   "definition": "The state of the organism when it functions optimally without evidence of disease.",
+   "synonyms": [
+    "Health",
+    "Normalcy",
+    "Normalities",
+    "Normality"
+   ]
+  },
+  {
+   "item_id": "PATO:0000470",
+   "label": "increased amount",
+   "definition": "An amount which is relatively high.",
+   "synonyms": [
+    "increased number",
+    "present in greater numbers in organism",
+    "supernumerary"
+   ]
+  },
+  {
+   "item_id": "PATO:0000912",
+   "label": "increased rate",
+   "definition": "A rate which is relatively high.",
+   "synonyms": [
+    "fast rate",
+    "high rate"
+   ]
+  },
+  {
+   "item_id": "PATO:0000915",
+   "label": "thickness",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0001025",
+   "label": "pressure",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0001043",
+   "label": "susceptibility toward",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0001159",
+   "label": "concentrated",
+   "definition": "A concentration quality inhering in a bearer by virtue of the bearer's exhibiting concentration.",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0001162",
+   "label": "increased concentration",
+   "definition": "A concentration which is higher relative to the normal or average.",
+   "synonyms": [
+    "high concentration"
+   ]
+  },
+  {
+   "item_id": "PATO:0001163",
+   "label": "decreased concentration",
+   "definition": "A concentration which is lower relative to the normal or average.",
+   "synonyms": [
+    "low concentration"
+   ]
+  },
+  {
+   "item_id": "PATO:0001236",
+   "label": "process quality",
+   "definition": "A quality which inheres in an process.",
+   "synonyms": [
+    "quality of a process",
+    "quality of occurrent",
+    "quality of process",
+    "relational quality of occurrent"
+   ]
+  },
+  {
+   "item_id": "PATO:0001340",
+   "label": "hermaphrodite",
+   "definition": "An organism having both male and female sexual characteristics and organs.",
+   "synonyms": [
+    "Hermaphroditism",
+    "intersex"
+   ]
+  },
+  {
+   "item_id": "PATO:0001374",
+   "label": "ploidy",
+   "definition": "A cellular quality inhering in a bearer by virtue of the bearer's number of homologous sets of chromosomes in the nucleus or primary chromosome-containing compartment of the cell, each set essentially coding for all the biological traits of the organism. [ Wikipedia:http://en.wikipedia.org/wiki/Ploi",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0001377",
+   "label": "polyploid",
+   "definition": "A ploidy quality inhering in a bearer by virtue of the bearer's containing more than two homologous sets of chromosomes.",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0001381",
+   "label": "triploid",
+   "definition": "A polyploidy quality inhering in a bearer by virtue of the bearer's containing three homologous sets of chromosomes.",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0001382",
+   "label": "tetraploid",
+   "definition": "A polyploidy quality inhering in a bearer by virtue of the bearer's containing four homologous sets of chromosomes.",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0001384",
+   "label": "hexaploid",
+   "definition": "A polyploidy quality inhering in a bearer by virtue of the bearer's containing four homologous sets of chromosomes.",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0001393",
+   "label": "euploid",
+   "definition": "A ploidy quality inhering in a bearer by virtue of the bearer's containing an integral multiple of the monoploid number, possibly excluding the sex-determining chromosomes.",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0001421",
+   "label": "alive",
+   "definition": "",
+   "synonyms": [
+    "living",
+    "pre-mortem"
+   ]
+  },
+  {
+   "item_id": "PATO:0001422",
+   "label": "dead",
+   "definition": "Irreversible cessation of all bodily functions, manifested by absence of spontaneous breathing and total loss of cardiovascular and cerebral functions.",
+   "synonyms": [
+    "Cardiac Death",
+    "Death",
+    "deceased",
+    "post-mortem"
+   ]
+  },
+  {
+   "item_id": "PATO:0001543",
+   "label": "flexibility",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0001561",
+   "label": "having extra processual parts",
+   "definition": "A quality of a process inhering in a bearer by virtue of the bearer's having additional processual parts.",
+   "synonyms": [
+    "having supernumerary processual parts"
+   ]
+  },
+  {
+   "item_id": "PATO:0001564",
+   "label": "extra or missing processual parts",
+   "definition": "A quality of a process inhering in a bearer by virtue of the bearer's processual parts.",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0001869",
+   "label": "pathological",
+   "definition": "A quality inhering in a bearer by virtue of the bearer's being abnormal and having a destructive effect on living tissue.",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0001894",
+   "label": "phenotypic sex",
+   "definition": "An organismal quality inhering in a bearer by virtue of the bearer's physical expression of sexual characteristics.",
+   "synonyms": [
+    "biological sex"
+   ]
+  },
+  {
+   "item_id": "PATO:0002002",
+   "label": "has extra parts of type",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "PATO:0002182",
+   "label": "molecular quality",
+   "definition": "A quality which inheres in a molecular entity, a single molecule, atom, ion, radical etc.",
+   "synonyms": [
+    "relational molecular quality"
+   ]
+  },
+  {
+   "item_id": "UBERON:0000104",
+   "label": "life cycle",
+   "definition": "An entire span of an organism's life. In metazoans, commences with the zygote stage and ends with the death of the organism.",
+   "synonyms": [
+    "entire life cycle",
+    "entire lifespan",
+    "life",
+    "lifespan"
+   ]
+  }
+ ],
+ "answer_file": "batch_20.answer.json",
+ "answer_schema": {
+  "type": "object",
+  "required": [
+   "content_sha256",
+   "answers"
+  ],
+  "properties": {
+   "content_sha256": {
+    "type": "string"
+   },
+   "answers": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "item_id",
+      "aliases"
+     ],
+     "properties": {
+      "item_id": {
+       "type": "string"
+      },
+      "aliases": {
+       "type": "array",
+       "maxItems": 5,
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "content_sha256": "81a7aeabdeb2a78caf6ad7bcefac8cc72aa5c7abc0a23e76b4f6fe120d3a3aad"
+}

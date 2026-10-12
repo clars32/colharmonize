@@ -1,0 +1,710 @@
+{
+ "stage": "aliases",
+ "instructions": "Each item is an ontology term that a column of sample metadata in a gene\nexpression study can mean. Write up to 5 aliases for each term: other ways a\nresearcher would write that same variable as a column header in sample\nmetadata.\n\nGood aliases:\n- common abbreviations and acronyms (\"sbp\" for systolic blood pressure)\n- shorter everyday phrasings (\"systolic bp\", \"visual acuity\")\n- the plain name of the quantity when the term's label is wordy\n  (\"intraocular pressure\" for \"intraocular pressure measurement\")\n\nRules:\n- An alias must mean the same variable as the term: not a broader or narrower\n  one, and not a related one.\n- No values (\"male\", \"high\"), units on their own, gene or tool names, or\n  dataset-specific codes.\n- No alias that only rewords the label trivially (plural, case,\n  punctuation). Those are matched already.\n- Fewer is better than wrong. If a term has no natural alias, return an empty\n  list.\n\nExamples:\n- systolic blood pressure -> [\"sbp\", \"systolic bp\", \"systolic pressure\"]\n- intraocular pressure measurement -> [\"intraocular pressure\", \"iop\"]\n- visual acuity measurement -> [\"visual acuity\", \"va\"]\n",
+ "items": [
+  {
+   "item_id": "EFO:0007005",
+   "label": "free androgen index",
+   "definition": "Quantification of abnormal androgen status in humans, calculated as the ratio of the total level of testosterone divided by the SHBG level, multiplied by a constant (usually 100) ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007007",
+   "label": "ticagrelor measurement",
+   "definition": "Quantification of the amount of ticagrelor in a sample. Ticagrelor is a platelet aggregation inhibitor used for the prevention of thrombotic events in people with acute coronary syndrome or myocardial infarction with ST elevation.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007008",
+   "label": "allergy measurement",
+   "definition": "quantification of some aspect of an allergy, for example whether an allergy is present or its severity. Allergies are commonly quantified through measurement of allergen-specific IgE in the blood or skin reaction after puncture of skin through a droplet of allergen extract (skin prick test)",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007010",
+   "label": "drug use measurement",
+   "definition": "quantification of some aspect of drug use, such as whether drug use occured, over what period of time it occured and what dosage was used",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007011",
+   "label": "SSRI use measurement",
+   "definition": "quantification of some aspect of SSRI use",
+   "synonyms": [
+    "selective serotonin reuptake inhibitor use measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0007012",
+   "label": "NSAID use measurement",
+   "definition": "quantification of some aspect of NSAID use",
+   "synonyms": [
+    "non-steroid anti-inflammatory drug use measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0007013",
+   "label": "aspirin use measurement",
+   "definition": "quantification of some aspect of aspirin use",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007016",
+   "label": "food allergy measurement",
+   "definition": "quantification of the presence or severity of an allergy to some food",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007017",
+   "label": "peanut allergy measurement",
+   "definition": "quantification of the presence or severity of an allergy to peanuts",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007018",
+   "label": "egg allergy measurement",
+   "definition": "quantification of the presence or severity of an allergy to eggs",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007019",
+   "label": "milk allergy measurement",
+   "definition": "quantification of the presence or severity of an allergy to milk or other dairy products",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007034",
+   "label": "seropositivity measurement",
+   "definition": "a seropositivity measurement is the quantification of an individual's exposure to a certain pathogen through the presence or absence in blood of pathogen specific circulating antibodies",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007035",
+   "label": "Chlamydia pneumoniae seropositivity",
+   "definition": "Chlamydia pneumoniae seropositivity is the result of a measurement of circulating C. pneumoniae specific antibodies ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007036",
+   "label": "herpes virus seropositivity",
+   "definition": "herpes virus seropositivity is the result of a measurement of circulating herpes virus specific antibodies ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007037",
+   "label": "cytomegalovirus seropositivity",
+   "definition": "cytomegalovirus seropositivity is the result of a measurement of circulating cytomegalovirus specific antibodies ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007038",
+   "label": "Influenza A seropositivity",
+   "definition": "Influenza A seropositivity is the result of a measurement of circulating Influenza A specific antibodies ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007039",
+   "label": "human herpesvirus 8 seropositivity",
+   "definition": "human herpesvirus 8 seropositivity is the result of a measurement of circulating human herpesvirus 8 specific antibodies ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007042",
+   "label": "polychlorinated biphenyls measurement",
+   "definition": "quantification in a sample of some polychlorinated biphenyls, a group of man-made environmental pollutants which accumulate in humans with adverse health effects",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007046",
+   "label": "executive function",
+   "definition": "A set of mental processes that controls and manages the cognitive functions.",
+   "synonyms": [
+    "executive control"
+   ]
+  },
+  {
+   "item_id": "EFO:0007047",
+   "label": "Toxoplasma gondii seropositivity",
+   "definition": "Toxoplasma gondii seropositivity is the result of a measurement of circulating T. gondii specific antibodies. T. gondii is a parasitic protozoan that causes toxoplasmosis",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007048",
+   "label": "human herpesvirus 6 seropositivity",
+   "definition": "human herpesvirus 6 seropositivity is the result of a measurement of circulating human herpesvirus 6 specific antibodies",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007049",
+   "label": "gliadin seropositivity",
+   "definition": "gliadim seropositivity is the result of a measurement of circulating  antibodies specific to the food antigen gliadin",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007050",
+   "label": "HSV1 seropositivity",
+   "definition": "HSV1 seropositivity is the result of a measurement of circulating herpes simplex virus type 1 specific antibodies ",
+   "synonyms": [
+    "herpes simplex type 1 seropositivity"
+   ]
+  },
+  {
+   "item_id": "EFO:0007054",
+   "label": "microsatellite instability measurement",
+   "definition": "quantification of microsatellite instability",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007056",
+   "label": "clinical treatment",
+   "definition": "Where a drug or surgery has been used to treat an individual with a particular condition.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007057",
+   "label": "miotic rate",
+   "definition": "A measure of how fast cancer cells are dividing and growing. To find the mitotic rate, the number of cells dividing in a certain amount of cancer tissue is counted. Mitotic rate is used to help find the stage of melanoma (a type of skin cancer) and other types of cancer. Higher mitotic rates are lin",
+   "synonyms": [
+    "MR"
+   ]
+  },
+  {
+   "item_id": "EFO:0007058",
+   "label": "last follow up",
+   "definition": "The date or time of the last check of a patient by a medical professional.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007059",
+   "label": "germplasm",
+   "definition": "Germplasm is the living genetic resources such as seeds or tissue that is maintained for the purpose of animal and plant breeding, preservation, and other research uses. These resources may take the form of seed collections stored in seed banks, trees growing in nurseries, animal breeding lines main",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007060",
+   "label": "Weiss grade",
+   "definition": "Grade of adrenocortical carcinoma based on the scoring system of Weiss (Weiss LM. Comparative histologic study of 43 metastasizing and nonmetastasizing adrenocortical tumors. Am J Surg Pathol 1984;8:163-9.)",
+   "synonyms": [
+    "Weiss score"
+   ]
+  },
+  {
+   "item_id": "EFO:0007061",
+   "label": "passage number",
+   "definition": "The number of times a cell culture has been passaged (sub-cultured or split). ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007062",
+   "label": "tumor mass",
+   "definition": "The mass of a tumor.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007063",
+   "label": "organism status",
+   "definition": "The stage premortem or postmortem at which the sample was processed for extraction of biomaterials. (from MGED ontology MO_871).",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007119",
+   "label": "Sasang constitutional medicine type",
+   "definition": "one of four constitutional types used to classify individuals in traditional Korean medicine",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007120",
+   "label": "Tae-Yang",
+   "definition": "Constitutional type in traditional Korean medicine. Individuals classed under this type are supposed to have large lungs and a small liver. They have superiority in function, and are born with inferiority.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007121",
+   "label": "So-Yang",
+   "definition": "Constitutional type in traditional Korean medicine. Individuals classed under this type are supposed to have a large spleen, and small kidneys. They have whitish skin. Like So-Eum, many of this type are skinny.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007122",
+   "label": "Tae-Eum",
+   "definition": "Constitutional type in traditional Korean medicine. Individuals classed under this type are supposed to have  have a large liver and small lungs. They are tall and the majority gain a lot of weight. They are patient and have a reserved personality. Therefore, if they are given a task, they will not ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007123",
+   "label": "So-Eum",
+   "definition": "Constitutional type in traditional Korean medicine. Individuals classed under this type are supposed to have large kidneys and a small spleen. They are short and many are skinny. Due to weak intestines, they very often have digestive problem. Many enjoy a meat diet.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007554",
+   "label": "experimental stage",
+   "definition": "An experimental stage is spatiotemporal region encompassing some part of a scientic experimental process; e.g. primary, or secondary.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007555",
+   "label": "high content screening stage",
+   "definition": "An experimental stage describing stages of high content screen analysis",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007556",
+   "label": "primary high content screen",
+   "definition": "an initial, exploratory screen",
+   "synonyms": [
+    "primary high content screening",
+    "primary screen",
+    "primary screening"
+   ]
+  },
+  {
+   "item_id": "EFO:0007557",
+   "label": "secondary high content screen",
+   "definition": "a screen to investigate further potential genes or phenotypes of interest.  This screen may target orthologous genes in another species. ",
+   "synonyms": [
+    "secondar high content screening",
+    "secondary screen",
+    "secondary screening"
+   ]
+  },
+  {
+   "item_id": "EFO:0007558",
+   "label": "validation high content screen",
+   "definition": "a screen to check whether the results in another screen are reproducible.  Usually a different reagent targetting genes of interest are used. ",
+   "synonyms": [
+    "validation high content screening",
+    "validation screen",
+    "validation screening"
+   ]
+  },
+  {
+   "item_id": "EFO:0007570",
+   "label": "HCS protocol",
+   "definition": "A protocol which describes a part of the process in performing a High Content Screen experiment",
+   "synonyms": [
+    "high content screen protocol",
+    "high content screening protocol"
+   ]
+  },
+  {
+   "item_id": "EFO:0007571",
+   "label": "HCS library protocol",
+   "definition": "A protocol which provides instructions on how to create the library used in an High Content Screen experiment.",
+   "synonyms": [
+    "high content screen library protocol",
+    "high content screening protocol"
+   ]
+  },
+  {
+   "item_id": "EFO:0007572",
+   "label": "HCS image acquistion and feature extraction protocol",
+   "definition": "A protocol which provides instructions on how to obtain images and extract features from the images in an High Content Screen experiment.",
+   "synonyms": [
+    "high content screen image acquistion and feature extraction protocol",
+    "high content screening image acquistion and feature extraction protocol"
+   ]
+  },
+  {
+   "item_id": "EFO:0007573",
+   "label": "HCS data analysis protocol",
+   "definition": "A protocol which provides instructions on how to analyse or interpret the results from images or feature profiles in a High Content Screen experiment",
+   "synonyms": [
+    "high content screen data analysis protocol",
+    "high content screening data analysis protocol"
+   ]
+  },
+  {
+   "item_id": "EFO:0007591",
+   "label": "bone mineral accretion measurement",
+   "definition": "quantification of the accruel of bone mineral density over time",
+   "synonyms": [
+    "BMA measurement",
+    "bone density increase measurement",
+    "bone mineral density change measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0007593",
+   "label": "chromatid break measurement",
+   "definition": "Quantification of the level of DNA strand breaks in a cell, for example induced by an antineoplastic agent such a bleomycin. Chromatid breaks can be assessed under the microscope in dividing cells during metaphase.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007602",
+   "label": "total ventricular volume measurement",
+   "definition": "quantification of the total volume of a brain's four ventricles, usuallly through an MRI scan",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007614",
+   "label": "asthma exacerbation measurement",
+   "definition": "quantification of acute asthma exacerbations in an individual, generally defined by short courses of treatment with medication such as oral steroids.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007620",
+   "label": "volumetric bone mineral density",
+   "definition": "quantification of the mineral mass per unit volume of bone, generally expressed in grams per cubic centimeter or per ml. This is not to be confused with bone mineral density as calculated per unit area of bone (grams per square centimeter), which is the definition most commonly used in clinical prac",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007621",
+   "label": "bone mineral content measurement",
+   "definition": "quantification of the form or content of one or more of the mineral components of bone",
+   "synonyms": [
+    "BMC measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0007622",
+   "label": "sRAGE measurement",
+   "definition": "quantification in a plasma sample of the levels of soluble Receptor for Advanced Glycation End-products (sRAGE). sRAGE is a strong markers of vascular outcomes",
+   "synonyms": [
+    "soluble receptor for advanced glycation end-products measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0007625",
+   "label": "asthenia",
+   "definition": "Clinical sign or symptom manifested as debility, or lack or loss of strength and energy.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007626",
+   "label": "emphysema imaging measurement",
+   "definition": "Quantification of some aspect, eg the presence/absence or severity of emphysema through the use of imaging techniques such as CT scans",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007627",
+   "label": "airway imaging measurement",
+   "definition": "Quantification of the size of or level of damage to a person's airways using medical imaging techniques such as CT scans. This approach is used in the diagnosis and assessment of respiratory disorders such as COPD and emphysema",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007628",
+   "label": "gas trapping measurement",
+   "definition": "Quantification of the amount of air that is abnormally retained in the lungs at the end of an exhalation. ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007629",
+   "label": "hemoglobin A1 measurement",
+   "definition": "Hemoglobin A1 measurement is a measure of the quantity of the metallo protein hemoglobin A. Hemoglobin A (HbA), also known as adult hemoglobin or a2b2, is the most common human hemoglobin tetramer, comprising over 97% of the total red blood cell hemoglobin. It consists of two alpha chains and two be",
+   "synonyms": [
+    "HbA levels",
+    "HbA1 levels",
+    "hemoglobin A measurement",
+    "hemoglobin A1 levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0007631",
+   "label": "hexose measurement",
+   "definition": "Is a quantification of the monosaccharide hexose in a sample, typically in blood",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007635",
+   "label": "concentration dose ratio",
+   "definition": "Quantification of the metabolism rate of drugs such as psychotropic drugs, defined as the quotient of a drug's serum concentration (in nmol/L) by its prescribed daily dosage (in mg/day). This measure can also be standardised to allow comparison across multiple drugs by dividing individual CDR values",
+   "synonyms": [
+    "CDR measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0007637",
+   "label": "traditional Chinese medicine type",
+   "definition": "one of several constitutional types used to classify individuals in traditional Chinese medicine",
+   "synonyms": [
+    "TCM type"
+   ]
+  },
+  {
+   "item_id": "EFO:0007638",
+   "label": "Yu-Zhi constitution type",
+   "definition": "One of the constitution types used in TCM. The Yu-Zhi (YZ) constitution in TCM indicates stasis and stagnation, which expressed dull, lusterless skin color; dry, cracked, scaly or tough skin; dull purple lips or tongue; localized pain or numb- ness; knotted, intermittent, or uneven pulse. It is one ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007639",
+   "label": "minimal erythema dose",
+   "definition": "quantification of an individual's sensitity to UV radiation, defined as the shortest exposure to ultraviolet radiation that produces reddening of the skin within 1 to 6 hr and disappears in 24 hr",
+   "synonyms": [
+    "MED"
+   ]
+  },
+  {
+   "item_id": "EFO:0007645",
+   "label": "longitudinal alcohol consumption measurement",
+   "definition": "quantification of some aspect of alcohol consumption over a long period of time (typically several years)",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007648",
+   "label": "vancomycin trough measurement",
+   "definition": "quantification of the lowest concentration of vancomycin in a patient's blood during the course of treatment. Trough measurements are used to calculate the rate of absorption of the drug and determine the optimum time for administering the next dose",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007649",
+   "label": "renal elimination rate measurement",
+   "definition": "quantification of the rate at which the kidneys eliminate a substance from the blood stream",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007652",
+   "label": "health trait",
+   "definition": "The characteristics in health that a certain person has.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007653",
+   "label": "clinical ideal cardiovascular health",
+   "definition": "the characteristics of a person's cardiovascular health based on a number of factors including cholesterol levels in the absence of treatment, blood pressure and diabetes status",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007654",
+   "label": "clinical and behavioural ideal cardiovascular health",
+   "definition": "the characteristics of a person's cardiovascular health based on a number of factors including cholesterol levels in the absence of treatment, blood pressure, diabetes status, BMI and smoking status",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007655",
+   "label": "clusterin measurement",
+   "definition": "quantification of the amount of the glycoprotein clusterin in a sample. Clusterin is also known as apolipoprotein J and plays a role in several cellular processes including apoptosis, proliferation, and clearance of misfolded proteins",
+   "synonyms": [
+    "CLU measurement",
+    "apolipoprotein J measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0007658",
+   "label": "carrier status",
+   "definition": "quantification of the presence or absence of a marker, eg a gene or a substance, in a sample",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007659",
+   "label": "APOE carrier status",
+   "definition": "quantification of the presence or absence of apolipoprotein E (APOE) in an individual",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007660",
+   "label": "neuroticism measurement",
+   "definition": "Quantification of some aspect of neuroticism or neurotic behaviour, such as severity or frequency of neurotic behaviour. This is usually assessed via a standardised questionnaire.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007664",
+   "label": "outer ear morphology trait",
+   "definition": "Any measurable or observable characteristic related to the shape, structure, color, or pattern of the fine, keratinized filamentous growths arising from the epidermis of mammals.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007665",
+   "label": "ear protrusion",
+   "definition": "the physical distance from the outer edge of the outer ear to the head",
+   "synonyms": [
+    "outer ear prominence"
+   ]
+  },
+  {
+   "item_id": "EFO:0007666",
+   "label": "lobe size",
+   "definition": "Any measurable or observable characteristic related to the physical magnitude of the soft tissue at the base of the outer ear; consists of fat and fibrous tissue not reinforced by the auricular cartilage.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007667",
+   "label": "lobe attachment",
+   "definition": "Any measurable or observable characteristic related to the physical attachment of the soft tissue at the base of the outer ear to the head. If an earlobe hangs free, it is referred to as \"detached\". If it connects directly to the side of the head, it is referred to as \"attached\". Earlobe attachment ",
+   "synonyms": [
+    "earlobe attachment"
+   ]
+  },
+  {
+   "item_id": "EFO:0007668",
+   "label": "tragus size",
+   "definition": "Any measurable or observable characteristic related to the size of the tragus, a small pointed eminence of the external ear, situated in front of the concha, and projecting backward over the meatus",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007669",
+   "label": "antitragus size",
+   "definition": "Any measurable or observable characteristic related to the size of the antitragus, a feature of human ear anatomy. It is a small tubercle that points anteriorly. It is separated from the tragus by the intertragic notch.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007670",
+   "label": "helix rolling",
+   "definition": "Any measurable or observable characteristic related to the shape and structure of the helix, the outer rim of the ear. The border of the helix usually forms a rolled rim but it is highly variable in shape.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007671",
+   "label": "folding of antihelix",
+   "definition": "Any measurable or observable characteristic related to the shape and structure of the antihelix, a Y-shaped curved cartilaginous ridge arising from the antitragus and separating the concha, triangular fossa, and scapha. The antihelix represents a folding of the conchal cartilage and it usually has s",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007672",
+   "label": "crus helix expression",
+   "definition": "Any measurable or observable characteristic related to the shape and structure of the crus helix, the continuation of the anteroinferior ascending helix, which extends in a posteroinferior direction into the cavity of the concha above the external auditory meatus. The average crus helix extends abou",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007673",
+   "label": "superior crus of antihelix expression",
+   "definition": "Any measurable or observable characteristic related to the shape and structure of the upper cartilaginous ridge arising at the bifurcation of the antihelix that separates the scapha from the triangular fossa. The superior crus runs in a superior and slightly anterior direction and is usually less sh",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007674",
+   "label": "Darwin's tubercule",
+   "definition": "a congenital ear condition which often presents as a thickening on the helix at the junction of the upper and middle thirds.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007675",
+   "label": "metastasis measurement",
+   "definition": "quantification of some aspect of cancer metastases, incl presence/abscence, size, location or origin",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007677",
+   "label": "LDL peak particle diameter measurement",
+   "definition": "peak distance between two specified opposite points on the periphery of blood-derived low-density lipoprotein (LDL) particles",
+   "synonyms": [
+    "low density lipoprotein peak particle diameter measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0007678",
+   "label": "total fat intake measurement",
+   "definition": "quantification of the total amount of dietary fat consumed by an individual",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007686",
+   "label": "surgical shock",
+   "definition": "A type of shock that occurs as a result of a surgical procedure.",
+   "synonyms": [
+    "shock, surgical"
+   ]
+  },
+  {
+   "item_id": "EFO:0007698",
+   "label": "GBA carrier status",
+   "definition": "quantification of the presence or absence of a mutation in the gene for Glucocerebrosidase (GBA) in an individual",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007700",
+   "label": "exploratory eye movement measurement",
+   "definition": "quantification of a participant\u2019s eye tracking while viewing stationary S-shaped figures",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007701",
+   "label": "spine bone mineral density",
+   "definition": "mineral density of the spine bones",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007702",
+   "label": "hip bone mineral density",
+   "definition": "mineral density of the hip bone",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007703",
+   "label": "hystidil-tRNA synthetase autoantibody measurement",
+   "definition": "quantification in a sample of autoantibodies against hystidil-tRNA synthetase, an enzyme which in humans is encoded by the HARS gene",
+   "synonyms": [
+    "Jo-1 autoantibody measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0007710",
+   "label": "cognitive decline measurement",
+   "definition": "quantification of some aspect of cognitive decline such as the rate at which it occurs or its severity, for example in patients with dementia or Alzheimer's disease. Cognitive decline is ususally assessed using a structured-interview protocol covering a number of standardised areas.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007721",
+   "label": "carotid artery central pulse pressure measurement",
+   "definition": "Quantification of the central pulse pressure in the carotid artery",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007723",
+   "label": "carotid artery mean blood pressure measurement",
+   "definition": "Quantification of mean blood pressure in the carotid artery",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007743",
+   "label": "influenza A severity measurement",
+   "definition": "quantification of the severity of an infection with the influenza type A virus",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007744",
+   "label": "lung disease severity measurement",
+   "definition": "quantification of the severity of lung disease, eg cystic fibrosis, through comparison of an individual's FEV1 score to the average age-specific percentile values of FEV1 for each patient in a study\n\n\n",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007745",
+   "label": "lactate measurement",
+   "definition": "quantification of lactate in a sample",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007746",
+   "label": "white matter lesion progression measurement",
+   "definition": "quantification of the progression of lesions in white matter of the brain using magnetic resonance imaging",
+   "synonyms": []
+  }
+ ],
+ "answer_file": "batch_08.answer.json",
+ "answer_schema": {
+  "type": "object",
+  "required": [
+   "content_sha256",
+   "answers"
+  ],
+  "properties": {
+   "content_sha256": {
+    "type": "string"
+   },
+   "answers": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "item_id",
+      "aliases"
+     ],
+     "properties": {
+      "item_id": {
+       "type": "string"
+      },
+      "aliases": {
+       "type": "array",
+       "maxItems": 5,
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "content_sha256": "75890e1344bb53d9965acbb97179b3e2c54de4f10b33f903f3466945b88f6d4d"
+}

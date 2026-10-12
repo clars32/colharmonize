@@ -1,0 +1,682 @@
+{
+ "stage": "aliases",
+ "instructions": "Each item is an ontology term that a column of sample metadata in a gene\nexpression study can mean. Write up to 5 aliases for each term: other ways a\nresearcher would write that same variable as a column header in sample\nmetadata.\n\nGood aliases:\n- common abbreviations and acronyms (\"sbp\" for systolic blood pressure)\n- shorter everyday phrasings (\"systolic bp\", \"visual acuity\")\n- the plain name of the quantity when the term's label is wordy\n  (\"intraocular pressure\" for \"intraocular pressure measurement\")\n\nRules:\n- An alias must mean the same variable as the term: not a broader or narrower\n  one, and not a related one.\n- No values (\"male\", \"high\"), units on their own, gene or tool names, or\n  dataset-specific codes.\n- No alias that only rewords the label trivially (plural, case,\n  punctuation). Those are matched already.\n- Fewer is better than wrong. If a term has no natural alias, return an empty\n  list.\n\nExamples:\n- systolic blood pressure -> [\"sbp\", \"systolic bp\", \"systolic pressure\"]\n- intraocular pressure measurement -> [\"intraocular pressure\", \"iop\"]\n- visual acuity measurement -> [\"visual acuity\", \"va\"]\n",
+ "items": [
+  {
+   "item_id": "EFO:0005020",
+   "label": "collection latitude",
+   "definition": "The latitude at which a sample was obtained. For example a sea water sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005021",
+   "label": "collection longitude",
+   "definition": "The longitude at which a sample was obtained. For example a sea water sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005038",
+   "label": "hair morphology",
+   "definition": "Any measurable or observable characteristic related to the shape, structure, color, or pattern of the fine, keratinized filamentous growths arising from the epidermis of mammals.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005051",
+   "label": "454 GS 20 standard manufacturer's protocol",
+   "definition": "The standard protocol supplied by the manufacturer of the 454 GS 20 sequencer for nucleic acid sequencing protocol.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005056",
+   "label": "age at death",
+   "definition": "The age at which death occurs.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005058",
+   "label": "tyrosine measurement",
+   "definition": "The quantification of some tyrosine, typically obtained from an individual with the intention of using the measurement in some diagnostic process.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005080",
+   "label": "CC16 measurement",
+   "definition": "Quantification of the pneumoprotein CC16 or clara cell secreted protein . CC16 plays an important protective role in the respiratory tract against oxidative stress and inflammatory response. CC16 is used peripheral lung marker for assessing the cellular integrity or the permeability of the lung epit",
+   "synonyms": [
+    "Clara cell secretory protein"
+   ]
+  },
+  {
+   "item_id": "EFO:0005081",
+   "label": "surfactant protein D measurement",
+   "definition": "quantification of the pneumoprotein surfactant protein D. This protein is an innate immune protein and plays a role in pulmonary host defence and the modulation of allergic responses.  Several human lung diseases are characterized by decreased levels of bronchoalveolar SP-D.",
+   "synonyms": [
+    "SP-D measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0005082",
+   "label": "Illumina Genome Analyzer standard manufacturer's protocol",
+   "definition": "The standard protocol supplied by the manufacturer of the Illumina Genome Analyzer sequencer for nucleic acid sequencing protocol.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005083",
+   "label": "Illumina Genome Analyzer II standard manufacturer's protocol",
+   "definition": "The standard protocol supplied by the manufacturer of the Illumina Genome Analyzer II sequencer for nucleic acid sequencing protocol.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005084",
+   "label": "Illumina Genome Analyzer IIx standard manufacturer's protocol",
+   "definition": "The standard protocol supplied by the manufacturer of the Illumina Genome Analyzer IIx sequencer for nucleic acid sequencing protocol.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005085",
+   "label": "Illumina HiSeq 1000 standard manufacturer's protocol",
+   "definition": "The standard protocol supplied by the manufacturer of the Illumina HiSeq 1000 sequencer for nucleic acid sequencing protocol.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005086",
+   "label": "Illumina HiSeq 2000 standard manufacturer's protocol",
+   "definition": "The standard protocol supplied by the manufacturer of the Illumina HiSeq 2000 sequencer for nucleic acid sequencing protocol.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005087",
+   "label": "Illumina MiSeq standard manufacturer's protocol",
+   "definition": "The standard protocol supplied by the manufacturer of the Illumina MiSeq sequencer for nucleic acid sequencing protocol.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005089",
+   "label": "whole-brain volume",
+   "definition": "quantification of the total volume of the brain",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005090",
+   "label": "basophil count",
+   "definition": "quantification of basophils in the blood",
+   "synonyms": [
+    "blood basophil count"
+   ]
+  },
+  {
+   "item_id": "EFO:0005091",
+   "label": "monocyte count",
+   "definition": "quantification of monocytes in the blood",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005092",
+   "label": "entorhinal cortical volume",
+   "definition": "quantification of the volume of the entorhinal cortex",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005105",
+   "label": "lipid or lipoprotein measurement",
+   "definition": "quantification of some lipid or lipoprotein",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005106",
+   "label": "body composition measurement",
+   "definition": "measurement of the percentages of fat, bone and muscle in human bodies",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005108",
+   "label": "arm span",
+   "definition": "Distance between the tips of the longest fingers with the arms maximally outstretched laterally.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005109",
+   "label": "energy expenditure",
+   "definition": "energy expenditure is generally considered to be the sum of internal heat produced and external work through physical activity",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005112",
+   "label": "gestational age",
+   "definition": "The age of the conceptus, beginning from the time of FERTILIZATION. In clinical obstetrics, the gestational age is often estimated as the time from the last day of the last MENSTRUATION which is about 2 weeks before OVULATION and fertilization.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005115",
+   "label": "metabolic rate measurement",
+   "definition": "a quantification of metabolic rate",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005117",
+   "label": "CCL5 measurement",
+   "definition": "Is the quantification of Chemokine (C-C motif) ligand 5.\nCCL5 is a Chemoattractant for blood monocytes, memory T-helper cells and eosinophils. Causes the release of histamine from basophils and activates eosinophils. May activate several chemokine receptors including CCR1, CCR3, CCR4 and CCR5. One o",
+   "synonyms": [
+    "RANTES",
+    "Regulated on Activation, Normal T cell Expressed and Secreted"
+   ]
+  },
+  {
+   "item_id": "EFO:0005119",
+   "label": "antioxidant measurement",
+   "definition": "quantification of some antioxidant in a biological sample",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005127",
+   "label": "cancer biomarker measurement",
+   "definition": "cancer biomarkers, such as cancer antigen 19-9, carcinoembryonic antigen and \u03b1 fetoprotein, are used as indicators for cancer screening and as predictors for therapeutic responses and prognoses in cancer patient",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005128",
+   "label": "albumin:globulin ratio measurement",
+   "definition": "quantification of the ratio of the protein albumin to globulin in the blood serum",
+   "synonyms": [
+    "ALBGLOB",
+    "Albumin to Globulin Ratio Measurement",
+    "Albumin/Globulin",
+    "albumin-globulin ratio measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0005132",
+   "label": "5-HIAA measurement",
+   "definition": "quantification of 5-hydroxyindoleacetic acid in cerebrospinal fluid or urine. 5-HIAA is a metabolite of serotonin.\n This measurement is performed during diagnosis of serotonin secreting neuroendocrine tumours.\nLow levels of 5-HIAA in the cerebrospinal fluid have been associated with aggressive behav",
+   "synonyms": [
+    "5-Hydroxyindoleacetic acid measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0005134",
+   "label": "amino acid measurement",
+   "definition": "quantification of some amino acid in a biological assay",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005135",
+   "label": "strain",
+   "definition": "A population of organisms that is geneticaly different from others of the same species and possessing a set of defined characteristics.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005136",
+   "label": "cultivar",
+   "definition": "A cultivated plant variety selected and given a name because it has desirable characteristics that distinguish it from otherwise similar plants of the same species.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005168",
+   "label": "wild type genotype",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005187",
+   "label": "C-peptide measurement",
+   "definition": "A measurement of the connecting peptide, or C-peptide -  a short 31-amino-acid polypeptide that connects insulin's A-chain to its B-chain in the proinsulin molecule. C-peptide measurements may be made for clinical diagnostics.\n\nAs a means of distinguishing type 1 diabetes from type 2 diabetes or Mat",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005188",
+   "label": "CCL11 measurement",
+   "definition": "A quantification of C-C motif chemokine 11, also known as Eotaxin,\nEosinophil chemotactic protein and\nSmall-inducible cytokine A11.\n In response to the presence of allergens, this protein directly promotes the accumulation of eosinophils, a prominent feature of allergic inflammatory reactions. Binds",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005189",
+   "label": "respiratory quotient",
+   "definition": "The respiratory quotient (or RQ or respiratory coefficient), is a dimensionless number used in calculations of basal metabolic rate (BMR) when estimated from carbon dioxide production. Such measurements, like measurements of oxygen uptake, are forms of indirect calorimetry.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005190",
+   "label": "urinary nitrogen measurement",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005193",
+   "label": "serum IgG glycosylation measurement",
+   "definition": "quantification of N-linked IgG glycans in a serum sample",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005198",
+   "label": "transplant outcome measurement",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005199",
+   "label": "renal transplant outcome measurement",
+   "definition": "quantification of the outcome of a kidney transplant",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005206",
+   "label": "oligoclonal band measurement",
+   "definition": "detection or quantification of bands of immunoglobulins in blood serum or cerebrospinal fluid, usually as an indicator of central nervous system disorders such as multiple sclerosis, Lyme disease, systemic lupus erythematosus or neurosarcoidosis",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005211",
+   "label": "aspirin hydrolysis measurement",
+   "definition": "quantification of the rate of hydrolysis of aspirin in blood as an indicator of the therapeutic effectiveness of aspirin",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005213",
+   "label": "central corneal thickness",
+   "definition": "A measure of the corneal thickness (CCT). This can be measured by contact e.g. ultrasound, confocal microscpy or non contact methods e.g. biometry. Reduced central corneal thickness is used as an indicator for glaucoma.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005228",
+   "label": "plant population",
+   "definition": "A plant population is a grouping of plants consisting of individuals which share a particular characteristic such as inhabiting a particular region or area or ability to interbreed.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005238",
+   "label": "breed",
+   "definition": "A breed is a specific group of domestic animals or plants having homogeneous appearance, homogeneous behavior, and other characteristics that distinguish it from other animals or plants of the same species and that were arrived at through selective breeding.",
+   "synonyms": [
+    "animal breed"
+   ]
+  },
+  {
+   "item_id": "EFO:0005241",
+   "label": "employment status",
+   "definition": "quantification of an individual's occupation, both in terms of employment vs unemployment and in terms of nature of employment, eg self-employment",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005267",
+   "label": "serum copper measurement",
+   "definition": "quantification of copper in blood used in the diagnosis of Wilson's disease (in combination with ceruloplasmin measurement) or copper deficiences. Low levels may indicate Wilson's disease, high levels may indicate liver disease.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005278",
+   "label": "cardiovascular disease biomarker measurement",
+   "definition": "cardiovascular disease biomarkers, such as ST2 cardiac biomarker and C-reactive protein, are used as indicators for cardiovascular disease and as predictors for therapeutic responses",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005298",
+   "label": "allergic sensitization measurement",
+   "definition": "quantification of allergic sensitization status, for example through measurement of allergen-specific IgE in the blood or skin reaction after puncture of skin through a droplet of allergen extract (skin prick test)",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005315",
+   "label": "induced mutation",
+   "definition": "A genetic transformation that the modification of the genetic material (either coding or non-coding) of an organism is caused by mutagenic compounds or irradiation",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005318",
+   "label": "axial length measurement",
+   "definition": "quantification of the distance between the anterior surface of the cornea and the fovea, usually measured by A-scan ultrasonography or optical coherence biometry",
+   "synonyms": [
+    "AL",
+    "axial length",
+    "ocular axial length"
+   ]
+  },
+  {
+   "item_id": "EFO:0005323",
+   "label": "post-operative sign or symptom",
+   "definition": "clinical manifestation that occurs as a result of a surgical intervention",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005413",
+   "label": "joint damage measurement",
+   "definition": "quantification of the level of joint damage, eg through radiological analysis",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005419",
+   "label": "contrast sensitivity measurement",
+   "definition": "quantificiation of ability to detect sharp boundaries (stimuli) and to detect slight changes in luminance at regions without distinct contours. Psychophysical measurements of this visual function are used to evaluate visual acuity and to detect eye disease.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005429",
+   "label": "borderline personality disorder symptom",
+   "definition": "Symptom associated with borderline personality disorder such as unstable self-image and mood together with volatile interpersonal relationships, self-damaging impulsivity, recurrent suicidal threats or gestures and/or self-mutilating behavior",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005440",
+   "label": "array control design",
+   "definition": "An array design in which a reporter is used a control for reasons such as quality or result verifcation. ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005512",
+   "label": "estrogen receptor status",
+   "definition": "quantification of the level of estrogen receptors in a tumor",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005513",
+   "label": "progesterone receptor status",
+   "definition": "quantification of  progesterone receptors in breast cancer. PR status is used in the classification of breast cancers.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005514",
+   "label": "HER2 status",
+   "definition": "quantification of the level of human epidermal growth factor receptor 2 (HER2) in a tumor. Amplification or overexpression of the HER2 oncogene plays a role in the development and progression of some breast cancers. ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005518",
+   "label": "sample collection protocol",
+   "definition": "Describes the procedure whereby biological samples for an experiment are sourced.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005519",
+   "label": "dissection protocol",
+   "definition": "Describes the procedure which dissects biological materials into anatomical sub-components, e.g. specific organs or tissues.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005520",
+   "label": "conversion protocol",
+   "definition": "Describes the conversion of samples (e.g. RNA samples) to another form (e.g. complementary DNA) with no prior dedicated extraction step of the former form, and no labeling of the converted product with chemical tags or dyes during the process. Other examples of such conversions are bisulphite conver",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005521",
+   "label": "technology type",
+   "definition": "The technology type or platform of the reporters on the array.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005522",
+   "label": "substrate type",
+   "definition": "Controlled terms for descriptors of types of array substrates.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005523",
+   "label": "surface type",
+   "definition": "Controlled terms for descriptors for coating of the substrate.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005530",
+   "label": "Trypanosoma cruzi seropositivity",
+   "definition": "Trypanosoma cruzi seropositivity is the result of a measurement of circulating T. cruzi specific antibodies ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005536",
+   "label": "nitric oxide exhalation measurement",
+   "definition": "Quantification of the fraction of nitric oxide in the total exhalation volume, used as a non-invasive biomarker of eosinophilic airway inflammation. Higher Feno values are associated with childhood asthma symptoms, exacerbations, physician-diagnosed asthma and atopy.",
+   "synonyms": [
+    "FENO",
+    "fraction of exhaled nitric oxide"
+   ]
+  },
+  {
+   "item_id": "EFO:0005538",
+   "label": "thrombin generation potential measurement",
+   "definition": "quantification of the capacity of a given individual to generate thrombin, measured in plasma and shown to associate with thrombotic disorders",
+   "synonyms": [
+    "TGP measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0005607",
+   "label": "breast cancer stage",
+   "definition": "A staging of breast cancer for example by the American Joint Committee on Cancer, stage 7, or other coding system.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005608",
+   "label": "cortical opacity measurement",
+   "definition": "A measure of cortical opacity used in the diagnosis of cataract.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005615",
+   "label": "prostate cancer staging",
+   "definition": "A classification of prostate cancer stage e.g. Gleason grade finding",
+   "synonyms": [
+    "prostate cancer stage"
+   ]
+  },
+  {
+   "item_id": "EFO:0005620",
+   "label": "lung adenocarcinoma grade",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005630",
+   "label": "CEL data file format",
+   "definition": "CEL data file format describes the format used in a CEL file for storing the results of the intensity calculations on the pixel values of a DAT file. This includes an intensity value, standard deviation of the intensity, the number of pixels used to calculate the intensity value, a flag to indicate ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005633",
+   "label": "ATC Code A Alimentary tract and metabolism",
+   "definition": "Classification of drugs affecting the alimentary tract and metabolism.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005634",
+   "label": "ATC Classification System",
+   "definition": "The Anatomical Therapeutic Chemical (ATC) Classification System is used for the classification of active ingredients of drugs according to the organ or system on which they act and their therapeutic, pharmacological and chemical properties. It is controlled by the World Health Organization Collabora",
+   "synonyms": [
+    "Anatomical Therapeutic Chemical Classification System"
+   ]
+  },
+  {
+   "item_id": "EFO:0005635",
+   "label": "ATC Code B Blood and blood forming organs",
+   "definition": "Classification of drugs affecting the blood and blood forming organs of the body.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005636",
+   "label": "ATC Code C Cardiovascular system",
+   "definition": "Classification of drugs affecting the cardiovascular system.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005637",
+   "label": "ATC Code D Dermatologicals",
+   "definition": "Classification of drugs affecting skin, hair and nails.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005638",
+   "label": "ATC Code G Genito-urinary system and sex hormones",
+   "definition": "Classification of drugs affecting the genito-urinary system and sex hormones.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005639",
+   "label": "ATC Code H Systemic hormonal preparations, excluding sex hormones and insulins",
+   "definition": "Classification of drugs affecting hormones expect for sexual hormones and insulin.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005640",
+   "label": "ATC Code J Antiinfectives for systemic use",
+   "definition": "Classification of drugs which are anti inefctive agents.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005641",
+   "label": "ATC Code L Antineoplastic and immunomodulating agents",
+   "definition": "Classification of drugs comprising preparations used in the treatment of malignant neoplastic diseases, and immunomodulating agents.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005642",
+   "label": "ATC Code M Musculo-skeletal system",
+   "definition": "Classification of drugs affecting musculo-sketal system.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005643",
+   "label": "ATC Code N Nervous system",
+   "definition": "Classification of drugs affecting the nervous system such as anesthetics.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005644",
+   "label": "ATC Code P Antiparasitic products, insecticides and repellents",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005645",
+   "label": "ATC Code R Respiratory system",
+   "definition": "Classification of drugs affecting the respiratory system.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005646",
+   "label": "ATC Code S Sensory organs",
+   "definition": "Classification of drugs affecting the sensory organs.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005647",
+   "label": "ATC Code V Various",
+   "definition": "classification of drugs not specified elsewhere",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005654",
+   "label": "velocity of sound measurement",
+   "definition": "quantification of the speed at which sound travels through bone as an indicator of the physical and structural properties of the bone",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005665",
+   "label": "white matter hyperintensity measurement",
+   "definition": "quantification of white matter hyperintensity, usually measured by MRI",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005673",
+   "label": "chronic mucus hypersecretion",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005674",
+   "label": "white matter microstructure measurement",
+   "definition": "quantification of the microstructre of the white matter of the brain",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005677",
+   "label": "puberty onset measurement",
+   "definition": "quantification of the onset of puberty in human males and females through a series of proxy measurements such as genital enlargement (males) or breast development (females). These characteristics are assessed based on pre-defined scales either through self-reporting or through assessment by a medica",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005682",
+   "label": "oxygen saturation measurement",
+   "definition": "quantification of the relative amount of oxygen that is dissolved or carried in a given medium",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005689",
+   "label": "non-high density lipoprotein cholesterol measurement",
+   "definition": "The quantification of NHDL cholesterol in blood, calculated by subtracting the amount of cholesterol in the HDL fraction from total cholesterol and used as an indicator for cardiovascular disease risk",
+   "synonyms": [
+    "NHDL cholesterol measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0005691",
+   "label": "plasma trimethylamine N-oxide measurement",
+   "definition": "The quantification in blood of trimethylamine N-oxide, a product of gut microbiome and hepatic-mediated metabolism of dietary choline and L-carnitine",
+   "synonyms": [
+    "TMAO measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0005756",
+   "label": "skin wound",
+   "definition": "an injury to the skin caused by a cut, blow, or other impact.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005767",
+   "label": "rheumatoid factor measurement",
+   "definition": "quantification of rheumatoid factors, antibodies in the serum of individuals with rheumatoid arthritis that react with antigenic determinants or immunoglobulins that enhance agglutination of suspended particles coated with pooled human gamma -globulin. Rheumatoid factors also occur in other autoimmu",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005843",
+   "label": "cortisol measurement",
+   "definition": "quantification of the hormone cortisol in blood or urine",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005845",
+   "label": "hemoglobin A2 measurement",
+   "definition": "The determination of the amount of hemoglobin A2 present in a sample. [ NCI ]",
+   "synonyms": [
+    "HGBA2",
+    "HbA2 levels",
+    "Hemoglobin A2",
+    "hemoglobin A2 levels"
+   ]
+  }
+ ],
+ "answer_file": "batch_06.answer.json",
+ "answer_schema": {
+  "type": "object",
+  "required": [
+   "content_sha256",
+   "answers"
+  ],
+  "properties": {
+   "content_sha256": {
+    "type": "string"
+   },
+   "answers": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "item_id",
+      "aliases"
+     ],
+     "properties": {
+      "item_id": {
+       "type": "string"
+      },
+      "aliases": {
+       "type": "array",
+       "maxItems": 5,
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "content_sha256": "0c9bd2148adb42bc047c7d9f60dc4eb122559b9388f086b764a5fa0a646a5b25"
+}

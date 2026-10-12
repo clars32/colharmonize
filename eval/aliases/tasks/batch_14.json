@@ -1,0 +1,670 @@
+{
+ "stage": "aliases",
+ "instructions": "Each item is an ontology term that a column of sample metadata in a gene\nexpression study can mean. Write up to 5 aliases for each term: other ways a\nresearcher would write that same variable as a column header in sample\nmetadata.\n\nGood aliases:\n- common abbreviations and acronyms (\"sbp\" for systolic blood pressure)\n- shorter everyday phrasings (\"systolic bp\", \"visual acuity\")\n- the plain name of the quantity when the term's label is wordy\n  (\"intraocular pressure\" for \"intraocular pressure measurement\")\n\nRules:\n- An alias must mean the same variable as the term: not a broader or narrower\n  one, and not a related one.\n- No values (\"male\", \"high\"), units on their own, gene or tool names, or\n  dataset-specific codes.\n- No alias that only rewords the label trivially (plural, case,\n  punctuation). Those are matched already.\n- Fewer is better than wrong. If a term has no natural alias, return an empty\n  list.\n\nExamples:\n- systolic blood pressure -> [\"sbp\", \"systolic bp\", \"systolic pressure\"]\n- intraocular pressure measurement -> [\"intraocular pressure\", \"iop\"]\n- visual acuity measurement -> [\"visual acuity\", \"va\"]\n",
+ "items": [
+  {
+   "item_id": "EFO:0009935",
+   "label": "Non-steroidal anti-inflammatory and antirheumatic product use measurement",
+   "definition": "Quantification of some aspect of the use of non-steroidal anti-inflammatory and antirheumatic product.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009936",
+   "label": "Drugs affecting bone structure and mineralization use measurement",
+   "definition": "Quantification of some aspect of the use of drugs affecting bone structure and mineralization.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009937",
+   "label": "Opioid use measurement",
+   "definition": "Quantification of some aspect of the use of opioid drugs.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009938",
+   "label": "Anilide use measurement",
+   "definition": "Quantification of some aspect of the use of anilide drugs.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009939",
+   "label": "Antimigraine preparation use measurement",
+   "definition": "Quantification of some aspect of the use of antimigraine preparations.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009940",
+   "label": "Antidepressant use measurement",
+   "definition": "Quantification of some aspect of the use of antidepressant drugs.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009941",
+   "label": "Inhalant adrenergic use measurement",
+   "definition": "Quantification of some aspect of the use of inhalant adrenergic drugs.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009942",
+   "label": "Glucocorticoid use measurement",
+   "definition": "Quantification of some aspect of the use of glucocorticoids.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009943",
+   "label": "Antihistamine use measurement",
+   "definition": "Quantification of some aspect of the use of antihistamines.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009944",
+   "label": "Antiglaucoma preparations and miotics use measurement",
+   "definition": "Quantification of some aspect of the use of antiglaucoma preparations and miotics.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009945",
+   "label": "psychological resilience measurement",
+   "definition": "Quantification of the degree to which an individual is resilient to psychological stress, typically assessed via a questionnaire or clinical review of an individual's mental health before and after a stressful life event.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009961",
+   "label": "Insulinogenic index measurement",
+   "definition": "Measure of first-phase insulin response to glucose challenge.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010049",
+   "label": "asthma symptoms measurement",
+   "definition": "Quantification of some aspect of asthma symptoms.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010066",
+   "label": "corneal hysteresis",
+   "definition": "A measure of the biomechanical properties of the cornea. Low corneal hysteresis may be indicative of keratoconus.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010067",
+   "label": "corneal resistance factor",
+   "definition": "A measure of the biomechanical properties of the cornea. Low corneal resistance factor may be indicative of keratoconus.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010068",
+   "label": "respiratory symptom change measurement",
+   "definition": "Quantification of the rate of change in respiratory symptoms of an individual over the course of time (either through clinical examination or through a standardised questionnaire), used as an indicator of improvement or decay of respiratory function.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010070",
+   "label": "nerve conduction amplitude",
+   "definition": "Quantification of the amplitude of nerve conduction, often used to measure peripheral nerve function.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010075",
+   "label": "intertrochanteric region size",
+   "definition": "Quantification of the size of the intertrochanteric region of the femur.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010080",
+   "label": "geographic atrophy lesion growth",
+   "definition": "Quantification of the growth of geographic atrophy lesions, a symptom of late-stage age-related macular degeneration.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010088",
+   "label": "beverage consumption measurement",
+   "definition": "Quantification of some beverage consumption or beverage consumption-related behaviour, usually self-reported via a questionnaire.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010089",
+   "label": "bitter beverage consumption measurement",
+   "definition": "Quantification of some bitter beverage consumption or bitter beverage consumption-related behaviour, usually self-reported via a questionnaire.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010090",
+   "label": "sweet beverage consumption measurement",
+   "definition": "Quantification of some sweet beverage consumption or sweet beverage consumption-related behaviour, usually self-reported via a questionnaire.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010091",
+   "label": "tea consumption measurement",
+   "definition": "Quantification of some tea consumption or tea consumption-related behaviour, usually self-reported via a questionnaire.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010092",
+   "label": "bitter alcoholic beverage consumption measurement",
+   "definition": "Quantification of some bitter alcoholic beverage consumption or bitter alcoholic beverage consumption-related behaviour, usually self-reported via a questionnaire.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010093",
+   "label": "bitter non-alcoholic beverage consumption measurement",
+   "definition": "Quantification of some bitter non-alcoholic beverage consumption or bitter non-alcoholic beverage consumption-related behaviour, usually self-reported via a questionnaire.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010094",
+   "label": "grapefruit juice consumption measurement",
+   "definition": "Quantification of some grapefruit juice consumption or grapefruit juice consumption-related behaviour, usually self-reported via a questionnaire.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010095",
+   "label": "non-grapefruit juice consumption measurement",
+   "definition": "Quantification of some non-grapefruit juice consumption or non-grapefruit juice consumption-related behaviour, usually self-reported via a questionnaire.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010096",
+   "label": "artificially sweetened beverage consumption measurement",
+   "definition": "Quantification of some artificially sweetened beverage consumption or artificially sweetened beverage consumption-related behaviour, usually self-reported via a questionnaire.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010097",
+   "label": "sugar sweetened beverage consumption measurement",
+   "definition": "Quantification of some sugar sweetened beverage consumption or sugar sweetened beverage consumption-related behaviour, usually self-reported via a questionnaire.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010104",
+   "label": "health literacy measurement",
+   "definition": "A measurement of the degree to which individuals have the capacity to obtain, process, and understand basic health information and services needed to make appropriate health decisions.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010114",
+   "label": "citrate measurement",
+   "definition": "A quantification of citrate in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010116",
+   "label": "choline measurement",
+   "definition": "A quantification of choline in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010117",
+   "label": "pyruvate measurement",
+   "definition": "A quantification of pyruvate in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010130",
+   "label": "health study participation",
+   "definition": "Characteristic of an individual defined by their participation in a health study, e.g. by volunteering for or completing specific surveys, questionnaires or tasks.",
+   "synonyms": [
+    "health questionnaire participation",
+    "health survey participation"
+   ]
+  },
+  {
+   "item_id": "EFO:0010136",
+   "label": "urinary pH measurement",
+   "definition": "Quantification of pH of an organism, typically in urine or blood. This measures the degree of acidity or alkalinity.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010139",
+   "label": "fish consumption measurement",
+   "definition": "Quantification of some fish consumption or fish consumption-related behaviour, usually self-reported via a questionnaire.",
+   "synonyms": [
+    "fish intake measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0010140",
+   "label": "opioid overdose severity measurement",
+   "definition": "Quantification of the frequency and severity of overdoses as a result of opioid drug use in a person's lifetime.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010154",
+   "label": "platinum measurement",
+   "definition": "Quantification of platinum in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010155",
+   "label": "taste liking measurement",
+   "definition": "Quantification of an individual's appreciation of a taste.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010156",
+   "label": "sweet liking measurement",
+   "definition": "Quantification of an individual's appreciation of sweet.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010157",
+   "label": "sucrose liking measurement",
+   "definition": "Quantification of an individual's appreciation of sucrose.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010158",
+   "label": "sugar consumption measurement",
+   "definition": "Quantification of some aspect of sugar consumption such as frequency or quantity.",
+   "synonyms": [
+    "sugar intake measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0010162",
+   "label": "death in childhood",
+   "definition": "Death in during childhood, defined here as between the ages of 2 and 10 years.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010185",
+   "label": "single cell information",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010186",
+   "label": "single cell library information",
+   "definition": "Information about a single cell sequencing library.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010187",
+   "label": "end bias",
+   "definition": "The end of the nucleic acid molecule that is preferentially sequenced (bias in read distribution).",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010192",
+   "label": "primer",
+   "definition": "An oligonucleotide used to start the reaction in a polymerase-chain reaction.",
+   "synonyms": [
+    "oligonucleotide primer"
+   ]
+  },
+  {
+   "item_id": "EFO:0010193",
+   "label": "spike in",
+   "definition": "An RNA spike-in is an RNA transcript of known sequence and quantity used to calibrate measurements in RNA hybridization assays, such as DNA microarray experiments, RT-qPCR, and RNA-Seq.",
+   "synonyms": [
+    "RNA spike-in"
+   ]
+  },
+  {
+   "item_id": "EFO:0010194",
+   "label": "barcode",
+   "definition": "A barcode is a short known DNA sequence that is added during the library preparation in order to identify the origin of the read during data analysis. This enables for example the pooling and simultaneous sequencing of different samples (\"multiplexing\").",
+   "synonyms": [
+    "DNA barcode"
+   ]
+  },
+  {
+   "item_id": "EFO:0010195",
+   "label": "cDNA read",
+   "definition": "The sequencing read that contains the cDNA read.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010197",
+   "label": "single cell identifier",
+   "definition": "A unique identifier for a single cell specimen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010213",
+   "label": "single cell library construction protocol",
+   "definition": "A protocol describing the processes performed and equipment used to prepare a single cell nucleic acid sequencing library.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010214",
+   "label": "single cell isolation protocol",
+   "definition": "A protocol describing the equipment and procedure by which a single cell suspension is separated into individual cells in order to allow individual cell barcoding.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010217",
+   "label": "spike in dilution",
+   "definition": "Dilution factor of the RNA spike-in.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010220",
+   "label": "17-hydroxyprogesterone measurement",
+   "definition": "Quantification of the amount of 17-hydroxyprogesterone in a sample",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010221",
+   "label": "systemising measurement",
+   "definition": "Quantification of the drive to systemise, ie identifiy input-operation-output relationships in order to build, analyse or understand systems, typically quantified by administration of a standardised questionnaire such as the Systemising Quotient-Revised (SQ-R)",
+   "synonyms": [
+    "systemizing measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0010233",
+   "label": "genotoxic compound exposure measurement",
+   "definition": "Quantification of some aspect of exposure to genotoxic compounds, i.e. compounds that may cause DNA damage.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010234",
+   "label": "viral subtype carrier status",
+   "definition": "Quantification of the presence or absence of a particular viral subtype in an individual.",
+   "synonyms": [
+    "virus type carrier status"
+   ]
+  },
+  {
+   "item_id": "EFO:0010239",
+   "label": "cortisol:DHEAS ratio measurement",
+   "definition": "Quantification of the ratio of cortisol to dehydroepiandrosterone (DHEA) in a sample.",
+   "synonyms": [
+    "cortisol:dehydroepiandrosterone sulfate ratio measurement",
+    "cortisol:dehydroepiandrosterone sulphate ratio measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0010240",
+   "label": "dehydroepiandrosterone measurement",
+   "definition": "Quantification of the amount of dehydroepiandrosterone (DHEA) in a sample.",
+   "synonyms": [
+    "DHEA measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0010243",
+   "label": "inorganic ion measurement",
+   "definition": "Quantification of the amount of an inorganic ion, such as magnesium, iron or calcium, in a sample",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010244",
+   "label": "uveal melanoma disease severity",
+   "definition": "Quantification of the degree of severity of uveal melanoma, eg by TNM staging",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010245",
+   "label": "oxytocin measurement",
+   "definition": "Quantification of the amount of oxytocin in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010246",
+   "label": "recurrent",
+   "definition": "Episodes of disease that occur in individuals who have already had the disease.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010247",
+   "label": "incident",
+   "definition": "A disease that is observed as a new case within the study period.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010288",
+   "label": "brain density measurement",
+   "definition": "Quantification of the density of the brain.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010306",
+   "label": "Grey matter density measurement",
+   "definition": "Quantification of the density of the grey matter of the brain or part of the brain.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010339",
+   "label": "FVC change measurement",
+   "definition": "Quantification of the rate of change in forced vital capacity of an individual over the course of time, used as an indicator of improvement or decay of pulmonary function.",
+   "synonyms": [
+    "forced vital capacity change meaurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0010446",
+   "label": "2-hydroxyglutaric acid measurement",
+   "definition": "Quantification of 2-hydroxyglutaric acid levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010448",
+   "label": "3-hydroxyphenylacetic acid measurement",
+   "definition": "Quantification of 3-hydroxyphenylacetic acid levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010449",
+   "label": "3-methyladipic acid measurement",
+   "definition": "Quantification of 3-methyladipic acid levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010451",
+   "label": "aconitate measurement",
+   "definition": "Quantification of aconitate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010453",
+   "label": "adenosine measurement",
+   "definition": "Quantification of adenosine levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010456",
+   "label": "allantoin measurement",
+   "definition": "Quantification of allantoin levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010457",
+   "label": "Alpha ketoglutarate measurement",
+   "definition": "Quantification of alpha ketoglutarate levels in a sample.",
+   "synonyms": [
+    "alpha ketoglutaric acid"
+   ]
+  },
+  {
+   "item_id": "EFO:0010458",
+   "label": "alpha-hydroxybutyric acid measurement",
+   "definition": "Quantification of alpha-hydroxybutyric acid levels in a sample.",
+   "synonyms": [
+    "2-hydroxybutyric acid"
+   ]
+  },
+  {
+   "item_id": "EFO:0010460",
+   "label": "anthranilic acid measurement",
+   "definition": "Quantification of anthrallic acid levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010465",
+   "label": "beta-hydroxybutyric acid measurement",
+   "definition": "Quantification of beta-hydroxybutyric acid levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010466",
+   "label": "carboxamide measurement",
+   "definition": "Quantification of carboxamide levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010467",
+   "label": "carboxylic acid anion measurement",
+   "definition": "Quantification of carboxylic acid anion levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010468",
+   "label": "carboxylic acid measurement",
+   "definition": "Quantification of carboxylic acid levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010470",
+   "label": "carnosine measurement",
+   "definition": "Quantification of carnosine levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010471",
+   "label": "chenodeoxycholate measurement",
+   "definition": "Quantification of chenodeoxycholate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010474",
+   "label": "cystathionine measurement",
+   "definition": "Quantification of cystathionine levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010475",
+   "label": "deoxycholate measurement",
+   "definition": "Quantification of chenodeoxycholate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010477",
+   "label": "fructose measurement",
+   "definition": "Quantification of fructose levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010478",
+   "label": "fructose-1-phosphate measurement",
+   "definition": "Quantification of fructose-1-phosphate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010479",
+   "label": "fructose-6-phosphate measurement",
+   "definition": "Quantification of fructose-6-phosphate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010480",
+   "label": "fumarate measurement",
+   "definition": "Quantification of fumarate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010481",
+   "label": "galactose measurement",
+   "definition": "Quantification of galactose levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010483",
+   "label": "gentisic acid measurement",
+   "definition": "Quantification of gentisic acid levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010484",
+   "label": "glucose-1-phosphate measurement",
+   "definition": "Quantification of kglucose-1-phosphate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010485",
+   "label": "glucose-6-phosphate measurement",
+   "definition": "Quantification of glucose-6-phosphate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010486",
+   "label": "glucuronate measurement",
+   "definition": "Quantification of glucuronate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010488",
+   "label": "glycerol-3-phosphate measurement",
+   "definition": "Quantification of glycerol-3-phosphate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010489",
+   "label": "glycerophosphocholine measurement",
+   "definition": "Quantification of glycerophosphocholine levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010490",
+   "label": "glycochenodeoxycholate measurement",
+   "definition": "Quantification of glycochenodeoxycholate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010491",
+   "label": "glycocholate measurement",
+   "definition": "Quantification of glycocholate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010493",
+   "label": "glycodeoxycholate measurement",
+   "definition": "Quantification of glycodeoxycholate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010496",
+   "label": "hippuric acid measurement",
+   "definition": "Quantification of hippuric acid levels in a sample.",
+   "synonyms": []
+  }
+ ],
+ "answer_file": "batch_14.answer.json",
+ "answer_schema": {
+  "type": "object",
+  "required": [
+   "content_sha256",
+   "answers"
+  ],
+  "properties": {
+   "content_sha256": {
+    "type": "string"
+   },
+   "answers": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "item_id",
+      "aliases"
+     ],
+     "properties": {
+      "item_id": {
+       "type": "string"
+      },
+      "aliases": {
+       "type": "array",
+       "maxItems": 5,
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "content_sha256": "1dbb88f269918bac3dbb8b90a1c2ffcf1e7af4f589e68cdff9fa34683a485881"
+}

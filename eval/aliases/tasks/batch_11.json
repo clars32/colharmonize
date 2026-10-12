@@ -1,0 +1,818 @@
+{
+ "stage": "aliases",
+ "instructions": "Each item is an ontology term that a column of sample metadata in a gene\nexpression study can mean. Write up to 5 aliases for each term: other ways a\nresearcher would write that same variable as a column header in sample\nmetadata.\n\nGood aliases:\n- common abbreviations and acronyms (\"sbp\" for systolic blood pressure)\n- shorter everyday phrasings (\"systolic bp\", \"visual acuity\")\n- the plain name of the quantity when the term's label is wordy\n  (\"intraocular pressure\" for \"intraocular pressure measurement\")\n\nRules:\n- An alias must mean the same variable as the term: not a broader or narrower\n  one, and not a related one.\n- No values (\"male\", \"high\"), units on their own, gene or tool names, or\n  dataset-specific codes.\n- No alias that only rewords the label trivially (plural, case,\n  punctuation). Those are matched already.\n- Fewer is better than wrong. If a term has no natural alias, return an empty\n  list.\n\nExamples:\n- systolic blood pressure -> [\"sbp\", \"systolic bp\", \"systolic pressure\"]\n- intraocular pressure measurement -> [\"intraocular pressure\", \"iop\"]\n- visual acuity measurement -> [\"visual acuity\", \"va\"]\n",
+ "items": [
+  {
+   "item_id": "EFO:0008435",
+   "label": "gestational weight gain measurement",
+   "definition": "Quantification of the amount of weight gained by a woman during pregnancy.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008436",
+   "label": "late gestational weight gain",
+   "definition": "Quantification of the amount of weight gained by a woman during late pregnancy.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008437",
+   "label": "early gestational weight gain",
+   "definition": "Quantification of the amount of weight gained by a woman during early pregnancy.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008439",
+   "label": "single cell nucleic acid sequencing protocol",
+   "definition": "A protocol describing the processes performed and equipment used to determine the order of nucleotide bases in a nucleic acid sample from a single cell specimen",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008446",
+   "label": "platelet-to-lymphocyte ratio",
+   "definition": "The ratio of platelet count to lymphocyte count, quantified in a blood sample. Both neutrophil-to-lymphocyte ratio and platelet-to-lymphocyte ratio have been proposed as biomarkers for the diagnosis or prognostic prediction of disease.",
+   "synonyms": [
+    "platelet:lymphocyte ratio"
+   ]
+  },
+  {
+   "item_id": "EFO:0008447",
+   "label": "neutrophil-to-lymphocyte ratio",
+   "definition": "The ratio of neutrophil count to lymphocyte count, quantified in a blood sample. Both neutrophil-to-lymphocyte ratio and platelet-to-lymphocyte ratio have been proposed as biomarkers for the diagnosis or prognostic prediction of disease.",
+   "synonyms": [
+    "neutrophil:lymphocyte ratio"
+   ]
+  },
+  {
+   "item_id": "EFO:0008449",
+   "label": "magnesium:creatinine ratio measurement",
+   "definition": "quantification of the ratio of magnesium to creatinine in a sample, typically a urine sample, a proxy measure for Mg2+ homeostasis",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008450",
+   "label": "fractional excretion of magnesium measurement",
+   "definition": "quantification of fractional excretion of magnesium based on the calculation of serum and urinary levels of magneiusm and creatinine. Used as a marker of renal tubular function.",
+   "synonyms": [
+    "FEMg"
+   ]
+  },
+  {
+   "item_id": "EFO:0008451",
+   "label": "activities of daily living score measurement",
+   "definition": "quantification of ability to perform daily living activities independently. A proxy to assess functional status in the elderly.",
+   "synonyms": [
+    "ADL",
+    "Katz ADL index"
+   ]
+  },
+  {
+   "item_id": "EFO:0008452",
+   "label": "mid-arm muscle circumference measurement",
+   "definition": "quatification of the muscle circumference of the mid arm. A proxy for muscle mass of the arm.",
+   "synonyms": [
+    "MAMC"
+   ]
+  },
+  {
+   "item_id": "EFO:0008453",
+   "label": "calf circumference measurement",
+   "definition": "quatification of the muscle circumference of the calf. A proxy for muscle mass of the leg.",
+   "synonyms": [
+    "CC"
+   ]
+  },
+  {
+   "item_id": "EFO:0008454",
+   "label": "short physical performance battery score measurement",
+   "definition": "quantification of physical performance. A proxy to assess lower extremity function in the elderly.",
+   "synonyms": [
+    "SPPB"
+   ]
+  },
+  {
+   "item_id": "EFO:0008455",
+   "label": "sleep apnea measurement during REM sleep",
+   "definition": "A pause in breathing or shallow breaths during REM sleep.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008456",
+   "label": "sleep apnea measurement during non-REM sleep",
+   "definition": "A pause in breathing or shallow breaths during non-REM sleep.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008458",
+   "label": "tacrolimus measurement",
+   "definition": "Quantification of the amount of tacrolimus in a sample.  Tacrolimus (TAC) is a common immunosuppressive agent that potently inhibits T-cell function and proliferation through inhibition of calcineurin by binding to FKB12.",
+   "synonyms": [
+    "tacrolimus hydrate measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0008460",
+   "label": "colorectal health",
+   "definition": "The characteristics of a person\u2019s colorectal health, assessed for example by colonoscopy.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008463",
+   "label": "glucagon measurement",
+   "definition": "The quantification of glucagon, a hormone involved in glucose homeostasis.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008464",
+   "label": "glucose-dependent insulinotropic peptide measurement",
+   "definition": "The quantification of glucose-dependent insulinotropic peptide, an incretin hormone secreted in response to nutrient stimulation that acts to increase insulin secretion.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008465",
+   "label": "glucagon-like peptide-1 measurement",
+   "definition": "The quantification of glucagon-like peptide 1, an incretin hormone secreted in response to nutrient stimulation that acts to increase insulin secretion.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008468",
+   "label": "midregional pro atrial natriuretic peptide measurement",
+   "definition": "Quantification of the levels of midregional pro atrial natriuretic peptide.",
+   "synonyms": [
+    "MR-proANP"
+   ]
+  },
+  {
+   "item_id": "EFO:0008469",
+   "label": "B-type natriuretic peptide to N-terminal pro B-type natriuretic peptide ratio",
+   "definition": "Quantification of the ratio of B-type natriuretic levels to N-terminal pro B-type natriuretic peptide levels.",
+   "synonyms": [
+    "BNP:NT-proBNP ratio"
+   ]
+  },
+  {
+   "item_id": "EFO:0008470",
+   "label": "dietary potassium intake measurement",
+   "definition": "Quatification of dietary potassium intake by measuring 24 hr urinary potassium levels.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008471",
+   "label": "cardiac stress biomarker measurement",
+   "definition": "A measurement of some protein which is used as a measure of heart failure.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008473",
+   "label": "insulin response measurement",
+   "definition": "Quantification of some aspect of insulin response, typically measuring insulin levels in the blood following a glucose challenge",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008487",
+   "label": "lateral ventricle volume measurement",
+   "definition": "Quantification of the volume of the lateral ventricle, the largest cavity of the ventricular system of the human brain which contains cerebrospinal fluid (CSF).",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008513",
+   "label": "morphologic finding",
+   "definition": "A light microscopic finding that describes the cellular characteristics and architectural patterns of cell populations in a tissue sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008529",
+   "label": "kynurenine measurement",
+   "definition": "Quatification of plasma levels of kynurenine, a ketone that is alanine in which one of the methyl hydrogens is substituted by a 2-aminobenzoyl group.",
+   "synonyms": [
+    "KYN"
+   ]
+  },
+  {
+   "item_id": "EFO:0008530",
+   "label": "kynurenine:tryptophan ratio",
+   "definition": "Quantification of the ration of kynurenine to tryptophan in plasma.",
+   "synonyms": [
+    "KYN:TRP"
+   ]
+  },
+  {
+   "item_id": "EFO:0008531",
+   "label": "GLP-1-stimulated insulin response",
+   "definition": "Quantification of insulin release in response to stimulation with GLP-1, typically measured under hyperglycemic clamp.",
+   "synonyms": [
+    "glucagon-like-peptide-1-stimulated insulin response"
+   ]
+  },
+  {
+   "item_id": "EFO:0008534",
+   "label": "tryptophan measurement",
+   "definition": "Quantification of the levels of tryptophan in a sample, typically cerebrospinal fluid or blood",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008539",
+   "label": "vitamin D dietary intake measurement",
+   "definition": "Quantification of dietary vitamin D intake.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008542",
+   "label": "complement C3d subcomponent measurement",
+   "definition": "Quantification of the amount of complement C3d subcomponent in a blood sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008543",
+   "label": "c3d:C3 ratio",
+   "definition": "Quantification of the ratio of complement C3d to C3 in a blood sample. This measure is a biomarker for systemic complement activation.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008544",
+   "label": "analgesia requirement measurement",
+   "definition": "Quantification of the amount of analgesic drug required during a painful procedure such as surgery.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008591",
+   "label": "free cholesterol measurement",
+   "definition": "Quantification of the amount of free cholesterol in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008595",
+   "label": "intermediate density lipoprotein measurement",
+   "definition": "Quantification of the amount of intermediate density lipoprotein in a sample.",
+   "synonyms": [
+    "IDL measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0009088",
+   "label": "dissociation protocol",
+   "definition": "Describes the procedure by which a biological specimen is dissociated into individual cells or a cell suspension",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009089",
+   "label": "enrichment protocol",
+   "definition": "Describes the procedure by which the concentration of an entity of interest in a sample is increased.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009095",
+   "label": "psychological measurement",
+   "definition": "A measurement of some aspect of human psychology.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009096",
+   "label": "negative domain measurement",
+   "definition": "A measurement of some aspect of psychological negative valence systems e.g. those responsible for responses to aversive situations or context, such as fear, anxiety and loss",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009097",
+   "label": "positive domain measurement",
+   "definition": "A measurement of some aspect of psychological positive valence systems e.g. those responsible for responses to positive motivational situations or contexts, such as reward seeking, consummatory behavior, and reward/habit learning.  Based on the NIH NIMH's research domain criteria (RDoC).  https://ww",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009098",
+   "label": "cognitive domain measurement",
+   "definition": "A measurement of some aspect of cognitive systems e.g. those responsible for various cognitive processes.  Based on the NIH NIMH's research domain criteria (RDoC).  https://www.nimh.nih.gov/research-priorities/rdoc/definitions-of-the-rdoc-domains-and-constructs.shtml",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009099",
+   "label": "arousal domain measurement",
+   "definition": "A measurement of some aspect of psychological arousal/regulatory systems e.g. those responsible for generating activation of neural systems as appropriate for various contexts, and providing appropriate homeostatic regulation of such systems as energy balance and sleep.  Based on the NIH NIMH's rese",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009100",
+   "label": "social domain measurement",
+   "definition": "A measurement of some aspect of psychological systems for social processes e.g. those that mediate responses in interpersonal settings of various types, including perception and interpretation of others\u2019 actions.  Based on the NIH NIMH's research domain criteria (RDoC).  https://www.nimh.nih.gov/res",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009101",
+   "label": "age at first birth measurement",
+   "definition": "A measurement of the age at which a woman gave birth to her first live child",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009102",
+   "label": "number of children ever born measurement",
+   "definition": "A measurement of the number of children born",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009103",
+   "label": "theory of mind measurement",
+   "definition": "Quantification of theory of mind ability, defined as the ability to attribute mental states to one self and others and to use such mental state attribution to make sense of behaviour and predict it. Theory of mind can be quantified using the Emotional Triangles Task test (\"Triangles task\").",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009105",
+   "label": "high altitude adaptation",
+   "definition": "Evolutionary modification in certain human populations who have acquired the ability to survive at extremely high altitudes. This adaptation means irreversible, long-term physiological responses to high-altitude environments, associated with heritable behavioural and genetic changes.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009113",
+   "label": "alcohol exposure measurement",
+   "definition": "Quantification of some aspect of alcohol exposure.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009114",
+   "label": "in utero exposure measurement",
+   "definition": "Quantification of some aspect of the exposure of a fetus to an agent while in the womb.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009115",
+   "label": "tobacco smoke exposure measurement",
+   "definition": "Quantification of some aspect of tobacco smoke exposure.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009116",
+   "label": "vitamin supplement exposure measurement",
+   "definition": "Quantification of some aspect of the consumption of dietry vitamin supplements.",
+   "synonyms": [
+    "vitamin use exposure measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0009132",
+   "label": "cholesterol efflux capacity measurement",
+   "definition": "Quantification of cholesterol efflux capacity, a measure of HDL functionality that quantifies the ability of an individual\u2019s HDL to extract cholesterol from cholesterol-loaded macrophages. Efflux capacity is considered to be a predictor of atherosclerotic burden.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009133",
+   "label": "cholesteryl ester transfer protein measurement",
+   "definition": "Quantification of the amount of cholestryl ester transfer protein in a sample, typically serum.",
+   "synonyms": [
+    "CETP",
+    "plasma lipid transfer protein measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0009134",
+   "label": "trimethyllysine measurement",
+   "definition": "Quantification of trimethyllysine (N6,N6,N6-trimethyl-L-lysine) in the blood.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009171",
+   "label": "blood group--lutheran inhibitor",
+   "definition": "The Lutheran inhibitor blood group phenotype (In(Lu)) is characterized phenotypically by the apparent absence of the Lu antigen (BCAM) on red blood cells during serologic tests, i.e., Lu(a-b-). Phenotype results from a mutation in the transcription factor KLF1 that regulates expression of the BCAM g",
+   "synonyms": [
+    "In(Lu)",
+    "dominant Lu(a-b-) phenotype"
+   ]
+  },
+  {
+   "item_id": "EFO:0009176",
+   "label": "adrenal suppression measurement",
+   "definition": "Quantification of the suppression of adrenal gland function, typically following stimulation with adrenocorticotrophic hormone or a synthetic equivalent. Adrenal suppression may occur as a result of primary hypoadrenalism, or secondary to a number of other conditions including tuberculosis, or chron",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009177",
+   "label": "myopic maculopathy severity measurement",
+   "definition": "Quantification of the severity of myopic maculopathy",
+   "synonyms": [
+    "myopic macular degeneration severity measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0009180",
+   "label": "rosacea severity measurement",
+   "definition": "Quantification of the severity of rosacea symptoms, based on a survey of facial, nose and ocular sympoms related to rosacea, a chronic inflammatory skin disease.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009183",
+   "label": "empathy measurement",
+   "definition": "Quantification of some aspect of empathy, i.e. the ability to understand and share another person's experiences and emotions",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009184",
+   "label": "heart rate response to exercise",
+   "definition": "Quantification of  heart rate during exercise.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009185",
+   "label": "heart rate response to recovery post exercise",
+   "definition": "Quantification of heart rate during a recovery period following exercise.",
+   "synonyms": [
+    "heart rate recovery post exercise"
+   ]
+  },
+  {
+   "item_id": "EFO:0009186",
+   "label": "platelet larger cell ratio",
+   "definition": "Indicator of larger (> 12 fL) circulating platelets (percentage).",
+   "synonyms": [
+    "P-LCR",
+    "Platelet larger cell ratio",
+    "platelet larger cell ratio (P-LCR)"
+   ]
+  },
+  {
+   "item_id": "EFO:0009188",
+   "label": "Red cell distribution width",
+   "definition": "Red blood cell distribution width (RDW or RDW-CV or RCDW and RDW-SD) is a measure of the range of variation of red blood cell (RBC) volume that is reported as part of a standard complete blood count. Usually red blood cells are a standard size of about 6-8 \u03bcm in diameter. Certain disorders, however,",
+   "synonyms": [
+    "Erythrocyte Distribution Width Measurement",
+    "RCDW",
+    "RDW",
+    "RDW-CV",
+    "RDW-SD",
+    "Red blood cell erythrocyte distribution width",
+    "Red cell distribution width (RDW) blood test"
+   ]
+  },
+  {
+   "item_id": "EFO:0009202",
+   "label": "Reticulocyte Mean Corpuscular Hemoglobin Measurement",
+   "definition": "The determination of the mean amount of hemoglobin per reticulocyte present in a sample. [ NCI ]",
+   "synonyms": [
+    "CHr",
+    "High light scatter reticulocyte percentage",
+    "Measurement of reticulocyte haemoglobin",
+    "reticulocyte haemoglobin measurement",
+    "reticulocyte hemoglobin content (CHr)"
+   ]
+  },
+  {
+   "item_id": "EFO:0009203",
+   "label": "Carboxyhemoglobin to Total Hemoglobin Ratio Measurement",
+   "definition": "The determination of the ratio of carboxyhemoglobin compared to total hemoglobin present in a sample. The measurement may be expressed as a ratio or percentage. [ NCI ]",
+   "synonyms": [
+    "Carboxyhemoglobin/Total Hemoglobin",
+    "HBCOHGB"
+   ]
+  },
+  {
+   "item_id": "EFO:0009204",
+   "label": "Corpuscular Hemoglobin Concentration Distribution Width",
+   "definition": "A measurement of the standard deviation of hemoglobin concentrations in individual red blood cells, calculated as the standard deviation of hemoglobin content divided by the mean hemoglobin content. [ NCI ]",
+   "synonyms": [
+    "CHDW",
+    "Corpuscular HGB Conc Distribution Width",
+    "Erythrocyte Corpuscular Hemoglobin Concentration Distribution Width"
+   ]
+  },
+  {
+   "item_id": "EFO:0009206",
+   "label": "Free Hemoglobin Measurement",
+   "definition": "The determination of the amount of free hemoglobin present in a sample. [ NCI ]",
+   "synonyms": [
+    "HGBFR",
+    "Hemoglobin, Free"
+   ]
+  },
+  {
+   "item_id": "EFO:0009208",
+   "label": "Hemoglobin A Measurement",
+   "definition": "The determination of the amount of hemoglobin A present in a sample. [ NCI ]",
+   "synonyms": [
+    "HGBA",
+    "Hemoglobin A"
+   ]
+  },
+  {
+   "item_id": "EFO:0009209",
+   "label": "Hemoglobin A to Total Hemoglobin Ratio Measurement",
+   "definition": "The determination of the ratio of Hemoglobin A compared to total Hemoglobin present in a sample. The measurement may be expressed as a ratio or percentage. [ NCI ]",
+   "synonyms": [
+    "HGBAHGB",
+    "Hemoglobin A/Total Hemoglobin",
+    "Percent Hemoglobin A"
+   ]
+  },
+  {
+   "item_id": "EFO:0009210",
+   "label": "Hemoglobin A1 to Total Hemoglobin Ratio Measurement",
+   "definition": "The determination of the ratio of hemoglobin A1 compared to total hemoglobin present in a sample. The measurement may be expressed as a ratio or percentage. [ NCI ]",
+   "synonyms": [
+    "HGBA1HGB",
+    "Hemoglobin A1/Total Hemoglobin"
+   ]
+  },
+  {
+   "item_id": "EFO:0009211",
+   "label": "Hemoglobin A2 Prime to Total Hemoglobin Ratio Measurement",
+   "definition": "The determination of the ratio of hemoglobin A2 prime compared to total hemoglobin present in a sample. The measurement may be expressed as a ratio or percentage. [ NCI ]",
+   "synonyms": [
+    "HBA2PHB",
+    "Hemoglobin A2 Prime/Total Hemoglobin"
+   ]
+  },
+  {
+   "item_id": "EFO:0009212",
+   "label": "Hemoglobin A2 to Total Hemoglobin Ratio Measurement",
+   "definition": "The determination of the ratio of Hemoglobin A2 compared to total Hemoglobin present in a sample. The measurement may be expressed as a ratio or percentage. [ NCI ]",
+   "synonyms": [
+    "HGBA2HGB",
+    "Hemoglobin A2/Total Hemoglobin",
+    "Percent Hemoglobin A2"
+   ]
+  },
+  {
+   "item_id": "EFO:0009213",
+   "label": "Hemoglobin B Measurement",
+   "definition": "The determination of the amount of hemoglobin B present in a sample. [ NCI ]",
+   "synonyms": [
+    "HGBB",
+    "Hemoglobin B"
+   ]
+  },
+  {
+   "item_id": "EFO:0009214",
+   "label": "Hemoglobin Barts to Total Hemoglobin Ratio Measurement",
+   "definition": "The determination of the ratio of hemoglobin Barts compared to total hemoglobin present in a sample. The measurement may be expressed as a ratio or percentage. [ NCI ]",
+   "synonyms": [
+    "HBBARTHB",
+    "Hemoglobin Barts/Total Hemoglobin"
+   ]
+  },
+  {
+   "item_id": "EFO:0009215",
+   "label": "Hemoglobin C Measurement",
+   "definition": "The determination of the amount of hemoglobin C present in a sample. [ NCI ]",
+   "synonyms": [
+    "HGBC",
+    "Hemoglobin C",
+    "Measurement of Hemoglobin C"
+   ]
+  },
+  {
+   "item_id": "EFO:0009216",
+   "label": "Hemoglobin C to Total Hemoglobin Ratio Measurement",
+   "definition": "The determination of the ratio of Hemoglobin C compared to total Hemoglobin present in a sample. The measurement may be expressed as a ratio or percentage. [ NCI ]",
+   "synonyms": [
+    "HGBCHGB",
+    "Hemoglobin C/Total Hemoglobin",
+    "Percent Hemoglobin C"
+   ]
+  },
+  {
+   "item_id": "EFO:0009217",
+   "label": "Hemoglobin D to Total Hemoglobin Ratio Measurement",
+   "definition": "The determination of the ratio of hemoglobin D compared to total hemoglobin present in a sample. The measurement may be expressed as a ratio or percentage. [ NCI ]",
+   "synonyms": [
+    "HGBDHGB",
+    "Hemoglobin D/Total Hemoglobin"
+   ]
+  },
+  {
+   "item_id": "EFO:0009218",
+   "label": "Hemoglobin E to Total Hemoglobin Ratio Measurement",
+   "definition": "The determination of the ratio of hemoglobin E compared to total hemoglobin present in a sample. The measurement may be expressed as a ratio or percentage. [ NCI ]",
+   "synonyms": [
+    "HGBEHGB",
+    "Hemoglobin E/Total Hemoglobin"
+   ]
+  },
+  {
+   "item_id": "EFO:0009219",
+   "label": "Hemoglobin F to Total Hemoglobin Ratio Measurement",
+   "definition": "The determination of the ratio of hemoglobin F compared to total hemoglobin present in a sample. The measurement may be expressed as a ratio or percentage. [ NCI ]",
+   "synonyms": [
+    "HGBFHGB",
+    "Hemoglobin F/Total Hemoglobin"
+   ]
+  },
+  {
+   "item_id": "EFO:0009220",
+   "label": "Hemoglobin G Coushatta to Total Hemoglobin Ratio Measurement",
+   "definition": "The determination of the ratio of hemoglobin G compared to total hemoglobin present in a sample. The measurement may be expressed as a ratio or percentage. [ NCI ]",
+   "synonyms": [
+    "HBGCHTHB",
+    "Hemoglobin G Coushatta/Total Hemoglobin"
+   ]
+  },
+  {
+   "item_id": "EFO:0009221",
+   "label": "Hemoglobin Lepore to Total Hemoglobin Ratio Measurement",
+   "definition": "The determination of the ratio of hemoglobin Lepore compared to total hemoglobin present in a sample. The measurement may be expressed as a ratio or percentage. [ NCI ]",
+   "synonyms": [
+    "HBLEPRHB",
+    "Hemoglobin Lepore/Total Hemoglobin"
+   ]
+  },
+  {
+   "item_id": "EFO:0009222",
+   "label": "Hemoglobin O-Arab to Total Hemoglobin Ratio Measurement",
+   "definition": "The determination of the ratio of hemoglobin O-Arab compared to total hemoglobin present in a sample. The measurement may be expressed as a ratio or percentage. [ NCI ]",
+   "synonyms": [
+    "HBOARBHB",
+    "Hemoglobin O-Arab/Total Hemoglobin"
+   ]
+  },
+  {
+   "item_id": "EFO:0009223",
+   "label": "Hemoglobin S Measurement",
+   "definition": "The determination of the amount of hemoglobin S present in a sample. [ NCI ]",
+   "synonyms": [
+    "HGBS",
+    "Hemoglobin S",
+    "Sickle Hemoglobin"
+   ]
+  },
+  {
+   "item_id": "EFO:0009224",
+   "label": "Hemoglobin S to Total Hemoglobin Ratio Measurement",
+   "definition": "The determination of the ratio of Hemoglobin S compared to total Hemoglobin present in a sample. The measurement may be expressed as a ratio or percentage. [ NCI ]",
+   "synonyms": [
+    "HGBSHGB",
+    "Hemoglobin S Measurement",
+    "Hemoglobin S/Total Hemoglobin",
+    "Percent Hemoglobin S"
+   ]
+  },
+  {
+   "item_id": "EFO:0009225",
+   "label": "Hemoglobin Tetramer Measurement",
+   "definition": "The determination of the amount of hemoglobin tetramer in a biological sample. [ NCI ]",
+   "synonyms": [
+    "HGBTET",
+    "Hemoglobin Tetramer"
+   ]
+  },
+  {
+   "item_id": "EFO:0009226",
+   "label": "Methemoglobin to Total Hemoglobin Ratio Measurement",
+   "definition": "The determination of the ratio of methemoglobin compared to total hemoglobin present in a sample. The measurement may be expressed as a ratio or percentage. [ NCI ]",
+   "synonyms": [
+    "HGBMHGB",
+    "Methemoglobin/Total Hemoglobin"
+   ]
+  },
+  {
+   "item_id": "EFO:0009227",
+   "label": "Oxyhemoglobin to Total Hemoglobin Ratio Measurement",
+   "definition": "The determination of the ratio of oxyhemoglobin compared to total hemoglobin present in a sample. The measurement may be expressed as a ratio or percentage. [ NCI ]",
+   "synonyms": [
+    "HBOXHGB",
+    "Oxyhemoglobin/Total Hemoglobin"
+   ]
+  },
+  {
+   "item_id": "EFO:0009228",
+   "label": "Reticulocyte Corpuscular Hemoglobin Concentration Mean",
+   "definition": "An indirect measurement of the average concentration of hemoglobin per reticulocyte in a biological specimen, calculated as the ratio of hemoglobin to hematocrit. [ NCI ]",
+   "synonyms": [
+    "CHCMR",
+    "CHCMr",
+    "Ret. Corpuscular HGB Concentration Mean"
+   ]
+  },
+  {
+   "item_id": "EFO:0009229",
+   "label": "Reticulocyte Corpuscular Hemoglobin Content",
+   "definition": "The determination of the amount of hemoglobin in reticulocytes within a sample. [ NCI ]",
+   "synonyms": [
+    "CHr",
+    "RETICH",
+    "Ret. Corpuscular Hemoglobin Content",
+    "Reticulocyte Cellular Hemoglobin Content",
+    "Total Reticulocyte Corpuscular Hemoglobin Content Measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0009230",
+   "label": "Reticulocyte Corpuscular Hemoglobin Distribution Width",
+   "definition": "A measurement of the standard deviation of hemoglobin concentrations in reticulocytes, calculated as the standard deviation of hemoglobin content divided by the mean hemoglobin content. [ NCI ]",
+   "synonyms": [
+    "CHDWR",
+    "Ret Corpuscular HGB Conc Distr Width"
+   ]
+  },
+  {
+   "item_id": "EFO:0009232",
+   "label": "Blast Count",
+   "definition": "The determination of the number of blast cells present in a blood sample. [ NCI ]",
+   "synonyms": [
+    "BLAST",
+    "Blasts"
+   ]
+  },
+  {
+   "item_id": "EFO:0009233",
+   "label": "Blood Cell Count Ratio Measurement",
+   "definition": "The determination of the ratio of one blood cell component lto another in a blood sample. The measurement may be expressed as either a ratio or a percentage. [ NCI ]",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009234",
+   "label": "Blood Cell Count with Differential",
+   "definition": "A hematologic procedure to determine the number of red blood cells, white blood cells, and platelets, including the white cell differential count and red cell morphology, in a blood sample. [ NCI ]",
+   "synonyms": [
+    "CBC with Diff"
+   ]
+  },
+  {
+   "item_id": "EFO:0009235",
+   "label": "Eosinophilic Metamyelocyte Count",
+   "definition": "The determination of the number of eosinophilic metamyelocytes in a blood sample. [ NCI ]",
+   "synonyms": [
+    "EOSMM",
+    "Eosinophilic Metamyelocytes"
+   ]
+  },
+  {
+   "item_id": "EFO:0009236",
+   "label": "Eosinophilic Myelocyte Count",
+   "definition": "The determination of the number of eosinophilic myelocytes in a blood sample. [ NCI ]",
+   "synonyms": [
+    "EOSMYL",
+    "Eosinophilic Myelocytes"
+   ]
+  },
+  {
+   "item_id": "EFO:0009237",
+   "label": "Estimated Platelets Measurement",
+   "definition": "The estimated amount of platelets in a biological sample. [ NCI ]",
+   "synonyms": [
+    "Estimated",
+    "PLATEST",
+    "Platelets"
+   ]
+  },
+  {
+   "item_id": "EFO:0009240",
+   "label": "Metarubricyte Count",
+   "definition": "The determination of the amount of metarubricytes present in a sample. [ NCI ]",
+   "synonyms": [
+    "METARUB",
+    "Metarubricyte",
+    "Orthochromatophilic Normoblast",
+    "Orthochromic Erythroblast",
+    "Orthochromic Normoblast"
+   ]
+  },
+  {
+   "item_id": "EFO:0009241",
+   "label": "Monocytoid Cells to Leukocytes Ratio Measurement",
+   "definition": "The determination of the ratio of monocytoid cells compared to leukocytes present in a sample. The measurement may be expressed as a ratio or percentage. [ NCI ]",
+   "synonyms": [
+    "MOCYCELE",
+    "Monocytoid Cells/Leukocytes"
+   ]
+  },
+  {
+   "item_id": "EFO:0009242",
+   "label": "Myeloid Progenitor Cell Count",
+   "definition": "The determination of the number of myeloid progenitor cells in a sample. [ NCI ]",
+   "synonyms": [
+    "MYPC",
+    "Myeloid Progenitor Cells"
+   ]
+  }
+ ],
+ "answer_file": "batch_11.answer.json",
+ "answer_schema": {
+  "type": "object",
+  "required": [
+   "content_sha256",
+   "answers"
+  ],
+  "properties": {
+   "content_sha256": {
+    "type": "string"
+   },
+   "answers": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "item_id",
+      "aliases"
+     ],
+     "properties": {
+      "item_id": {
+       "type": "string"
+      },
+      "aliases": {
+       "type": "array",
+       "maxItems": 5,
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "content_sha256": "16a6f0c0e6b889f0d2225c96b1557d9ae431af98ed91dc25b9323fd47ef849d2"
+}

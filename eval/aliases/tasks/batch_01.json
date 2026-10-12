@@ -1,0 +1,681 @@
+{
+ "stage": "aliases",
+ "instructions": "Each item is an ontology term that a column of sample metadata in a gene\nexpression study can mean. Write up to 5 aliases for each term: other ways a\nresearcher would write that same variable as a column header in sample\nmetadata.\n\nGood aliases:\n- common abbreviations and acronyms (\"sbp\" for systolic blood pressure)\n- shorter everyday phrasings (\"systolic bp\", \"visual acuity\")\n- the plain name of the quantity when the term's label is wordy\n  (\"intraocular pressure\" for \"intraocular pressure measurement\")\n\nRules:\n- An alias must mean the same variable as the term: not a broader or narrower\n  one, and not a related one.\n- No values (\"male\", \"high\"), units on their own, gene or tool names, or\n  dataset-specific codes.\n- No alias that only rewords the label trivially (plural, case,\n  punctuation). Those are matched already.\n- Fewer is better than wrong. If a term has no natural alias, return an empty\n  list.\n\nExamples:\n- systolic blood pressure -> [\"sbp\", \"systolic bp\", \"systolic pressure\"]\n- intraocular pressure measurement -> [\"intraocular pressure\", \"iop\"]\n- visual acuity measurement -> [\"visual acuity\", \"va\"]\n",
+ "items": [
+  {
+   "item_id": "CHEBI:22333",
+   "label": "alkylating agent",
+   "definition": "Highly reactive chemical that introduces alkyl radicals into biologically active molecules and thereby prevents their proper functioning. It could be used as an antineoplastic agent, but it might be very toxic, with carcinogenic, mutagenic, teratogenic, and immunosuppressant actions. It could also b",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:22586",
+   "label": "antioxidant",
+   "definition": "A substance that opposes oxidation or inhibits reactions brought about by dioxygen or peroxides.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:22587",
+   "label": "antiviral agent",
+   "definition": "A substance that destroys or inhibits replication of viruses.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:22917",
+   "label": "phytogenic insecticide",
+   "definition": "An insecticide compound naturally occurring in plants.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:23366",
+   "label": "compatible osmolytes",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:23888",
+   "label": "drug",
+   "definition": "Any substance which when absorbed into a living organism may modify one or more of its functions. The term is generally accepted for a substance taken for a therapeutic purpose, but is also commonly used for abused substances.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:23924",
+   "label": "enzyme inhibitor",
+   "definition": "A compound or agent that combines with an enzyme in such a manner as to prevent the normal substrate-enzyme combination and the catalytic reaction.",
+   "synonyms": [
+    "enzyme inhibitor"
+   ]
+  },
+  {
+   "item_id": "CHEBI:24127",
+   "label": "fungicide",
+   "definition": "A substance used to destroy fungal pests.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:24432",
+   "label": "biological role",
+   "definition": "A role played by the molecular entity or part thereof within a biological context.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:24527",
+   "label": "herbicide",
+   "definition": "A substance used to destroy plant pests.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:24852",
+   "label": "insecticide",
+   "definition": "Strictly, a substance intended to kill members of the class <em>Insecta</em>.  In common usage, any substance used for preventing, destroying, repelling or controlling insects.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:25435",
+   "label": "mutagen",
+   "definition": "An agent that increases the frequency of mutations above the normal background level, usually by interacting directly with DNA and causing it damage, including base substitution.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:26155",
+   "label": "plant growth regulator",
+   "definition": "A chemical, natural or artificial, that can affect the rate of growth of a plant.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:27026",
+   "label": "toxin",
+   "definition": "Poisonous substance produced by a biological organism such as a microbe, animal or plant.",
+   "synonyms": [
+    "toxin"
+   ]
+  },
+  {
+   "item_id": "CHEBI:27027",
+   "label": "micronutrient",
+   "definition": "Any nutrient required in small quantities by organisms throughout their life in order to orchestrate a range of physiological functions.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:27780",
+   "label": "detergent",
+   "definition": "A surfactant (or a mixture containing one or more surfactants) having cleaning properties in dilute solutions.",
+   "synonyms": [
+    "detergent"
+   ]
+  },
+  {
+   "item_id": "CHEBI:33229",
+   "label": "vitamin (role)",
+   "definition": "A biochemical role played by any micronutrient that is an organic compound. Vitamins are present in foods in small amounts and are essential to normal metabolism and biochemical functions, usually as coenzymes. The term \"vitamines\" (from <em>vita</em> + amines) was coined in 1912 by Casimir Funk, wh",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:33232",
+   "label": "application",
+   "definition": "Intended use of the molecular entity or part thereof by humans.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:33286",
+   "label": "agrochemical",
+   "definition": "An agrochemical is a substance that is used in agriculture or horticulture.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:33287",
+   "label": "fertilizer",
+   "definition": "A fertilizer is any substance that is added to soil or water to assist the growth of plants.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:33295",
+   "label": "diagnostic agent",
+   "definition": "A substance administered to aid diagnosis of a disease.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:35195",
+   "label": "surfactant",
+   "definition": "A substance which lowers the surface tension of the medium in which it is dissolved, and/or the interfacial tension with other phases, and, accordingly, is positively adsorbed at the liquid/vapour and/or at other interfaces.",
+   "synonyms": [
+    "surfactant"
+   ]
+  },
+  {
+   "item_id": "CHEBI:35219",
+   "label": "plant growth retardant",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:35221",
+   "label": "antimetabolite",
+   "definition": "A substance which is structurally similar to a metabolite but which competes with it or replaces it, and so prevents or reduces its normal utilization.",
+   "synonyms": [
+    "antimetabolite"
+   ]
+  },
+  {
+   "item_id": "CHEBI:35222",
+   "label": "inhibitor",
+   "definition": "A substance that diminishes the rate of a chemical reaction.",
+   "synonyms": [
+    "inhibitor"
+   ]
+  },
+  {
+   "item_id": "CHEBI:35225",
+   "label": "buffer",
+   "definition": "Any substance or mixture of substances that, in solution (typically aqueous), resists change in pH upon addition of small amounts of acid or base.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:35444",
+   "label": "antinematodal drug",
+   "definition": "A substance used in the treatment or control of nematode infestations.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:35469",
+   "label": "antidepressant",
+   "definition": "Antidepressants are mood-stimulating drugs used primarily in the treatment of affective disorders and related conditions.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:35472",
+   "label": "anti-inflammatory drug",
+   "definition": "A substance that reduces or suppresses inflammation.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:35476",
+   "label": "antipsychotic agent",
+   "definition": "Antipsychotic drugs are agents that control agitated psychotic behaviour, alleviate acute psychotic states, reduce psychotic symptoms, and exert a quieting effect.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:35477",
+   "label": "antimanic drug",
+   "definition": "Antimanic drugs are agents used to treat bipolar disorders or mania associated with other affective disorders.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:35481",
+   "label": "non-narcotic analgesic",
+   "definition": "A drug that has principally analgesic, antipyretic and anti-inflammatory actions. Non-narcotic analgesics do not bind to opioid receptors.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:35482",
+   "label": "opioid analgesic",
+   "definition": "A narcotic or opioid substance, synthetic or semisynthetic agent producing profound analgesia, drowsiness, and changes in mood.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:35493",
+   "label": "antipyretic",
+   "definition": "A drug that prevents or reduces fever by lowering the body temperature from a raised state. An antipyretic will not affect the normal body temperature if one does not have fever. Antipyretics cause the hypothalamus to override an interleukin-induced increase in temperature. The body will then work t",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:35522",
+   "label": "beta-adrenergic agonist",
+   "definition": "An agent that selectively binds to and activates \u03b2-adrenergic receptors.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:35526",
+   "label": "hypoglycemic agent",
+   "definition": "A drug which lowers the blood glucose level.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:35554",
+   "label": "cardiovascular drug",
+   "definition": "A drug that affects the rate or intensity of cardiac contraction, blood vessel diameter or blood volume.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:35610",
+   "label": "antineoplastic agent",
+   "definition": "A substance that inhibits or prevents the proliferation of neoplasms.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:35623",
+   "label": "anticonvulsant",
+   "definition": "A drug used to prevent seizures or reduce their severity.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:35640",
+   "label": "adrenergic uptake inhibitor",
+   "definition": "Adrenergic uptake inhibitors are drugs that block the transport of adrenergic transmitters into axon terminals or into storage vesicles within terminals. The tricyclic antidepressants and amphetamines are among the therapeutically important drugs that may act via inhibition of adrenergic transport. ",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:35679",
+   "label": "antilipemic drug",
+   "definition": "A substance used to treat hyperlipidemia (an excess of lipids in the blood).",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:35703",
+   "label": "xenobiotic",
+   "definition": "A xenobiotic (Greek, <em>xenos</em> \"foreign\"; <em>bios</em> \"life\") is a compound that is foreign to a living organism. Principal xenobiotics include: drugs, carcinogens and various compounds that have been introduced into the environment by artificial means.",
+   "synonyms": [
+    "Xenobiotic",
+    "xenobiotic",
+    "xenobiotics"
+   ]
+  },
+  {
+   "item_id": "CHEBI:35705",
+   "label": "immunosuppressive agent",
+   "definition": "An agent that suppresses immune function by one of several mechanisms of action. Classical cytotoxic immunosuppressants act by inhibiting DNA synthesis. Others may act through activation of T-cells or by inhibiting the activation of helper cells. In addition, an immunosuppressive agent is a role pla",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:35717",
+   "label": "sedative",
+   "definition": "A central nervous system depressant used to induce drowsiness or sleep or to reduce psychological excitement or anxiety.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:35718",
+   "label": "antifungal agent",
+   "definition": "An  antimicrobial agent that destroys fungi by suppressing their ability to grow or reproduce.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:36047",
+   "label": "antibacterial drug",
+   "definition": "A drug used to treat or prevent bacterial infections.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:37845",
+   "label": "growth hormone",
+   "definition": "A hormone that specifically regulates growth.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:37848",
+   "label": "plant hormone",
+   "definition": "A plant growth regulator that modulates the formation of stems, leaves and flowers, as well as the development and ripening of fruit. The term includes endogenous and non-endogenous compounds (e.g. active compounds produced by bacteria on the leaf surface) as well as semi-synthetic and fully synthet",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:37887",
+   "label": "adrenergic antagonist",
+   "definition": "An agent that binds to but does not activate adrenergic receptors thereby blocking the actions of endogenous or exogenous adrenergic agonists.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:37956",
+   "label": "histamine antagonist",
+   "definition": "Histamine antagonists are the drugs that bind to but do not activate histamine receptors, thereby blocking the actions of histamine or histamine agonists.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:37958",
+   "label": "dye",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:37960",
+   "label": "cyanine dye",
+   "definition": "Cyanine dyes are synthetic dyes with the general formula R<small><sub>2</sub></small>N[CH=CH]<small><sub><em>n</em></sub></small>CH=N<small><sup>+</small></sup>R<small><sub>2</sub></small>    \u2194 R<small><sub>2</sub></small>N<small><sup>+</small></sup>=CH[CH=CH]<small><sub><em>n</em></sub></small>NR<s",
+   "synonyms": [
+    "cyanine dyes"
+   ]
+  },
+  {
+   "item_id": "CHEBI:37987",
+   "label": "Cy3 dye",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:37989",
+   "label": "Cy5 dye",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:38068",
+   "label": "antimalarial",
+   "definition": "A drug used in the treatment of malaria. Antimalarials are usually classified on the basis of their action against <em>Plasmodia</em> at different stages in their life cycle in the human.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:38215",
+   "label": "calcium channel blocker",
+   "definition": "One of a class of drugs that acts by selective inhibition of calcium influx through cell membranes or on the release and binding of calcium in intracellular pools.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:38828",
+   "label": "nonionic surfactant",
+   "definition": "A surfactant with an uncharged hydrophilic headgroup.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:38870",
+   "label": "inhalation anaesthetic",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:38877",
+   "label": "intravenous anaesthetic",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:39116",
+   "label": "pyrethroid ester insecticide",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:48218",
+   "label": "antiseptic drug",
+   "definition": "A substance used locally on humans and other animals to destroy harmful microorganisms or to inhibit their activity (cf. disinfectants, which destroy microorganisms found on non-living objects, and antibiotics, which can be transported through the lymphatic system to destroy bacteria within the body",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:48278",
+   "label": "serotonergic drug",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:48354",
+   "label": "polar solvent",
+   "definition": "A solvent that is composed of polar molecules. Polar solvents can dissolve ionic compounds or ionisable covalent compounds.",
+   "synonyms": [
+    "polar solvent"
+   ]
+  },
+  {
+   "item_id": "CHEBI:48358",
+   "label": "polar aprotic solvent",
+   "definition": "A solvent with a comparatively high relative permittivity (or dielectric constant), greater than ca. 15, and a sizable permanent dipole moment, that cannot donate suitably labile hydrogen atoms to form strong hydrogen bonds.",
+   "synonyms": [
+    "dipolar aprotic solvent"
+   ]
+  },
+  {
+   "item_id": "CHEBI:48561",
+   "label": "dopaminergic antagonist",
+   "definition": "A drug that binds to but does not activate dopamine receptors, thereby blocking the actions of dopamine or exogenous agonists.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:48873",
+   "label": "cholinergic antagonist",
+   "definition": "Any drug that binds to but does not activate cholinergic receptors, thereby blocking the actions of acetylcholine or cholinergic agonists.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:50103",
+   "label": "excitatory amino acid agonist",
+   "definition": "An agent that binds to and activates excitatory amino acid receptors.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:50112",
+   "label": "sex hormone",
+   "definition": "Any hormone that is responsible for controlling sexual characteristics and reproductive function.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:50177",
+   "label": "dermatologic drug",
+   "definition": "A drug used to treat or prevent skin disorders or for the routine care of skin.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:50249",
+   "label": "anticoagulant",
+   "definition": "An agent that prevents blood clotting.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:50266",
+   "label": "prodrug",
+   "definition": "A compound that, on administration, must undergo chemical conversion by metabolic processes before becoming the pharmacologically active drug for which it is a prodrug.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:50504",
+   "label": "osmotic diuretic",
+   "definition": "Compound that increase urine volume by increasing the amount of osmotically active solute in the urine. It also increases the osmolarity of plasma.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:50505",
+   "label": "sweetening agent",
+   "definition": "Substance that sweeten food, beverages, medications, etc.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:50646",
+   "label": "bone density conservation agent",
+   "definition": "An agent that inhibits bone resorption and/or favor bone mineralization and bone regeneration. Used to heal bone fractures and to treat bone diseases such as osteopenia and osteoporosis.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:50683",
+   "label": "EC 1.5.1.3 (dihydrofolate reductase) inhibitor",
+   "definition": "An EC 1.5.1.* (oxidoreductase acting on donor CH-NH group, NAD<small><sup>+</small></sup> or NADP<small><sup>+</small></sup> as acceptor) inhibitor that interferes with the action of dihydrofolate reductase (EC 1.5.1.3).",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:50733",
+   "label": "nutraceutical",
+   "definition": "A product in capsule, tablet or liquid form that provide essential nutrients, such as a vitamin, an essential mineral, a protein, an herb, or similar nutritional substance.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:50739",
+   "label": "estrogen receptor modulator",
+   "definition": "A substance that possess antiestrogenic actions but can also produce estrogenic effects as well. It acts as complete or partial agonist or as antagonist. It can be either steroidal or nonsteroidal in structure.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:50792",
+   "label": "estrogen receptor antagonist",
+   "definition": "An antagonist at the estrogen receptor.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:50919",
+   "label": "antiemetic",
+   "definition": "A drug used to prevent nausea or vomiting. An antiemetic may act by a wide range of mechanisms: it might affect the medullary control centres (the vomiting centre and the chemoreceptive trigger zone) or affect the peripheral receptors.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:51065",
+   "label": "dopamine agonist",
+   "definition": "A drug that binds to and activates dopamine receptors.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:51086",
+   "label": "chemical role",
+   "definition": "A role played by the molecular entity or part thereof within a chemical context.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:53784",
+   "label": "antispasmodic drug",
+   "definition": "A drug that suppresses spasms. These are usually caused by smooth muscle contraction, especially in tubular organs. The effect is to prevent spasms of the stomach, intestine or urinary bladder.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:59163",
+   "label": "biomarker",
+   "definition": "A substance used as an indicator  of a biological state.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:59517",
+   "label": "DNA synthesis inhibitor",
+   "definition": "Any substance that inhibits the synthesis of DNA.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:63060",
+   "label": "phase-transfer catalyst",
+   "definition": "A catalyst that facilitates the migration of a reactant from one phase into another phase where reaction occurs.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:63490",
+   "label": "explosive",
+   "definition": "A substance capable of undergoing rapid and highly exothermic decomposition.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CHEBI:64857",
+   "label": "cosmetic",
+   "definition": "The role played by a substance in enhancing the appearance or odour of the human body; a name given to the substance itself or to a component of it.",
+   "synonyms": []
+  },
+  {
+   "item_id": "CL:0000010",
+   "label": "cultured cell",
+   "definition": "A cell in vitro that is or has been maintained or propagated as part of a cell culture.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000246",
+   "label": "age",
+   "definition": "A temporal measurement of the time period elapsed since an identifiable point in the life cycle of an organism. If a developmental stage is specified, the identifiable point would be the beginning of that stage. Otherwise the identifiable point must be specified such as planting (e.g. 3 days post pl",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000264",
+   "label": "antibody",
+   "definition": "An antibody function (or antigen binding function) is an infection-fighting protein molecule in blood or secretory fluids that tags, neutralizes, and helps destroy pathogenic microorganisms such as bacteria, viruses and toxins.",
+   "synonyms": [
+    "antibodies"
+   ]
+  },
+  {
+   "item_id": "EFO:0000269",
+   "label": "array design",
+   "definition": "An instrument design which describes the design of the array.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000287",
+   "label": "biopsy number",
+   "definition": "A biopsy number is an information entity about the numerical label given to a partciular biopsy obtained.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000323",
+   "label": "cell property",
+   "definition": "An attribute of a cell e.g. CD8+",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000324",
+   "label": "cell type",
+   "definition": "A cell type is a distinct morphological or functional form of cell.  Examples are epithelial, glial etc.",
+   "synonyms": [
+    "cell_type"
+   ]
+  },
+  {
+   "item_id": "EFO:0000336",
+   "label": "chromosomal aberration",
+   "definition": "An irregularity in the number or structure of chromosomes, usually in the form of a gain (duplication), loss (deletion), exchange (translocation), or alteration in sequence (inversion) of genetic material.",
+   "synonyms": [
+    "CH",
+    "ChromosomalAberration"
+   ]
+  },
+  {
+   "item_id": "EFO:0000352",
+   "label": "clinical history",
+   "definition": "Is an information entity about the material's (i.e., the patient's) medical record as background information relevant to the experiment.",
+   "synonyms": [
+    "ClinicalHistory",
+    "clinical information"
+   ]
+  },
+  {
+   "item_id": "EFO:0000355",
+   "label": "clinical treatment protocol",
+   "definition": "A clinical treatment is a treatment of some organism designed to have some clinical effect, for example the treatment of a disease E.g. radiotherapy",
+   "synonyms": [
+    "clinical treatment",
+    "clinical_treatment"
+   ]
+  },
+  {
+   "item_id": "EFO:0000369",
+   "label": "compound based treatment",
+   "definition": "A treatment process in which a chemical compound is administered to the subject under investigation.",
+   "synonyms": [
+    "compound_based_treatment"
+   ]
+  },
+  {
+   "item_id": "EFO:0000370",
+   "label": "chemically induced mutation",
+   "definition": "A genetic modification introduced by treatment of an individual by chemical mutagenesis, e.g. by use of ENU",
+   "synonyms": [
+    "CI"
+   ]
+  },
+  {
+   "item_id": "EFO:0000388",
+   "label": "electrical current",
+   "definition": "The measure of movement of electrical charges in a conductor measured in milliamperes.",
+   "synonyms": []
+  }
+ ],
+ "answer_file": "batch_01.answer.json",
+ "answer_schema": {
+  "type": "object",
+  "required": [
+   "content_sha256",
+   "answers"
+  ],
+  "properties": {
+   "content_sha256": {
+    "type": "string"
+   },
+   "answers": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "item_id",
+      "aliases"
+     ],
+     "properties": {
+      "item_id": {
+       "type": "string"
+      },
+      "aliases": {
+       "type": "array",
+       "maxItems": 5,
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "content_sha256": "731d775d6e5202048c16bb9421df3488476eb1d1754b05674eaf7bfa28220e0e"
+}

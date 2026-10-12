@@ -1,0 +1,838 @@
+{
+ "stage": "aliases",
+ "instructions": "Each item is an ontology term that a column of sample metadata in a gene\nexpression study can mean. Write up to 5 aliases for each term: other ways a\nresearcher would write that same variable as a column header in sample\nmetadata.\n\nGood aliases:\n- common abbreviations and acronyms (\"sbp\" for systolic blood pressure)\n- shorter everyday phrasings (\"systolic bp\", \"visual acuity\")\n- the plain name of the quantity when the term's label is wordy\n  (\"intraocular pressure\" for \"intraocular pressure measurement\")\n\nRules:\n- An alias must mean the same variable as the term: not a broader or narrower\n  one, and not a related one.\n- No values (\"male\", \"high\"), units on their own, gene or tool names, or\n  dataset-specific codes.\n- No alias that only rewords the label trivially (plural, case,\n  punctuation). Those are matched already.\n- Fewer is better than wrong. If a term has no natural alias, return an empty\n  list.\n\nExamples:\n- systolic blood pressure -> [\"sbp\", \"systolic bp\", \"systolic pressure\"]\n- intraocular pressure measurement -> [\"intraocular pressure\", \"iop\"]\n- visual acuity measurement -> [\"visual acuity\", \"va\"]\n",
+ "items": [
+  {
+   "item_id": "EFO:0004323",
+   "label": "mental process",
+   "definition": "Conceptual functions or thinking in all its forms.",
+   "synonyms": [
+    "Mental Processes",
+    "human information processing",
+    "mental processes"
+   ]
+  },
+  {
+   "item_id": "EFO:0004324",
+   "label": "body weights and measures",
+   "definition": "Measurements of the height, weight, length, area, etc., of the human and animal body or its parts.",
+   "synonyms": [
+    "body measures"
+   ]
+  },
+  {
+   "item_id": "EFO:0004333",
+   "label": "episodic memory",
+   "definition": "Type of declarative memory, consisting of personal memory in contrast to general knowledge.",
+   "synonyms": [
+    "Memory, Episodic",
+    "autobiographical memory",
+    "prospective memory"
+   ]
+  },
+  {
+   "item_id": "EFO:0004335",
+   "label": "short-term memory",
+   "definition": "Remembrance of information for a few seconds to hours.",
+   "synonyms": [
+    "immediate recall",
+    "memory (short-term)",
+    "memory, short-term",
+    "working memory"
+   ]
+  },
+  {
+   "item_id": "EFO:0004338",
+   "label": "body weight",
+   "definition": "The mass or quantity of heaviness of an individual. It is expressed by units of pounds or kilograms.",
+   "synonyms": [
+    "weight"
+   ]
+  },
+  {
+   "item_id": "EFO:0004340",
+   "label": "body mass index",
+   "definition": "An indicator of body density as determined by the relationship of BODY WEIGHT\u00a0to\u00a0BODY HEIGHT. BMI=weight (kg)/height squared (m2). BMI correlates with body fat (ADIPOSE TISSUE). Their relationship varies with age and gender. For adults, BMI falls into these categories: below 18.5 (underweight); 18.5",
+   "synonyms": [
+    "BMI",
+    "Quetelet's Index"
+   ]
+  },
+  {
+   "item_id": "EFO:0004345",
+   "label": "corneal topography",
+   "definition": "The measurement of curvature and shape of the anterior surface of the cornea using techniques such as keratometry, keratoscopy, photokeratoscopy, profile photography, computer-assisted image processing and videokeratography. This measurement is often applied in the fitting of contact lenses and in d",
+   "synonyms": [
+    "videokeratography"
+   ]
+  },
+  {
+   "item_id": "EFO:0004346",
+   "label": "neuroimaging measurement",
+   "definition": "Non-invasive methods of visualizing and measuring the CENTRAL NERVOUS SYSTEM, especially the brain, by various imaging modalities e.g. CT scan",
+   "synonyms": [
+    "brain imaging"
+   ]
+  },
+  {
+   "item_id": "EFO:0004348",
+   "label": "hematocrit",
+   "definition": "The volume of packed RED BLOOD CELLS in a blood specimen. The volume is measured by centrifugation in a tube with graduated markings, or with automated blood cell counters. It is an indicator of erythrocyte status in disease. For example, ANEMIA shows a low value; POLYCYTHEMIA, a high value.",
+   "synonyms": [
+    "Ht",
+    "packed erythrocyte volume",
+    "packed red-cell volume"
+   ]
+  },
+  {
+   "item_id": "EFO:0004352",
+   "label": "mortality",
+   "definition": "Quantification of the number of deaths in a population.",
+   "synonyms": [
+    "mortality measurement",
+    "mortality rate"
+   ]
+  },
+  {
+   "item_id": "EFO:0004357",
+   "label": "electroencephalogram measurement",
+   "definition": "Am electroencephalogram measurement measures the wave-like oscillations of electric potential between parts of the brain.",
+   "synonyms": [
+    "brain oscillations",
+    "brain waves",
+    "brainwaves",
+    "electroencephalogram traits"
+   ]
+  },
+  {
+   "item_id": "EFO:0004358",
+   "label": "event-related brain oscillation",
+   "definition": "The measurement of wave-like oscillations of electric potential between parts of the brain recorded by EEG that are the result of a specific stimulus",
+   "synonyms": [
+    "event-related brain oscillations"
+   ]
+  },
+  {
+   "item_id": "EFO:0004362",
+   "label": "psychomotor performance",
+   "definition": "The coordination of a sensory or ideational (cognitive) process and a motor activity.",
+   "synonyms": [
+    "perceptual motor performance",
+    "sensory motor performance"
+   ]
+  },
+  {
+   "item_id": "EFO:0004365",
+   "label": "personality trait",
+   "definition": "The characteristics in behavior that a certain person has.",
+   "synonyms": [
+    "personality dimension",
+    "personality dimensions"
+   ]
+  },
+  {
+   "item_id": "EFO:0004366",
+   "label": "social desirability",
+   "definition": "A personality trait rendering the individual acceptable in social or interpersonal relations. It is related to social acceptance, social approval, popularity, social status, leadership qualities, or any quality making him a socially desirable companion.",
+   "synonyms": [
+    "social worth"
+   ]
+  },
+  {
+   "item_id": "EFO:0004368",
+   "label": "Number of molecules",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004379",
+   "label": "milli-International Unit per milliliter",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004418",
+   "label": "unit of flow rate",
+   "definition": "A unit which measures substance that passes through or onto a given area per unit of time.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004424",
+   "label": "family relationship",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004425",
+   "label": "initial time point",
+   "definition": "The first time point measured at the start of some process.",
+   "synonyms": [
+    "initial timepoint"
+   ]
+  },
+  {
+   "item_id": "EFO:0004426",
+   "label": "karyotype",
+   "definition": "A karyotype is the number and appearance of chromosomes in the nucleus of a eukaryotic cell.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004429",
+   "label": "inbred",
+   "definition": "Property of an organism which indicates that the organism's parents were genetically related (potentially for several generations). Inbreeding results in closer homozygosity.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004430",
+   "label": "outbred",
+   "definition": "Propety of an organism which indicates that the organism's parents are not closely related (e.g. family members).",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004444",
+   "label": "environmental history",
+   "definition": "Information concerning the envinonrment a material entity has been exposed to, such as an organism from a lake.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004445",
+   "label": "cohort",
+   "definition": "A cohort is a collection of material entities grouped together based on some common property of interest, such as age or disease stage.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004447",
+   "label": "peer review quality control role",
+   "definition": "The role of a material which has been reviewed under peer review for quality control purposes.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004456",
+   "label": "reduce cholesterol levels",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004457",
+   "label": "carcinogen role",
+   "definition": "Any chemical, biological or physical agents that increase the risk of neoplasms in humans or animals. Carcinogens include natural or synthesized compounds, certain viruses, and various sources of radiation. A carcinogen may directly alter the genetic material of cells (genotoxic), thereby initiating",
+   "synonyms": [
+    "Carcinogen",
+    "carcinogenic agent"
+   ]
+  },
+  {
+   "item_id": "EFO:0004458",
+   "label": "C-reactive protein measurement",
+   "definition": "C-reactive protein (CRP) measurement is a measurement of the level of C-reactive protein in the blood.  Levels are known to rise in response to inflammation, CRP is therefore used as a clinical measure of inflammation. The measurement is used in the process of clinical diagnosis as high levels of CR",
+   "synonyms": [
+    "C-reactive protein level"
+   ]
+  },
+  {
+   "item_id": "EFO:0004459",
+   "label": "ferritin measurement",
+   "definition": "A ferritin measurement a is measurement of ferritin level  in serum as an indicator of iron metabolism",
+   "synonyms": [
+    "ferritin level"
+   ]
+  },
+  {
+   "item_id": "EFO:0004460",
+   "label": "soluble transferrin receptor measurement",
+   "definition": "A soluble transferrin receptor measurement  (sTfR) is a measure of the level of the Soluble transferrin receptor protein in blood as a measure of iron metabolism.",
+   "synonyms": [
+    "sTfR level",
+    "soluble transferrin receptor level"
+   ]
+  },
+  {
+   "item_id": "EFO:0004461",
+   "label": "iron biomarker measurement",
+   "definition": "An iron biomarker measurement is a measurement of some molecule e.g. protein or metabolite which is used as a measure of iron metabolism",
+   "synonyms": [
+    "iron biomarker level",
+    "iron status biomarkers"
+   ]
+  },
+  {
+   "item_id": "EFO:0004467",
+   "label": "insulin measurement",
+   "definition": "An insulin measurement is a measure of insulin typically performed in the diagnosis of patients",
+   "synonyms": [
+    "insulin level"
+   ]
+  },
+  {
+   "item_id": "EFO:0004468",
+   "label": "glucose measurement",
+   "definition": "Is any quantification of glucose.",
+   "synonyms": [
+    "glucose level"
+   ]
+  },
+  {
+   "item_id": "EFO:0004469",
+   "label": "HOMA-B",
+   "definition": "The HOMA-B measurement employs the homeostatic model assessment (HOMA)  to quantify beta-cell function.",
+   "synonyms": [
+    "homeostasis model assessment B cell function"
+   ]
+  },
+  {
+   "item_id": "EFO:0004471",
+   "label": "insulin sensitivity measurement",
+   "definition": "An insulin sensitivity measurement is a measurement of insulin metabolism, which can be measured in a number of ways, for example using the HOMA model or via a glucose tolerance test.",
+   "synonyms": [
+    "insulin sensitivity test"
+   ]
+  },
+  {
+   "item_id": "EFO:0004500",
+   "label": "radiation induced mutation",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004501",
+   "label": "HOMA-IR",
+   "definition": "The HOMA-IR measurement employs the homeostatic model assessment (HOMA)  to quantify insulin resistance.",
+   "synonyms": [
+    "homeostasis model assessment insulin resistance"
+   ]
+  },
+  {
+   "item_id": "EFO:0004502",
+   "label": "adiponectin measurement",
+   "definition": "Adiponectin measurement is a measurement of the circulating hormone adiponectin in serum. Adiponectin regulated modulates glucose regulation and fatty acid catabolism. Low circulating adiponectin concentrations (hypoadiponectinemia; <4 \u03bcg/mL) are associated with a variety of diseases, including dysm",
+   "synonyms": [
+    "adiponectin levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004503",
+   "label": "hematological measurement",
+   "definition": "A measurement quantifying some blood cell, or component.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004506",
+   "label": "monocyte early outgrowth colony forming unit",
+   "definition": "A monocyte early outgrowth colony forming unit measurement is the result of a cell culture assay in which monocytes are plated on fibronectin plates and morphology and growth assessed in an assay which correlates circulating cells and vascular function. The output of the assay is a measure of how ma",
+   "synonyms": [
+    "early outgrowth endothelial progenitor cell colony forming units",
+    "monocyte early outgrowth colony forming units"
+   ]
+  },
+  {
+   "item_id": "EFO:0004508",
+   "label": "spine bone size",
+   "definition": "Spine bone size is a measurement of the dimensions of the spine.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004509",
+   "label": "hemoglobin measurement",
+   "definition": "Hemoglobin measurement is a measure of the quantity of the metallo protein hemoglobin in blood often used in the diagnosis of anaemia.",
+   "synonyms": [
+    "Hb",
+    "haemoglobin measurement",
+    "hemoglobin count",
+    "hemoglobin levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004510",
+   "label": "HPV seropositivity",
+   "definition": "HPV seropositivity is the result of a measurement of circulating human papilloma virus specific antibodies used in the diagnosis of HPV infection.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004511",
+   "label": "femoral neck bone geometry",
+   "definition": "Femoral neck bone geometry is the quantification of the dimensions of the femoral neck bone of the femur. Femoral neck bone geometry is used in determining risk of hip fracture.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004512",
+   "label": "bone measurement",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004513",
+   "label": "bone geometry",
+   "definition": "Bone geometry is the measure of the dimensions of some bone. Bone geometry is used as a predictive indicator of fracture risk.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004514",
+   "label": "bone quantitative ultrasound measurement",
+   "definition": "A bone quantitative ultrasound measurement is the output of a an ultrasound process in which bones are assayed using ultrasound and information about bone density, cortical thickness, elasticity and microarchitecture may be returned.",
+   "synonyms": [
+    "bone quantitative ultrasound",
+    "broadband ultrasound attenuation"
+   ]
+  },
+  {
+   "item_id": "EFO:0004515",
+   "label": "muscle measurement",
+   "definition": "A muscle mass measurement is the quantification of the mass of a muscle e.g. skeletal muscle for an individual.",
+   "synonyms": [
+    "muscle mass",
+    "muscle mass measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0004516",
+   "label": "bone fracture related measurement",
+   "definition": "A fracture related measurement is a measure of some bone or muscular entity which collectively are used to determine the risk of bone fracture e.g. bone density, muscle mass etc.",
+   "synonyms": [
+    "fracture-related traits"
+   ]
+  },
+  {
+   "item_id": "EFO:0004519",
+   "label": "soluble P-selectin measurement",
+   "definition": "The measurement of the soluble component of the P-selectin adhesion molecule. Soluble P-selection is associated with adverse cardiovascular events. Alternative terms include:\nCD62 antigen-like family member P\nGranule membrane protein 140\nGMP-140\nLeukocyte-endothelial cell adhesion molecule 3\nLECAM3\n",
+   "synonyms": [
+    "sP-selectin",
+    "soluble P-selectin level"
+   ]
+  },
+  {
+   "item_id": "EFO:0004520",
+   "label": "ICAM-1 measurement",
+   "definition": "A soluble ICAM-1 measurement is the quantification of the ICAM-1 protein. ICAM-1 levels are associated with adverse cardiovascular events.",
+   "synonyms": [
+    "sICAM-1",
+    "soluble ICAM1 measurement",
+    "soluble intercellular adhesion molecule-1"
+   ]
+  },
+  {
+   "item_id": "EFO:0004522",
+   "label": "adhesion molecule measurement",
+   "definition": "A soluble adhesion molecule measurement is a quantification of the soluble compoment (as opposed to membrane bound) a molecule known to participate in the process of adhesion, levels of which may be implicated in cardiovascular adverse events.",
+   "synonyms": [
+    "soluble adhesion molecule measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0004527",
+   "label": "mean corpuscular hemoglobin",
+   "definition": "The MCH is  the average mass of hemoglobin per red blood cell in a sample of blood and is calculated by dividing the total mass of hemoglobin by the RBC count",
+   "synonyms": [
+    "MCH",
+    "mean corpuscular haemoglobin"
+   ]
+  },
+  {
+   "item_id": "EFO:0004528",
+   "label": "mean corpuscular hemoglobin concentration",
+   "definition": "The mean corpuscular hemoglobin concentration is a measure of the concentration of hemoglobin in a given volume of packed red blood cell",
+   "synonyms": [
+    "CHCM",
+    "Corpuscular HGB Concentration Mean",
+    "Corpuscular Hemoglobin Concentration Mean",
+    "Erythrocyte Corpuscular Hemoglobin Concentration Mean",
+    "MCHC",
+    "mean corpuscular haemoglobin concentration"
+   ]
+  },
+  {
+   "item_id": "EFO:0004529",
+   "label": "lipid measurement",
+   "definition": "A measure of circulating lipid",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004531",
+   "label": "urate measurement",
+   "definition": "A urate measurement is the quantification of some urate in body fluid",
+   "synonyms": [
+    "urate levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004532",
+   "label": "serum gamma-glutamyl transferase measurement",
+   "definition": "Serum gamma-glutamyl transferase level measurement is the quantification of gamma-glutamyl transferase in blood. Gamma-glutamyl transferase is used as a marker for liver/bile duct problems and alcohol abuse.",
+   "synonyms": [
+    "GGT measurement",
+    "Gamma gluatamyl transferase levels",
+    "Gamma glutamyl transpeptidase levels",
+    "gamma glutamyl transferase measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0004533",
+   "label": "alkaline phosphatase measurement",
+   "definition": "Alkaline phosphatase measurement is a quantification of alkaline phosphatase in blood. AP is a marker for bone and liver disease.",
+   "synonyms": [
+    "AP"
+   ]
+  },
+  {
+   "item_id": "EFO:0004534",
+   "label": "creatine kinase measurement",
+   "definition": "A creatine kinase measurement is a quantification of creatine kinase in blood. Creatine kinase is a marker for tissue damage and  is assayed in blood tests as a marker of myocardial infarction (heart attack), rhabdomyolysis (severe muscle breakdown), muscular dystrophy, the autoimmune myositides and",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004536",
+   "label": "total blood protein measurement",
+   "definition": "A total blood protein measurement is a quantification of protein in a blood sample. It is used as a marker for disease and nutrition. It is performed in the liquid portion of blood and typically measures albumin and globulin.",
+   "synonyms": [
+    "TBP",
+    "serum total protein"
+   ]
+  },
+  {
+   "item_id": "EFO:0004541",
+   "label": "HbA1c measurement",
+   "definition": "A quantification of glycated A1c hemoglobin in blood used as an index for blood glucose level over several months.",
+   "synonyms": [
+    "A1C measurement",
+    "A1c measurement",
+    "Glycosylated Hemoglobin",
+    "Glycosylated Hemoglobin Measurement",
+    "HBA1C",
+    "HbA1c levels",
+    "Hemoglobin A1C",
+    "glycated hemoglobin levels",
+    "glycosylated Haemoglobin A level",
+    "glycosylated Hemoglobin A level"
+   ]
+  },
+  {
+   "item_id": "EFO:0004542",
+   "label": "planned process",
+   "definition": "A processual entity that realizes a plan which is the concretization of a plan specification.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004554",
+   "label": "genomic measurement",
+   "definition": "Is a quantification of some aspect of the genome, e.g. copy number variation at some locus.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004557",
+   "label": "population measurement",
+   "definition": "Is the quantification of some measureable quality of a population e.g. birth rate.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004570",
+   "label": "bilirubin measurement",
+   "definition": "A bilirubin measurement is a quantification of bilirubin typically measured in serum.",
+   "synonyms": [
+    "bilirubin levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004573",
+   "label": "chemerin measurement",
+   "definition": "A chemerin measurement is a quantification of chemerin typically in serum. Chemerin is an adipokine with important regulatory roles in adipogenesis. In humans, serum total chemerin (i.e. prochemerin plus chemerin) levels are positively associated with body mass index and metabolic syndrome (http://w",
+   "synonyms": [
+    "RAR-responsive protein TIG2 measurement",
+    "Retinoic acid receptor responder protein 2 measurement",
+    "Tazarotene-induced gene 2 protein measurement",
+    "chemerin levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004574",
+   "label": "total cholesterol measurement",
+   "definition": "A total cholesterol measurement is the quantification of cholesterol in blood, total cholesterol is defined as the sum of HDL, LDL, and VLDL.",
+   "synonyms": [
+    "cholesterol, total",
+    "total cholesterol levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004576",
+   "label": "fetal hemoglobin measurement",
+   "definition": "A fetal hemoglobin measurement is the quantification of fetal hemoglobin typically measured in the blood of children for diagnosis of congenital disease.",
+   "synonyms": [
+    "Fetal Hemoglobin",
+    "HGBF",
+    "HbF levels",
+    "Hemoglobin F",
+    "fetal haemoglobin measurement",
+    "fetal hemoglobin levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004578",
+   "label": "homocysteine measurement",
+   "definition": "A homocysteine measurement is the quantification of homocsyteine in blood or urine and is used in the diagnosis of  B12 and/or folate deficiency, and as part of a cardiac risk assessment.",
+   "synonyms": [
+    "homocysteine levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004581",
+   "label": "interleukin 18 measurement",
+   "definition": "An IL-18 measurement is the quantification of IL-18, typically in blood.",
+   "synonyms": [
+    "IL-18 levels",
+    "IL-18 measurement",
+    "Interleukin-18 levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004585",
+   "label": "naphthyl-keratin adduct measurement",
+   "definition": "A quantification of the naphthyl-keratin adduct levels. naphthyl-keratin adduct is used as a marker for exposure to the xenobiotic napthalene.",
+   "synonyms": [
+    "naphthyl-keratin adduct levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004586",
+   "label": "complete blood cell count",
+   "definition": "A complete blood cell count quantifies specific blood components. ",
+   "synonyms": [
+    "CBC",
+    "Complete Blood Count",
+    "FBC",
+    "Full Blood Count",
+    "blood cell count",
+    "full blood count"
+   ]
+  },
+  {
+   "item_id": "EFO:0004587",
+   "label": "lymphocyte count",
+   "definition": "A quantification of lymphocytes in blood.",
+   "synonyms": [
+    "lymphocyte counts"
+   ]
+  },
+  {
+   "item_id": "EFO:0004595",
+   "label": "HIV mother to child transmission",
+   "definition": "The process of transmission of HIV infection from mother to child during pregnancy, birth or breastfeeding.",
+   "synonyms": [
+    "HIV MTCT"
+   ]
+  },
+  {
+   "item_id": "EFO:0004600",
+   "label": "genomic data",
+   "definition": "Genomic data is data about the genomes of an organism.",
+   "synonyms": [
+    "genomic profiling data"
+   ]
+  },
+  {
+   "item_id": "EFO:0004601",
+   "label": "transcriptomic data",
+   "definition": "Transcriptomic data is data about RNA transcribed by a cell, cells or organism. This includes mRNA, tRNA and cDNA.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004602",
+   "label": "metagenomic data",
+   "definition": "Metagenomic data is data about the genomes of a sample or samples containing mixed material such as from genetic material recovered directly from environmental samples.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004603",
+   "label": "metatranscriptomic data",
+   "definition": "Metatranscriptomic data is data about transcriptomic data from groups of organisms.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004604",
+   "label": "synthetic DNA data",
+   "definition": "Synthetic DNA data is data about DNA that has been artificially created without initial template DNA such as from naturally occuring genomic sequences in an organism.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004605",
+   "label": "viral RNA data",
+   "definition": "Viral RNA data is data about a virus which stores its genetic information in RNA.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004611",
+   "label": "low density lipoprotein cholesterol measurement",
+   "definition": "The measurement of LDL cholesterol in blood used as a risk indicator for heart disease.",
+   "synonyms": [
+    "LDL measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0004614",
+   "label": "apolipoprotein A 1 measurement",
+   "definition": "Is a quantification of apolipoprotein A 1 in a sample. It is encoded in humans by the APOA1 gene and is the major protein component of high density lipoprotein (HDL) in plasma. Apolipoprotein A 1 relates to lower observational risk of coronary artery disease.",
+   "synonyms": [
+    "apo-AI levels",
+    "apoA-I levels",
+    "apolipoprotein A-1 levels",
+    "apolipoprotein A-I levels",
+    "apolipoprotein A1 levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004615",
+   "label": "apolipoprotein B measurement",
+   "definition": "The measurement of ApoB in blood. Apolipoprotein B is a major protein constituent of chylomicrons (apo B-48), LDL (apo B-100) and VLDL (apo B-100). Apo B-100 functions as a recognition signal for the cellular binding and internalization of LDL particles by the apoB/E receptor, and is upregulated in ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004618",
+   "label": "vitamin K measurement",
+   "definition": "is a quantification of Vitamin K or Phylloquinone, a\u00a0polycyclic\u00a0aromatic\u00a0ketone, based on 2-methyl-1,4-naphthoquinone, with a 3-phytyl\u00a0substituent. It is a fat-soluble vitamin that is stable to air and moisture but decomposes in sunlight. It is found naturally in a wide variety of green plants, part",
+   "synonyms": [
+    "phylloquinone measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0004620",
+   "label": "vitamin B12 measurement",
+   "definition": "is a quantification of Vitamin B12,\u00a0vitamin B12\u00a0or\u00a0vitamin B-12, is a water-solublevitamin\u00a0with a key role in the normal functioning of the\u00a0brain\u00a0and\u00a0nervous system, and for the formation of\u00a0blood. It is one of the eight\u00a0B vitamins. It is normally involved in themetabolism\u00a0of every\u00a0cell\u00a0of the human",
+   "synonyms": [
+    "vitamin B12 levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004621",
+   "label": "vitamin B6 measurement",
+   "definition": "is a quantification of Vitamin B6 a water soluble vitamin",
+   "synonyms": [
+    "vitamin B6 levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004626",
+   "label": "IGFBP-3 measurement",
+   "definition": "Is the quantification of IGFBP-3, a member of  the insulin-like growth factor-binding protein (IGFBP) family and encodes a protein with an IGFBP domain and a thyroglobulin type-I domain. Decreased  IIGFBP3 protein levels are used as a biomarker for prostate cancer progression.",
+   "synonyms": [
+    "Insulin-Like Growth Factor Binding Protein 3 levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004627",
+   "label": "IGF-1 measurement",
+   "definition": "Is the quantification of Insulin-like growth factor 1 (IGF-1), also called somatomedin C. IGF-1 is a hormone similar in molecular structure to insulin. It plays an important role in childhood growth and continues to have anabolic effects in adults. Levels of IGF-1 are known to increase in some cance",
+   "synonyms": [
+    "Insulin-Like Growth Factor 1 levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004630",
+   "label": "factor VIII measurement",
+   "definition": "Is a quantification of factor VIII in serum, Factor VIII (FVIII) is an essential blood clotting protein, also known as anti-hemophilic factor (AHF). In humans, Factor VIII is encoded by the F8 gene.[1][2] Defects in this gene results in hemophilia A.",
+   "synonyms": [
+    "factor VIII levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004632",
+   "label": "nevus count",
+   "definition": "A nevus count is the quantification of nevi on the skin.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004633",
+   "label": "protein C measurement",
+   "definition": "Is a quantification of Protein C, also known as autoprothrombin IIA and blood coagulation factor XIV,] is a zymogenic (inactive) protein, the activated form of which plays an important role in regulating blood clotting, inflammation, cell death and maintaining the permeability of blood vessel walls ",
+   "synonyms": [
+    "coagulation factor XIV"
+   ]
+  },
+  {
+   "item_id": "EFO:0004635",
+   "label": "leptin receptor measurement",
+   "definition": "is a quantification of circulating soluble leptin receptor levels, these are inversely associated with diabetes risk factors, including adiposity and insulin resistance, and highly correlated with the expression levels of leptin receptor. Variations in the leptin receptor gene are reported to be ass",
+   "synonyms": [
+    "leptin receptor levels",
+    "soluble leptin receptor levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004637",
+   "label": "protein S measurement",
+   "definition": "is a quantification of protein S, a vitamin K-dependent plasma glycoprotein synthesized in the endothelium involved in anticoagulation and used in the diagnosis of thrombosis.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004640",
+   "label": "haptoglobin measurement",
+   "definition": "",
+   "synonyms": [
+    "haptoglobin levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004641",
+   "label": "white matter integrity",
+   "definition": "White matter integrity is a measure of brain white matter using brain imaging and quantification techniques. White matter integrity is used as a measure of CNS function.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004663",
+   "label": "processed genotype data file",
+   "definition": "A processed genotype data file is a data file which stores information about genotypeswhich has been processed by some form of analysis method, for example normalization or noise reduction.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004665",
+   "label": "biomolecular annotation design",
+   "definition": "Biomolecular annotation study design types are those which are designed to investigate functions, processes, locations and identity at the molecular level e.g. genotyping.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004667",
+   "label": "biological variation design",
+   "definition": "A biological variation study design type investigates differences caused by intrinsic characteristics of an organism(s) or biological system; epidemiological reasons (history of biosources); manipulation, treatment or modification of an organism(s).",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004669",
+   "label": "methodological variation design",
+   "definition": "A methodological variation study design type investigates differences caused by application of protocols, hardware, software and bioassay relationships.",
+   "synonyms": []
+  }
+ ],
+ "answer_file": "batch_04.answer.json",
+ "answer_schema": {
+  "type": "object",
+  "required": [
+   "content_sha256",
+   "answers"
+  ],
+  "properties": {
+   "content_sha256": {
+    "type": "string"
+   },
+   "answers": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "item_id",
+      "aliases"
+     ],
+     "properties": {
+      "item_id": {
+       "type": "string"
+      },
+      "aliases": {
+       "type": "array",
+       "maxItems": 5,
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "content_sha256": "cf99d24df56097ef40274b80b02378f1345652d7f26d2ac43294d6ee16a7f3ca"
+}
