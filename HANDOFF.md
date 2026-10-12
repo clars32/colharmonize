@@ -228,8 +228,11 @@ Measure each on tuning first.
     rewritten for iteration 3; `../briefing.html` is generated from it by
     `../build_briefing.py`. Iteration 2's versions are archived in
     `../efo-column-mapping/docs/`.
-22. **Write results back to GEOmend** through the public provider seam,
-    `transformations.propose_provider` (decisions log 1.5 and 1.6).
+22. ~~**Write results back to GEOmend.**~~ Done 2026-10-12:
+    `colharmonize geomend propose` (decisions log 15.9). Proposals are
+    previewed, unselected and idempotent. Columns recovered by repair can't
+    be sent, because they aren't GEOmend fields. A GEOmend feature for
+    derived fields would close that gap; ask Preston.
 23. **The other planned GEOmend changes:** directed relations, qualifier
     slots, a pre-accepted review state, and fixes 1, 3, 4 and 5. One PR each,
     each only with the user's go-ahead.

@@ -31,6 +31,7 @@ runs every stage. The only human step is review.
 | Review | `review page`, then `review apply EXPORT` | A person, on a local HTML page |
 | Publish | `colharmonize publish` | Code: `variables.tsv`, `columns.tsv`, `mappings.sssom.tsv`, review overlay applied last |
 | Registry | `registry use` before reconcile, `registry add` after review | Code: carries reviewed variables to later runs |
+| GEOmend write-back | `geomend propose` | Code: each published characteristic column becomes a GEOmend provider proposal, pending GEOmend's own review |
 
 Every identifier is validated against the pinned ontology file, never a live
 service. Answers are checked against a content hash of the batch they answer,

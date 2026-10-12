@@ -20,6 +20,7 @@
     colharmonize publish --workspace DIR [--out DIR] [--license URL] [--mapping-set-id URI]
     colharmonize registry use --workspace DIR REGISTRY          reconcile this workspace against a registry
     colharmonize registry add --workspace DIR [--registry DIR] [--include-pre-accepted]
+    colharmonize geomend propose --workspace DIR [--select] [--dry-run]   variables -> GEOmend provider proposals
     colharmonize eval    --gold-columns TSV --gold-variables TSV --predictions TSV [--report MD] [--json JSON]
 
 """
@@ -295,6 +296,19 @@ def cmd_publish(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_geomend_propose(args: argparse.Namespace) -> int:
+    from colharmonize import writeback
+    from colharmonize.workspace import Workspace
+    ws = Workspace(args.workspace)
+    report = writeback.run(ws, _ontology(str(ws.ontology_dir())), select=args.select, dry_run=args.dry_run)
+    print(report.action.value_counts().to_string())
+    refused = report[report.action == "refused"]
+    for r in refused.itertuples(index=False):
+        print(f"REFUSED {r.study_id}/{r.column}: {r.reason}")
+    print(f"wrote {ws.root / 'published' / 'geomend_proposals.tsv'}")
+    return 1 if len(refused) else 0
+
+
 def cmd_registry(args: argparse.Namespace) -> int:
     import pandas as pd
     from colharmonize import profile, registry, review
@@ -440,6 +454,14 @@ def build_parser() -> argparse.ArgumentParser:
     rg.add_argument("--include-pre-accepted", action="store_true",
                     help="also register variables no one has reviewed but every check passed")
     rg.set_defaults(func=cmd_registry)
+
+    gm = sub.add_parser("geomend", help="write harmonized variables back to the workspace's GEOmend project")
+    gm.add_argument("action", choices=["propose"])
+    gm.add_argument("--workspace", required=True)
+    gm.add_argument("--select", action="store_true",
+                    help="also select each valid proposal as the field's mapping (still no reviewer vote)")
+    gm.add_argument("--dry-run", action="store_true", help="write the report without changing the GEOmend project")
+    gm.set_defaults(func=cmd_geomend_propose)
 
     ev = sub.add_parser("eval", help="score predictions against a gold standard")
     ev.add_argument("--gold-columns", required=True)

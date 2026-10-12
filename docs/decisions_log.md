@@ -833,3 +833,40 @@ An exploratory signal does well on both corpora: the number of partners
 (Sonnet run 2, Opus) that agree with the run of record. It scores −0.04
 (−0.12 to +0.08) on tuning and +0.10 (+0.04 to +0.17) on sealed. Pre-register
 it for the next sealed corpus. It costs a third annotate run.
+
+### 15.9: Results go back to GEOmend as provider proposals (handoff task 22)
+`colharmonize geomend propose` sends each published characteristic column to
+the workspace's GEOmend project through `transformations.propose_provider`,
+GEOmend's documented seam for external preparation tools (decisions log 1.2,
+1.6).
+
+What a proposal carries:
+- **Target variable:** `colharmonize:<variable id>`, with the variable's
+  name, a definition giving the predicate, term and qualifiers, and the
+  primary term's IRI.
+- **Value recode:** made complete. GEOmend refuses a recode that leaves a
+  reported value out, so values colharmonize didn't recode map to themselves.
+- **Provenance:** provider, version, locator and a rationale with the review
+  status.
+
+How it behaves:
+- **Checked first:** every proposal is previewed against the field's actual
+  values. One GEOmend would refuse is reported and never sent, so the project
+  doesn't fill with invalid proposals.
+- **Unselected by default.** Proposals are never reviewer votes, and
+  rejected variables are not sent.
+- **Idempotent:** sending the same proposal again changes nothing.
+- **Unconstrained values:** the target variable is an unconstrained string.
+  colharmonize decides pooling and meaning, not value domains.
+
+Limits:
+- Columns repair recovered from titles, source names or splits aren't
+  GEOmend fields, so they can't be proposed this way. On the end-to-end
+  workspace that is 13 of 19 columns. Carrying them back would need GEOmend
+  to accept derived fields, which is a possible upstream request.
+- The predicate has no structured home until GEOmend has directed relations
+  (upstream change 1), so it goes in the definition text.
+
+Tested on a scratch copy of the end-to-end workspace: 6 proposals, all
+valid, and a rerun added nothing. A contract test covers validation, refusal
+and idempotence.

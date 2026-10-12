@@ -8,7 +8,9 @@ and the contract tests in tests/test_geomend_bridge.py say what broke.
 
 Projects are read only through GEOmend's public `ProjectClient`, never its
 private engine: fields are listed with `mappings.fields` and their per-sample
-values paged with `mappings.field`.
+values paged with `mappings.field`. Decisions go back only as provider
+proposals (`transformations.propose_provider`), which GEOmend validates
+against actual values and keeps pending its own review.
 
 Pinned against geomend==0.0.8.
 """
@@ -21,7 +23,8 @@ from pathlib import Path
 from typing import Iterable
 
 import pandas as pd
-from geomend.cohort_models import CohortConfig
+from geomend.cohort_models import CohortConfig, CohortVariable
+from geomend.cohort_transform import specification
 from geomend.geo_mapping import resolve_local_ontology
 from geomend.models import GraphEdge, GraphNode, OntologyRelease
 from geomend.ontology import OntologyStore
@@ -337,3 +340,48 @@ def field_units(project: str | Path) -> pd.DataFrame:
         _units_in((d.get("mapping") or {}).get("specification"), found)
         rows.append({"study_id": f["study_id"], "name": f["name"], "units": json.dumps(sorted(found))})
     return pd.DataFrame(rows, columns=["study_id", "name", "units"])
+
+
+def characteristic_fields(project: str | Path) -> dict[tuple[str, str], tuple[str, list[str]]]:
+    """(study_id, characteristic name) -> (GEOmend field id, distinct raw values) for sample fields."""
+    out = {}
+    for f in _fields(project, lambda f: f["scope"] == "sample" and f["namespace"] == "characteristic"):
+        distinct = sorted({str(v) for vs in f["values"].values() for v in vs if v is not None})
+        out[(f["study_id"], f["name"])] = (f["field_id"], distinct)
+    return out
+
+
+def propose_mappings(project: str | Path, proposals: list[dict], *, provider_version: str,
+                     select: bool = False) -> list[dict]:
+    """Send colharmonize variables to GEOmend as provider proposals, one per field.
+
+    Each proposal dict has field_id, variable_id, label, definition,
+    ontology_references, mappings (a complete value recode, or None to copy
+    values unchanged), locator and rationale. Every proposal is previewed
+    against the field's actual values first. One GEOmend would refuse is not
+    sent, so the project never collects invalid proposals; its result has
+    valid False and the preview's reason. The target is an unconstrained string
+    variable: colharmonize decides pooling and meaning, not value domains.
+    Nothing is selected unless `select`, and GEOmend never treats a provider
+    proposal as a reviewer vote.
+    """
+    client = ProjectClient.open(project)
+    results = []
+    for p in proposals:
+        variable = CohortVariable(variable_id=p["variable_id"], label=p["label"], definition=p["definition"],
+                                  scope="sample", datatype="string",
+                                  ontology_references=list(p.get("ontology_references") or []), origin="llm")
+        spec = specification(mappings=p["mappings"]) if p.get("mappings") else specification()
+        try:
+            client.mappings.preview(variable=variable, field_ids=[p["field_id"]], spec=spec)
+        except ValueError as error:
+            results.append({"field_id": p["field_id"], "proposal_id": "", "valid": False, "selected": False,
+                            "failures": [str(error)[:500]]})
+            continue
+        r = client.transformations.propose_provider(
+            p["field_id"], variable, spec, expected_revision=client.summary().revision,
+            provider="colharmonize", provider_version=provider_version, locator=p["locator"],
+            rationale=p["rationale"], select=select)
+        results.append({"field_id": p["field_id"], "proposal_id": r["proposal_id"], "valid": r["valid"],
+                        "selected": r["selected"], "failures": [json.dumps(f) for f in r["failures"]][:5]})
+    return results

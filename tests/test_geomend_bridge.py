@@ -69,3 +69,35 @@ def test_field_table_shape(project):
     assert set(chars.study_id) == set(EXPECTED_SAMPLES)
     assert {"study_id", "field_id", "name", "unit", "n_reported"} <= set(t.columns)
     assert (chars.n_reported > 0).all()
+
+
+def test_characteristic_fields_give_ids_and_distinct_values(project):
+    fields = gb.characteristic_fields(project)
+    field_id, distinct = fields[("GSE128621", "Sex")]
+    assert field_id.startswith("geomend:field:")
+    assert set(distinct) == {"Male", "Female"}
+
+
+def test_provider_proposals_are_validated_and_never_selected(project, tmp_path):
+    import shutil
+    from geomend.project import ProjectClient
+
+    proj = tmp_path / "project"
+    shutil.copytree(project, proj)
+    field_id, _ = gb.characteristic_fields(proj)[("GSE128621", "Sex")]
+    base = {"field_id": field_id, "variable_id": "colharmonize:T1", "label": "biological sex",
+            "definition": "exact biological sex [PATO:0000047]", "locator": "test", "rationale": "test",
+            "ontology_references": ["http://purl.obolibrary.org/obo/PATO_0000047"]}
+    complete = {**base, "mappings": {"Male": "male", "Female": "female"}}
+    partial = {**base, "variable_id": "colharmonize:T2", "mappings": {"Male": "male"}}
+    before = gb.sample_values(proj)
+    good, bad = gb.propose_mappings(proj, [complete, partial], provider_version="test")
+    assert good["valid"] and not good["selected"] and good["proposal_id"]
+    assert not bad["valid"] and bad["proposal_id"] == "" and "not covered" in bad["failures"][0]
+    client = ProjectClient.open(proj)
+    assert client.transformations.providers()["total"] == 1      # the refused one was never sent
+    revision = client.summary().revision
+    again = gb.propose_mappings(proj, [complete], provider_version="test")[0]
+    assert again["proposal_id"] == good["proposal_id"]
+    assert ProjectClient.open(proj).summary().revision == revision   # idempotent
+    assert gb.sample_values(proj).equals(before)                     # values untouched

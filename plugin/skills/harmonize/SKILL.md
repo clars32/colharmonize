@@ -159,3 +159,19 @@ later runs can join them:
 
 Only accepted and edited variables are registered unless the user asks for
 `--include-pre-accepted`.
+
+## 9. Write back to GEOmend (optional)
+
+If the user also works in the workspace's GEOmend project, or someone who
+uses GEOmend without Claude needs the result, offer to send the variables
+there:
+
+    colharmonize geomend propose --workspace <workspace>
+
+Each characteristic column of a variable that review didn't reject becomes a
+GEOmend provider proposal, with the variable's term and a complete value
+recode. GEOmend validates it against the actual values and keeps it pending
+its own review. Columns recovered by repair aren't GEOmend fields, so they
+aren't sent. The report lists every column and what happened to it. Add
+`--select` only if the user asks for the proposals to become the fields'
+current mappings. Even then they are not reviewer votes.
