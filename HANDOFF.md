@@ -24,8 +24,8 @@ Pipeline:
 9. publish (variables.tsv, columns.tsv, SSSOM)
 10. registry
 
-**GEOmend** (`../GEOmend`, Preston Raab's tool, v0.0.8) reads, profiles and
-exports GEO metadata. colharmonize is a separate repository and reads
+**GEOmend** (`../GEOmend`, v0.0.9) reads, profiles and exports GEO
+metadata. Preston Raab wrote it, and since 2026-10-12 the user owns it. colharmonize is a separate repository and reads
 GEOmend only through `src/colharmonize/geomend_bridge.py`.
 
 Read these, in order:
@@ -50,8 +50,9 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
   - qualifiers taken from what all member columns share (tuning qualifiers
     61.5/64.0 → 89.5/68.0)
   - a fix for the scorer's qualifier parser
-- **Pushed but no PR yet:** a GEOmend fix for keys with punctuation, on branch
-  `fix/characteristic-key-punctuation`.
+- **GEOmend 0.0.9** (released 2026-10-12): six fixes, including the
+  key-punctuation parser fix. colharmonize pins it, and its ontology store
+  now gives GEOmend real IRIs (decisions log 15.12).
 - **Evaluation checks, 2026-10-09** (decisions log 15; `eval/memorization`,
   `eval/stats`, `eval/robustness`, `eval/curation`):
   - no model recalls these series' metadata
@@ -93,9 +94,11 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
   - Assumed conventions are flagged, not hidden.
   - Recoding a value, such as "Down syndrome" → "Trisomy 21", is fine.
 - **GEOmend:** everything colharmonize takes from it is preprocessing, never
-  a final decision (agreed by the owners). Never push to GEOmend without the
-  user's explicit go-ahead for that specific change. Work in branches and PRs
-  for Preston to review.
+  a final decision (agreed by the owners). The user owns GEOmend (handed over
+  by Preston on 2026-10-12):
+  - GEOmend branches may be pushed.
+  - Confirm with the user before merging to `main` or cutting a release.
+  - Each change gets its own branch, with a test that fails without it.
 - **Tuning workspace (`work/ds-tuning`):**
   - It holds the user's 21 review decisions (`review.json`).
   - Its runs of record are annotate 3/4 and reconcile 1/2. Reconcile 3/4
@@ -114,7 +117,7 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
 **GEOmend suite**
 - Run in `../GEOmend`: `npm run contracts` (with `.venv/bin` on PATH), then
   `.venv/bin/python -m pytest -o addopts="" -q -p no:cacheprovider`.
-- Baseline: 1,463 passed on `main`, 1,481 on the fix branch.
+- Baseline: 1,491 passed, 4 skipped on `main` at 0.0.9.
 
 **Data**
 - Tuning SOFT files: `../ds-metadata-harmonization/data/raw`, plus
@@ -130,13 +133,11 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
 
 ### A. Needs the user
 
-1. **Open the GEOmend PR.** Compare page:
-   https://github.com/prestonraab/GEOmend/compare/main...fix/characteristic-key-punctuation?expand=1
-   The description is in `work/geomend_pr_key_punctuation.md`. After it
-   merges and is released:
-   - bump the `geomend==` pin
-   - run `tests/test_geomend_bridge.py`
-   - re-ingest, since the parser version changed
+1. ~~**Open the GEOmend PR.**~~ Merged and released as GEOmend 0.0.9 on
+   2026-10-12. The pin is bumped and the bridge tests pass. A re-ingest into
+   new workspaces is in decisions log 15.12. **Still the user's call:**
+   regenerating `work/ds-tuning` itself, which would mark review decisions
+   stale.
 2. **Find a reviewer with clinical background** for the manual tier.
    Decisions log 9.4: a non-clinical reviewer accepted all 21 manual-tier
    variables, and only 2 matched gold.
@@ -173,12 +174,14 @@ These ideas come from MetaHarmonizer, Li et al., bioRxiv 2026.06.13.732088.
 
 Measure each on tuning first.
 
-10. **Alias dictionary for candidate terms.** A one-time subagent task writes
-    synonyms for the 2,057 property-space terms. Validate them, then add them
-    as a retrieval index. Baseline candidate recall: 88.6% in the pool, 84.8%
-    shown. MetaHarmonizer found a small model as good as a large one here, and
-    that large models add off-target aliases.
-11. **SapBERT** as a third embedding model in `candidates.py`. Measure recall.
+10. ~~**Alias dictionary.**~~ Measured 2026-10-12 (`eval/aliases/`,
+    decisions log 15.11). There are 1,333 aliases for 1,094 of the 1,998
+    property-space terms; 1,998 is the current count, not 2,057. Not
+    adopted: shown recall fell on tuning.
+11. ~~**SapBERT.**~~ Measured 2026-10-12 (`eval/retrieval/`, decisions log
+    15.11). Pool recall rose and shown recall fell at the current 40-term
+    cap; with a cap of 50 it helps on both corpora. Next: pre-register
+    "SapBERT plus a cap of 50" and measure it by annotation accuracy.
 12. ~~**Easy-first fast path.**~~ Measured 2026-10-09 (`eval/fastpath/`,
     decisions log 15.5): safe with a value guard, but it takes only about 10%
     of columns and saves about 5% of subagent calls. Not built; revisit for
@@ -201,8 +204,10 @@ Measure each on tuning first.
 16. ~~**Cost.**~~ Done 2026-10-09 (`eval/cost/`, decisions log 15.6). The
     sealed run used 41 agents, 17.9M input tokens (76% cached) and 430k
     output tokens, with about 7 minutes of agent time on the critical path.
-17. **Optional:** fill missing values within a study when all of that study's
-    non-missing values agree (GEOMeta's QA1).
+17. ~~**Fill missing values (GEOMeta's QA1).**~~ Closed as not applicable
+    (`docs/related-work.md`). colharmonize publishes column-level decisions,
+    not per-sample values. If anywhere, it belongs in GEOmend's export, as a
+    reviewable suggestion.
 
 ### D. Baselines, related work, product
 
@@ -212,12 +217,13 @@ Measure each on tuning first.
     be a post-hoc baseline.
 19. **Value mapping.** If un-deferred, reuse MetaHarmonizer's OntologyMapper
     (EFO, SapBERT, staged) rather than building one.
-20. ~~**Related work.**~~ Drafted 2026-10-12 in `docs/related-work.md`
-    from the abstracts and listings of MetaHarmonizer, GEOMeta and Magneto.
-    Details that need the full texts are marked "to verify": GEOMeta's field
-    count, whether it uses model consensus, whether its labels are released,
-    and the GDC benchmark's origin. GEOMeta's released labels could still
-    serve as an outside check on overlapping series.
+20. ~~**Related work.**~~ Done 2026-10-12 (`docs/related-work.md`) and
+    checked against the full texts. Resolved:
+    - GEOMeta: a 27-field schema, mapped to HPA, CTD MEDIC and PubChem, not
+      EFO. Model consensus is used only in its prospective release. Labels
+      are on Hugging Face (`binchenlab/GEOMeta`).
+    - MetaHarmonizer's GDC benchmark is Magneto's.
+    - 13 of our 29 series could overlap GEOMeta; membership is unchecked.
 21. ~~**Refresh the root docs.**~~ Done 2026-10-09. `../BRIEFING.md` is
     rewritten for iteration 3; `../briefing.html` is generated from it by
     `../build_briefing.py`. Iteration 2's versions are archived in
@@ -226,10 +232,16 @@ Measure each on tuning first.
     `colharmonize geomend propose` (decisions log 15.9). Proposals are
     previewed, unselected and idempotent. Columns recovered by repair can't
     be sent, because they aren't GEOmend fields. A GEOmend feature for
-    derived fields would close that gap; ask Preston.
-23. **The other planned GEOmend changes:** directed relations, qualifier
-    slots, a pre-accepted review state, and fixes 1, 3, 4 and 5. One PR each,
-    each only with the user's go-ahead.
+    derived fields would close that gap; it is the user's call now.
+23. **The other planned GEOmend changes.** Mostly done in 0.0.9:
+    - fixes 1, 3, 5 and 6, plus a new scaled-unit bug
+      (`1000/microliter` had read as `1/microliter`)
+    - fix 4 is partly obsolete: header units already work, and scaled units
+      would need a unit-model redesign
+
+    Changes 1–3 (directed relations, qualifier slots, a pre-accepted review
+    state) are deferred to the user. They change GEOmend's data contract and
+    matter only once colharmonize writes concept decisions there.
 24. **Package the plugin.** Done 2026-10-12 locally: `docs/INSTALL.md`,
     with the plugin layout and commands checked against the Claude Code
     docs. The missing runtime dependencies (sentence-transformers and

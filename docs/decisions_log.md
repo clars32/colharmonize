@@ -895,3 +895,71 @@ past noise. annotate-3 is now the pipeline prompt.
 The sealed qualifier problem (13.1) came from survival endpoints and summary
 context, which tuning lacks. The next sealed corpus confirms or refutes the
 change. The gold-convention questions in 14.4 remain the owner's.
+
+### 15.11: Retrieval: the display cap, not the pool, is the bottleneck (tasks 10 and 11)
+Two retrieval additions were measured on 2026-10-12. The alias work ran in
+the parallel session (`eval/aliases/`).
+
+| gold primary term | tuning: pool / shown | sealed, post hoc: pool / shown |
+|---|---|---|
+| pipeline (MiniLM + BGE) | 88.6% / 84.8% | 70.6% / 66.4% |
+| + alias dictionary (pre-registered) | 88.6% / 82.3% | 73.9% / 68.1% |
+| + SapBERT | 91.1% / 81.0% | 78.2% / 73.9% |
+| + SapBERT, cap 50 space terms (not pre-registered) | 91.1% / 86.1% | 78.2% / 73.9% |
+
+The alias dictionary has 1,333 aliases for 1,094 of the 1,998 property-space
+terms; the handoff's "2,057" was an older count.
+
+Both additions find the abbreviated, biomedical column names the pipeline
+misses: `er`, `pr`, `time.os`, `MLL`, `flt3-itd`. At the current cap of 40
+displayed space terms, the extra candidates push other true terms out of
+view on tuning.
+
+- **Aliases are not adopted**, under their pre-registered rule.
+- **SapBERT is not adopted yet.** With the cap raised to 50 it helps on both
+  corpora, but the cap was picked after the fact, and the effect on
+  annotation is untested.
+
+Next: pre-register "SapBERT plus a cap of 50", or a ranking change that
+re-ranks within the cap, and measure it by annotation accuracy, not
+retrieval alone.
+
+### 15.12: GEOmend 0.0.9: what changed and what colharmonize adopts (2026-10-12)
+Preston handed GEOmend to the user. The user may push GEOmend branches;
+merging to `main` and releasing still need the user's go-ahead.
+
+**What 0.0.9 changed.** A parallel session merged six fixes, each a branch
+with a test that fails without it, and released 0.0.9 (1,491 tests pass):
+- **key-punctuation parser fix:** fix 2, and handoff A1
+- **"unresolved characteristic" kept per study** in `propose()`: fix 3
+- **concept IDs validated** against the configured store: fix 1
+- **parents first** in the neighbour lookup: fix 6
+- **source IRIs stored** on graph nodes: fix 5
+- **a new bug fixed:** `1000/microliter` had parsed as the same unit as
+  `1/microliter`; scaled units now stay unresolved
+
+**What colharmonize adopts:**
+- **The pin** moves to `geomend==0.0.9`. All 81 tests pass.
+- **The ontology store gives GEOmend each term's pinned IRI**
+  (`STORE_PARSER_VERSION` projection-2), so GEOmend's interchange names real
+  EFO IRIs.
+- **The write-back** (15.9) was checked on a scratch copy with GEOmend
+  concepts enabled against the pinned store. All 6 proposals stay valid
+  under the new reference validation, and a made-up EFO IRI is refused.
+
+**The re-ingest went into new workspaces**, `work/sealed-009` and
+`work/ds-tuning-009`. The recorded workspaces are untouched, and regenerating
+`work/ds-tuning` is the user's call.
+- **Sealed:** all 130 characteristic keys now parse. The 4 catch-all
+  "unresolved characteristic" fields become 8 real columns. They include all
+  7 gold columns the sealed run lost to the parser (13.1): the three fasting
+  measures, both HbA1c columns, `subject id #` and `donor gender (m=male;
+  f=female)`.
+- **Tuning:** GSE16176's gestational age now parses directly instead of
+  being recovered by repair.
+- **Nothing else changed:** the 122 sealed and 73 tuning columns common to
+  both ingests have identical values and coverage, and the sample tables
+  are identical.
+
+What the recovered columns would do to sealed scores needs a full pipeline
+run on the 0.0.9 workspace. That would be post hoc and is not done here.

@@ -2,6 +2,22 @@
 
 Draft for Preston, 2026-10-02. Written against GEOmend `main` at `989ec3d` (v0.0.2).
 
+## Status at GEOmend 0.0.9 (released 2026-10-12)
+
+The user now owns GEOmend (handed over by Preston on 2026-10-12). Each change
+below was a separate branch with a test that fails without it. All were
+merged and released as 0.0.9: 1,491 tests pass.
+
+| Item | Status at 0.0.9 |
+|---|---|
+| Fix 1, concept IDs not validated | **Done.** An ID in a namespace the configured store covers must exist there. Provider proposals with unknown references are recorded invalid. IRIs are canonicalized first |
+| Fix 2, `_KEY` regex | **Done:** `fix/characteristic-key-punctuation`. `PARSER_VERSION` bumped |
+| Fix 3, `propose()` merges "unresolved characteristic" | **Done.** Kept per study |
+| Fix 4, units lost | Partly obsolete. Header units already work. Scaled units (`1000/microliter`) would need a unit-model redesign; a new fix makes them stay unresolved instead of silently equaling `1/microliter` |
+| Fix 5, store keeps CURIEs only | **Done.** `GraphNode.iri`; colharmonize's store builder fills it (decisions log 15.12) |
+| Fix 6, neighbour cutoff | **Done.** Parents survive the limit |
+| Changes 1–3 | Deferred to the user. They change the data contract and matter once colharmonize writes concept decisions into GEOmend |
+
 ## Status at GEOmend 0.0.8 (`main` at `f0a8fcc`, checked 2026-10-07)
 
 None of the changes below has landed. Paths are the current ones.
