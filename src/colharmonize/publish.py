@@ -9,6 +9,10 @@ run, so review work survives re-running any stage (see `review`). Output:
   columns.tsv         one row per column: its variable, unit, value recodes,
                       review status, tier and the reasons for it
   mappings.sssom.tsv  one SSSOM mapping per column, with a metadata header
+  pooled_samples.tsv  the pooled table: one row per sample across all studies,
+                      one column per variable, harmonized (recoded) values
+  pooled_values.tsv   the same values in long form, each beside its raw value
+                      and the study column it came from
 
 Mapping predicates: exact -> skos:exactMatch, broad -> skos:broadMatch (the
 column is narrower than the term), indicator -> skos:relatedMatch (a yes/no
@@ -132,8 +136,64 @@ def sssom(variables: pd.DataFrame, columns: pd.DataFrame, ontology, mapping_set_
     return "\n".join(lines) + "\n" + table.to_csv(sep="\t", index=False)
 
 
+def _recoder(recodes: object):
+    """A function raw value -> harmonized value from a column's [[from, to], ...] recodes."""
+    pairs = json.loads(recodes) if isinstance(recodes, str) and recodes else (recodes or [])
+    exact = {str(a): str(b) for a, b in pairs}
+    loose = {str(a).strip().casefold(): str(b) for a, b in pairs}
+    return lambda v: exact.get(v, loose.get(str(v).strip().casefold(), v))
+
+
+def pool(values: pd.DataFrame, variables: pd.DataFrame, columns: pd.DataFrame,
+         titles: dict[tuple[str, str], str] | None = None) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
+    """Stack every study's columns into the published variables, sample by sample.
+
+    `values` is the per-sample table (study_id, sample_id, column, value) of
+    `profile.sample_values`. Each value is recoded with its column's recodes;
+    the raw value is kept beside it in the long table. Rejected variables are
+    left out. Two columns of one variable may both hold a value for a sample
+    only when the values agree (the co-occurrence rule); if they ever differ,
+    both are kept, joined with " | ", and counted as conflicts.
+
+    Returns (wide, long, report). Wide columns are named by variable, most
+    widely pooled first; a name shared by two variables gets its id appended.
+    """
+    keep = variables[variables.review_status != "rejected"]
+    var_of = {(c.study_id, c.column): c.variable_id for c in columns.itertuples(index=False)
+              if c.variable_id in set(keep.variable_id)}
+    recode = {(c.study_id, c.column): _recoder(c.recodes) for c in columns.itertuples(index=False)}
+    unit = {(c.study_id, c.column): c.unit for c in columns.itertuples(index=False)}
+    name = dict(zip(keep.variable_id, keep["name"]))
+    long = []
+    for r in values.itertuples(index=False):
+        key = (r.study_id, r.column)
+        if key not in var_of or r.value is None or str(r.value).strip() == "":
+            continue
+        long.append({"study_id": r.study_id, "sample_id": r.sample_id, "variable_id": var_of[key],
+                     "variable": name[var_of[key]], "value": recode[key](str(r.value)), "raw_value": str(r.value),
+                     "source_column": r.column, "unit": unit.get(key) or ""})
+    long = pd.DataFrame(long, columns=["study_id", "sample_id", "variable_id", "variable", "value", "raw_value",
+                                       "source_column", "unit"])
+    order = (keep.sort_values(["n_studies", "n_columns", "name"], ascending=[False, False, True]).variable_id.tolist())
+    counts = keep["name"].value_counts()
+    header = {v: name[v] if counts[name[v]] == 1 else f"{name[v]} [{v}]" for v in order}
+    conflicts = 0
+    cells: dict[tuple[str, str], dict[str, str]] = {}
+    for (study, sample, vid), g in long.groupby(["study_id", "sample_id", "variable_id"], sort=False):
+        distinct = list(dict.fromkeys(g.value))
+        conflicts += len(distinct) > 1
+        cells.setdefault((study, sample), {})[header[vid]] = " | ".join(distinct)
+    samples = sorted(set(zip(values.study_id, values.sample_id)))
+    wide = pd.DataFrame([{"study_id": s, "sample_id": smp, "sample_title": (titles or {}).get((s, smp), ""),
+                          **cells.get((s, smp), {})} for s, smp in samples],
+                        columns=["study_id", "sample_id", "sample_title", *header.values()])
+    report = {"samples": len(wide), "studies": wide.study_id.nunique(), "variables": len(header),
+              "values": len(long), "conflicting_cells": conflicts}
+    return wide, long, report
+
+
 def publish(ws: Workspace, ontology, out: Path, mapping_set_id: str | None = None,
-            license: str = UNSPECIFIED_LICENSE) -> dict:
+            license: str = UNSPECIFIED_LICENSE, pooled: bool = True) -> dict:
     variables, columns, stale = build(ws, ontology)
     bad = [c for c in variables.primary_curie if c and not ontology.validate(c).valid]
     if bad:
@@ -143,5 +203,14 @@ def publish(ws: Workspace, ontology, out: Path, mapping_set_id: str | None = Non
     columns.to_csv(out / "columns.tsv", sep="\t", index=False)
     (out / "mappings.sssom.tsv").write_text(sssom(variables, columns, ontology,
                                                   mapping_set_id or f"urn:colharmonize:{ws.root.name}", license))
-    return {"variables": len(variables), "columns": len(columns), "stale_decisions": stale,
-            "status": variables.review_status.value_counts().to_dict()}
+    result = {"variables": len(variables), "columns": len(columns), "stale_decisions": stale,
+              "status": variables.review_status.value_counts().to_dict()}
+    if pooled:
+        from colharmonize import profile
+        samples = pd.read_parquet(ws.samples) if ws.samples.exists() else pd.DataFrame()
+        titles = dict(zip(zip(samples.study_id, samples.sample_id), samples.title)) if len(samples) else {}
+        wide, long, report = pool(profile.sample_values(ws), variables, columns, titles)
+        wide.to_csv(out / "pooled_samples.tsv", sep="\t", index=False)
+        long.to_csv(out / "pooled_values.tsv", sep="\t", index=False)
+        result["pooled"] = report
+    return result

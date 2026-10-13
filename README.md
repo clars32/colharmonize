@@ -29,7 +29,7 @@ runs every stage. The only human step is review.
 | Reconcile | `tasks write reconcile` (runs 1 and 2), then `reconcile apply` | Two independent subagent runs: related columns side by side, partitioned into variables |
 | Score | `colharmonize score` | Code: run agreement and checks set each column's review tier |
 | Review | `review page`, then `review apply EXPORT` | A person, on a local HTML page |
-| Publish | `colharmonize publish` | Code: `variables.tsv`, `columns.tsv`, `mappings.sssom.tsv`, review overlay applied last |
+| Publish | `colharmonize publish` | Code: the pooled sample table (`pooled_samples.tsv`, and `pooled_values.tsv` with raw values), plus `variables.tsv`, `columns.tsv` and `mappings.sssom.tsv`; review overlay applied last |
 | Registry | `registry use` before reconcile, `registry add` after review | Code: carries reviewed variables to later runs |
 | GEOmend write-back | `geomend propose` | Code: each published characteristic column becomes a GEOmend provider proposal, pending GEOmend's own review |
 

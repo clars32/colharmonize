@@ -147,7 +147,12 @@ split columns out, rebuild the page so they can review the new variables.
     colharmonize publish --workspace <workspace> [--license URL]
 
 This writes `variables.tsv`, `columns.tsv` and `mappings.sssom.tsv` under
-`<workspace>/published/`, and always applies the review overlay last. Ask the
+`<workspace>/published/`, and always applies the review overlay last. It also
+writes the pooled table: `pooled_samples.tsv`, with one row per sample across
+all studies and one column per variable, holding harmonized values. Its long
+form, `pooled_values.tsv`, keeps each value beside its raw value and source
+column. Tell the user about the pooled table first: for most people it is the
+product. Ask the
 user for a license before publishing mappings they will share; without one,
 the SSSOM header records the license as unspecified. Report the count of
 variables per review status.
