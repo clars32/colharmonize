@@ -1,0 +1,737 @@
+{
+ "stage": "aliases",
+ "instructions": "Each item is an ontology term that a column of sample metadata in a gene\nexpression study can mean. Write up to 5 aliases for each term: other ways a\nresearcher would write that same variable as a column header in sample\nmetadata.\n\nGood aliases:\n- common abbreviations and acronyms (\"sbp\" for systolic blood pressure)\n- shorter everyday phrasings (\"systolic bp\", \"visual acuity\")\n- the plain name of the quantity when the term's label is wordy\n  (\"intraocular pressure\" for \"intraocular pressure measurement\")\n\nRules:\n- An alias must mean the same variable as the term: not a broader or narrower\n  one, and not a related one.\n- No values (\"male\", \"high\"), units on their own, gene or tool names, or\n  dataset-specific codes.\n- No alias that only rewords the label trivially (plural, case,\n  punctuation). Those are matched already.\n- Fewer is better than wrong. If a term has no natural alias, return an empty\n  list.\n\nExamples:\n- systolic blood pressure -> [\"sbp\", \"systolic bp\", \"systolic pressure\"]\n- intraocular pressure measurement -> [\"intraocular pressure\", \"iop\"]\n- visual acuity measurement -> [\"visual acuity\", \"va\"]\n",
+ "items": [
+  {
+   "item_id": "EFO:0009243",
+   "label": "Myeloid to Erythroid Ratio Measurement",
+   "definition": "The determination of the ratio of myeloid cells compared to erythroid cells present in a sample. The measurement may be expressed as a ratio or percentage. [ NCI ]",
+   "synonyms": [
+    "MYPCERPC",
+    "Myeloid/Erythroid Ratio"
+   ]
+  },
+  {
+   "item_id": "EFO:0009244",
+   "label": "Neutrophilic Metamyelocyte Count",
+   "definition": "The determination of the number of neutrophilic metamyelocytes in a blood sample. [ NCI ]",
+   "synonyms": [
+    "NEUTMM",
+    "Neutrophilic Metamyelocytes"
+   ]
+  },
+  {
+   "item_id": "EFO:0009245",
+   "label": "Neutrophilic Myelocyte Count",
+   "definition": "The determination of the number of neutrophilic myelocytes in a blood sample. [ NCI ]",
+   "synonyms": [
+    "NEUTMY",
+    "Neutrophilic Myelocytes"
+   ]
+  },
+  {
+   "item_id": "EFO:0009246",
+   "label": "Neutrophils Band Form to Neutrophils Ratio Measurement",
+   "definition": "The determination of the ratio of neutrophil band form compared to neutrophils present in a sample. The measurement may be expressed as a ratio or percentage. [ NCI]",
+   "synonyms": [
+    "NEUTBNE",
+    "Neutrophils Band Form/ Neutrophils"
+   ]
+  },
+  {
+   "item_id": "EFO:0009247",
+   "label": "Ovalocyte Count",
+   "definition": "The determination of the amount of ovalocytes present in a sample. [ NCI ]",
+   "synonyms": [
+    "OVALCY",
+    "Ovalocytes"
+   ]
+  },
+  {
+   "item_id": "EFO:0009248",
+   "label": "Plasma Cell Count",
+   "definition": "The determination of the amount of plasma cells present in a sample. [ NCI ]",
+   "synonyms": [
+    "PLSTCE",
+    "Total Plasma Cells"
+   ]
+  },
+  {
+   "item_id": "EFO:0009251",
+   "label": "Rubricyte Count",
+   "definition": "The determination of the amount of rubricytes present in a sample. [ NCI ]",
+   "synonyms": [
+    "Polychromatophilic Erythroblast",
+    "Polychromatophilic Normoblast",
+    "RUB",
+    "Rubricyte"
+   ]
+  },
+  {
+   "item_id": "EFO:0009252",
+   "label": "Segmented Neutrophils to Neutrophils Ratio Measurement",
+   "definition": "The determination of the ratio of segmented neutrophils compared to neutrophils present in a sample. The measurement may be expressed as a ratio or percentage. [NCI ]",
+   "synonyms": [
+    "NEUTSGNE",
+    "Neutrophils",
+    "Segmented/Neutrophils"
+   ]
+  },
+  {
+   "item_id": "EFO:0009256",
+   "label": "standard deviation of the normal-to-normal inter beat intervals",
+   "definition": "Quantification of the intervals between normal heartbeats, expressed as standard deviation.",
+   "synonyms": [
+    "SDNN"
+   ]
+  },
+  {
+   "item_id": "EFO:0009257",
+   "label": "root mean square of the successive differences of inter beat intervals",
+   "definition": "Quantification of the differences in intervals between heartbeats, expressed as root mean square.",
+   "synonyms": [
+    "RMSSD"
+   ]
+  },
+  {
+   "item_id": "EFO:0009258",
+   "label": "peak-valley respiratory sinus arrhythmia or high frequency power",
+   "definition": "Quantification of some aspects of sinus arrhythmia or high frequency power.",
+   "synonyms": [
+    "pvRSA/HF"
+   ]
+  },
+  {
+   "item_id": "EFO:0009262",
+   "label": "nicotine dependence symptom count",
+   "definition": "Quantification of symptom associated with nicotine dependence.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009263",
+   "label": "nicotine withdrawal symptom count",
+   "definition": "Quantification of symptom associated with nicotine withdrawal.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009265",
+   "label": "nausea and vomiting of pregnancy severity measurement",
+   "definition": "",
+   "synonyms": [
+    "Morning sickness severity measurement",
+    "NVP severity measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0009268",
+   "label": "family history of Alzheimer\u2019s disease",
+   "definition": "A reported family history of Alzheimer\u2019s disease in one or more family members.",
+   "synonyms": [
+    "Alzheimer disease family history",
+    "Alzheimer\u2019s disease family history",
+    "family history of Alzheimer disease"
+   ]
+  },
+  {
+   "item_id": "EFO:0009270",
+   "label": "heel bone mineral density",
+   "definition": "Quantification of the mineral density of the heel bone",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009271",
+   "label": "Epstein Barr virus nuclear antigen-1 seropositivity",
+   "definition": "The result of a measurement of circulating Epstein Barr virus nuclear antigen-1 antibodies used in the diagnosis of latent Epstein-Barr virus infection",
+   "synonyms": [
+    "EBNA seropositivity",
+    "EBNA-1 seropositivity"
+   ]
+  },
+  {
+   "item_id": "EFO:0009272",
+   "label": "Epstein Barr viral capsid antigen seropositivity",
+   "definition": "The result of a measurement of circulating Epstein Barr viral capsid antigen antibodies used in the diagnosis of Epstein-Barr virus infection",
+   "synonyms": [
+    "VCA seropositivity",
+    "VCA-IgG seropositivity"
+   ]
+  },
+  {
+   "item_id": "EFO:0009281",
+   "label": "choroidal thickness measurement",
+   "definition": "Quantification of the thickness of the choroid, the vascular layer of the eye lying between the retina and the sclera.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009282",
+   "label": "sodium measurement",
+   "definition": "A quantitative measurement of the amount of sodium present in a sample.",
+   "synonyms": [
+    "Na measurement",
+    "sodium levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0009283",
+   "label": "potassium measurement",
+   "definition": "A quantitative measurement of the amount of potassium present in a sample.",
+   "synonyms": [
+    "K measurement",
+    "potassium levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0009303",
+   "label": "fructosamine measurement",
+   "definition": "Quantification of levels of fructosamine present in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009304",
+   "label": "percent glycated albumin",
+   "definition": "Quantification of the percentage of serum albumin in a sample that is glycated.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009305",
+   "label": "total glycated albumin",
+   "definition": "Quantification of the total amount of glycated albumin in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009306",
+   "label": "atazanavir measurement",
+   "definition": "Quantification of the total amount of atazanavir, typically assayed in hair. This is used as a measure of exposure to the drug.",
+   "synonyms": [
+    "atazanavir levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0009307",
+   "label": "glycated albumin measurement",
+   "definition": "The determination of the amount of glycated albumin related peptide present in a biological specimen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009324",
+   "label": "APOL1 risk genotype carrier status",
+   "definition": "Quantification of the presence of absence of the APOL1 risk genotype in an individual",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009330",
+   "label": "Chlamydia trachomatis seropositivity",
+   "definition": "Chlamydia trachomatis seropositivity is the result of a measurement of circulating C. trachomatis specific antibodies",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009335",
+   "label": "white matter growth measurement",
+   "definition": "Quantification of any aspect of growth of the white matter during development",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009338",
+   "label": "Epstein-Barr virus early antigen seropositivity",
+   "definition": "The result of a measurement of circulating Epstein-Barr virus early antigen-specific antibodies",
+   "synonyms": [
+    "EBV-EA seropositivity"
+   ]
+  },
+  {
+   "item_id": "EFO:0009339",
+   "label": "Herpes simplex virus 2 seropositivity",
+   "definition": "The result of a measurement of circulating Herpes simplex virus 2-specific antibodies",
+   "synonyms": [
+    "HSV2 seropositivity"
+   ]
+  },
+  {
+   "item_id": "EFO:0009340",
+   "label": "Varicella zoster virus seropositivity",
+   "definition": "The result of a measurement of circulating Varicella zoster virus-specific antibodies",
+   "synonyms": [
+    "VZV seropositivity"
+   ]
+  },
+  {
+   "item_id": "EFO:0009341",
+   "label": "Helicobacter pylori seropositivity",
+   "definition": "The result of a measurement of circulating Helicobacter pylori-specific antibodies",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009342",
+   "label": "Measles virus seropositivity",
+   "definition": "The result of a measurement of circulating Measles virus-specific antibodies",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009343",
+   "label": "Mumps virus seropositivity",
+   "definition": "The result of a measurement of circulating Mumps virus-specific antibodies",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009344",
+   "label": "Rubella virus seropositivity",
+   "definition": "The result of a measurement of circulating Rubella virus-specific antibodies",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009345",
+   "label": "Hepatitis B virus surface antigen seropositivity",
+   "definition": "The result of a measurement of circulating Hepatitis B virus surface antigen-specific antibodies",
+   "synonyms": [
+    "HBs seropositivity"
+   ]
+  },
+  {
+   "item_id": "EFO:0009346",
+   "label": "Hepatitis B virus core antigen seropositivity",
+   "definition": "The result of a measurement of circulating Hepatitis B virus core antigen-specific antibodies",
+   "synonyms": [
+    "HBc seropositivity"
+   ]
+  },
+  {
+   "item_id": "EFO:0009354",
+   "label": "Anti-influenza A virus IgG measurement",
+   "definition": "Quantification of the IgG antibody isotype produced in response to influenza A virus infection",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009362",
+   "label": "nicotine withdrawal measurement",
+   "definition": "Quantification of measure of nicotine withdrwawal.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009369",
+   "label": "diffusing capacity of the lung for carbon monoxide",
+   "definition": "A measurement of carbon monoxide (CO) transfer from inspired gas to pulmonary capillary blood. During the test, the subject inspires a gas containing CO and one or more tracer gases to allow determination of the gas exchanging capability of the lungs.",
+   "synonyms": [
+    "carbon monoxide diffusing capacity",
+    "pulmonary diffusing capacity",
+    "transfer factor of the lung for carbon monoxide"
+   ]
+  },
+  {
+   "item_id": "EFO:0009370",
+   "label": "radon exposure measurement",
+   "definition": "Quantification of some aspect of exposure to radon gas",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009374",
+   "label": "energy intake measurement",
+   "definition": "Quantification of the energy intake of an individual, e.g. based on a food frequency questionnaire or seven-day food record and assessment of the calorific content of the food types and portion sizes recorded.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009410",
+   "label": "uterine fibroid measurement",
+   "definition": "Quantification of some aspect of uterine fibroids, such as the number, volume or dimensions.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009426",
+   "label": "necrosis",
+   "definition": "The phenotypic observation that death has occurred in groups of cells or in one or more tissues due to external factors, such as infection, toxins, mechanical trauma, loss of blood supply and other injuries (e.g. corrosion or burning). At the cellular level, morphological changes following necrosis ",
+   "synonyms": [
+    "tissue necrosis"
+   ]
+  },
+  {
+   "item_id": "EFO:0009427",
+   "label": "embryonic lethality",
+   "definition": "Death of an embryo (human or animal) within the embryonic period prior to organogenesis. In mouse, this is defined as prior to E14.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009428",
+   "label": "synthetic lethality",
+   "definition": "Death arising when a combination of deficiencies in the expression of two or more genes leads to cell death, whereas a deficiency in only one of these genes does not.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009435",
+   "label": "arthritis disease activity score measurement",
+   "definition": "Quantification of the global severity of rheumatoid arthritis in a patient, based on a combination of several different specific measures, e.g. swollen 28-joint count, tender 28-joint count, erythrocyte sedimentation rate and patient global health assessment score.",
+   "synonyms": [
+    "DAS28",
+    "disease activity score"
+   ]
+  },
+  {
+   "item_id": "EFO:0009436",
+   "label": "offspring survival measurement",
+   "definition": "Quantification of the ability of an individual's offspring to survive or live successfully, e.g. the number of children surviving to a given age.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009437",
+   "label": "offspring mortality measurement",
+   "definition": "Quantification of some aspect of the death of an individual's offspring, e.g. the number of children dying before a given age.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009438",
+   "label": "number of pregnancies measurement",
+   "definition": "Quantification of the number of pregnancies a woman has",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009439",
+   "label": "multiple births measurement",
+   "definition": "Quantification of some aspect of multiple births, eg the number or proportion born to an individual.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009440",
+   "label": "age at last pregnancy measurement",
+   "definition": "A measurement of the age at which a woman became pregnant for the final time in her reproductive life.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009444",
+   "label": "hypoxia",
+   "definition": "A decrease in the amount of oxygen in the body. Symptoms range from mild (impaired judgment, memory loss, impaired motor coordination) to severe (seizures and coma). [ NCI ]",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009463",
+   "label": "infarction",
+   "definition": "A localised pathological necrosis of tissue resulting from obstruction of the blood supply usually by a thrombus, an embolus, or vascular torsion.",
+   "synonyms": [
+    "infarcts"
+   ]
+  },
+  {
+   "item_id": "EFO:0009473",
+   "label": "hemolysis",
+   "definition": "Disruption of the integrity of the erythrocyte membrane causing release of hemoglobin. [ NCI ]",
+   "synonyms": [
+    "hemolysis, hemolytic"
+   ]
+  },
+  {
+   "item_id": "EFO:0009476",
+   "label": "neck injury",
+   "definition": "Damage inflicted to the neck.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009485",
+   "label": "eye injury",
+   "definition": "Damage inflicted to an eye.",
+   "synonyms": [
+    "ocular injury"
+   ]
+  },
+  {
+   "item_id": "EFO:0009502",
+   "label": "abdominal injury",
+   "definition": "Injury to the abdomen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009503",
+   "label": "caustic injury",
+   "definition": "Tissue corrosion or chemical burn. Chemical burns are injuries to the skin, eyes, mouth, or internal organs caused by contact with a corrosive substance",
+   "synonyms": [
+    "chemical burn"
+   ]
+  },
+  {
+   "item_id": "EFO:0009504",
+   "label": "crush injury",
+   "definition": "Traumatic compression of the body or a part of the body. [ NCI ]",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009505",
+   "label": "head injury",
+   "definition": "Injury to the head.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009506",
+   "label": "heart injury",
+   "definition": "Injury to the heart.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009508",
+   "label": "leg injury",
+   "definition": "Injury to a leg.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009509",
+   "label": "limb injury",
+   "definition": "Injury to a limb.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009511",
+   "label": "abnormal PAP smear",
+   "definition": "A finding indicating the presence of abnormal cervical cells in a PAP smear. [ NCI ]",
+   "synonyms": [
+    "abnormal PAP test",
+    "abnormal smear (cervix)"
+   ]
+  },
+  {
+   "item_id": "EFO:0009512",
+   "label": "lower extremity fracture",
+   "definition": "A traumatic break in one or more of the bones in the hip, thigh, leg, or foot. [ NCI ]",
+   "synonyms": [
+    "fracture of lower limb"
+   ]
+  },
+  {
+   "item_id": "EFO:0009513",
+   "label": "multiple bone fractures",
+   "definition": "Two or more simultaneous traumatic breaks in one or more bones. [ NCI ]",
+   "synonyms": [
+    "fractures involving multiple body regions",
+    "multiple fractures"
+   ]
+  },
+  {
+   "item_id": "EFO:0009514",
+   "label": "upper extremity fracture",
+   "definition": "A traumatic break in one or more of the bones in the arm, forearm, or hand. [ NCI ]",
+   "synonyms": [
+    "fracture of upper limb"
+   ]
+  },
+  {
+   "item_id": "EFO:0009516",
+   "label": "burn",
+   "definition": "A traumatic injury involving interruption of tissue cohesiveness that results from exposure to caustic chemicals, extreme heat, extreme cold or excessive radiation. [ NCI ]",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009521",
+   "label": "dislocation",
+   "definition": "A displacement of a part (especially a bone) from its normal position. [ NCI ]",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009525",
+   "label": "foreign body",
+   "definition": "Extraneous material within the body. [ NCI ]",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009527",
+   "label": "frostbite",
+   "definition": "An injury to the skin and/or its underlying tissues that results from exposure of the affected area to extreme cold. [ NCI ]",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009582",
+   "label": "sprain",
+   "definition": "A stretching or tearing of a ligament. [ NCI ]",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009583",
+   "label": "place of residence measurement",
+   "definition": "Quantification of some aspect of an individual's place of residence, such as population density or socioeconomic status.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009591",
+   "label": "verbal memory measurement",
+   "definition": "Quantification of an individual's ability to store and recall linguistic information.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009600",
+   "label": "thyroid radioablation therapy",
+   "definition": "Therapy using radioactive iodine for ablation of remnant thyroid tissue following a complete thyroidectomy to treat thyroid cancer.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009603",
+   "label": "stroke outcome severity measurement",
+   "definition": "Quantification of the the degree of disability or dependence in the daily activities of people who have suffered a stroke, for example using the Modified Rankin Scale.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009614",
+   "label": "clavicle fracture",
+   "definition": "A traumatic or pathologic injury to the clavicle in which the continuity of the clavicle is broken. [ NCI ]",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009620",
+   "label": "rib fracture",
+   "definition": "A traumatic or pathologic injury to the rib in which the continuity of the rib is broken. [ NCI ]",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009621",
+   "label": "shoulder fracture",
+   "definition": "A traumatic break in one or more of the bones that compose the shoulder joint. [ NCI ]",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009622",
+   "label": "fracture of pelvis",
+   "definition": "A traumatic break in one or more of the bones that compose the bony structure of the pelvis. [ NCI ]",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009623",
+   "label": "nose injury",
+   "definition": "Trauma to the nose. [ NCI ]",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009628",
+   "label": "abnormal result of function studies",
+   "definition": "Abnormal result of a test meant to evaluate functionality of an organ or system, such as electroencephalogram, electrocardiogram, glucose tolerance test and others.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009629",
+   "label": "event",
+   "definition": "Something that happens at a given place and time. [ NCI ]",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009630",
+   "label": "convalescence",
+   "definition": "A processual entity during which a patient participating in a disease course gradually returns to participating in a canonical life course.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009631",
+   "label": "fall",
+   "definition": "A sudden movement downward, usually resulting in injury. [ NCI ]",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009633",
+   "label": "tissue donor",
+   "definition": "Someone who gives tissue to be used in another person. [ NCI ]",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009634",
+   "label": "organ donor",
+   "definition": "Someone from whom an organ is removed for transplantation or other purpose. [ NCI ]",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009635",
+   "label": "blood donor",
+   "definition": "Someone from whom blood is removed for transfusion or other purpose. [ NCI ]",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009638",
+   "label": "spontaneous labor and birth",
+   "definition": "Initiation of labor without the use of pharmacological and/or mechanical interventions, resulting in a non-operative vaginal birth. [NCIT]",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009639",
+   "label": "Braxton-Hicks contractions",
+   "definition": "Irregular infrequent uterine contractions typically characteristic of the third trimester of pregnancy that do not result in cervical change or labor. [def-source: NCI][attr: NICHD]",
+   "synonyms": [
+    "false labour"
+   ]
+  },
+  {
+   "item_id": "EFO:0009640",
+   "label": "family history of cancer",
+   "definition": "A form of clinicaly history specifically about cancer in family members.",
+   "synonyms": [
+    "family history of malignant neoplasm"
+   ]
+  },
+  {
+   "item_id": "EFO:0009641",
+   "label": "malaise",
+   "definition": "A feeling of general discomfort or uneasiness, an out-of-sorts feeling. [def-source: NCI][attr: CDC Glossary]",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009693",
+   "label": "thiopurine metabolite measurement",
+   "definition": "Quantification of the metabolites of thiopurine compounds.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009694",
+   "label": "beta-lactam allergy measurement",
+   "definition": "Quantification of the presence or severity of an allergy to beta-lactam, including beta-lactam antibiotics.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009695",
+   "label": "household income",
+   "definition": "A demographic parameter indicating the amount of earning made by a family.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009696",
+   "label": "social deprivation",
+   "definition": "Absence of social environment which is necessary for the social development of the individual.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009697",
+   "label": "pathological complete response",
+   "definition": "The disappearance of all signs of cancer, supported by pathological examination.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0009701",
+   "label": "visceral:total adipose tissue ratio",
+   "definition": "Quantification of visceral to total adipose tissue.",
+   "synonyms": []
+  }
+ ],
+ "answer_file": "batch_12.answer.json",
+ "answer_schema": {
+  "type": "object",
+  "required": [
+   "content_sha256",
+   "answers"
+  ],
+  "properties": {
+   "content_sha256": {
+    "type": "string"
+   },
+   "answers": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "item_id",
+      "aliases"
+     ],
+     "properties": {
+      "item_id": {
+       "type": "string"
+      },
+      "aliases": {
+       "type": "array",
+       "maxItems": 5,
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "content_sha256": "5151b5943e12444ab2a51d7b0e584ac410afb1963cacde30c8bbcee8aad4b7cf"
+}

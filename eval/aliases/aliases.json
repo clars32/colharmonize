@@ -1,0 +1,3523 @@
+{
+ "CHEBI:22333": [
+  "alkylator"
+ ],
+ "CHEBI:22587": [
+  "antiviral"
+ ],
+ "CHEBI:22917": [
+  "botanical insecticide"
+ ],
+ "CHEBI:23366": [
+  "compatible solutes"
+ ],
+ "CHEBI:23888": [
+  "medication"
+ ],
+ "CHEBI:24527": [
+  "weedkiller"
+ ],
+ "CHEBI:26155": [
+  "PGR"
+ ],
+ "CHEBI:33229": [
+  "vitamin"
+ ],
+ "CHEBI:33286": [
+  "agricultural chemical"
+ ],
+ "CHEBI:35195": [
+  "surface active agent"
+ ],
+ "CHEBI:35219": [
+  "growth retardant"
+ ],
+ "CHEBI:35472": [
+  "anti-inflammatory"
+ ],
+ "CHEBI:35476": [
+  "antipsychotic"
+ ],
+ "CHEBI:35481": [
+  "non-opioid analgesic"
+ ],
+ "CHEBI:35482": [
+  "opioid",
+  "narcotic analgesic"
+ ],
+ "CHEBI:35493": [
+  "fever reducer"
+ ],
+ "CHEBI:35522": [
+  "beta agonist"
+ ],
+ "CHEBI:35526": [
+  "glucose-lowering drug"
+ ],
+ "CHEBI:35610": [
+  "anticancer agent"
+ ],
+ "CHEBI:35623": [
+  "antiepileptic"
+ ],
+ "CHEBI:35679": [
+  "lipid-lowering drug"
+ ],
+ "CHEBI:35705": [
+  "immunosuppressant"
+ ],
+ "CHEBI:35718": [
+  "antifungal"
+ ],
+ "CHEBI:36047": [
+  "antibiotic"
+ ],
+ "CHEBI:37845": [
+  "GH",
+  "somatotropin"
+ ],
+ "CHEBI:37848": [
+  "phytohormone"
+ ],
+ "CHEBI:37887": [
+  "adrenergic blocker"
+ ],
+ "CHEBI:37956": [
+  "antihistamine"
+ ],
+ "CHEBI:37960": [
+  "cyanine"
+ ],
+ "CHEBI:37987": [
+  "Cy3"
+ ],
+ "CHEBI:37989": [
+  "Cy5"
+ ],
+ "CHEBI:38215": [
+  "CCB"
+ ],
+ "CHEBI:38870": [
+  "inhaled anesthetic"
+ ],
+ "CHEBI:38877": [
+  "IV anesthetic"
+ ],
+ "CHEBI:48218": [
+  "antiseptic"
+ ],
+ "CHEBI:48561": [
+  "dopamine antagonist"
+ ],
+ "CHEBI:48873": [
+  "anticholinergic"
+ ],
+ "CHEBI:50249": [
+  "blood thinner"
+ ],
+ "CHEBI:50505": [
+  "sweetener"
+ ],
+ "CHEBI:50683": [
+  "DHFR inhibitor"
+ ],
+ "CHEBI:50739": [
+  "SERM"
+ ],
+ "CHEBI:50792": [
+  "antiestrogen"
+ ],
+ "CHEBI:63060": [
+  "PTC"
+ ],
+ "EFO:0000246": [
+  "donor age"
+ ],
+ "EFO:0000269": [
+  "array platform"
+ ],
+ "EFO:0000352": [
+  "medical history"
+ ],
+ "EFO:0000369": [
+  "compound treatment"
+ ],
+ "EFO:0000370": [
+  "chemical mutagenesis"
+ ],
+ "EFO:0000399": [
+  "dev stage"
+ ],
+ "EFO:0000410": [
+  "disease stage"
+ ],
+ "EFO:0000428": [
+  "dosage"
+ ],
+ "EFO:0000490": [
+  "extraction method"
+ ],
+ "EFO:0000506": [
+  "knockout"
+ ],
+ "EFO:0000510": [
+  "genetic manipulation"
+ ],
+ "EFO:0000544": [
+  "infection status"
+ ],
+ "EFO:0000627": [
+  "injection count"
+ ],
+ "EFO:0000635": [
+  "tissue"
+ ],
+ "EFO:0000638": [
+  "OS"
+ ],
+ "EFO:0000689": [
+  "collection time"
+ ],
+ "EFO:0000718": [
+  "exposure temp"
+ ],
+ "EFO:0000732": [
+  "vehicle"
+ ],
+ "EFO:0001460": [
+  "not infected"
+ ],
+ "EFO:0001461": [
+  "control sample"
+ ],
+ "EFO:0001702": [
+  "temp"
+ ],
+ "EFO:0001728": [
+  "array vendor"
+ ],
+ "EFO:0001729": [
+  "sample provider"
+ ],
+ "EFO:0001736": [
+  "funding source"
+ ],
+ "EFO:0002090": [
+  "tech rep"
+ ],
+ "EFO:0002091": [
+  "bio rep"
+ ],
+ "EFO:0002092": [
+  "dye swap"
+ ],
+ "EFO:0002803": [
+  "T helper 1"
+ ],
+ "EFO:0002804": [
+  "T helper 2"
+ ],
+ "EFO:0003046": [
+  "cardiac transplant rejection",
+  "heart allograft rejection"
+ ],
+ "EFO:0003815": [
+  "array hybridization protocol"
+ ],
+ "EFO:0003816": [
+  "normalization protocol"
+ ],
+ "EFO:0003892": [
+  "lung function",
+  "pulmonary function"
+ ],
+ "EFO:0003901": [
+  "painful urination"
+ ],
+ "EFO:0003917": [
+  "preterm delivery"
+ ],
+ "EFO:0003939": [
+  "calorie intake"
+ ],
+ "EFO:0003940": [
+  "physical activity level"
+ ],
+ "EFO:0003952": [
+  "FUO"
+ ],
+ "EFO:0003961": [
+  "HRT"
+ ],
+ "EFO:0004170": [
+  "sequencing protocol"
+ ],
+ "EFO:0004294": [
+  "LA function"
+ ],
+ "EFO:0004295": [
+  "LV function"
+ ],
+ "EFO:0004306": [
+  "RBC indices"
+ ],
+ "EFO:0004307": [
+  "GTT"
+ ],
+ "EFO:0004309": [
+  "PLT count"
+ ],
+ "EFO:0004312": [
+  "VC"
+ ],
+ "EFO:0004313": [
+  "MMFR"
+ ],
+ "EFO:0004314": [
+  "FEV"
+ ],
+ "EFO:0004335": [
+  "STM"
+ ],
+ "EFO:0004338": [
+  "body mass"
+ ],
+ "EFO:0004346": [
+  "neuroimaging"
+ ],
+ "EFO:0004348": [
+  "HCT",
+  "PCV",
+  "packed cell volume"
+ ],
+ "EFO:0004352": [
+  "death rate"
+ ],
+ "EFO:0004357": [
+  "EEG"
+ ],
+ "EFO:0004368": [
+  "molecule count"
+ ],
+ "EFO:0004425": [
+  "baseline",
+  "time 0"
+ ],
+ "EFO:0004458": [
+  "CRP",
+  "C-reactive protein"
+ ],
+ "EFO:0004459": [
+  "ferritin"
+ ],
+ "EFO:0004460": [
+  "sTfR",
+  "soluble TfR"
+ ],
+ "EFO:0004467": [
+  "insulin"
+ ],
+ "EFO:0004468": [
+  "glucose",
+  "blood glucose"
+ ],
+ "EFO:0004469": [
+  "HOMA %B",
+  "HOMA-beta"
+ ],
+ "EFO:0004471": [
+  "insulin sensitivity"
+ ],
+ "EFO:0004501": [
+  "HOMA insulin resistance"
+ ],
+ "EFO:0004502": [
+  "adiponectin"
+ ],
+ "EFO:0004509": [
+  "Hgb",
+  "hemoglobin"
+ ],
+ "EFO:0004514": [
+  "QUS"
+ ],
+ "EFO:0004519": [
+  "soluble P-selectin"
+ ],
+ "EFO:0004520": [
+  "ICAM-1"
+ ],
+ "EFO:0004527": [
+  "mean cell hemoglobin"
+ ],
+ "EFO:0004528": [
+  "mean cell hemoglobin concentration"
+ ],
+ "EFO:0004529": [
+  "blood lipids"
+ ],
+ "EFO:0004531": [
+  "uric acid"
+ ],
+ "EFO:0004532": [
+  "GGT",
+  "gamma-GT"
+ ],
+ "EFO:0004533": [
+  "ALP",
+  "alkaline phosphatase"
+ ],
+ "EFO:0004534": [
+  "CK",
+  "creatine kinase"
+ ],
+ "EFO:0004536": [
+  "total protein"
+ ],
+ "EFO:0004541": [
+  "glycohemoglobin"
+ ],
+ "EFO:0004570": [
+  "bilirubin"
+ ],
+ "EFO:0004573": [
+  "chemerin"
+ ],
+ "EFO:0004574": [
+  "TC",
+  "total cholesterol"
+ ],
+ "EFO:0004576": [
+  "HbF"
+ ],
+ "EFO:0004578": [
+  "homocysteine",
+  "Hcy"
+ ],
+ "EFO:0004581": [
+  "IL-18"
+ ],
+ "EFO:0004587": [
+  "ALC"
+ ],
+ "EFO:0004595": [
+  "vertical HIV transmission"
+ ],
+ "EFO:0004611": [
+  "LDL-C",
+  "LDL cholesterol"
+ ],
+ "EFO:0004614": [
+  "ApoA1",
+  "apoA-I"
+ ],
+ "EFO:0004615": [
+  "ApoB"
+ ],
+ "EFO:0004618": [
+  "phylloquinone"
+ ],
+ "EFO:0004620": [
+  "B12",
+  "cobalamin"
+ ],
+ "EFO:0004621": [
+  "B6"
+ ],
+ "EFO:0004626": [
+  "insulin-like growth factor binding protein 3"
+ ],
+ "EFO:0004627": [
+  "somatomedin C"
+ ],
+ "EFO:0004630": [
+  "FVIII",
+  "AHF"
+ ],
+ "EFO:0004632": [
+  "mole count"
+ ],
+ "EFO:0004633": [
+  "protein C"
+ ],
+ "EFO:0004635": [
+  "sOB-R",
+  "soluble leptin receptor"
+ ],
+ "EFO:0004637": [
+  "protein S"
+ ],
+ "EFO:0004640": [
+  "haptoglobin"
+ ],
+ "EFO:0004682": [
+  "QT",
+  "QT duration"
+ ],
+ "EFO:0004694": [
+  "factor XI",
+  "FXI"
+ ],
+ "EFO:0004695": [
+  "intraocular pressure",
+  "IOP"
+ ],
+ "EFO:0004696": [
+  "SHBG",
+  "sex hormone binding globulin"
+ ],
+ "EFO:0004703": [
+  "age of menarche"
+ ],
+ "EFO:0004704": [
+  "age of menopause"
+ ],
+ "EFO:0004713": [
+  "FEV1:FVC ratio"
+ ],
+ "EFO:0004739": [
+  "cfDNA",
+  "ccfDNA"
+ ],
+ "EFO:0004743": [
+  "facial shape"
+ ],
+ "EFO:0004746": [
+  "Lp-PLA2"
+ ],
+ "EFO:0004750": [
+  "IL-10",
+  "IL10"
+ ],
+ "EFO:0004754": [
+  "IL-1RA",
+  "IL1RA"
+ ],
+ "EFO:0004761": [
+  "urate",
+  "serum uric acid"
+ ],
+ "EFO:0004767": [
+  "VAT:SAT ratio",
+  "visceral to subcutaneous fat ratio"
+ ],
+ "EFO:0004768": [
+  "FSH"
+ ],
+ "EFO:0004769": [
+  "AMH"
+ ],
+ "EFO:0004778": [
+  "SRH"
+ ],
+ "EFO:0004789": [
+  "ANF",
+  "ANP"
+ ],
+ "EFO:0004790": [
+  "CD40L",
+  "CD154"
+ ],
+ "EFO:0004798": [
+  "CNV"
+ ],
+ "EFO:0004800": [
+  "frontal theta"
+ ],
+ "EFO:0004804": [
+  "crude birth rate"
+ ],
+ "EFO:0004807": [
+  "short sleep duration"
+ ],
+ "EFO:0004808": [
+  "LDH",
+  "lactate dehydrogenase"
+ ],
+ "EFO:0004809": [
+  "aldolase"
+ ],
+ "EFO:0004810": [
+  "IL6"
+ ],
+ "EFO:0004811": [
+  "IL8"
+ ],
+ "EFO:0004812": [
+  "IL-1beta"
+ ],
+ "EFO:0004814": [
+  "IL-6R",
+  "CD126"
+ ],
+ "EFO:0004820": [
+  "male:female ratio"
+ ],
+ "EFO:0004825": [
+  "TCI"
+ ],
+ "EFO:0004833": [
+  "ANC",
+  "absolute neutrophil count"
+ ],
+ "EFO:0004838": [
+  "serum calcium"
+ ],
+ "EFO:0004842": [
+  "AEC",
+  "absolute eosinophil count"
+ ],
+ "EFO:0004845": [
+  "serum magnesium"
+ ],
+ "EFO:0004847": [
+  "AAO"
+ ],
+ "EFO:0004861": [
+  "serum phosphorus"
+ ],
+ "EFO:0004864": [
+  "renal sinus fat"
+ ],
+ "EFO:0004869": [
+  "chitinase-3-like protein 1"
+ ],
+ "EFO:0004885": [
+  "early repolarization",
+  "ERP"
+ ],
+ "EFO:0004886": [
+  "ICV",
+  "intracranial volume"
+ ],
+ "EFO:0004887": [
+  "VO2max"
+ ],
+ "EFO:0004892": [
+  "SCM"
+ ],
+ "EFO:0004908": [
+  "serum testosterone"
+ ],
+ "EFO:0004909": [
+  "DHT"
+ ],
+ "EFO:0004925": [
+  "TNM stage"
+ ],
+ "EFO:0004926": [
+  "M category"
+ ],
+ "EFO:0004927": [
+  "N category"
+ ],
+ "EFO:0004928": [
+  "T category"
+ ],
+ "EFO:0004950": [
+  "DOB"
+ ],
+ "EFO:0004951": [
+  "vital status at endpoint"
+ ],
+ "EFO:0004952": [
+  "recurrence"
+ ],
+ "EFO:0004955": [
+  "Breslow depth"
+ ],
+ "EFO:0004956": [
+  "Clark invasion level"
+ ],
+ "EFO:0004979": [
+  "CSI"
+ ],
+ "EFO:0004980": [
+  "ALM"
+ ],
+ "EFO:0004981": [
+  "periodontal microbiome"
+ ],
+ "EFO:0004983": [
+  "C3"
+ ],
+ "EFO:0004984": [
+  "C4"
+ ],
+ "EFO:0004995": [
+  "LBM"
+ ],
+ "EFO:0005000": [
+  "leptin"
+ ],
+ "EFO:0005001": [
+  "Phe"
+ ],
+ "EFO:0005020": [
+  "sampling latitude",
+  "sample latitude"
+ ],
+ "EFO:0005021": [
+  "sampling longitude",
+  "sample longitude"
+ ],
+ "EFO:0005056": [
+  "age of death"
+ ],
+ "EFO:0005058": [
+  "tyrosine level"
+ ],
+ "EFO:0005080": [
+  "CC16",
+  "clara cell protein"
+ ],
+ "EFO:0005081": [
+  "SPD",
+  "surfactant protein D"
+ ],
+ "EFO:0005089": [
+  "total brain volume"
+ ],
+ "EFO:0005090": [
+  "basophils",
+  "BASO"
+ ],
+ "EFO:0005091": [
+  "monocytes",
+  "MONO"
+ ],
+ "EFO:0005092": [
+  "entorhinal cortex volume"
+ ],
+ "EFO:0005105": [
+  "lipid or lipoprotein"
+ ],
+ "EFO:0005106": [
+  "body composition"
+ ],
+ "EFO:0005108": [
+  "armspan"
+ ],
+ "EFO:0005109": [
+  "calorie expenditure",
+  "EE"
+ ],
+ "EFO:0005112": [
+  "GA",
+  "weeks gestation"
+ ],
+ "EFO:0005115": [
+  "metabolic rate"
+ ],
+ "EFO:0005117": [
+  "CCL5 level"
+ ],
+ "EFO:0005119": [
+  "antioxidant level"
+ ],
+ "EFO:0005127": [
+  "cancer biomarker",
+  "tumor marker"
+ ],
+ "EFO:0005128": [
+  "A/G ratio",
+  "AGR"
+ ],
+ "EFO:0005132": [
+  "5-hydroxyindoleacetic acid",
+  "5HIAA"
+ ],
+ "EFO:0005135": [
+  "strain name"
+ ],
+ "EFO:0005136": [
+  "cultivar name"
+ ],
+ "EFO:0005187": [
+  "C-peptide level"
+ ],
+ "EFO:0005188": [
+  "CCL11",
+  "eotaxin"
+ ],
+ "EFO:0005189": [
+  "RQ",
+  "respiratory coefficient"
+ ],
+ "EFO:0005190": [
+  "urine nitrogen"
+ ],
+ "EFO:0005193": [
+  "IgG glycosylation"
+ ],
+ "EFO:0005198": [
+  "transplant outcome"
+ ],
+ "EFO:0005199": [
+  "kidney transplant outcome"
+ ],
+ "EFO:0005206": [
+  "OCB"
+ ],
+ "EFO:0005211": [
+  "aspirin hydrolysis rate"
+ ],
+ "EFO:0005213": [
+  "CCT"
+ ],
+ "EFO:0005238": [
+  "breed name"
+ ],
+ "EFO:0005241": [
+  "work status"
+ ],
+ "EFO:0005267": [
+  "serum copper"
+ ],
+ "EFO:0005278": [
+  "CVD biomarker",
+  "cardiovascular biomarker"
+ ],
+ "EFO:0005298": [
+  "allergic sensitization",
+  "allergy sensitization"
+ ],
+ "EFO:0005413": [
+  "joint damage"
+ ],
+ "EFO:0005419": [
+  "contrast sensitivity"
+ ],
+ "EFO:0005429": [
+  "BPD symptom"
+ ],
+ "EFO:0005512": [
+  "ER status"
+ ],
+ "EFO:0005513": [
+  "PR status",
+  "PgR status"
+ ],
+ "EFO:0005514": [
+  "HER2 receptor status"
+ ],
+ "EFO:0005518": [
+  "collection protocol",
+  "sampling protocol"
+ ],
+ "EFO:0005521": [
+  "platform type"
+ ],
+ "EFO:0005522": [
+  "array substrate"
+ ],
+ "EFO:0005523": [
+  "surface coating"
+ ],
+ "EFO:0005530": [
+  "T. cruzi serostatus",
+  "Chagas serostatus"
+ ],
+ "EFO:0005536": [
+  "eNO",
+  "exhaled nitric oxide"
+ ],
+ "EFO:0005538": [
+  "thrombin generation",
+  "TGP"
+ ],
+ "EFO:0005608": [
+  "cortical opacity"
+ ],
+ "EFO:0005620": [
+  "adenocarcinoma grade"
+ ],
+ "EFO:0005654": [
+  "speed of sound",
+  "SOS"
+ ],
+ "EFO:0005665": [
+  "WMH"
+ ],
+ "EFO:0005674": [
+  "white matter microstructure"
+ ],
+ "EFO:0005677": [
+  "puberty onset"
+ ],
+ "EFO:0005682": [
+  "SpO2",
+  "oxygen saturation"
+ ],
+ "EFO:0005689": [
+  "non-HDL-C",
+  "non-HDL cholesterol"
+ ],
+ "EFO:0005756": [
+  "cutaneous wound"
+ ],
+ "EFO:0005767": [
+  "RF",
+  "rheumatoid factor"
+ ],
+ "EFO:0005843": [
+  "cortisol level"
+ ],
+ "EFO:0005845": [
+  "HbA2"
+ ],
+ "EFO:0005890": [
+  "osteoarthritis biomarker"
+ ],
+ "EFO:0005921": [
+  "FEV change"
+ ],
+ "EFO:0005939": [
+  "parental genotype effect"
+ ],
+ "EFO:0005941": [
+  "mammographic density"
+ ],
+ "EFO:0006312": [
+  "mitochondrial DNA",
+  "mtDNA"
+ ],
+ "EFO:0006320": [
+  "antidepressant side effect"
+ ],
+ "EFO:0006333": [
+  "transferrin saturation",
+  "TSAT"
+ ],
+ "EFO:0006334": [
+  "TIBC"
+ ],
+ "EFO:0006335": [
+  "sbp",
+  "systolic bp"
+ ],
+ "EFO:0006336": [
+  "dbp",
+  "diastolic bp"
+ ],
+ "EFO:0006340": [
+  "mean arterial BP"
+ ],
+ "EFO:0006341": [
+  "transferrin"
+ ],
+ "EFO:0006348": [
+  "PA/A ratio",
+  "pulmonary artery to aorta ratio"
+ ],
+ "EFO:0006502": [
+  "percent mammographic density",
+  "percent density"
+ ],
+ "EFO:0006503": [
+  "dense area"
+ ],
+ "EFO:0006504": [
+  "non-dense area"
+ ],
+ "EFO:0006507": [
+  "nicotine glucuronidation"
+ ],
+ "EFO:0006508": [
+  "cotinine glucuronidation"
+ ],
+ "EFO:0006520": [
+  "exhaled CO",
+  "breath CO"
+ ],
+ "EFO:0006521": [
+  "calcium intake"
+ ],
+ "EFO:0006522": [
+  "ADMA",
+  "asymmetric dimethylarginine"
+ ],
+ "EFO:0006523": [
+  "SDMA"
+ ],
+ "EFO:0006781": [
+  "coffee intake"
+ ],
+ "EFO:0006783": [
+  "psychosocial stress"
+ ],
+ "EFO:0006784": [
+  "birth height"
+ ],
+ "EFO:0006785": [
+  "infant height"
+ ],
+ "EFO:0006793": [
+  "left inferior lateral ventricle volume"
+ ],
+ "EFO:0006797": [
+  "neurofibrillary tangles",
+  "NFT"
+ ],
+ "EFO:0006805": [
+  "word list delayed recall"
+ ],
+ "EFO:0006806": [
+  "paragraph delayed recall"
+ ],
+ "EFO:0006830": [
+  "insulin clearance rate",
+  "MCR"
+ ],
+ "EFO:0006831": [
+  "acute insulin response",
+  "AIR"
+ ],
+ "EFO:0006832": [
+  "disposition index"
+ ],
+ "EFO:0006833": [
+  "glucose effectiveness",
+  "SG"
+ ],
+ "EFO:0006836": [
+  "rapid GFR decline"
+ ],
+ "EFO:0006842": [
+  "diabetes biomarker"
+ ],
+ "EFO:0006845": [
+  "liver biomarker"
+ ],
+ "EFO:0006846": [
+  "autoimmune biomarker"
+ ],
+ "EFO:0006867": [
+  "SCL"
+ ],
+ "EFO:0006869": [
+  "SCR frequency"
+ ],
+ "EFO:0006870": [
+  "alpha wave"
+ ],
+ "EFO:0006871": [
+  "beta wave"
+ ],
+ "EFO:0006872": [
+  "delta wave"
+ ],
+ "EFO:0006873": [
+  "theta wave"
+ ],
+ "EFO:0006874": [
+  "antisaccade error rate"
+ ],
+ "EFO:0006875": [
+  "startle blink response"
+ ],
+ "EFO:0006883": [
+  "alpha peak frequency"
+ ],
+ "EFO:0006893": [
+  "PIA"
+ ],
+ "EFO:0006897": [
+  "PC20",
+  "airway responsiveness"
+ ],
+ "EFO:0006898": [
+  "airway wall thickness"
+ ],
+ "EFO:0006917": [
+  "sPTB"
+ ],
+ "EFO:0006924": [
+  "household air pollution",
+  "HAP"
+ ],
+ "EFO:0006925": [
+  "Lp(a)",
+  "lipoprotein(a)"
+ ],
+ "EFO:0006929": [
+  "CSF IgG index"
+ ],
+ "EFO:0006935": [
+  "thalamic volume"
+ ],
+ "EFO:0006938": [
+  "optic rim area"
+ ],
+ "EFO:0006941": [
+  "handgrip strength"
+ ],
+ "EFO:0006943": [
+  "BP change"
+ ],
+ "EFO:0006944": [
+  "SBP change",
+  "systolic BP change"
+ ],
+ "EFO:0006945": [
+  "DBP change",
+  "diastolic BP change"
+ ],
+ "EFO:0006947": [
+  "red wine liking"
+ ],
+ "EFO:0006948": [
+  "white wine liking"
+ ],
+ "EFO:0006949": [
+  "wine liking"
+ ],
+ "EFO:0006952": [
+  "cytotoxicity"
+ ],
+ "EFO:0006953": [
+  "lung cancer FH"
+ ],
+ "EFO:0006956": [
+  "IOP change",
+  "intraocular pressure change"
+ ],
+ "EFO:0006958": [
+  "mannose"
+ ],
+ "EFO:0006959": [
+  "gene methylation"
+ ],
+ "EFO:0006999": [
+  "cancer aggressiveness"
+ ],
+ "EFO:0007000": [
+  "Gleason score"
+ ],
+ "EFO:0007001": [
+  "DHEAS"
+ ],
+ "EFO:0007005": [
+  "FAI"
+ ],
+ "EFO:0007007": [
+  "ticagrelor level",
+  "ticagrelor concentration"
+ ],
+ "EFO:0007010": [
+  "drug use"
+ ],
+ "EFO:0007011": [
+  "SSRI use"
+ ],
+ "EFO:0007013": [
+  "aspirin use"
+ ],
+ "EFO:0007016": [
+  "food allergy"
+ ],
+ "EFO:0007017": [
+  "peanut allergy"
+ ],
+ "EFO:0007018": [
+  "egg allergy"
+ ],
+ "EFO:0007019": [
+  "milk allergy"
+ ],
+ "EFO:0007034": [
+  "seropositivity"
+ ],
+ "EFO:0007035": [
+  "C. pneumoniae seropositivity"
+ ],
+ "EFO:0007037": [
+  "CMV seropositivity"
+ ],
+ "EFO:0007038": [
+  "flu A seropositivity"
+ ],
+ "EFO:0007039": [
+  "HHV-8 seropositivity",
+  "KSHV seropositivity"
+ ],
+ "EFO:0007042": [
+  "PCB measurement",
+  "PCBs"
+ ],
+ "EFO:0007047": [
+  "T. gondii seropositivity",
+  "toxoplasma seropositivity"
+ ],
+ "EFO:0007048": [
+  "HHV-6 seropositivity"
+ ],
+ "EFO:0007050": [
+  "herpes simplex virus 1 seropositivity"
+ ],
+ "EFO:0007054": [
+  "MSI",
+  "microsatellite instability"
+ ],
+ "EFO:0007057": [
+  "mitotic rate"
+ ],
+ "EFO:0007058": [
+  "last follow-up date"
+ ],
+ "EFO:0007061": [
+  "passage",
+  "cell passage"
+ ],
+ "EFO:0007119": [
+  "Sasang type"
+ ],
+ "EFO:0007555": [
+  "HCS stage"
+ ],
+ "EFO:0007556": [
+  "primary HCS"
+ ],
+ "EFO:0007557": [
+  "secondary HCS"
+ ],
+ "EFO:0007558": [
+  "validation HCS"
+ ],
+ "EFO:0007572": [
+  "HCS image acquisition and feature extraction protocol"
+ ],
+ "EFO:0007591": [
+  "bone mineral accrual",
+  "BMA"
+ ],
+ "EFO:0007614": [
+  "asthma exacerbation"
+ ],
+ "EFO:0007620": [
+  "vBMD",
+  "volumetric BMD"
+ ],
+ "EFO:0007621": [
+  "BMC",
+  "bone mineral content"
+ ],
+ "EFO:0007622": [
+  "soluble RAGE"
+ ],
+ "EFO:0007628": [
+  "air trapping"
+ ],
+ "EFO:0007629": [
+  "HbA1"
+ ],
+ "EFO:0007637": [
+  "TCM constitution"
+ ],
+ "EFO:0007638": [
+  "YZ constitution type"
+ ],
+ "EFO:0007645": [
+  "long-term alcohol consumption"
+ ],
+ "EFO:0007648": [
+  "vancomycin trough level",
+  "vancomycin trough concentration"
+ ],
+ "EFO:0007655": [
+  "clusterin",
+  "apolipoprotein J"
+ ],
+ "EFO:0007660": [
+  "neuroticism"
+ ],
+ "EFO:0007665": [
+  "ear prominence"
+ ],
+ "EFO:0007666": [
+  "earlobe size"
+ ],
+ "EFO:0007671": [
+  "antihelix folding"
+ ],
+ "EFO:0007672": [
+  "crus of helix"
+ ],
+ "EFO:0007674": [
+  "Darwin tubercle"
+ ],
+ "EFO:0007677": [
+  "LDL peak diameter"
+ ],
+ "EFO:0007678": [
+  "dietary fat intake"
+ ],
+ "EFO:0007686": [
+  "postoperative shock"
+ ],
+ "EFO:0007701": [
+  "spine BMD"
+ ],
+ "EFO:0007702": [
+  "hip BMD"
+ ],
+ "EFO:0007703": [
+  "anti-Jo-1 antibody",
+  "anti-histidyl-tRNA synthetase antibody"
+ ],
+ "EFO:0007710": [
+  "cognitive decline"
+ ],
+ "EFO:0007721": [
+  "carotid central pulse pressure"
+ ],
+ "EFO:0007723": [
+  "carotid mean blood pressure"
+ ],
+ "EFO:0007743": [
+  "flu A severity"
+ ],
+ "EFO:0007744": [
+  "lung disease severity"
+ ],
+ "EFO:0007745": [
+  "lactate",
+  "lactic acid"
+ ],
+ "EFO:0007746": [
+  "white matter lesion progression"
+ ],
+ "EFO:0007747": [
+  "hypertrophic scar severity",
+  "VSS"
+ ],
+ "EFO:0007756": [
+  "S. aureus carrier status",
+  "S. aureus carriage"
+ ],
+ "EFO:0007757": [
+  "persistent S. aureus carriage"
+ ],
+ "EFO:0007758": [
+  "intermittent S. aureus carriage"
+ ],
+ "EFO:0007770": [
+  "post-op fentanyl use",
+  "24h postoperative fentanyl consumption"
+ ],
+ "EFO:0007775": [
+  "TAT complex",
+  "TAT"
+ ],
+ "EFO:0007777": [
+  "BMR"
+ ],
+ "EFO:0007783": [
+  "mLOY",
+  "mosaic LOY"
+ ],
+ "EFO:0007789": [
+  "BMI-adjusted WC"
+ ],
+ "EFO:0007791": [
+  "RF seropositivity",
+  "rheumatoid factor status"
+ ],
+ "EFO:0007792": [
+  "antipsychotic use"
+ ],
+ "EFO:0007794": [
+  "NMR",
+  "3HC/COT ratio"
+ ],
+ "EFO:0007796": [
+  "parental lifespan"
+ ],
+ "EFO:0007798": [
+  "linguistic error rate"
+ ],
+ "EFO:0007810": [
+  "P. falciparum IgG1",
+  "Pf IgG1"
+ ],
+ "EFO:0007811": [
+  "P. falciparum IgG3",
+  "Pf IgG3"
+ ],
+ "EFO:0007812": [
+  "P. falciparum IgG",
+  "Pf IgG"
+ ],
+ "EFO:0007813": [
+  "cotinine level"
+ ],
+ "EFO:0007819": [
+  "AGEs"
+ ],
+ "EFO:0007825": [
+  "baldness"
+ ],
+ "EFO:0007836": [
+  "CoQ10"
+ ],
+ "EFO:0007837": [
+  "ACPA seropositivity",
+  "anti-CCP seropositivity"
+ ],
+ "EFO:0007848": [
+  "apoA-IV",
+  "apolipoprotein A4"
+ ],
+ "EFO:0007850": [
+  "liver spots"
+ ],
+ "EFO:0007854": [
+  "knee flexor peak torque"
+ ],
+ "EFO:0007873": [
+  "mJSW"
+ ],
+ "EFO:0007874": [
+  "gut microbiota"
+ ],
+ "EFO:0007875": [
+  "EDS",
+  "daytime sleepiness"
+ ],
+ "EFO:0007883": [
+  "taxonomic profile"
+ ],
+ "EFO:0007884": [
+  "functional profile"
+ ],
+ "EFO:0007886": [
+  "DDT"
+ ],
+ "EFO:0007888": [
+  "age at voice break"
+ ],
+ "EFO:0007889": [
+  "menstrual cramps"
+ ],
+ "EFO:0007902": [
+  "hepcidin:TSAT ratio"
+ ],
+ "EFO:0007903": [
+  "Mg:Ca ratio"
+ ],
+ "EFO:0007905": [
+  "Beighton score"
+ ],
+ "EFO:0007906": [
+  "unibrow",
+  "monobrow"
+ ],
+ "EFO:0007908": [
+  "traffic-related air pollution"
+ ],
+ "EFO:0007928": [
+  "ventricular heart rate"
+ ],
+ "EFO:0007930": [
+  "LDL:HDL ratio"
+ ],
+ "EFO:0007933": [
+  "radial BMD"
+ ],
+ "EFO:0007934": [
+  "CrCl"
+ ],
+ "EFO:0007938": [
+  "number of diseased coronary vessels"
+ ],
+ "EFO:0007941": [
+  "LDH sciatica severity"
+ ],
+ "EFO:0007942": [
+  "hip OA symptom severity"
+ ],
+ "EFO:0007946": [
+  "fatigue"
+ ],
+ "EFO:0007960": [
+  "OCP"
+ ],
+ "EFO:0007961": [
+  "PBB"
+ ],
+ "EFO:0007962": [
+  "PBDE"
+ ],
+ "EFO:0007971": [
+  "E1 conjugates"
+ ],
+ "EFO:0007972": [
+  "androstenedione"
+ ],
+ "EFO:0007984": [
+  "PDW"
+ ],
+ "EFO:0007992": [
+  "basophil %",
+  "basophil % of WBC"
+ ],
+ "EFO:0007998": [
+  "cognitive impairment"
+ ],
+ "EFO:0007999": [
+  "lower body strength"
+ ],
+ "EFO:0008000": [
+  "time to peak insulin"
+ ],
+ "EFO:0008003": [
+  "HRV"
+ ],
+ "EFO:0008004": [
+  "RMR",
+  "resting metabolic rate"
+ ],
+ "EFO:0008008": [
+  "LUTS"
+ ],
+ "EFO:0008009": [
+  "1,5-AG"
+ ],
+ "EFO:0008036": [
+  "BMI-adjusted fasting glucose",
+  "BMI-adjusted FBG"
+ ],
+ "EFO:0008037": [
+  "BMI-adjusted fasting insulin"
+ ],
+ "EFO:0008039": [
+  "BMI-adjusted hip circ"
+ ],
+ "EFO:0008204": [
+  "LV diastolic function"
+ ],
+ "EFO:0008205": [
+  "LV structure"
+ ],
+ "EFO:0008206": [
+  "LV systolic function"
+ ],
+ "EFO:0008230": [
+  "mental development"
+ ],
+ "EFO:0008237": [
+  "motor development"
+ ],
+ "EFO:0008245": [
+  "neurodevelopment"
+ ],
+ "EFO:0008255": [
+  "PM air pollution"
+ ],
+ "EFO:0008316": [
+  "VOC pain"
+ ],
+ "EFO:0008320": [
+  "WM volume"
+ ],
+ "EFO:0008328": [
+  "chronotype"
+ ],
+ "EFO:0008329": [
+  "facial emotion recognition"
+ ],
+ "EFO:0008330": [
+  "fear of pain"
+ ],
+ "EFO:0008332": [
+  "IL-2 receptor antagonist"
+ ],
+ "EFO:0008336": [
+  "disease progression"
+ ],
+ "EFO:0008337": [
+  "psychosis predisposition"
+ ],
+ "EFO:0008338": [
+  "fear of severe pain"
+ ],
+ "EFO:0008339": [
+  "fear of medical pain"
+ ],
+ "EFO:0008340": [
+  "fear of minor pain"
+ ],
+ "EFO:0008341": [
+  "snoring"
+ ],
+ "EFO:0008342": [
+  "parental emotion expression"
+ ],
+ "EFO:0008351": [
+  "amyloid deposition"
+ ],
+ "EFO:0008352": [
+  "C9orf72 mutation"
+ ],
+ "EFO:0008355": [
+  "heme iron intake"
+ ],
+ "EFO:0008361": [
+  "ETS exposure",
+  "secondhand smoke exposure"
+ ],
+ "EFO:0008362": [
+  "farm exposure"
+ ],
+ "EFO:0008364": [
+  "generational effect"
+ ],
+ "EFO:0008366": [
+  "IgG isotype profile"
+ ],
+ "EFO:0008369": [
+  "infant intracranial volume"
+ ],
+ "EFO:0008370": [
+  "infant WM volume"
+ ],
+ "EFO:0008372": [
+  "laterality"
+ ],
+ "EFO:0008376": [
+  "mosquito bite"
+ ],
+ "EFO:0008377": [
+  "mosquito bite itch intensity"
+ ],
+ "EFO:0008378": [
+  "mosquito bite reaction size"
+ ],
+ "EFO:0008381": [
+  "total cortical area"
+ ],
+ "EFO:0008382": [
+  "TP53 mutation"
+ ],
+ "EFO:0008383": [
+  "treatment outcome"
+ ],
+ "EFO:0008385": [
+  "visual acuity",
+  "VA"
+ ],
+ "EFO:0008387": [
+  "caudate"
+ ],
+ "EFO:0008390": [
+  "PT"
+ ],
+ "EFO:0008392": [
+  "T3"
+ ],
+ "EFO:0008393": [
+  "reaction time"
+ ],
+ "EFO:0008394": [
+  "verbal-numerical reasoning"
+ ],
+ "EFO:0008399": [
+  "FA"
+ ],
+ "EFO:0008400": [
+  "chickenpox susceptibility"
+ ],
+ "EFO:0008401": [
+  "shingles susceptibility"
+ ],
+ "EFO:0008402": [
+  "cold sore susceptibility"
+ ],
+ "EFO:0008403": [
+  "mononucleosis susceptibility"
+ ],
+ "EFO:0008404": [
+  "mumps susceptibility"
+ ],
+ "EFO:0008405": [
+  "hepatitis B susceptibility"
+ ],
+ "EFO:0008406": [
+  "plantar wart susceptibility"
+ ],
+ "EFO:0008407": [
+  "M. tuberculosis susceptibility",
+  "TB susceptibility"
+ ],
+ "EFO:0008409": [
+  "scarlet fever susceptibility"
+ ],
+ "EFO:0008410": [
+  "pneumonia susceptibility"
+ ],
+ "EFO:0008411": [
+  "bacterial meningitis susceptibility"
+ ],
+ "EFO:0008412": [
+  "vaginal candidiasis susceptibility"
+ ],
+ "EFO:0008414": [
+  "measles susceptibility"
+ ],
+ "EFO:0008415": [
+  "hepatitis A susceptibility"
+ ],
+ "EFO:0008416": [
+  "rheumatic fever susceptibility"
+ ],
+ "EFO:0008417": [
+  "common cold susceptibility"
+ ],
+ "EFO:0008418": [
+  "rubella susceptibility"
+ ],
+ "EFO:0008419": [
+  "chronic sinusitis susceptibility"
+ ],
+ "EFO:0008421": [
+  "NAFLD severity"
+ ],
+ "EFO:0008431": [
+  "MVV"
+ ],
+ "EFO:0008433": [
+  "pursuit gain"
+ ],
+ "EFO:0008435": [
+  "gestational weight gain",
+  "GWG",
+  "pregnancy weight gain"
+ ],
+ "EFO:0008436": [
+  "late pregnancy weight gain",
+  "late GWG"
+ ],
+ "EFO:0008437": [
+  "early pregnancy weight gain",
+  "early GWG"
+ ],
+ "EFO:0008439": [
+  "single cell sequencing"
+ ],
+ "EFO:0008446": [
+  "PLR"
+ ],
+ "EFO:0008447": [
+  "NLR"
+ ],
+ "EFO:0008449": [
+  "Mg:Cr ratio",
+  "Mg/Cr ratio"
+ ],
+ "EFO:0008450": [
+  "fractional excretion of Mg",
+  "FE Mg"
+ ],
+ "EFO:0008451": [
+  "ADL score",
+  "activities of daily living"
+ ],
+ "EFO:0008452": [
+  "mid-arm muscle circumference"
+ ],
+ "EFO:0008453": [
+  "calf girth"
+ ],
+ "EFO:0008454": [
+  "short physical performance battery"
+ ],
+ "EFO:0008455": [
+  "REM sleep apnea"
+ ],
+ "EFO:0008456": [
+  "NREM sleep apnea"
+ ],
+ "EFO:0008458": [
+  "tacrolimus",
+  "tacrolimus level",
+  "FK506"
+ ],
+ "EFO:0008463": [
+  "glucagon"
+ ],
+ "EFO:0008464": [
+  "GIP",
+  "glucose-dependent insulinotropic peptide"
+ ],
+ "EFO:0008465": [
+  "GLP-1"
+ ],
+ "EFO:0008468": [
+  "midregional proANP"
+ ],
+ "EFO:0008470": [
+  "potassium intake",
+  "dietary K intake"
+ ],
+ "EFO:0008473": [
+  "glucose-stimulated insulin response"
+ ],
+ "EFO:0008513": [
+  "histological finding",
+  "histopathologic finding"
+ ],
+ "EFO:0008529": [
+  "plasma kynurenine"
+ ],
+ "EFO:0008530": [
+  "KYN/TRP ratio",
+  "KTR"
+ ],
+ "EFO:0008534": [
+  "tryptophan",
+  "TRP"
+ ],
+ "EFO:0008539": [
+  "vitamin D intake",
+  "dietary vitamin D"
+ ],
+ "EFO:0008542": [
+  "C3d"
+ ],
+ "EFO:0008544": [
+  "analgesic consumption"
+ ],
+ "EFO:0008591": [
+  "free cholesterol",
+  "unesterified cholesterol"
+ ],
+ "EFO:0008595": [
+  "IDL",
+  "intermediate density lipoprotein"
+ ],
+ "EFO:0009089": [
+  "enrichment method"
+ ],
+ "EFO:0009096": [
+  "negative valence domain",
+  "RDoC negative valence"
+ ],
+ "EFO:0009097": [
+  "positive valence domain",
+  "RDoC positive valence"
+ ],
+ "EFO:0009098": [
+  "RDoC cognitive domain"
+ ],
+ "EFO:0009099": [
+  "RDoC arousal domain"
+ ],
+ "EFO:0009100": [
+  "RDoC social domain"
+ ],
+ "EFO:0009101": [
+  "age at first childbirth",
+  "age at first live birth"
+ ],
+ "EFO:0009102": [
+  "children ever born",
+  "CEB"
+ ],
+ "EFO:0009103": [
+  "ToM"
+ ],
+ "EFO:0009114": [
+  "prenatal exposure"
+ ],
+ "EFO:0009116": [
+  "vitamin supplement use"
+ ],
+ "EFO:0009132": [
+  "CEC",
+  "cholesterol efflux"
+ ],
+ "EFO:0009133": [
+  "cholesteryl ester transfer protein"
+ ],
+ "EFO:0009134": [
+  "TML"
+ ],
+ "EFO:0009171": [
+  "Lutheran inhibitor phenotype"
+ ],
+ "EFO:0009180": [
+  "rosacea score"
+ ],
+ "EFO:0009183": [
+  "empathy"
+ ],
+ "EFO:0009184": [
+  "exercise heart rate",
+  "HR response to exercise"
+ ],
+ "EFO:0009185": [
+  "HRR",
+  "heart rate recovery"
+ ],
+ "EFO:0009186": [
+  "PLCR"
+ ],
+ "EFO:0009188": [
+  "red blood cell distribution width"
+ ],
+ "EFO:0009202": [
+  "reticulocyte MCH"
+ ],
+ "EFO:0009203": [
+  "%COHb",
+  "COHb/tHb"
+ ],
+ "EFO:0009206": [
+  "free Hb",
+  "plasma free hemoglobin"
+ ],
+ "EFO:0009208": [
+  "HbA"
+ ],
+ "EFO:0009209": [
+  "%HbA"
+ ],
+ "EFO:0009210": [
+  "%HbA1"
+ ],
+ "EFO:0009211": [
+  "%HbA2'"
+ ],
+ "EFO:0009212": [
+  "%HbA2"
+ ],
+ "EFO:0009213": [
+  "HbB"
+ ],
+ "EFO:0009214": [
+  "%Hb Barts"
+ ],
+ "EFO:0009215": [
+  "HbC"
+ ],
+ "EFO:0009216": [
+  "%HbC"
+ ],
+ "EFO:0009217": [
+  "%HbD"
+ ],
+ "EFO:0009218": [
+  "%HbE"
+ ],
+ "EFO:0009219": [
+  "%HbF",
+  "fetal hemoglobin percentage"
+ ],
+ "EFO:0009220": [
+  "%HbG Coushatta"
+ ],
+ "EFO:0009221": [
+  "%Hb Lepore"
+ ],
+ "EFO:0009222": [
+  "%HbO-Arab"
+ ],
+ "EFO:0009223": [
+  "HbS"
+ ],
+ "EFO:0009224": [
+  "%HbS"
+ ],
+ "EFO:0009226": [
+  "%metHb"
+ ],
+ "EFO:0009227": [
+  "%HbO2",
+  "%oxyHb"
+ ],
+ "EFO:0009228": [
+  "reticulocyte MCHC"
+ ],
+ "EFO:0009229": [
+  "reticulocyte Hb content"
+ ],
+ "EFO:0009232": [
+  "blast cell count"
+ ],
+ "EFO:0009234": [
+  "CBC w/ diff",
+  "complete blood count with differential"
+ ],
+ "EFO:0009237": [
+  "estimated platelet count"
+ ],
+ "EFO:0009243": [
+  "M:E ratio"
+ ],
+ "EFO:0009246": [
+  "band neutrophil ratio"
+ ],
+ "EFO:0009252": [
+  "segmented neutrophil ratio"
+ ],
+ "EFO:0009256": [
+  "standard deviation of NN intervals",
+  "SD of NN intervals"
+ ],
+ "EFO:0009257": [
+  "root mean square of successive RR differences"
+ ],
+ "EFO:0009258": [
+  "pvRSA",
+  "peak-valley RSA"
+ ],
+ "EFO:0009265": [
+  "NVP severity",
+  "pregnancy nausea severity"
+ ],
+ "EFO:0009268": [
+  "AD family history",
+  "family history of AD"
+ ],
+ "EFO:0009270": [
+  "heel BMD",
+  "calcaneus BMD"
+ ],
+ "EFO:0009272": [
+  "EBV VCA seropositivity"
+ ],
+ "EFO:0009281": [
+  "choroid thickness"
+ ],
+ "EFO:0009282": [
+  "sodium concentration",
+  "Na"
+ ],
+ "EFO:0009283": [
+  "potassium concentration"
+ ],
+ "EFO:0009304": [
+  "%GA"
+ ],
+ "EFO:0009305": [
+  "total GA"
+ ],
+ "EFO:0009306": [
+  "ATV",
+  "atazanavir concentration"
+ ],
+ "EFO:0009307": [
+  "glycated albumin"
+ ],
+ "EFO:0009324": [
+  "APOL1 risk genotype",
+  "APOL1 high-risk genotype"
+ ],
+ "EFO:0009330": [
+  "C. trachomatis seropositivity",
+  "Ct seropositivity"
+ ],
+ "EFO:0009340": [
+  "varicella seropositivity"
+ ],
+ "EFO:0009341": [
+  "H. pylori seropositivity"
+ ],
+ "EFO:0009345": [
+  "anti-HBs seropositivity"
+ ],
+ "EFO:0009346": [
+  "anti-HBc seropositivity"
+ ],
+ "EFO:0009354": [
+  "influenza A IgG"
+ ],
+ "EFO:0009362": [
+  "nicotine withdrawal score"
+ ],
+ "EFO:0009369": [
+  "DLCO",
+  "TLCO"
+ ],
+ "EFO:0009370": [
+  "radon exposure",
+  "radon level"
+ ],
+ "EFO:0009410": [
+  "fibroid measurement"
+ ],
+ "EFO:0009427": [
+  "embryonic death"
+ ],
+ "EFO:0009435": [
+  "RA disease activity score"
+ ],
+ "EFO:0009436": [
+  "offspring survival"
+ ],
+ "EFO:0009437": [
+  "offspring mortality"
+ ],
+ "EFO:0009438": [
+  "gravidity",
+  "number of pregnancies"
+ ],
+ "EFO:0009439": [
+  "multiple births"
+ ],
+ "EFO:0009440": [
+  "age at last pregnancy"
+ ],
+ "EFO:0009473": [
+  "haemolysis"
+ ],
+ "EFO:0009476": [
+  "neck trauma"
+ ],
+ "EFO:0009485": [
+  "eye trauma"
+ ],
+ "EFO:0009502": [
+  "abdominal trauma"
+ ],
+ "EFO:0009504": [
+  "crush trauma"
+ ],
+ "EFO:0009505": [
+  "head trauma"
+ ],
+ "EFO:0009506": [
+  "cardiac injury"
+ ],
+ "EFO:0009508": [
+  "leg trauma"
+ ],
+ "EFO:0009509": [
+  "extremity injury"
+ ],
+ "EFO:0009511": [
+  "abnormal cervical cytology"
+ ],
+ "EFO:0009512": [
+  "lower limb fracture"
+ ],
+ "EFO:0009514": [
+  "upper limb fracture"
+ ],
+ "EFO:0009525": [
+  "foreign object"
+ ],
+ "EFO:0009591": [
+  "verbal memory"
+ ],
+ "EFO:0009600": [
+  "radioiodine ablation",
+  "RAI ablation"
+ ],
+ "EFO:0009603": [
+  "mRS"
+ ],
+ "EFO:0009614": [
+  "collarbone fracture"
+ ],
+ "EFO:0009622": [
+  "pelvic fracture"
+ ],
+ "EFO:0009623": [
+  "nasal injury"
+ ],
+ "EFO:0009628": [
+  "abnormal function test"
+ ],
+ "EFO:0009638": [
+  "spontaneous vaginal delivery"
+ ],
+ "EFO:0009640": [
+  "family cancer history"
+ ],
+ "EFO:0009694": [
+  "beta-lactam allergy"
+ ],
+ "EFO:0009695": [
+  "family income"
+ ],
+ "EFO:0009701": [
+  "VAT:TAT"
+ ],
+ "EFO:0009702": [
+  "intra-individual reaction time variability",
+  "IIRTV"
+ ],
+ "EFO:0009707": [
+  "fracture nonunion",
+  "ununited fracture"
+ ],
+ "EFO:0009708": [
+  "metastatic spread"
+ ],
+ "EFO:0009711": [
+  "Townsend index",
+  "Townsend score"
+ ],
+ "EFO:0009712": [
+  "paternal age at death"
+ ],
+ "EFO:0009713": [
+  "sibling count"
+ ],
+ "EFO:0009716": [
+  "age at facial hair onset"
+ ],
+ "EFO:0009718": [
+  "peak expiratory flow rate"
+ ],
+ "EFO:0009721": [
+  "maternal age at death"
+ ],
+ "EFO:0009722": [
+  "stillbirth count"
+ ],
+ "EFO:0009727": [
+  "dyspnea",
+  "breathlessness"
+ ],
+ "EFO:0009736": [
+  "PI"
+ ],
+ "EFO:0009749": [
+  "age at first sexual intercourse",
+  "age at sexual debut"
+ ],
+ "EFO:0009750": [
+  "dissociation"
+ ],
+ "EFO:0009751": [
+  "facial asymmetry"
+ ],
+ "EFO:0009765": [
+  "Ala"
+ ],
+ "EFO:0009766": [
+  "Asn"
+ ],
+ "EFO:0009767": [
+  "Gly"
+ ],
+ "EFO:0009768": [
+  "Gln"
+ ],
+ "EFO:0009769": [
+  "His"
+ ],
+ "EFO:0009770": [
+  "Leu"
+ ],
+ "EFO:0009771": [
+  "Met"
+ ],
+ "EFO:0009774": [
+  "Ser"
+ ],
+ "EFO:0009775": [
+  "Thr"
+ ],
+ "EFO:0009776": [
+  "Orn"
+ ],
+ "EFO:0009777": [
+  "Cit"
+ ],
+ "EFO:0009779": [
+  "T3:T4 ratio"
+ ],
+ "EFO:0009792": [
+  "Val"
+ ],
+ "EFO:0009793": [
+  "Ile"
+ ],
+ "EFO:0009800": [
+  "self-reported cancer count"
+ ],
+ "EFO:0009801": [
+  "self-reported non-cancer illness count"
+ ],
+ "EFO:0009802": [
+  "self-reported surgery count"
+ ],
+ "EFO:0009803": [
+  "self-reported treatment count"
+ ],
+ "EFO:0009804": [
+  "pulse wave reflection index",
+  "PWRI"
+ ],
+ "EFO:0009805": [
+  "total body water",
+  "TBW"
+ ],
+ "EFO:0009814": [
+  "children fathered"
+ ],
+ "EFO:0009815": [
+  "CASCOT confidence score",
+  "CASCOT score"
+ ],
+ "EFO:0009816": [
+  "perineal laceration at delivery"
+ ],
+ "EFO:0009818": [
+  "daytime napping"
+ ],
+ "EFO:0009827": [
+  "abnormal imaging result"
+ ],
+ "EFO:0009832": [
+  "cell infiltration"
+ ],
+ "EFO:0009833": [
+  "renal injury"
+ ],
+ "EFO:0009860": [
+  "chromosomal aberration rate"
+ ],
+ "EFO:0009865": [
+  "transcriptome"
+ ],
+ "EFO:0009885": [
+  "frailty"
+ ],
+ "EFO:0009887": [
+  "thoracic organ injury"
+ ],
+ "EFO:0009892": [
+  "facial attractiveness"
+ ],
+ "EFO:0009924": [
+  "diabetes medication use",
+  "antidiabetic drug use"
+ ],
+ "EFO:0009925": [
+  "antithrombotic use"
+ ],
+ "EFO:0009926": [
+  "cardiac vasodilator use"
+ ],
+ "EFO:0009927": [
+  "antihypertensive medication use"
+ ],
+ "EFO:0009928": [
+  "diuretic use"
+ ],
+ "EFO:0009929": [
+  "beta blocker use"
+ ],
+ "EFO:0009930": [
+  "CCB use"
+ ],
+ "EFO:0009931": [
+  "RAAS drug use"
+ ],
+ "EFO:0009932": [
+  "statin use"
+ ],
+ "EFO:0009933": [
+  "thyroid medication use"
+ ],
+ "EFO:0009934": [
+  "immunosuppressive drug use"
+ ],
+ "EFO:0009936": [
+  "bone drug use"
+ ],
+ "EFO:0009937": [
+  "opioid use"
+ ],
+ "EFO:0009938": [
+  "anilide use"
+ ],
+ "EFO:0009939": [
+  "antimigraine use"
+ ],
+ "EFO:0009940": [
+  "antidepressant use"
+ ],
+ "EFO:0009941": [
+  "adrenergic inhaler use"
+ ],
+ "EFO:0009942": [
+  "glucocorticoid use"
+ ],
+ "EFO:0009943": [
+  "antihistamine use"
+ ],
+ "EFO:0009944": [
+  "antiglaucoma use"
+ ],
+ "EFO:0009945": [
+  "psychological resilience"
+ ],
+ "EFO:0009961": [
+  "insulinogenic index",
+  "IGI"
+ ],
+ "EFO:0010049": [
+  "asthma symptoms"
+ ],
+ "EFO:0010067": [
+  "CRF"
+ ],
+ "EFO:0010068": [
+  "respiratory symptom change"
+ ],
+ "EFO:0010080": [
+  "GA lesion growth",
+  "geographic atrophy growth"
+ ],
+ "EFO:0010088": [
+  "beverage consumption",
+  "drink consumption"
+ ],
+ "EFO:0010089": [
+  "bitter drink consumption"
+ ],
+ "EFO:0010090": [
+  "sweet drink consumption"
+ ],
+ "EFO:0010091": [
+  "tea intake"
+ ],
+ "EFO:0010092": [
+  "bitter alcoholic drink consumption"
+ ],
+ "EFO:0010093": [
+  "bitter non-alcoholic drink consumption"
+ ],
+ "EFO:0010094": [
+  "grapefruit juice intake"
+ ],
+ "EFO:0010095": [
+  "non-grapefruit juice intake"
+ ],
+ "EFO:0010096": [
+  "artificially sweetened drink consumption"
+ ],
+ "EFO:0010097": [
+  "sugar sweetened drink consumption",
+  "SSB consumption"
+ ],
+ "EFO:0010104": [
+  "health literacy"
+ ],
+ "EFO:0010114": [
+  "citrate"
+ ],
+ "EFO:0010116": [
+  "choline"
+ ],
+ "EFO:0010117": [
+  "pyruvate"
+ ],
+ "EFO:0010136": [
+  "urinary pH",
+  "urine pH"
+ ],
+ "EFO:0010139": [
+  "fish intake"
+ ],
+ "EFO:0010140": [
+  "opioid overdose severity"
+ ],
+ "EFO:0010154": [
+  "platinum"
+ ],
+ "EFO:0010155": [
+  "taste liking"
+ ],
+ "EFO:0010156": [
+  "sweet liking"
+ ],
+ "EFO:0010157": [
+  "sucrose liking"
+ ],
+ "EFO:0010162": [
+  "childhood death"
+ ],
+ "EFO:0010192": [
+  "PCR primer"
+ ],
+ "EFO:0010197": [
+  "cell ID",
+  "cell barcode"
+ ],
+ "EFO:0010213": [
+  "single cell library prep protocol"
+ ],
+ "EFO:0010217": [
+  "spike-in dilution factor"
+ ],
+ "EFO:0010220": [
+  "17-OHP",
+  "17-hydroxyprogesterone"
+ ],
+ "EFO:0010221": [
+  "systemising"
+ ],
+ "EFO:0010233": [
+  "genotoxic exposure"
+ ],
+ "EFO:0010239": [
+  "cortisol/DHEAS ratio"
+ ],
+ "EFO:0010240": [
+  "DHEA"
+ ],
+ "EFO:0010243": [
+  "inorganic ion"
+ ],
+ "EFO:0010244": [
+  "uveal melanoma stage"
+ ],
+ "EFO:0010245": [
+  "oxytocin"
+ ],
+ "EFO:0010288": [
+  "brain density"
+ ],
+ "EFO:0010306": [
+  "gray matter density"
+ ],
+ "EFO:0010339": [
+  "change in FVC"
+ ],
+ "EFO:0010446": [
+  "2-HG"
+ ],
+ "EFO:0010451": [
+  "aconitate"
+ ],
+ "EFO:0010453": [
+  "adenosine"
+ ],
+ "EFO:0010456": [
+  "allantoin"
+ ],
+ "EFO:0010457": [
+  "AKG",
+  "2-oxoglutarate"
+ ],
+ "EFO:0010458": [
+  "AHB"
+ ],
+ "EFO:0010460": [
+  "anthranilate"
+ ],
+ "EFO:0010465": [
+  "BHB",
+  "3-hydroxybutyrate"
+ ],
+ "EFO:0010467": [
+  "carboxylate"
+ ],
+ "EFO:0010470": [
+  "carnosine"
+ ],
+ "EFO:0010471": [
+  "CDCA"
+ ],
+ "EFO:0010474": [
+  "cystathionine"
+ ],
+ "EFO:0010475": [
+  "DCA"
+ ],
+ "EFO:0010477": [
+  "fructose"
+ ],
+ "EFO:0010478": [
+  "F1P"
+ ],
+ "EFO:0010479": [
+  "F6P"
+ ],
+ "EFO:0010480": [
+  "fumarate"
+ ],
+ "EFO:0010481": [
+  "galactose"
+ ],
+ "EFO:0010483": [
+  "gentisate"
+ ],
+ "EFO:0010484": [
+  "G1P"
+ ],
+ "EFO:0010485": [
+  "G6P"
+ ],
+ "EFO:0010486": [
+  "glucuronate"
+ ],
+ "EFO:0010488": [
+  "G3P"
+ ],
+ "EFO:0010490": [
+  "GCDCA"
+ ],
+ "EFO:0010491": [
+  "GCA"
+ ],
+ "EFO:0010493": [
+  "GDCA"
+ ],
+ "EFO:0010496": [
+  "hippurate"
+ ],
+ "EFO:0010497": [
+  "hydroxide"
+ ],
+ "EFO:0010498": [
+  "hydroxyproline"
+ ],
+ "EFO:0010499": [
+  "hyodeoxycholate",
+  "hyodeoxycholic acid"
+ ],
+ "EFO:0010501": [
+  "indole-3-propionate"
+ ],
+ "EFO:0010503": [
+  "inosine"
+ ],
+ "EFO:0010504": [
+  "inositol"
+ ],
+ "EFO:0010505": [
+  "isocitrate"
+ ],
+ "EFO:0010506": [
+  "kynurenic acid",
+  "kynurenate"
+ ],
+ "EFO:0010507": [
+  "lactose"
+ ],
+ "EFO:0010508": [
+  "malate"
+ ],
+ "EFO:0010509": [
+  "maleate"
+ ],
+ "EFO:0010511": [
+  "niacinamide",
+  "nicotinamide"
+ ],
+ "EFO:0010512": [
+  "nucleoside"
+ ],
+ "EFO:0010514": [
+  "organic anion"
+ ],
+ "EFO:0010515": [
+  "organic cation"
+ ],
+ "EFO:0010516": [
+  "orotic acid"
+ ],
+ "EFO:0010517": [
+  "oxalate"
+ ],
+ "EFO:0010518": [
+  "oxide"
+ ],
+ "EFO:0010519": [
+  "pantothenic acid",
+  "vitamin B5"
+ ],
+ "EFO:0010520": [
+  "peptide"
+ ],
+ "EFO:0010522": [
+  "phosphoenolpyruvate",
+  "PEP"
+ ],
+ "EFO:0010524": [
+  "pimelic acid"
+ ],
+ "EFO:0010525": [
+  "propionate"
+ ],
+ "EFO:0010526": [
+  "purine"
+ ],
+ "EFO:0010527": [
+  "pyridoxate"
+ ],
+ "EFO:0010528": [
+  "quinolinic acid"
+ ],
+ "EFO:0010529": [
+  "ribose-5-phosphate",
+  "R5P"
+ ],
+ "EFO:0010530": [
+  "ribulose-5-phosphate",
+  "Ru5P"
+ ],
+ "EFO:0010532": [
+  "salicylurate"
+ ],
+ "EFO:0010533": [
+  "sorbitol"
+ ],
+ "EFO:0010534": [
+  "suberic acid"
+ ],
+ "EFO:0010535": [
+  "sucrose"
+ ],
+ "EFO:0010537": [
+  "taurochenodeoxycholate",
+  "TCDCA"
+ ],
+ "EFO:0010538": [
+  "taurocholate"
+ ],
+ "EFO:0010539": [
+  "taurodeoxycholate",
+  "TDCA"
+ ],
+ "EFO:0010540": [
+  "thiamine",
+  "vitamin B1"
+ ],
+ "EFO:0010546": [
+  "uridine"
+ ],
+ "EFO:0010547": [
+  "ursodeoxycholate",
+  "UDCA"
+ ],
+ "EFO:0010548": [
+  "xanthine"
+ ],
+ "EFO:0010549": [
+  "xanthosine"
+ ],
+ "EFO:0010551": [
+  "xanthurenate"
+ ],
+ "EFO:0010552": [
+  "social environment"
+ ],
+ "EFO:0010553": [
+  "cocaine use"
+ ],
+ "EFO:0010554": [
+  "retinal vasculature"
+ ],
+ "EFO:0010557": [
+  "lactose tolerance"
+ ],
+ "EFO:0010559": [
+  "ADA"
+ ],
+ "EFO:0010570": [
+  "ventricular enlargement"
+ ],
+ "EFO:0010576": [
+  "liver fibrosis"
+ ],
+ "EFO:0010584": [
+  "CA19-9",
+  "CA 19-9"
+ ],
+ "EFO:0010585": [
+  "CA15-3",
+  "CA 15-3"
+ ],
+ "EFO:0010602": [
+  "brain age"
+ ],
+ "EFO:0010603": [
+  "CA125",
+  "CA 125"
+ ],
+ "EFO:0010639": [
+  "pain"
+ ],
+ "EFO:0010650": [
+  "creativity"
+ ],
+ "EFO:0010707": [
+  "trans-3-hydroxycotinine",
+  "3-hydroxycotinine"
+ ],
+ "EFO:0010729": [
+  "sun exposure"
+ ],
+ "EFO:0010742": [
+  "protein binding"
+ ],
+ "EFO:0010744": [
+  "testicular size"
+ ],
+ "EFO:0010749": [
+  "motor function"
+ ],
+ "EFO:0010758": [
+  "KSHV antibody",
+  "HHV-8 antibody"
+ ],
+ "EFO:0010809": [
+  "fat intake"
+ ],
+ "EFO:0010810": [
+  "protein intake"
+ ],
+ "EFO:0010811": [
+  "carbohydrate intake"
+ ],
+ "EFO:0010814": [
+  "proinsulin"
+ ],
+ "EFO:0010821": [
+  "liver fat",
+  "hepatic fat"
+ ],
+ "EFO:0010899": [
+  "MCV antibody"
+ ],
+ "EFO:0010900": [
+  "JCV antibody"
+ ],
+ "EFO:0010903": [
+  "chlamydia antibody"
+ ],
+ "EFO:0010904": [
+  "BKV antibody"
+ ],
+ "EFO:0010908": [
+  "EBV seropositivity"
+ ],
+ "EFO:0010934": [
+  "AST/ALT ratio"
+ ],
+ "EFO:0010966": [
+  "pneumonia severity"
+ ],
+ "EFO:0010968": [
+  "phosphate"
+ ],
+ "EFO:0011007": [
+  "oestrogen"
+ ],
+ "EFO:0011011": [
+  "sitting height",
+  "seated height"
+ ],
+ "EFO:0011013": [
+  "vaginal microbiome"
+ ],
+ "EFO:0011014": [
+  "health-related quality of life",
+  "HRQL"
+ ],
+ "EFO:0011021": [
+  "BRCA1 status"
+ ],
+ "EFO:0011022": [
+  "BRCA2 status"
+ ],
+ "EFO:0011031": [
+  "intestinal permeability",
+  "gut permeability"
+ ],
+ "EFO:0011032": [
+  "lactulose to mannitol ratio",
+  "L:M ratio"
+ ],
+ "EFO:0011037": [
+  "HHV-6 antibody",
+  "anti-HHV-6 antibody"
+ ],
+ "EFO:0011038": [
+  "HHV-7 antibody",
+  "anti-HHV-7 antibody"
+ ],
+ "EFO:0011039": [
+  "MPO-DNA"
+ ],
+ "EFO:0011044": [
+  "neck circumference adjusted for BMI"
+ ],
+ "EFO:0020018": [
+  "glycerophosphocholine"
+ ],
+ "EFO:0020048": [
+  "lysoPS"
+ ],
+ "EFO:0020071": [
+  "alpha angle"
+ ],
+ "EFO:0020077": [
+  "vitamin A intake"
+ ],
+ "EFO:0020078": [
+  "vitamin B1 intake",
+  "thiamine intake"
+ ],
+ "EFO:0020079": [
+  "vitamin B2 intake",
+  "riboflavin intake"
+ ],
+ "EFO:0020080": [
+  "sodium intake"
+ ],
+ "EFO:0020081": [
+  "niacin intake"
+ ],
+ "EFO:0020082": [
+  "vitamin C intake",
+  "ascorbic acid intake"
+ ],
+ "EFO:0020083": [
+  "zinc intake"
+ ],
+ "EFO:0020084": [
+  "vitamin B6 intake",
+  "pyridoxine intake"
+ ],
+ "EFO:0020085": [
+  "retinol intake"
+ ],
+ "EFO:0020086": [
+  "carotene intake"
+ ],
+ "EFO:0020087": [
+  "ash intake"
+ ],
+ "EFO:0020088": [
+  "fiber intake",
+  "fibre intake"
+ ],
+ "EFO:0020089": [
+  "vitamin E intake"
+ ],
+ "EFO:0020090": [
+  "cholesterol intake"
+ ],
+ "EFO:0020091": [
+  "phosphorus intake"
+ ],
+ "EFO:0020096": [
+  "mitral annulus diameter"
+ ],
+ "EFO:0020104": [
+  "pelvis BMD",
+  "pelvic BMD"
+ ],
+ "EFO:0020105": [
+  "trunk BMD"
+ ],
+ "EFO:0020864": [
+  "cerebellum volume"
+ ],
+ "EFO:0020870": [
+  "choline change"
+ ],
+ "EFO:0020873": [
+  "apoA-I change"
+ ],
+ "EFO:0020881": [
+  "glucose change"
+ ],
+ "EFO:0020882": [
+  "lactate change"
+ ],
+ "EFO:0020883": [
+  "citrate change"
+ ],
+ "EFO:0020884": [
+  "alanine change"
+ ],
+ "EFO:0020885": [
+  "glutamine change"
+ ],
+ "EFO:0020886": [
+  "histidine change"
+ ],
+ "EFO:0020887": [
+  "isoleucine change"
+ ],
+ "EFO:0020888": [
+  "leucine change"
+ ],
+ "EFO:0020889": [
+  "valine change"
+ ],
+ "EFO:0020890": [
+  "phenylalanine change"
+ ],
+ "EFO:0020891": [
+  "tyrosine change"
+ ],
+ "EFO:0020897": [
+  "citrus consumption"
+ ],
+ "EFO:0020901": [
+  "chylomicron change"
+ ],
+ "EFO:0020902": [
+  "Bombay blood group"
+ ],
+ "EFO:0020907": [
+  "VLDL particle size change"
+ ],
+ "EFO:0020908": [
+  "LDL particle size change"
+ ],
+ "EFO:0020922": [
+  "hospitalization",
+  "hospital admission"
+ ],
+ "EFO:0020938": [
+  "LV sphericity index"
+ ],
+ "EFO:0020939": [
+  "RV function"
+ ],
+ "EFO:0020940": [
+  "platelet function"
+ ],
+ "EFO:0020978": [
+  "breast reconstruction"
+ ],
+ "EFO:0020980": [
+  "radiation exposure"
+ ],
+ "EFO:0020991": [
+  "ethanolamine"
+ ],
+ "EFO:0020992": [
+  "AABA"
+ ],
+ "EFO:0020994": [
+  "CA50"
+ ],
+ "EFO:0020995": [
+  "SCC antigen"
+ ],
+ "EFO:0021000": [
+  "cysteine"
+ ],
+ "EFO:0021163": [
+  "ergothioneine"
+ ],
+ "EFO:0021423": [
+  "family history of fibroids"
+ ],
+ "EFO:0021428": [
+  "succinyladenosine"
+ ],
+ "EFO:0021493": [
+  "NAcc volume change"
+ ],
+ "EFO:0021502": [
+  "lateral ventricle change"
+ ],
+ "EFO:0021504": [
+  "TBV change"
+ ],
+ "EFO:0021536": [
+  "IBS symptom score"
+ ],
+ "EFO:0021537": [
+  "transferrin glycosylation",
+  "transferrin glycans"
+ ],
+ "EFO:0021777": [
+  "ser:gly ratio"
+ ],
+ "EFO:0021779": [
+  "age at treatment start"
+ ],
+ "EFO:0021784": [
+  "age started smoking",
+  "age at smoking onset"
+ ],
+ "EFO:0021785": [
+  "age started cannabis use",
+  "age at first cannabis use"
+ ],
+ "EFO:0021794": [
+  "CFTR carrier"
+ ],
+ "EFO:0021813": [
+  "NFR threshold"
+ ],
+ "EFO:0021814": [
+  "RV diastolic volume"
+ ],
+ "EFO:0021815": [
+  "RV systolic volume"
+ ],
+ "EFO:0021818": [
+  "RV/LV diastolic volume ratio"
+ ],
+ "EFO:0021819": [
+  "RV/LV systolic volume ratio"
+ ],
+ "EFO:0021822": [
+  "RA maximum area"
+ ],
+ "EFO:0021823": [
+  "RA minimum area"
+ ],
+ "EFO:0021824": [
+  "RA fractional area change",
+  "RAFAC"
+ ],
+ "EFO:0021840": [
+  "1-monomyristin"
+ ],
+ "EFO:0022039": [
+  "UV exposure"
+ ],
+ "EFO:0022046": [
+  "sulcal opening"
+ ],
+ "EFO:0022196": [
+  "BSA"
+ ],
+ "EFO:0022379": [
+  "ACR response criteria"
+ ],
+ "EFO:0022381": [
+  "HAQ"
+ ],
+ "EFO:0022382": [
+  "PASI score"
+ ],
+ "EFO:0022866": [
+  "SES"
+ ],
+ "EFO:0022939": [
+  "delivery complications"
+ ],
+ "EFO:0022940": [
+  "birth injury"
+ ],
+ "EFO:0022983": [
+  "NRBC count",
+  "nRBC"
+ ],
+ "EFO:0030063": [
+  "CNV assessment"
+ ],
+ "EFO:0030064": [
+  "regional ploidy"
+ ],
+ "EFO:0030065": [
+  "CN-LOH",
+  "copy-neutral LOH"
+ ],
+ "EFO:0030066": [
+  "relative CNV"
+ ],
+ "EFO:0030067": [
+  "CN loss"
+ ],
+ "EFO:0030070": [
+  "CN gain"
+ ],
+ "EFO:0030082": [
+  "PRS"
+ ],
+ "EFO:0600003": [
+  "ascorbic acid"
+ ],
+ "EFO:0600006": [
+  "HHV-7 seropositivity"
+ ],
+ "EFO:0600008": [
+  "mtDNA heteroplasmy",
+  "heteroplasmy level"
+ ],
+ "EFO:0600011": [
+  "PD symptoms"
+ ],
+ "EFO:0600018": [
+  "TBS"
+ ],
+ "EFO:0600037": [
+  "strength training",
+  "weight training"
+ ],
+ "EFO:0600058": [
+  "blood type"
+ ],
+ "EFO:0600059": [
+  "ABO blood type"
+ ],
+ "EFO:0600072": [
+  "HPyV6 seropositivity",
+  "HPyV6 antibody status"
+ ],
+ "EFO:0600081": [
+  "time outdoors"
+ ],
+ "EFO:0800000": [
+  "dietary folate intake"
+ ],
+ "EFO:0801078": [
+  "triclosan exposure"
+ ],
+ "EFO:0801079": [
+  "BPA",
+  "bisphenol A exposure"
+ ],
+ "EFO:0801080": [
+  "oxidative stress marker"
+ ],
+ "EFO:0801081": [
+  "8-OHdG",
+  "8-oxo-dG"
+ ],
+ "EFO:0801082": [
+  "8-isoprostane"
+ ],
+ "EFO:0801086": [
+  "anti-bovine alpha-casein IgG"
+ ],
+ "EFO:0801087": [
+  "anti-bovine beta-casein IgG"
+ ],
+ "EFO:0801089": [
+  "anti-H1N1 IgG",
+  "H1N1 IgG"
+ ],
+ "EFO:0801090": [
+  "anti-H3N2 IgG",
+  "H3N2 IgG"
+ ],
+ "EFO:0801091": [
+  "ASCA IgA"
+ ],
+ "EFO:0801092": [
+  "anti-TMEV IgG"
+ ],
+ "EFO:0801100": [
+  "AIB",
+  "alpha-aminoisobutyric acid"
+ ],
+ "EFO:0801113": [
+  "aspartate"
+ ],
+ "EFO:0801229": [
+  "mouth microbiome"
+ ],
+ "EFO:0803316": [
+  "abdominal fat"
+ ],
+ "EFO:0803317": [
+  "gluteofemoral fat",
+  "hip and thigh fat"
+ ],
+ "EFO:0803318": [
+  "visceral:abdominal fat ratio"
+ ],
+ "EFO:0803319": [
+  "visceral:gluteofemoral fat ratio"
+ ],
+ "EFO:0803320": [
+  "abdominal:gluteofemoral fat ratio"
+ ],
+ "EFO:0803340": [
+  "anti-cardiolipin IgA",
+  "aCL IgA"
+ ],
+ "EFO:0803341": [
+  "anti-cardiolipin IgM",
+  "aCL IgM"
+ ],
+ "EFO:0803344": [
+  "AG"
+ ],
+ "EFO:0803346": [
+  "COHb",
+  "HbCO"
+ ],
+ "EFO:0803347": [
+  "TNC",
+  "total nucleated cells"
+ ],
+ "EFO:0803350": [
+  "iPTH",
+  "intact PTH"
+ ],
+ "EFO:0803351": [
+  "pO2"
+ ],
+ "EFO:0803353": [
+  "anti-Scl-70 positivity",
+  "anti-topo I antibody"
+ ],
+ "EFO:0803354": [
+  "tTG IgA",
+  "anti-tTG IgA"
+ ],
+ "EFO:0803358": [
+  "COVID-19 IgG"
+ ],
+ "EFO:0803359": [
+  "SARS-CoV-2 nAb"
+ ],
+ "EFO:0803369": [
+  "endothelial function"
+ ],
+ "EFO:0803370": [
+  "photoreceptor layer thickness"
+ ],
+ "EFO:0803375": [
+  "red blood cell aggregation",
+  "RBC aggregation"
+ ],
+ "EFO:0803376": [
+  "red blood cell deformability",
+  "RBC deformability"
+ ],
+ "EFO:0803380": [
+  "CV age"
+ ],
+ "EFO:0803532": [
+  "mtDNA haplogroup"
+ ],
+ "EFO:0803533": [
+  "visuospatial ability"
+ ],
+ "EFO:0803536": [
+  "MS symptoms"
+ ],
+ "EFO:0803541": [
+  "immature platelet fraction",
+  "IPF"
+ ],
+ "EFO:0803545": [
+  "immature reticulocyte fraction",
+  "IRF"
+ ],
+ "EFO:0803673": [
+  "malaria seropositivity",
+  "P. falciparum seropositivity"
+ ],
+ "EFO:0803677": [
+  "CHIKV seropositivity"
+ ],
+ "EFO:0803679": [
+  "DENV seropositivity"
+ ],
+ "EFO:0803680": [
+  "FMDV seropositivity"
+ ],
+ "EFO:0803681": [
+  "HAV seropositivity"
+ ],
+ "EFO:0803682": [
+  "HCV seropositivity"
+ ],
+ "EFO:0803683": [
+  "HEV seropositivity"
+ ],
+ "EFO:0803686": [
+  "polio seropositivity"
+ ],
+ "EFO:0803687": [
+  "RSV seropositivity"
+ ],
+ "EFO:0803688": [
+  "SARS-CoV seropositivity"
+ ],
+ "EFO:0900004": [
+  "family history of diabetes mellitus",
+  "fh diabetes"
+ ],
+ "EFO:0900005": [
+  "family history of cardiac disease"
+ ],
+ "EFO:0900006": [
+  "family history of htn"
+ ],
+ "EFO:0920011": [
+  "DTI",
+  "diffusion tensor imaging"
+ ],
+ "EFO:0920012": [
+  "MD"
+ ],
+ "EFO:0920013": [
+  "AD",
+  "AxD"
+ ],
+ "EFO:0920014": [
+  "RD"
+ ],
+ "EFO:0920017": [
+  "VAI"
+ ],
+ "EFO:0920019": [
+  "BAI"
+ ],
+ "EFO:0920096": [
+  "permeabilization duration"
+ ],
+ "EFO:0920102": [
+  "BPD"
+ ],
+ "EFO:0920103": [
+  "AFI"
+ ],
+ "EFO:0920104": [
+  "FHR"
+ ],
+ "EFO:0920131": [
+  "AHI"
+ ],
+ "EFO:1001788": [
+  "ocular burns"
+ ],
+ "MONDO:0005203": [
+  "IRI"
+ ],
+ "MONDO:0005309": [
+  "vertebral fracture"
+ ],
+ "MONDO:0005320": [
+  "tibial fracture"
+ ],
+ "MONDO:0005322": [
+  "ulnar fracture"
+ ],
+ "MONDO:0005325": [
+  "radial fracture"
+ ],
+ "MONDO:0005327": [
+  "hip fx"
+ ],
+ "MONDO:0020573": [
+  "genetic susceptibility"
+ ],
+ "MONDO:0021152": [
+  "hereditary"
+ ],
+ "OBI:0000049": [
+  "mass spec"
+ ],
+ "OBI:0000415": [
+  "PCR"
+ ],
+ "OBI:0000697": [
+  "Helicos sequencing"
+ ],
+ "OBI:0000711": [
+  "library prep"
+ ],
+ "OBI:0000950": [
+  "FFPE"
+ ],
+ "OBI:0001140": [
+  "spike-in control"
+ ],
+ "OBI:0001162": [
+  "RT-PCR validation"
+ ],
+ "OBI:0001166": [
+  "qPCR validation"
+ ],
+ "OBI:0001468": [
+  "cell sample"
+ ],
+ "OBI:0001620": [
+  "latitude"
+ ],
+ "OBI:0001621": [
+  "longitude"
+ ],
+ "OBI:0001700": [
+  "IP"
+ ],
+ "OBI:0002174": [
+  "ICC"
+ ],
+ "OBI:0002197": [
+  "section thickness"
+ ],
+ "OBI:0002584": [
+  "differential expression results",
+  "DE results"
+ ],
+ "OBI:0002969": [
+  "CycIF"
+ ],
+ "OBI:0003093": [
+  "CODEX"
+ ],
+ "OBI:0003097": [
+  "LC-MS",
+  "LCMS"
+ ],
+ "OBI:0003098": [
+  "LSFM",
+  "SPIM"
+ ],
+ "OBI:0003099": [
+  "MALDI imaging",
+  "MALDI-IMS"
+ ],
+ "OBI:0003100": [
+  "MIBI"
+ ],
+ "OBI:0003105": [
+  "sci-RNA-seq"
+ ],
+ "OBI:0100051": [
+  "sample"
+ ],
+ "OBI:0200169": [
+  "normalization"
+ ],
+ "OBI:0302903": [
+  "hybridization"
+ ],
+ "OBI:0400103": [
+  "sequencer"
+ ],
+ "OBI:0400104": [
+  "microarray scanner"
+ ],
+ "OBI:0400105": [
+  "microarray spotter"
+ ],
+ "OBI:0400108": [
+  "heat block"
+ ],
+ "OBI:0400112": [
+  "liquid handling robot"
+ ],
+ "OBI:0600002": [
+  "histologic grade"
+ ],
+ "OBI:0600015": [
+  "group",
+  "study group"
+ ],
+ "OBI:1000023": [
+  "conditioned medium"
+ ],
+ "PATO:0000047": [
+  "sex"
+ ],
+ "PATO:0001374": [
+  "ploidy level"
+ ]
+}

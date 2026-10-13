@@ -1,0 +1,740 @@
+{
+ "stage": "aliases",
+ "instructions": "Each item is an ontology term that a column of sample metadata in a gene\nexpression study can mean. Write up to 5 aliases for each term: other ways a\nresearcher would write that same variable as a column header in sample\nmetadata.\n\nGood aliases:\n- common abbreviations and acronyms (\"sbp\" for systolic blood pressure)\n- shorter everyday phrasings (\"systolic bp\", \"visual acuity\")\n- the plain name of the quantity when the term's label is wordy\n  (\"intraocular pressure\" for \"intraocular pressure measurement\")\n\nRules:\n- An alias must mean the same variable as the term: not a broader or narrower\n  one, and not a related one.\n- No values (\"male\", \"high\"), units on their own, gene or tool names, or\n  dataset-specific codes.\n- No alias that only rewords the label trivially (plural, case,\n  punctuation). Those are matched already.\n- Fewer is better than wrong. If a term has no natural alias, return an empty\n  list.\n\nExamples:\n- systolic blood pressure -> [\"sbp\", \"systolic bp\", \"systolic pressure\"]\n- intraocular pressure measurement -> [\"intraocular pressure\", \"iop\"]\n- visual acuity measurement -> [\"visual acuity\", \"va\"]\n",
+ "items": [
+  {
+   "item_id": "EFO:0004682",
+   "label": "QT interval",
+   "definition": "The QT interval is a measure of the time between the start of the Q wave and the end of the T wave in the heart's electrical cycle",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004685",
+   "label": "hip geometry",
+   "definition": "Measurements of the hip.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004694",
+   "label": "factor XI measurement",
+   "definition": "Is a quantification of Factor XI, typically in blood. Factor Xi is a serine protease involved in the process of coagulation.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004695",
+   "label": "intraocular pressure measurement",
+   "definition": "Is a quantification of intraocular pressure. Increased intraocular pressure is a heritable risk factor for primary open angle glaucoma.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004696",
+   "label": "sex hormone-binding globulin measurement",
+   "definition": "Is a quantification of sex hormone binding globulin. In men the test is used in when investigating testosterone deficiency.  The SHBG glycoprotein binds to circulating estradiol and testosterone, low levels of SHBG may be implicated in breast cancer etiology.",
+   "synonyms": [
+    "SHBG level",
+    "SHBG levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004703",
+   "label": "age at menarche",
+   "definition": "The age of onset of (human) menarche, the beginning of the first menstrual cycle in an individual",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004704",
+   "label": "age at menopause",
+   "definition": "The age of onset of (human) menopause, the beginning of the first menstrual cycle in an individual",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004713",
+   "label": "FEV/FVC ratio",
+   "definition": "",
+   "synonyms": [
+    "FEV/FEC ratio",
+    "FEV/FVC",
+    "FEV1/FVC"
+   ]
+  },
+  {
+   "item_id": "EFO:0004725",
+   "label": "metabolite measurement",
+   "definition": "This is an annotation class for metabolite measurements where the exact metabolite measurements are unknown. Do not annotate to this class.",
+   "synonyms": [
+    "metabolite levels",
+    "metabolite traits"
+   ]
+  },
+  {
+   "item_id": "EFO:0004729",
+   "label": "vitamin measurement",
+   "definition": "The quantification of some vitamin, typically from a body fluid such as blood. A vitamin is an organic compound required by an organism as a vital nutrient in limited amounts. An organic chemical compound (or related set of compounds) is called a vitamin when it cannot be synthesized in sufficient q",
+   "synonyms": [
+    "vitamin levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004730",
+   "label": "hormone measurement",
+   "definition": "The determination of the amount of hormone present in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004731",
+   "label": "eye measurement",
+   "definition": "Is a quantification of some eye structure or property of an eye structure, such as corneal thickness.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004732",
+   "label": "lipoprotein measurement",
+   "definition": "Is the quantification of some lipoprotein",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004738",
+   "label": "tocopherol measurement",
+   "definition": "Is a quantification of some tocopherol, typically in blood. Some tocopherols have Vitamin E function (note that  tocotrienols also have vitamin E function).",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004739",
+   "label": "circulating cell free DNA measurement",
+   "definition": "Is a quantification of circulating cell free DNA measured in blood used as an indicator of cell death and as an indicator of disease, for example some tumour types release this.",
+   "synonyms": [
+    "circulating cell free DNA level",
+    "circulating cell free DNA levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004743",
+   "label": "facial morphology",
+   "definition": "Any measurable or observable characteristic related to the shape, structure, color or pattern of the region of the body that includes the front part of the head from the chin to the top of the forehead, where the mouth, eyes, nose, and other features are located.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004746",
+   "label": "lipoprotein-associated phospholipase A(2) measurement",
+   "definition": "Is a quantification of Lipoprotein-associated phospholipase A(2). It is involved in the process of arthrosclerosis and is a cardiovascular disease biomarker.",
+   "synonyms": [
+    "Lipoprotein-associated phospholipase A(2) level",
+    "Lipoprotein-associated phospholipase A(2) levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004747",
+   "label": "protein measurement",
+   "definition": "This is a general class for any measurement of a protein. Do not annotate to this class, request a more specific child term.",
+   "synonyms": [
+    "protein levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004750",
+   "label": "interleukin 10 measurement",
+   "definition": "interleukin 10 levels",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004754",
+   "label": "interleukin 1 receptor antagonist measurement",
+   "definition": "Is a quantification of Interleukin 1 Receptor Antagonist (IL1-RA). Inhibits the activity of interleukin-1 by binding to receptor IL1R1 and preventing its association with the coreceptor IL1RAP for signaling. Has no interleukin-1 like activity. Binds functional interleukin-1 receptor IL1R1 with great",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004761",
+   "label": "uric acid measurement",
+   "definition": "Is a quantification of uric acid, typically in blood. Uric acid is associated with gout, insulin resistance and cardivascular disease.",
+   "synonyms": [
+    "uric acid level",
+    "uric acid levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004767",
+   "label": "visceral:subcutaneous adipose tissue ratio",
+   "definition": "Is a quantification of visceral to subcutaneous adipose tissue.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004768",
+   "label": "follicle stimulating hormone measurement",
+   "definition": "Is a quantification of follicle stimulating hormone. ollicle-stimulating hormone (FSH) is a hormone found in humans and other animals. It is synthesized and secreted by gonadotrophs of the anterior pituitary gland. FSH regulates the development, growth, pubertal maturation, and reproductive processe",
+   "synonyms": [
+    "FSH level",
+    "FSH levels",
+    "follicle stimulating hormone level",
+    "follicle stimulating hormone levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004769",
+   "label": "anti-Mullerian hormone measurement",
+   "definition": "Is a quantification of anti_Mullerian hormone, and is used as a biomarker of ovarian reserve. The AMH is  produced by the granulosa cells of the early developing antral follicles.  These  are the immature eggs that wake up from their dormant state and develop into mature eggs.  As the number of oocy",
+   "synonyms": [
+    "anti-Mullerian hormone level",
+    "anti-Mullerian hormone levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004770",
+   "label": "ovarian reserve",
+   "definition": "Ovarian reserve is a term that is used to determine the capacity of the ovary to provide oocytes that are capable of fertilization resulting in a healthy and successful pregnancy. Ovarian reserve is correlated with levels of FSH and anti-Mullerian hormones.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004771",
+   "label": "visual cortical surface area measurement",
+   "definition": "quantification of the surface area of the visual cortex. The visual cortex is located in the occipital lobe at the back of the brain. It is variable and heritable, and is correlated with visual acuity and visual perception.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004778",
+   "label": "self rated health",
+   "definition": "The process of questioning an individual, usually by means of a survey to determine general health.",
+   "synonyms": [
+    "self reported health"
+   ]
+  },
+  {
+   "item_id": "EFO:0004784",
+   "label": "self reported educational attainment",
+   "definition": "A measure of educational progress reported using a questionnaire based approach, often used as a proxy for cognitive performance as the two are correlated.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004789",
+   "label": "atrial natriuretic factor measurement",
+   "definition": "Is a quantification of the 126-amino acid C-terminal fragment of the ANP precursor, an approximately 150-amino acid polypeptide in a number of species. It is formed by the removal of the N-terminal signal sequence ANP (1-24). This prohormone contains various active ANF sequences.\nANF  is is a powerf",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004790",
+   "label": "CD40 ligand measurement",
+   "definition": "Is a quantification of CD40 ligand,  primarily expressed on activated CD4+ T lymphocytes. Protein function - mediates B-cell proliferation in the absence of co-stimulus as well as IgE production in the presence of IL-4. Involved in immunoglobulin class switching.1 Publication\nRelease of soluble CD40",
+   "synonyms": [
+    "CD154 ligand measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0004798",
+   "label": "copy number variation",
+   "definition": "A quantification of a genomic variation that increases or decreases the copy number of a given region.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004800",
+   "label": "frontal theta oscillation measurement",
+   "definition": "Is a quantification of frontal theta event related oscillations, determined by target processing in an oddball paradigm.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004802",
+   "label": "family size",
+   "definition": "Is a quantification of family size, also used as a measure of male fertility.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004803",
+   "label": "male fertility",
+   "definition": "A fertility quality of inhering in a male by virtue of the bearer's disposition to initiate, sustain, or support reproduction.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004804",
+   "label": "birth rate",
+   "definition": "Is a quantification of birth rate, te ratio of live births in an area to the population of that area, expressed per 1000 people in the population per year. Also used as a measure of male fertility",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004806",
+   "label": "asbestos exposure measurement",
+   "definition": "Is a quantification of some asbestos exposure,",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004807",
+   "label": "short sleep",
+   "definition": "Is a quantification of sleep time in humans where average sleep time was less than five hours.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004808",
+   "label": "L lactate dehydrogenase measurement",
+   "definition": "Is a quantification of L lactate dehydrodgenase, typically measured in serum, used as a marker of tissue breakdown as LDH is abundant in red blood cells and can function as a marker for hemolysis",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004809",
+   "label": "fructose-bisphosphate aldolase measurement",
+   "definition": "Is a quantification of Fructose-Bisphosphate Aldolase,is an enzyme catalyzing a reversible reaction that splits the aldol, fructose 1,6-bisphosphate, into the triose phosphates dihydroxyacetone phosphate (DHAP) and glyceraldehyde 3-phosphate (GAP).",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004810",
+   "label": "interleukin-6 measurement",
+   "definition": "Is a quantification of interleukin-6, a  pro-inflammatory and anti-inflammatory cytokine.",
+   "synonyms": [
+    "IL-6 level",
+    "IL-6 levels",
+    "IL-6 measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0004811",
+   "label": "interleukin-8 measurement",
+   "definition": "Is a quantification of interleukin-8, is a chemokine produced by macrophages and other cell types such as epithelial cells. It is also synthesized by endothelial cells, which store IL-8 in their storage vesicles, the Weibel-Palade bodies. IL-8 is secreted and is an important mediator of the immune r",
+   "synonyms": [
+    "IL-8 level",
+    "IL-8 levels",
+    "IL-8 measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0004812",
+   "label": "interleukin-1 beta measurement",
+   "definition": "Is a quantification of interleukin-1 beta, an IL-1 cytokine family protein, secreted by macrophages and a mediator of inflammatory response.",
+   "synonyms": [
+    "interleukin 1 beta measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0004814",
+   "label": "interleukin-6 receptor measurement",
+   "definition": "Is a quantification of the IL-6 receptor (CD126), activation may lead to the regulation of the immune response, acute-phase reactions and hematopoiesis. Cytokine with a wide variety of biological functions. It is a potent inducer of the acute phase response. Plays an essential role in the final diff",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004815",
+   "label": "alpha macroglobulin measurement",
+   "definition": "Is a quantification of alphamacroglobulins 1 and/or 2, glycoproteins with a molecular weight of approximately 620,000 to 680,000. Precipitation by electrophoresis is in the alpha region. They include alpha 1-macroglobulins and alpha 2-macroglobulins. These proteins exhibit trypsin-, chymotrypsin-, t",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004819",
+   "label": "resistin measurement",
+   "definition": "Is a quantification of resistin, a cytokine secreted by immune and epithelial cells in human and associated with obseity and type II diabetes by some studies",
+   "synonyms": [
+    "resistin level",
+    "resistin levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004820",
+   "label": "sex ratio",
+   "definition": "The number of males per 100 females, usually counted for live births but sometimes applied at a later life stage",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004825",
+   "label": "temperament and character inventory",
+   "definition": "An inventory for personality traits devised by Cloninger et al. Traits scored include:\nNovelty Seeking (NS)\nHarm Avoidance (HA)\nReward Dependence (RD)\nPersistence (PS)\nSelf-Directedness (SD)\nCooperativeness (CO)\nSelf-Transcendence (ST)",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004827",
+   "label": "economic and social preference",
+   "definition": "Human economic and social preferences determined by application of a survey or questionnaire.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004828",
+   "label": "genetic variation",
+   "definition": "The genetic variation of individuals in a population.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004833",
+   "label": "neutrophil count",
+   "definition": "The number of granulocytes (polymorphonuclear leukocytes) in a specified volume of blood, usually 1 cubic millimeter.",
+   "synonyms": [
+    "blood neutrophil count"
+   ]
+  },
+  {
+   "item_id": "EFO:0004838",
+   "label": "calcium measurement",
+   "definition": "Is a quantification of calcium, typically in serum. Calcium (Ca2+) plays a pivotal role in the physiology and biochemistry of organisms and the cell. It plays an important role in signal transduction pathways, where it acts as a second messenger, in neurotransmitter release from neurons, contraction",
+   "synonyms": [
+    "calcium levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004839",
+   "label": "CD4:CD8 lymphocyte ratio",
+   "definition": "Is the ratio of CD4 vs. CD8 lymphocytes, abormal ratios may reflect an infection such as HIV and the measurement may be used as an indicator of disease progression.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004840",
+   "label": "cortical thickness",
+   "definition": "Is a quantification of the thickness of brain cortex, e.g. measured by MRI, used in the diagnosis of Alzheimer's disease and other neurological conditions",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004842",
+   "label": "eosinophil count",
+   "definition": "The number of granulocytes (polymorphonuclear leukocytes) in a specified volume of blood, usually 1 cubic millimeter.",
+   "synonyms": [
+    "blood eosinophil count"
+   ]
+  },
+  {
+   "item_id": "EFO:0004843",
+   "label": "vitamin B measurement",
+   "definition": "Is a quantification of any or all of the B vitamins",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004845",
+   "label": "magnesium measurement",
+   "definition": "Is a quantification of magnesium in serum.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004847",
+   "label": "age at onset",
+   "definition": "The age at which some process, or disease started in a human individual.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004861",
+   "label": "phosphorus measurement",
+   "definition": "Is the quantification of serum phosphorus used in the diagnosis of hyper or hypophosphatemia, and used in the diagnosis of disease.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004863",
+   "label": "recombination rate",
+   "definition": "Is the genome wide recombination rate.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004864",
+   "label": "renal sinus adipose tissue measurement",
+   "definition": "Is the quantification of adipose tissue located in the renal sinus(es), correlated with chronic kidney disease and obesity.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004866",
+   "label": "autoantibody measurement",
+   "definition": "Is a quantification of an autoantibody, an antibody produced by the immune system and directed against an individual's own protein.  e.g. anti-islet autoantibodies.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004868",
+   "label": "volumetric brain MRI",
+   "definition": "Is a quantification of brain volume using magnetic resonance imaging.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004869",
+   "label": "YKL40 measurement",
+   "definition": "Is a quantification of the secreted glycoprotein YKL-40  (Chitinase-3-like protein 1) YKL-40 has been associated with asthma, inflammatory disease and cancer progression.",
+   "synonyms": [
+    "CHI3L1 levels",
+    "CHI3L1 measurement",
+    "Chitinase-3-like protein 1 levels",
+    "Chitinase-3-like protein 1 measurement",
+    "YKL-40 levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004872",
+   "label": "inflammatory biomarker measurement",
+   "definition": "Is a quantification of any molecule involved in the process of inflammatory response.",
+   "synonyms": [
+    "inflammatory marker measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0004880",
+   "label": "urinary arsenic measurement",
+   "definition": "Is the quantification of arsenic urine.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004885",
+   "label": "early cardiac repolarization measurement",
+   "definition": "Early repolarization pattern (ERP) is a common ECG variant, characterized by J point elevation manifested either as terminal QRS slurring (the transition from the QRS segment to the ST segment) or notching (a positive deflection inscribed on terminal QRS complex) associated with concave upward ST-se",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004886",
+   "label": "intracranial volume measurement",
+   "definition": "Is a quantification of intracranial volume.",
+   "synonyms": [
+    "intra cranial volume measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0004887",
+   "label": "maximal oxygen uptake measurement",
+   "definition": "Is the quantification of is the maximum capacity of an individual's body to transport and use oxygen during incremental exercise, and is used as an indicator of physical fitness",
+   "synonyms": [
+    "VO2 max",
+    "maximal aerobic capacity",
+    "maximal oxygen consumption",
+    "maximal oxygen uptake",
+    "peak oxygen uptake"
+   ]
+  },
+  {
+   "item_id": "EFO:0004892",
+   "label": "Sasang constitutional medicine",
+   "definition": "Sasang constitutional medicine (SCM) is a unique form of traditional Korean medicine that divides human beings into four constitutional types (Tae-Yang: TY, Tae-Eum: TE, So-Yang: SY, and So-Eum: SE), which differ in inherited characteristics, such as external appearance, personality traits, suscepti",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004908",
+   "label": "testosterone measurement",
+   "definition": "is a quantification of testosterone, typically in serum. Testosterone is a steroid hormone.Testosterone measurement is used in the diagnosis of\nprecocious or delayed puberty, infertility (in men and women), ovarian tumours, adrenal tumours and pituitary disorders.\n",
+   "synonyms": [
+    "testosterone level",
+    "testosterone levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004909",
+   "label": "dihydrotestosterone measurement",
+   "definition": "is a quantification of dihydrotestosterone (DHT), typically in serum. Dihydrotestosterone is a steroid hormone, a small percentage of testosterone is reduced to DHT which has a greater affinity for  androgen receptors.",
+   "synonyms": [
+    "dihydrotestosterone levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004914",
+   "label": "facial neural processing",
+   "definition": "Is a quantification of the ability of humans to process different facial expressions, measured by MRI.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004917",
+   "label": "high throughput sequence alignment protocol",
+   "definition": "Is a protocol which provides instructions on the alignment of sequencing reads to reference genome",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004918",
+   "label": "age at diagnosis",
+   "definition": "The age, measured from some defined time point e.g. birth at which a subject (e.g. a human patient) is diagnosed with some disease e.g. breast cancer.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004925",
+   "label": "tumor stage",
+   "definition": "Tumor stage as classified by the TNM system. T describes the size of the tumor and whether it has invaded nearby tissue, N describes regional lymph nodes that are involved, M describes distant metastasis (spread of cancer from one body part to another).",
+   "synonyms": [
+    "tumour stage"
+   ]
+  },
+  {
+   "item_id": "EFO:0004926",
+   "label": "M stage",
+   "definition": "",
+   "synonyms": [
+    "distant metastasis stage",
+    "metastasis stage",
+    "metastatic stage"
+   ]
+  },
+  {
+   "item_id": "EFO:0004927",
+   "label": "N stage",
+   "definition": "regional lymph node stage",
+   "synonyms": [
+    "lymph node stage"
+   ]
+  },
+  {
+   "item_id": "EFO:0004928",
+   "label": "T stage",
+   "definition": "primary tumor staging",
+   "synonyms": [
+    "primary tumor stage",
+    "primary tumour stage"
+   ]
+  },
+  {
+   "item_id": "EFO:0004949",
+   "label": "clinical temporal measurement",
+   "definition": "A temporal measurement related to disease progression",
+   "synonyms": [
+    "clinical event"
+   ]
+  },
+  {
+   "item_id": "EFO:0004950",
+   "label": "date of birth",
+   "definition": "The point in time at which an individual was born.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004951",
+   "label": "alive at endpoint",
+   "definition": "A clinical temporal measurement indicating that the subject is alive at the end of the clinical investigation.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004952",
+   "label": "disease recurrence",
+   "definition": "The recurrence of a disease after treatment",
+   "synonyms": [
+    "relapse"
+   ]
+  },
+  {
+   "item_id": "EFO:0004953",
+   "label": "date of diagnosis",
+   "definition": "The point at which a clinical diagnosis is made.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004954",
+   "label": "melanoma staging",
+   "definition": "Staging information for melanoma.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004955",
+   "label": "Breslow thickness",
+   "definition": "The measurement in millimeters of the vertical thickness of primary cutaneous melanoma. Breslow thickness is measured from the granular layer of the epidermis, or the ulcer base (if ulcerated), to the deepest tumor cells. It is used in staging of melanoma. (NCI)",
+   "synonyms": [
+    "Breslow's thickness"
+   ]
+  },
+  {
+   "item_id": "EFO:0004956",
+   "label": "Clark level",
+   "definition": "A morphologic finding indicating the cutaneous melanoma depth of invasion into the dermis and subcutaneous tissue. OR A system for describing how deep melanoma has spread into the skin. Levels I-V describe the layers of skin involved.NCI-GLOSS",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004963",
+   "label": "gene knock in",
+   "definition": "a genetic transformation that involves the insertion of a protein coding cDNA sequence at a particular locus in an organism's chromosome. Typically, this is done in mice since the technology for this process is more refined, and because mouse embryonic stem cells are easily manipulated. The differen",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004972",
+   "label": "somatic genotype",
+   "definition": "The total sum of the genetic information of an organism's somatic cells",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004973",
+   "label": "germline genotype",
+   "definition": "The total sum of the genetic information of an organism's germline",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004979",
+   "label": "comprehensive strength index",
+   "definition": "Compressive strength index (CSI) is a predictive measure for hip fracture risk that integrates multiple parameters including hip BMD, femur neck area, and weight.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004980",
+   "label": "appendicular lean mass",
+   "definition": "Appendicular lean mass is a measurement of skeletal strength of lower limbs and is used as a predictive measure of hip fracture.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004981",
+   "label": "peridontal microbiome",
+   "definition": "The peridontal microbiome is a  collection of collectivity of microorganisms isolated from human gum.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004982",
+   "label": "microbiome",
+   "definition": "A collection or collectivity of microorganisms.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004983",
+   "label": "complement C3 measurement",
+   "definition": "Complement C3 measurement is a quantification of the C3 glycoprotein typically in serum, that is central in both the classical and the alternative pathway of complement activation . Complement activation, which allows for the direct killing of microbes, the disposal of immune complexes, and the regu",
+   "synonyms": [
+    "complement C3 levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004984",
+   "label": "complement C4 measurement",
+   "definition": "Complement C4 measurement is a quantification of the C4 glycoprotein, typically in serum, that is central in both the classical and the alternative pathway of complement activation . Complement activation, which allows for the direct killing of microbes, the disposal of immune complexes, and the reg",
+   "synonyms": [
+    "complement C4 levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0004995",
+   "label": "lean body mass",
+   "definition": "The weight of all organs and tissue in an individual less the weight of the individual's body fat.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004998",
+   "label": "carbohydrate measurement",
+   "definition": "The quantification of some carbohydrate, typically obtained from an individual with the intention of using the measurement in some diagnostic process.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004999",
+   "label": "N-glycan measurement",
+   "definition": "The quantification of N-glycans in a plasma sample.",
+   "synonyms": [
+    "N-glycan level"
+   ]
+  },
+  {
+   "item_id": "EFO:0005000",
+   "label": "leptin measurement",
+   "definition": "Quantification of leptin, a hormone made by adipocytes with a role in the regulation of energy balance. ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005001",
+   "label": "phenylalanine measurement",
+   "definition": "The quantification of some phenylalanine, typically obtained from an individual with the intention of using the measurement in some diagnostic process. For example in the diagnosis of phenylkenonuria (PKU)",
+   "synonyms": []
+  }
+ ],
+ "answer_file": "batch_05.answer.json",
+ "answer_schema": {
+  "type": "object",
+  "required": [
+   "content_sha256",
+   "answers"
+  ],
+  "properties": {
+   "content_sha256": {
+    "type": "string"
+   },
+   "answers": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "item_id",
+      "aliases"
+     ],
+     "properties": {
+      "item_id": {
+       "type": "string"
+      },
+      "aliases": {
+       "type": "array",
+       "maxItems": 5,
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "content_sha256": "ec2c0704979315c527d3f4be30263d3e3a614e05ba79a2ec417b59f76ffbf9d3"
+}

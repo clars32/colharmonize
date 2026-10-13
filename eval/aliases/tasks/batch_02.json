@@ -1,0 +1,712 @@
+{
+ "stage": "aliases",
+ "instructions": "Each item is an ontology term that a column of sample metadata in a gene\nexpression study can mean. Write up to 5 aliases for each term: other ways a\nresearcher would write that same variable as a column header in sample\nmetadata.\n\nGood aliases:\n- common abbreviations and acronyms (\"sbp\" for systolic blood pressure)\n- shorter everyday phrasings (\"systolic bp\", \"visual acuity\")\n- the plain name of the quantity when the term's label is wordy\n  (\"intraocular pressure\" for \"intraocular pressure measurement\")\n\nRules:\n- An alias must mean the same variable as the term: not a broader or narrower\n  one, and not a related one.\n- No values (\"male\", \"high\"), units on their own, gene or tool names, or\n  dataset-specific codes.\n- No alias that only rewords the label trivially (plural, case,\n  punctuation). Those are matched already.\n- Fewer is better than wrong. If a term has no natural alias, return an empty\n  list.\n\nExamples:\n- systolic blood pressure -> [\"sbp\", \"systolic bp\", \"systolic pressure\"]\n- intraocular pressure measurement -> [\"intraocular pressure\", \"iop\"]\n- visual acuity measurement -> [\"visual acuity\", \"va\"]\n",
+ "items": [
+  {
+   "item_id": "EFO:0000391",
+   "label": "damage intensity",
+   "definition": "A measurement of physical damage, e.g. by a caterpillar on a plant leaf",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000395",
+   "label": "delivery method",
+   "definition": "A description of the method used to deliver e.g. a compound or solution for treatment.",
+   "synonyms": [
+    "DeliveryMethod"
+   ]
+  },
+  {
+   "item_id": "EFO:0000399",
+   "label": "developmental stage",
+   "definition": "A developmental stage is spatiotemporal region encompassing some part of the life cycle of an organism, e.g. blastula stage",
+   "synonyms": [
+    "development stage",
+    "developmental_stage",
+    "life cycle stage"
+   ]
+  },
+  {
+   "item_id": "EFO:0000410",
+   "label": "disease staging",
+   "definition": "The stage or progression of a disease in an organism. Includes pathological staging of cancers and other disease progression. E.g. Dukes C stage describing colon cancer",
+   "synonyms": [
+    "disease_staging"
+   ]
+  },
+  {
+   "item_id": "EFO:0000428",
+   "label": "dose",
+   "definition": "The total quantity or strength of a substance administered at one time.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000433",
+   "label": "duration",
+   "definition": "A temporal measurement of the time between two specified points.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000434",
+   "label": "ecotype",
+   "definition": "A biotype resulting from selection in a particular habitat, e.g. the A. thaliana Ecotype Ler",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000470",
+   "label": "environmental stress treatment",
+   "definition": "Environmental stress is a treatment where some aspect of the environment is perturbed in order to stress the organism or culture, e.g. change in temperature, change in watering regime",
+   "synonyms": [
+    "EnvironmentalStress",
+    "environmental stress"
+   ]
+  },
+  {
+   "item_id": "EFO:0000472",
+   "label": "epigenetic factor",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000473",
+   "label": "epigenetic status",
+   "definition": "Epigenetic status describes the imprinting state of a sample. E.g. Loss of imprinting occurs in some tumour cells",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000480",
+   "label": "event death",
+   "definition": "An event that has caused the permanent cessation of all vital functions; the end of life. Can be applied to a whole organism or to a part of an organism.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000483",
+   "label": "exercise",
+   "definition": "Activity that requires physical or mental exertion, especially when performed to develop or maintain fitness.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000488",
+   "label": "external control ratio",
+   "definition": "Use of spiked in controls in a measurement of the spiked in external/internal ratio",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000490",
+   "label": "extraction protocol",
+   "definition": "The procedure used to obtain something from a mixture or compound by chemical or physical or mechanical means, e.g. DNA/RNA extraction",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000493",
+   "label": "family history",
+   "definition": "Family history is a form of clinicaly history specifically about relevant aspects of genetic preconditions or family member's clinical history.",
+   "synonyms": [
+    "FamilyHistory"
+   ]
+  },
+  {
+   "item_id": "EFO:0000506",
+   "label": "gene knock out",
+   "definition": "",
+   "synonyms": [
+    "gene_knock_out"
+   ]
+  },
+  {
+   "item_id": "EFO:0000507",
+   "label": "generation",
+   "definition": "The number of cell passages if the organism or organism part that is cultured is unicellular or a cell culture; otherwise the number of generations.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000510",
+   "label": "genetic modification",
+   "definition": "A genetic modification of the genome of  an organism which may occur naturally by spontaneous mutation, or be introduced by some experimental means. Examples of genetic modification include specification of a transgene or the gene knocked-out or details of transient transfection.",
+   "synonyms": [
+    "genetic_modification"
+   ]
+  },
+  {
+   "item_id": "EFO:0000511",
+   "label": "genetic trait",
+   "definition": "Genetic traits are small inherited parts of the phenotype of an organism",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000513",
+   "label": "genotype",
+   "definition": "The total sum of the genetic information of an organism that is known and relevant to the experiment being performed, including chromosomal, plasmid, viral or other genetic material which has been introduced into the organism either prior to or during the experiment.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000523",
+   "label": "growth condition",
+   "definition": "A role that a material entity can play which enables particular conditions used to grow organisms or parts of the organism. This includes isolated environments such as cultures and open environments such as field studies.",
+   "synonyms": [
+    "GrowthCondition"
+   ]
+  },
+  {
+   "item_id": "EFO:0000544",
+   "label": "infection",
+   "definition": "The state of being infected such as from the introduction of a foreign agent such as serum, vaccine, antigenic substance or organism.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000627",
+   "label": "number of injections",
+   "definition": "The scalar number of injections administered to a material or organism.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000633",
+   "label": "operator variation",
+   "definition": "A measurement of the effects of different investigators, laboratories, or organizations on experimental results are studied.",
+   "synonyms": [
+    "OperatorVariation"
+   ]
+  },
+  {
+   "item_id": "EFO:0000635",
+   "label": "organism part",
+   "definition": "The part of organism's anatomy or substance arising from an organism from which the biomaterial was derived, excludes cells. E.g. tissue, organ, system, sperm, blood or body location (arm).",
+   "synonyms": [
+    "organism_part"
+   ]
+  },
+  {
+   "item_id": "EFO:0000638",
+   "label": "overall survival",
+   "definition": "A measurement of the survival rate for a group of individuals suffering from a disease.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000647",
+   "label": "experiment performer",
+   "definition": "An individual who does some experimental process.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000648",
+   "label": "period of infection",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000651",
+   "label": "phenotype",
+   "definition": "The observable form taken by some character (or group of characters) in an individual or an organism, excluding pathology and disease.  The detectable outward manifestations of a specific genotype.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000672",
+   "label": "prognostic subgroup",
+   "definition": "A population in which a grouping of subjects in some study grouped on the basis of the probable outcome of some disease e.g. by gene expression, by physiological indicators etc",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000683",
+   "label": "replicate",
+   "definition": "A role played by a a biological sample in the context of an experiment where the intent is that biological or technical variation is measured.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000686",
+   "label": "risk status",
+   "definition": "The probability that an event will occur generally with unfavorable outcome.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000689",
+   "label": "sampling time",
+   "definition": "",
+   "synonyms": [
+    "sampling_time_point"
+   ]
+  },
+  {
+   "item_id": "EFO:0000714",
+   "label": "survival time",
+   "definition": "Time of survival is an information entity which is about the length of time a material entity has survived after some adverse event, such as infection from a disease.",
+   "synonyms": [
+    "survival",
+    "time of survival"
+   ]
+  },
+  {
+   "item_id": "EFO:0000715",
+   "label": "survival probability",
+   "definition": "The probabilty of continuance of life or existence especially under adverse conditions; Probably need a parent survival metric or similar",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000718",
+   "label": "exposure temperature",
+   "definition": "The temperature that a material is exposed to.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000719",
+   "label": "temporal measurement",
+   "definition": "A temporal entity is an entity that has temporal parts and that happens, unfolds or develops through time. An occurrent is something which exists over time, rather than existing completely at many times",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000720",
+   "label": "test result",
+   "definition": "The recorded value of the outcome of some test.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000721",
+   "label": "time",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000724",
+   "label": "timepoint",
+   "definition": "Time point at which a sample or observation is made or taken from a biomaterial as measured from some reference point.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000727",
+   "label": "treatment",
+   "definition": "A planned process intended to modify or alter a condition or characteristic of an organism or individual.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0000732",
+   "label": "vehicle role",
+   "definition": "A carrier or inert medium used as a solvent (or diluent) in which some compound is formulated and or administered.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001268",
+   "label": "mating type",
+   "definition": "A mating type is a biomaterial factor which describes the type of sexual reproduction through isogamy occur in eukaryotes that undergo.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001269",
+   "label": "mating type h minus",
+   "definition": "A S. pombe mating type determined by the mat1-Mc and mat1-Mi on the mat1 locus.",
+   "synonyms": [
+    "h minus",
+    "mating_type_h_minus"
+   ]
+  },
+  {
+   "item_id": "EFO:0001270",
+   "label": "mating type alpha",
+   "definition": "A S. cerevisiae mating type cells that secrete a pheromone that stimulates a haploids.",
+   "synonyms": [
+    "alpha",
+    "alpha mating type (yeast)",
+    "mating_type_alpha"
+   ]
+  },
+  {
+   "item_id": "EFO:0001271",
+   "label": "mixed sex population",
+   "definition": "The total number of individuals inhabiting a particular region or area.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001275",
+   "label": "mating type a",
+   "definition": "A S. cerevisiae mating type cells that secrete a pheromone that in alpha haploids stimulates processes that lead to mating.",
+   "synonyms": [
+    "a mating type (yeast)",
+    "mating_type_a"
+   ]
+  },
+  {
+   "item_id": "EFO:0001382",
+   "label": "puberty",
+   "definition": "The process of sexual maturation mediated by the neuroendocrine system in mammals.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001426",
+   "label": "study design",
+   "definition": "A study type is an experimental factor describing the method of investigating particular types of research questions or solving particular types of problems, for example, a  set of protocols (which may specify how and what kinds of data will be gathered).",
+   "synonyms": [
+    "experimental design"
+   ]
+  },
+  {
+   "item_id": "EFO:0001444",
+   "label": "measurement",
+   "definition": "A measurement is an information entity that is a recording of the output of a measurement such as produced by an instrument.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001451",
+   "label": "instrument design",
+   "definition": "An instrument design is information in the form of a specification that describes the setup and design of an instrument.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001460",
+   "label": "uninfected",
+   "definition": "Uninfected class is a disposition in which the bearer is not known to be affected by a disease withtin the context of a study",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001461",
+   "label": "control",
+   "definition": "A control role is borne by a material in a process in which results obtained from an experimental sample and a control sample are compared.",
+   "synonyms": [
+    "Controlled",
+    "Controlling",
+    "reference sample"
+   ]
+  },
+  {
+   "item_id": "EFO:0001646",
+   "label": "anatomical modifier",
+   "definition": "An anatomical modifier is a quality which inheres in an organism part.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001647",
+   "label": "tissue modifier",
+   "definition": "A tissue modifier is an anatomical modifier which describes some quality about a tissue.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001648",
+   "label": "geometric modifier",
+   "definition": "A geometric modifier is an anatomical modifier which describes some quality about the geometric position of some organism part.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001650",
+   "label": "placode",
+   "definition": "A placode is a tissue modifier describing the thickening of embryonic ectoderm from which a definitive structure develops. For example, the cranial placodes.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001651",
+   "label": "precursor",
+   "definition": "A precursor is a tissue modifier describing a substance, cell, or cellular component from which another substance, cell, or cellular component is formed. For example, muscle precursor cell.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001653",
+   "label": "apical",
+   "definition": "Apical is a geometric modifier describing the tip of a pyramidal or rounded structure. For example, lung apical.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001654",
+   "label": "basal",
+   "definition": "Basal is a geometric modifier describing areas associated with the base of an organism or organism part. For example, basal ganglia.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001655",
+   "label": "distal",
+   "definition": "Distal is a geometric modifier describing the point furthest from the point of attachment to the body or to some point of origin. For example, distal end of femur.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001656",
+   "label": "dorsal",
+   "definition": "Dorsal is a geometric modifier describing parts of an organism relating to or situated near or on the back. For example, dorsal fin.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001657",
+   "label": "lateral",
+   "definition": "Lateral is a geometric modifier describing something which is of or pertaining to the side.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001658",
+   "label": "left",
+   "definition": "Left is a geometric modifier describing something which is to the left of the median of an organism or organism part, for example left arm.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001659",
+   "label": "right",
+   "definition": "Right is a geometric modifier describing something which is to the right of the median of an organism or organism part, for example right arm.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001660",
+   "label": "medial",
+   "definition": "Medial is a geometric modifier describing something which is pertaining to, in or toward the middle, for example medial meniscus.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001661",
+   "label": "proximal",
+   "definition": "Proximal is a geometric modifier describing the point at which an appendage joins the body or the point nearest to some point of origin, for example proximal tibia.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001662",
+   "label": "ventral",
+   "definition": "Ventral is a geometric modifier describing parts pertaining to the front or anterior of any structure, for example ventral striatum.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001695",
+   "label": "size",
+   "definition": "A morphology quality inhering in a bearer by virtue of the bearer's physical magnitude.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001696",
+   "label": "area",
+   "definition": "An area is a size quality which describes the two dimensional extent of a material entity.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001702",
+   "label": "temperature",
+   "definition": "Temperature is a physical quality of the thermal energy of a system.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001703",
+   "label": "derived mass unit",
+   "definition": "A dervied mass unit is a derived unit which is a measure of the the amount of matter/energy of a physical object, derived from the base unit for mass.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001715",
+   "label": "volume",
+   "definition": "A 3-D extent quality inhering in a bearer by virtue of the bearer's amount of 3-dimensional space it occupies.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001728",
+   "label": "array manufacturer",
+   "definition": "",
+   "synonyms": [
+    "array_manufacturer"
+   ]
+  },
+  {
+   "item_id": "EFO:0001729",
+   "label": "biomaterial provider",
+   "definition": "",
+   "synonyms": [
+    "biomaterial_provider"
+   ]
+  },
+  {
+   "item_id": "EFO:0001730",
+   "label": "biosequence provider",
+   "definition": "",
+   "synonyms": [
+    "biosequence_provider"
+   ]
+  },
+  {
+   "item_id": "EFO:0001731",
+   "label": "consortium member",
+   "definition": "",
+   "synonyms": [
+    "consortium_member"
+   ]
+  },
+  {
+   "item_id": "EFO:0001732",
+   "label": "consultant",
+   "definition": "A person who provides expert advice professionally.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001733",
+   "label": "curator",
+   "definition": "The person in charge of the care and superintendence of something, especially a collection.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001734",
+   "label": "data analyst",
+   "definition": "",
+   "synonyms": [
+    "data_analyst"
+   ]
+  },
+  {
+   "item_id": "EFO:0001735",
+   "label": "data coder",
+   "definition": "",
+   "synonyms": [
+    "data_coder"
+   ]
+  },
+  {
+   "item_id": "EFO:0001736",
+   "label": "funder",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001737",
+   "label": "hardware manufacturer",
+   "definition": "",
+   "synonyms": [
+    "hardware_manufacturer"
+   ]
+  },
+  {
+   "item_id": "EFO:0001738",
+   "label": "institution",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001739",
+   "label": "investigator",
+   "definition": "An individual who conducts scientific research. In a clinical setting this individual actually conducts and/or supervises the clinical investigation and study-related procedures. The investigator monitors the safety of the trial subjects and investigational staff (under whose immediate direction an ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001740",
+   "label": "software manufacturer",
+   "definition": "",
+   "synonyms": [
+    "software_manufacturer"
+   ]
+  },
+  {
+   "item_id": "EFO:0001741",
+   "label": "submitter",
+   "definition": "A person who presents or submits something (e.g., a proposal or protocol) for formal consideration or review by others. [ NCI ]",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001742",
+   "label": "publication status",
+   "definition": "An information entity about the status of a publication describing the experiment.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001794",
+   "label": "submitted",
+   "definition": "Publication submitted to a journal for publication.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001795",
+   "label": "in preparation",
+   "definition": "Publication in preparation before submitting to a journal.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001796",
+   "label": "published",
+   "definition": "Publication published in a journal.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001799",
+   "label": "ethnic group",
+   "definition": "An ethnic group is a population whose members have a common heritage that is real or presumed such as common culture, language, religion, behaviour or biological trait.",
+   "synonyms": [
+    "Ethnicity",
+    "race"
+   ]
+  },
+  {
+   "item_id": "EFO:0001824",
+   "label": "hormone role",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001899",
+   "label": "drug role",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0001901",
+   "label": "aerial part",
+   "definition": "Existing or growing in the air rather than in the ground or in water.",
+   "synonyms": [
+    "aerial body",
+    "aerial tissue"
+   ]
+  },
+  {
+   "item_id": "EFO:0001908",
+   "label": "caudal",
+   "definition": "Caudal is a geometric modifier which indicates a position towards the tail.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0002012",
+   "label": "organization role",
+   "definition": "An organization role is a role which is borne by an organization.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0002029",
+   "label": "software",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0002090",
+   "label": "technical replicate",
+   "definition": "A technical replicate is a replicate role where the same BioSample is use e.g. the same pool of RNA used to assess technical (as opposed to biological) variation within an experiment.",
+   "synonyms": [
+    "technical_replicate"
+   ]
+  },
+  {
+   "item_id": "EFO:0002091",
+   "label": "biological replicate",
+   "definition": "A biological replicate is a replicate role that consists of independent biological replicates made from different individual biosamples.",
+   "synonyms": [
+    "biological_replicate"
+   ]
+  }
+ ],
+ "answer_file": "batch_02.answer.json",
+ "answer_schema": {
+  "type": "object",
+  "required": [
+   "content_sha256",
+   "answers"
+  ],
+  "properties": {
+   "content_sha256": {
+    "type": "string"
+   },
+   "answers": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "item_id",
+      "aliases"
+     ],
+     "properties": {
+      "item_id": {
+       "type": "string"
+      },
+      "aliases": {
+       "type": "array",
+       "maxItems": 5,
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "content_sha256": "de96e952794a5b9a61b3454c5af74d3bc4690b710606503adc791eccea663277"
+}

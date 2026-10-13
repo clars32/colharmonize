@@ -1,0 +1,703 @@
+{
+ "stage": "aliases",
+ "instructions": "Each item is an ontology term that a column of sample metadata in a gene\nexpression study can mean. Write up to 5 aliases for each term: other ways a\nresearcher would write that same variable as a column header in sample\nmetadata.\n\nGood aliases:\n- common abbreviations and acronyms (\"sbp\" for systolic blood pressure)\n- shorter everyday phrasings (\"systolic bp\", \"visual acuity\")\n- the plain name of the quantity when the term's label is wordy\n  (\"intraocular pressure\" for \"intraocular pressure measurement\")\n\nRules:\n- An alias must mean the same variable as the term: not a broader or narrower\n  one, and not a related one.\n- No values (\"male\", \"high\"), units on their own, gene or tool names, or\n  dataset-specific codes.\n- No alias that only rewords the label trivially (plural, case,\n  punctuation). Those are matched already.\n- Fewer is better than wrong. If a term has no natural alias, return an empty\n  list.\n\nExamples:\n- systolic blood pressure -> [\"sbp\", \"systolic bp\", \"systolic pressure\"]\n- intraocular pressure measurement -> [\"intraocular pressure\", \"iop\"]\n- visual acuity measurement -> [\"visual acuity\", \"va\"]\n",
+ "items": [
+  {
+   "item_id": "EFO:0010497",
+   "label": "hydroxide measurement",
+   "definition": "Quantification of hydroxide levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010498",
+   "label": "hydroxyproline measurement",
+   "definition": "Quantification of hydroxyproline levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010499",
+   "label": "hyodeoxycholate measurement",
+   "definition": "Quantification of hyodeoxycholate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010501",
+   "label": "indole-3-propionate measurement",
+   "definition": "Quantification of indole-3-propionate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010503",
+   "label": "inosine measurement",
+   "definition": "Quantification of inosine levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010504",
+   "label": "inositol measurement",
+   "definition": "Quantification of inositol levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010505",
+   "label": "isocitrate measurement",
+   "definition": "Quantification of isocitrate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010506",
+   "label": "kynurenic acid measurement",
+   "definition": "Quantification of kynurenic acid levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010507",
+   "label": "lactose measurement",
+   "definition": "Quantification of lactose levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010508",
+   "label": "malate measurement",
+   "definition": "Quantification of malate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010509",
+   "label": "maleate measurement",
+   "definition": "Quantification of maleate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010511",
+   "label": "niacinamide measurement",
+   "definition": "Quantification of niacinamide levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010512",
+   "label": "nucleoside measurement",
+   "definition": "Quantification of nucleoside levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010514",
+   "label": "organic anion measurement",
+   "definition": "Quantification of organic anion levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010515",
+   "label": "organic cation measurement",
+   "definition": "Quantification of organic cation levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010516",
+   "label": "orotic acid measurement",
+   "definition": "Quantification of orotic acid levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010517",
+   "label": "oxalate measurement",
+   "definition": "Quantification of oxalate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010518",
+   "label": "oxide measurement",
+   "definition": "Quantification of oxide levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010519",
+   "label": "pantothenic acid measurement",
+   "definition": "Quantification of pantothenic acid levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010520",
+   "label": "peptide measurement",
+   "definition": "Quantification of peptide levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010522",
+   "label": "phosphoenolpyruvic acid measurement",
+   "definition": "Quantification of phosphoenolpyruvic acid levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010524",
+   "label": "pimelic acid measurement",
+   "definition": "Quantification of pimelic acid levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010525",
+   "label": "propionic acid measurement",
+   "definition": "Quantification of propionic acid levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010526",
+   "label": "purine measurement",
+   "definition": "Quantification of purine levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010527",
+   "label": "pyridoxate measurement",
+   "definition": "Quantification of pyridoxate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010528",
+   "label": "quinolinic acid measurement",
+   "definition": "Quantification of quinolinic acid levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010529",
+   "label": "ribose-5-phosphate measurement",
+   "definition": "Quantification of ribose-5-phosphate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010530",
+   "label": "ribulose-5-phosphate measurement",
+   "definition": "Quantification of ribulose-5-phosphate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010532",
+   "label": "salicylurate measurement",
+   "definition": "Quantification of salicylurate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010533",
+   "label": "sorbitol measurement",
+   "definition": "Quantification of sorbitol levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010534",
+   "label": "suberic acid measurement",
+   "definition": "Quantification of suberic acid levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010535",
+   "label": "sucrose measurement",
+   "definition": "Quantification of sucrose levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010537",
+   "label": "taurochenodeoxycholate measurement",
+   "definition": "Quantification of taurochenodeoxycholate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010538",
+   "label": "taurocholate measurement",
+   "definition": "Quantification of taurocholate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010539",
+   "label": "taurodeoxycholate measurement",
+   "definition": "Quantification of taurodeoxycholate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010540",
+   "label": "thiamine measurement",
+   "definition": "Quantification of thiamine levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010541",
+   "label": "trimethylamine-N-oxide measurement",
+   "definition": "Quantification of trimethylamine-N-oxide levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010542",
+   "label": "ureidopropionic acid measurement",
+   "definition": "Quantification of ureidopropionic acid levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010546",
+   "label": "uridine measurement",
+   "definition": "Quantification of uridine levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010547",
+   "label": "ursodeoxycholate measurement",
+   "definition": "Quantification of ursodeoxycholate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010548",
+   "label": "xanthine measurement",
+   "definition": "Quantification of xanthine levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010549",
+   "label": "xanthosine measurement",
+   "definition": "Quantification of xanthosine levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010551",
+   "label": "xanthurenate measurement",
+   "definition": "Quantification of xanthurenate levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010552",
+   "label": "social environment measurement",
+   "definition": "A measurement of some aspect of an individual's social environment, including the people with whom they interact and the culture and behaviours to which they are exposed.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010553",
+   "label": "cocaine use measurement",
+   "definition": "A quantification of some aspect of cocaine use",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010554",
+   "label": "retinal vasculature measurement",
+   "definition": "A quantification of some aspect of the vasculature of the retina, for example retinal venular tortuousity.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010557",
+   "label": "lactose tolerance test",
+   "definition": "A test to determine the ability of an individual to metabolise lactose, an estimate of lactase activity. It includes measuring fasting blood glucose levels before and after oral lactose intake.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010558",
+   "label": "preprint",
+   "definition": "In academic publishing, a preprint is a version of a scholarly or scientific paper that precedes formal peer review and publication in a peer-reviewed scholarly or scientific journal.",
+   "synonyms": [
+    "pre-print"
+   ]
+  },
+  {
+   "item_id": "EFO:0010559",
+   "label": "anti-drug antibody measurement",
+   "definition": "Quantification of the levels of antibodies against biotherapeutic agents. Such antibodies can reduce treatment efficacy by neutralizing circulating immune-biologicals and/or promoting their clearance.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010569",
+   "label": "clinical modifier",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010570",
+   "label": "ventricular enlargement measurement",
+   "definition": "A quantification of some aspect of the enlargement of the ventricles of the brain.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010576",
+   "label": "liver fibrosis measurement",
+   "definition": "Quantification of the invasion of fibrous connective tissue into the liver, typically by histological assessment of biopsy samples.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010578",
+   "label": "complex trait",
+   "definition": "A trait which cannot be accurately represented using standard EFO terms, e.g. a statistical combination of many unrelated traits. This term may also be used as a parent term for GWAS Catalog entries which include many analyses on unrelated traits.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010584",
+   "label": "cancer antigen 19.9 measurement",
+   "definition": "Quantification of the amount of cancer antigen 19.9 in a sample, typically serum.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010585",
+   "label": "cancer antigen 15.3 measurement",
+   "definition": "Quantification of the amount of cancer antigen 15.3 in a sample, typically serum.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010602",
+   "label": "brain age measurement",
+   "definition": "Quantification or estimate of the age of the brain, e.g. as derived from brain MRI features.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010603",
+   "label": "cancer antigen 125 measurement",
+   "definition": "Quantification of the amount of cancer antigen 125 in a sample, typically serum.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010639",
+   "label": "pain measurement",
+   "definition": "Quantification of levels of pain.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010640",
+   "label": "chronic post-operative pain measurement",
+   "definition": "Quantification of pain that develops after a surgical procedure, and is present for at least 3 months after the procedure.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010649",
+   "label": "immunophenotype",
+   "definition": "The characteristics of a set of cells according to the (surface level) antigens expressed.",
+   "synonyms": [
+    "FACS marker",
+    "FACS_marker",
+    "immuno phenotype",
+    "immuno-phenotype",
+    "immuno_phenotype"
+   ]
+  },
+  {
+   "item_id": "EFO:0010650",
+   "label": "creativity measurement",
+   "definition": "A quantification of an individual's creativity, i.e. capacity to produce new or original ideas, insights or inventions.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010670",
+   "label": "abnormal chest sounds",
+   "definition": "Any abnormal sound(s) of the chest.",
+   "synonyms": [
+    "chest sound abnormal"
+   ]
+  },
+  {
+   "item_id": "EFO:0010677",
+   "label": "cytological, histological or immunological finding",
+   "definition": "Any cytological, histological or immunological finding(s).",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010678",
+   "label": "eye discharge",
+   "definition": "Any discharge from the eye(s).",
+   "synonyms": [
+    "discharge from eye",
+    "eye drainage"
+   ]
+  },
+  {
+   "item_id": "EFO:0010679",
+   "label": "eye swelling",
+   "definition": "Swelling of eye(s).",
+   "synonyms": [
+    "swelling of eye",
+    "swollen eye"
+   ]
+  },
+  {
+   "item_id": "EFO:0010683",
+   "label": "localized superficial swelling, mass, or lump",
+   "definition": "Any localized superficial swelling, mass or lump.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010684",
+   "label": "malunion fracture",
+   "definition": "A malunion fracture is a fracture which has healed in such a position that it can cause malalignment or deformity.",
+   "synonyms": [
+    "fracture, malunion",
+    "malunion of broken bone",
+    "malunion of fracture"
+   ]
+  },
+  {
+   "item_id": "EFO:0010686",
+   "label": "muscle strain",
+   "definition": "Stretching while the muscle is being activated can lead to strains. Muscle tearing results in localised damage near the muscle-tendon junction.",
+   "synonyms": [
+    "muscle, pulled",
+    "pulled muscle",
+    "strain of muscle tissue",
+    "strain of muslce",
+    "strained muscle",
+    "strained muscle tissue"
+   ]
+  },
+  {
+   "item_id": "EFO:0010694",
+   "label": "total parenteral nutrition",
+   "definition": "Total parenteral nutrition is described as the artifical administration of nutrients intravenously\u00a0when oral or tube feeding is inadequate.",
+   "synonyms": [
+    "TPN",
+    "hyperalimentation",
+    "parenteral hyperalimentation"
+   ]
+  },
+  {
+   "item_id": "EFO:0010707",
+   "label": "trans-3-hydroxycotinine measurement",
+   "definition": "Quantification of the amount of 3'-hydroxydotinine in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010717",
+   "label": "afebrile",
+   "definition": "The state of being free from fever.",
+   "synonyms": [
+    "free from fever",
+    "not feverish",
+    "without fever"
+   ]
+  },
+  {
+   "item_id": "EFO:0010724",
+   "label": "lifestyle measurement",
+   "definition": "Quantification of some aspect of a subject's lifestyle.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010729",
+   "label": "sun exposure measurement",
+   "definition": "Quantification of some aspect of exposure to incident light from the sun.",
+   "synonyms": [
+    "sunlight exposure measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0010742",
+   "label": "protein binding measurement",
+   "definition": "Quantification of the binding of a protein to another entity, usually another protein, for example using ELISA (enzyme-linked immunosorbent assay).",
+   "synonyms": [
+    "protein adhesion measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0010743",
+   "label": "sperm measurement",
+   "definition": "Quantification of some aspect of sperm e.g. sperm density, total sperm count, total motile sperm count",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010744",
+   "label": "testis size",
+   "definition": "Quantification of the size of the testis",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010749",
+   "label": "motor function measurement",
+   "definition": "Quantification of some aspect of motor function.",
+   "synonyms": [
+    "motor control measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0010751",
+   "label": "nucleotide sequence offset",
+   "definition": "Distance between the start of a nucleotide sequence and the start of the actual read.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010752",
+   "label": "nucleotide sequence size",
+   "definition": "The number of nucleotides in a sequence.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010753",
+   "label": "barcode read",
+   "definition": "The sequencing read in which the barcode is found.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010758",
+   "label": "anti-Kaposi's sarcoma-associated herpesvirus antibody measurement",
+   "definition": "Quantification of one or more antibodies to the Kaposi's sarcoma-associated herpesvirus, typically in serum",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010809",
+   "label": "fat intake measurement",
+   "definition": "Quantification of the fat intake of an individual.",
+   "synonyms": [
+    "fat consumption measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0010810",
+   "label": "protein intake measurement",
+   "definition": "Quantification of the protein intake of an individual.",
+   "synonyms": [
+    "protein consumption measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0010811",
+   "label": "carbohydrate intake measurement",
+   "definition": "Quantification of the carbohydrate intake of an individual.",
+   "synonyms": [
+    "carbohydrate consumption measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0010813",
+   "label": "fasting C-peptide measurement",
+   "definition": "A measurement of serum C-peptide levels at a predetermined point after a patient has fasted.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010814",
+   "label": "proinsulin measurement",
+   "definition": "Measurement of proinsulin, an insulin precursor that is processed into mature insulin and C-peptide.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010816",
+   "label": "dietary fat liking measurement",
+   "definition": "Quantification of an individual's appreciation of lipids or fats in food or drink.",
+   "synonyms": [
+    "fat liking measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0010821",
+   "label": "liver fat measurement",
+   "definition": "A quantification of the fat content of the liver such as liver fat fraction, typically assessed by MRI.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010892",
+   "label": "hydrolysis collection protocol",
+   "definition": "A protocol to remove zona pellucida of mammalian oocytes by hydrolysis with 0.012 M hydrochloric acid to obtain naked oocytes without contamination of granulosa cells.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010899",
+   "label": "anti-merkel cell virus antibody measurement",
+   "definition": "Quantification of one or more antibodies to the Merkel-cell virus, typically in serum.",
+   "synonyms": [
+    "anti-MCV measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0010900",
+   "label": "anti-polyomavirus 2 antibody measurement",
+   "definition": "Quantification of one or more antibodies to the polyomavirus 2, typically in serum.",
+   "synonyms": [
+    "JCV"
+   ]
+  },
+  {
+   "item_id": "EFO:0010903",
+   "label": "anti-chlamydia trachomatis antibody measurement",
+   "definition": "Quantification of one or more antibodies to the chlamydia trachomatis virus, typically in serum.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010904",
+   "label": "anti-BK polyomavirus antibody measurement",
+   "definition": "Quantification of one or more antibodies to the BK polyomavirus, typically in serum.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010905",
+   "label": "BK polyomavirus seropositivity",
+   "definition": "The result of a measurement of circulating BK polyomavirus-specific antibodies.",
+   "synonyms": [
+    "BKV seropositivity"
+   ]
+  },
+  {
+   "item_id": "EFO:0010906",
+   "label": "merkel cell virus seropositivity",
+   "definition": "The result of a measurement of circulating merkel cell virus-specific antibodies.",
+   "synonyms": [
+    "MKV seropositivity"
+   ]
+  },
+  {
+   "item_id": "EFO:0010907",
+   "label": "polyomavirus 2 seropositivity",
+   "definition": "The result of a measurement of circulating polyomavirus 2-specific antibodies.",
+   "synonyms": [
+    "JCV seropositivity"
+   ]
+  },
+  {
+   "item_id": "EFO:0010908",
+   "label": "Epstein-Barr virus seropositivity",
+   "definition": "The result of a measurement of circulating Epstein-Barr virus-specific antibodies.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010934",
+   "label": "aspartate aminotransferase to alanine aminotransferase ratio",
+   "definition": "The ratio between the levels of aspartate aminotransferase (AST) and alanine aminotransferase (ALT).",
+   "synonyms": [
+    "AST:ALT ratio"
+   ]
+  },
+  {
+   "item_id": "EFO:0010966",
+   "label": "pneumonia severity measurement",
+   "definition": "Quantification of the severity of the symptoms of pneumonia, an inflammation of the lung parenchyma caused by an infection.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0010968",
+   "label": "phosphate measurement",
+   "definition": "Quantification of phosphate levels in a sample.",
+   "synonyms": []
+  }
+ ],
+ "answer_file": "batch_15.answer.json",
+ "answer_schema": {
+  "type": "object",
+  "required": [
+   "content_sha256",
+   "answers"
+  ],
+  "properties": {
+   "content_sha256": {
+    "type": "string"
+   },
+   "answers": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "item_id",
+      "aliases"
+     ],
+     "properties": {
+      "item_id": {
+       "type": "string"
+      },
+      "aliases": {
+       "type": "array",
+       "maxItems": 5,
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "content_sha256": "8a54d6e0ce053fdec637e938c06816c656fc4c4063b64d21bbbc02d59fff7d59"
+}

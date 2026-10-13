@@ -1,0 +1,689 @@
+{
+ "stage": "aliases",
+ "instructions": "Each item is an ontology term that a column of sample metadata in a gene\nexpression study can mean. Write up to 5 aliases for each term: other ways a\nresearcher would write that same variable as a column header in sample\nmetadata.\n\nGood aliases:\n- common abbreviations and acronyms (\"sbp\" for systolic blood pressure)\n- shorter everyday phrasings (\"systolic bp\", \"visual acuity\")\n- the plain name of the quantity when the term's label is wordy\n  (\"intraocular pressure\" for \"intraocular pressure measurement\")\n\nRules:\n- An alias must mean the same variable as the term: not a broader or narrower\n  one, and not a related one.\n- No values (\"male\", \"high\"), units on their own, gene or tool names, or\n  dataset-specific codes.\n- No alias that only rewords the label trivially (plural, case,\n  punctuation). Those are matched already.\n- Fewer is better than wrong. If a term has no natural alias, return an empty\n  list.\n\nExamples:\n- systolic blood pressure -> [\"sbp\", \"systolic bp\", \"systolic pressure\"]\n- intraocular pressure measurement -> [\"intraocular pressure\", \"iop\"]\n- visual acuity measurement -> [\"visual acuity\", \"va\"]\n",
+ "items": [
+  {
+   "item_id": "EFO:0005847",
+   "label": "increased risk",
+   "definition": "An increase in the probability of an event occuring, as compared to a background risk such as the normal risk in a given population. For intsance, the increased risk of getting breast cancer given a Brca1 mutation.",
+   "synonyms": [
+    "increase in risk"
+   ]
+  },
+  {
+   "item_id": "EFO:0005880",
+   "label": "lipid homeostasis",
+   "definition": "Any process involved in the maintenance of an internal steady state of lipid within an organism or cell.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005882",
+   "label": "iron ion homeostasis",
+   "definition": "Any process involved in the maintenance of an internal steady state of iron ions within an organism or cell.",
+   "synonyms": [
+    "iron homeostasis"
+   ]
+  },
+  {
+   "item_id": "EFO:0005890",
+   "label": "osteoarthritis biomarker measurement",
+   "definition": "osteoarthritis biomarkers, such as  serum cartilage oligomeric protein (sCOMP) and urinary C-telopeptide of type II collagen (uCTX-II), are used as indicators for osteoarthritis screening and as predictors for therapeutic responses and prognoses in patients",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005919",
+   "label": "recombination measurement",
+   "definition": "quantification of any recombination-related factor, such as hotspot usage, African enchrichment and recombination rate",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005921",
+   "label": "FEV change measurement",
+   "definition": "quantification of the rate of change in FEV of an individual over the course of time, used as an indicator of improvement or decay of pulmonary function",
+   "synonyms": [
+    "FEV1 change measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0005939",
+   "label": "parental genotype effect measurement",
+   "definition": "quantification of the effect of the parental genotype, usually the maternal genotype on the development of a child, for example to determine its influence on congenital abnormalities",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005941",
+   "label": "mammographic density measurement",
+   "definition": "quantification of the density of breast tissue from a mammogram, used as an indicator of breast cancer risk",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0005951",
+   "label": "sexual dimorphism",
+   "definition": "phenotypic differentiation between males and females of the same species, eg in size, coloration, behaviour or another characteristic.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006266",
+   "label": "sum of skinfolds",
+   "definition": "quantification of skinfold thickness as a proxy for measuring the amount of adipose tissue",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006312",
+   "label": "mitochondrial DNA measurement",
+   "definition": "quantification of mitochondrial DNA in a sample, usually through genetic amplification of target genes by quantifiative real-time PCR",
+   "synonyms": [
+    "mtDNA measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0006320",
+   "label": "antidepressant-induced side effect",
+   "definition": "any sign or symptom that is the direct result of treatment with antidepressant medication",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006333",
+   "label": "transferrin saturation measurement",
+   "definition": "The determination of the iron bound to transferrin in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006334",
+   "label": "total iron binding capacity",
+   "definition": "The determination of the saturation of iron binding sites on serum transferrin proteins.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006335",
+   "label": "systolic blood pressure",
+   "definition": "The blood pressure during the contraction of the left ventricle of the heart.",
+   "synonyms": [
+    "SYSBP",
+    "systolic pressure"
+   ]
+  },
+  {
+   "item_id": "EFO:0006336",
+   "label": "diastolic blood pressure",
+   "definition": "The blood pressure after the contraction of the heart while the chambers of the heart refill with blood.",
+   "synonyms": [
+    "DIABP",
+    "diastolic pressure"
+   ]
+  },
+  {
+   "item_id": "EFO:0006340",
+   "label": "mean arterial pressure",
+   "definition": "The mean pressure of the blood within the arterial circulation. The arterial pressure may be directly measured by insertion of an intra-arterial catheter connected to a transducer. The mean arterial pressure (MAP) can be calculated by subsequent analysis of the waveform. MAP can be approximated with",
+   "synonyms": [
+    "MAP"
+   ]
+  },
+  {
+   "item_id": "EFO:0006341",
+   "label": "transferrin measurement",
+   "definition": "The determination of the amount of transferrin present in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006347",
+   "label": "pulmonary artery enlargement",
+   "definition": "PAE is defined as PA/A >1. ",
+   "synonyms": [
+    "PAE"
+   ]
+  },
+  {
+   "item_id": "EFO:0006348",
+   "label": "pulmonary artery-aorta diameter ratio measurement",
+   "definition": "The ratio of the diameter of the pulmonary artery to the diameter of the aorta (PA/A) as measured using CT.",
+   "synonyms": [
+    "PA/A"
+   ]
+  },
+  {
+   "item_id": "EFO:0006502",
+   "label": "mammographic density percentage",
+   "definition": "proportion of the total breast area that is dense",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006503",
+   "label": "dense area measurement",
+   "definition": "quantification of the area of the breast tissue that is dense, expressed in cm2",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006504",
+   "label": "non-dense area measurement",
+   "definition": "quantification of the area of the breast tissue that is non-dense, expressed in cm2",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006507",
+   "label": "nicotine glucuronidation measurement",
+   "definition": "quantification of nicotine metabolisation via the glucuronidation pathway, usually via analysis of a urine sample",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006508",
+   "label": "cotinine glucuronidation measurement",
+   "definition": "quantification of cotinine metabolisation via the glucuronidation pathway, usually via analysis of a urine sample",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006512",
+   "label": "angiographic measurement",
+   "definition": "quantification of some heart-related structural phenotype via the medical imaging technique of angiography, for example to determine the number or type of coronary artery lesions in coronary artery disease",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006520",
+   "label": "carbon monoxide exhalation measurement",
+   "definition": "Quantification of the amount of carbon monoxide in a person's exhalation, usually measured using a breath CO monitor. Breath CO can be used for evaluation of smoking status or assessment of carbon monoxide poisoning",
+   "synonyms": [
+    "breath carbon monoxide measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0006521",
+   "label": "calcium intake measurement",
+   "definition": "Quantification of the amount of calcium consumed from dietary and supplemental sources",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006522",
+   "label": "asymmetrical dimethylarginine measurement",
+   "definition": "quantification of the amount of asymmetrical dimethylarginine in blood. Asymmetric dimethylarginine (ADMA) is an independent risk factor for coronary heart disease in patients with heart disease, type II diabetes or kidney disease. ADMA inhibits nitric oxide (NO) synthesis and is elevated in disease",
+   "synonyms": [
+    "ADMA measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0006523",
+   "label": "symmetrical dimethylarginine measurement",
+   "definition": "quantification of the amount of asymmetrical dimethylarginine in blood. It is a structural isomer of asymmetric dimethyl argigine. It has been reported to be a marker for kidney disease,  often used a predictor of all-cause mortality after ischemic stroke",
+   "synonyms": [
+    "SDMA measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0006524",
+   "label": "L-arginine measurement",
+   "definition": "quantification of the amount of L-arginine in a sample, eg in blood",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006781",
+   "label": "coffee consumption measurement",
+   "definition": "the quantification of some coffee consumption or coffee consumption-related behaviour, usually self-reported via a questionnaire",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006783",
+   "label": "psychosocial stress measurement",
+   "definition": "the quantification of psychosocial stress factors such as financial strain, marital problems, work-related difficulties or health problems, usually assessed through self-reporting via standardised questionnaires.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006784",
+   "label": "body height at birth",
+   "definition": "The distance from the sole to the crown of the head of a newborn right after birth",
+   "synonyms": [
+    "birth length"
+   ]
+  },
+  {
+   "item_id": "EFO:0006785",
+   "label": "infant body height",
+   "definition": "The distance from the sole to the crown of the head of an infant, which can be used as a proxy for skeletal growth in early life",
+   "synonyms": [
+    "infant length"
+   ]
+  },
+  {
+   "item_id": "EFO:0006793",
+   "label": "left inferior lateral ventricle volume measurement",
+   "definition": "quantification of the volume of the left inferior lateral ventricle, usuallly through an MRI scan",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006797",
+   "label": "neurofibrillary tangles measurement",
+   "definition": "quantification of the presence and amount of neurofibrillary tangles, pathological protein aggregates formed by hyperphosphorylation of a microtubule-associated protein known as tau",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006805",
+   "label": "word list delayed recall measurement",
+   "definition": "Word list delayed recall is a verabl declarative memory test using visually or verbally presented word lists, with or without semantic relatedness between words, with articipants being asked to remember as many words as possible after a specified delay interval, The test is used to quanitfy memory p",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006806",
+   "label": "paragraph delayed recall measurement",
+   "definition": "Paragraph delayed recall is a verabl declarative memory test using one or two verbally presented stories, with articipants being asked to remember as many paragraph elements as possible after a specified delay interval, The test is used to quanitfy memory performance.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006817",
+   "label": "yang deficiency",
+   "definition": "Yang deficiency is a concept from traditional Chinese medicine. Yang-deficiency constitution is characterized by yang-qi deficiency and asthenia cold manifestation, and is mainly caused by genetic and environment factors. In terms of genetic factors, offsprings are affected by this defect through in",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006818",
+   "label": "stricture",
+   "definition": "abnormal narrowing in a blood vessel or other tubular organ or structure",
+   "synonyms": [
+    "stenosis"
+   ]
+  },
+  {
+   "item_id": "EFO:0006819",
+   "label": "mild disease course",
+   "definition": "progression of a disease with symptoms at the milder end of the spectrum for that condition",
+   "synonyms": [
+    "MDC"
+   ]
+  },
+  {
+   "item_id": "EFO:0006820",
+   "label": "complicated disease course",
+   "definition": "progression of a disease with severe or complex symptoms within the spectrum of that condition",
+   "synonyms": [
+    "CDC"
+   ]
+  },
+  {
+   "item_id": "EFO:0006829",
+   "label": "GFR change measurement",
+   "definition": "A quantification of the variation in an individual's glomerular filtration rate (GFR) over a period of time used in assessment of kidney function and diagnosis of kidney disease.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006830",
+   "label": "insulin metabolic clearance rate measurement",
+   "definition": "quantification of the rate at which insulin is cleared from some part of the metabolism, eg from the blood",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006831",
+   "label": "acute insulin response measurement",
+   "definition": "quantification of insulin release in response to a controlled glucose intake, generally  calculated as the increase in insulin concentrations at 2\u20138 min above the basal (fasting) insulin level after the bolus glucose injection at 0\u20131 min",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006832",
+   "label": "disposition index measurement",
+   "definition": "quantification of the disposition index, the product of measures of insulin sensitivity and firstphase insulin secretion, shown to predict conversion to diabetes",
+   "synonyms": [
+    "insulin disposition index measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0006833",
+   "label": "glucose effectiveness measurement",
+   "definition": "quantification of glucose effectiveness, the capacity of glucose to enhance its own cellular uptake and to suppress endogenous glucose production",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006836",
+   "label": "rapid kidney function decline",
+   "definition": "decline in kidney function defined as a decline in glomerular filtration rate in one year of  > 3 ml/min per 1.73m2 ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006841",
+   "label": "respiratory disease biomarker",
+   "definition": "The quantitation of a biomarker used in the measurement of lung fuction used in diagnosis or management of a clinical condition.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006842",
+   "label": "diabetes mellitus biomarker",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006843",
+   "label": "infectious disease biomarker",
+   "definition": "A quantification of some biomarker used in the diagnosis or management of infectious disease.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006845",
+   "label": "liver disease biomarker",
+   "definition": "The quantification of biomarkers used in the diagnosis or management of liver disease",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006846",
+   "label": "autoimmune disease biomarker",
+   "definition": "Is a quantification of some substance or anatomical feature used as an indicator of biological state",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006848",
+   "label": "mental or behavioural disorder biomarker",
+   "definition": "Is the quantification of some marker used in the diagnosis or clinical management of some mental or behavioural disorder.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006851",
+   "label": "malignant",
+   "definition": "Refers to abnormal cell activity manifested by decreased control over growth and function, causing tumor growth or spread into surrounding tissue and adverse effects to the host",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006852",
+   "label": "metastatic",
+   "definition": "A term referring the clinical or pathological observation of a tumor extension from its original site of growth to another anatomic site.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006864",
+   "label": "breastfeeding duration",
+   "definition": "breastfeeding duration is a measurement of the mean number of months each mother breastfed each child, averaged across all live births and standardized to a Z-score",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006867",
+   "label": "skin conductance level",
+   "definition": "The skin conductance level is a baseline measure that changes slowly with altered arousal state. SCL is measured as the median response during a 5-min relaxation period.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006869",
+   "label": "skin conductance response frequency",
+   "definition": "quantification of the number of valid skin conductance change responses, used to gauge an individual's resistance to habituation",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006870",
+   "label": "alpha wave measurement",
+   "definition": "quantification of the wave-like oscillations in the alpha band (8-13 Hz) of electric potential between parts of the brain",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006871",
+   "label": "beta wave measurement",
+   "definition": "quantification of the wave-like oscillations in the beta band (13-30 Hz) of electric potential between parts of the brain",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006872",
+   "label": "delta wave measurement",
+   "definition": "quantification of the wave-like oscillations in the delta band (0.1-4 Hz) of electric potential between parts of the brain",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006873",
+   "label": "theta wave measurement",
+   "definition": "quantification of the wave-like oscillations in the theta band (4-8 Hz) of electric potential between parts of the brain",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006874",
+   "label": "antisaccade response measurement",
+   "definition": "Quantification of the error rate reflecting the proportion of trials in an antisaccade task that resulted in a prosaccade response. An antisaccade task invovles the suppression of the involuntary saccade towards a stimulus (prosaccade response) following a period of fixation on a motionless target.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006875",
+   "label": "acoustic startle blink response measurement",
+   "definition": "quantification of an individual's eye blink response to a startling acoustic stimulus, measured via electrodes placed on the orbicularis oculi muscle",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006883",
+   "label": "alpha peak frequency measurement",
+   "definition": "quantification of the dominant frequency of the alpha band",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006887",
+   "label": "radiologic finding",
+   "definition": "Imaging results obtained through a radiology procedure.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006893",
+   "label": "proliferative inflammatory atrophy",
+   "definition": "A lesion in the prostate gland characterized by glandular atrophy, chronic inflammation, and epithelial hyperplasia.  It has been suggested that it is a precancerous lesion and it may lead to the development of prostatic intraepithelial neoplasia and prostatic carcinoma.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006897",
+   "label": "airway responsiveness measurement",
+   "definition": "quantification of airway responsiveness, calculated as the concentration of methacholine at which a greater than 20% decresase in FEV1 is achieved during a bronchial challenge test",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006898",
+   "label": "airway wall thickness measurement",
+   "definition": "Quantification of the thickness of the walls of different parts of the respiratory tract, calculated from cross-sectional CT images. This measure can be used as an indicator of airway obstruction severity in COPD.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006913",
+   "label": "prefrontal cortex cytoarchtiectural measurement",
+   "definition": "quantification of the cytoarchitecture, ie the cellular composition, of the prefrontal cortex of the brain",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006917",
+   "label": "spontaneous preterm birth",
+   "definition": "any birth that occurs spontaneously prior to 37 weeks of gestation, eg due to fetal membrane rupture or spontaneous onset of uterine contractions",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006918",
+   "label": "female fertility",
+   "definition": "A fertility quality of inhering in a female by virtue of the bearer's disposition to initiate, sustain, or support reproduction.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006921",
+   "label": "birth measurement",
+   "definition": "quantification of some aspect of birth, eg whether it preterm or full term",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006922",
+   "label": "delivery measurement",
+   "definition": "quantification of some aspect of delivery, eg whether it occured preterm or at full term",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006924",
+   "label": "household air pollution measurement",
+   "definition": "quantification of some aspect of air pollution in the home, eg from coal burning for cooking and heating, used as an environmental risk factor for lung cancer",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006925",
+   "label": "lipoprotein A measurement",
+   "definition": "quantification of some lipoprotein A in a sample",
+   "synonyms": [
+    "Lp(a) measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0006928",
+   "label": "motion sickness",
+   "definition": "sympton caused by motion, as sea sickness, train sickness, car sickness, air sickness, or space motion sickness. It may include nausea, vomiting and dizziness.",
+   "synonyms": [
+    "travel sickness"
+   ]
+  },
+  {
+   "item_id": "EFO:0006929",
+   "label": "IgG index",
+   "definition": "the IgG index (or CSF index) is the cerebrospinal fluid (CSF) IgG to CSF albumin ration compared to the serum IgG to serum albumin ratio. It is an indicator of the relative amount IgG in CSF compared to serum",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006935",
+   "label": "thalamus volume",
+   "definition": "quantification of the volume of the thalamus, a midline symmetrical structure of two halves, within the vertebrate brain, situated between the cerebral cortex and the midbrain",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006938",
+   "label": "optic rim area measurement",
+   "definition": "Is a quantification of the rim of the optic disc",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006939",
+   "label": "cup-to-disc ratio measurement",
+   "definition": "Is a quantification of the ratio between optic cup and optic disc, used in the diagnosis of glaucoma",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006941",
+   "label": "grip strength measurement",
+   "definition": "quantification of the force applied by the hand to pull on or suspend from objects",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006943",
+   "label": "blood pressure change measurement",
+   "definition": "quantification of any change in an indiviual's blood pressure, for example in response to treatment with a antihypertensive agent",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006944",
+   "label": "systolic blood pressure change measurement",
+   "definition": "quantification of any change in an indiviual's systolic blood pressure",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006945",
+   "label": "diastolic blood pressure change measurement",
+   "definition": "quantification of any change in an indiviual's diastolic blood pressure",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006947",
+   "label": "red wine liking measurement",
+   "definition": "quantification of an individual's appreciation of red wine",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006948",
+   "label": "white wine liking measurement",
+   "definition": "quantification of an individual's appreciation of white wine",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006949",
+   "label": "wine liking measurement",
+   "definition": "quantification of an individual's appreciation of wine",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006952",
+   "label": "cytotoxicity measurement",
+   "definition": "quantification of some aspect of cytotoxity such as survival time or cell viability",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006953",
+   "label": "family history of lung cancer",
+   "definition": "A reported family history of lung cancer in one or more family members.",
+   "synonyms": [
+    "family history of lung carcinoma",
+    "lung cancer family history"
+   ]
+  },
+  {
+   "item_id": "EFO:0006956",
+   "label": "intraocular pressure change measurement",
+   "definition": "quantification of the difference in intraocular pressure between two time points",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006957",
+   "label": "X12063 measurement",
+   "definition": "quantification of the unknown substance X12063 in blood",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006958",
+   "label": "mannose measurement",
+   "definition": "quantification of mannose in a sample",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006959",
+   "label": "gene methylation measurement",
+   "definition": "quantification of the amount of DNA methylation in a target gene",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006988",
+   "label": "endophenotype",
+   "definition": "Measurable biological (physiological, biochemical, and anatomical features), behavioral (psychometric pattern) or cognitive markers that are found more often in individuals with a disease than in the general population. Because many endophenotypes are present before the disease onset and in individu",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0006999",
+   "label": "cancer aggressiveness measurement",
+   "definition": "quantification of the agressiveness of a (usually malignant) cancer",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007000",
+   "label": "Gleason score measurement",
+   "definition": "Quantification of the cytoarchitecture of a prostate cancer sample, used in the evaluation of cancer prognosis. Cancers with a higher Gleason score are generally more aggressive and have a worse prognosis.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007001",
+   "label": "dehydroepiandrosterone sulphate measurement",
+   "definition": "Quantification of dehydroepiandrosterone sulfate (DHEA-S) in a sample. DHEA-S is a metabolite of dehydroepiandrosterone (DHEA), the most abundant circulating steroid hormone in humans.",
+   "synonyms": [
+    "DHEA-S measurement"
+   ]
+  }
+ ],
+ "answer_file": "batch_07.answer.json",
+ "answer_schema": {
+  "type": "object",
+  "required": [
+   "content_sha256",
+   "answers"
+  ],
+  "properties": {
+   "content_sha256": {
+    "type": "string"
+   },
+   "answers": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "item_id",
+      "aliases"
+     ],
+     "properties": {
+      "item_id": {
+       "type": "string"
+      },
+      "aliases": {
+       "type": "array",
+       "maxItems": 5,
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "content_sha256": "f24da66aada05322e3d11913f0be039b736924b8f6f6e0577929496d49c601b9"
+}

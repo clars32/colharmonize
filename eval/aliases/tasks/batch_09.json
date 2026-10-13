@@ -1,0 +1,670 @@
+{
+ "stage": "aliases",
+ "instructions": "Each item is an ontology term that a column of sample metadata in a gene\nexpression study can mean. Write up to 5 aliases for each term: other ways a\nresearcher would write that same variable as a column header in sample\nmetadata.\n\nGood aliases:\n- common abbreviations and acronyms (\"sbp\" for systolic blood pressure)\n- shorter everyday phrasings (\"systolic bp\", \"visual acuity\")\n- the plain name of the quantity when the term's label is wordy\n  (\"intraocular pressure\" for \"intraocular pressure measurement\")\n\nRules:\n- An alias must mean the same variable as the term: not a broader or narrower\n  one, and not a related one.\n- No values (\"male\", \"high\"), units on their own, gene or tool names, or\n  dataset-specific codes.\n- No alias that only rewords the label trivially (plural, case,\n  punctuation). Those are matched already.\n- Fewer is better than wrong. If a term has no natural alias, return an empty\n  list.\n\nExamples:\n- systolic blood pressure -> [\"sbp\", \"systolic bp\", \"systolic pressure\"]\n- intraocular pressure measurement -> [\"intraocular pressure\", \"iop\"]\n- visual acuity measurement -> [\"visual acuity\", \"va\"]\n",
+ "items": [
+  {
+   "item_id": "EFO:0007747",
+   "label": "postburn hypertrophic scarring severity measurement",
+   "definition": "quantification of the severity of hypertrophic scarring in burn patients, usually using the Vancouver Scar Scale (VSS) ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007755",
+   "label": "atopic march",
+   "definition": "sequential manifestations of different allergic diseases such as eczema, asthma and rhinitis. Typically, eczema is the first allergic disease in infancy, followed by asthma and/or rhinitis in childhood. ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007756",
+   "label": "Staphylococcus aureus carrier status",
+   "definition": "quantification of the presence or absence of Staphylococcus aureus colonies in an individual. Positive carrier status should not be equated with infection.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007757",
+   "label": "persistent Staphylococcus aureus carrier status",
+   "definition": "quantification of the consistent presence or absence of Staphylococcus aureus colonies in an individual at at least two separate points in time",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007758",
+   "label": "intermittent Staphylococcus aureus carrier status",
+   "definition": "quantification of the change in presence or absence of Staphylococcus aureus colonies in an individual at two different points in time, from positive to negative or negative to positve",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007770",
+   "label": "post-operative fentanyl consumption measurement",
+   "definition": "quantification of the amount of fentanyl, an opiate, consumed within the first 24hrs after a surgical intervention",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007771",
+   "label": "pathologic complete response measurement",
+   "definition": "quantification of  the absence of residual invasive disease in the breast and in the axillary lymph nodes at the completion of the neoadjuvant treatment",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007773",
+   "label": "cutaneous psoriasis measurement",
+   "definition": "quantification of the presence or absence of psoriatic arthritis in patients with psoriasis vulgaris",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007775",
+   "label": "thrombin-antithrombin complex measurement",
+   "definition": "quantification of the amount of thrombin-antithrombin complex in a sample",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007777",
+   "label": "base metabolic rate measurement",
+   "definition": "quantification of an individual's base metabolic rate, the minimum amount of energy required to sustain life while at complete rest, including the body being in a post-absorptive state (ie the digestive system is inactive). BMR differs from RMR because BMR measurements must meet total physiological ",
+   "synonyms": [
+    "BMR measurement",
+    "basal metabolic rate measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0007780",
+   "label": "periodontal measurement",
+   "definition": "quantification of some aspect of periodontitis or periodontal examinations, including acute vs chronic status, interproximal clincial attachement level and others",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007783",
+   "label": "mosaic loss of chromosome Y measurement",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007784",
+   "label": "functional decline measurement",
+   "definition": "quantification of some aspect of muscle function deterioration such as the rate at which it occurs or its severity, for example in patients with neurodegenerative conditions such as ALS. Functional decline is ususally assessed using a combination of physical exams and structured-interview protocols ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007789",
+   "label": "BMI-adjusted waist circumference",
+   "definition": "waist circumference measurement that has been adjusted by subjects\u2019 body mass index",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007791",
+   "label": "rheumatoid factor seropositivity measurement",
+   "definition": "rheumatoid factor seropositivity is the result of a measurement of circulating  autoantibodies called rheumatoid factors that contribute to a number of autoimmune diseases including rheumatoid arthritis",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007792",
+   "label": "antipsychotic drug use measurement",
+   "definition": "quantification of some aspect of antipsychotic drug use such as drug dosage",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007793",
+   "label": "BMI-adjusted leptin measurement",
+   "definition": "leptin measurement that has been adjusted for subjects' body mass index ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007794",
+   "label": "nicotine metabolite ratio",
+   "definition": "quantification of the ratio of 3\u2019-trans-hydroxycotinine to cotinine in a sample, typically in a urine or blood sample",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007796",
+   "label": "parental longevity",
+   "definition": "length of an individual's parents' life, either taken individually (paternal or maternal longevity) or in combination and sometimes used as an indicator of an individual longevity",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007797",
+   "label": "language measurement",
+   "definition": "quantification of some aspect of language or language development",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007798",
+   "label": "linguistic error measurement",
+   "definition": "quantification of an individual's linguistic error rate, generally through the administration of standardised tests or the analysis of language samples by a specialist",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007799",
+   "label": "syntactic complexity measurement",
+   "definition": "quantification of an individual's ability to form syntactically complex language constructs, generally through the administration of standardised tests or the analysis of language samples by a specialist",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007810",
+   "label": "Plasmodium falciparum antigen IgG1 measurement",
+   "definition": "measurement of the IgG1 antibody isotype produced by plasma cells in response to a Plasmodium falciparum infection",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007811",
+   "label": "Plasmodium falciparum antigen IgG3 measurement",
+   "definition": "measurement of the IgG3 antibody isotype produced by plasma cells in response to a Plasmodium falciparum infection",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007812",
+   "label": "Plasmodium falciparum antigen IgG measurement",
+   "definition": "measurement of the IgG antibody isotype produced by plasma cells in response to a Plasmodium falciparum infection",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007813",
+   "label": "cotinine measurement",
+   "definition": "quantification of cotinine in a sample",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007814",
+   "label": "refractive error measurement",
+   "definition": "quantification of some aspect of refractive errors, which occur when the shape of the eye prevents light from focusing directly on the retina. The length of the eyeball (longer or shorter), changes in the shape of the cornea, or aging of the lens can cause refractive errors. Quantification of an ind",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007817",
+   "label": "sleep apnea measurement",
+   "definition": "quantification of some aspect of obstructive sleep apnea, such as oxygen desaturation levels during an apnea event or severity, duration or frequency of apnea events",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007818",
+   "label": "athletic endurance measurement",
+   "definition": "quantification of some aspect of athletic endurance ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007819",
+   "label": "advanced glycation end-product measurement",
+   "definition": "quantification in a sample of advanced glycation end-products (AGEs), a diverse group of molecules produced by the non-enzymatic addition of glucose to proteins, lipids, and nucleic acids, possibly associated with hyperglycemia and diabetic complications",
+   "synonyms": [
+    "AGE measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0007820",
+   "label": "cognitive behavioural therapy",
+   "definition": "CBT is a psychosocial intervention that is the most widely used evidence-based practice for treating mental disorders. Guided by empirical research, CBT focuses on the development of personal coping strategies that target solving current problems and changing unhelpful patterns in cognitions (e.g., ",
+   "synonyms": [
+    "CBT"
+   ]
+  },
+  {
+   "item_id": "EFO:0007825",
+   "label": "balding measurement",
+   "definition": "quantification of the amount of balding in an individual",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007827",
+   "label": "nighttime rest measurement",
+   "definition": "quantification of some aspect of nighttime rest such as duration or quality",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007828",
+   "label": "daytime rest measurement",
+   "definition": "quantification of some aspect of daytime rest such as duration, frequency or quality",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007830",
+   "label": "food addiction measurement",
+   "definition": "quantification of some aspect of food addiction such as presence or absence or severity of symptoms, usually assessed through a standarised questionnaire or structured interview with a mental health professional",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007835",
+   "label": "alcohol dependence measurement",
+   "definition": "quantification of some aspect of alcohol dependence or misuse, eg using a cummulative symptom score to determine the severity of a case of alcohol dependence",
+   "synonyms": [
+    "alcohol misuse measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0007836",
+   "label": "coenzyme Q10 measurement",
+   "definition": "quantification in a sample of the amount of coenzyme Q10, a lipophilic redox molecule that is present in membranes of almost all cells in human tissues, is essential for the respiratory transport chain and is a modulator of inflammatory processes and gene expression",
+   "synonyms": [
+    "CoQ10 measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0007837",
+   "label": "anti-citrullinated protein antibody seropositivity",
+   "definition": "anti-citrullinated protein antibody seropositivity is the result of a measurement of circulating anti-cyclic citrullinated peptide antibodies",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007840",
+   "label": "pesticide exposure measurement",
+   "definition": "quantification of some aspect of pesticide exposure such as frequency, duration or severity",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007847",
+   "label": "cheekbone morphology measurement",
+   "definition": "quantification of some aspect of cheekbone morphology such as cheekbone protrusion",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007848",
+   "label": "apolipoprotein A-IV measurement",
+   "definition": "quantification of serum lipoprotein A-IV. Apolipoprotein A-IV, encoded in humans by the APOA4 gene,  a 376-residue mature O-linked glycoprotein.",
+   "synonyms": [
+    "lipoprotein A-IV levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0007850",
+   "label": "solar lentigines measurement",
+   "definition": "quantification of the amount or severity of solar lentigines, flat tan to brown spots sometimes called liver spots, on an individual's skin. Lentigines are associated with skin aging and sun exposure",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007851",
+   "label": "seroconversion",
+   "definition": "Seroconversion is the process during which a specific antibody develops and becomes detectable in the blood. During infection or immunisation, antigenes enter the blood and the immune system begins to produce antibodies in response. Before seroconversion, the antigen itself may or may not be detecta",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007854",
+   "label": "knee peak torque measurement",
+   "definition": "quantification of peak torque values of the knee flexor muscles",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007855",
+   "label": "facial width measurement",
+   "definition": "quantification of some aspect of facial width, such a the cranial base width",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007856",
+   "label": "facial height measurement",
+   "definition": "quantification of some aspect of facial height, such a the height of the entire face or the height of the upper half of the face",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007857",
+   "label": "facial depth measurement",
+   "definition": "quantification of some aspect of facial depth, such as the distance from the tip of the nose to the tip of the ear lobe",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007861",
+   "label": "body ratio measurement",
+   "definition": "quantification of the ratio between two body measures, eg waist-hip ratio",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007863",
+   "label": "illness severity status",
+   "definition": "quantification of the severity of a patient's illness, eg critical or mild",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007864",
+   "label": "sulfate measurement",
+   "definition": "Quantification of the amount of sulfate, an inorganic polyatomic anion, in a sample. Sulfate is critical in many organisms in the biotransformation of multiple compounds via sulfotransferase-mediated sulfate conjugation (sulfation).",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007873",
+   "label": "cartilage thickness measurement",
+   "definition": "Quantification of the thickness of cartilage in a joint, most commonly the hip joint, for example using minimal joint space width (mJSW) as a proxy measure. Cartilage thickness is an indicator of joint health, which makes it a suitable biomarker for osteoarthritis.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007874",
+   "label": "gut microbiome measurement",
+   "definition": "quantification of some aspect of an individual's micrbiome of the gut",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007875",
+   "label": "excessive daytime sleepiness measurement",
+   "definition": "quantification of excessive daytime sleepiness such as how often it occurs and its severity",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007876",
+   "label": "insomnia measurement",
+   "definition": "quantification of insomnia such as how often it occurs and its severity",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007881",
+   "label": "job-related exhaustion measurement",
+   "definition": "quantification of some aspect of job-related exhaustion such as severity or duration",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007882",
+   "label": "microbiome measurement",
+   "definition": "quantification of some aspect of an individual's microbiome",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007883",
+   "label": "taxonomic microbiome measurement",
+   "definition": "quantification of the taxonomic variation in a microbiome sample",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007884",
+   "label": "functional microbiome measurement",
+   "definition": "quantification of the functional variation in a microbiome",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007886",
+   "label": "DDT metabolite measurement",
+   "definition": "quantification in a sample of the organochlorine pesticide dichlorodiphenyltrichloroethane (DDT) or any metabolite derived from DDT, eg 2, 2-bis (4-chlorophenyl)-1, 1-dichloroethene (p,p\u2032-DDE)",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007888",
+   "label": "age at voice drop",
+   "definition": "The age of onset of (human) voice drop, the deepening of the voice of adolescents as they reach puberty",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007889",
+   "label": "dysmenorrheic pain measurement",
+   "definition": "quantification of some aspect of dysmenorrheic pain (menstrual cramps), such as their severity or duration",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007892",
+   "label": "donor genotype effect measurement",
+   "definition": "quantification of the effect of the donor genotype on the success of an organ or tissue transplant",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007898",
+   "label": "alpha-tocopherol measurement",
+   "definition": "quantification in a sample of alpha-tocopherol, a form of vitamin E that is preferentially absorbed and accumulated in humans",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007899",
+   "label": "gamma-tocopherol measurement",
+   "definition": "quantification in a sample of gamma-tocopherol",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007901",
+   "label": "hepcidin:ferritin ratio",
+   "definition": "quantification of the ratio of hepcidin to ferritin in a sample",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007902",
+   "label": "hepcidin:transferrin saturation ratio",
+   "definition": "quantification of the ratio of hepcidin to transferrin saturation, the amount of iron bound to transferrin, in a sample",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007903",
+   "label": "magnesium:calcium ratio",
+   "definition": "quantification of the ratio of magnesium to calcium in a sample, typically a urine sample, a proxy measure for the differential handling by the renal tubule and excretion of Ca2+ and Mg2+",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007904",
+   "label": "susceptibility to childhood ear infection measurement",
+   "definition": "quantification of an individual's susceptibility to childhood ear infections, generally as a count of number of infections suffered or a binary scale of presence or absence of childhood ear infections",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007905",
+   "label": "joint hypermobility measurement",
+   "definition": "quantification of the severity of joint hypermobility, for example using the Beighton score, a score ranging from 0 to 9 based on 9 different measurements regarding the hypermobility of finger, knee, elbow, thumb and hip hypermobility",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007906",
+   "label": "synophrys measurement",
+   "definition": "quantification of some aspect of unibrows, such as their presence or absence, or their severity",
+   "synonyms": [
+    "monobrow measurement",
+    "unibrow measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0007907",
+   "label": "methadone dose measurement",
+   "definition": "quantification of some aspect of methadone dosage",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007908",
+   "label": "traffic air pollution measurement",
+   "definition": "quantification of some aspect of air pollution through traffic, such as annual average NO2 exposure estimates derived using land use regression modeling",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007909",
+   "label": "CHGA cleavage product measurement",
+   "definition": "quantification of the amount of chromogranin A cleavage product in a sample",
+   "synonyms": [
+    "chromogranin A cleavage product measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0007910",
+   "label": "CHGB cleavage product measurement",
+   "definition": "quantification of the amount of chromogranin B cleavage product in a sample",
+   "synonyms": [
+    "chromogranin B cleavage product measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0007911",
+   "label": "personality trait measurement",
+   "definition": "quantification of some aspect of personality traits, usually through administration of standardised questionnaire such as the Big Five Inventory (BFI)",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007912",
+   "label": "conscientiousness measurement",
+   "definition": "quantification of conscientiousness, usually through administration of standardised questionnaire such as the Big Five Inventory (BFI)",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007913",
+   "label": "extraversion measurement",
+   "definition": "quantification of extraversion, usually through administration of standardised questionnaire such as the Big Five Inventory (BFI)",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007914",
+   "label": "openness measurement",
+   "definition": "quantification of openness, usually through administration of standardised questionnaire such as the Big Five Inventory (BFI)",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007915",
+   "label": "agreeableness measurement",
+   "definition": "quantification of agreeableness, usually through administration of standardised questionnaire such as the Big Five Inventory (BFI)",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007924",
+   "label": "tonsillectomy risk measurement",
+   "definition": "Quantification an individual's risk of undergoing tonsillectomy. Some individuals experience recurrent, severe tonsillitis and massive hypertrophy of the tonsils in which case surgical removal of the tonsils may be considered. There are a number of genetic variants that may reduce the risk of tonsil",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007928",
+   "label": "ventricular rate measurement",
+   "definition": "quantification in an electrocardiogram of the number of QRS complexes per minute",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007930",
+   "label": "LDL cholesterol:HDL cholesterol ratio",
+   "definition": "quantification of the ratio of LDL cholesterol to HDL cholesterol in a sample",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007933",
+   "label": "radius bone mineral density",
+   "definition": "mineral density of the radial bone",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007934",
+   "label": "creatinine clearance measurement",
+   "definition": "The clearance rate of creatinine, that is, the volume of plasma that is cleared of creatinine by the kidneys per unit time. Creatinine clearance is calculated using the level of creatinine in a sample of urine, usually one collected over a period of 24 hours, the corresponding plasma creatinine leve",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007936",
+   "label": "disease prognosis measurement",
+   "definition": "quantification of some aspect of disease prognosis",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007938",
+   "label": "coronary atherosclerosis measurement",
+   "definition": "Quantification of coronary atherosclerosis as the number\nof diseased coronary vessels at the time of a catheterization procedure. The variable describes the number (0\u20133) of vessels with significant (> 75%) blockage while taking into account the location of the vessels as well as the left or right do",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007939",
+   "label": "respiratory symptom measurement",
+   "definition": "quantification of the range and severity of respiratory symptoms, either through clinical examination or through a standardised questionnaire assessing variables such as presence and severity of cough, pleghm and dyspnea",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007941",
+   "label": "LDH-related sciatica symptom severity measurement",
+   "definition": "Quantification of the severity of sciatica symptoms in patients with lumbar disc herniation. In the case of persistent progressive severe sciatica symptoms, patients may require surgical intervention via microdiscectomy, a minimally invasive spinal surgery for removal of herniated lumbar disc tissue",
+   "synonyms": [
+    "lumbar disc herniation-related sciatica symptom severity measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0007942",
+   "label": "hip osteoarthritis symptom severity measurement",
+   "definition": "Quantification of the hip osteoarthritis symptoms. In the case severe hip osteoarthritis, patients may require surgical intervention via a total hip replacement.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007944",
+   "label": "allergen exposure measurement",
+   "definition": "Quantification of an individual's level of exposure to an allergen such as a food allergen or dust mites. The level of exposure is defined as units of allergen in a sample, eg microgram of dust mites in a gram of dust.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007946",
+   "label": "tiredness measurement",
+   "definition": "Quantification an individual's level of tiredness, generally via a standardised questionnaire or structured interview.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007956",
+   "label": "monocyte:lymphocyte ratio",
+   "definition": "quantification of the ratio between absolute monocyte count and absolute lymphocyte count",
+   "synonyms": [
+    "MLR"
+   ]
+  },
+  {
+   "item_id": "EFO:0007958",
+   "label": "genotype effect measurement",
+   "definition": "quantification of the effect of an external genotype, eg from a parent/fetus during pregnancy or organ donor, on some aspect of an individual's metabolic processes",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007959",
+   "label": "fetal genotype effect measurement",
+   "definition": "quantification of the effect of the fetal genotype on the metabolic processes of the mother during pregnancy",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007960",
+   "label": "organochlorine pesticide measurement",
+   "definition": "quantification of organochlorine pesticides or metabolites derived from organochloride pesticides in a sample",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007961",
+   "label": "polybrominated biphenyl measurement",
+   "definition": "quantification in a sample of some polybrominated biphenyls, a group of man-made environmental pollutants which accumulate in humans with adverse health effects",
+   "synonyms": [
+    "polybromobiphenyl measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0007962",
+   "label": "polybrominated diphenyl ether measurement",
+   "definition": "quantification in a sample of some polybrominated diphenyl ethers, a group of man-made environmental pollutants which accumulate in humans with adverse health effects",
+   "synonyms": [
+    "polybromodiphenyl ether measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0007963",
+   "label": "abnormal paneth cell measurement",
+   "definition": "quantification of some aspect of Paneth cell abnormality, such as abnormal morphology or abnormal number of cells. Paneth cells, along with goblet cells, enterocytes, and enteroendocrine cells, represent the principal cell types of the epithelium of the small intestine.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007964",
+   "label": "gestational serum measurement",
+   "definition": "quantification of some chemical compound such as a metabolite or environmental pollutant in a serum sample taken from a women at some stage during pregnancy",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007971",
+   "label": "estrone conjugate measurement",
+   "definition": "quantification of the amount of estrone conjugates, such as sulphate and glucuronide conjugates, in a sample",
+   "synonyms": []
+  }
+ ],
+ "answer_file": "batch_09.answer.json",
+ "answer_schema": {
+  "type": "object",
+  "required": [
+   "content_sha256",
+   "answers"
+  ],
+  "properties": {
+   "content_sha256": {
+    "type": "string"
+   },
+   "answers": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "item_id",
+      "aliases"
+     ],
+     "properties": {
+      "item_id": {
+       "type": "string"
+      },
+      "aliases": {
+       "type": "array",
+       "maxItems": 5,
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "content_sha256": "8ec722172d19675b36f813f30ce78efc41da7db967ba45ba0b1b578e48c95389"
+}

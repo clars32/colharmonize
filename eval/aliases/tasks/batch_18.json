@@ -1,0 +1,686 @@
+{
+ "stage": "aliases",
+ "instructions": "Each item is an ontology term that a column of sample metadata in a gene\nexpression study can mean. Write up to 5 aliases for each term: other ways a\nresearcher would write that same variable as a column header in sample\nmetadata.\n\nGood aliases:\n- common abbreviations and acronyms (\"sbp\" for systolic blood pressure)\n- shorter everyday phrasings (\"systolic bp\", \"visual acuity\")\n- the plain name of the quantity when the term's label is wordy\n  (\"intraocular pressure\" for \"intraocular pressure measurement\")\n\nRules:\n- An alias must mean the same variable as the term: not a broader or narrower\n  one, and not a related one.\n- No values (\"male\", \"high\"), units on their own, gene or tool names, or\n  dataset-specific codes.\n- No alias that only rewords the label trivially (plural, case,\n  punctuation). Those are matched already.\n- Fewer is better than wrong. If a term has no natural alias, return an empty\n  list.\n\nExamples:\n- systolic blood pressure -> [\"sbp\", \"systolic bp\", \"systolic pressure\"]\n- intraocular pressure measurement -> [\"intraocular pressure\", \"iop\"]\n- visual acuity measurement -> [\"visual acuity\", \"va\"]\n",
+ "items": [
+  {
+   "item_id": "EFO:0600072",
+   "label": "human polyomavirus 6 seropositivity",
+   "definition": "The result of a measurement of circulating human polyomavirus 6-specific antibodies.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0600076",
+   "label": "stimulant use measurement",
+   "definition": "Quantification of some aspect of stimulant use, for instance in the treatment of ADHD.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0600081",
+   "label": "time spent outdoors measurement",
+   "definition": "Quantification of time an individual spends outside.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0600082",
+   "label": "insulin use measurement",
+   "definition": "Quantification of some aspect of the use of insulin.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0600088",
+   "label": "lymphocyte:monocyte ratio",
+   "definition": "Quantification of the ratio between absolute lymphocyte count and absolute monocyte count.",
+   "synonyms": [
+    "LMR",
+    "lymphocyte-to-monocyte ratio"
+   ]
+  },
+  {
+   "item_id": "EFO:0800000",
+   "label": "folate intake measurement",
+   "definition": "Quantification of dietary folate intake.",
+   "synonyms": [
+    "vitamin B9 intake measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0800063",
+   "label": "lanthionine measurement",
+   "definition": "Quantification of the amount of lanthionine in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0800072",
+   "label": "methionine sulfone measurement",
+   "definition": "Quantification of the amount of methionine sulfone in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0800073",
+   "label": "fructosyllysine measurement",
+   "definition": "Quantification of the amount of fructosyllysine in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0800134",
+   "label": "cystine measurement",
+   "definition": "Quantification of the amount of cystine in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0800970",
+   "label": "alliin measurement",
+   "definition": "Quantification of the amount of alliin in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0801012",
+   "label": "thioproline measurement",
+   "definition": "Quantification of the amount of thioproline in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0801078",
+   "label": "triclosan measurement",
+   "definition": "Quantification of some aspect of triclosan exposure, an antimicrobial agent used in some consumer products.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0801079",
+   "label": "bisphenol A measurement",
+   "definition": "Quantification of some aspect of bisphenol A exposure, an endocrine-disrupting chemical used in the production of some polycarbonate products.",
+   "synonyms": [
+    "BPA measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0801080",
+   "label": "oxidative stress biomarker measurement",
+   "definition": "Quantification of the amount of some oxidative stress biomarker in a sample. Indicators of oxidative stress include damaged DNA bases, protein oxidation products, and lipid peroxidation products. They can be measured in the blood, urine or skin.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0801081",
+   "label": "8-hydroxydeoxyguanosine measurement",
+   "definition": "Quantification of the amount of 8-hydroxydeoxyguanosine in a sample.",
+   "synonyms": [
+    "8-OHdG levels",
+    "8-hydroxy-deoxyguanosine levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0801082",
+   "label": "8-isoprostaglandin-F2alpha measurement",
+   "definition": "Quantification of the amount of 8-isoprostaglandin-F2alpha in a sample.",
+   "synonyms": [
+    "8-iso-PGF2\u03b1 levels",
+    "8-iso-prostaglandin F2\u03b1 levels",
+    "8-isoPGF2alpha levels"
+   ]
+  },
+  {
+   "item_id": "EFO:0801086",
+   "label": "anti-alpha-casein IgG measurement",
+   "definition": "Quantification of the IgG antibody isotype produced in response to bovine alpha casein antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0801087",
+   "label": "anti-beta-casein IgG measurement",
+   "definition": "Quantification of the IgG antibody isotype produced in response to bovine beta casein antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0801088",
+   "label": "anti-feline herpes IgG measurement",
+   "definition": "Quantification of the IgG antibody isotype produced in response to feline herpes virus infection.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0801089",
+   "label": "anti-influenza A subtype H1N1 IgG measurement",
+   "definition": "Quantification of the IgG antibody isotype produced in response to influenza A subtype H1N1 virus infection.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0801090",
+   "label": "anti-influenza A subtype H3N2 IgG measurement",
+   "definition": "Quantification of the IgG antibody isotype produced in response to influenza A subtype H3N2 virus infection.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0801091",
+   "label": "anti-saccharomyces cerevisiae IgA measurement",
+   "definition": "Quantification of the IgA antibody isotype produced in response to saccharomyces cerevisiae infection.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0801092",
+   "label": "anti-Theiler's virus IgG measurement",
+   "definition": "Quantification of the IgG antibody isotype produced in response to Theiler's virus infection.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0801100",
+   "label": "2-aminoisobutyric acid measurement",
+   "definition": "Quantification of the amount of 2-aminoisobutyric acid in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0801113",
+   "label": "aspartic acid measurement",
+   "definition": "Quantification of the amount of aspartic acid in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0801160",
+   "label": "GABA measurement",
+   "definition": "Quantification of the amount of GABA in a sample.",
+   "synonyms": [
+    "gamma-aminobutyric acid"
+   ]
+  },
+  {
+   "item_id": "EFO:0801161",
+   "label": "gabapentin measurement",
+   "definition": "Quantification of the amount of gabapentin in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0801227",
+   "label": "body shape measurement",
+   "definition": "Quantification of body shape, which may be derived from principal component analysis (PCA) of anthropometric traits such as BMI, weight, hip circumference and waist circumference.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0801228",
+   "label": "skin microbiome measurement",
+   "definition": "Quantification of some aspect of an individual's microbiome of the skin.",
+   "synonyms": [
+    "skin microbiota measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0801229",
+   "label": "oral microbiome measurement",
+   "definition": "Quantification of some aspect of an individual's oral microbiome.",
+   "synonyms": [
+    "oral microbiota measurement",
+    "salivary microbiome measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0803316",
+   "label": "abdominal adipose tissue measurement",
+   "definition": "Quantification of adipose tissue located around the abdomen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803317",
+   "label": "gluteofemoral adipose tissue measurement",
+   "definition": "Quantification of adipose tissue located around the gluteofemoral region, measuring hip and thigh fat.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803318",
+   "label": "visceral:abdominal adipose tissue ratio measurement",
+   "definition": "Quantification of the ratio of visceral to abdominal adipose tissue.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803319",
+   "label": "visceral:gluteofemoral adipose tissue ratio measurement",
+   "definition": "Quantification of the ratio of visceral to gluteofemoral adipose tissue.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803320",
+   "label": "abdominal:gluteofemoral adipose tissue ratio measurement",
+   "definition": "Quantification of the ratio of abdominal to gluteofemoral adipose tissue.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803322",
+   "label": "HLA allele carrier status",
+   "definition": "Quantification of the presence or absence of some haplotype or allele in the HLA region.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803340",
+   "label": "cardiolipin IgA antibody measurement",
+   "definition": "Quantification of the amount of cardiolipin IgA antibody in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803341",
+   "label": "cardiolipin IgM antibody measurement",
+   "definition": "Quantification of the amount of cardiolipin IgM antibody in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803342",
+   "label": "ammonia measurement",
+   "definition": "Quantification of the amount of ammonia in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803344",
+   "label": "anion gap measurement",
+   "definition": "Quantification of the anion gap which is the quantity difference between cations (positively charged ions) and anions (negatively charged ions) in serum, plasma, or urine. ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803346",
+   "label": "carboxyhemoglobin measurement",
+   "definition": "Quantification of the amount of carboxyhemoglobin (a stable complex of carbon monoxide and hemoglobin) in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803347",
+   "label": "nucleated cell count",
+   "definition": "Quantification of the amount of nucleated cells present in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803348",
+   "label": "icteric index",
+   "definition": "Quantification of the amount of yellow color of a biological specimen, due to the presence of bile pigments.",
+   "synonyms": [
+    "I-index",
+    "icterus index"
+   ]
+  },
+  {
+   "item_id": "EFO:0803349",
+   "label": "lipemic index",
+   "definition": "Quantification of lipemia in a sample. Lipemia is a turbidity of the sample caused by accumulation of lipoprotein particles. ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803350",
+   "label": "intact parathyroid hormone measurement",
+   "definition": "Quantification of the amount of intact parathyroid hormone in a sample. Intact parathyroid hormone consists of 84 amino acids and is the biologically active form of parathyroid hormone that is secreted into the circulation in response to low calcium levels.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803351",
+   "label": "partial pressure of oxygen measurement",
+   "definition": "Quantification of the partial pressure of oxygen in a sample.",
+   "synonyms": [
+    "PaO2",
+    "oxygen tension"
+   ]
+  },
+  {
+   "item_id": "EFO:0803353",
+   "label": "anti-topoisomerase I antibody positivity",
+   "definition": "The presence of autoantibodies in the serum that react against topoisomerase I.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803354",
+   "label": "tissue transglutaminase IgA antibody measurement",
+   "definition": "Quantification of the amount of tissue transglutaminase IgA antibody present in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803358",
+   "label": "anti-SARS-CoV-2 IgG measurement",
+   "definition": "Quantification of the amount of SARS-CoV-2 IgG antibody in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803359",
+   "label": "SARS-CoV-2 neutralizing antibody measurement",
+   "definition": "Quantification of the amount of SARS-CoV-2 neutralizing antibodies in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803360",
+   "label": "SARS-CoV-2 antibody measurement",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803363",
+   "label": "wake after sleep onset",
+   "definition": "A measurement of the sum of durations of wakefulness episodes throughout the night, not including the wakefulness before sleep onset.",
+   "synonyms": [
+    "WASO"
+   ]
+  },
+  {
+   "item_id": "EFO:0803364",
+   "label": "sleep efficiency",
+   "definition": "A relative measurement of the time spent asleep to the total time spent in bed.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803367",
+   "label": "antihyperlipidemic drug use measurement",
+   "definition": "Quantification of some aspect of the use of antihyperlipidemic drugs.",
+   "synonyms": [
+    "lipid-lowering drug use measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0803369",
+   "label": "vascular endothelial function measurement",
+   "definition": "Quantification of vascular endothelial function. Endothelial function tests assess vascular tone, permeability, anticoagulation, and angiogenesis. They include non-invasive measures like the reactive hyperemia index (RHI) detected by pulse amplitude tonometry (PAT) or invasive procedures like cardia",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803370",
+   "label": "photoreceptor cell layer thickness measurement",
+   "definition": "A measure of the thickness of photoreceptor cell receptor (PCR) segments of the retina. It can be non-invasively measured using optical coherence tomography (OCT).",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803374",
+   "label": "hemorheological measurement",
+   "definition": "A measurement of the flow characteristics of blood and its elements. Hemorheology indicators include whole blood viscosity, plasma viscosity, erythrocyte aggregation, erythrocyte rigidity, erythrocyte deformation, fibrinogen, and hematocrit.",
+   "synonyms": [
+    "blood rheology measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0803375",
+   "label": "erythrocyte aggregation",
+   "definition": "A measurement of the reversible formation of clumps of red blood cells under low-shear conditions or stasis.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803376",
+   "label": "erythrocyte\u00a0deformability",
+   "definition": "A measurement of the ability of erythrocytes to change shape without rupturing, as they pass through narrow spaces, such as the microvasculature.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803378",
+   "label": "visual masking measurement",
+   "definition": "Quantification of visual masking, a phenomenon of visual perception which occurs when the visibility of one image, called a target, is reduced by the presence of another, called a mask. Timing arrangements include forward masking, backward masking, and simultaneous masking. Spatial arrangements incl",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803380",
+   "label": "cardiovascular age measurement",
+   "definition": "Quantification or estimate of cardiovascular age, e.g. as derived from electrocardiograms (ECGs) or biomarkers.",
+   "synonyms": [
+    "heart age measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0803382",
+   "label": "perivascular space measurement",
+   "definition": "Quantification of the space between a blood vessel and the brain's pia mater. It may be measured by magnetic resonance imaging as an imaging marker of cerebral small vessel disease.",
+   "synonyms": [
+    "PVS",
+    "Virchow-Robin space"
+   ]
+  },
+  {
+   "item_id": "EFO:0803532",
+   "label": "mitochondrial haplogroup carrier status",
+   "definition": "Quantification of the presence or absence of a mitochondrial haplogroup in an individual.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803533",
+   "label": "visuospatial function measurement",
+   "definition": "Quantification of visuospatial function, one aspect of cognitive ability, tested by eg. block design or construction praxis.",
+   "synonyms": [
+    "perceptomotor measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0803536",
+   "label": "multiple sclerosis symptom measurement",
+   "definition": "Quantification of some aspect of multiple sclerosis symptoms, e.g. using the Expanded Disability Status Scale (EDSS).",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803537",
+   "label": "susceptibility to influenza measurement",
+   "definition": "Quantification of an individual's susceptibility to influenza or the flu, an infectious respiratory disease caused by influenza viruses.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803539",
+   "label": "basophil measurement",
+   "definition": "Quantification of some aspect of basophils, such as function, quantity or composition.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803540",
+   "label": "eosinophil measurement",
+   "definition": "Quantification of some aspect of eosinophils, such as function, quantity or composition.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803541",
+   "label": "immature platelet measurement",
+   "definition": "Quantification of some aspect of immature platelets, such as function, quantity or composition.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803545",
+   "label": "immature reticulocyte measurement",
+   "definition": "Quantification of some aspect of immature reticulocytes, such as function, quantity or composition.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803547",
+   "label": "monocyte measurement",
+   "definition": "Quantification of some aspect of monocytes, such as function, quantity or composition.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803548",
+   "label": "neutrophil measurement",
+   "definition": "Quantification of some aspect of neutrophils, such as function, quantity or composition.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803593",
+   "label": "bacteria seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to a bacterial antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803594",
+   "label": "protozoan seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to a protozoan antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803595",
+   "label": "virus seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to a viral antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803596",
+   "label": "phage seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to a phage antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803597",
+   "label": "animal allergen seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to an animal-derived allergen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803598",
+   "label": "fungus seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to a fungal antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803599",
+   "label": "plant allergen seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to a plant-derived allergen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803673",
+   "label": "plasmodium falciparum seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to a plasmodium falciparum antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803674",
+   "label": "adenoviridae virus seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to an adenoviridae virus antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803675",
+   "label": "alphapapillomavirus 9 virus seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to an alphapapillomavirus 9 virus antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803676",
+   "label": "calicivirus seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to a calicivirus antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803677",
+   "label": "chikungunya virus seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to a chikungunya virus antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803678",
+   "label": "coxsackievirus seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to a coxsackievirus antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803679",
+   "label": "dengue virus seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to a dengue virus antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803680",
+   "label": "foot-and-mouth disease virus seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to a foot-and-mouth disease virus antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803681",
+   "label": "hepatitis A virus seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to a hepatitis A virus antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803682",
+   "label": "hepatitis C virus seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to a hepatitis C virus antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803683",
+   "label": "hepatitis E virus seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to a hepatitis E virus antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803684",
+   "label": "influenza B seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to an influenza B antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803685",
+   "label": "pneumoviridae virus seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to a pneumoviridae virus antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803686",
+   "label": "poliovirus seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to a poliovirus antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803687",
+   "label": "respiratory syncytial virus seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to a respiratory syncytial virus antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803688",
+   "label": "SARS coronavirus seropositivity",
+   "definition": "The result of a measurement of circulating antibodies specific to a SARS coronavirus antigen.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803690",
+   "label": "anti-hepatitis E virus antibody measurement",
+   "definition": "Quantification of one or more antibodies to the hepatitis E virus in a sample.",
+   "synonyms": [
+    "anti-HEV antibody measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0803691",
+   "label": "anti-TSST-1 antibody measurement",
+   "definition": "Quantification of one or more antibodies to the superantigen toxic shock syndrome toxin-1 (TSST-1) produced by Staphylococcus aureus in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0803692",
+   "label": "anti-hepatitis B virus antibody measurement",
+   "definition": "Quantification of  one or more antibodies to the hepatitis B virus anitgen in a sample.",
+   "synonyms": [
+    "anti-HBV antibody measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0900003",
+   "label": "abdominal age",
+   "definition": "A prediction outputted by the ensemble model leveraging both liver and pancreas MRIs, which estimates how old the abdominal organs and tissues appear biologically, as opposed to chronological age (time since birth).",
+   "synonyms": []
+  }
+ ],
+ "answer_file": "batch_18.answer.json",
+ "answer_schema": {
+  "type": "object",
+  "required": [
+   "content_sha256",
+   "answers"
+  ],
+  "properties": {
+   "content_sha256": {
+    "type": "string"
+   },
+   "answers": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "item_id",
+      "aliases"
+     ],
+     "properties": {
+      "item_id": {
+       "type": "string"
+      },
+      "aliases": {
+       "type": "array",
+       "maxItems": 5,
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "content_sha256": "c346b5693b7164e97eb7d31ece46f7093c5d83612313778743df6ed1dcb56cb7"
+}

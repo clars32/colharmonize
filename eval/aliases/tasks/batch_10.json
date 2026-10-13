@@ -1,0 +1,697 @@
+{
+ "stage": "aliases",
+ "instructions": "Each item is an ontology term that a column of sample metadata in a gene\nexpression study can mean. Write up to 5 aliases for each term: other ways a\nresearcher would write that same variable as a column header in sample\nmetadata.\n\nGood aliases:\n- common abbreviations and acronyms (\"sbp\" for systolic blood pressure)\n- shorter everyday phrasings (\"systolic bp\", \"visual acuity\")\n- the plain name of the quantity when the term's label is wordy\n  (\"intraocular pressure\" for \"intraocular pressure measurement\")\n\nRules:\n- An alias must mean the same variable as the term: not a broader or narrower\n  one, and not a related one.\n- No values (\"male\", \"high\"), units on their own, gene or tool names, or\n  dataset-specific codes.\n- No alias that only rewords the label trivially (plural, case,\n  punctuation). Those are matched already.\n- Fewer is better than wrong. If a term has no natural alias, return an empty\n  list.\n\nExamples:\n- systolic blood pressure -> [\"sbp\", \"systolic bp\", \"systolic pressure\"]\n- intraocular pressure measurement -> [\"intraocular pressure\", \"iop\"]\n- visual acuity measurement -> [\"visual acuity\", \"va\"]\n",
+ "items": [
+  {
+   "item_id": "EFO:0007972",
+   "label": "androstenedione measurement",
+   "definition": "quantification of androstenedione in a sample",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007984",
+   "label": "platelet component distribution width",
+   "definition": "The determination of the amount of platelet shape changes present in a sample. [ NCI ]",
+   "synonyms": [
+    "PCDW",
+    "Platelet Component Distribution Width Measurement",
+    "Platelet distribution width"
+   ]
+  },
+  {
+   "item_id": "EFO:0007985",
+   "label": "platelet crit",
+   "definition": "The proportion of blood volume that is occupied by platelets, expressed as a percentage. ",
+   "synonyms": [
+    "PCT",
+    "platelet crit (PCT)",
+    "plateletcrit",
+    "plateletcrit (PCT)"
+   ]
+  },
+  {
+   "item_id": "EFO:0007987",
+   "label": "granulocyte count",
+   "definition": "The number of granulocytes (polymorphonuclear leukocytes) in a specified volume of blood, usually 1 cubic millimeter.",
+   "synonyms": [
+    "blood granulocyte count"
+   ]
+  },
+  {
+   "item_id": "EFO:0007992",
+   "label": "basophil percentage of leukocytes",
+   "definition": "A calculated measurement in which the number of basophil granulocytes is divided by the number of all white blood cells in a specified sample of peripheral venous blood, and the result presented as a ratio, fraction, quotient or percentage. A basophil is a granular leukocyte with an irregularly shap",
+   "synonyms": [
+    "basophil count as percentage of total white blood cells",
+    "basophil count to total WBC count ratio",
+    "basophil percentage",
+    "basophil percentage of white cells",
+    "blood basophil count to total leukocyte count ratio"
+   ]
+  },
+  {
+   "item_id": "EFO:0007995",
+   "label": "basophil percentage of granulocytes",
+   "definition": "A calculated measurement in which the number of basophil granulocytes is divided by the number of all granulocytes in a specified sample of peripheral venous blood, and the result presented as a ratio, fraction, quotient or percentage.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007998",
+   "label": "cognitive impairment measurement",
+   "definition": "quantification of some aspect of cognitive impairment such as its severity or rate of progression",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0007999",
+   "label": "lower body strength measurement",
+   "definition": "quantification of the force that can be exerted by the lower body",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008000",
+   "label": "peak insulin response measurement",
+   "definition": "quantification of the time point at which insulin secretion is highest",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008002",
+   "label": "physical activity measurement",
+   "definition": "quantification of some aspect of physical activity such as frequency or intensity",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008003",
+   "label": "heart rate variability measurement",
+   "definition": "Quantification of heart rate variability, the physiological phenomenon of variation in the time interval between heartbeats.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008004",
+   "label": "resting metabolic rate measurement",
+   "definition": "quantification of an individual's resting metabolic rate, the minimum amount of energy required to sustain life during a time period of steady resting conditions. RMR differs from BMR because BMR measurements must meet total physiological equilibrium whereas RMR conditions of measurement can be alte",
+   "synonyms": [
+    "RMR measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0008007",
+   "label": "age at assessment",
+   "definition": "The age of an individual at the time an assessment takes place",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008008",
+   "label": "lower urinary tract symptom",
+   "definition": "Symptoms that result from pathologic processes affecting the urinary bladder and/or urethra. They include urinary frequency, nocturia; urgency, incomplete voiding, and urinary incontinence. They are often associated with overactive bladder; urinary incompetence; and interstitial cystitis. Lower urin",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008009",
+   "label": "1,5 anhydroglucitol measurement",
+   "definition": "quantification of the amount of 1,5 anydroglucitol in a sample",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008036",
+   "label": "BMI-adjusted fasting blood glucose measurement",
+   "definition": "fasting blood glucose measurement that has been adjusted for subjects' body mass index",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008037",
+   "label": "BMI-adjusted fasting blood insulin measurement",
+   "definition": "fasting insulin measurement that has been adjusted for subjects' body mass index",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008038",
+   "label": "BMI-adjusted hip bone size",
+   "definition": "hip bone size measurement that has been adjusted for subjects' body mass index",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008039",
+   "label": "BMI-adjusted hip circumference",
+   "definition": "hip circumference measurement  that has been adjusted for subjects' body mass index",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008111",
+   "label": "diet measurement",
+   "definition": "quantification of some aspect of diet, including diet patterns, balance of nutrient consumption and glycemic load",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008204",
+   "label": "left ventricular diastolic function measurement",
+   "definition": "quantification of some aspect of the diastolic function of the left cardiac ventricle such as peak velocity of mitral waves, isovolumetric relaxation time or diastolic dysfunction with preserved ejection fraction",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008205",
+   "label": "left ventricular structural measurement",
+   "definition": "quantification of some aspect of the structure of the left cardiac ventricle such as wall thickness, mass or atrial atero-posterior diameter",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008206",
+   "label": "left ventricular systolic function measurement",
+   "definition": "quantification of some aspect of the systolic function of the left cardiac ventricle such as ventricular fractional shortening or systolic dysfunction",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008230",
+   "label": "mental development measurement",
+   "definition": "quantification of some aspect of mental development, including cognition, expressive language and receptive language",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008237",
+   "label": "motor development measurement",
+   "definition": "quantification of some aspect of motor development, including fine and gross motor skills",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008245",
+   "label": "neurodevelopmental measurement",
+   "definition": "quantification of some aspect of neurodevelopment, such as language development or fine motor skills development. Neurodevelopment scores can used as an indicator of neurodevelopmental delays.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008255",
+   "label": "particulate matter air pollution measurement",
+   "definition": "quantification of some aspect of particulate matter air pollution, such as daily levels of exposure",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008307",
+   "label": "tuberculin skin test reactivity measurement",
+   "definition": "quantification of the severity of the skin reaction in response to the injection of TB antigen",
+   "synonyms": [
+    "TST reactivity measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0008316",
+   "label": "vaso-occlusive pain measurement",
+   "definition": "quantification of some aspect of vaso-occlusive pain, or vas-occlusive crises, such as severity or frequency of occurences",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008320",
+   "label": "white matter volume measurement",
+   "definition": "quantification of the volume of white matter in the brain, usually through an MRI scan",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008328",
+   "label": "chronotype measurement",
+   "definition": "quantification of some aspect of chronotype such as ease of getting up in the morning",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008329",
+   "label": "facial emotion recognition measurement",
+   "definition": "quantification of some aspect of facial emotion recognition such as ability to differentiate between different emotions",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008330",
+   "label": "fear of pain measurement",
+   "definition": "quantification of some aspect of fear of pain, generallly through the use of a structured questionnaire",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008332",
+   "label": "interleukin 2 receptor antagonist measurement",
+   "definition": "quantification of the amount of interleukin 2 receptor antagonist in a sample",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008336",
+   "label": "disease progression measurement",
+   "definition": "quantification of some aspect of disease progression such as speed or symptom variability. Disease progression can be quantified in a number of ways, for example as a correlated measure of progression scores from different symptom areas",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008337",
+   "label": "psychosis predisposition measurement",
+   "definition": "quantification of the level of an individual's predisposition of a psychotic disorder, based on a range of psychometric measures such as Hypomanic Personality, Perceptual Aberration, Physical and Social Anhedonia (also known as Chapman\u2019s Schizotypia scales), and Schizoidia scales. ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008338",
+   "label": "fear of severe pain measurement",
+   "definition": "quantification of some aspect of fear of severe pain, generallly assessed through the use of a structured questionnaire",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008339",
+   "label": "fear of medical pain measurement",
+   "definition": "quantification of some aspect of fear of pain related to medical treatments such as dental treatments. FoP is generallly assessed through the use of a structured questionnaire",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008340",
+   "label": "fear of minor pain measurement",
+   "definition": "quantification of some aspect of fear of minor pain, generally assessed through the use of a structured questionnaire",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008341",
+   "label": "snoring measurement",
+   "definition": "quantification of some aspect of snoring such as frequency or severity",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008342",
+   "label": "parental emotion expression measurmement",
+   "definition": "quantification of some aspect parental emotion expression, such as the level of warmth expressed by a parent towards a child or the amount of criticism directed by a parent at a child. Emotion expression is evaluated by qualified professionals on the basis of parental responses during the clinical a",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008343",
+   "label": "sex interaction measurement",
+   "definition": "quantification of the interaction between some phenotype and biological sex",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008351",
+   "label": "amyloid deposition measurement",
+   "definition": "quantification of some aspect of the deposition of amyloid proteins in an organ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008352",
+   "label": "C9orf72 mutation status",
+   "definition": "quantification of the presence or absence of C9orf72 mutations in a tissue sample or an individual",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008354",
+   "label": "cognitive function measurement",
+   "definition": "quantification of some aspect of cognitive function",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008355",
+   "label": "dietary heme iron intake measurement",
+   "definition": "quantification of the amount of heme iron acquired through dietary intake",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008360",
+   "label": "environmental exposure measurement",
+   "definition": "quantification of some aspect of exposure to an environmental factor such as pollutants",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008361",
+   "label": "environmental tobacco smoke exposure measurement",
+   "definition": "quantification of some aspect of environmental tobacco smoke exposure",
+   "synonyms": [
+    "second-hand tobacco smoke exposure measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0008362",
+   "label": "farm exposure measurement",
+   "definition": "quantification of some aspect of an individual's exposure to a farm environment such as frequeny or duration. Farm exposure may have a beneficial or protective effect against certain conditions such as asthma",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008364",
+   "label": "generational effect measurement",
+   "definition": "quantification of the effect of belonging to a specific generation on a genotype effect",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008366",
+   "label": "IgG isotype profile measurement",
+   "definition": "quantification of immunoglobulin G in a sample as light chain or heavy chain or kappy type or lambda type",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008369",
+   "label": "infant intracranial volume measurement",
+   "definition": "quantification of an infant's intracranial volume",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008370",
+   "label": "infant white matter volume measurement",
+   "definition": "quantification of the volume of white matter in an infant's brain",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008372",
+   "label": "laterality measurement",
+   "definition": "quantification of some aspect of laterality such as scoring concepts as unilateral or bilateral",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008376",
+   "label": "mosquito bite measurement",
+   "definition": "quantification of some aspect of mosquito bites",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008377",
+   "label": "mosquito bite reaction itch intensity measurement",
+   "definition": "quanitifcation of the itch intensity of a mosquito bite reaction, generally through the use of a standardised questionnaire",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008378",
+   "label": "mosquito bite reaction size measurement",
+   "definition": "quantification of the size of a mosquito bite reaction, generally through the use of a standardised questionnaire",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008380",
+   "label": "perceived unattractiveness to mosquitos measurement",
+   "definition": "quantification of an individual's perceived unattractiveness to mosquitos, generally through the use of a standardised questionnaire",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008381",
+   "label": "total cortical area measurement",
+   "definition": "quantification of the surface area of the cerebral cortex, the largest region of the mammalian brain",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008382",
+   "label": "TP53 mutation status",
+   "definition": "quantification of some aspect of TP53 mutation, such as the number of accummulated mutations, determined either through immunohistochemistry or DNA sequencing",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008383",
+   "label": "treatment outcome measurement",
+   "definition": "quantification of some treatment outcome",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008385",
+   "label": "visual acuity measurement",
+   "definition": "quantification of visual acuity",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008386",
+   "label": "body odor measurement",
+   "definition": "Quantification of body odor, a perceived unpleasant smell given off by the body",
+   "synonyms": [
+    "body odour measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0008387",
+   "label": "caudate nucleus measurement",
+   "definition": "Quantification of some aspect of the caudate nucleus, part of the basal ganglia of the brain, primarily associated with voluntary movement and reward.",
+   "synonyms": [
+    "caudate measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0008390",
+   "label": "prothrombin time measurement",
+   "definition": "Quantification of the clotting tendency of blood plasma following the addition of tissue factor. Prothrombin time requires the presence of factors I, II, V, VII, and X. It measures the extrinsic pathway of coagulation and can be used in conjunction with the activated partial thromboplastin time (aPT",
+   "synonyms": [
+    "International normalized ratio of prothrombin time measurement",
+    "PT/INR measurement",
+    "ProTime INR measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0008392",
+   "label": "triiodothyronine measurement",
+   "definition": "Quantification of the thyroid hormone triiodothyronine (T3) typically in the blood, usually as an indicator of thyroid function",
+   "synonyms": [
+    "T3 measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0008393",
+   "label": "reaction time measurement",
+   "definition": "In psychology, the quantification of the interval of time between the presentation of a stimulus to a subject and the beginning of the subject's response to that stimulus. Several categories of reaction time, such as simple reaction time and choice reaction time, have been established and studied in",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008394",
+   "label": "verbal-numerical reasoning measurement",
+   "definition": "Quantification of verbal and/or numerical reasoning, typically based on a written or multiple choice test",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008399",
+   "label": "mean fractional anisotropy measurement",
+   "definition": "A quantitative parameter derived from diffusion tensor imaging that measures the degree of directional preference of water molecule diffusion within a tissue. Fractional anisotropy (FA) values range from 0 (isotropic diffusion) to 1 (highly directional diffusion) and provide information about tissue",
+   "synonyms": [
+    "fractional anisotropy"
+   ]
+  },
+  {
+   "item_id": "EFO:0008400",
+   "label": "susceptibility to chickenpox measurement",
+   "definition": "Quantification of an individual's susceptibility to chickenpox, resulting from results from primary Varicella zoster virus infection, typically occurring in childhood.",
+   "synonyms": [
+    "susceptibility to varicella zoster virus infection measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0008401",
+   "label": "susceptibility to shingles measurement",
+   "definition": "Quantification of an individual's susceptibility to shingles, a pinaful rash resultin from reactivation of latent Varicella zoster virus infection within a dorsal root ganglion, typically occuring in later life.",
+   "synonyms": [
+    "susceptibility to herpes zoster measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0008402",
+   "label": "susceptibility to cold sores measurement",
+   "definition": "Quantification of an individual's susceptibility to cold sores, vesicular lesions of the lips and mouth caused by another member of the human herpesvirus family, herpes simplex virus type 1 (HSV-1)",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008403",
+   "label": "susceptibility to mononucleosis measurement",
+   "definition": "Quantification of an individual's susceptibility to infectious mononucleosis, a syndrome of fever, tonsillitis, swollen lymph nodes, and persistent fatigue resulting from primary infection with the Epstein-Barr virus.",
+   "synonyms": [
+    "susceptibility to glandular fever measurement",
+    "susceptibility to infectious mononucleosis measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0008404",
+   "label": "susceptibility to mumps measurement",
+   "definition": "Quantification of an individual's susceptibility to mumps, a syndrome of low-grade fever, malaise, headache, and characteristic swelling of the parotid glands that is caused by the mumps virus",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008405",
+   "label": "susceptibility to hepatitis B infection measurement",
+   "definition": "Quantification of an individual's susceptibility to hepatitis B",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008406",
+   "label": "susceptibility to plantar warts measurement",
+   "definition": "Quantification of an individual's susceptibility to plantar warts",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008407",
+   "label": "susceptibility to Mycobacterium tuberculosis infection measurement",
+   "definition": "Quantification of an individual's susceptibility to infection with Mycobacterium tuberculosis",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008409",
+   "label": "susceptibility to scarlet fever measurement",
+   "definition": "Quantification of an individual's susceptibility to scarlet fever, a syndrome of rash, sore throat and fever caused by Group A Streptococcal infection",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008410",
+   "label": "susceptibility to pneumonia measurement",
+   "definition": "Quantification of an individual's susceptibility to pneumonia, an infection of the lung tissue, typically by bacteria or viruses",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008411",
+   "label": "susceptibility to bacterial meningitis measurement",
+   "definition": "Quantification of an individual's susceptibility to bacterial meningitis",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008412",
+   "label": "susceptibility to vaginal yeast infection measurement",
+   "definition": "Quantification of an individual's susceptibility to vaginal yeast infection or thrush, typically by Candida albicans or other Candida species.",
+   "synonyms": [
+    "susceptibility to Candida vulvovaginitis measurement",
+    "susceptibility to thrush measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0008414",
+   "label": "susceptibility to measles measurement",
+   "definition": "Quantification of an individual's susceptibility to measles",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008415",
+   "label": "susceptibility to hepatitis A infection measurement",
+   "definition": "Quantification of an individual's susceptibility to hepatitis A",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008416",
+   "label": "susceptibility to rheumatic fever measurement",
+   "definition": "Quantification of an individual's susceptibility to rheumatic fever, arising as a complication of primary infection with Group A Streptococcus",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008417",
+   "label": "susceptibility to common cold measurement",
+   "definition": "Quantification of an individual's susceptibility to the common cold",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008418",
+   "label": "susceptibility to rubella infection measurement",
+   "definition": "Quantification of an individual's susceptibility to shingles",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008419",
+   "label": "susceptibility to chronic sinus infection measurement",
+   "definition": "Quantification of an individual's susceptibility to chronic sinus infections, requiring surgery.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008421",
+   "label": "non-alcoholic fatty liver disease severity measurement",
+   "definition": "Quantification of the severity of non-alcoholic fatty liver disease, typically by a histological grading.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008422",
+   "label": "susceptibility to infectious disease measurement",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008423",
+   "label": "IgG monogalactosylation measurement",
+   "definition": "Quantification of monogalactosylated N-glycans of IgG in a biological sample, typically serum",
+   "synonyms": [
+    "IgG mono-galactosylation measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0008424",
+   "label": "IgG digalactosylation measurement",
+   "definition": "Quantification of digalactosylated N-glycans of IgG in a biological sample, typically serum",
+   "synonyms": [
+    "IgG di-galactosylation measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0008425",
+   "label": "IgG galactosylation measurement",
+   "definition": "Quantification of galactosylated N-glycans of IgG in a biological sample, typically serum",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008426",
+   "label": "IgG bisecting N-acetyl glucosamine measurement",
+   "definition": "Quantification of bisecting N-acetyl glucosamine-containing N-glycans of IgG in a biological sample, typically serum",
+   "synonyms": [
+    "IgG GlcNAc measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0008427",
+   "label": "IgG fucosylation measurement",
+   "definition": "Quantification of fucosylated N-glycans of IgG in a biological sample, typically serum",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008428",
+   "label": "IgG sialylation measurement",
+   "definition": "Quantification of sialylated N-glycans of IgG in a biological sample, typically serum",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008429",
+   "label": "IgG disialylation measurement",
+   "definition": "Quantification of disialylated N-glycans of IgG in a biological sample, typically serum",
+   "synonyms": [
+    "IgG di-sialylation measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0008430",
+   "label": "IgG monosialylation measurement",
+   "definition": "Quantification of monosialylated N-glycans of IgG in a biological sample, typically serum",
+   "synonyms": [
+    "IgG mono-sialylation measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0008431",
+   "label": "maximal voluntary ventilation",
+   "definition": "Qunatification of the maximum volume of air that an organism can breathe in and out during a specified period of time, often 1 minute.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008433",
+   "label": "pursuit maintenance gain measurement",
+   "definition": "Quantification of the accuracy of matching eye velocity to target velocity during sustained pursuit, typically measured using a video-based eye tracker. Abnormalities of this system have been observed in psychiatric disoreders such as aschizophrenia.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0008434",
+   "label": "initial pursuit acceleration",
+   "definition": "Quantification of the rate of change of eye velocity during the first 100ms of pursuit, typically measured using a video-based eye-tracker. Abnormalities of this sysmtem have been observed in psychiatric disorders such as schizophrenia.",
+   "synonyms": []
+  }
+ ],
+ "answer_file": "batch_10.answer.json",
+ "answer_schema": {
+  "type": "object",
+  "required": [
+   "content_sha256",
+   "answers"
+  ],
+  "properties": {
+   "content_sha256": {
+    "type": "string"
+   },
+   "answers": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "item_id",
+      "aliases"
+     ],
+     "properties": {
+      "item_id": {
+       "type": "string"
+      },
+      "aliases": {
+       "type": "array",
+       "maxItems": 5,
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "content_sha256": "a7530be6c55016ea7ce635f3b326185adfc99bf942ea236077c812a57d70a8aa"
+}

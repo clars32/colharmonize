@@ -1,0 +1,681 @@
+{
+ "stage": "aliases",
+ "instructions": "Each item is an ontology term that a column of sample metadata in a gene\nexpression study can mean. Write up to 5 aliases for each term: other ways a\nresearcher would write that same variable as a column header in sample\nmetadata.\n\nGood aliases:\n- common abbreviations and acronyms (\"sbp\" for systolic blood pressure)\n- shorter everyday phrasings (\"systolic bp\", \"visual acuity\")\n- the plain name of the quantity when the term's label is wordy\n  (\"intraocular pressure\" for \"intraocular pressure measurement\")\n\nRules:\n- An alias must mean the same variable as the term: not a broader or narrower\n  one, and not a related one.\n- No values (\"male\", \"high\"), units on their own, gene or tool names, or\n  dataset-specific codes.\n- No alias that only rewords the label trivially (plural, case,\n  punctuation). Those are matched already.\n- Fewer is better than wrong. If a term has no natural alias, return an empty\n  list.\n\nExamples:\n- systolic blood pressure -> [\"sbp\", \"systolic bp\", \"systolic pressure\"]\n- intraocular pressure measurement -> [\"intraocular pressure\", \"iop\"]\n- visual acuity measurement -> [\"visual acuity\", \"va\"]\n",
+ "items": [
+  {
+   "item_id": "EFO:0010978",
+   "label": "chemotherapy-induced cytotoxicity measurement",
+   "definition": "Quantification of some aspect of cytotoxity such as survival time or cell viability, as a response to a chemotherapic drug.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0011007",
+   "label": "estrogen measurement",
+   "definition": "Quantification of the levels of estrogen, or osetrogen, a category of sex hormone responsible for the development and regulation of the female reproductive system and secondary sex characteristics. There are three major endogenous estrogens that have estrogenic hormonal activity: estrone (E1), estra",
+   "synonyms": [
+    "estrogen levels",
+    "oestrogen levels",
+    "oestrogen measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0011008",
+   "label": "sex hormone measurement",
+   "definition": "The determination of the amount of a sex hormone present in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0011011",
+   "label": "sitting height measurement",
+   "definition": "Quantification of some aspect of height, when assuming a sitting position.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0011013",
+   "label": "vaginal microbiome measurement",
+   "definition": "Quantification of some aspect of an individual's microbiome of the vagina.",
+   "synonyms": [
+    "vaginal flora measurement",
+    "vaginal microbiota measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0011014",
+   "label": "health-related quality of life measurement",
+   "definition": "A measure to assess health-related quality of life (HRQOL), which domains include physical health, emotional health, cognitive functioning, fatigue and pain.",
+   "synonyms": [
+    "HRQOL"
+   ]
+  },
+  {
+   "item_id": "EFO:0011015",
+   "label": "educational attainment",
+   "definition": "A measure of academic performance through educational benchmarks such as national exams and curriculum assessments.",
+   "synonyms": [
+    "academic attainment"
+   ]
+  },
+  {
+   "item_id": "EFO:0011021",
+   "label": "BRCA1 mutation carier status",
+   "definition": "Determination of the presence or absence of known harmful mutation(s) in the BRAC1 gene. BRCA1/BRCA2 genes play a central role in DNA repair and their mutations increase sensitivity to DNA-damaging agents. BRCA1/BRCA2 germline mutations significantly increase the risk of breast and ovarian cancer.",
+   "synonyms": [
+    "BRCA1 carrier status",
+    "BRCA1 mutation status"
+   ]
+  },
+  {
+   "item_id": "EFO:0011022",
+   "label": "BRCA2 mutation carier statu",
+   "definition": "Determination of the presence or absence of known harmful mutation(s) in the BRAC2 gene. BRCA1/BRCA2 genes play a central role in DNA repair and their mutations increase sensitivity to DNA-damaging agents. BRCA1/BRCA2 germline mutations significantly increase the risk of breast and ovarian cancer.",
+   "synonyms": [
+    "BRCA2 carrier status",
+    "BRCA2 mutation status"
+   ]
+  },
+  {
+   "item_id": "EFO:0011031",
+   "label": "intestinal permeability measurement",
+   "definition": "Quantification of the intestinal permeability barrier status, for example measured by the ratio of the fractional excretion of lactulose to mannitol (LacMan ratio)",
+   "synonyms": [
+    "gut permeability measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0011032",
+   "label": "fractional excretion of lactulose to mannitol ratio",
+   "definition": "The gold standard for functional measurements of intestinal permeability in humans is the lactulose/ mannitol test, which measures urinary excretion of the two orally administered non-metabolized sugars over a 6 h period. Analysis by high pressure liquid chromatography or liquid chromatography in co",
+   "synonyms": [
+    "LacMan ratio",
+    "lactulose mannitol test"
+   ]
+  },
+  {
+   "item_id": "EFO:0011037",
+   "label": "anti-human herpes virus 6 antibody measurement",
+   "definition": "Quantification of the amount of antibody to human herpes virus 6 in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0011038",
+   "label": "anti-human herpes virus 7 antibody measurement",
+   "definition": "Quantification of the amount of antibody to human herpes virus 7 in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0011039",
+   "label": "myeloperoxidase (MPO)-DNA complex measurement",
+   "definition": "Quantification of myeloperoxidase (MPO)-DNA complex levels in a biological specimen. Plasma MPO-DNA complex levels typically measured by immunofluorescence or ELISA are used to detect neutrophil extracellular trap (NETs) formation.",
+   "synonyms": [
+    "MPO-DNA complex"
+   ]
+  },
+  {
+   "item_id": "EFO:0011044",
+   "label": "BMI-adjusted neck circumference",
+   "definition": "A circumferential measurement of the neck that has been adjusted for subjects' body mass index.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0011061",
+   "label": "toxicity",
+   "definition": "The degree to which an agent can damage an organism.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020001",
+   "label": "drug resistance",
+   "definition": "The state of primary insensitivity or greatly reduced sensitivity of a given organism to the action of one or more drugs.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020002",
+   "label": "lack of efficacy",
+   "definition": "Absent or significantly reduced efficacy of drug intervention characterized by lack of measurable benefit or deterioration of disease course.",
+   "synonyms": [
+    "lack of drug effect",
+    "refractory drug response"
+   ]
+  },
+  {
+   "item_id": "EFO:0020003",
+   "label": "drug toxicity",
+   "definition": "An adverse effect of a drug used therapeutically or diagnostically.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020018",
+   "label": "glycerophosphorylcholine measurement",
+   "definition": "Quantification of glycerophosphorylcholine levels in a sample.",
+   "synonyms": [
+    "GPC measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0020048",
+   "label": "lysophosphatidylserine measurement",
+   "definition": "The quantification of lysophosphatidylserine levels in a sample, typically blood ",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020071",
+   "label": "alpha angle measurement",
+   "definition": "A measure of femoral head sphericity.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020076",
+   "label": "urine blood measurement",
+   "definition": "A measurement of the amount of blood in a urine sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020077",
+   "label": "dietary vitamin A intake measurement",
+   "definition": "Quantification of dietary vitamin A intake.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020078",
+   "label": "dietary vitamin B1 intake measurement",
+   "definition": "Quantification of dietary vitamin B1 intake.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020079",
+   "label": "dietary vitamin B2 intake measurement",
+   "definition": "Quantification of dietary vitamin B1 intake.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020080",
+   "label": "dietary sodium intake measurement",
+   "definition": "Quantification of dietary sodium intake.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020081",
+   "label": "dietary niacin intake measurement",
+   "definition": "Quantification of dietary niacin intake.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020082",
+   "label": "dietary vitamin C intake measurement",
+   "definition": "Quantification of dietary vitamin C intake.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020083",
+   "label": "dietary zinc intake measurement",
+   "definition": "Quantification of dietary zinc intake.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020084",
+   "label": "dietary vitamin B6 intake measurement",
+   "definition": "Quantification of dietary vitamin B6 intake.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020085",
+   "label": "dietary retinol intake measurement",
+   "definition": "Quantification of dietary retinol intake.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020086",
+   "label": "dietary carotene intake measurement",
+   "definition": "Quantification of dietary carotene intake.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020087",
+   "label": "dietary ash intake measurement",
+   "definition": "Quantification of dietary ash intake.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020088",
+   "label": "dietary fiber intake measurement",
+   "definition": "Quantification of dietary fiber intake.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020089",
+   "label": "dietary vitamin E intake measurement",
+   "definition": "Quantification of dietary vitamin E intake.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020090",
+   "label": "dietary cholesterol intake measurement",
+   "definition": "Quantification of dietary cholesterol intake.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020091",
+   "label": "dietary phosphorus intake measurement",
+   "definition": "Quantification of dietary phosphorus intake.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020096",
+   "label": "mitral valve annular diameter",
+   "definition": "Measurement of the diameter of the mitral valve annulus.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020100",
+   "label": "thigh muscle measurement",
+   "definition": "Quantification of some aspect of the thigh muscle.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020104",
+   "label": "pelvis bone mineral density",
+   "definition": "Mineral density of the pelvis bone.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020105",
+   "label": "trunk bone mineral density",
+   "definition": "Mineral density of the trunk.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020864",
+   "label": "cerebellar volume measurement",
+   "definition": "Quantification of the volume of the cerebellum.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020865",
+   "label": "aortic measurement",
+   "definition": "Measurement of some parts of the aorta, including ascending aorta distensibility and area.",
+   "synonyms": [
+    "aortic diagnostic technique"
+   ]
+  },
+  {
+   "item_id": "EFO:0020870",
+   "label": "choline change measurement",
+   "definition": "Quantification of the change in choline levels in an individual over time, e.g. over the course of several hours after a high-fat meal.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020873",
+   "label": "apolipoprotein A 1 change measurement",
+   "definition": "Quantification of the change in apolipoprotein A 1 levels in an individual over time, e.g. over the course of several hours after a high-fat meal.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020881",
+   "label": "glucose change measurement",
+   "definition": "Quantification of the change in glucose levels in an individual over time, e.g. over the course of several hours after a high-fat meal.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020882",
+   "label": "lactate change measurement",
+   "definition": "Quantification of the change in lactate levels in an individual over time, e.g. over the course of several hours after a high-fat meal.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020883",
+   "label": "citrate change measurement",
+   "definition": "Quantification of the change in citrate levels in an individual over time, e.g. over the course of several hours after a high-fat meal.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020884",
+   "label": "alanine change measurement",
+   "definition": "Quantification of the change in alanine levels in an individual over time, e.g. over the course of several hours after a high-fat meal.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020885",
+   "label": "glutamine change measurement",
+   "definition": "Quantification of the change in glutamine levels in an individual over time, e.g. over the course of several hours after a high-fat meal.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020886",
+   "label": "histidine change measurement",
+   "definition": "Quantification of the change in histidine levels in an individual over time, e.g. over the course of several hours after a high-fat meal.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020887",
+   "label": "isoleucine change measurement",
+   "definition": "Quantification of the change in isoleucine levels in an individual over time, e.g. over the course of several hours after a high-fat meal.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020888",
+   "label": "leucine change measurement",
+   "definition": "Quantification of the change in leucine levels in an individual over time, e.g. over the course of several hours after a high-fat meal.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020889",
+   "label": "valine change measurement",
+   "definition": "Quantification of the change in valine levels in an individual over time, e.g. over the course of several hours after a high-fat meal.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020890",
+   "label": "phenylalanine change measurement",
+   "definition": "Quantification of the change in phenylalanine levels in an individual over time, e.g. over the course of several hours after a high-fat meal.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020891",
+   "label": "tyrosine change measurement",
+   "definition": "Quantification of the change in tyrosine levels in an individual over time, e.g. over the course of several hours after a high-fat meal.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020897",
+   "label": "citrus intake measurement",
+   "definition": "Quantification of some aspect of citrus consumption such as frequency or quantity.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020901",
+   "label": "chylomicron change measurement",
+   "definition": "Quantification of the change in chylomicron levels in an individual over time, e.g. over the course of several hours after a high-fat meal.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020902",
+   "label": "bombay phenotype",
+   "definition": "Two main types of recessive c phenotypes are recognized: (1) the nonsecretor classic Bombay type (h null and se (FUT2; 182100) null) with H deficiency of both red cells and saliva, and (2) the secretor Bombay type (h null, Se heterozygous) with H deficiency in red cells but normal ABH in secretions.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020907",
+   "label": "very low density lipoprotein particle size change measurement",
+   "definition": "Quantification of the change in very low density lipoprotein particle size levels in an individual over time, e.g. over the course of several hours after a high-fat meal.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020908",
+   "label": "low density lipoprotein particle size change measurement",
+   "definition": "Quantification of the change in low density lipoprotein particle size levels in an individual over time, e.g. over the course of several hours after a high-fat meal.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020910",
+   "label": "thermal burn",
+   "definition": "Thermal burns fall into six categories, including scalds, thermal contact burns, electrical burns, chemical burns, radiation burns, and burns caused by fire.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020922",
+   "label": "hospitalisation",
+   "definition": "Admission to hospital for treatment.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020938",
+   "label": "left ventricle sphericity index",
+   "definition": "The sphericity index is defined as the ratio of LV short axis length divided by LV long axis length.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020939",
+   "label": "right ventricular function",
+   "definition": "The hemodynamic and electrophysiological action of the right heart ventricle. Its measurement is an important aspect of the clinical evaluation of patients with heart disease to determine the effects of the disease on cardiac performance.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020940",
+   "label": "platelet function test",
+   "definition": "An assay that measures the ability of platelets to aggregate and promote clotting in a sample of blood.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020949",
+   "label": "clonal hematopoiesis mutation measurement",
+   "definition": "Quantification of the number of known clonal hematopoiesis mutations in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020977",
+   "label": "occupational attainment",
+   "definition": "A measure of occupational attainment through eg. hierarchical categorisation using the Standard Occupational Classification (SOC) system.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020978",
+   "label": "encounter with health service for breast reconstruction following mastectomy",
+   "definition": "Encounter with a health service for surgical reconstruction of the breast following mastectomy.",
+   "synonyms": [
+    "mammoplasty"
+   ]
+  },
+  {
+   "item_id": "EFO:0020980",
+   "label": "radiation exposure measurement",
+   "definition": "Exposure to radioactive materials or ionizing radiation.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020982",
+   "label": "encounter with health service for adjustment and management of implanted device",
+   "definition": "Encounter with a health service for adjustment and management of an implanted device, such as cardiac pacemaker or infusion pump.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020990",
+   "label": "arginine measurement",
+   "definition": "Quanitification of argininine levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020991",
+   "label": "ethanolamine measurement",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020992",
+   "label": "alpha-amino-N-butyric acid measurement",
+   "definition": "Quantification of alpha-amino-N-butyric acid in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0020994",
+   "label": "cancer antigen 50 measurement",
+   "definition": "Quantification of the amount of cancer antigen 50 in a sample, typically serum.",
+   "synonyms": [
+    "CA 50 measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0020995",
+   "label": "squamous cell carcinoma antigen measurement",
+   "definition": "Quantification of the amount of squamous cell carcinoma antigen in a sample.",
+   "synonyms": [
+    "SCCA measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0021000",
+   "label": "cysteine measurement",
+   "definition": "Quantification of the amount of cysteine in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0021163",
+   "label": "ergothioneine measurement",
+   "definition": "Quantification of the amount of ergothioneine in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0021423",
+   "label": "family history of uterine fibroids",
+   "definition": "A reported family history of uterine fibroids in one or more family members.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0021427",
+   "label": "N-acetylmethionine measurement",
+   "definition": "Quantification of N-acetylmethionine levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0021428",
+   "label": "N6-succinyladenosine measurement",
+   "definition": "Quantification of the N6-succinyladenosine levels in a sample.",
+   "synonyms": [
+    "succinyladenosine measurement"
+   ]
+  },
+  {
+   "item_id": "EFO:0021430",
+   "label": "N-acetyl-beta-alanine measurement",
+   "definition": "Quantification of N-acetyl-beta-alanine levels in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0021486",
+   "label": "ubiquinone measurement",
+   "definition": "Quantification of ubiquinone in a sample.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0021487",
+   "label": "cryptic phenotype measurement",
+   "definition": "Quantification of disease-related phenotypic variability using qualitative symptom data.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0021489",
+   "label": "treprostinil dose measurement",
+   "definition": "Quantification of some aspect of treprostinil dosage.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0021490",
+   "label": "amygdala volume change measurement",
+   "definition": "Quantification of the change in amygdala volume over time.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0021493",
+   "label": "nucleus accumbens volume change measurement",
+   "definition": "Quantification of the change in nucleus accumbens volume over time.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0021494",
+   "label": "pallidum volume change measurement",
+   "definition": "Quantification of the change in pallidum volume over time.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0021495",
+   "label": "putamen volume change measurement",
+   "definition": "Quantification of the change in putamen volume over time.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0021496",
+   "label": "thalamus volume change measurement",
+   "definition": "Quantification of the change in thalamus volume over time.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0021497",
+   "label": "cerebellum cortex volume change measurement",
+   "definition": "Quantification of the change in cerebellum cortex volume over time.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0021498",
+   "label": "cerebellum white matter volume change measurement",
+   "definition": "Quantification of the change in cerebellum white matter volume over time.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0021499",
+   "label": "cerebral white matter volume change measurement",
+   "definition": "Quantification of the change in cerebral white matter volume over time.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0021500",
+   "label": "cortex volume change measurement",
+   "definition": "Quantification of the change in cortex volume over time.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0021501",
+   "label": "cortical thickness change measurement",
+   "definition": "Quantification of the change in cortical thickness over time.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0021502",
+   "label": "lateral ventricle volume change measurement",
+   "definition": "Quantification of the change in lateral ventricle volume over time.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0021503",
+   "label": "cortical surface area change measurement",
+   "definition": "Quantification of the change in cortical surface area over time.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0021504",
+   "label": "total brain volume change measurement",
+   "definition": "Quantification of the change in total brain volume over time.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0021527",
+   "label": "blood arsenic measurement",
+   "definition": "Quantification of arsenic in a blood sample.",
+   "synonyms": []
+  }
+ ],
+ "answer_file": "batch_16.answer.json",
+ "answer_schema": {
+  "type": "object",
+  "required": [
+   "content_sha256",
+   "answers"
+  ],
+  "properties": {
+   "content_sha256": {
+    "type": "string"
+   },
+   "answers": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "item_id",
+      "aliases"
+     ],
+     "properties": {
+      "item_id": {
+       "type": "string"
+      },
+      "aliases": {
+       "type": "array",
+       "maxItems": 5,
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "content_sha256": "13b0b9288bea11111614f291ade819467186b587798e531a684d590aef2966e2"
+}

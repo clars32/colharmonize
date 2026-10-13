@@ -1,0 +1,851 @@
+{
+ "stage": "aliases",
+ "instructions": "Each item is an ontology term that a column of sample metadata in a gene\nexpression study can mean. Write up to 5 aliases for each term: other ways a\nresearcher would write that same variable as a column header in sample\nmetadata.\n\nGood aliases:\n- common abbreviations and acronyms (\"sbp\" for systolic blood pressure)\n- shorter everyday phrasings (\"systolic bp\", \"visual acuity\")\n- the plain name of the quantity when the term's label is wordy\n  (\"intraocular pressure\" for \"intraocular pressure measurement\")\n\nRules:\n- An alias must mean the same variable as the term: not a broader or narrower\n  one, and not a related one.\n- No values (\"male\", \"high\"), units on their own, gene or tool names, or\n  dataset-specific codes.\n- No alias that only rewords the label trivially (plural, case,\n  punctuation). Those are matched already.\n- Fewer is better than wrong. If a term has no natural alias, return an empty\n  list.\n\nExamples:\n- systolic blood pressure -> [\"sbp\", \"systolic bp\", \"systolic pressure\"]\n- intraocular pressure measurement -> [\"intraocular pressure\", \"iop\"]\n- visual acuity measurement -> [\"visual acuity\", \"va\"]\n",
+ "items": [
+  {
+   "item_id": "EFO:0002092",
+   "label": "dye swap replicate",
+   "definition": "A dye swap replicate is a replicate role which is borne by one of a pair of replicate assays in which LabeledExtracts derived from the same BioMaterial used for both assays (e.g., a hybridization or a 2-D gel run) differ only in that the dyes used for labeling have been reversed, e.g., assay 1: A-Cy",
+   "synonyms": [
+    "dye_swap_replicate"
+   ]
+  },
+  {
+   "item_id": "EFO:0002460",
+   "label": "hypertrophy",
+   "definition": "Hypertrophy is the increase in the volume of an organ or tissue due to the enlargement of its component cells.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0002503",
+   "label": "cardiac hypertrophy",
+   "definition": "an increase in size of the cardiac tissue, not due to increased cell number",
+   "synonyms": [
+    "cardiomegaly",
+    "enlarged heart",
+    "heart hypertrophy",
+    "myocardial hypertrophy"
+   ]
+  },
+  {
+   "item_id": "EFO:0002605",
+   "label": "gene name",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0002658",
+   "label": "protocol parameter",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0002660",
+   "label": "primary cell",
+   "definition": "A cell taken directly from a living organism, which is not immortalized.",
+   "synonyms": [
+    "primary cell culture"
+   ]
+  },
+  {
+   "item_id": "EFO:0002694",
+   "label": "experimental process",
+   "definition": "A process performed as part of an experiment or wider study, i.e. intentionally designed.",
+   "synonyms": [
+    "Experiment"
+   ]
+  },
+  {
+   "item_id": "EFO:0002751",
+   "label": "benign",
+   "definition": "For neoplasms, a non-infiltrating and non-metastasizing neoplastic process that is characterized by the absence of morphologic features associated with malignancy (e.g., severe atypia, nuclear pleomorphism, tumor cell necrosis, and abnormal mitoses). For other conditions, a process that is mild in n",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0002752",
+   "label": "aggressive",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0002803",
+   "label": "TH-1",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0002804",
+   "label": "TH-2",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0002927",
+   "label": "International Unit",
+   "definition": "",
+   "synonyms": [
+    "IU"
+   ]
+  },
+  {
+   "item_id": "EFO:0002944",
+   "label": "nucleic acid extraction protocol",
+   "definition": "A protocol description in which a material separation to recover the nucleic acid fraction of an input material is performed",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0002947",
+   "label": "parous",
+   "definition": "The quality of an organism that has successful reproduced.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0002950",
+   "label": "pregnancy",
+   "definition": "The status during which female mammals carry their developing young (EMBRYOS or FETUSES) in utero before birth, beginning from FERTILIZATION to BIRTH.",
+   "synonyms": [
+    "Gestation",
+    "PREGN",
+    "Pregnancies"
+   ]
+  },
+  {
+   "item_id": "EFO:0002951",
+   "label": "virgin",
+   "definition": "The quality of an organism that has never been sexually active.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0002954",
+   "label": "differentiated",
+   "definition": "A property of a cell which is no longer pluripotent",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0002967",
+   "label": "pluripotent",
+   "definition": "A property of a cell which is able to differentiate into into one or more differentiated cell types",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0003046",
+   "label": "heart transplant rejection",
+   "definition": "A body response in rejection to a heart transplant. Your immune system will see your donor heart as a foreign object that's not supposed to be in your body. Your immune system will try to attack your donor heart. Although all people who receive a heart transplant receive immunosuppressants \u2014 medicat",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0003765",
+   "label": "sign or symptom",
+   "definition": "Objective evidence of disease perceptible to the examining physician (sign) and subjective evidence of disease perceived by the patient (symptom).",
+   "synonyms": [
+    "Clinical Finding",
+    "DESC",
+    "Diagnostic Findings",
+    "Finding",
+    "SIGNS SYMPTOMS",
+    "Signs and Symptoms",
+    "Symptoms and Signs"
+   ]
+  },
+  {
+   "item_id": "EFO:0003787",
+   "label": "cytokine role",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0003788",
+   "label": "gene expression protocol",
+   "definition": "A gene expression protocol is a  protocol which is designed to be used in a gene expression experiment performed on arrays or by high throughput sequencing.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0003789",
+   "label": "growth protocol",
+   "definition": "A growth protocol is a protocol which provides instructions on the growth of a biological sample. E.g. the growth of a specific cell line or Drosophila culture",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0003790",
+   "label": "hybridization protocol",
+   "definition": "A hybridization protocol is the set of instructions or plan for performing a nucleic acid hybridization on an microarray such as those provided by Affymetrix",
+   "synonyms": [
+    "microarray hybridization protocol"
+   ]
+  },
+  {
+   "item_id": "EFO:0003808",
+   "label": "labelling protocol",
+   "definition": "A labelling protocol is a set of instructions or plan which is realised",
+   "synonyms": [
+    "labeling protocol"
+   ]
+  },
+  {
+   "item_id": "EFO:0003809",
+   "label": "sample treatment protocol",
+   "definition": "A sample treatment protocol is a protocol used in a biological experiment and defines instructions on how a sample should be treated in a given experimental scenario.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0003813",
+   "label": "nucleic acid labeling protocol",
+   "definition": "A protocol description in which input nucleic acid material is labeled.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0003814",
+   "label": "array scanning and feature extraction protocol",
+   "definition": "A protocol describing an image acquisition process that generates an image and features extracted in numerical form from an array.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0003815",
+   "label": "nucleic acid hybridization to array protocol",
+   "definition": "A protocol describing the hybridisation of the target nucleic acid sample to a fixed probe on the array.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0003816",
+   "label": "normalization data transformation protocol",
+   "definition": "A protocol describing a data transformation in which data transformation has the objective normalization.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0003822",
+   "label": "hyperemia",
+   "definition": "The presence of an increased amount of blood in a part or organ; engorgement.",
+   "synonyms": [
+    "Active Hyperemia",
+    "Arterial Hyperemia",
+    "Congestion, Venous",
+    "Engorgement, Venous",
+    "Hyperemia, Active",
+    "Hyperemia, Arterial",
+    "Hyperemia, Passive",
+    "Hyperemia, Reactive",
+    "Hyperemias",
+    "Hyperemias, Reactive",
+    "Passive Hyperemia",
+    "Reactive Hyperemia",
+    "Reactive Hyperemias",
+    "Venous Congestion",
+    "Venous Engorgement"
+   ]
+  },
+  {
+   "item_id": "EFO:0003837",
+   "label": "calcification",
+   "definition": "Process by which organic tissue becomes hardened by the physiologic deposit of calcium salts.",
+   "synonyms": [
+    "Bone Mineralization",
+    "CALCIFICATION PHYSIOL",
+    "CALCIUM DEPOSIT(S)",
+    "Calcification, Physiologic",
+    "Calcification, Physiological",
+    "DEPOSIT(S), CALCIUM",
+    "Mineralization, Bone",
+    "PHYSIOL CALCIFICATION",
+    "Physiologic Calcification",
+    "Physiological Calcification",
+    "calcinosis",
+    "macrocalcification"
+   ]
+  },
+  {
+   "item_id": "EFO:0003892",
+   "label": "pulmonary function measurement",
+   "definition": "Measurement of the various processes involved in the act of respiration: inspiration, expiration, oxygen and carbon dioxide exchange, lung volume and compliance, etc.",
+   "synonyms": [
+    "FUNCTION TEST PULM",
+    "FUNCTION TESTS PULM",
+    "Function Test, Lung",
+    "Function Test, Pulmonary",
+    "Function Test, Respiratory",
+    "Function Tests, Lung",
+    "Function Tests, Pulmonary",
+    "Function Tests, Respiratory",
+    "Lung Function Test",
+    "Lung Function Tests",
+    "PULM FUNCTION TEST",
+    "PULM FUNCTION TESTS",
+    "Pulmonary Function Tests",
+    "Respiratory Function Test",
+    "Respiratory Function Tests",
+    "TEST PULM FUNCTION",
+    "TESTS PULM FUNCTION",
+    "Test, Lung Function",
+    "Test, Pulmonary Function",
+    "Test, Respiratory Function",
+    "Tests, Lung Function",
+    "Tests, Pulmonary Function",
+    "Tests, Respiratory Function",
+    "pulmonary function test"
+   ]
+  },
+  {
+   "item_id": "EFO:0003901",
+   "label": "dysuria",
+   "definition": "Painful URINATION. It is often associated with infections of the lower URINARY TRACT.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0003917",
+   "label": "premature birth",
+   "definition": "CHILDBIRTH before 37 weeks of PREGNANCY (259 days from the first day of the mother's last menstrual period, or 245 days after FERTILIZATION).",
+   "synonyms": [
+    "Birth, Premature",
+    "Birth, Preterm",
+    "Births, Premature",
+    "Births, Preterm",
+    "Premature Births",
+    "Preterm Birth",
+    "Preterm Births"
+   ]
+  },
+  {
+   "item_id": "EFO:0003919",
+   "label": "risk factor",
+   "definition": "Any aspect of an individual's life, behavior, an environmental exposure, or an inborn or inherited characteristic that increases the likelihood of a disease, condition or injury.",
+   "synonyms": [
+    "Factor, Risk",
+    "Factors, Risk",
+    "Risk Factors"
+   ]
+  },
+  {
+   "item_id": "EFO:0003924",
+   "label": "hair color",
+   "definition": "Color of hair or fur.",
+   "synonyms": [
+    "Color, Hair",
+    "Colors, Hair",
+    "Hair Colors"
+   ]
+  },
+  {
+   "item_id": "EFO:0003925",
+   "label": "cognition",
+   "definition": "Intellectual or mental process whereby an organism becomes aware of or obtains knowledge.",
+   "synonyms": [
+    "cognitive function"
+   ]
+  },
+  {
+   "item_id": "EFO:0003930",
+   "label": "menarche",
+   "definition": "The first MENSTRUAL CYCLE marked by the initiation of MENSTRUATION.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0003935",
+   "label": "mental health",
+   "definition": "The state wherein the person is well adjusted.",
+   "synonyms": [
+    "Health, Mental",
+    "Hygiene, Mental",
+    "Mental Hygiene"
+   ]
+  },
+  {
+   "item_id": "EFO:0003939",
+   "label": "energy intake",
+   "definition": "Total number of calories taken in daily whether ingested or by parenteral routes.",
+   "synonyms": [
+    "Caloric Intake"
+   ]
+  },
+  {
+   "item_id": "EFO:0003940",
+   "label": "physical activity",
+   "definition": "The physical activity of a human or an animal as a behavioral phenomenon.",
+   "synonyms": [
+    "Activities, Locomotor",
+    "Activities, Motor",
+    "Activities, Physical",
+    "Activity, Locomotor",
+    "Activity, Motor",
+    "Activity, Physical",
+    "Locomotor Activities",
+    "Locomotor Activity",
+    "Motor Activities",
+    "Motor Activity",
+    "Physical Activities"
+   ]
+  },
+  {
+   "item_id": "EFO:0003947",
+   "label": "personality",
+   "definition": "Behavior-response patterns that characterize the individual.",
+   "synonyms": [
+    "Personalities"
+   ]
+  },
+  {
+   "item_id": "EFO:0003949",
+   "label": "eye color",
+   "definition": "Color of the iris.",
+   "synonyms": [
+    "Color, Eye",
+    "Colors, Eye",
+    "Eye Colors",
+    "iris color"
+   ]
+  },
+  {
+   "item_id": "EFO:0003952",
+   "label": "fever of unknown origin",
+   "definition": "Fever in which the etiology cannot be ascertained.",
+   "synonyms": [
+    "Unknown Origin Fever",
+    "Unknown Origin Fevers"
+   ]
+  },
+  {
+   "item_id": "EFO:0003961",
+   "label": "hormone replacement therapy",
+   "definition": "Therapeutic use of hormones to alleviate the effects of hormone deficiency.",
+   "synonyms": [
+    "HORMONE REPLACE THER",
+    "Hormone Replacement Therapies",
+    "Hormone Replacement Therapy",
+    "REPLACE THER HORMONE",
+    "Replacement Therapies, Hormone",
+    "Replacement Therapy, Hormone",
+    "THER HORMONE REPLACE",
+    "Therapies, Hormone Replacement",
+    "Therapy, Hormone Replacement"
+   ]
+  },
+  {
+   "item_id": "EFO:0003969",
+   "label": "treatment protocol",
+   "definition": "A protocol in which the aim is to treat a sample, collection of samples, organism or group of organisms for some experimental analysis of outcome.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004012",
+   "label": "mating type F",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004014",
+   "label": "deletion",
+   "definition": "",
+   "synonyms": [
+    "DEL"
+   ]
+  },
+  {
+   "item_id": "EFO:0004015",
+   "label": "duplication",
+   "definition": "A genetic modification in which part of the genome is duplicated",
+   "synonyms": [
+    "DP"
+   ]
+  },
+  {
+   "item_id": "EFO:0004016",
+   "label": "insertion",
+   "definition": "",
+   "synonyms": [
+    "INS"
+   ]
+  },
+  {
+   "item_id": "EFO:0004017",
+   "label": "inversion",
+   "definition": "",
+   "synonyms": [
+    "INV"
+   ]
+  },
+  {
+   "item_id": "EFO:0004018",
+   "label": "spontaneous mutation",
+   "definition": "A genetic modification which has arisen by a spontaneous mutation in an individual.",
+   "synonyms": [
+    "SM"
+   ]
+  },
+  {
+   "item_id": "EFO:0004019",
+   "label": "targeted mutation",
+   "definition": "A genetic modification in which a targeted mutation has been introduced into the genome of an individual",
+   "synonyms": [
+    "TM"
+   ]
+  },
+  {
+   "item_id": "EFO:0004020",
+   "label": "transgenic",
+   "definition": "A genetic modification in which a transgene has been inserted into an individual",
+   "synonyms": [
+    "TG"
+   ]
+  },
+  {
+   "item_id": "EFO:0004021",
+   "label": "transposition",
+   "definition": "A genetic modification introduced into an individual as the result of transposase activity",
+   "synonyms": [
+    "TP"
+   ]
+  },
+  {
+   "item_id": "EFO:0004024",
+   "label": "translocation",
+   "definition": "A type of chromosome rearrangement in which two nonhomologous chromosomes are each broken and then repaired",
+   "synonyms": [
+    "TL"
+   ]
+  },
+  {
+   "item_id": "EFO:0004030",
+   "label": "gene trap",
+   "definition": "A genetic modification induced by insertion of a nucleic acid construct containing a reporter gene sequence downstream of a splice acceptor site that is capable of integrating into random chromosomal locations Integration of the gene trap into an intron allows the expression of a new mRNA containing",
+   "synonyms": [
+    "GT"
+   ]
+  },
+  {
+   "item_id": "EFO:0004033",
+   "label": "experiment accession",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004034",
+   "label": "discretized differential expression",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004035",
+   "label": "mating type F minus",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004036",
+   "label": "mating type h plus",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004094",
+   "label": "scanned image",
+   "definition": "An image prodcued as the result of a scan, such as a medical scanner or array scanner.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004095",
+   "label": "data file",
+   "definition": "A file stored for use on a computer containing data.",
+   "synonyms": [
+    "computer data file",
+    "electronic data file"
+   ]
+  },
+  {
+   "item_id": "EFO:0004096",
+   "label": "processed array data file",
+   "definition": "A data file containing array data which has been processed in some way using a data transformation.",
+   "synonyms": [
+    "derived array data file"
+   ]
+  },
+  {
+   "item_id": "EFO:0004097",
+   "label": "MAGE-TAB array data matrix file",
+   "definition": "An array data file which has been transformed into a matrix format as defined by MAGE-TAB specification.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004098",
+   "label": "array data file",
+   "definition": "A data file which contains data produced as the result of running an array.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004134",
+   "label": "tumor size",
+   "definition": "The physical size of a tumor.",
+   "synonyms": [
+    "size of tumor"
+   ]
+  },
+  {
+   "item_id": "EFO:0004154",
+   "label": "Sequence Read Format (SRF)",
+   "definition": "Sequence Read file forma is a generic format for DNA sequence data capable of storing data generated by any DNA sequencing technology.",
+   "synonyms": [
+    "srf"
+   ]
+  },
+  {
+   "item_id": "EFO:0004155",
+   "label": "FASTQ format",
+   "definition": "FASTQ format is a text-based format for storing both a biological sequence (usually nucleotide sequence) and its corresponding quality scores.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004156",
+   "label": "Standard Flowgram Format (SFF)",
+   "definition": "Standard flowgram format (SFF) is a binary file format used to encode results of pyrosequencing from the 454 Life Sciences platform for high-throughput sequencing.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004157",
+   "label": "BAM format",
+   "definition": "BAM is the compressed binary version of the Sequence Alignment/Map (SAM) format",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004159",
+   "label": "SOLiD native csfasta format",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004163",
+   "label": "SOLiD native qual format",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004164",
+   "label": "Illumina native qseq format",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004165",
+   "label": "Illumina native scarf format",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004166",
+   "label": "Illumina native fastq format",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004170",
+   "label": "nucleic acid sequencing protocol",
+   "definition": "A protocol describing the processes performed and equipment used to determine the order of nucleotide bases in a nucleic acid sample",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004171",
+   "label": "cot filtration for single or low copy genomic DNA",
+   "definition": "A type of cot filtration in which single/low copy sequences and the repetitive sequences of a genome to be studied independently of each other.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004172",
+   "label": "cot filtration for moderately repetitive genomic DNA",
+   "definition": "A type of cot filtration in which moderately repetitive sequences and highly repetitive sequences of a genome can be separated to be studied independently of each other.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004173",
+   "label": "cot filtration for highly repetitive genomic DNA",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004174",
+   "label": "cot filtration for theoretical single copy genomic DNA",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004184",
+   "label": "nucleic acid library construction protocol",
+   "definition": "A protocol describing the processes performed and equipment used to prepare nucleic acid sequencing library.",
+   "synonyms": [
+    "nucleic acid library preparation protocol"
+   ]
+  },
+  {
+   "item_id": "EFO:0004292",
+   "label": "vaccination",
+   "definition": "A process that involves adding vaccine into a host (e.g., human, mouse) in vivo with the intent to invoke a protective immune response.",
+   "synonyms": [
+    "active immunization"
+   ]
+  },
+  {
+   "item_id": "EFO:0004293",
+   "label": "recombination",
+   "definition": "Production of new arrangements of\u00a0DNA\u00a0by various mechanisms such as assortment and segregation,\u00a0CROSSING OVER;\u00a0GENE CONVERSION;\u00a0GENETIC TRANSFORMATION;\u00a0GENETIC CONJUGATION;\u00a0GENETIC TRANSDUCTION; or mixed infection of viruses.",
+   "synonyms": [
+    "genetic recombination",
+    "recombination, genetic"
+   ]
+  },
+  {
+   "item_id": "EFO:0004294",
+   "label": "left atrial function",
+   "definition": "The hemodynamic and electrophysiological action of the\u00a0LEFT ATRIUM.",
+   "synonyms": [
+    "atrial function, left"
+   ]
+  },
+  {
+   "item_id": "EFO:0004295",
+   "label": "left ventricular function",
+   "definition": "The hemodynamic and electrophysiological action of the left\u00a0HEART VENTRICLE. Its measurement is an important aspect of the clinical evaluation of patients with heart disease to determine the effects of the disease on cardiac performance.",
+   "synonyms": [
+    "ventricular function, left"
+   ]
+  },
+  {
+   "item_id": "EFO:0004296",
+   "label": "thyroid function",
+   "definition": "Physiological activity and functions of the highly vascular thyroid gland, such as producing the thyroid hormones which are concerned in regulating the metabolic rate of the body.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004297",
+   "label": "clinical laboratory measurement",
+   "definition": "A clinical laboratory measurement is a measurement of some entity e.g. erythrocyte count or metabolite panel which is used in the process of clinical diagnosis in human patients",
+   "synonyms": [
+    "clinical laboratory techniques"
+   ]
+  },
+  {
+   "item_id": "EFO:0004298",
+   "label": "cardiovascular measurement",
+   "definition": "A cardiovascular measurement is a measurement of some part of the cardiovascular system and is typically used  in the process of disease diagnosis in human patients.",
+   "synonyms": [
+    "Diagnostic Techniques, Cardiovascular",
+    "cardiovascular diagnostic technique"
+   ]
+  },
+  {
+   "item_id": "EFO:0004299",
+   "label": "life expectancy",
+   "definition": "Based on known statistical data, the number of years which any person of a given age may reasonably be expected to live.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004302",
+   "label": "anthropometric measurement",
+   "definition": "Anthropometry is a measurement of the size, weight, and proportions of the human or other primate body.",
+   "synonyms": [
+    "anthropometric traits",
+    "anthropometry"
+   ]
+  },
+  {
+   "item_id": "EFO:0004303",
+   "label": "vital signs",
+   "definition": "The signs of life that may be monitored or measured, namely pulse rate, respiratory rate, body temperature, and blood pressure.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004305",
+   "label": "erythrocyte count",
+   "definition": "The number of red blood cells\u00a0per unit volume in a sample of venous blood.",
+   "synonyms": [
+    "RBC",
+    "erythrocyte number",
+    "red blood cell count"
+   ]
+  },
+  {
+   "item_id": "EFO:0004306",
+   "label": "erythrocyte indices",
+   "definition": "ERYTHROCYTE\u00a0size and\u00a0HEMOGLOBIN\u00a0content or concentration, usually derived from\u00a0ERYTHROCYTE COUNT;\u00a0BLOOD\u00a0hemoglobin concentration; and\u00a0HEMATOCRIT. The indices include the mean corpuscular volume (MCV), the mean corpuscular hemoglobin (MCH), and the mean corpuscular hemoglobin concentration (MCHC).",
+   "synonyms": [
+    "RBC count",
+    "erythrocyte index",
+    "erythrocyte indexes",
+    "erythrocyte size determination",
+    "red cell index",
+    "red cell indices"
+   ]
+  },
+  {
+   "item_id": "EFO:0004307",
+   "label": "glucose tolerance test",
+   "definition": "Quantification of the ability of an individual to maintain homeostasis of blood glucose, via a test procedure including measuring blood glucose levels in a fasting state, and at prescribed intervals before and after oral glucose intake (75 or 100 g) or intravenous infusion (0.5 g/kg).",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0004309",
+   "label": "platelet count",
+   "definition": "The number of\u00a0PLATELETS\u00a0per unit volume in a sample of venous\u00a0BLOOD.",
+   "synonyms": [
+    "blood platelet number"
+   ]
+  },
+  {
+   "item_id": "EFO:0004312",
+   "label": "vital capacity",
+   "definition": "The volume of air that is exhaled by a maximal expiration following a maximal inspiration.",
+   "synonyms": [
+    "FVC",
+    "forced vital capacity"
+   ]
+  },
+  {
+   "item_id": "EFO:0004313",
+   "label": "maximal midexpiratory flow rate",
+   "definition": "Measurement of rate of airflow over the middle half of a\u00c2\u00a0FORCED VITAL CAPACITY\u00c2\u00a0determination (from the 25 percent level to the 75 percent level). Common abbreviations are\u00c2\u00a0MMFR\u00c2\u00a0and FEF 25%-75%.",
+   "synonyms": [
+    "FEF25-75%"
+   ]
+  },
+  {
+   "item_id": "EFO:0004314",
+   "label": "forced expiratory volume",
+   "definition": "Measure of the maximum amount of air that can be expelled in a given number of seconds during a\u00c2\u00a0FORCED VITAL CAPACITY\u00c2\u00a0determination . It is usually given as\u00c2\u00a0FEV\u00c2\u00a0followed by a subscript indicating the number of seconds over which the measurement is made, although it is sometimes given as a percen",
+   "synonyms": [
+    "FEV1",
+    "FEVt",
+    "timed vital capacity"
+   ]
+  }
+ ],
+ "answer_file": "batch_03.answer.json",
+ "answer_schema": {
+  "type": "object",
+  "required": [
+   "content_sha256",
+   "answers"
+  ],
+  "properties": {
+   "content_sha256": {
+    "type": "string"
+   },
+   "answers": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "item_id",
+      "aliases"
+     ],
+     "properties": {
+      "item_id": {
+       "type": "string"
+      },
+      "aliases": {
+       "type": "array",
+       "maxItems": 5,
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "content_sha256": "cbe22952a5dca82fbfe31fc8bd41f04f5913149a9b8741a97a1b9cea41f41540"
+}

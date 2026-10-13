@@ -1,0 +1,765 @@
+{
+ "stage": "aliases",
+ "instructions": "Each item is an ontology term that a column of sample metadata in a gene\nexpression study can mean. Write up to 5 aliases for each term: other ways a\nresearcher would write that same variable as a column header in sample\nmetadata.\n\nGood aliases:\n- common abbreviations and acronyms (\"sbp\" for systolic blood pressure)\n- shorter everyday phrasings (\"systolic bp\", \"visual acuity\")\n- the plain name of the quantity when the term's label is wordy\n  (\"intraocular pressure\" for \"intraocular pressure measurement\")\n\nRules:\n- An alias must mean the same variable as the term: not a broader or narrower\n  one, and not a related one.\n- No values (\"male\", \"high\"), units on their own, gene or tool names, or\n  dataset-specific codes.\n- No alias that only rewords the label trivially (plural, case,\n  punctuation). Those are matched already.\n- Fewer is better than wrong. If a term has no natural alias, return an empty\n  list.\n\nExamples:\n- systolic blood pressure -> [\"sbp\", \"systolic bp\", \"systolic pressure\"]\n- intraocular pressure measurement -> [\"intraocular pressure\", \"iop\"]\n- visual acuity measurement -> [\"visual acuity\", \"va\"]\n",
+ "items": [
+  {
+   "item_id": "EFO:0900004",
+   "label": "family history of diabetes",
+   "definition": "A reported family history of diabetes in one or more family members.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0900005",
+   "label": "family history of heart disease",
+   "definition": "A reported family history of heart disease in one or more family members.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0900006",
+   "label": "family history of high blood pressure",
+   "definition": "A reported family history of high blood pressure in one or more family members.",
+   "synonyms": [
+    "family history of hypertension"
+   ]
+  },
+  {
+   "item_id": "EFO:0920011",
+   "label": "diffusion tensor imaging measurement",
+   "definition": "A quantitative measurement technique derived from diffusion-weighted magnetic resonance imaging that characterizes the three-dimensional diffusion of water molecules within biological tissues. Diffusion tensor imaging (DTI) calculates multiple parameters including fractional anisotropy, mean diffusi",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0920012",
+   "label": "mean diffusivity measurement",
+   "definition": "A quantitative parameter derived from diffusion tensor imaging that measures the average magnitude of water molecule diffusion across all spatial directions within a tissue. Mean diffusivity (MD) is calculated as the mean of the three eigenvalues of the diffusion tensor and provides information abou",
+   "synonyms": [
+    "average diffusivity",
+    "mean diffusivity"
+   ]
+  },
+  {
+   "item_id": "EFO:0920013",
+   "label": "axial diffusivity measurement",
+   "definition": "A quantitative parameter derived from diffusion tensor imaging that measures water molecule diffusion parallel to the principal direction of the diffusion tensor. Axial diffusivity (AD or AxD) represents the largest eigenvalue (\u03bb1) of the diffusion tensor and provides information about axonal integr",
+   "synonyms": [
+    "axial diffusivity",
+    "longitudinal diffusivity",
+    "parallel diffusivity"
+   ]
+  },
+  {
+   "item_id": "EFO:0920014",
+   "label": "radial diffusivity measurement",
+   "definition": "A quantitative parameter derived from diffusion tensor imaging that measures water molecule diffusion perpendicular to the principal direction of the diffusion tensor. Radial diffusivity (RD) is calculated as the average of the second and third eigenvalues ((\u03bb2 + \u03bb3)/2) of the diffusion tensor and p",
+   "synonyms": [
+    "perpendicular diffusivity",
+    "radial diffusivity",
+    "transverse diffusivity"
+   ]
+  },
+  {
+   "item_id": "EFO:0920015",
+   "label": "menstrual symptom severity",
+   "definition": "A measurement assessing the severity of symptoms experienced during menstruation, including but not limited to pain, cramping, discomfort, and other physical or psychological manifestations that may affect quality of life.",
+   "synonyms": [
+    "menstruation symptom severity"
+   ]
+  },
+  {
+   "item_id": "EFO:0920017",
+   "label": "visceral adiposity index",
+   "definition": "A sex-specific mathematical index calculated from body mass index, waist circumference, triglycerides, and high-density lipoprotein cholesterol that estimates visceral adipose tissue function and serves as an indicator of adipose tissue dysfunction and cardiometabolic risk.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0920018",
+   "label": "BMI-adjusted visceral adiposity index",
+   "definition": "A visceral adiposity index value that has been statistically adjusted for body mass index to account for overall adiposity, allowing assessment of visceral adipose tissue dysfunction independent of general obesity status.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0920019",
+   "label": "body adiposity index",
+   "definition": "A calculated anthropometric index derived from hip circumference and height using the formula ((hip circumference in cm) / (height in m)^1.5) - 18, which directly estimates percent body fat for adult men and women without requiring body weight measurement.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0920020",
+   "label": "BMI-adjusted body adiposity index",
+   "definition": "A body adiposity index value that has been statistically adjusted for body mass index, enabling the assessment of the relationship between hip circumference-derived adiposity and health outcomes independent of overall body weight status.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0920094",
+   "label": "imaging protocol",
+   "definition": "A protocol which provides instructions on the process of creating visual representations of specimens or phenomena.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0920095",
+   "label": "fixation protocol",
+   "definition": "A protocol that specifies the steps and conditions for fixation of biological material (e.g. cells or tissues), using chemical and/or physical methods to preserve structural and molecular features and limit post-collection degradation (including autolysis/putrefaction) for downstream analysis.",
+   "synonyms": [
+    "fixative protocol"
+   ]
+  },
+  {
+   "item_id": "EFO:0920096",
+   "label": "permeabilization time",
+   "definition": "A measurement of the duration for which cells or cell membranes are kept in a permeabilized state to enable increased transmembrane passage of otherwise poorly permeant molecules (for example, dyes, antibodies, or nucleic acids).",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0920100",
+   "label": "sample ID",
+   "definition": "A string used to identify a sample.",
+   "synonyms": [
+    "sample identifier"
+   ]
+  },
+  {
+   "item_id": "EFO:0920101",
+   "label": "myocardial strain",
+   "definition": "Myocardial strain refers to the measurement of heart muscle deformation, or its shortening, thickening, and lengthening, using imaging techniques like echocardiography.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:0920102",
+   "label": "biparietal distance",
+   "definition": "A measurement of the distance spanning the widest transverse diameter of the fetal skull, between the outer or inner tables of the two parietal bones, typically obtained by ultrasound.",
+   "synonyms": [
+    "biparietal diameter"
+   ]
+  },
+  {
+   "item_id": "EFO:0920103",
+   "label": "amniotic fluid index",
+   "definition": "A semi-quantitative prenatal ultrasound measurement of amniotic fluid volume, calculated as the sum of the deepest vertical pocket of amniotic fluid measured in each of the four quadrants of the uterus.",
+   "synonyms": [
+    "amniotic fluid volume index"
+   ]
+  },
+  {
+   "item_id": "EFO:0920104",
+   "label": "fetal heart rate",
+   "definition": "The rate of contraction of the fetal heart, typically expressed as the number of fetal cardiac beats per minute.",
+   "synonyms": [
+    "Heart Rate, Fetal"
+   ]
+  },
+  {
+   "item_id": "EFO:0920113",
+   "label": "MPLEx",
+   "definition": "An extraction protocol that partitions a single biological sample into metabolite, protein, and lipid fractions for subsequent multi-omics analyses, typically using mass spectrometry.",
+   "synonyms": [
+    "Metabolite, Protein, and Lipid Extraction"
+   ]
+  },
+  {
+   "item_id": "EFO:0920131",
+   "label": "apnea-hypopnea index measurement",
+   "definition": "A measurement of sleep apnea severity calculated as the total number of apnea and hypopnea events recorded during a sleep study, divided by the total number of hours of sleep.",
+   "synonyms": [
+    "apnoea-hypopnoea index"
+   ]
+  },
+  {
+   "item_id": "EFO:0920132",
+   "label": "cigarette smoking status measurement",
+   "definition": "A self-reported categorical measurement of an individual's cigarette smoking history, classified as current smoker, former smoker, or never smoker.",
+   "synonyms": [
+    "cigarette smoking status"
+   ]
+  },
+  {
+   "item_id": "EFO:0920133",
+   "label": "slide ID",
+   "definition": "A unique identifier for the physical glass slide or cartridge on which a tissue section is mounted and processed.",
+   "synonyms": [
+    "slide identifier"
+   ]
+  },
+  {
+   "item_id": "EFO:1000096",
+   "label": "Atrophy",
+   "definition": "Any weakening or degeneration, especially through lack of use.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:1001416",
+   "label": "rheumatic fever nodule",
+   "definition": "A small round or oval, mostly subcutaneous nodule made up chiefly of a mass of Aschoff bodies and seen in cases of rheumatic fever. It is differentiated from the RHEUMATOID NODULE which appears in rheumatoid arthritis, most frequently over bony prominences. (From Dorland, 27th ed)",
+   "synonyms": [
+    "Aschoff body",
+    "Aschoff nodule",
+    "rheumatic Aschoff nodule",
+    "rheumatic nodule"
+   ]
+  },
+  {
+   "item_id": "EFO:1001425",
+   "label": "Skull Fractures",
+   "definition": "Fractures of the skull which may result from penetrating or nonpenetrating head injuries or rarely BONE DISEASES (see also FRACTURES, SPONTANEOUS). Skull fractures may be classified by location (e.g., SKULL FRACTURE, BASILAR), radiographic appearance (e.g., linear), or based upon cranial integrity (",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:1001788",
+   "label": "Eye Burns",
+   "definition": "Injury to any part of the eye by extreme heat, chemical agents, or ultraviolet radiation.",
+   "synonyms": []
+  },
+  {
+   "item_id": "EFO:1001823",
+   "label": "Periprosthetic Fractures",
+   "definition": "Fractures around joint replacement prosthetics or implants. They can occur intraoperatively or postoperatively.",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0000001",
+   "label": "disease",
+   "definition": "A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism.",
+   "synonyms": [
+    "condition",
+    "disease",
+    "disease or disorder",
+    "disease or disorder, non-neoplastic",
+    "diseases",
+    "diseases and disorders",
+    "disorder",
+    "disorders",
+    "medical condition",
+    "other disease"
+   ]
+  },
+  {
+   "item_id": "MONDO:0005203",
+   "label": "ischemia reperfusion injury",
+   "definition": "Adverse functional, metabolic, or structural changes in ischemic tissues resulting from the restoration of blood flow to the tissue (reperfusion), including swelling; hemorrhage; necrosis; and damage from free radicals. The most common instance is myocardial reperfusion injury.",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0005309",
+   "label": "spinal fracture",
+   "definition": "Traumatic or pathological injury to the spine in which the continuity of a vertebral bone is broken. Symptoms include back pain and difficulty bending and twisting.",
+   "synonyms": [
+    "bone fracture of vertebral column",
+    "vertebral column bone fracture"
+   ]
+  },
+  {
+   "item_id": "MONDO:0005315",
+   "label": "bone fracture",
+   "definition": "Breaks in bones.",
+   "synonyms": [
+    "fracture",
+    "fracture of bone",
+    "fracture(s)"
+   ]
+  },
+  {
+   "item_id": "MONDO:0005319",
+   "label": "humerus fracture",
+   "definition": "A traumatic or pathologic injury to the humerus in which the continuity of the humerus is broken.",
+   "synonyms": [
+    "fracture, humeral",
+    "fractures, humeral",
+    "humeral fracture"
+   ]
+  },
+  {
+   "item_id": "MONDO:0005320",
+   "label": "tibia fracture",
+   "definition": "Traumatic or pathological injury to the tibia in which the continuity of the bone is broken.",
+   "synonyms": [
+    "bone fracture of tibia",
+    "tibia bone fracture"
+   ]
+  },
+  {
+   "item_id": "MONDO:0005322",
+   "label": "ulna fracture",
+   "definition": "Fractures of the larger bone of the forearm.",
+   "synonyms": [
+    "bone fracture of ulna",
+    "ulna bone fracture"
+   ]
+  },
+  {
+   "item_id": "MONDO:0005325",
+   "label": "radius fracture",
+   "definition": "Traumatic or pathological injury to the radius bone in which the continuity of the bone is broken.",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0005327",
+   "label": "hip fracture",
+   "definition": "Traumatic or pathological injury to the hip in which the continuity of either the femoral head, femoral neck, intertrochanteric or subtrochanteric regions is broken. Symptoms include pain in the hip or groin, bruising and swelling in and around the hip area. The injured hip is turned outward and the",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0020573",
+   "label": "inherited disease susceptibility",
+   "definition": "A latent susceptibility to disease at the genetic level, which may be activated under certain conditions.",
+   "synonyms": [
+    "hereditary disease susceptibility",
+    "hereditary predisposition to disease"
+   ]
+  },
+  {
+   "item_id": "MONDO:0021125",
+   "label": "disease characteristic",
+   "definition": "An attribute of a disease.",
+   "synonyms": [
+    "disease qualifier",
+    "modifier",
+    "qualifier"
+   ]
+  },
+  {
+   "item_id": "MONDO:0021126",
+   "label": "syndromic or isolated",
+   "definition": "An characteristic of a disease that varies depending on whether the disease appears as an isolated feature or whether the disease is a syndrome consisting of multiple features.",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0021127",
+   "label": "has a syndromic presentation",
+   "definition": "An characteristic of a disease in which the disease is not manifested as an isolated feature but has multiple distinct features.",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0021128",
+   "label": "has an isolated presentation",
+   "definition": "An characteristic of a disease in which the disease is manifested as an isolated feature.",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0021139",
+   "label": "congenital or acquired",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0021140",
+   "label": "congenital",
+   "definition": "A characteristic of a disease in which the disease is present at birth, regardless of cause.",
+   "synonyms": [
+    "inborn"
+   ]
+  },
+  {
+   "item_id": "MONDO:0021141",
+   "label": "acquired",
+   "definition": "",
+   "synonyms": [
+    "not genetically inherited"
+   ]
+  },
+  {
+   "item_id": "MONDO:0021149",
+   "label": "hereditary vs non-hereditary etiology",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0021152",
+   "label": "inherited",
+   "definition": "A characteristic of a disease in which the cause of the disease is a genetic problem inherited from either or both parents.",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0021178",
+   "label": "injury",
+   "definition": "Damage inflicted on the body as the direct or indirect result of an external force, with or without disruption of structural continuity.",
+   "synonyms": [
+    "injury",
+    "trauma",
+    "traumatic injury",
+    "wound"
+   ]
+  },
+  {
+   "item_id": "MONDO:0022202",
+   "label": "disseminated",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0024488",
+   "label": "tumor grading characteristic",
+   "definition": "A modifier that can be applied to a tumor class describing abnormal tumor histology or morphology. It is an indicator of how quickly a tumor is likely to grow and spread",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0024489",
+   "label": "general tumor grading characteristic",
+   "definition": "A term that refers to the cellular differentiation of a malignant cellular infiltrate. A cancer is defined through grades I-IV (or 1-4), or as well, moderately, poorly differentiated or undifferentiated.",
+   "synonyms": [
+    "disease grade qualifier"
+   ]
+  },
+  {
+   "item_id": "MONDO:0037747",
+   "label": "spinal injury",
+   "definition": "A injury that involves the vertebral column.",
+   "synonyms": [
+    "injury of vertebral column",
+    "vertebral column injury"
+   ]
+  },
+  {
+   "item_id": "MONDO:0042489",
+   "label": "disease susceptibility",
+   "definition": "A constitution or condition of the body which makes the tissues react in special ways to certain extrinsic stimuli and thus tends to make the individual more than usually susceptible to certain diseases.",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0043458",
+   "label": "radiation injury",
+   "definition": "Harmful effects of non-experimental exposure to ionizing or non-ionizing radiation in VERTEBRATES.",
+   "synonyms": [
+    "radiation injury"
+   ]
+  },
+  {
+   "item_id": "MONDO:0045034",
+   "label": "infectious disease characteristic",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0045035",
+   "label": "opportunistic infectious",
+   "definition": "A characteristic of an infectious disease in which the disease affects an immunologically compromised host.",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0045036",
+   "label": "primary infectious",
+   "definition": "A characteristic of an infectious disease in which the disease affects an immunologically normal host.",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0045040",
+   "label": "locational disease characteristic",
+   "definition": "",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0045042",
+   "label": "restricted to specific location",
+   "definition": "",
+   "synonyms": [
+    "localised",
+    "localized"
+   ]
+  },
+  {
+   "item_id": "MONDO:0100075",
+   "label": "jaw fracture",
+   "definition": "A traumatic or pathologic injury to the jaw in which the continuity of the bone is broken.",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0100355",
+   "label": "classic or non-classic genetic disease presentation",
+   "definition": "A classic (severe) or non-classic (mild or intermediate) form of a genetic disease.",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0100356",
+   "label": "classic presentation",
+   "definition": "A severe form of a genetic disease.",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0100357",
+   "label": "non-classic presentation",
+   "definition": "A mild or intermediate form of a genetic disease.",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0100369",
+   "label": "iatrogenic or non-iatrogenic",
+   "definition": "A iatrogenic or non-iatrogenic form of a disease.",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0100426",
+   "label": "iatrogenic",
+   "definition": "A characteristic of a diseae which results from diagnostic and therapeutic procedures undertaken on a patient.",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0100427",
+   "label": "non-iatrogenic",
+   "definition": "A characteristic of a diseae in which it does not result from diagnostic and therapeutic procedures undertaken on a patient.",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0700004",
+   "label": "idiopathic vs non-idiopathic",
+   "definition": "A disease characteristic in which the cause of the disease is known or unknown.",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0700005",
+   "label": "idiopathic",
+   "definition": "A disease characteristic in which the disease has an uncertain or unknown cause.",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0700006",
+   "label": "non-idiopathic",
+   "definition": "A disease characteristic in which the disease has a known cause.",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0700061",
+   "label": "mosaic vs complete",
+   "definition": "A disease characteristic in which the cause of the disease is present in some of the cells of the organism, or in all the cells of the organism.",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0700062",
+   "label": "mosaic",
+   "definition": "A disease characteristic in which the cause of the disease is present in some of the cells of the organism.",
+   "synonyms": []
+  },
+  {
+   "item_id": "MONDO:0700063",
+   "label": "complete",
+   "definition": "A disease characteristic in which the cause of the disease is present in all the cells of the organism.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0000018",
+   "label": "material supplier role",
+   "definition": "a role realized through the process of supplying materials such as animal subjects, reagents or other materials used in an investigation.",
+   "synonyms": [
+    "biosource provider"
+   ]
+  },
+  {
+   "item_id": "OBI:0000049",
+   "label": "mass spectrometer",
+   "definition": "A mass spectrometer is an instrument which is used to measure the mass to charge ratio of ions. All mass spectrometers consist of three basic parts: an ion source, a mass analyzer, and a detector system. The stages within the mass spectrometer are: 1. Production of ions from the sample 2. Separation",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0000066",
+   "label": "investigation",
+   "definition": "a planned process that consists of parts: planning, study design execution, documentation and which produce conclusion(s).",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0000070",
+   "label": "assay",
+   "definition": "An assay is a process with the objective to create as an output information about a material entity (bearing evaluant role).",
+   "synonyms": [
+    "measuring",
+    "scientific observation"
+   ]
+  },
+  {
+   "item_id": "OBI:0000071",
+   "label": "quantitative confidence value",
+   "definition": "A data item which is used to indicate the degree of uncertainty about a measurement.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0000118",
+   "label": "gene list",
+   "definition": "A gene list is a report of the names or identifiers of genes that are the outcome of an analysis or have been put together for the purpose of an analysis.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0000181",
+   "label": "population",
+   "definition": "a population is a collection of individuals from the same taxonomic class living, counted or sampled at a particular site or in a particular area",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0000185",
+   "label": "imaging assay",
+   "definition": "An assay that produces a picture of an entity.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0000245",
+   "label": "organization",
+   "definition": "An organization is a continuant entity which can play roles,  has members, and has a set of organization rules.  Members of organizations are either organizations themselves or individual people. Members can bear specific organization member roles that are determined in the organization rules. The o",
+   "synonyms": [
+    "organisation"
+   ]
+  },
+  {
+   "item_id": "OBI:0000272",
+   "label": "protocol",
+   "definition": "a protocol is a plan specification which has sufficient level of detail and quantitative information to communicate it between domain experts, so that different domain experts will reliably be able to independently reproduce the process.",
+   "synonyms": [
+    "method",
+    "method used in an experiment",
+    "plan specification"
+   ]
+  },
+  {
+   "item_id": "OBI:0000275",
+   "label": "analyte role",
+   "definition": "A measurand role borne by a molecular entity or an atom and realized in an analyte assay which achieves the objective to measure the magnitude/concentration/amount of the analyte in the entity bearing evaluant role.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0000415",
+   "label": "polymerase chain reaction",
+   "definition": "PCR is the process in which a DNA polymerase is used to amplify a piece of DNA by in vitro enzymatic replication. As PCR progresses, the DNA thus generated is itself used as a template for replication. This sets in motion a chain reaction in which the DNA template is exponentially amplified.",
+   "synonyms": [
+    "polymerase chain reaction"
+   ]
+  },
+  {
+   "item_id": "OBI:0000427",
+   "label": "enzyme",
+   "definition": "(protein or rna) or has_part (protein or rna) and has_function some GO:0003824 (catalytic activity)",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0000512",
+   "label": "single cell isolation",
+   "definition": "a process in which a population of cells with certain characteristics is isolated from a larger population",
+   "synonyms": [
+    "isolation of cell population"
+   ]
+  },
+  {
+   "item_id": "OBI:0000540",
+   "label": "isolation of adherent cells",
+   "definition": "a material separation process in which cells that stick to the container in which they are grown as a cell culture are separated from those in the liquid component of the culture. The output of this process are adherent cells.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0000552",
+   "label": "reverse transcribed polymerase chain reaction",
+   "definition": "reverse transcribe pcr is a process which allow amplification of cDNA during a pcr reaction while the cDNA results from a retrotranscription of messenger RNA isolated from a material entity.",
+   "synonyms": [
+    "RT-PCR",
+    "reverse transcription polymerase chain reaction"
+   ]
+  },
+  {
+   "item_id": "OBI:0000650",
+   "label": "differential expression analysis data transformation",
+   "definition": "A differential expression analysis data transformation is a data transformation that has objective differential expression analysis",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0000659",
+   "label": "specimen collection process",
+   "definition": "A planned process with the objective to obtain a material entity for potential use as an input upon which measurements or observations are performed.",
+   "synonyms": [
+    "sample collection",
+    "specimen collection"
+   ]
+  },
+  {
+   "item_id": "OBI:0000697",
+   "label": "Helicos sequencing assay",
+   "definition": "Helicos sequencing is a DNA sequencing which allows sequence identification of billions of DNA molecules immobilized to a surface by using DNA polymerase and fluorescently labeled nucleotides added one at a time. The sequencing process does not requires amplification step and is typically able to pr",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0000711",
+   "label": "library preparation",
+   "definition": "process which results in the creation of a library from fragments of DNA using cloning vectors or oligonucleotides with the role of adaptors",
+   "synonyms": [
+    "library construction",
+    "nucleic acid library construction",
+    "nucleic acid library preparation"
+   ]
+  },
+  {
+   "item_id": "OBI:0000724",
+   "label": "Solexa sequencing assay",
+   "definition": "A DNA sequencing by synthesis assay that identifies sequence information using DNA polymerase and reversible terminator, requiring immobilization of genomic DNA fragments onto a surface and a specific clonal amplification step known as bridge PCR. Reliance on a reversible terminator allows cycles of",
+   "synonyms": [
+    "Solexa sequencing"
+   ]
+  },
+  {
+   "item_id": "OBI:0000747",
+   "label": "material sample",
+   "definition": "A material which is collected with the intention of being representative of a greater whole (i.e. a sample).",
+   "synonyms": [
+    "sample population"
+   ]
+  },
+  {
+   "item_id": "OBI:0000750",
+   "label": "study design independent variable",
+   "definition": "a directive information entity that is part of a study design. Independent variables are entities whose values are selected to determine its relationship to an observed phenomenon (the dependent variable). In such an experiment, an attempt is made to find evidence that the values of the independent ",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0000785",
+   "label": "study design controlled variable",
+   "definition": "Controlled variable specification is a part of a study design. They are the entities that could vary, but are kept constant to prevent their influence on the effect of the independent variable on the dependent.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0000869",
+   "label": "polyA RNA extract",
+   "definition": "A RNA extract that is the output of an extraction process in which RNA molecules with poly A tail at its 3\u2019 end are purified.",
+   "synonyms": [
+    "poly adenylated RNA"
+   ]
+  },
+  {
+   "item_id": "OBI:0000922",
+   "label": "frozen specimen",
+   "definition": "A specimen that has been frozen in order to store it.",
+   "synonyms": []
+  },
+  {
+   "item_id": "OBI:0000924",
+   "label": "labeled specimen",
+   "definition": "A specimen  that has been modified in order to be able to detect it in future experiments.",
+   "synonyms": []
+  }
+ ],
+ "answer_file": "batch_19.answer.json",
+ "answer_schema": {
+  "type": "object",
+  "required": [
+   "content_sha256",
+   "answers"
+  ],
+  "properties": {
+   "content_sha256": {
+    "type": "string"
+   },
+   "answers": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "item_id",
+      "aliases"
+     ],
+     "properties": {
+      "item_id": {
+       "type": "string"
+      },
+      "aliases": {
+       "type": "array",
+       "maxItems": 5,
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "content_sha256": "9f64e45898cbd8ee1d35fc2940a0dda76fda815850ca0071bb07fa1e846f4717"
+}
