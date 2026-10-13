@@ -147,6 +147,18 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
    `eval/curation/curation_sheet.xlsx`. Send them only that file. Ideally
    they have clinical background and haven't seen the gold. Then run
    `eval/curation/agreement.py FILLED.xlsx`.
+6. **Owner questions:**
+   - the gold conventions in decisions log 14.4
+   - whether the authors' characteristic wins over a title variable that
+     conflicts with it (task 14, decisions log 15.7)
+7. **Approve installing and running MetaHarmonizer** (task 18). It is
+   third-party code.
+8. **Find a person to curate the next sealed corpus's gold** before any run
+   (task 9).
+9. **GEOmend decisions:** whether to build changes 1–3 (task 23) and a
+   feature for derived fields (task 22).
+10. **Host the plugin repository** and run `claude plugin validate`
+    (task 24).
 
 ### B. Make the evaluation trustworthy
 
