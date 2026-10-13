@@ -10,7 +10,7 @@
     colharmonize tasks collect STAGE --workspace DIR --run N   validate answers, item by item
     colharmonize tasks retry   STAGE --workspace DIR --run N   a batch of just the failed items (at most 2 per item)
     colharmonize repair apply --workspace DIR --run N          apply validated repair rules
-    colharmonize preprocess --workspace DIR --store SQLITE        GEOmend evidence: concepts, merges, units
+    colharmonize preprocess --workspace DIR --store SQLITE --ontology DIR   GEOmend evidence: concepts, merges, units
     colharmonize candidates --workspace DIR --ontology DIR [--remote]
     colharmonize annotate apply --workspace DIR --runs 1 2      resolve, combine runs, write annotations
     colharmonize reconcile apply --workspace DIR --runs 1 2     partition groups, write final variables
@@ -176,7 +176,9 @@ def cmd_preprocess(args: argparse.Namespace) -> int:
     from colharmonize.ontology import Ontology
     from colharmonize.workspace import Workspace
     ws = Workspace(args.workspace)
-    onto = Ontology.from_dir(args.ontology) if args.ontology else Ontology.from_dir(ws.ontology_dir())
+    if args.ontology:   # preprocess runs before candidates, so it may be the first step to know the ontology
+        ws.remember(ontology=str(Path(args.ontology).resolve()))
+    onto = Ontology.from_dir(ws.ontology_dir())
     print(json.dumps(preprocess.run(ws, args.store, onto), indent=1))
     return 0
 

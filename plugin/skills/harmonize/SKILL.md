@@ -32,7 +32,7 @@ samples and columns it prints.
 
 ## 1b. Preprocess (GEOmend evidence)
 
-    colharmonize preprocess --workspace <workspace> --store <pinned store .sqlite>
+    colharmonize preprocess --workspace <workspace> --store <pinned store .sqlite> --ontology <pinned ontology dir>
 
 This collects what GEOmend can tell colharmonize, offline and with no model:
 lexical concept candidates from the pinned store, suggested merges between
