@@ -21,6 +21,9 @@ def test_ontology_store_opens_through_geomend(tiny, tmp_path):
     assert report["nodes"] == 7          # 8 terms, one deprecated; CURIE-less terms included
     assert report["edges"] == 1
     assert gb.store_node_count(out, name="tiny", version="1.0") == 7
+    from geomend.ontology import OntologyStore
+    nodes = list(OntologyStore(out).nodes())
+    assert nodes and all(n.iri and n.iri.startswith("http") for n in nodes)   # GEOmend 0.0.9 keeps source IRIs
     with pytest.raises(ValueError):      # GEOmend refuses the wrong release
         gb.store_node_count(out, name="tiny", version="2.0")
 

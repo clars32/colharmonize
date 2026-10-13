@@ -12,7 +12,7 @@ values paged with `mappings.field`. Decisions go back only as provider
 proposals (`transformations.propose_provider`), which GEOmend validates
 against actual values and keeps pending its own review.
 
-Pinned against geomend==0.0.8.
+Pinned against geomend==0.0.9.
 """
 from __future__ import annotations
 
@@ -33,9 +33,9 @@ from geomend.text import canonical_identifier, sha256_text, stable_json
 
 from colharmonize.ontology import Ontology
 
-GEOMEND_VERSION = "0.0.8"
+GEOMEND_VERSION = "0.0.9"
 PAGE = 200   # GEOmend's largest page
-STORE_PARSER_VERSION = "colharmonize-pinned-index-projection-1"
+STORE_PARSER_VERSION = "colharmonize-pinned-index-projection-2"   # 2: nodes carry source IRIs
 
 
 def build_ontology_store(
@@ -52,8 +52,10 @@ def build_ontology_store(
 
     Stored: non-deprecated classes under GEOmend's lowercase CURIEs
     (`efo:0000324`), exact and related synonyms (the store keeps no synonym
-    scope), and edges whose two ends are both stored. GEOmend's store keeps
-    CURIEs only; full IRIs stay in the pinned index, the authority for output.
+    scope), and edges whose two ends are both stored. Each node also carries
+    its full IRI from the pinned index (GEOmend 0.0.9), so GEOmend's concept
+    interchange names real EFO IRIs instead of placeholders. The pinned index
+    stays the authority for colharmonize's own output.
     """
     out = Path(out)
     terms = ontology.terms
@@ -78,7 +80,7 @@ def build_ontology_store(
             - {row.label}
         )
         nodes[node_id] = GraphNode(
-            id=node_id, label=row.label or node_id, definition=row.definition or None,
+            id=node_id, label=row.label or node_id, iri=row.iri, definition=row.definition or None,
             synonyms=synonyms, obsolete=False, replaced_by=[],
         )
 
