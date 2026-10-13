@@ -46,6 +46,8 @@ CHANGES = [
 
 
 def instructions() -> str:
+    if annotate.PROMPT_VERSION == PROMPT_VERSION:   # adopted 2026-10-12 (decisions log 15.10)
+        return annotate.INSTRUCTIONS
     text = annotate.INSTRUCTIONS
     for old, new in CHANGES:
         if text.count(old) != 1:

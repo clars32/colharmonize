@@ -183,14 +183,10 @@ Measure each on tuning first.
     decisions log 15.5): safe with a value guard, but it takes only about 10%
     of columns and saves about 5% of subagent calls. Not built; revisit for
     large corpora.
-13. **Annotator instructions, as annotate-3** (decisions log 14.4):
-    - Add a non-gene `object_class` example from neither corpus.
-    - Don't restate the primary term or name the study's disease.
-    - Qualifiers come only from the column name and values, not the study
-      summary.
-    - Prefer a whole-concept primary term (overall survival).
-
-    Settle the gold-convention questions in 14.4 with the owner.
+13. ~~**Annotator instructions, as annotate-3.**~~ Adopted 2026-10-12
+    (`eval/prompts/`, decisions log 15.10). On tuning, qualifier precision
+    rose from 72.1% to 87.7%, and nothing else fell. Still open for the owner:
+    the gold-convention questions in 14.4. Confirm on the next sealed corpus.
 14. **Duplicate title variables** (decisions log 14.2, 15.7). The
     value-based repair check was tested and rejected: it would drop a tuning
     subject ID and lose sealed information. **Ask the owner** whether the

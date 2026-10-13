@@ -870,3 +870,28 @@ Limits:
 Tested on a scratch copy of the end-to-end workspace: 6 proposals, all
 valid, and a rerun added nothing. A contract test covers validation, refusal
 and idempotence.
+
+### 15.10: annotate-3 adopted: qualifier precision 72% → 88% on tuning (`eval/prompts/`)
+Handoff task 13, pre-registered. The four instruction changes from 14.4:
+- qualifiers come from the column's name and values, never the study summary
+- a qualifier never restates the primary term, names the study's disease, or
+  describes the values
+- a cell-type `object_class` example
+- prefer a term for the whole concept as the primary
+
+All examples come from neither corpus. Two annotate-3 runs on tuning against
+the annotate-2 runs of record:
+
+| | annotate-2 | annotate-3 | Δ (95% CI over studies) |
+|---|---|---|---|
+| qualifier precision | 72.1% | 87.7% | +15.6 (+6.3 to +48.9) |
+| qualifier recall | 72.0% | 72.0% | 0.0 |
+| term and predicate | 70.8% | 71.4% | +0.6 |
+| pooling F1 | 80.0% | 81.8% | +1.8 |
+
+The pre-registered rule held: qualifier precision up, nothing else down
+past noise. annotate-3 is now the pipeline prompt.
+
+The sealed qualifier problem (13.1) came from survival endpoints and summary
+context, which tuning lacks. The next sealed corpus confirms or refutes the
+change. The gold-convention questions in 14.4 remain the owner's.

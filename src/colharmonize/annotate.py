@@ -29,7 +29,7 @@ from colharmonize.text import loose, same_meaning
 from colharmonize.workspace import Workspace
 
 STAGE = "annotate"
-PROMPT_VERSION = "annotate-2"
+PROMPT_VERSION = "annotate-3"
 MAX_VALUES = 15
 DEFINITION_CHARS = 180
 
@@ -84,10 +84,14 @@ For each column decide the following.
      unless a candidate is defined as exactly that kind of identifier.
 
 3. Qualifiers: what distinguishes this column from others with the same primary
-   term. Add only qualifiers the column actually carries.
+   term. Add only qualifiers the column itself carries: read them from its
+   name and its values. The study summary helps you understand a column, but
+   it is not a source of qualifiers. Never use a qualifier to restate the
+   primary term, to name the study's disease, or to describe the values.
    - subject: whose property it is, when not the sampled individual (mother, donor)
    - object_class: what the column is about when the primary term is general:
-     the gene in "TP53 expression", the lesion in "BRAF V600E status"
+     the gene in "TP53 expression", the lesion in "BRAF V600E status", the
+     cell type in "eosinophil percentage"
    - event_time_anchor: the reference event of a time, age or duration
      ("diagnosis", "death", "start of treatment")
    - method: how values were measured or classified, when that changes them
@@ -95,6 +99,9 @@ For each column decide the following.
    - unit: the unit of numeric values, from the name, the values, or the usual
      convention for such a measurement
    Use a candidate when one fits, otherwise write short text.
+   When a term exists for the whole concept, make it the primary term rather
+   than a general term with qualifiers: a waist circumference column takes
+   "waist circumference", not "circumference" with object_class "waist".
 
 4. A variable name as a careful curator would write it: "biological sex",
    "age at diagnosis", "TP53 expression (RT-qPCR)".
