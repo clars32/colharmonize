@@ -1,0 +1,9 @@
+accession	syndrome	samples	material	why
+GSE25634	trisomy 18	11	amniotic fluid (cell-free RNA)	karyotype in ISCN notation (47,XX,+18)
+GSE152001	sex chromosome aneuploidy	72	iPSC	karyotype as "XXY,47 KS"; donor names
+GSE103905	Klinefelter syndrome	22	testis	key misspelled "karytype"; age as 9y6m; fixative
+GSE126712	Klinefelter and Turner syndromes	70	blood, lymphoblastoid lines	karyotype under "chromosomes" (XXY, XO); individual IDs
+GSE89594	Williams syndrome	94	whole blood	"diagnosis" with ASD and WS; age; gender
+GSE63055	Williams syndrome / 7q11.23 duplication	57	iPSC	"genotype" (WBS, 7dupASD); donor; gender; library details
+GSE184790	22q11.2 deletion syndrome	19	T cells	"condition" and a key with a comma ("case, control")
+GSE202177	fragile X syndrome	42	leukocytes	"genotype" (FXS, TD); a "treatment" that describes isolation

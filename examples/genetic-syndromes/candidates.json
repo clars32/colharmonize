@@ -1,0 +1,3350 @@
+{
+ "sex chromosome aneuploidy": [
+  {
+   "acc": "GSE264742",
+   "n": 52,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025",
+   "title": "Isogenic hiPSC models of Turner syndrome development reveal shared roles of inactive X and Y in the human cranial neural crest network",
+   "superseries": false,
+   "profile": {
+    "n_samples": 52,
+    "channels": {
+     "1": 52
+    },
+    "keys": {
+     "cell line": {
+      "distinct": 11,
+      "top": [
+       [
+        "XY1",
+        9
+       ],
+       [
+        "XO1",
+        7
+       ],
+       [
+        "XX23",
+        4
+       ],
+       [
+        "XO2",
+        4
+       ],
+       [
+        "XO8",
+        4
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 1,
+      "top": [
+       [
+        "NCC",
+        52
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 6,
+      "top": [
+       [
+        "X1_femaleXO",
+        12
+       ],
+       [
+        "X3_maleXY",
+        9
+       ],
+       [
+        "X1_femaleXX",
+        8
+       ],
+       [
+        "X4_maleXY",
+        8
+       ],
+       [
+        "X4_maleXO",
+        8
+       ]
+      ]
+     },
+     "differentiation round": {
+      "distinct": 9,
+      "top": [
+       [
+        "A",
+        7
+       ],
+       [
+        "B",
+        7
+       ],
+       [
+        "C",
+        7
+       ],
+       [
+        "D",
+        7
+       ],
+       [
+        "F",
+        6
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE271780",
+   "n": 10,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2024",
+   "title": "Identification of apelin/APJ signaling dysregulation in a human iPSC-derived granulosa cell model of Turner syndrome",
+   "superseries": false,
+   "profile": {
+    "n_samples": 10,
+    "channels": {
+     "1": 10
+    },
+    "keys": {
+     "tissue": {
+      "distinct": 2,
+      "top": [
+       [
+        "fibroblast",
+        6
+       ],
+       [
+        "cumulus GC",
+        4
+       ]
+      ]
+     },
+     "cell line": {
+      "distinct": 2,
+      "top": [
+       [
+        "human iPSCs",
+        6
+       ],
+       [
+        "cumulus GC",
+        4
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 2,
+      "top": [
+       [
+        "iPSC-derived GC",
+        6
+       ],
+       [
+        "cumulus GC",
+        4
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 2,
+      "top": [
+       [
+        "Normal 46XX",
+        6
+       ],
+       [
+        "Aneupoidy 45X",
+        4
+       ]
+      ]
+     },
+     "treatment": {
+      "distinct": 3,
+      "top": [
+       [
+        "Disease",
+        4
+       ],
+       [
+        "Normal",
+        4
+       ],
+       [
+        "Control",
+        2
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE239758",
+   "n": 12,
+   "type": "Expression profiling by array; Non-coding RNA profiling by array",
+   "pdat": "2023",
+   "title": "The mRNA-lncRNA-circRNA network profiling of Turner syndrome patient-derived induced pluripotent stem cells and their derived cardiomyocytes",
+   "superseries": false,
+   "profile": {
+    "n_samples": 12,
+    "channels": {
+     "1": 12
+    },
+    "keys": {
+     "disease": {
+      "distinct": 2,
+      "top": [
+       [
+        "WT",
+        6
+       ],
+       [
+        "Turner syndrome (TS)",
+        6
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 2,
+      "top": [
+       [
+        "iPSC",
+        6
+       ],
+       [
+        "cardiomyocytes (CMs)",
+        6
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE220268",
+   "n": 45,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2023",
+   "title": "Identification of a transcriptomic signature of X chromosome overdosage in  Saudi Klinefelter syndrome iPSCs.",
+   "superseries": false,
+   "profile": {
+    "n_samples": 45,
+    "channels": {
+     "1": 45
+    },
+    "keys": {
+     "cell type": {
+      "distinct": 1,
+      "top": [
+       [
+        "human induced pluripotent stem cell",
+        45
+       ]
+      ]
+     },
+     "karyotype": {
+      "distinct": 2,
+      "top": [
+       [
+        "XXY,47 KS",
+        36
+       ],
+       [
+        "XY,46",
+        9
+       ]
+      ]
+     },
+     "name in the manuscript": {
+      "distinct": 15,
+      "top": [
+       [
+        "HC #C or XY#C",
+        3
+       ],
+       [
+        "HC #A or XY#A",
+        3
+       ],
+       [
+        "HC #B or XY#B",
+        3
+       ],
+       [
+        "KS3#A",
+        3
+       ],
+       [
+        "KS4#B",
+        3
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE200680",
+   "n": 20,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2022",
+   "title": "Transcriptomic differences between fibrotic and non-fibrotic testicular tissue reveal possible key players in Klinefelter syndrome-related testicular fibrosis",
+   "superseries": false,
+   "profile": {
+    "n_samples": 20,
+    "channels": {
+     "1": 20
+    },
+    "keys": {
+     "tissue": {
+      "distinct": 1,
+      "top": [
+       [
+        "testis",
+        20
+       ]
+      ]
+     },
+     "fibrosis status": {
+      "distinct": 2,
+      "top": [
+       [
+        "Fibrotic tissue",
+        10
+       ],
+       [
+        "Non-fibrotic tissue",
+        10
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE152001",
+   "n": 72,
+   "type": "Expression profiling by high throughput sequencing; Other",
+   "pdat": "2022",
+   "title": "Pseudoautosomal region 1 overdosage affects the global transcriptome in iPSCs from patients with Klinefelter syndrome and high-grade X chromosome aneuploidies",
+   "superseries": false,
+   "profile": {
+    "n_samples": 72,
+    "channels": {
+     "1": 72
+    },
+    "keys": {
+     "cell type": {
+      "distinct": 1,
+      "top": [
+       [
+        "human induced pluripotent stem cell",
+        72
+       ]
+      ]
+     },
+     "karyotype": {
+      "distinct": 5,
+      "top": [
+       [
+        "XXY,47 KS",
+        35
+       ],
+       [
+        "XY,46",
+        18
+       ],
+       [
+        "XXXXY,49 KS",
+        8
+       ],
+       [
+        "XX,46",
+        7
+       ],
+       [
+        "XXXY,48 KS",
+        4
+       ]
+      ]
+     },
+     "name in the manuscript": {
+      "distinct": 23,
+      "top": [
+       [
+        "HM #B",
+        4
+       ],
+       [
+        "KS6 #A",
+        4
+       ],
+       [
+        "KS3 #A",
+        4
+       ],
+       [
+        "KS4 #E",
+        4
+       ],
+       [
+        "KS5 #A",
+        4
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE126712",
+   "n": 70,
+   "type": "Expression profiling by high throughput sequencing; Methylation profiling by high throughput sequencing; Other",
+   "pdat": "2020",
+   "title": "Comparative and integrated functional genomics analysis of Klinefelter and Turner syndromes reveals network-wide effects of the sex chromosome dosage changes",
+   "superseries": false,
+   "profile": {
+    "n_samples": 70,
+    "channels": {
+     "1": 70
+    },
+    "keys": {
+     "individual": {
+      "distinct": 54,
+      "top": [
+       [
+        "14465",
+        2
+       ],
+       [
+        "15190",
+        2
+       ],
+       [
+        "15938",
+        2
+       ],
+       [
+        "18076",
+        2
+       ],
+       [
+        "18467",
+        2
+       ]
+      ]
+     },
+     "chromosomes": {
+      "distinct": 4,
+      "top": [
+       [
+        "XX",
+        18
+       ],
+       [
+        "XXY",
+        18
+       ],
+       [
+        "XO",
+        17
+       ],
+       [
+        "XY",
+        17
+       ]
+      ]
+     },
+     "tissue": {
+      "distinct": 1,
+      "top": [
+       [
+        "blood",
+        66
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 2,
+      "top": [
+       [
+        "primary lymphocytes",
+        66
+       ],
+       [
+        "lymphoblastoid cell",
+        4
+       ]
+      ]
+     },
+     "cell line": {
+      "distinct": 4,
+      "top": [
+       [
+        "GM23916",
+        1
+       ],
+       [
+        "GM17879",
+        1
+       ],
+       [
+        "GM12878",
+        1
+       ],
+       [
+        "ID00016",
+        1
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE103905",
+   "n": 22,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2018",
+   "title": "Transcriptome analysis of adult Klinefelter testis tissue samples compared to controls",
+   "superseries": false,
+   "profile": {
+    "n_samples": 22,
+    "channels": {
+     "1": 22
+    },
+    "keys": {
+     "tissue": {
+      "distinct": 1,
+      "top": [
+       [
+        "Testis",
+        22
+       ]
+      ]
+     },
+     "age of patient": {
+      "distinct": 21,
+      "top": [
+       [
+        "9y6m",
+        2
+       ],
+       [
+        "21y7m",
+        1
+       ],
+       [
+        "27y7m",
+        1
+       ],
+       [
+        "28y7m",
+        1
+       ],
+       [
+        "32y0m",
+        1
+       ]
+      ]
+     },
+     "karytype": {
+      "distinct": 5,
+      "top": [
+       [
+        "46,XY",
+        9
+       ],
+       [
+        "Unknown",
+        5
+       ],
+       [
+        "Known patient with Klinefelter syndrome",
+        4
+       ],
+       [
+        "47,XXY",
+        3
+       ],
+       [
+        "Two copies of SHOX",
+        1
+       ]
+      ]
+     },
+     "fixative": {
+      "distinct": 4,
+      "top": [
+       [
+        "GR-fix",
+        13
+       ],
+       [
+        "Stieve",
+        5
+       ],
+       [
+        "Cleland",
+        3
+       ],
+       [
+        "Bouin",
+        1
+       ]
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "autosomal trisomy (not 21)": [
+  {
+   "acc": "GSE114559",
+   "n": 101,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2018",
+   "title": "Human blastocysts of normal and abnormal karyotypes display distinct transcriptome profiles: an analysis of every mono and trisomy",
+   "superseries": false,
+   "profile": {
+    "n_samples": 101,
+    "channels": {
+     "1": 101
+    },
+    "keys": {
+     "tissue": {
+      "distinct": 1,
+      "top": [
+       [
+        "blastocyst",
+        101
+       ]
+      ]
+     },
+     "genotype/variation": {
+      "distinct": 48,
+      "top": [
+       [
+        "Normal",
+        5
+       ],
+       [
+        "Trisomy 15",
+        5
+       ],
+       [
+        "Trisomy 18",
+        3
+       ],
+       [
+        "Trisomy 21",
+        3
+       ],
+       [
+        "Trisomy 3",
+        3
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE65055",
+   "n": 23,
+   "type": "Expression profiling by array",
+   "pdat": "2015",
+   "title": "Expression data from euploid and trisomic 13, 18 and 21 human fetal cells",
+   "superseries": false,
+   "profile": {
+    "n_samples": 23,
+    "channels": {
+     "1": 23
+    },
+    "keys": {
+     "genotype/variation": {
+      "distinct": 4,
+      "top": [
+       [
+        "control",
+        14
+       ],
+       [
+        "trisomy 21",
+        5
+       ],
+       [
+        "trisomy 18",
+        2
+       ],
+       [
+        "trisomy 13",
+        2
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 2,
+      "top": [
+       [
+        "amniocytes",
+        13
+       ],
+       [
+        "chorionic villi (fibroblasts)",
+        10
+       ]
+      ]
+     },
+     "Sex": {
+      "distinct": 2,
+      "top": [
+       [
+        "female",
+        12
+       ],
+       [
+        "male",
+        11
+       ]
+      ]
+     },
+     "gestational age (weeks of gestation)": {
+      "distinct": 12,
+      "top": [
+       [
+        "12",
+        6
+       ],
+       [
+        "16",
+        3
+       ],
+       [
+        "13",
+        3
+       ],
+       [
+        "15",
+        2
+       ],
+       [
+        "22",
+        2
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE70102",
+   "n": 20,
+   "type": "Expression profiling by array",
+   "pdat": "2015",
+   "title": "Placental Transcriptomes in the Common Aneuploidies Reveal Critical Regions on the Trisomic Chromosomes and Genome-Wide Effects",
+   "superseries": false,
+   "profile": {
+    "n_samples": 20,
+    "channels": {
+     "1": 20
+    },
+    "keys": {
+     "tissue": {
+      "distinct": 1,
+      "top": [
+       [
+        "maternal fetal interface",
+        20
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 4,
+      "top": [
+       [
+        "trisomy 21",
+        8
+       ],
+       [
+        "trisomy 13",
+        4
+       ],
+       [
+        "trisomy 18",
+        4
+       ],
+       [
+        "euploid",
+        4
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE25634",
+   "n": 11,
+   "type": "Expression profiling by array",
+   "pdat": "2010",
+   "title": "Expression profiles of amniotic fluid from human fetuses with Trisomy 18 and euploid controls",
+   "superseries": false,
+   "profile": {
+    "n_samples": 11,
+    "channels": {
+     "1": 11
+    },
+    "keys": {
+     "rna source": {
+      "distinct": 1,
+      "top": [
+       [
+        "cell free mRNA from second trimester amniotic fluid",
+        11
+       ]
+      ]
+     },
+     "karyotype": {
+      "distinct": 2,
+      "top": [
+       [
+        "46,XX",
+        6
+       ],
+       [
+        "47,XX,+18",
+        5
+       ]
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "22q11.2 deletion": [
+  {
+   "acc": "GSE250482",
+   "n": 10,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025",
+   "title": "Forebrain assembloids support the development of fast-spiking human PVALB+ cortical interneurons and uncover schizophrenia-associated defects.",
+   "superseries": false,
+   "profile": {
+    "n_samples": 10,
+    "channels": {
+     "1": 10
+    },
+    "keys": {
+     "tissue": {
+      "distinct": 1,
+      "top": [
+       [
+        "Organoid",
+        10
+       ]
+      ]
+     },
+     "cell line": {
+      "distinct": 1,
+      "top": [
+       [
+        "MEL-1",
+        10
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 1,
+      "top": [
+       [
+        "progenitors and neurons",
+        10
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 3,
+      "top": [
+       [
+        "WT",
+        6
+       ],
+       [
+        "22q11.2 deletion",
+        2
+       ],
+       [
+        "15q13.3 deletion",
+        2
+       ]
+      ]
+     },
+     "treatment": {
+      "distinct": 1,
+      "top": [
+       [
+        "none",
+        10
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE236596",
+   "n": 12,
+   "type": "Expression profiling by high throughput sequencing; Non-coding RNA profiling by high throughput sequencing",
+   "pdat": "2025",
+   "title": "An antisense oligonucleotide-based strategy to ameliorate cognitive dysfunction in the 22q11.2 Deletion Syndrome",
+   "superseries": false,
+   "profile": {
+    "n_samples": 12,
+    "channels": {
+     "1": 12
+    },
+    "keys": {
+     "tissue": {
+      "distinct": 1,
+      "top": [
+       [
+        "hiPSC-derived cortical neurons",
+        12
+       ]
+      ]
+     },
+     "cell line": {
+      "distinct": 2,
+      "top": [
+       [
+        "Q5",
+        6
+       ],
+       [
+        "Q6",
+        6
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 1,
+      "top": [
+       [
+        "hiPSC-derived cortical neurons",
+        12
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 2,
+      "top": [
+       [
+        "Wild type",
+        6
+       ],
+       [
+        "22q11.2DS/SCZ",
+        6
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE196578",
+   "n": 16,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025",
+   "title": "BulkRNA Sequencing of human induced pluripotent stem cells derived cardiac progenitors (hiPSC-CPs) from healthy control, tetralogy of Fallot (TOF) patients with DiGeorge Syndrome (DG) and without DiGeorge Syndrome (ND)",
+   "superseries": false,
+   "profile": {
+    "n_samples": 16,
+    "channels": {
+     "1": 16
+    },
+    "keys": {
+     "cell type": {
+      "distinct": 1,
+      "top": [
+       [
+        "hiPSC",
+        16
+       ]
+      ]
+     },
+     "heart condition": {
+      "distinct": 2,
+      "top": [
+       [
+        "healthy",
+        8
+       ],
+       [
+        "TOF",
+        8
+       ]
+      ]
+     },
+     "clinically verifed with digeorge syndrome": {
+      "distinct": 1,
+      "top": [
+       [
+        "Yes",
+        16
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE244010",
+   "n": 26,
+   "type": "Expression profiling by high throughput sequencing; Non-coding RNA profiling by high throughput sequencing",
+   "pdat": "2024",
+   "title": "Aberrant pace of cortical neuron development in brain organoids from patients with 22q11.2 deletion syndrome and schizophrenia.",
+   "superseries": false,
+   "profile": {
+    "n_samples": 26,
+    "channels": {
+     "1": 26
+    },
+    "keys": {
+     "tissue": {
+      "distinct": 1,
+      "top": [
+       [
+        "iPSC-derived cerebral organoid",
+        26
+       ]
+      ]
+     },
+     "cell line": {
+      "distinct": 8,
+      "top": [
+       [
+        "Q2",
+        4
+       ],
+       [
+        "Q1",
+        4
+       ],
+       [
+        "Q5",
+        4
+       ],
+       [
+        "Q6",
+        4
+       ],
+       [
+        "QR20",
+        4
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 1,
+      "top": [
+       [
+        "mixed, iPSC-derived cerebral organoid",
+        26
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 2,
+      "top": [
+       [
+        "Wild type",
+        13
+       ],
+       [
+        "22q11.2DS",
+        13
+       ]
+      ]
+     },
+     "treatment": {
+      "distinct": 4,
+      "top": [
+       [
+        "AAV-SYN-GFP",
+        8
+       ],
+       [
+        "70DIV cerebral organoid",
+        6
+       ],
+       [
+        "150DIV cerebral organoid",
+        6
+       ],
+       [
+        "70DIV IPSC derived cerebral organoid",
+        6
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE244005",
+   "n": 12,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2024",
+   "title": "Aberrant pace of cortical neuron development in brain organoids from patients with 22q11.2 deletion syndrome and schizophrenia. [scRNA-Seq]",
+   "superseries": false,
+   "profile": {
+    "n_samples": 12,
+    "channels": {
+     "1": 12
+    },
+    "keys": {
+     "tissue": {
+      "distinct": 1,
+      "top": [
+       [
+        "iPSC-derived cerebral organoid",
+        12
+       ]
+      ]
+     },
+     "cell line": {
+      "distinct": 6,
+      "top": [
+       [
+        "Q2",
+        2
+       ],
+       [
+        "Q1",
+        2
+       ],
+       [
+        "Q5",
+        2
+       ],
+       [
+        "Q6",
+        2
+       ],
+       [
+        "QR20",
+        2
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 1,
+      "top": [
+       [
+        "mixed, iPSC-derived cerebral organoid",
+        12
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 2,
+      "top": [
+       [
+        "Wild type",
+        6
+       ],
+       [
+        "22q11.2DS",
+        6
+       ]
+      ]
+     },
+     "treatment": {
+      "distinct": 2,
+      "top": [
+       [
+        "70DIV cerebral organoid",
+        6
+       ],
+       [
+        "150DIV cerebral organoid",
+        6
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE245719",
+   "n": 13,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2024",
+   "title": "Thalamocortical organoids reveal axonogenesis phenotypes of 22q11.2 microdeletion [scRNA-seq]",
+   "superseries": false,
+   "profile": {
+    "n_samples": 13,
+    "channels": {
+     "1": 13
+    },
+    "keys": {
+     "tissue": {
+      "distinct": 3,
+      "top": [
+       [
+        "Thalamic and Cortical Organoids",
+        7
+       ],
+       [
+        "Cortical Organoid",
+        4
+       ],
+       [
+        "Thalamic Organoid",
+        2
+       ]
+      ]
+     },
+     "age": {
+      "distinct": 1,
+      "top": [
+       [
+        "week 10",
+        13
+       ]
+      ]
+     },
+     "cell line": {
+      "distinct": 10,
+      "top": [
+       [
+        "1323-4, 28126, 3577-3, 5401-35, 6OC2",
+        4
+       ],
+       [
+        "3577-3, 5401-35, 28126",
+        1
+       ],
+       [
+        "3577-3, 5401-35, 28126, 28815",
+        1
+       ],
+       [
+        "28126, 3577-3, 5401-35, 6OC2",
+        1
+       ],
+       [
+        "1323-4",
+        1
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 1,
+      "top": [
+       [
+        "neural cells",
+        13
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 1,
+      "top": [
+       [
+        "22q11 deletion and control lines",
+        13
+       ]
+      ]
+     },
+     "treatment": {
+      "distinct": 1,
+      "top": [
+       [
+        "none",
+        13
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE186293",
+   "n": 18,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2023",
+   "title": "Transcriptomic profiling of human induced pluripotent stem cells derived cardiomyocytes (hiPSC-CMs) and cardiac progentiors (hiPSC-CPs) from tetralogy of Fallot (TOF) patients with DiGeorge Syndrome (DG) and without DiGeorge Syndrome (ND)",
+   "superseries": false,
+   "profile": {
+    "n_samples": 18,
+    "channels": {
+     "1": 18
+    },
+    "keys": {
+     "day post differentiation": {
+      "distinct": 4,
+      "top": [
+       [
+        "22",
+        6
+       ],
+       [
+        "7",
+        4
+       ],
+       [
+        "8",
+        4
+       ],
+       [
+        "11",
+        4
+       ]
+      ]
+     },
+     "disease state": {
+      "distinct": 3,
+      "top": [
+       [
+        "healthy",
+        8
+       ],
+       [
+        "TOF-DG",
+        5
+       ],
+       [
+        "TOF-ND",
+        5
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 2,
+      "top": [
+       [
+        "hiPSC-CPs",
+        12
+       ],
+       [
+        "hiPSC-CMs",
+        6
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE184790",
+   "n": 19,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2022",
+   "title": "T cell transriptome in chromosome 22q11.2 deletion syndrome",
+   "superseries": false,
+   "profile": {
+    "n_samples": 19,
+    "channels": {
+     "1": 19
+    },
+    "keys": {
+     "tissue": {
+      "distinct": 1,
+      "top": [
+       [
+        "Peripheral blood T cells",
+        19
+       ]
+      ]
+     },
+     "condition": {
+      "distinct": 2,
+      "top": [
+       [
+        "22q11.2 Deletion Syndrome",
+        13
+       ],
+       [
+        "Healthy Control",
+        6
+       ]
+      ]
+     },
+     "case, control": {
+      "distinct": 2,
+      "top": [
+       [
+        "Case",
+        13
+       ],
+       [
+        "Control",
+        6
+       ]
+      ]
+     },
+     "t cell number": {
+      "distinct": 3,
+      "top": [
+       [
+        "Low",
+        7
+       ],
+       [
+        "Normal",
+        6
+       ],
+       [
+        "Control",
+        6
+       ]
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "Williams syndrome": [
+  {
+   "acc": "GSE285666",
+   "n": 52,
+   "type": "Expression profiling by array",
+   "pdat": "2025",
+   "title": "Exon- and gene-Level transcriptional profiling in Lymphoblastoid Cell Lines (LCLs) from Williams syndrome patients and controls",
+   "superseries": false,
+   "profile": {
+    "n_samples": 52,
+    "channels": {
+     "1": 52
+    },
+    "keys": {
+     "disease state": {
+      "distinct": 2,
+      "top": [
+       [
+        "Williams syndrome patient",
+        34
+       ],
+       [
+        "unaffected parental control",
+        18
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE261692",
+   "n": 33,
+   "type": "Other; Expression profiling by high throughput sequencing",
+   "pdat": "2024",
+   "title": "7q11.23 CNV alters ribosomal biogenesis, mTOR and neuronal intrinsic excitability",
+   "superseries": false,
+   "profile": {
+    "n_samples": 33,
+    "channels": {
+     "1": 33
+    },
+    "keys": {
+     "cell line": {
+      "distinct": 12,
+      "top": [
+       [
+        "isoWBS",
+        12
+       ],
+       [
+        "isoCTL",
+        6
+       ],
+       [
+        "isoDup (242K)",
+        6
+       ],
+       [
+        "242K",
+        1
+       ],
+       [
+        "306O",
+        1
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 1,
+      "top": [
+       [
+        "Ngn2 iNeurons",
+        33
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 3,
+      "top": [
+       [
+        "WBS",
+        15
+       ],
+       [
+        "CTL",
+        10
+       ],
+       [
+        "7Dup",
+        8
+       ]
+      ]
+     },
+     "model": {
+      "distinct": 2,
+      "top": [
+       [
+        "Isogenic",
+        24
+       ],
+       [
+        "Patient-derived",
+        9
+       ]
+      ]
+     },
+     "group": {
+      "distinct": 3,
+      "top": [
+       [
+        "patientDerived",
+        9
+       ],
+       [
+        "isogenic",
+        9
+       ],
+       [
+        "REST",
+        6
+       ]
+      ]
+     },
+     "treatment": {
+      "distinct": 2,
+      "top": [
+       [
+        "REST inhibitor X5050",
+        3
+       ],
+       [
+        "DMSO",
+        3
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE261691",
+   "n": 24,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2024",
+   "title": "7q11.23 CNV alters ribosomal biogenesis, mTOR and neuronal intrinsic excitability [RNA-seq]",
+   "superseries": false,
+   "profile": {
+    "n_samples": 24,
+    "channels": {
+     "1": 24
+    },
+    "keys": {
+     "cell line": {
+      "distinct": 12,
+      "top": [
+       [
+        "isoWBS",
+        9
+       ],
+       [
+        "isoCTL",
+        3
+       ],
+       [
+        "isoDup (242K)",
+        3
+       ],
+       [
+        "242K",
+        1
+       ],
+       [
+        "306O",
+        1
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 1,
+      "top": [
+       [
+        "Ngn2 iNeurons",
+        24
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 3,
+      "top": [
+       [
+        "WBS",
+        12
+       ],
+       [
+        "CTL",
+        7
+       ],
+       [
+        "7Dup",
+        5
+       ]
+      ]
+     },
+     "model": {
+      "distinct": 2,
+      "top": [
+       [
+        "Isogenic",
+        15
+       ],
+       [
+        "Patient-derived",
+        9
+       ]
+      ]
+     },
+     "group": {
+      "distinct": 3,
+      "top": [
+       [
+        "patientDerived",
+        9
+       ],
+       [
+        "isogenic",
+        9
+       ],
+       [
+        "REST",
+        6
+       ]
+      ]
+     },
+     "treatment": {
+      "distinct": 2,
+      "top": [
+       [
+        "REST inhibitor X5050",
+        3
+       ],
+       [
+        "DMSO",
+        3
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE128841",
+   "n": 18,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2019",
+   "title": "Neuronal deletion of Gtf2i, associated with Williams syndrome, causes behavioural and myelin alterations rescuable by a remyelinating drug",
+   "superseries": false,
+   "profile": {
+    "n_samples": 18,
+    "channels": {
+     "1": 18
+    },
+    "keys": {
+     "strain/background": {
+      "distinct": 1,
+      "top": [
+       [
+        "C57BL/6",
+        12
+       ]
+      ]
+     },
+     "genotype/variation": {
+      "distinct": 2,
+      "top": [
+       [
+        "Gtf2i (f/f)NexCre(-/-)",
+        6
+       ],
+       [
+        "Gtf2i (f/f)NexCre(+/-)",
+        6
+       ]
+      ]
+     },
+     "tissue": {
+      "distinct": 2,
+      "top": [
+       [
+        "Whole cortex",
+        12
+       ],
+       [
+        "Frontal cortex",
+        6
+       ]
+      ]
+     },
+     "age": {
+      "distinct": 5,
+      "top": [
+       [
+        "Postnatal day 1",
+        6
+       ],
+       [
+        "Postnatal day 30",
+        6
+       ],
+       [
+        "34",
+        2
+       ],
+       [
+        "42",
+        2
+       ],
+       [
+        "17",
+        2
+       ]
+      ]
+     },
+     "disease status": {
+      "distinct": 2,
+      "top": [
+       [
+        "Control",
+        3
+       ],
+       [
+        "Williams syndrome",
+        3
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE89594",
+   "n": 94,
+   "type": "Expression profiling by array",
+   "pdat": "2018",
+   "title": "Integrated network analysis reveals genotype-phenotype correlations in Williams syndrome",
+   "superseries": false,
+   "profile": {
+    "n_samples": 94,
+    "channels": {
+     "1": 94
+    },
+    "keys": {
+     "diagnosis": {
+      "distinct": 3,
+      "top": [
+       [
+        "autism spectrum disorder (ASD)",
+        32
+       ],
+       [
+        "Williams Syndrome (WS)",
+        32
+       ],
+       [
+        "control",
+        30
+       ]
+      ]
+     },
+     "tissue": {
+      "distinct": 1,
+      "top": [
+       [
+        "whole blood",
+        94
+       ]
+      ]
+     },
+     "age": {
+      "distinct": 29,
+      "top": [
+       [
+        "24y",
+        12
+       ],
+       [
+        "21y",
+        10
+       ],
+       [
+        "22y",
+        9
+       ],
+       [
+        "20y",
+        7
+       ],
+       [
+        "23y",
+        5
+       ]
+      ]
+     },
+     "gender": {
+      "distinct": 2,
+      "top": [
+       [
+        "female",
+        47
+       ],
+       [
+        "male",
+        47
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE71664",
+   "n": 33,
+   "type": "Expression profiling by array",
+   "pdat": "2016",
+   "title": "Haploinsufficiency of BAZ1B contributes to Williams syndrome through transcriptional dysregulation of neurodevelopmental pathways",
+   "superseries": false,
+   "profile": {
+    "n_samples": 33,
+    "channels": {
+     "1": 33
+    },
+    "keys": {
+     "cell type": {
+      "distinct": 3,
+      "top": [
+       [
+        "Induced neuron",
+        12
+       ],
+       [
+        "Induced pluripotent stem cells",
+        12
+       ],
+       [
+        "ReNcell",
+        9
+       ]
+      ]
+     },
+     "individual or treatment": {
+      "distinct": 7,
+      "top": [
+       [
+        "Williams syndrome 1",
+        6
+       ],
+       [
+        "Williams syndrome 2",
+        6
+       ],
+       [
+        "Control 1",
+        6
+       ],
+       [
+        "Control 2",
+        6
+       ],
+       [
+        "Undifferentiated",
+        3
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE63058",
+   "n": 139,
+   "type": "Expression profiling by array; Expression profiling by high throughput sequencing; Genome variation profiling by SNP array; Genome binding/occupancy profiling by high throughput sequencing",
+   "pdat": "2014",
+   "title": "7q11.23 dosage-dependent dysregulation in the human pluripotent state primes aberrant transcriptional programs in disease-relevant lineages",
+   "superseries": false,
+   "profile": {
+    "n_samples": 139,
+    "channels": {
+     "1": 139
+    },
+    "keys": {
+     "gender": {
+      "distinct": 2,
+      "top": [
+       [
+        "female",
+        75
+       ],
+       [
+        "male",
+        64
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 4,
+      "top": [
+       [
+        "WBS",
+        51
+       ],
+       [
+        "Control",
+        41
+       ],
+       [
+        "7dupASD",
+        31
+       ],
+       [
+        "AtWBS",
+        16
+       ]
+      ]
+     },
+     "donor": {
+      "distinct": 11,
+      "top": [
+       [
+        "GDB-339-1",
+        26
+       ],
+       [
+        "GDB-192",
+        16
+       ],
+       [
+        "GDB-242",
+        15
+       ],
+       [
+        "GDB-306",
+        14
+       ],
+       [
+        "GDB-339",
+        14
+       ]
+      ]
+     },
+     "culture": {
+      "distinct": 4,
+      "top": [
+       [
+        "Single-cell culture",
+        27
+       ],
+       [
+        "iPSC colonies were grown on feeder-free conditions on plates coated with human-qualified Matrigel (BD Biosciences) diluted 1:40 in DMEM-F12 and in mTeSR-1 (StemCell Technologies) medium.",
+        26
+       ],
+       [
+        "Colonies in feeder-free condition",
+        21
+       ],
+       [
+        "Fibroblasts were grown in HF medium (RPMI 1640, 1% L-Glutamine, 1% Pen-Strep, 15% FBS).",
+        8
+       ]
+      ]
+     },
+     "reprogramming method": {
+      "distinct": 3,
+      "top": [
+       [
+        "mRNA reprogramming",
+        25
+       ],
+       [
+        "none",
+        8
+       ],
+       [
+        "Reprogramming using excisable OKSM Lentivirus, followed by CRE-mediated excision.",
+        1
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 4,
+      "top": [
+       [
+        "fibroblast-derived iPSC",
+        26
+       ],
+       [
+        "Neural Progenitor Cells (NPC), iPSC-derived",
+        15
+       ],
+       [
+        "Neural Crest Stem Cells (NCSC), iPSC-derived",
+        11
+       ],
+       [
+        "primary skin fibroblast",
+        8
+       ]
+      ]
+     },
+     "spike-in": {
+      "distinct": 3,
+      "top": [
+       [
+        "ERCC ExFold mix 2",
+        27
+       ],
+       [
+        "ERCC ExFold mix 1",
+        16
+       ],
+       [
+        "none",
+        14
+       ]
+      ]
+     },
+     "library-type": {
+      "distinct": 2,
+      "top": [
+       [
+        "unstranded 100bp PE reads",
+        34
+       ],
+       [
+        "stranded 51bp PE reads",
+        23
+       ]
+      ]
+     },
+     "chip antibody": {
+      "distinct": 6,
+      "top": [
+       [
+        "GTF2I (Bethyl A301-330A)",
+        13
+       ],
+       [
+        "none",
+        5
+       ],
+       [
+        "GTF2I (Cell Signalling 4562S)",
+        1
+       ],
+       [
+        "GTF2I (Santa Cruz SC9943)",
+        1
+       ],
+       [
+        "KDM1A (Abcam AB17721)",
+        1
+       ]
+      ]
+     },
+     "flowcell id": {
+      "distinct": 6,
+      "top": [
+       [
+        "C3PJ5ACXX",
+        8
+       ],
+       [
+        "C26CLACXX, C1ULAACXX",
+        5
+       ],
+       [
+        "D2B9EACXX",
+        4
+       ],
+       [
+        "D21AKACXX",
+        2
+       ],
+       [
+        "D2BJHACXX",
+        2
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE63055",
+   "n": 57,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2014",
+   "title": "7q11.23 dosage-dependent dysregulation in the human pluripotent state primes aberrant transcriptional programs in disease-relevant lineages (RNAseq)",
+   "superseries": false,
+   "profile": {
+    "n_samples": 57,
+    "channels": {
+     "1": 57
+    },
+    "keys": {
+     "genotype": {
+      "distinct": 4,
+      "top": [
+       [
+        "WBS",
+        23
+       ],
+       [
+        "7dupASD",
+        13
+       ],
+       [
+        "Control",
+        13
+       ],
+       [
+        "AtWBS",
+        8
+       ]
+      ]
+     },
+     "donor": {
+      "distinct": 10,
+      "top": [
+       [
+        "GDB-Cf",
+        8
+       ],
+       [
+        "GDB-192",
+        8
+       ],
+       [
+        "GDB-306",
+        7
+       ],
+       [
+        "GDB-339-1",
+        7
+       ],
+       [
+        "GDB-339",
+        6
+       ]
+      ]
+     },
+     "gender": {
+      "distinct": 2,
+      "top": [
+       [
+        "female",
+        30
+       ],
+       [
+        "male",
+        27
+       ]
+      ]
+     },
+     "culture": {
+      "distinct": 2,
+      "top": [
+       [
+        "Single-cell culture",
+        27
+       ],
+       [
+        "Colonies in feeder-free condition",
+        21
+       ]
+      ]
+     },
+     "spike-in": {
+      "distinct": 3,
+      "top": [
+       [
+        "ERCC ExFold mix 2",
+        27
+       ],
+       [
+        "ERCC ExFold mix 1",
+        16
+       ],
+       [
+        "none",
+        14
+       ]
+      ]
+     },
+     "library-type": {
+      "distinct": 2,
+      "top": [
+       [
+        "unstranded 100bp PE reads",
+        34
+       ],
+       [
+        "stranded 51bp PE reads",
+        23
+       ]
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "fragile X": [
+  {
+   "acc": "GSE296077",
+   "n": 10,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025",
+   "title": "Metabolic Reprogramming during Human Neuron Differentiation Identifies Glutaminase as a Key Determinant in Fragile X Syndrome",
+   "superseries": false,
+   "profile": {
+    "n_samples": 10,
+    "channels": {
+     "1": 10
+    },
+    "keys": {
+     "tissue region": {
+      "distinct": 1,
+      "top": [
+       [
+        "frontal cortex",
+        10
+       ]
+      ]
+     },
+     "tissue": {
+      "distinct": 1,
+      "top": [
+       [
+        "Brain",
+        10
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 2,
+      "top": [
+       [
+        "WT",
+        5
+       ],
+       [
+        "FXS",
+        5
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE278697",
+   "n": 13,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025",
+   "title": "m6A-mediated epi-transcriptomic dysregulation underlies synaptic dysfunction in fragile X syndrome [RNA-seq]",
+   "superseries": false,
+   "profile": {
+    "n_samples": 13,
+    "channels": {
+     "1": 13
+    },
+    "keys": {
+     "cell line": {
+      "distinct": 1,
+      "top": [
+       [
+        "iPS",
+        13
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 1,
+      "top": [
+       [
+        "iPS-derived cortical neuron",
+        13
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 2,
+      "top": [
+       [
+        "FMR1 CGG repeats is 30",
+        7
+       ],
+       [
+        "FMR1 CGG repeats is over 200",
+        6
+       ]
+      ]
+     },
+     "disease state": {
+      "distinct": 2,
+      "top": [
+       [
+        "healthy",
+        7
+       ],
+       [
+        "fragile X syndrome",
+        6
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE218680",
+   "n": 172,
+   "type": "Genome binding/occupancy profiling by high throughput sequencing; Expression profiling by high throughput sequencing; Other",
+   "pdat": "2023",
+   "title": "Spatially coordinated heterochromatinization of long synaptic genes in fragile X syndrome",
+   "superseries": false,
+   "profile": {
+    "n_samples": 172,
+    "channels": {
+     "1": 172
+    },
+    "keys": {
+     "cell type": {
+      "distinct": 4,
+      "top": [
+       [
+        "iPSC",
+        107
+       ],
+       [
+        "iPSC derived NPC",
+        45
+       ],
+       [
+        "B-lymphocytes",
+        12
+       ],
+       [
+        "Patient-derived post-mortem brain tissue from caudate nucleus",
+        8
+       ]
+      ]
+     },
+     "antibody": {
+      "distinct": 5,
+      "top": [
+       [
+        "Abcam ab8898",
+        43
+       ],
+       [
+        "Sigma I8140",
+        43
+       ],
+       [
+        "MIllipore 07-729",
+        13
+       ],
+       [
+        "Sigma I8144",
+        5
+       ],
+       [
+        "Sigma I8143",
+        1
+       ]
+      ]
+     },
+     "tissue": {
+      "distinct": 1,
+      "top": [
+       [
+        "Brain",
+        8
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 2,
+      "top": [
+       [
+        "Clinically healthy",
+        4
+       ],
+       [
+        "FXS clinical diagnosis",
+        4
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE218676",
+   "n": 26,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2023",
+   "title": "Spatially coordinated heterochromatinization of long synaptic genes in fragile X syndrome [RNA-seq]",
+   "superseries": false,
+   "profile": {
+    "n_samples": 26,
+    "channels": {
+     "1": 26
+    },
+    "keys": {
+     "cell type": {
+      "distinct": 3,
+      "top": [
+       [
+        "iPSC derived NPC",
+        14
+       ],
+       [
+        "B-lymphocytes",
+        6
+       ],
+       [
+        "iPSC",
+        6
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE228378",
+   "n": 10,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2023",
+   "title": "Human pluripotent stem cell-derived astrocyte model in fragile X syndrome",
+   "superseries": false,
+   "profile": {
+    "n_samples": 10,
+    "channels": {
+     "1": 10
+    },
+    "keys": {
+     "tissue": {
+      "distinct": 2,
+      "top": [
+       [
+        "Neural progenitors",
+        8
+       ],
+       [
+        "Astroglia",
+        2
+       ]
+      ]
+     },
+     "cell line": {
+      "distinct": 1,
+      "top": [
+       [
+        "H1",
+        10
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 2,
+      "top": [
+       [
+        "control",
+        5
+       ],
+       [
+        "FMR1 KO",
+        5
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 5,
+      "top": [
+       [
+        "D0 Neuroprogenitors",
+        2
+       ],
+       [
+        "D12 Neuroprogenitors",
+        2
+       ],
+       [
+        "D30 Neuroprogenitors",
+        2
+       ],
+       [
+        "D60 Neuroprogenitors",
+        2
+       ],
+       [
+        "D90 Astrosytes",
+        2
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE202179",
+   "n": 57,
+   "type": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing",
+   "pdat": "2023",
+   "title": "Antisense Oligonucleotide Rescue of CGG Expansion-Dependent FMR1 Mis-Splicing in Fragile X Syndrome Restores FMRP",
+   "superseries": false,
+   "profile": {
+    "n_samples": 57,
+    "channels": {
+     "1": 57
+    },
+    "keys": {
+     "gender": {
+      "distinct": 1,
+      "top": [
+       [
+        "Male",
+        57
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 1,
+      "top": [
+       [
+        "Human Leukocytes",
+        57
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 2,
+      "top": [
+       [
+        "FXS",
+        35
+       ],
+       [
+        "TD",
+        22
+       ]
+      ]
+     },
+     "chip antibody": {
+      "distinct": 3,
+      "top": [
+       [
+        "H3K36me3 (Abcam ab9050)",
+        5
+       ],
+       [
+        "H3K4me3 (Active Motif- 39159)",
+        5
+       ],
+       [
+        "none",
+        5
+       ]
+      ]
+     },
+     "treatment": {
+      "distinct": 1,
+      "top": [
+       [
+        "Isolated from blood using LeukoLOCK filter",
+        25
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE202177",
+   "n": 42,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2023",
+   "title": "Antisense Oligonucleotide Rescue of CGG Expansion-Dependent FMR1 Mis-Splicing in Fragile X Syndrome Restores FMRP",
+   "superseries": false,
+   "profile": {
+    "n_samples": 42,
+    "channels": {
+     "1": 42
+    },
+    "keys": {
+     "gender": {
+      "distinct": 1,
+      "top": [
+       [
+        "Male",
+        42
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 1,
+      "top": [
+       [
+        "Human Leukocytes",
+        42
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 2,
+      "top": [
+       [
+        "FXS",
+        29
+       ],
+       [
+        "TD",
+        13
+       ]
+      ]
+     },
+     "treatment": {
+      "distinct": 1,
+      "top": [
+       [
+        "Isolated from blood using LeukoLOCK filter",
+        25
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE155844",
+   "n": 66,
+   "type": "Other; Expression profiling by high throughput sequencing",
+   "pdat": "2023",
+   "title": "PIE-Seq: Identifying RNA-binding Protein Targets by Dual RNA-deaminase Editing and Sequencing",
+   "superseries": false,
+   "profile": {
+    "n_samples": 66,
+    "channels": {
+     "1": 66
+    },
+    "keys": {
+     "cell line": {
+      "distinct": 3,
+      "top": [
+       [
+        "HEK293FT",
+        38
+       ],
+       [
+        "HEK293FT cultured cells",
+        12
+       ],
+       [
+        "HEK293FT cell line",
+        10
+       ]
+      ]
+     },
+     "treatment": {
+      "distinct": 43,
+      "top": [
+       [
+        "transfected with pR008_APAD vector with Lipofectamine 2000 for 24h, and FACS sorted",
+        5
+       ],
+       [
+        "transfected with pR023_PIE-PUM2 vector with Lipofectamine 2000 for 24h, and FACS sorted",
+        5
+       ],
+       [
+        "transfected with pR008_APAD vector with Lipofectamine 2000 for 48h",
+        4
+       ],
+       [
+        "transfected with pCAGIG vector with Lipofectamine 2000 for 48h",
+        2
+       ],
+       [
+        "transfected with pR023_PIE-PUM2 vector with Lipofectamine 2000 for 48h",
+        2
+       ]
+      ]
+     },
+     "tissue": {
+      "distinct": 1,
+      "top": [
+       [
+        "Embryo mouse neocortex tissue",
+        6
+       ]
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "Rett syndrome": [
+  {
+   "acc": "GSE248508",
+   "n": 14,
+   "type": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing",
+   "pdat": "2025",
+   "title": "MECP2 AND MECP2T203M D30 cerebral organoids",
+   "superseries": false,
+   "profile": {
+    "n_samples": 14,
+    "channels": {
+     "1": 14
+    },
+    "keys": {
+     "cell line": {
+      "distinct": 1,
+      "top": [
+       [
+        "iPSCs-WC30",
+        14
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 1,
+      "top": [
+       [
+        "induced pluripotent stem cell",
+        14
+       ]
+      ]
+     },
+     "time": {
+      "distinct": 1,
+      "top": [
+       [
+        "D30",
+        8
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE297594",
+   "n": 11,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025",
+   "title": "MeCP2 regulates telencephalic development in human cerebral organoids",
+   "superseries": false,
+   "profile": {
+    "n_samples": 11,
+    "channels": {
+     "1": 11
+    },
+    "keys": {
+     "tissue": {
+      "distinct": 1,
+      "top": [
+       [
+        "brain organoid",
+        11
+       ]
+      ]
+     },
+     "cell line": {
+      "distinct": 4,
+      "top": [
+       [
+        "2042-MUT",
+        4
+       ],
+       [
+        "2042-WT, 2042-MUT",
+        3
+       ],
+       [
+        "2042-WT",
+        3
+       ],
+       [
+        "2036-WT, 2036-MUT",
+        1
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 1,
+      "top": [
+       [
+        "Neural progenitors and neurons",
+        11
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 2,
+      "top": [
+       [
+        "Patient 2042",
+        10
+       ],
+       [
+        "Patient 2036",
+        1
+       ]
+      ]
+     },
+     "age": {
+      "distinct": 2,
+      "top": [
+       [
+        "week 6 of differentiation",
+        7
+       ],
+       [
+        "week 17 of differentiation",
+        4
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE208258",
+   "n": 25,
+   "type": "Other; Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing; Methylation profiling by high throughput sequencing",
+   "pdat": "2025",
+   "title": "Multiplex Epigenome Editing of MECP2 to Rescue Rett Syndrome Neurons",
+   "superseries": false,
+   "profile": {
+    "n_samples": 25,
+    "channels": {
+     "1": 25
+    },
+    "keys": {
+     "treatment": {
+      "distinct": 11,
+      "top": [
+       [
+        "dC-T",
+        4
+       ],
+       [
+        "dC-dT",
+        3
+       ],
+       [
+        "dCas9-Tet1 editing with sgRNA3",
+        2
+       ],
+       [
+        "dCas9-dTet1 editing with sgRNA3",
+        2
+       ],
+       [
+        "dCas9-Tet1 editing with scrambled sgRNA",
+        2
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 8,
+      "top": [
+       [
+        "human embryonic stem cells",
+        8
+       ],
+       [
+        "human embryonic stem cells (hESC)",
+        4
+       ],
+       [
+        "dCas9-dTet1 editing hESCs",
+        3
+       ],
+       [
+        "dCas9-Tet1 DNA methylation editing hESCs",
+        3
+       ],
+       [
+        "derivative human cell line",
+        3
+       ]
+      ]
+     },
+     "cell line": {
+      "distinct": 3,
+      "top": [
+       [
+        "hESC",
+        8
+       ],
+       [
+        "HEK293T",
+        3
+       ],
+       [
+        "Neuron derived from hESC",
+        2
+       ]
+      ]
+     },
+     "chip antibody": {
+      "distinct": 5,
+      "top": [
+       [
+        "input",
+        4
+       ],
+       [
+        "anti-Cas9 antibody (Active Motif)",
+        4
+       ],
+       [
+        "Anti-Cas9 ChIP",
+        4
+       ],
+       [
+        "anti-Cpf1-HA antibody",
+        3
+       ],
+       [
+        "anti-CTCF antibody",
+        2
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 2,
+      "top": [
+       [
+        "dC-dT",
+        2
+       ],
+       [
+        "dC-T",
+        2
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE229542",
+   "n": 199,
+   "type": "Genome binding/occupancy profiling by high throughput sequencing; Expression profiling by high throughput sequencing; Other",
+   "pdat": "2025",
+   "title": "Amplified dosage of the NKX2-1 lineage transcription factor controls its oncogenic role in lung adenocarcinoma",
+   "superseries": false,
+   "profile": {
+    "n_samples": 199,
+    "channels": {
+     "1": 199
+    },
+    "keys": {
+     "cell line": {
+      "distinct": 7,
+      "top": [
+       [
+        "PC9",
+        60
+       ],
+       [
+        "NCI-H441",
+        52
+       ],
+       [
+        "NCI-H2087",
+        37
+       ],
+       [
+        "NCI-H1975",
+        24
+       ],
+       [
+        "NCI-H358",
+        16
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 1,
+      "top": [
+       [
+        "lung adenocarcinoma",
+        199
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 20,
+      "top": [
+       [
+        "EF1a-GFP",
+        20
+       ],
+       [
+        "EF1a-NKX2-1",
+        20
+       ],
+       [
+        "EF1a-NKX2-1-dTag",
+        16
+       ],
+       [
+        "shLuc",
+        12
+       ],
+       [
+        "shNKX2-1(1)",
+        12
+       ]
+      ]
+     },
+     "chip antibody": {
+      "distinct": 12,
+      "top": [
+       [
+        "No antibody",
+        5
+       ],
+       [
+        "NKX2-1 (Abcam Cat#ab137061 Lot#YJ050719CS)",
+        4
+       ],
+       [
+        "H3K27ac (Abcam Cat#ab4729 Lot#GR3251519-2)",
+        4
+       ],
+       [
+        "H3K4me1 (Abcam Cat#ab8895 Lot#GR3369517-1)",
+        4
+       ],
+       [
+        "EP300 (CST Cat#D2X6N Lot#1)",
+        1
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE229541",
+   "n": 102,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025",
+   "title": "Amplified dosage of the NKX2-1 lineage transcription factor controls its oncogenic role in lung adenocarcinoma [RNA-seq]",
+   "superseries": false,
+   "profile": {
+    "n_samples": 102,
+    "channels": {
+     "1": 102
+    },
+    "keys": {
+     "cell line": {
+      "distinct": 6,
+      "top": [
+       [
+        "PC9",
+        36
+       ],
+       [
+        "NCI-H441",
+        26
+       ],
+       [
+        "NCI-H2087",
+        16
+       ],
+       [
+        "NCI-H358",
+        10
+       ],
+       [
+        "NCI-H1975",
+        10
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 1,
+      "top": [
+       [
+        "lung adenocarcinoma",
+        102
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 17,
+      "top": [
+       [
+        "EF1a-GFP",
+        14
+       ],
+       [
+        "EF1a-NKX2-1",
+        14
+       ],
+       [
+        "sgNT",
+        9
+       ],
+       [
+        "sgNKX2-1",
+        9
+       ],
+       [
+        "EF1a-NKX2-1-dTag",
+        8
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE291883",
+   "n": 18,
+   "type": "Expression profiling by high throughput sequencing",
+   "pdat": "2025",
+   "title": "Self-regulating gene therapy ameliorates phenotypes and overcomes gene dosage sensitivity in a mouse model of Rett syndrome",
+   "superseries": false,
+   "profile": {
+    "n_samples": 18,
+    "channels": {
+     "1": 18
+    },
+    "keys": {
+     "cell line": {
+      "distinct": 3,
+      "top": [
+       [
+        "HEK293A",
+        6
+       ],
+       [
+        "HepG2",
+        6
+       ],
+       [
+        "SH-SY5Y",
+        6
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 3,
+      "top": [
+       [
+        "Embryonic kidney",
+        6
+       ],
+       [
+        "Hepatocellular carcinoma",
+        6
+       ],
+       [
+        "Neuroblastoma",
+        6
+       ]
+      ]
+     },
+     "treatment": {
+      "distinct": 2,
+      "top": [
+       [
+        "NeonGreen + EXACT1 plasmid transfection",
+        9
+       ],
+       [
+        "NeonGreen plasmid transfection",
+        9
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE226975",
+   "n": 12,
+   "type": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing; Other",
+   "pdat": "2024",
+   "title": "Mitochondrial Dysfunction and Increased Reactive Oxygen Species Production in MECP2 Mutant Astrocytes and their Impact on Neurons",
+   "superseries": false,
+   "profile": {
+    "n_samples": 12,
+    "channels": {
+     "1": 12
+    },
+    "keys": {
+     "cell line": {
+      "distinct": 2,
+      "top": [
+       [
+        "WIBR3MGT",
+        8
+       ],
+       [
+        "WIBR3",
+        4
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 1,
+      "top": [
+       [
+        "hESC",
+        12
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 2,
+      "top": [
+       [
+        "MECP2 Mutant",
+        8
+       ],
+       [
+        "Control",
+        4
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "acc": "GSE230716",
+   "n": 66,
+   "type": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing; Methylation profiling by high throughput sequencing",
+   "pdat": "2024",
+   "title": "MECP2 directly interacts with RNA polymerase II to modulate transcription in human neurons",
+   "superseries": false,
+   "profile": {
+    "n_samples": 66,
+    "channels": {
+     "1": 66
+    },
+    "keys": {
+     "cell line": {
+      "distinct": 2,
+      "top": [
+       [
+        "WIBR1",
+        12
+       ],
+       [
+        "hES-neurons",
+        5
+       ]
+      ]
+     },
+     "cell type": {
+      "distinct": 3,
+      "top": [
+       [
+        "hES-neurons",
+        49
+       ],
+       [
+        "hESCs",
+        12
+       ],
+       [
+        "neuron",
+        5
+       ]
+      ]
+     },
+     "genotype": {
+      "distinct": 10,
+      "top": [
+       [
+        "MECP2 WT",
+        22
+       ],
+       [
+        "MECP2 R133C",
+        8
+       ],
+       [
+        "MECP2 R168X",
+        8
+       ],
+       [
+        "MECP2 R270X",
+        8
+       ],
+       [
+        "WT MECP2",
+        5
+       ]
+      ]
+     },
+     "treatment": {
+      "distinct": 1,
+      "top": [
+       [
+        "NGN2-derived neurons",
+        12
+       ]
+      ]
+     },
+     "tissue": {
+      "distinct": 1,
+      "top": [
+       [
+        "neuron",
+        5
+       ]
+      ]
+     }
+    }
+   }
+  }
+ ]
+}
