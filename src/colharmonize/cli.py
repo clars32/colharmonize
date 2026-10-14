@@ -12,7 +12,7 @@
     colharmonize tasks retry   STAGE --workspace DIR --run N   a batch of just the failed items (at most 2 per item)
     colharmonize repair apply --workspace DIR --run N          apply validated repair rules
     colharmonize preprocess --workspace DIR [--store SQLITE] [--ontology DIR]   GEOmend evidence: concepts, merges, units
-    colharmonize candidates --workspace DIR [--ontology DIR] [--remote]
+    colharmonize candidates --workspace DIR [--ontology DIR] [--cache DIR] [--remote]
     colharmonize annotate apply --workspace DIR --runs 1 2      resolve, combine runs, write annotations
     colharmonize reconcile apply --workspace DIR --runs 1 2     partition groups, write final variables
     colharmonize score   --workspace DIR                        review tiers (pre_accepted / quick / manual)
@@ -216,14 +216,14 @@ def cmd_candidates(args: argparse.Namespace) -> int:
     from colharmonize.workspace import Workspace
     ws = Workspace(args.workspace)
     onto = Ontology.from_dir(ws.recorded("ontology", args.ontology))
-    cache = Path(args.cache)
+    cache = Path(args.cache).expanduser() if args.cache else cd.default_cache_dir()
     retriever = cd.Retriever(onto, property_space.build(onto), cache / "embeddings",
                              cd.RemoteCache(cache / "remote.json", enabled=args.remote))
     cols = profile.annotation_columns(ws)
     from colharmonize import preprocess
     c = cd.generate(retriever, cols, preprocess.hints(ws))
     c.to_parquet(ws.candidates, index=False)
-    print(f"{len(c)} candidates for {len(cols)} columns; displayed {int(c.displayed.sum())}")
+    print(f"{len(c)} candidates for {len(cols)} columns; displayed {int(c.displayed.sum())}; cache {cache}")
     print(c.groupby("pool").size().to_string())
     return 0
 
@@ -440,7 +440,8 @@ def build_parser() -> argparse.ArgumentParser:
     cd = sub.add_parser("candidates", help="retrieve candidate terms for every column")
     cd.add_argument("--workspace", required=True)
     cd.add_argument("--ontology", help="pinned ontology directory (default: the one the workspace recorded)")
-    cd.add_argument("--cache", default="work/cache", help="embedding and remote-service cache directory")
+    cd.add_argument("--cache", help="embedding and remote-service cache directory "
+                                    "(default: $COLHARMONIZE_CACHE, else ~/.cache/colharmonize)")
     cd.add_argument("--remote", action="store_true", help="query ZOOMA and OLS4 for names not already cached")
     cd.set_defaults(func=cmd_candidates)
 

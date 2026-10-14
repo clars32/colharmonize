@@ -18,6 +18,9 @@ for the command first and stops with instructions if it is missing.
   (`all-MiniLM-L6-v2`, `bge-small-en-v1.5`) and the EFO release file. After
   that, every stage runs offline unless you ask for `--remote` lookups or
   `--online` ingest.
+- Embeddings and remote lookups are cached in `~/.cache/colharmonize`, shared
+  by every workspace. Set `COLHARMONIZE_CACHE` to put the cache elsewhere, or
+  pass `--cache DIR` to `colharmonize candidates`.
 
 ## 1. Install the command
 

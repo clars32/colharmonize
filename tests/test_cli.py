@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from colharmonize import cli, preprocess
+from colharmonize import candidates, cli, preprocess, property_space
 from colharmonize import geomend_bridge as gb
 from colharmonize.ontology import Ontology
 
@@ -96,3 +96,28 @@ def test_unknown_settings_are_a_clear_error(tmp_path, tiny_dir):
         cli.main(["preprocess", "--workspace", str(ws), "--ontology", str(tiny_dir)])
     with pytest.raises(SystemExit, match="no such file"):
         cli.main(["preprocess", "--workspace", str(ws), "--store", str(tmp_path / "typo.sqlite")])
+
+
+@pytest.mark.parametrize("given, env, expected", [
+    (None, None, "home/.cache/colharmonize"),
+    (None, "shared", "shared"),
+    ("mine", "shared", "mine"),
+])
+def test_candidates_cache_is_per_user_not_per_directory(tmp_path, tiny_dir, monkeypatch, given, env, expected):
+    ws = tmp_path / "ws"
+    ws.mkdir()
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setenv("HOME", str(tmp_path / "home"))
+    if env:
+        monkeypatch.setenv("COLHARMONIZE_CACHE", str(tmp_path / env))
+    else:
+        monkeypatch.delenv("COLHARMONIZE_CACHE", raising=False)
+
+    def retriever(onto, space, cache_dir, remote):
+        raise _Loaded(cache_dir, remote.path)
+    monkeypatch.setattr(property_space, "build", lambda onto: None)
+    monkeypatch.setattr(candidates, "Retriever", retriever)   # stop before embedding anything
+    argv = ["candidates", "--workspace", str(ws), "--ontology", str(tiny_dir)]
+    with pytest.raises(_Loaded) as got:
+        cli.main(argv + (["--cache", str(tmp_path / given)] if given else []))
+    assert got.value.args == (tmp_path / expected / "embeddings", tmp_path / expected / "remote.json")
