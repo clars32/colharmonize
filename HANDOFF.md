@@ -1,6 +1,6 @@
 # Handoff brief: colharmonize, iteration 3
 
-Written 2026-10-08 for a fresh Claude instance, updated 2026-10-09. Read
+Written 2026-10-08 for a fresh Claude instance, updated 2026-10-13. Read
 this first, then the root `../BRIEFING.md` for the stable background (settled
 decisions, environment, traps).
 
@@ -21,7 +21,7 @@ Pipeline:
 6. reconcile (two runs)
 7. score (review tiers)
 8. review page and overlay
-9. publish (variables.tsv, columns.tsv, SSSOM)
+9. publish (the pooled sample table, variables.tsv, columns.tsv, SSSOM)
 10. registry
 
 **GEOmend** (`../GEOmend`, v0.0.9) reads, profiles and exports GEO
@@ -62,7 +62,27 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
     (tier AUC 0.54); partition agreement catches false merges, not missed ones
   - renamed columns cost about 2.4 points of primary term, within noise
   - a blind 44-column curation sheet is ready for a person
-- **Tests:** `./.venv/bin/python -m pytest -q` passes 77.
+- **Pooled sample table** (2026-10-12, decisions log 15.13): `publish` also
+  writes `pooled_samples.tsv`, one row per sample and one column per
+  variable, and its long form `pooled_values.tsv` with raw values beside
+  harmonized ones. For most users this is the product.
+- **Genetic-syndromes demo** (decisions log 15.14), run through scoring on
+  2026-10-13 in `work/demo-genetic`. It has 8 series in 5 syndromes, none
+  in the Down syndrome corpus, and 49 columns, 17 of them recovered by
+  repair.
+  - The result is 27 variables, 11 of them pooling two or more studies.
+    `karyotype`, `karytype` and `chromosomes` pool into one karyotype
+    variable across 4 studies.
+  - The annotate runs agree on primary term and predicate for 87.8% of
+    columns, and the reconcile partitions agree 100%.
+  - Tiers: 4 variables pre-accepted, 19 quick, 4 manual.
+  - Reviewed and published 2026-10-14: the user accepted the 4 manual
+    variables. The pooled table is 387 samples × 27 variables, 2,254 values
+    and no conflicting cells. The 19 quick-tier variables are still
+    unreviewed (A11).
+  - It has no gold, so it measures nothing. It can't become the next sealed
+    corpus either, since the pipeline has already run on it.
+- **Tests:** `./.venv/bin/python -m pytest -q` passes 83.
 
 ## Constraints: do not break these
 
@@ -111,8 +131,12 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
 
 **colharmonize**
 - Python: `./.venv` (Python 3.13). `uv` is at `./.venv/bin/uv`.
-- Pinned ontology: `work/ontology/efo-v3.94.0`, plus the GEOmend store
-  `work/ontology/efo-v3.94.0.sqlite`.
+- Pinned ontology: `work/ontology/efo-v3.94.0`, plus two GEOmend stores
+  built from the same EFO file:
+  - `efo-v3.94.0-iri.sqlite`: projection-2, whose nodes carry IRIs (15.12).
+    Use it for new workspaces; `work/demo-genetic` does.
+  - `efo-v3.94.0.sqlite`: projection-1, CURIEs only. `work/ds-tuning` and
+    `work/sealed` were run with it.
 
 **GEOmend suite**
 - Run in `../GEOmend`: `npm run contracts` (with `.venv/bin` on PATH), then
@@ -123,6 +147,8 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
 - Tuning SOFT files: `../ds-metadata-harmonization/data/raw`, plus
   GSE61804 from `../efo-column-mapping/data/raw`.
 - Sealed SOFT files: `work/sealed/raw`.
+- Demo corpus: `examples/genetic-syndromes/corpus.tsv`; its SOFT files are
+  cached in `work/demo-genetic/geomend/.geomend/cache/geo`.
 
 **Tools**
 - `gh` isn't installed.
@@ -159,6 +185,17 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
    feature for derived fields (task 22).
 10. **Host the plugin repository** and run `claude plugin validate`
     (task 24).
+11. **Finish reviewing the genetic-syndromes demo.** The 4 manual variables
+    were accepted and published on 2026-10-14. Still open, if the user
+    wants a fully reviewed demo: the 19 quick-tier variables in
+    `work/demo-genetic/review.html`. Two are worth a look first:
+    - Williams syndrome lands in two variables: `disease status` in
+      GSE89594 and `genotype` (`WBS`) in GSE63055.
+    - The `karytype` column of GSE103905 holds non-karyotype values, such
+      as "Known patient with Klinefelter syndrome" and "Two copies of SHOX".
+      They pass through unrecoded.
+
+    Re-run `review apply` and `publish` after any new export.
 
 ### B. Make the evaluation trustworthy
 
@@ -272,3 +309,14 @@ Measure each on tuning first.
     on GitHub so others can run `claude plugin marketplace add
     OWNER/colharmonize`, and run `claude plugin validate ./plugin --strict`
     on a machine with the `claude` command (not available here).
+
+### E. Housekeeping
+
+25. **`tasks status` on a run that doesn't exist** prints a raw
+    `FileNotFoundError` traceback (`cli.py`, the `status` branch of
+    `cmd_tasks`). It should say the run has no tasks.
+26. **Stale files and branches**, each the user's call:
+    - `../parallel-session-briefing.md`: everything in it is merged and
+      written up (15.11, 15.12).
+    - GEOmend's six merged `fix/*` branches, still local and on origin.
+      Deleting the remote ones is outward-facing.

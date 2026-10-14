@@ -963,3 +963,73 @@ with a test that fails without it, and released 0.0.9 (1,491 tests pass):
 
 What the recovered columns would do to sealed scores needs a full pipeline
 run on the 0.0.9 workspace. That would be post hoc and is not done here.
+
+### 15.13: The pooled sample table (2026-10-12)
+`publish` also writes the table most users want: `pooled_samples.tsv`, with
+one row per sample across all studies and one column per published variable,
+and its long form `pooled_values.tsv`, which keeps each harmonized value
+beside its raw value, source column and unit.
+- **Values are recoded** with each column's recodes, matched exactly first
+  and then ignoring case and surrounding space. An unrecoded value passes
+  through unchanged.
+- **Rejected variables are left out.** Every other review status is
+  included.
+- **One value per cell.** Under the co-occurrence rule (2.3), two columns of
+  one variable hold values on the same sample only when the values agree. If
+  they ever differ, both are kept, joined with ` | `, and counted as
+  conflicting cells, never silently resolved.
+- **Column names:** variables are ordered by how many studies and columns
+  they pool. A name two variables share gets the variable id appended.
+
+On the end-to-end workspace: 122 samples × 15 variables, no conflicting
+cells.
+
+### 15.14: A demo on genetic syndromes outside the tuning corpus (2026-10-12 to 2026-10-13)
+A demonstration run, not a measurement: the corpus has no gold, so it gives
+no accuracy number. It also can't become the next sealed corpus (handoff
+task 9), because gold comes before any pipeline output.
+
+**Corpus** (`examples/genetic-syndromes/`): 8 GEO series in 5 syndromes,
+none in the Down syndrome corpus. They are trisomy 18, Klinefelter and
+Turner, Williams and 7q11.23 duplication, 22q11.2 deletion and fragile X.
+`find_series.py` searched NCBI read-only, and `corpus.tsv` records why each
+series was chosen. They were picked for awkward metadata: karyotypes in
+ISCN notation, a misspelled `karytype` key, a karyotype under `chromosomes`,
+and a key with a comma.
+
+**Run:** the skill's steps, with the projection-2 store (15.12), repair-3
+and annotate-3 (15.10). Ingest downloaded the SOFT files from GEO. Reconcile
+used Opus stand-ins limited to Read and Write. The earlier session didn't
+record which models answered repair and annotate.
+- Ingest: 387 samples and 32 columns. Repair recovered 17 more from titles
+  and source names. Two of its rules match only some samples by design: a
+  knockdown marker on 14 of 57 titles and a replicate number on 2.
+- Annotate: 49 columns, and the two runs agree on primary term and
+  predicate for 87.8%. Every item passed validation on the first try.
+- Reconcile: 27 variables; the two runs' partitions agree 100%.
+- Score: 4 variables pre-accepted, 19 quick and 4 manual.
+
+**What pooled:** 11 variables pool two or more studies. Karyotype pools
+`karyotype`, `karytype` and `chromosomes` across 4 studies. Sex pools
+`gender` with a sex recovered from titles, and disease status pools
+`condition`, `diagnosis` and a group recovered from source names. Two
+`genotype` columns that carry syndrome labels (WBS, 7dupASD, FXS) form a
+genotype variable separate from disease status; review should check that
+split.
+
+**A fix it found** (`7dbe84d`): a fresh workspace failed at preprocess
+because only `candidates` recorded the ontology. `preprocess` now records
+`--ontology`, and the skill passes it.
+
+**For review:** one manual variable, `cell line`, has no term because EFO
+v3.94.0 deprecates `EFO:0000322` "cell line" and no current term carries
+that label. The scorer's "proposed term not in the ontology" reason is
+correct here.
+
+**Review and publish (2026-10-14).** The user accepted all 4 manual
+variables as proposed, with no edits, including `cell line` with predicate
+`none`. The 19 quick-tier variables stay unreviewed. `publish` wrote the
+pooled table: 387 samples × 27 variables, 2,254 values and no conflicting
+cells. Karyotype is recoded to one ISCN-style notation across 4 studies
+(`XO` → `45,X`, `XXY,47 KS` → `47,XXY`), with raw values kept in
+`pooled_values.tsv`. The SSSOM license is unspecified (handoff A3).
