@@ -963,3 +963,35 @@ with a test that fails without it, and released 0.0.9 (1,491 tests pass):
 
 What the recovered columns would do to sealed scores needs a full pipeline
 run on the 0.0.9 workspace. That would be post hoc and is not done here.
+
+### 15.15: Setup and resume (branch `usability/setup-and-resume`, 2026-10-14)
+For people outside this folder: the ontology is set up in one command, a
+workspace remembers its ontology and store, the candidates cache is per
+user, and `colharmonize status` lets an interrupted run resume. No judgment
+stage's output changes. Four calls:
+- **`ontology fetch` refuses a v3.94.0 file with any other checksum.** It
+  knows the SHA-256 of the `efo.json` every measurement used (`76ef7ede…`).
+  A mismatch stops it before anything is pinned; it doesn't just warn. The
+  release asset has the same size, 169,398,461 bytes; its checksum wasn't
+  re-checked by downloading it. Other tags are pinned with their checksum
+  recorded. The download isn't kept, since `version.tsv` records its
+  checksum. The store goes beside the pinned directory as `DIR.sqlite`, and
+  is projection-2, with IRIs (15.12).
+- **The candidates cache defaults to `~/.cache/colharmonize` and isn't
+  recorded per workspace.** Embeddings are keyed by their content, so
+  sharing them is safe. ZOOMA and OLS4 answers aren't: a run without
+  `--remote` still uses whatever its cache holds, so the cache is an input
+  to candidates. The recorded runs (tuning, sealed, the demo) used
+  `work/cache`, which is left as it is. Rerunning their candidates needs
+  `--cache work/cache`; the sealed protocol's step 5 predates this and meant
+  that cache.
+- **`status` counts a stage done when its output file exists, and counts
+  answer files without validating them.** Validation stays in each stage's
+  apply. A stage that never ran but is followed by one that did counts as
+  skipped, so the next step is always past the furthest one reached. The
+  commands it suggests follow the skill: runs 1 and 2, batch size 12 for
+  annotate and 6 for reconcile.
+- **A path given to `--ontology` or `--store` must exist before the
+  workspace records it,** so a typo can't become the default for later
+  commands. Recording the store moved from `preprocess.run()` to the
+  command line, next to `--ontology`.
