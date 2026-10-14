@@ -1,5 +1,6 @@
 """Command line for colharmonize.
 
+    colharmonize ontology fetch --tag v3.94.0 --out DIR       download, pin, and build DIR.sqlite (the GEOmend store)
     colharmonize ontology pin   --json efo.json --tag v3.94.0 --out DIR
     colharmonize ontology store --ontology DIR --out efo.sqlite
     colharmonize ontology check --ontology DIR CURIE [--label LABEL]
@@ -40,6 +41,33 @@ def _ontology(path: str):
 def cmd_pin(args: argparse.Namespace) -> int:
     from colharmonize.ontology import pin_obograph
     print(json.dumps(pin_obograph(args.json, args.out, args.tag), indent=2))
+    return 0
+
+
+def store_beside(pinned: str | Path) -> Path:
+    """Where `ontology fetch` puts the GEOmend store for a pinned directory: DIR.sqlite."""
+    pinned = Path(pinned)
+    return pinned.with_name(pinned.name + ".sqlite")
+
+
+def cmd_fetch(args: argparse.Namespace) -> int:
+    """Pin a release and build its store, skipping whatever is already there."""
+    import os
+    from colharmonize.geomend_bridge import build_ontology_store
+    from colharmonize.ontology import EFO_RELEASE_URL, fetch_release
+    try:
+        result = fetch_release(args.tag, args.out, url=args.url or EFO_RELEASE_URL)
+    except (ValueError, OSError) as e:
+        sys.exit(f"ontology fetch: {e}")
+    store = store_beside(args.out)
+    if store.exists():
+        result["store"] = {"status": "already built", "store": str(store)}
+    else:
+        part = store.with_name(store.name + ".part")   # renamed only once complete
+        result["store"] = {"status": "built", **build_ontology_store(_ontology(args.out), part)}
+        os.replace(part, store)
+        result["store"]["store"] = str(store)
+    print(json.dumps(result, indent=2))
     return 0
 
 
@@ -354,6 +382,11 @@ def build_parser() -> argparse.ArgumentParser:
 
     ont = sub.add_parser("ontology", help="pin, project and query the pinned ontology")
     osub = ont.add_subparsers(dest="ontology_command", required=True)
+    fetch = osub.add_parser("fetch", help="download a release's efo.json, pin it, and build the GEOmend store beside it")
+    fetch.add_argument("--tag", required=True, help="release tag, e.g. v3.94.0")
+    fetch.add_argument("--out", required=True, help="pinned directory; the store is written as DIR.sqlite")
+    fetch.add_argument("--url", help="download from here instead of the EBISPOT/efo GitHub release ({tag} is filled in)")
+    fetch.set_defaults(func=cmd_fetch)
     pin = osub.add_parser("pin", help="flatten an OBO-graph JSON release into a pinned directory")
     pin.add_argument("--json", required=True)
     pin.add_argument("--tag", required=True, help="release tag, e.g. v3.94.0")
