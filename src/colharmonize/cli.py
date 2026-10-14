@@ -1,8 +1,10 @@
 """Command line for colharmonize.
 
+    colharmonize ontology fetch --tag v3.94.0 --out DIR       download, pin, and build DIR.sqlite (the GEOmend store)
     colharmonize ontology pin   --json efo.json --tag v3.94.0 --out DIR
     colharmonize ontology store --ontology DIR --out efo.sqlite
     colharmonize ontology check --ontology DIR CURIE [--label LABEL]
+    colharmonize status  --workspace DIR                    which stages are done, and the command to run next
     colharmonize ingest  --workspace DIR SOURCE...          GEOmend project + column profiles
     colharmonize columns --workspace DIR [--out TSV]
     colharmonize tasks write   STAGE --workspace DIR --run N [--batch-size K] [--seed S] [--studies ...]
@@ -10,8 +12,8 @@
     colharmonize tasks collect STAGE --workspace DIR --run N   validate answers, item by item
     colharmonize tasks retry   STAGE --workspace DIR --run N   a batch of just the failed items (at most 2 per item)
     colharmonize repair apply --workspace DIR --run N          apply validated repair rules
-    colharmonize preprocess --workspace DIR --store SQLITE --ontology DIR   GEOmend evidence: concepts, merges, units
-    colharmonize candidates --workspace DIR --ontology DIR [--remote]
+    colharmonize preprocess --workspace DIR [--store SQLITE] [--ontology DIR]   GEOmend evidence: concepts, merges, units
+    colharmonize candidates --workspace DIR [--ontology DIR] [--cache DIR] [--remote]
     colharmonize annotate apply --workspace DIR --runs 1 2      resolve, combine runs, write annotations
     colharmonize reconcile apply --workspace DIR --runs 1 2     partition groups, write final variables
     colharmonize score   --workspace DIR                        review tiers (pre_accepted / quick / manual)
@@ -43,6 +45,33 @@ def cmd_pin(args: argparse.Namespace) -> int:
     return 0
 
 
+def store_beside(pinned: str | Path) -> Path:
+    """Where `ontology fetch` puts the GEOmend store for a pinned directory: DIR.sqlite."""
+    pinned = Path(pinned)
+    return pinned.with_name(pinned.name + ".sqlite")
+
+
+def cmd_fetch(args: argparse.Namespace) -> int:
+    """Pin a release and build its store, skipping whatever is already there."""
+    import os
+    from colharmonize.geomend_bridge import build_ontology_store
+    from colharmonize.ontology import EFO_RELEASE_URL, fetch_release
+    try:
+        result = fetch_release(args.tag, args.out, url=args.url or EFO_RELEASE_URL)
+    except (ValueError, OSError) as e:
+        sys.exit(f"ontology fetch: {e}")
+    store = store_beside(args.out)
+    if store.exists():
+        result["store"] = {"status": "already built", "store": str(store)}
+    else:
+        part = store.with_name(store.name + ".part")   # renamed only once complete
+        result["store"] = {"status": "built", **build_ontology_store(_ontology(args.out), part)}
+        os.replace(part, store)
+        result["store"]["store"] = str(store)
+    print(json.dumps(result, indent=2))
+    return 0
+
+
 def cmd_store(args: argparse.Namespace) -> int:
     from colharmonize.geomend_bridge import build_ontology_store
     print(json.dumps(build_ontology_store(_ontology(args.ontology), args.out, name=args.name), indent=2))
@@ -53,6 +82,13 @@ def cmd_check(args: argparse.Namespace) -> int:
     v = _ontology(args.ontology).validate(args.curie, args.label)
     print(json.dumps(v.__dict__, indent=2))
     return 0 if v.valid else 1
+
+
+def cmd_status(args: argparse.Namespace) -> int:
+    from colharmonize import status
+    from colharmonize.workspace import Workspace
+    print(status.render(Workspace(args.workspace), args.workspace))
+    return 0
 
 
 def cmd_ingest(args: argparse.Namespace) -> int:
@@ -104,6 +140,7 @@ def cmd_tasks(args: argparse.Namespace) -> int:
         print(f"{len(items)} items in {len(paths)} batches under {directory}")
         return 0
     if args.action == "status":
+        _require_tasks(ws, args.stage, args.run)
         manifest = json.loads((directory / "manifest.json").read_text())
         for e in manifest["batches"]:
             if not (directory / e["answer_file"]).exists():
@@ -123,6 +160,14 @@ def cmd_tasks(args: argparse.Namespace) -> int:
     return 0 if got.complete else 1
 
 
+def _require_tasks(ws, stage: str, run: int) -> None:
+    """Exit with a clear message, not a traceback, when a run has no tasks written."""
+    import shlex
+    if not (ws.tasks(stage, run) / "manifest.json").exists():
+        sys.exit(f"{ws.root}: {stage} run {run} has no tasks yet; write them with "
+                 f"`colharmonize tasks write {stage} --workspace {shlex.quote(str(ws.root))} --run {run}`")
+
+
 def _collect(ws, mod, run: int, **kw):
     """Collect a run's answers and run the stage's own checks, item by item.
 
@@ -131,6 +176,7 @@ def _collect(ws, mod, run: int, **kw):
     apply time; problems are attributed to the items they name.
     """
     from colharmonize import tasks
+    _require_tasks(ws, mod.STAGE, run)
     got = tasks.collect(ws.tasks(mod.STAGE, run), mod.ANSWER_MODEL)
     if hasattr(mod, "validate_answers"):
         manifest = json.loads((ws.tasks(mod.STAGE, run) / "manifest.json").read_text())
@@ -176,10 +222,9 @@ def cmd_preprocess(args: argparse.Namespace) -> int:
     from colharmonize.ontology import Ontology
     from colharmonize.workspace import Workspace
     ws = Workspace(args.workspace)
-    if args.ontology:   # preprocess runs before candidates, so it may be the first step to know the ontology
-        ws.remember(ontology=str(Path(args.ontology).resolve()))
-    onto = Ontology.from_dir(ws.ontology_dir())
-    print(json.dumps(preprocess.run(ws, args.store, onto), indent=1))
+    # preprocess runs before candidates, so it may be the first step to know the ontology
+    onto = Ontology.from_dir(ws.recorded("ontology", args.ontology))
+    print(json.dumps(preprocess.run(ws, ws.recorded("geomend_store", args.store), onto), indent=1))
     return 0
 
 
@@ -188,16 +233,15 @@ def cmd_candidates(args: argparse.Namespace) -> int:
     from colharmonize.ontology import Ontology
     from colharmonize.workspace import Workspace
     ws = Workspace(args.workspace)
-    onto = Ontology.from_dir(args.ontology)
-    cache = Path(args.cache)
+    onto = Ontology.from_dir(ws.recorded("ontology", args.ontology))
+    cache = Path(args.cache).expanduser() if args.cache else cd.default_cache_dir()
     retriever = cd.Retriever(onto, property_space.build(onto), cache / "embeddings",
                              cd.RemoteCache(cache / "remote.json", enabled=args.remote))
     cols = profile.annotation_columns(ws)
     from colharmonize import preprocess
     c = cd.generate(retriever, cols, preprocess.hints(ws))
     c.to_parquet(ws.candidates, index=False)
-    ws.remember(ontology=str(Path(args.ontology).resolve()))
-    print(f"{len(c)} candidates for {len(cols)} columns; displayed {int(c.displayed.sum())}")
+    print(f"{len(c)} candidates for {len(cols)} columns; displayed {int(c.displayed.sum())}; cache {cache}")
     print(c.groupby("pool").size().to_string())
     return 0
 
@@ -354,6 +398,11 @@ def build_parser() -> argparse.ArgumentParser:
 
     ont = sub.add_parser("ontology", help="pin, project and query the pinned ontology")
     osub = ont.add_subparsers(dest="ontology_command", required=True)
+    fetch = osub.add_parser("fetch", help="download a release's efo.json, pin it, and build the GEOmend store beside it")
+    fetch.add_argument("--tag", required=True, help="release tag, e.g. v3.94.0")
+    fetch.add_argument("--out", required=True, help="pinned directory; the store is written as DIR.sqlite")
+    fetch.add_argument("--url", help="download from here instead of the EBISPOT/efo GitHub release ({tag} is filled in)")
+    fetch.set_defaults(func=cmd_fetch)
     pin = osub.add_parser("pin", help="flatten an OBO-graph JSON release into a pinned directory")
     pin.add_argument("--json", required=True)
     pin.add_argument("--tag", required=True, help="release tag, e.g. v3.94.0")
@@ -369,6 +418,10 @@ def build_parser() -> argparse.ArgumentParser:
     check.add_argument("curie")
     check.add_argument("--label")
     check.set_defaults(func=cmd_check)
+
+    st = sub.add_parser("status", help="which stages a workspace has done, and the command to run next (read only)")
+    st.add_argument("--workspace", required=True)
+    st.set_defaults(func=cmd_status)
 
     ing = sub.add_parser("ingest", help="create a workspace: GEOmend project from SOFT files, tables or accessions, then profiles")
     ing.add_argument("--workspace", required=True)
@@ -402,14 +455,15 @@ def build_parser() -> argparse.ArgumentParser:
 
     pp = sub.add_parser("preprocess", help="collect GEOmend evidence (concept candidates, merge suggestions, units)")
     pp.add_argument("--workspace", required=True)
-    pp.add_argument("--store", required=True, help="the pinned ontology as a GEOmend store (colharmonize ontology store)")
+    pp.add_argument("--store", help="the pinned ontology as a GEOmend store (default: the one the workspace recorded)")
     pp.add_argument("--ontology", help="pinned ontology directory (default: the one the workspace recorded)")
     pp.set_defaults(func=cmd_preprocess)
 
     cd = sub.add_parser("candidates", help="retrieve candidate terms for every column")
     cd.add_argument("--workspace", required=True)
-    cd.add_argument("--ontology", required=True, help="pinned ontology directory")
-    cd.add_argument("--cache", default="work/cache", help="embedding and remote-service cache directory")
+    cd.add_argument("--ontology", help="pinned ontology directory (default: the one the workspace recorded)")
+    cd.add_argument("--cache", help="embedding and remote-service cache directory "
+                                    "(default: $COLHARMONIZE_CACHE, else ~/.cache/colharmonize)")
     cd.add_argument("--remote", action="store_true", help="query ZOOMA and OLS4 for names not already cached")
     cd.set_defaults(func=cmd_candidates)
 

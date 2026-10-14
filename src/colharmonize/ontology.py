@@ -15,11 +15,15 @@ A pinned directory holds three files written by `pin_obograph`:
                   definition, exact/related/broad/narrow synonyms, deprecated)
   edges.parquet   sub, pred, obj as full IRIs
   version.tsv     release tag, version IRI, source sha256, counts
+
+`fetch_release` downloads a release's `efo.json` and pins it in one step.
 """
 from __future__ import annotations
 
 import hashlib
 import json
+import shutil
+import tempfile
 from dataclasses import dataclass
 from functools import cached_property
 from pathlib import Path
@@ -45,6 +49,11 @@ DEFAULT_REJECTED = frozenset({"BTO", "AFR", "AFRL", "AFQ"})
 
 OBO_BASE = "http://purl.obolibrary.org/obo/"
 EFO_BASE = "http://www.ebi.ac.uk/efo/"
+
+EFO_RELEASE_URL = "https://github.com/EBISPOT/efo/releases/download/{tag}/efo.json"
+# SHA-256 of `efo.json` for releases colharmonize has been measured with. A
+# fetch of one of these tags must match, so every install pins the same bytes.
+KNOWN_SHA256 = {"v3.94.0": "76ef7edef6f392848afa1fe2e61db9eec88dd77d2f00e1798d5415294011b314"}
 
 _SYNONYM_PREDS = {
     "hasExactSynonym": "exact",
@@ -280,3 +289,53 @@ def pin_obograph(json_path: str | Path, out_dir: str | Path, release_tag: str) -
     }
     (out / "version.tsv").write_text("".join(f"{k}\t{v}\n" for k, v in summary.items()))
     return summary
+
+
+def pinned_tag(out_dir: str | Path) -> str | None:
+    """The release tag a directory is pinned to, or None if it holds no complete pin.
+
+    `pin_obograph` writes version.tsv last, so its presence means the index and
+    edges were written in full.
+    """
+    version = Path(out_dir) / "version.tsv"
+    if not version.exists():
+        return None
+    fields = dict(line.split("\t", 1) for line in version.read_text().splitlines() if "\t" in line)
+    return fields.get("release_tag", "")
+
+
+def _download(url: str, dest: Path) -> None:
+    import ssl
+    import urllib.request
+
+    import certifi   # installed with requests; python.org builds on macOS ship without CA certificates
+    context = ssl.create_default_context(cafile=certifi.where())
+    with urllib.request.urlopen(url, timeout=60, context=context) as response, dest.open("wb") as fh:
+        shutil.copyfileobj(response, fh, 1 << 20)
+
+
+def fetch_release(release_tag: str, out_dir: str | Path, *, url: str = EFO_RELEASE_URL) -> dict[str, object]:
+    """Download a release's OBO-graph JSON and pin it into `out_dir`.
+
+    Does nothing if `out_dir` is already pinned to this tag, and refuses a
+    directory pinned to another one. For a tag in KNOWN_SHA256 the download
+    must match the known checksum. The JSON itself is not kept; version.tsv
+    records its SHA-256. `url` may contain `{tag}`.
+    """
+    out = Path(out_dir)
+    tag = pinned_tag(out)
+    if tag is not None:
+        if tag != release_tag:
+            raise ValueError(f"{out} is already pinned to {tag or 'an unknown release'}, not {release_tag}")
+        return {"status": "already pinned", "ontology": str(out)}
+    out.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(dir=out.parent, prefix=f".{out.name}-download-") as tmp:
+        src = Path(tmp) / "efo.json"
+        _download(url.format(tag=release_tag), src)
+        digest = _sha256(src)
+        expected = KNOWN_SHA256.get(release_tag)
+        if expected and digest != expected:
+            raise ValueError(f"efo.json for {release_tag} has SHA-256 {digest}, not the known {expected}; "
+                             "nothing was pinned")
+        summary = pin_obograph(src, out, release_tag)
+    return {"status": "pinned", "ontology": str(out), **summary}

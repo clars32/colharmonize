@@ -91,12 +91,17 @@ below set up this repository for development.
 /opt/anaconda3/bin/conda create -p ./.venv --override-channels -c conda-forge python=3.13
 ./.venv/bin/python -m pip install -e ".[dev]"
 ./.venv/bin/python -m pytest
-./.venv/bin/colharmonize ontology pin --json efo.json --tag v3.94.0 --out work/ontology/efo-v3.94.0
-./.venv/bin/colharmonize ontology store --ontology work/ontology/efo-v3.94.0 --out work/ontology/efo-v3.94.0.sqlite
+./.venv/bin/colharmonize ontology fetch --tag v3.94.0 --out work/ontology/efo-v3.94.0
 ```
 
 GEOmend requires Python 3.13. The pinned ontology directory and the store are
-regenerable and kept under `work/`.
+regenerable and kept under `work/`. `colharmonize status --workspace DIR`
+shows how far a workspace has got.
+
+`candidates` caches embeddings and ZOOMA/OLS4 answers per user, in
+`~/.cache/colharmonize`. The recorded runs used `work/cache`, and a run
+without `--remote` still reads the remote answers its cache holds, so pass
+`--cache work/cache` to reproduce their candidates.
 
 ## Status
 

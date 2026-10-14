@@ -30,6 +30,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
 import time
 from collections import defaultdict
@@ -60,6 +61,16 @@ ANCESTOR_DEPTH = 10
 _STATUS_WORDS = re.compile(r"\b(status|state|type|group|level|levels|score|positive|negative|result|results)\b")
 ZOOMA_ANNOTATE = "https://www.ebi.ac.uk/spot/zooma/v2/api/services/annotate"
 OLS4_SEARCH = "https://www.ebi.ac.uk/ols4/api/search"
+
+
+def default_cache_dir() -> Path:
+    """The per-user cache for embeddings and remote lookups: $COLHARMONIZE_CACHE, else ~/.cache/colharmonize.
+
+    Cached embeddings are keyed by their content, so one cache serves every
+    workspace. Remote lookups are not: a run without --remote still uses the
+    ZOOMA and OLS4 answers its cache holds, so the cache is part of a run's input.
+    """
+    return Path(os.environ.get("COLHARMONIZE_CACHE") or "~/.cache/colharmonize").expanduser()
 
 
 def name_forms(column: str) -> dict[str, str]:

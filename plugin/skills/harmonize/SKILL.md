@@ -14,15 +14,35 @@ workspace's `tasks/` directory or its GEOmend project.
 Arguments: `$ARGUMENTS`. The first argument is the workspace directory; any
 further arguments are SOFT files, tables or GSE accessions to ingest.
 
-## 0. Check the tool
+## 0. Check the tool and find where the workspace stands
 
 Run `colharmonize --help`. If the command is missing, stop and tell the user
 to install the package (`pip install -e <colharmonize checkout>`) in a Python
-3.13 environment.
+3.13 environment. Then run:
+
+    colharmonize status --workspace <workspace>
+
+It reads the workspace's files, without changing anything, and reports which
+stages are done and which command comes next. A new workspace starts at step
+1. Otherwise, resume at the stage it names and continue from there; never
+redo a stage it reports done. This is how a run interrupted partway, by a
+session limit for example, picks up where it stopped:
+- A judgment stage reported **in progress** has tasks written but not all
+  answered. `status` names `tasks status`, not `tasks write`: writing again
+  would fail, because a run's tasks are never overwritten. Launch subagents
+  only for the pending batches `tasks status` lists. A subagent that hit a
+  session limit may have written its answer anyway, so always check before
+  relaunching.
+- If every batch has an answer file, `status` names the stage's apply
+  command, which validates the answers first.
+- If review is **waiting for you**, the next step is the user's: ask for
+  their exported decisions (step 7).
+
+Run `status` again whenever you are unsure where the run stands.
 
 ## 1. Ingest
 
-Skip this step if `<workspace>/columns.parquet` already exists. Otherwise run:
+Skip this step unless `status` named it. Otherwise run:
 
     colharmonize ingest --workspace <workspace> <sources...>
 
@@ -32,14 +52,17 @@ samples and columns it prints.
 
 ## 1b. Preprocess (GEOmend evidence)
 
-    colharmonize preprocess --workspace <workspace> --store <pinned store .sqlite> --ontology <pinned ontology dir>
+    colharmonize preprocess --workspace <workspace> --store <pinned ontology dir>.sqlite --ontology <pinned ontology dir>
 
 This collects what GEOmend can tell colharmonize, offline and with no model:
 lexical concept candidates from the pinned store, suggested merges between
-columns, and units. It is evidence only; later stages decide. If the user has
-no store file yet, build it from the pinned ontology directory first:
+columns, and units. It is evidence only; later stages decide. The workspace
+records both paths, so later commands don't need them. Use the pinned
+ontology directory the user names. If they have none yet, make one; it
+downloads EFO v3.94.0 once (about 170 MB), checks it and builds the store
+beside it as `<ontology dir>.sqlite`:
 
-    colharmonize ontology store --ontology <pinned ontology dir> --out <store .sqlite>
+    colharmonize ontology fetch --tag v3.94.0 --out <ontology dir>
 
 ## 2. Repair (one run)
 
@@ -74,10 +97,11 @@ missed.
 
 ## 3. Candidates
 
-    colharmonize candidates --workspace <workspace> --ontology <pinned ontology dir>
+    colharmonize candidates --workspace <workspace>
 
-Use the pinned ontology directory the user names; ask if none is given. Add
-`--remote` only to let ZOOMA and OLS4 be queried for names not already cached.
+It uses the pinned ontology that preprocess recorded. If it says none is
+recorded, add `--ontology <pinned ontology dir>`. Add `--remote` only to let
+ZOOMA and OLS4 be queried for names not already cached.
 
 ## 4. Annotate (two independent runs)
 
