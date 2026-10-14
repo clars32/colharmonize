@@ -12,7 +12,7 @@
       variables.parquet     final variable per column after reconciliation, with confidence signals
       scored.parquet        variables plus review tier and the reasons for it
       predictions_*.tsv     the same, in the scorer's (accession, raw_key) format
-      workspace.json        settings recorded by earlier commands (pinned ontology directory)
+      workspace.json        settings recorded by earlier commands (pinned ontology directory, GEOmend store)
 """
 from __future__ import annotations
 
@@ -65,8 +65,29 @@ class Workspace:
     def remember(self, **values) -> None:
         self.settings_file.write_text(json.dumps({**self.settings(), **values}, indent=1))
 
+    def recorded(self, key: str, given: str | Path | None = None) -> Path:
+        """A path setting: `given`, which is then recorded for later commands, or the one recorded earlier."""
+        flag, what, how = _PATH_SETTINGS[key]
+        if given:
+            path = Path(given).expanduser().resolve()
+            if not path.exists():
+                raise SystemExit(f"{flag} {given}: no such file or directory")
+            self.remember(**{key: str(path)})
+            return path
+        if not self.settings().get(key):
+            raise SystemExit(f"{self.root}: no {what} recorded for this workspace; {how}")
+        return Path(self.settings()[key])
+
     def ontology_dir(self) -> Path:
-        d = self.settings().get("ontology")
-        if not d:
-            raise SystemExit(f"{self.root}: no pinned ontology recorded; run `colharmonize candidates` first")
-        return Path(d)
+        return self.recorded("ontology")
+
+
+# setting -> (the option that records it, what it is, how to record it)
+_PATH_SETTINGS = {
+    "ontology": ("--ontology", "pinned ontology directory",
+                 "pass --ontology DIR to `colharmonize preprocess` or `candidates` "
+                 "(`colharmonize ontology fetch` makes one)"),
+    "geomend_store": ("--store", "GEOmend ontology store",
+                      "pass --store FILE to `colharmonize preprocess` "
+                      "(`colharmonize ontology fetch` builds one beside the pinned directory)"),
+}

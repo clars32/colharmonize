@@ -11,8 +11,8 @@
     colharmonize tasks collect STAGE --workspace DIR --run N   validate answers, item by item
     colharmonize tasks retry   STAGE --workspace DIR --run N   a batch of just the failed items (at most 2 per item)
     colharmonize repair apply --workspace DIR --run N          apply validated repair rules
-    colharmonize preprocess --workspace DIR --store SQLITE --ontology DIR   GEOmend evidence: concepts, merges, units
-    colharmonize candidates --workspace DIR --ontology DIR [--remote]
+    colharmonize preprocess --workspace DIR [--store SQLITE] [--ontology DIR]   GEOmend evidence: concepts, merges, units
+    colharmonize candidates --workspace DIR [--ontology DIR] [--remote]
     colharmonize annotate apply --workspace DIR --runs 1 2      resolve, combine runs, write annotations
     colharmonize reconcile apply --workspace DIR --runs 1 2     partition groups, write final variables
     colharmonize score   --workspace DIR                        review tiers (pre_accepted / quick / manual)
@@ -204,10 +204,9 @@ def cmd_preprocess(args: argparse.Namespace) -> int:
     from colharmonize.ontology import Ontology
     from colharmonize.workspace import Workspace
     ws = Workspace(args.workspace)
-    if args.ontology:   # preprocess runs before candidates, so it may be the first step to know the ontology
-        ws.remember(ontology=str(Path(args.ontology).resolve()))
-    onto = Ontology.from_dir(ws.ontology_dir())
-    print(json.dumps(preprocess.run(ws, args.store, onto), indent=1))
+    # preprocess runs before candidates, so it may be the first step to know the ontology
+    onto = Ontology.from_dir(ws.recorded("ontology", args.ontology))
+    print(json.dumps(preprocess.run(ws, ws.recorded("geomend_store", args.store), onto), indent=1))
     return 0
 
 
@@ -216,7 +215,7 @@ def cmd_candidates(args: argparse.Namespace) -> int:
     from colharmonize.ontology import Ontology
     from colharmonize.workspace import Workspace
     ws = Workspace(args.workspace)
-    onto = Ontology.from_dir(args.ontology)
+    onto = Ontology.from_dir(ws.recorded("ontology", args.ontology))
     cache = Path(args.cache)
     retriever = cd.Retriever(onto, property_space.build(onto), cache / "embeddings",
                              cd.RemoteCache(cache / "remote.json", enabled=args.remote))
@@ -224,7 +223,6 @@ def cmd_candidates(args: argparse.Namespace) -> int:
     from colharmonize import preprocess
     c = cd.generate(retriever, cols, preprocess.hints(ws))
     c.to_parquet(ws.candidates, index=False)
-    ws.remember(ontology=str(Path(args.ontology).resolve()))
     print(f"{len(c)} candidates for {len(cols)} columns; displayed {int(c.displayed.sum())}")
     print(c.groupby("pool").size().to_string())
     return 0
@@ -435,13 +433,13 @@ def build_parser() -> argparse.ArgumentParser:
 
     pp = sub.add_parser("preprocess", help="collect GEOmend evidence (concept candidates, merge suggestions, units)")
     pp.add_argument("--workspace", required=True)
-    pp.add_argument("--store", required=True, help="the pinned ontology as a GEOmend store (colharmonize ontology store)")
+    pp.add_argument("--store", help="the pinned ontology as a GEOmend store (default: the one the workspace recorded)")
     pp.add_argument("--ontology", help="pinned ontology directory (default: the one the workspace recorded)")
     pp.set_defaults(func=cmd_preprocess)
 
     cd = sub.add_parser("candidates", help="retrieve candidate terms for every column")
     cd.add_argument("--workspace", required=True)
-    cd.add_argument("--ontology", required=True, help="pinned ontology directory")
+    cd.add_argument("--ontology", help="pinned ontology directory (default: the one the workspace recorded)")
     cd.add_argument("--cache", default="work/cache", help="embedding and remote-service cache directory")
     cd.add_argument("--remote", action="store_true", help="query ZOOMA and OLS4 for names not already cached")
     cd.set_defaults(func=cmd_candidates)

@@ -40,7 +40,6 @@ def run(ws: Workspace, store: str | Path, ontology: Ontology) -> dict:
     merges.to_parquet(out / "merges.parquet", index=False)
     units = gb.field_units(ws.geomend)
     units.to_parquet(out / "units.parquet", index=False)
-    ws.remember(geomend_store=str(Path(store).resolve()))
     return {"concept_candidates": len(concepts), "unmapped_concepts": int((concepts.curie == "").sum()),
             "merge_pairs": len(merges), "fields_with_units": int((units.units != "[]").sum()),
             "enrich": {k: v for k, v in (enrich or {}).items() if isinstance(v, (int, float, str))}}
