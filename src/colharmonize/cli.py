@@ -4,6 +4,7 @@
     colharmonize ontology pin   --json efo.json --tag v3.94.0 --out DIR
     colharmonize ontology store --ontology DIR --out efo.sqlite
     colharmonize ontology check --ontology DIR CURIE [--label LABEL]
+    colharmonize status  --workspace DIR                    which stages are done, and the command to run next
     colharmonize ingest  --workspace DIR SOURCE...          GEOmend project + column profiles
     colharmonize columns --workspace DIR [--out TSV]
     colharmonize tasks write   STAGE --workspace DIR --run N [--batch-size K] [--seed S] [--studies ...]
@@ -81,6 +82,13 @@ def cmd_check(args: argparse.Namespace) -> int:
     v = _ontology(args.ontology).validate(args.curie, args.label)
     print(json.dumps(v.__dict__, indent=2))
     return 0 if v.valid else 1
+
+
+def cmd_status(args: argparse.Namespace) -> int:
+    from colharmonize import status
+    from colharmonize.workspace import Workspace
+    print(status.render(Workspace(args.workspace), args.workspace))
+    return 0
 
 
 def cmd_ingest(args: argparse.Namespace) -> int:
@@ -400,6 +408,10 @@ def build_parser() -> argparse.ArgumentParser:
     check.add_argument("curie")
     check.add_argument("--label")
     check.set_defaults(func=cmd_check)
+
+    st = sub.add_parser("status", help="which stages a workspace has done, and the command to run next (read only)")
+    st.add_argument("--workspace", required=True)
+    st.set_defaults(func=cmd_status)
 
     ing = sub.add_parser("ingest", help="create a workspace: GEOmend project from SOFT files, tables or accessions, then profiles")
     ing.add_argument("--workspace", required=True)
