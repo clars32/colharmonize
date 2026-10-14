@@ -140,6 +140,7 @@ def cmd_tasks(args: argparse.Namespace) -> int:
         print(f"{len(items)} items in {len(paths)} batches under {directory}")
         return 0
     if args.action == "status":
+        _require_tasks(ws, args.stage, args.run)
         manifest = json.loads((directory / "manifest.json").read_text())
         for e in manifest["batches"]:
             if not (directory / e["answer_file"]).exists():
@@ -159,6 +160,14 @@ def cmd_tasks(args: argparse.Namespace) -> int:
     return 0 if got.complete else 1
 
 
+def _require_tasks(ws, stage: str, run: int) -> None:
+    """Exit with a clear message, not a traceback, when a run has no tasks written."""
+    import shlex
+    if not (ws.tasks(stage, run) / "manifest.json").exists():
+        sys.exit(f"{ws.root}: {stage} run {run} has no tasks yet; write them with "
+                 f"`colharmonize tasks write {stage} --workspace {shlex.quote(str(ws.root))} --run {run}`")
+
+
 def _collect(ws, mod, run: int, **kw):
     """Collect a run's answers and run the stage's own checks, item by item.
 
@@ -167,6 +176,7 @@ def _collect(ws, mod, run: int, **kw):
     apply time; problems are attributed to the items they name.
     """
     from colharmonize import tasks
+    _require_tasks(ws, mod.STAGE, run)
     got = tasks.collect(ws.tasks(mod.STAGE, run), mod.ANSWER_MODEL)
     if hasattr(mod, "validate_answers"):
         manifest = json.loads((ws.tasks(mod.STAGE, run) / "manifest.json").read_text())

@@ -1,4 +1,4 @@
-"""The command line: one-command ontology setup, and settings the workspace remembers."""
+"""The command line: one-command ontology setup, settings the workspace remembers, task runs."""
 from __future__ import annotations
 
 import hashlib
@@ -121,3 +121,12 @@ def test_candidates_cache_is_per_user_not_per_directory(tmp_path, tiny_dir, monk
     with pytest.raises(_Loaded) as got:
         cli.main(argv + (["--cache", str(tmp_path / given)] if given else []))
     assert got.value.args == (tmp_path / expected / "embeddings", tmp_path / expected / "remote.json")
+
+
+@pytest.mark.parametrize("action", ["status", "collect", "retry"])
+def test_tasks_on_a_run_with_no_tasks_is_a_clear_error(tmp_path, action):
+    ws = tmp_path / "ws"
+    ws.mkdir()
+    with pytest.raises(SystemExit) as got:
+        cli.main(["tasks", action, "annotate", "--workspace", str(ws), "--run", "3"])
+    assert "annotate run 3 has no tasks yet" in str(got.value.code)   # a message, so the exit status is 1
