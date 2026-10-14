@@ -236,6 +236,17 @@ Measure each on tuning first.
       are on Hugging Face (`binchenlab/GEOMeta`).
     - MetaHarmonizer's GDC benchmark is Magneto's.
     - 13 of our 29 series could overlap GEOMeta; membership is unchecked.
+
+    Extended 2026-10-13 with nine papers: Sun et al.'s dataset-screening
+    paper (*Scientific Data*, 2026) and eight it led to.
+    - EMBERS (Higashi et al., bioRxiv 2024) pools keys across studies
+      without a schema but never scores the grouping. Contribution 1 now
+      claims *measured* schema-free pooling.
+    - Brown et al. (Piccolo lab, BYU) curated 30 Down syndrome series: 20
+      are in our 64-series corpus, none are sealed, and 10 are in no
+      corpus of ours. They're listed in `docs/related-work.md`.
+    - Possible baselines, not run: EMBERS's tree cut for pooling; our top
+      retrieved candidate with no judge, for annotation.
 21. ~~**Refresh the root docs.**~~ Done 2026-10-09. `../BRIEFING.md` is
     rewritten for iteration 3; `../briefing.html` is generated from it by
     `../build_briefing.py`. Iteration 2's versions are archived in
