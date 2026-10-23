@@ -30,7 +30,7 @@ def test_ontology_fetch_pins_and_builds_the_store(tmp_path, capsys):
     capsys.readouterr()
     missing = (tmp_path / "nowhere.json").as_uri()
     assert cli.main(["ontology", "fetch", "--tag", "v1.0", "--out", str(out), "--url", missing]) == 0
-    assert "already pinned" in capsys.readouterr().out
+    assert capsys.readouterr().out == f"EFO v1.0 is already set up in {out}\n"
     assert {p: p.stat().st_mtime_ns for p in stamps} == stamps
 
 
@@ -213,3 +213,87 @@ def test_workspace_defaults_to_the_folder_the_skill_makes(tmp_path, monkeypatch,
     assert cli.build_parser().parse_args(["score"]).workspace == "harmonized"
     assert cli.main(["status"]) == 0
     assert "harmonized  (does not exist yet)" in capsys.readouterr().out
+
+
+def test_ontology_fetch_says_what_it_does_in_plain_lines(tmp_path, capsys):
+    out = tmp_path / "tiny-v1.0"
+    cli.main(["ontology", "fetch", "--tag", "v1.0", "--out", str(out), "--url", TINY.as_uri()])
+    lines = capsys.readouterr().out.splitlines()
+    assert lines[0] == "Downloading EFO v1.0"
+    assert lines[-1] == f"EFO v1.0 is ready (8 terms) in {out}"
+    assert not any(line.startswith(("{", "}")) for line in lines)          # no JSON unless --json
+    cli.main(["ontology", "fetch", "--tag", "v1.0", "--out", str(out), "--json"])
+    assert json.loads(capsys.readouterr().out)["status"] == "already pinned"
+
+
+def test_setup_allows_colharmonize_in_claude_settings_and_keeps_the_rest(tmp_path, monkeypatch):
+    from colharmonize import claude_setup
+    settings = tmp_path / ".claude" / "settings.json"
+    settings.parent.mkdir()
+    settings.write_text(json.dumps({"model": "opus", "permissions": {"allow": ["Bash(ls *)"], "deny": ["Read(.env)"]}}))
+    monkeypatch.setenv("HOME", str(tmp_path))
+    assert claude_setup.allow() == claude_setup.PERMISSIONS
+    assert claude_setup.allow() == []                                       # idempotent
+    got = json.loads(settings.read_text())
+    assert got["model"] == "opus" and got["permissions"]["deny"] == ["Read(.env)"]
+    assert got["permissions"]["allow"] == ["Bash(ls *)", *claude_setup.PERMISSIONS]
+    settings.write_text("{not json")
+    with pytest.raises(SystemExit, match="isn't valid JSON"):
+        claude_setup.allow()
+    assert settings.read_text() == "{not json"                              # left alone
+
+
+def test_setup_installs_the_plugin_only_when_missing(monkeypatch):
+    from colharmonize import claude_setup
+    monkeypatch.setattr(claude_setup.shutil, "which", lambda name: "/bin/claude")
+    calls = []
+
+    def run(argv, **kw):
+        calls.append(argv[1:])
+        listing = {("plugin", "list"): installed, ("plugin", "marketplace", "list"): ""}.get(tuple(argv[1:]), "")
+        return type("Done", (), {"stdout": listing, "stderr": "", "returncode": 0})()
+
+    installed = ""
+    assert claude_setup.install_plugin(run) == "installed from clars32/colharmonize"
+    assert calls[-2:] == [["plugin", "marketplace", "add", "clars32/colharmonize"],
+                          ["plugin", "install", "colharmonize@colharmonize"]]
+    installed, calls[:] = "colharmonize@colharmonize  0.2.0", []
+    assert claude_setup.install_plugin(run).startswith("already installed")
+    assert calls == [["plugin", "list"]]
+
+
+def test_setup_runs_all_three_steps(tmp_path, monkeypatch, capsys):
+    from colharmonize import claude_setup
+    monkeypatch.setenv("HOME", str(tmp_path))
+    monkeypatch.setenv("COLHARMONIZE_HOME", str(tmp_path / "chome"))
+    monkeypatch.setattr(claude_setup, "install_plugin", lambda: "installed from clars32/colharmonize")
+    assert cli.main(["setup", "--tag", "v1.0", "--url", TINY.as_uri()]) == 0
+    out = capsys.readouterr().out
+    assert [l for l in out.splitlines() if l[:2] in ("1/", "2/", "3/")] == [
+        "1/3 Ontology", "2/3 Claude Code plugin", "3/3 Claude Code permissions"]
+    assert "/colharmonize:harmonize GSE12345 GSE67890" in out
+    assert (tmp_path / "chome" / "ontology" / "efo-v1.0.sqlite").exists()
+    assert "Bash(colharmonize *)" in (tmp_path / ".claude" / "settings.json").read_text()
+
+
+def test_no_arguments_prints_the_short_help(capsys):
+    assert cli.main([]) == 0
+    assert "colharmonize setup" in capsys.readouterr().out
+
+
+def test_review_page_opens_in_the_browser_and_prints_a_link(tmp_path, monkeypatch, capsys):
+    from colharmonize import review
+    from colharmonize.workspace import Workspace
+    page = tmp_path / "harmonized" / "review.html"
+    monkeypatch.setattr(review, "write_page", lambda ws, onto, out: page)
+    monkeypatch.setattr("colharmonize.ontology.Ontology.from_dir", lambda d: None)
+    opened = []
+    monkeypatch.setattr("webbrowser.open", lambda url: opened.append(url))
+    ws = Workspace(tmp_path / "harmonized")
+    ws.root.mkdir()
+    ws.remember(ontology=str(tmp_path))
+    cli.main(["review", "page", "--workspace", str(ws.root)])
+    assert opened == [page.as_uri()]
+    assert capsys.readouterr().out == f"Review page: {page.as_uri()}\n"
+    cli.main(["review", "page", "--workspace", str(ws.root), "--no-open"])
+    assert opened == [page.as_uri()]

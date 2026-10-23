@@ -97,7 +97,7 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
     `~/.cache/colharmonize`. To reproduce the recorded workspaces' candidates
     (tuning, sealed, demo), pass `--cache work/cache`: its `remote.json`
     supplies the ZOOMA and OLS4 answers.
-- **Tests:** `./.venv/bin/python -m pytest -q` passes 142.
+- **Tests:** `./.venv/bin/python -m pytest -q` passes 149.
 
 ## Constraints: do not break these
 
@@ -349,7 +349,6 @@ Measure each on tuning first.
     2026-10-22 (decisions log 15.17): publish keeps every value, joined with
     " | ", and reports `multi_valued_cells`. The judgment stages still see
     the first value only.
-28. **Rehearse the end-user demo** (decisions log 15.18, `docs/DEMO.md`).
-    It is tested headless with no approval prompts; a live interactive run
-    by the user, in Terminal with no other Claude window open, is the last
-    check.
+28. **Rehearse the end-user demo again** (decisions log 15.18–15.19,
+    `docs/DEMO.md`). The first rehearsal's six problems are fixed and tested
+    headless; the install is now `uv tool install` plus `colharmonize setup`.

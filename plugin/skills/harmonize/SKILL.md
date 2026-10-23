@@ -12,13 +12,37 @@ work. Your job is to run it and to hand each judgment batch to the right
 subagent. Never answer a batch yourself, and never edit files under a
 workspace's `tasks/` directory or its GEOmend project.
 
-Plain `colharmonize ...` commands are pre-approved while this skill runs, so
-the user isn't asked about each one. Run every command on its own line by its
-bare name: no `cd`, no shell variables, and no `;`, `&&` or pipes, which
-would need approval. The pre-approval lasts only for this turn, so keep the
-whole run in it: launch every subagent in the foreground (never with
-`run_in_background`), all of a stage's batches in one message. They still run
-in parallel, and you continue when the last one returns.
+`colharmonize setup` lets Claude Code run plain `colharmonize ...` commands
+without asking. Run every command on its own line by its bare name: no `cd`,
+no shell variables, and no `;`, `&&` or pipes, which would need approval.
+Launch every subagent in the foreground (never with `run_in_background`), all
+of a stage's batches in one message; they still run in parallel. If the user
+is asked to approve colharmonize commands anyway, tell them once, at the end,
+that `colharmonize setup` stops that.
+
+## Talking to the user
+
+Keep it minimal. The user wants the result, not a log; they can ask for
+details. Use these messages and nothing more:
+- **Start:** `Harmonizing N studies in <workspace, as a full path>.` When
+  coming back to a run: `Resuming the run in <workspace>.`
+- **After each stage:** one short line, such as `Ingest: 4 studies, 105
+  samples, 17 columns.` No tables, no explanations, no lists.
+- **Only if something needs the user's attention** (a failed source, an
+  item given up after retries, a repair rule that missed samples): one more
+  line saying what and where.
+- **At review:** exactly these two lines, with the link from `review page`:
+
+      Ready for review: [review.html](<file:// link>), opened in your browser.
+      Check the manual tier first, press Export, then type `/colharmonize:harmonize` to finish.
+
+- **At the end:** this one line, with a link to the pooled table, and no
+  sentence before it:
+
+      Done: [pooled_samples.tsv](<file:// link>), N samples × M variables from K studies.
+
+  Add a second line only if publish reports multi-valued cells or rejected
+  variables. Don't offer licenses, registries or GEOmend unless asked.
 
 Arguments: `$ARGUMENTS`. Read them loosely; the user may type a plain
 request such as "harmonize GSE77298 and GSE55457".
@@ -38,14 +62,13 @@ request such as "harmonize GSE77298 and GSE55457".
   - With no sources and no run, tell the user how to start one:
     `/colharmonize:harmonize GSE12345 GSE67890`, then stop.
 
-Say which workspace folder you are using, as a full path, before step 0.
-
 ## 0. Check the tool and find where the workspace stands
 
 Run `colharmonize --help`. If the command is missing, stop and tell the user
-to install it, then start Claude Code again:
+to install and set it up, then start Claude Code again:
 
     uv tool install --python 3.13 git+https://github.com/clars32/colharmonize.git
+    colharmonize setup
 
 Then run:
 
@@ -81,8 +104,7 @@ It reads offline by default. If the user gave GSE accessions rather than
 files, add `--online` so they are downloaded; they are cached in the
 workspace. If any source can't be read, ingest stops, names each failing
 source and why, and leaves no GEOmend project behind, so correct the sources
-and run it again. Report the number of studies, samples and columns it
-prints.
+and run it again.
 
 ## 1b. Preprocess (GEOmend evidence)
 
@@ -101,6 +123,7 @@ there, make it and run preprocess again. This downloads EFO v3.94.0 once
 
 Only if the user names a different pinned directory, pass
 `--ontology DIR --store DIR.sqlite`.
+
 ## 2. Repair (one run)
 
     colharmonize tasks write repair --workspace <workspace> --run 1
@@ -122,16 +145,16 @@ rest of its batch stands. If it reports `failed_items`, re-task just those:
 This writes a retry batch holding only the failed items and prints its path.
 Launch the same subagent on it, then collect again. Never edit or delete
 answer files yourself. The tool allows two retries per item; after that
-`retry` reports the item as given up. Show those items and their reasons to
-the user, then apply without them:
+`retry` reports the item as given up. Tell the user which items and why, in
+one line, then apply without them:
 
     colharmonize repair apply --workspace <workspace> --run 1 [--drop-failed]
 
 Without `--drop-failed`, apply refuses while any item is failing.
 
-Show the user the coverage table and any PROBLEM lines. A rule that matched
-fewer samples than expected is not an error to hide: say which samples it
-missed.
+If apply prints PROBLEM lines, a rule matched fewer samples than expected:
+say which column and how many samples it missed, in one line. Don't show the
+coverage table.
 
 ## 3. Candidates
 
@@ -156,8 +179,7 @@ Collect each run as in step 2 (retry failed items with `tasks retry annotate`, a
 
     colharmonize annotate apply --workspace <workspace> --runs 1 2
 
-Report how many columns were annotated, the share where the two runs agree,
-and the number of variables before reconciliation.
+Report one line: columns annotated, and the share where the two runs agree.
 
 ## 5. Reconcile (two independent runs)
 
@@ -175,8 +197,8 @@ each and never mixing runs, exactly as in step 4. Collect both runs, then:
 
     colharmonize reconcile apply --workspace <workspace> --runs 1 2
 
-Report the number of variables, how many columns were reconciled, and the
-partition agreement between runs.
+Report one line: the number of variables, and how many pool two or more
+studies.
 
 ## 6. Score
 
@@ -184,24 +206,19 @@ partition agreement between runs.
 
 This assigns every column and variable a review tier from the two runs'
 agreement and a fixed set of checks: `pre_accepted`, `quick` or `manual`.
-Report the counts per tier. Nothing is accepted without review; the tier sets
-the order and depth of review.
+Nothing is accepted without review; the tier sets the order and depth of
+review. Report one line: variables per tier.
 
 ## 7. Review (the human step)
 
     colharmonize review page --workspace <workspace>
 
-Tell the user the page's full path (`<workspace>/review.html`, made
-absolute) so they can open it in a browser. Ask them to review it starting
-with the manual tier and press Export; the browser saves the decisions as
-`~/Downloads/review_<workspace name>.json`. Do not review on their behalf.
-Then stop, and tell them that when they have exported, they finish the run by
-typing the command with nothing after it:
-
-    /colharmonize:harmonize
-
-(If you used a workspace other than the most recent one in this directory,
-tell them to add its name.)
+It writes the page, opens it in the browser and prints its `file://` link.
+Send the two review lines (see "Talking to the user") and stop. Do not
+review on their behalf. The browser saves the export as
+`~/Downloads/review_<workspace name>.json`. If you used a workspace other
+than the most recent one in this directory, put its name after the command
+in the second line.
 
 `status` will then say review is waiting, and this applies the export from
 Downloads:
@@ -225,16 +242,14 @@ This writes `variables.tsv`, `columns.tsv` and `mappings.sssom.tsv` under
 writes the pooled table: `pooled_samples.tsv`, with one row per sample across
 all studies and one column per variable, holding harmonized values. Its long
 form, `pooled_values.tsv`, keeps each value beside its raw value and source
-column. Tell the user about the pooled table first: for most people it is the
-product. If it reports multi-valued cells, a study repeated a key on its
-samples; every value is kept, joined with " | ", so say which variables have
-them. Ask the
-user for a license before publishing mappings they will share; without one,
-the SSSOM header records the license as unspecified. Report the count of
-variables per review status.
+column. For most people the pooled table is the product, so the final
+message links to it (see "Talking to the user"). If publish reports
+multi-valued cells, a study repeated a key on its samples and every value is
+kept, joined with " | ". Without `--license`, the SSSOM header records the
+license as unspecified; pass one only if the user gives it.
 
-If the workspace uses a registry, offer to register the reviewed variables so
-later runs can join them:
+If the workspace uses a registry and the user asks, register the reviewed
+variables so later runs can join them:
 
     colharmonize registry add --workspace <workspace>
 
@@ -243,9 +258,8 @@ Only accepted and edited variables are registered unless the user asks for
 
 ## 9. Write back to GEOmend (optional)
 
-If the user also works in the workspace's GEOmend project, or someone who
-uses GEOmend without Claude needs the result, offer to send the variables
-there:
+Only if the user asks to send the variables to the workspace's GEOmend
+project:
 
     colharmonize geomend propose --workspace <workspace>
 

@@ -1163,3 +1163,34 @@ harmonization in a plain `claude` session. `docs/DEMO.md` is the script.
 - **Variation between runs:** the three runs of the same series gave 13, 10
   and 11 variables. One repair run split GSE77298's two-value `disease
   state` column. It never pooled anything it shouldn't.
+
+### 15.19: `colharmonize setup`, and a quieter run (2026-10-23)
+The user's live rehearsal of `docs/DEMO.md` (15.18) found six problems:
+approval prompts at `tasks collect repair` and `repair apply`, a `--help`
+that didn't match how people use the tool, `ontology fetch` silent and then
+dumping JSON, too much text in Claude Code (especially at review and at the
+end), and no link to the review page, which didn't open either.
+- **Permissions come from the user's settings, written by `setup`.** A
+  skill's `allowed-tools` held in headless runs but not in the live session.
+  `colharmonize setup` adds `Bash(colharmonize *)` and
+  `Edit(**/tasks/*/run*/*.answer.json)` to `permissions.allow` in
+  `~/.claude/settings.json` (or `$CLAUDE_CONFIG_DIR`), changing nothing else
+  and refusing a file that isn't valid JSON. It also pins the ontology and
+  installs the plugin, so install is two commands and `claude` needs no
+  flag. `--no-plugin` and `--no-permissions` skip steps.
+- **Tested with the rules alone:** default permission mode, no
+  `acceptEdits`, the rules given with `--settings`, and a copy of the plugin
+  with the skill's `allowed-tools` removed. The run reached annotation with
+  no approval requests before the user's usage limit stopped it. Resumed with
+  the bare command, it reached review, then applied a stand-in export and
+  published (105 samples × 10 variables), again with none.
+- **Output:** `--help` is 14 lines, starting from `setup`; no arguments
+  prints it. `ontology fetch` prints a line per step, a download meter in a
+  terminal, and one summary line (`--json` for the full result). `review page`
+  opens the browser and prints a `file://` link. The skill sends one line per
+  stage, two at review and one at the end.
+- **A mistake in testing:** the stand-in export overwrote the user's own
+  `~/Downloads/review_harmonized.json` from the rehearsal, and was then
+  deleted. Its 10 decisions had already been applied and survive in
+  `~/harmonize-demo/harmonized/review.json`. Tests now need to check for an
+  existing export before writing one.
