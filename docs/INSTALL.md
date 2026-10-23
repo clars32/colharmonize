@@ -31,7 +31,7 @@ claude --permission-mode acceptEdits
 and in Claude Code:
 
 ```
-/colharmonize:harmonize work/my-run GSE12345 GSE67890
+/colharmonize:harmonize GSE12345 GSE67890
 ```
 
 The sections below explain each step.
@@ -148,14 +148,14 @@ every one of those writes. The skill itself is allowed to run `colharmonize`
 commands without asking. Then, in Claude Code:
 
 ```
-/colharmonize:harmonize work/my-run GSE12345 GSE67890
+/colharmonize:harmonize GSE12345 GSE67890
 ```
 
 Give GSE accessions to have the series downloaded from GEO, or paths to SOFT
 files you already have:
 
 ```
-/colharmonize:harmonize work/my-run /path/to/GSE12345_family.soft.gz /path/to/GSE67890_family.soft.gz
+/colharmonize:harmonize /path/to/GSE12345_family.soft.gz /path/to/GSE67890_family.soft.gz
 ```
 
 The skill runs every stage. It launches the plugin's agents for the judgment
@@ -165,15 +165,19 @@ batches:
 
 The one human step is review. The skill stops and gives you the path of
 `review.html`. Open it in a browser, review it starting with the manual tier,
-and press Export; the browser saves `review_my-run.json` in Downloads. Then
-type the same command again to finish:
+and press Export; the browser saves `review_harmonized.json` in Downloads.
+Then type the command with nothing after it to finish:
 
 ```
-/colharmonize:harmonize work/my-run
+/colharmonize:harmonize
 ```
 
 It applies your decisions from Downloads and publishes. The result is in
-`work/my-run/published/`; start with `pooled_samples.tsv`.
+`harmonized/published/`; start with `pooled_samples.tsv`.
+
+The run lives in the folder `harmonized`. A second run in the same directory
+goes to `harmonized-2`, and so on. To choose the name, put it before the
+accessions: `/colharmonize:harmonize ra-study GSE12345 GSE67890`.
 
 If a run stops partway, for example at a session limit, start the skill
 again with the same workspace. It runs `colharmonize status` first and
@@ -181,7 +185,7 @@ resumes at the stage that reports, without redoing finished work. You can
 run it yourself at any time:
 
 ```bash
-colharmonize status --workspace work/my-run
+colharmonize status
 ```
 
 What a run costs: the 16-series evaluation run used 41 subagent calls and

@@ -1,6 +1,6 @@
 ---
 description: Harmonize metadata columns across GEO series or tables with colharmonize. Use when the user asks to harmonize, clean up, or make interoperable the sample metadata of several datasets.
-argument-hint: <workspace dir> [SOFT files | GSE accessions ...]
+argument-hint: GSE accessions or SOFT files to harmonize (none, to finish a run)
 allowed-tools: Bash(colharmonize *)
 ---
 
@@ -20,8 +20,25 @@ whole run in it: launch every subagent in the foreground (never with
 `run_in_background`), all of a stage's batches in one message. They still run
 in parallel, and you continue when the last one returns.
 
-Arguments: `$ARGUMENTS`. The first argument is the workspace directory; any
-further arguments are SOFT files, tables or GSE accessions to ingest.
+Arguments: `$ARGUMENTS`. Read them loosely; the user may type a plain
+request such as "harmonize GSE77298 and GSE55457".
+- **Sources** are GSE accessions (`GSE` and digits) and paths to SOFT files
+  or tables.
+- **The workspace** is the folder the run lives in. If the arguments name
+  one (any other path-like word, such as `work/ra` or `ra-study`), use it.
+  Otherwise pick it:
+  - With sources: `harmonized` in the current directory. If that folder
+    already holds a run, use `harmonized-2`, `harmonized-3` and so on, so an
+    earlier run is never touched.
+  - With no sources, the user is coming back to a run: find the runs in the
+    current directory with Glob (`*/columns.parquet` and
+    `*/*/columns.parquet`; each match's folder is a workspace). With one,
+    use it. With several, use the one changed most recently, and say which
+    one; the user can name another.
+  - With no sources and no run, tell the user how to start one:
+    `/colharmonize:harmonize GSE12345 GSE67890`, then stop.
+
+Say which workspace folder you are using, as a full path, before step 0.
 
 ## 0. Check the tool and find where the workspace stands
 
@@ -179,9 +196,12 @@ absolute) so they can open it in a browser. Ask them to review it starting
 with the manual tier and press Export; the browser saves the decisions as
 `~/Downloads/review_<workspace name>.json`. Do not review on their behalf.
 Then stop, and tell them that when they have exported, they finish the run by
-typing the same command again:
+typing the command with nothing after it:
 
-    /colharmonize:harmonize <workspace>
+    /colharmonize:harmonize
+
+(If you used a workspace other than the most recent one in this directory,
+tell them to add its name.)
 
 `status` will then say review is waiting, and this applies the export from
 Downloads:
