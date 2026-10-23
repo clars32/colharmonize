@@ -130,3 +130,21 @@ def test_tasks_on_a_run_with_no_tasks_is_a_clear_error(tmp_path, action):
     with pytest.raises(SystemExit) as got:
         cli.main(["tasks", action, "annotate", "--workspace", str(ws), "--run", "3"])
     assert "annotate run 3 has no tasks yet" in str(got.value.code)   # a message, so the exit status is 1
+
+
+SOFT = Path(__file__).parent / "fixtures" / "soft"
+
+
+@pytest.mark.parametrize("sources", [["GSE1"], [str(SOFT / "GSE128621_family.soft.gz"), "GSE1"]],
+                         ids=["only-uncached", "one-of-two-uncached"])
+def test_ingest_that_cannot_read_a_source_fails_and_leaves_nothing(tmp_path, capsys, sources):
+    from colharmonize import status
+    from colharmonize.workspace import Workspace
+    ws = Workspace(tmp_path / "ws")
+    with pytest.raises(SystemExit) as got:
+        cli.main(["ingest", "--workspace", str(ws.root), *sources])
+    assert f"ingest failed for 1 of {len(sources)} sources" in str(got.value.code)
+    assert "need --online" in str(got.value.code)
+    assert "GSE1: " in capsys.readouterr().err                   # each failure says why
+    assert not ws.geomend.exists()                                # so a retry with --online isn't refused
+    assert {s.name: s.state for s in status.stages(ws)}["ingest"] == "not started"

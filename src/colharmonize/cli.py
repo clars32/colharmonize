@@ -30,6 +30,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import shutil
 import sys
 from pathlib import Path
 
@@ -93,11 +94,23 @@ def cmd_status(args: argparse.Namespace) -> int:
 
 def cmd_ingest(args: argparse.Namespace) -> int:
     from colharmonize import profile
-    from colharmonize.geomend_bridge import create_cohort, namespace_counts
+    from colharmonize.geomend_bridge import create_cohort, failed_sources, namespace_counts
     from colharmonize.workspace import Workspace
     ws = Workspace(args.workspace)
     ws.root.mkdir(parents=True, exist_ok=True)
+    existed = ws.geomend.exists()
     create_cohort(ws.geomend, args.sources, offline=not args.online, workers=args.workers)
+    failed = failed_sources(ws.geomend)
+    if failed:
+        # All or nothing: a partial cohort would pass as done, and GEOmend refuses
+        # to create a project over it, so remove the one this call made.
+        if not existed:
+            shutil.rmtree(ws.geomend)
+        for f in failed:
+            print(f"{f['source']}: {f['error']}", file=sys.stderr)
+        hint = "" if args.online else " Accessions not cached locally need --online."
+        raise SystemExit(f"ingest failed for {len(failed)} of {len(args.sources)} sources; "
+                         f"nothing was ingested.{hint}")
     for (scope, ns), n in sorted(namespace_counts(ws.geomend).items()):
         print(f"{scope:9} {ns:15} {n}")
     print(json.dumps(profile.build(ws)))
