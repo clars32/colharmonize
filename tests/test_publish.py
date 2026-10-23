@@ -1,4 +1,5 @@
-"""The pooled sample table: recodes, raw values, rejected variables, name clashes, conflicts."""
+"""The pooled sample table: recodes, raw values, rejected variables, name clashes, conflicts,
+repeated keys."""
 import json
 
 import pandas as pd
@@ -39,7 +40,8 @@ def test_pool_recodes_keeps_raw_and_drops_rejected():
     assert set(wide.karyotype.dropna()) == {"Trisomy 21", "Euploid"}
     assert {"age [G2]", "age [G3]"} <= set(wide.columns)                              # names clash
     assert wide.set_index("sample_id").loc["s1", "sample_title"] == "first"
-    assert report == {"samples": 4, "studies": 2, "variables": 3, "values": 5, "conflicting_cells": 0}
+    assert report == {"samples": 4, "studies": 2, "variables": 3, "values": 5, "conflicting_cells": 0,
+                      "multi_valued_cells": 0}
 
 
 def test_pool_keeps_and_counts_conflicting_values():
@@ -50,3 +52,28 @@ def test_pool_keeps_and_counts_conflicting_values():
     wide, _, report = pool(values, variables, columns)
     assert report["conflicting_cells"] == 1
     assert wide.set_index("sample_id").loc["s1", "karyotype"] == "Trisomy 21 | Euploid"
+
+
+def test_pool_keeps_every_value_of_a_repeated_key():
+    # GSE77298 repeats `disease state`: the disease, then the tissue. Both are kept, not counted as a conflict.
+    values, variables, columns = _fixture()
+    values = pd.concat([values, pd.DataFrame([("A", "s1", "karyotype", "mosaic")], columns=values.columns)])
+    wide, long, report = pool(values, variables, columns)
+    assert wide.set_index("sample_id").loc["s1", "karyotype"] == "Trisomy 21 | mosaic"
+    assert sorted(long[(long.sample_id == "s1") & (long.variable_id == "G1")].raw_value) == ["T21", "mosaic"]
+    assert (report["conflicting_cells"], report["multi_valued_cells"]) == (0, 1)
+
+
+def test_sample_values_gives_every_value_only_when_asked(tmp_path, monkeypatch):
+    from colharmonize import geomend_bridge as gb
+    from colharmonize import profile
+    from colharmonize.workspace import Workspace
+    ws = Workspace(tmp_path / "ws")
+    ws.root.mkdir()
+    pd.DataFrame([{"study_id": "A", "column": "disease state"}]).to_parquet(ws.columns)
+    monkeypatch.setattr(gb, "sample_values", lambda project: pd.DataFrame(
+        [("A", "s1", "f1", "characteristic", "disease state", 0, "RA"),
+         ("A", "s1", "f1", "characteristic", "disease state", 1, "synovium")],
+        columns=["study_id", "sample_id", "field_id", "namespace", "name", "ordinal", "value"]))
+    assert profile.sample_values(ws).value.tolist() == ["RA"]                  # judgment stages: first value
+    assert profile.sample_values(ws, all_values=True).value.tolist() == ["RA", "synovium"]
