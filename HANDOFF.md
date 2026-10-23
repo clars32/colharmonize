@@ -166,6 +166,8 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
   cached in `work/demo-genetic/geomend/.geomend/cache/geo`.
 
 **Tools**
+- Remote: `origin` is `https://github.com/clars32/colharmonize.git`
+  (private); `master` tracks it. Pushing uses the stored git login.
 - `gh` isn't installed.
 - The in-app browser isn't signed in to GitHub.
 - poppler is installed, so PDFs can be read.
@@ -198,8 +200,9 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
    (task 9).
 9. **GEOmend decisions:** whether to build changes 1–3 (task 23) and a
    feature for derived fields (task 22).
-10. **Host the plugin repository** and run `claude plugin validate`
-    (task 24).
+10. ~~**Host the plugin repository.**~~ Pushed 2026-10-22 to
+    `https://github.com/clars32/colharmonize` (private). Still open: run
+    `claude plugin validate ./plugin --strict` (task 24, part of A12).
 11. **Finish reviewing the genetic-syndromes demo.** The 4 manual variables
     were accepted and published on 2026-10-14. Still open, if the user
     wants a fully reviewed demo: the 19 quick-tier variables in
@@ -326,10 +329,11 @@ Measure each on tuning first.
 24. **Package the plugin.** Done 2026-10-12 locally: `docs/INSTALL.md`,
     with the plugin layout and commands checked against the Claude Code
     docs. The missing runtime dependencies (sentence-transformers and
-    others) are now declared. Still open, for the user: host the repository
-    on GitHub so others can run `claude plugin marketplace add
-    OWNER/colharmonize`, and run `claude plugin validate ./plugin --strict`
-    on a machine with the `claude` command (not available here).
+    others) are now declared. Hosted 2026-10-22 as the private repository
+    `clars32/colharmonize`, so people with access can run `claude plugin
+    marketplace add clars32/colharmonize`. Still open, for the user: run
+    `claude plugin validate ./plugin --strict` on a machine with the
+    `claude` command (not available here).
 
 ### E. Housekeeping
 

@@ -71,11 +71,12 @@ Inside a Claude Code session, the same thing is
 `/plugin marketplace add /path/to/colharmonize`, then
 `/plugin install colharmonize@colharmonize`.
 
-Once the repository is on GitHub, others add it by name. A private
-repository uses the machine's existing git credentials:
+The repository is on GitHub at `clars32/colharmonize`, so others add it by
+name. It is private: ask the owner for access first. The install uses the
+machine's existing git credentials:
 
 ```bash
-claude plugin marketplace add OWNER/colharmonize
+claude plugin marketplace add clars32/colharmonize
 claude plugin install colharmonize@colharmonize
 ```
 
