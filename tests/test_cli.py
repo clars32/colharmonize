@@ -148,3 +148,38 @@ def test_ingest_that_cannot_read_a_source_fails_and_leaves_nothing(tmp_path, cap
     assert "GSE1: " in capsys.readouterr().err                   # each failure says why
     assert not ws.geomend.exists()                                # so a retry with --online isn't refused
     assert {s.name: s.state for s in status.stages(ws)}["ingest"] == "not started"
+
+
+def test_ontology_fetch_without_out_pins_to_the_default_location(tmp_path, monkeypatch):
+    from colharmonize.workspace import default_ontology_dir
+    monkeypatch.setenv("COLHARMONIZE_HOME", str(tmp_path / "chome"))
+    assert cli.main(["ontology", "fetch", "--tag", "v1.0", "--url", TINY.as_uri()]) == 0
+    out = tmp_path / "chome" / "ontology" / "efo-v1.0"
+    assert default_ontology_dir("v1.0") == out
+    assert Ontology.from_dir(out).release_tag == "v1.0"
+    assert (tmp_path / "chome" / "ontology" / "efo-v1.0.sqlite").exists()
+
+
+def test_a_workspace_with_nothing_recorded_uses_and_records_the_default(tmp_path, monkeypatch):
+    from colharmonize.ontology import pin_obograph
+    from colharmonize.workspace import Workspace, default_ontology_dir
+    monkeypatch.setenv("COLHARMONIZE_HOME", str(tmp_path / "chome"))
+    default = default_ontology_dir()
+    pin_obograph(TINY, default, "v1.0")
+    gb.build_ontology_store(Ontology.from_dir(default), default.with_name(default.name + ".sqlite"))
+    ws = Workspace(tmp_path / "ws")
+    ws.root.mkdir()
+    assert ws.recorded("ontology") == default
+    assert ws.recorded("geomend_store") == default.with_name(default.name + ".sqlite")
+    assert ws.settings() == {"ontology": str(default), "geomend_store": str(default) + ".sqlite"}
+
+
+def test_review_apply_looks_for_the_export_in_downloads(tmp_path, tiny_dir, monkeypatch):
+    from colharmonize.workspace import Workspace
+    monkeypatch.setenv("HOME", str(tmp_path / "home"))
+    ws = Workspace(tmp_path / "my-run")
+    ws.root.mkdir()
+    ws.remember(ontology=str(tiny_dir))
+    with pytest.raises(SystemExit) as got:
+        cli.main(["review", "apply", "--workspace", str(ws.root)])
+    assert str(tmp_path / "home" / "Downloads" / "review_my-run.json") in str(got.value.code)

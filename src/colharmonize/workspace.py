@@ -17,8 +17,19 @@
 from __future__ import annotations
 
 import json
+import os
 from dataclasses import dataclass
 from pathlib import Path
+
+DEFAULT_TAG = "v3.94.0"
+
+
+def default_ontology_dir(tag: str = DEFAULT_TAG) -> Path:
+    """Where `ontology fetch` pins a release when no --out is given, and where a
+    workspace with nothing recorded looks: $COLHARMONIZE_HOME, else
+    ~/.local/share/colharmonize, then ontology/efo-<tag>."""
+    home = os.environ.get("COLHARMONIZE_HOME") or Path.home() / ".local" / "share" / "colharmonize"
+    return Path(home).expanduser() / "ontology" / f"efo-{tag}"
 
 
 @dataclass(frozen=True)
@@ -66,7 +77,8 @@ class Workspace:
         self.settings_file.write_text(json.dumps({**self.settings(), **values}, indent=1))
 
     def recorded(self, key: str, given: str | Path | None = None) -> Path:
-        """A path setting: `given`, which is then recorded for later commands, or the one recorded earlier."""
+        """A path setting: `given`, which is then recorded for later commands, or the
+        one recorded earlier, or else the default location if something is there."""
         flag, what, how = _PATH_SETTINGS[key]
         if given:
             path = Path(given).expanduser().resolve()
@@ -74,9 +86,15 @@ class Workspace:
                 raise SystemExit(f"{flag} {given}: no such file or directory")
             self.remember(**{key: str(path)})
             return path
-        if not self.settings().get(key):
-            raise SystemExit(f"{self.root}: no {what} recorded for this workspace; {how}")
-        return Path(self.settings()[key])
+        if self.settings().get(key):
+            return Path(self.settings()[key])
+        default = default_ontology_dir()
+        if key == "geomend_store":
+            default = default.with_name(default.name + ".sqlite")
+        if default.exists():
+            self.remember(**{key: str(default)})
+            return default
+        raise SystemExit(f"{self.root}: no {what} recorded for this workspace, and none at {default}; {how}")
 
     def ontology_dir(self) -> Path:
         return self.recorded("ontology")

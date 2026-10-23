@@ -57,6 +57,8 @@ def cmd_fetch(args: argparse.Namespace) -> int:
     import os
     from colharmonize.geomend_bridge import build_ontology_store
     from colharmonize.ontology import EFO_RELEASE_URL, fetch_release
+    from colharmonize.workspace import default_ontology_dir
+    args.out = args.out or str(default_ontology_dir(args.tag))
     try:
         result = fetch_release(args.tag, args.out, url=args.url or EFO_RELEASE_URL)
     except (ValueError, OSError) as e:
@@ -334,11 +336,14 @@ def cmd_review(args: argparse.Namespace) -> int:
         out = review.write_page(ws, onto, Path(args.out) if args.out else None)
         print(f"wrote {out}")
         return 0
-    if not args.export:
-        sys.exit("review apply needs the exported decisions file")
+    # The page downloads its export as review_<workspace name>.json, so look there by default.
+    export = Path(args.export or Path.home() / "Downloads" / f"review_{ws.root.name}.json").expanduser()
+    if not export.exists():
+        sys.exit(f"review apply: no exported decisions at {export}; export them from the review page, "
+                 "or give the file's path")
     from colharmonize import profile
     conflicts = profile.cooccurrence(profile.sample_values(ws))
-    result = review.apply_export(ws, Path(args.export).expanduser(), onto, conflicts)
+    result = review.apply_export(ws, export, onto, conflicts)
     print(json.dumps(result, indent=1))
     return 0 if result["saved"] else 1
 
@@ -412,8 +417,10 @@ def build_parser() -> argparse.ArgumentParser:
     ont = sub.add_parser("ontology", help="pin, project and query the pinned ontology")
     osub = ont.add_subparsers(dest="ontology_command", required=True)
     fetch = osub.add_parser("fetch", help="download a release's efo.json, pin it, and build the GEOmend store beside it")
-    fetch.add_argument("--tag", required=True, help="release tag, e.g. v3.94.0")
-    fetch.add_argument("--out", required=True, help="pinned directory; the store is written as DIR.sqlite")
+    fetch.add_argument("--tag", default="v3.94.0", help="release tag (default: v3.94.0, the one measured)")
+    fetch.add_argument("--out", help="pinned directory; the store is written as DIR.sqlite "
+                                     "(default: ~/.local/share/colharmonize/ontology/efo-TAG, "
+                                     "under $COLHARMONIZE_HOME if set)")
     fetch.add_argument("--url", help="download from here instead of the EBISPOT/efo GitHub release ({tag} is filled in)")
     fetch.set_defaults(func=cmd_fetch)
     pin = osub.add_parser("pin", help="flatten an OBO-graph JSON release into a pinned directory")
@@ -502,7 +509,8 @@ def build_parser() -> argparse.ArgumentParser:
 
     rv = sub.add_parser("review", help="write the review page, or apply its exported decisions")
     rv.add_argument("action", choices=["page", "apply"])
-    rv.add_argument("export", nargs="?", help="decisions file exported from the page (for apply)")
+    rv.add_argument("export", nargs="?", help="decisions file exported from the page, for apply "
+                                              "(default: ~/Downloads/review_<workspace name>.json)")
     rv.add_argument("--workspace", required=True)
     rv.add_argument("--out", help="where to write the page (default: <workspace>/review.html)")
     rv.set_defaults(func=cmd_review)

@@ -19,7 +19,7 @@ from dataclasses import dataclass, field
 import pandas as pd
 
 from colharmonize import tasks
-from colharmonize.workspace import Workspace
+from colharmonize.workspace import Workspace, default_ontology_dir
 
 DONE, PARTLY, WAITING, TODO, SKIPPED = "done", "in progress", "waiting for you", "not started", "skipped"
 
@@ -107,11 +107,15 @@ def stages(ws: Workspace, w: str | None = None) -> list[Stage]:
     settings = ws.settings()
     read = pd.read_parquet
 
+    default = default_ontology_dir()
+
     def flags(*keys: str) -> list[str]:
+        """Path options a command still needs: none recorded and nothing at the default location."""
         out = []
-        if "geomend_store" in keys and not settings.get("geomend_store"):
+        if ("geomend_store" in keys and not settings.get("geomend_store")
+                and not default.with_name(default.name + ".sqlite").exists()):
             out += ["--store", "FILE"]
-        if "ontology" in keys and not settings.get("ontology"):
+        if "ontology" in keys and not settings.get("ontology") and not default.exists():
             out += ["--ontology", "DIR"]
         return out
 
@@ -164,8 +168,8 @@ def stages(ws: Workspace, w: str | None = None) -> list[Stage]:
     elif page.exists():
         review.state, review.detail = WAITING, "review.html written; no decisions applied yet"
         review.note = (f"Open {page} in a browser, review it starting with the manual tier, and export "
-                       f"the decisions. Then:")
-        review.next = [_cmd("review", "apply", "--workspace", w, "EXPORT.json")]
+                       f"the decisions; the browser saves them as ~/Downloads/review_{root.name}.json. Then:")
+        review.next = [_cmd("review", "apply", "--workspace", w)]
     else:
         review.next = [_cmd("review", "page", "--workspace", w)]
 
