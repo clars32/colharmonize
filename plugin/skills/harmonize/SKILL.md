@@ -1,6 +1,7 @@
 ---
 description: Harmonize metadata columns across GEO series or tables with colharmonize. Use when the user asks to harmonize, clean up, or make interoperable the sample metadata of several datasets.
 argument-hint: <workspace dir> [SOFT files | GSE accessions ...]
+allowed-tools: Bash(colharmonize *)
 ---
 
 # Harmonize dataset metadata with colharmonize
@@ -11,14 +12,22 @@ work. Your job is to run it and to hand each judgment batch to the right
 subagent. Never answer a batch yourself, and never edit files under a
 workspace's `tasks/` directory or its GEOmend project.
 
+Plain `colharmonize ...` commands are pre-approved while this skill runs, so
+the user isn't asked about each one. Run every command on its own line by its
+bare name: no `cd`, no shell variables, and no `;`, `&&` or pipes, which
+would need approval.
+
 Arguments: `$ARGUMENTS`. The first argument is the workspace directory; any
 further arguments are SOFT files, tables or GSE accessions to ingest.
 
 ## 0. Check the tool and find where the workspace stands
 
 Run `colharmonize --help`. If the command is missing, stop and tell the user
-to install the package (`pip install -e <colharmonize checkout>`) in a Python
-3.13 environment. Then run:
+to install it, then start Claude Code again:
+
+    uv tool install --python 3.13 git+https://github.com/clars32/colharmonize.git
+
+Then run:
 
     colharmonize status --workspace <workspace>
 
@@ -35,8 +44,10 @@ session limit for example, picks up where it stopped:
   relaunching.
 - If every batch has an answer file, `status` names the stage's apply
   command, which validates the answers first.
-- If review is **waiting for you**, the next step is the user's: ask for
-  their exported decisions (step 7).
+- If review is **waiting for you**, run `colharmonize review apply
+  --workspace <workspace>`: it finds the export in Downloads (step 7). If
+  it says there is none, the review isn't exported yet; tell the user where
+  the page is and stop.
 
 Run `status` again whenever you are unsure where the run stands.
 
@@ -55,18 +66,21 @@ prints.
 
 ## 1b. Preprocess (GEOmend evidence)
 
-    colharmonize preprocess --workspace <workspace> --store <pinned ontology dir>.sqlite --ontology <pinned ontology dir>
+    colharmonize preprocess --workspace <workspace>
 
 This collects what GEOmend can tell colharmonize, offline and with no model:
 lexical concept candidates from the pinned store, suggested merges between
 columns, and units. It is evidence only; later stages decide. The workspace
-records both paths, so later commands don't need them. Use the pinned
-ontology directory the user names. If they have none yet, make one; it
-downloads EFO v3.94.0 once (about 170 MB), checks it and builds the store
-beside it as `<ontology dir>.sqlite`:
+records both paths, so later commands don't need them. With no options it
+uses the pinned ontology at the default location,
+`~/.local/share/colharmonize/ontology/efo-v3.94.0`. If it says there is none
+there, make it and run preprocess again. This downloads EFO v3.94.0 once
+(about 170 MB, a minute or so), checks it and builds the store beside it:
 
-    colharmonize ontology fetch --tag v3.94.0 --out <ontology dir>
+    colharmonize ontology fetch
 
+Only if the user names a different pinned directory, pass
+`--ontology DIR --store DIR.sqlite`.
 ## 2. Repair (one run)
 
     colharmonize tasks write repair --workspace <workspace> --run 1
@@ -156,12 +170,21 @@ the order and depth of review.
 
     colharmonize review page --workspace <workspace>
 
-Tell the user where the page is (`<workspace>/review.html`). Ask them to
-review it in a browser, starting with the manual tier, and export their
-decisions. Do not review on their behalf. When they give you the exported
-file:
+Tell the user the page's full path (`<workspace>/review.html`, made
+absolute) so they can open it in a browser. Ask them to review it starting
+with the manual tier and press Export; the browser saves the decisions as
+`~/Downloads/review_<workspace name>.json`. Do not review on their behalf.
+Then stop, and tell them that when they have exported, they finish the run by
+typing the same command again:
 
-    colharmonize review apply --workspace <workspace> <export.json>
+    /colharmonize:harmonize <workspace>
+
+`status` will then say review is waiting, and this applies the export from
+Downloads:
+
+    colharmonize review apply --workspace <workspace>
+
+If the user saved it somewhere else, add its path at the end.
 
 If it reports problems (an identifier not in the pinned ontology, a move that
 pools columns that conflict on the same samples), show them to the user;
