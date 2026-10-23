@@ -46,9 +46,12 @@ Skip this step unless `status` named it. Otherwise run:
 
     colharmonize ingest --workspace <workspace> <sources...>
 
-It reads offline by default. Add `--online` only if the user gave GSE
-accessions that are not available locally. Report the number of studies,
-samples and columns it prints.
+It reads offline by default. If the user gave GSE accessions rather than
+files, add `--online` so they are downloaded; they are cached in the
+workspace. If any source can't be read, ingest stops, names each failing
+source and why, and leaves no GEOmend project behind, so correct the sources
+and run it again. Report the number of studies, samples and columns it
+prints.
 
 ## 1b. Preprocess (GEOmend evidence)
 

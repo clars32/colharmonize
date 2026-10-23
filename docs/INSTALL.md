@@ -24,10 +24,18 @@ for the command first and stops with instructions if it is missing.
 
 ## 1. Install the command
 
+Clone the repository, then make a Python 3.13 environment and install into
+it. Most machines don't have Python 3.13; [uv](https://docs.astral.sh/uv/)
+fetches it for you:
+
 ```bash
-python3.13 -m venv ~/colharmonize-env
-~/colharmonize-env/bin/pip install -e /path/to/colharmonize
+git clone https://github.com/clars32/colharmonize.git
+uv venv --python 3.13 ~/colharmonize-env
+uv pip install --python ~/colharmonize-env/bin/python -e ./colharmonize
 ```
+
+With a Python 3.13 already installed, `python3.13 -m venv ~/colharmonize-env`
+and `~/colharmonize-env/bin/pip install -e ./colharmonize` do the same.
 
 Claude Code must be able to find `colharmonize` on its `PATH`. Activate the
 environment before starting `claude`, or link the command onto your path:
@@ -93,10 +101,18 @@ bumped. **Remove** with `claude plugin uninstall colharmonize@colharmonize`.
 
 ## 4. Run it
 
-In Claude Code, from the directory where you want the workspace:
+Sign in to Claude Code first: run `claude`, type `/login` and finish in the
+browser. Then, in Claude Code, from the directory where you want the
+workspace:
 
 ```
 /colharmonize:harmonize work/my-run /path/to/GSE12345_family.soft.gz /path/to/GSE67890_family.soft.gz
+```
+
+or, to have the series downloaded from GEO:
+
+```
+/colharmonize:harmonize work/my-run GSE12345 GSE67890
 ```
 
 The skill runs every stage. It launches the plugin's agents for the judgment

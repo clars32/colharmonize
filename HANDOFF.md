@@ -97,7 +97,7 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
     `~/.cache/colharmonize`. To reproduce the recorded workspaces' candidates
     (tuning, sealed, demo), pass `--cache work/cache`: its `remote.json`
     supplies the ZOOMA and OLS4 answers.
-- **Tests:** `./.venv/bin/python -m pytest -q` passes 131.
+- **Tests:** `./.venv/bin/python -m pytest -q` passes 133.
 
 ## Constraints: do not break these
 
@@ -214,12 +214,12 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
       They pass through unrecoded.
 
     Re-run `review apply` and `publish` after any new export.
-12. **Run the pipeline the real way, outside this folder.** Every run so
-    far used general-purpose stand-in agents in this checkout. On a machine
-    with the `claude` command: install from `docs/INSTALL.md`, run
-    `claude plugin validate ./plugin --strict`, then `/colharmonize:harmonize`
-    on 3–4 new series through publish, and write down what breaks. This is
-    also the first real test of `ontology fetch`'s 169 MB download.
+12. ~~**Run the pipeline the real way, outside this folder.**~~ Done
+    2026-10-22 (decisions log 15.16): a clean install from GitHub, the real
+    ontology download, plugin validation and install, and a run on 4 new
+    series through review and publish. It found an ingest bug, now fixed,
+    and one open issue: a repeated characteristic key keeps only its first
+    value per sample (task 27).
 
 ### B. Make the evaluation trustworthy
 
@@ -346,3 +346,8 @@ Measure each on tuning first.
     - GEOmend's six merged `fix/*` branches, still local and on origin.
       Deleting the remote ones is outward-facing.
     - colharmonize's merged `usability/setup-and-resume` branch.
+27. **A repeated characteristic key loses its later values.**
+    `profile.sample_values` keeps ordinal 0 only, so GSE77298's second
+    `disease state` line ("synovium") never reaches the pooled table, and
+    nothing says so (decisions log 15.16). At minimum, publish should report
+    dropped values; better, keep them.

@@ -151,6 +151,17 @@ def create_cohort(
     ProjectClient.create([str(s) for s in sources], project, config=config, run=True)
 
 
+def failed_sources(project: str | Path) -> list[dict]:
+    """Sources GEOmend could not read, each with its study_id, source and error.
+
+    GEOmend finishes a cohort run even when sources fail (the job is 'partial'),
+    so a caller that doesn't ask sees an empty or short cohort, not an error.
+    """
+    jobs = ProjectClient.open(project).inputs.jobs()
+    return [{"study_id": f["study_id"], "source": f["source"], "error": f["error"]}
+            for f in jobs["failed_studies"]]
+
+
 def _pages(fetch, key: str):
     offset = 0
     while offset is not None:
