@@ -326,6 +326,23 @@ def cmd_score(args: argparse.Namespace) -> int:
     return 0
 
 
+def _latest_export(ws) -> Path:
+    """The page's newest export in ~/Downloads. The page names it review_<workspace>.json, and a
+    browser that finds that name taken adds " (1)" and so on; an export older than the page is
+    from an earlier review, so it doesn't count."""
+    downloads = Path.home() / "Downloads"
+    page = ws.root / "review.html"
+    since = page.stat().st_mtime if page.exists() else 0
+    found = [p for p in downloads.glob(f"review_{ws.root.name}*.json")
+             if p.name == f"review_{ws.root.name}.json" or p.name.startswith(f"review_{ws.root.name} (")]
+    fresh = [p for p in found if p.stat().st_mtime >= since]
+    if not fresh:
+        older = f" ({len(found)} older than the review page ignored)" if found else ""
+        sys.exit(f"review apply: no export of this review in {downloads}{older}; press Export on "
+                 f"{page}, or give the file's path")
+    return max(fresh, key=lambda p: p.stat().st_mtime)
+
+
 def cmd_review(args: argparse.Namespace) -> int:
     from colharmonize import review
     from colharmonize.ontology import Ontology
@@ -336,11 +353,12 @@ def cmd_review(args: argparse.Namespace) -> int:
         out = review.write_page(ws, onto, Path(args.out) if args.out else None)
         print(f"wrote {out}")
         return 0
-    # The page downloads its export as review_<workspace name>.json, so look there by default.
-    export = Path(args.export or Path.home() / "Downloads" / f"review_{ws.root.name}.json").expanduser()
-    if not export.exists():
-        sys.exit(f"review apply: no exported decisions at {export}; export them from the review page, "
-                 "or give the file's path")
+    if args.export:
+        export = Path(args.export).expanduser()
+        if not export.exists():
+            sys.exit(f"review apply: {export}: no such file")
+    else:
+        export = _latest_export(ws)
     from colharmonize import profile
     conflicts = profile.cooccurrence(profile.sample_values(ws))
     result = review.apply_export(ws, export, onto, conflicts)
@@ -410,11 +428,41 @@ def cmd_eval(args: argparse.Namespace) -> int:
     return 0
 
 
-def build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(prog="colharmonize", description=__doc__.splitlines()[0])
-    sub = p.add_subparsers(dest="command", required=True)
+DEFAULT_WORKSPACE = "harmonized"
+WORKSPACE = {"default": DEFAULT_WORKSPACE,
+             "help": f"the run's folder (default: ./{DEFAULT_WORKSPACE}, the one /colharmonize:harmonize makes)"}
 
-    ont = sub.add_parser("ontology", help="pin, project and query the pinned ontology")
+OVERVIEW = """\
+colharmonize decides which sample-metadata columns of several GEO studies mean
+the same thing, pools them, and maps each to an EFO ontology term.
+
+Most people don't type these commands: in Claude Code, run
+  /colharmonize:harmonize GSE12345 GSE67890
+and the plugin runs them for you, handing the judgment steps to subagents."""
+
+PIPELINE = """\
+a run, in order (each step reads the folder the one before wrote):
+  setup     colharmonize ontology fetch          once per machine: download and pin EFO
+  1         colharmonize ingest --online GSE...  read the studies' sample metadata
+  2         colharmonize preprocess              lexical evidence from GEOmend
+  3         colharmonize tasks ... repair        Claude: recover columns hidden in titles
+  4         colharmonize candidates              shortlist ontology terms per column
+  5         colharmonize tasks ... annotate      Claude: pick a term per column (2 runs)
+  6         colharmonize tasks ... reconcile     Claude: group columns into variables (2 runs)
+  7         colharmonize score                   sort variables into review tiers
+  8         colharmonize review page / apply     you: review in the browser, export
+  9         colharmonize publish                 the pooled table and mappings
+
+lost? `colharmonize status` says what's done and prints the next command.
+each command's own --help gives its options, e.g. `colharmonize ingest --help`."""
+
+
+def build_parser() -> argparse.ArgumentParser:
+    p = argparse.ArgumentParser(prog="colharmonize", description=OVERVIEW, epilog=PIPELINE,
+                                formatter_class=argparse.RawDescriptionHelpFormatter)
+    sub = p.add_subparsers(dest="command", required=True, metavar="COMMAND", title="commands")
+
+    ont = sub.add_parser("ontology", help="setup: download and pin the EFO release every term is checked against")
     osub = ont.add_subparsers(dest="ontology_command", required=True)
     fetch = osub.add_parser("fetch", help="download a release's efo.json, pin it, and build the GEOmend store beside it")
     fetch.add_argument("--tag", default="v3.94.0", help="release tag (default: v3.94.0, the one measured)")
@@ -439,108 +487,110 @@ def build_parser() -> argparse.ArgumentParser:
     check.add_argument("--label")
     check.set_defaults(func=cmd_check)
 
-    st = sub.add_parser("status", help="which stages a workspace has done, and the command to run next (read only)")
-    st.add_argument("--workspace", required=True)
+    st = sub.add_parser("status", help="where a run stands, and the command to run next (changes nothing)")
+    st.add_argument("--workspace", **WORKSPACE)
     st.set_defaults(func=cmd_status)
 
-    ing = sub.add_parser("ingest", help="create a workspace: GEOmend project from SOFT files, tables or accessions, then profiles")
-    ing.add_argument("--workspace", required=True)
-    ing.add_argument("--workers", type=int, default=4)
-    ing.add_argument("--online", action="store_true", help="allow downloading accessions (default: offline)")
-    ing.add_argument("sources", nargs="+")
+    ing = sub.add_parser("ingest", help="step 1: start a run from GSE accessions (with --online) or SOFT files")
+    ing.add_argument("--workspace", **WORKSPACE)
+    ing.add_argument("--workers", type=int, default=4, help="studies read in parallel (default: 4)")
+    ing.add_argument("--online", action="store_true", help="download GSE accessions from GEO (default: read only local files and the cache)")
+    ing.add_argument("sources", nargs="+", metavar="SOURCE", help="GSE accessions (e.g. GSE12345) or paths to SOFT files or tables")
     ing.set_defaults(func=cmd_ingest)
 
-    col = sub.add_parser("columns", help="list a workspace's characteristic columns")
-    col.add_argument("--workspace", required=True)
+    pp = sub.add_parser("preprocess", help="step 2: collect GEOmend evidence (term candidates, likely merges, units)")
+    pp.add_argument("--workspace", **WORKSPACE)
+    pp.add_argument("--store", help="the pinned ontology as a GEOmend store (default: the one the workspace recorded)")
+    pp.add_argument("--ontology", help="pinned ontology directory (default: the one the workspace recorded)")
+    pp.set_defaults(func=cmd_preprocess)
+
+    col = sub.add_parser("columns", help="list a run's metadata columns")
+    col.add_argument("--workspace", **WORKSPACE)
     col.add_argument("--out")
     col.set_defaults(func=cmd_columns)
 
-    tk = sub.add_parser("tasks", help="write, list and collect task batches for Claude Code subagents")
-    tk.add_argument("action", choices=["write", "status", "collect", "retry"])
-    tk.add_argument("stage")
-    tk.add_argument("--workspace", required=True)
-    tk.add_argument("--run", type=int, required=True)
-    tk.add_argument("--batch-size", type=int, default=8)
+    tk = sub.add_parser("tasks", help="steps 3, 5, 6: hand-off files for Claude subagents (write, status, collect, retry)")
+    tk.add_argument("action", choices=["write", "status", "collect", "retry"],
+                    help="write batch files; status: list unanswered ones; collect: validate answers; "
+                         "retry: re-task failed items")
+    tk.add_argument("stage", choices=list(STAGES), help="which judgment step")
+    tk.add_argument("--workspace", **WORKSPACE)
+    tk.add_argument("--run", type=int, required=True, help="run number; annotate and reconcile use two independent runs, 1 and 2")
+    tk.add_argument("--batch-size", type=int, default=8, help="items per subagent (default: 8)")
     tk.add_argument("--seed", type=int)
     tk.add_argument("--studies", nargs="*")
     tk.set_defaults(func=cmd_tasks)
 
-    rp = sub.add_parser("repair", help="apply validated repair rules")
+    rp = sub.add_parser("repair", help="step 3: apply the recovered columns")
     rp.add_argument("action", choices=["apply"])
-    rp.add_argument("--workspace", required=True)
+    rp.add_argument("--workspace", **WORKSPACE)
     rp.add_argument("--drop-failed", action="store_true",
                     help="apply without items that still fail after retries (they are listed)")
     rp.add_argument("--run", type=int, default=1)
     rp.set_defaults(func=cmd_repair_apply)
 
-    pp = sub.add_parser("preprocess", help="collect GEOmend evidence (concept candidates, merge suggestions, units)")
-    pp.add_argument("--workspace", required=True)
-    pp.add_argument("--store", help="the pinned ontology as a GEOmend store (default: the one the workspace recorded)")
-    pp.add_argument("--ontology", help="pinned ontology directory (default: the one the workspace recorded)")
-    pp.set_defaults(func=cmd_preprocess)
-
-    cd = sub.add_parser("candidates", help="retrieve candidate terms for every column")
-    cd.add_argument("--workspace", required=True)
+    cd = sub.add_parser("candidates", help="step 4: shortlist ontology terms for every column")
+    cd.add_argument("--workspace", **WORKSPACE)
     cd.add_argument("--ontology", help="pinned ontology directory (default: the one the workspace recorded)")
     cd.add_argument("--cache", help="embedding and remote-service cache directory "
                                     "(default: $COLHARMONIZE_CACHE, else ~/.cache/colharmonize)")
     cd.add_argument("--remote", action="store_true", help="query ZOOMA and OLS4 for names not already cached")
     cd.set_defaults(func=cmd_candidates)
 
-    an = sub.add_parser("annotate", help="resolve and combine annotation runs")
+    an = sub.add_parser("annotate", help="step 5: combine the two annotation runs")
     an.add_argument("action", choices=["apply"])
-    an.add_argument("--workspace", required=True)
+    an.add_argument("--workspace", **WORKSPACE)
     an.add_argument("--drop-failed", action="store_true",
                     help="apply without items that still fail after retries (they are listed)")
     an.add_argument("--runs", type=int, nargs="+", default=[1, 2])
     an.set_defaults(func=cmd_annotate_apply)
 
-    rcp = sub.add_parser("reconcile", help="partition candidate groups into variables")
+    rcp = sub.add_parser("reconcile", help="step 6: combine the two runs grouping columns into variables")
     rcp.add_argument("action", choices=["apply"])
-    rcp.add_argument("--workspace", required=True)
+    rcp.add_argument("--workspace", **WORKSPACE)
     rcp.add_argument("--drop-failed", action="store_true",
                     help="apply without items that still fail after retries (they are listed)")
     rcp.add_argument("--runs", type=int, nargs="+", default=[1, 2])
     rcp.set_defaults(func=cmd_reconcile_apply)
 
-    sc = sub.add_parser("score", help="assign review tiers from run agreement and checks")
-    sc.add_argument("--workspace", required=True)
+    sc = sub.add_parser("score", help="step 7: sort variables into review tiers (manual, quick, pre-accepted)")
+    sc.add_argument("--workspace", **WORKSPACE)
     sc.set_defaults(func=cmd_score)
 
-    rv = sub.add_parser("review", help="write the review page, or apply its exported decisions")
+    rv = sub.add_parser("review", help="step 8: write the review page, or apply the decisions you exported")
     rv.add_argument("action", choices=["page", "apply"])
     rv.add_argument("export", nargs="?", help="decisions file exported from the page, for apply "
                                               "(default: ~/Downloads/review_<workspace name>.json)")
-    rv.add_argument("--workspace", required=True)
+    rv.add_argument("--workspace", **WORKSPACE)
     rv.add_argument("--out", help="where to write the page (default: <workspace>/review.html)")
     rv.set_defaults(func=cmd_review)
 
-    pb = sub.add_parser("publish", help="write variables.tsv, columns.tsv and mappings.sssom.tsv")
-    pb.add_argument("--workspace", required=True)
+    pb = sub.add_parser("publish", help="step 9: write the pooled sample table, variables, columns and SSSOM mappings")
+    pb.add_argument("--workspace", **WORKSPACE)
     pb.add_argument("--out", help="output directory (default: <workspace>/published)")
     pb.add_argument("--license", default="https://w3id.org/sssom/license/unspecified",
                     help="license URL for the SSSOM mapping set")
     pb.add_argument("--mapping-set-id", help="URI identifying the SSSOM mapping set")
     pb.set_defaults(func=cmd_publish)
 
-    rg = sub.add_parser("registry", help="share variables across runs")
+    rg = sub.add_parser("registry", help="optional: share variables across runs")
     rg.add_argument("action", choices=["use", "add"])
     rg.add_argument("path", nargs="?", help="registry directory")
-    rg.add_argument("--workspace", required=True)
+    rg.add_argument("--workspace", **WORKSPACE)
     rg.add_argument("--registry", help="registry directory for add (default: the one the workspace uses)")
     rg.add_argument("--include-pre-accepted", action="store_true",
                     help="also register variables no one has reviewed but every check passed")
     rg.set_defaults(func=cmd_registry)
 
-    gm = sub.add_parser("geomend", help="write harmonized variables back to the workspace's GEOmend project")
+    gm = sub.add_parser("geomend", help="optional: send the variables back to the run's GEOmend project")
     gm.add_argument("action", choices=["propose"])
-    gm.add_argument("--workspace", required=True)
+    gm.add_argument("--workspace", **WORKSPACE)
     gm.add_argument("--select", action="store_true",
                     help="also select each valid proposal as the field's mapping (still no reviewer vote)")
     gm.add_argument("--dry-run", action="store_true", help="write the report without changing the GEOmend project")
     gm.set_defaults(func=cmd_geomend_propose)
 
-    ev = sub.add_parser("eval", help="score predictions against a gold standard")
+    ev = sub.add_parser("eval", help="evaluation: score a run against a gold standard")
     ev.add_argument("--gold-columns", required=True)
     ev.add_argument("--gold-variables", required=True)
     ev.add_argument("--predictions", required=True)

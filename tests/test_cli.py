@@ -182,4 +182,34 @@ def test_review_apply_looks_for_the_export_in_downloads(tmp_path, tiny_dir, monk
     ws.remember(ontology=str(tiny_dir))
     with pytest.raises(SystemExit) as got:
         cli.main(["review", "apply", "--workspace", str(ws.root)])
-    assert str(tmp_path / "home" / "Downloads" / "review_my-run.json") in str(got.value.code)
+    assert f"no export of this review in {tmp_path / 'home' / 'Downloads'}" in str(got.value.code)
+
+
+def test_the_newest_export_since_the_page_wins(tmp_path, monkeypatch):
+    import os
+    from colharmonize.workspace import Workspace
+    monkeypatch.setenv("HOME", str(tmp_path / "home"))
+    downloads = tmp_path / "home" / "Downloads"
+    downloads.mkdir(parents=True)
+    ws = Workspace(tmp_path / "harmonized")
+    ws.root.mkdir()
+    page = ws.root / "review.html"
+
+    def touch(path, t):
+        path.write_text("{}")
+        os.utime(path, (t, t))
+
+    touch(downloads / "review_harmonized.json", 100)        # yesterday's review
+    touch(page, 200)
+    with pytest.raises(SystemExit, match="1 older than the review page ignored"):
+        cli._latest_export(ws)
+    touch(downloads / "review_harmonized (1).json", 300)    # the browser's name for today's export
+    touch(downloads / "review_harmonized-2.json", 400)      # another run's export
+    assert cli._latest_export(ws) == downloads / "review_harmonized (1).json"
+
+
+def test_workspace_defaults_to_the_folder_the_skill_makes(tmp_path, monkeypatch, capsys):
+    monkeypatch.chdir(tmp_path)
+    assert cli.build_parser().parse_args(["score"]).workspace == "harmonized"
+    assert cli.main(["status"]) == 0
+    assert "harmonized  (does not exist yet)" in capsys.readouterr().out
