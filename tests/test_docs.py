@@ -39,4 +39,10 @@ def test_skill_resumes_from_status_and_setup_fetches_the_ontology():
     step0 = SKILL.read_text().split("## 0.", 1)[1].split("\n## ", 1)[0]
     assert "colharmonize status --workspace X" in _commands(step0)
     install = _commands((ROOT / "docs" / "INSTALL.md").read_text())
-    assert any(c.startswith("colharmonize ontology fetch --tag v3.94.0") for c in install)
+    assert "colharmonize ontology fetch" in install                  # the default location, so nothing to remember
+    assert cli.build_parser().parse_args(["ontology", "fetch"]).tag == "v3.94.0"   # the release measured
+
+
+def test_skill_preapproves_only_colharmonize_commands():
+    front = SKILL.read_text().split("---")[1]
+    assert re.search(r"^allowed-tools: Bash\(colharmonize \*\)$", front, re.M)

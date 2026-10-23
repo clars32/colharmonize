@@ -96,7 +96,7 @@ def test_review_waits_for_a_person_then_publish(tmp_path):
     (ws.root / "review.html").write_text("<html></html>")
     nxt = status.next_stage(status.stages(ws, "ws"))
     assert (nxt.name, nxt.state) == ("review", "waiting for you")
-    assert nxt.next == ["colharmonize review apply --workspace ws EXPORT.json"]
+    assert nxt.next == ["colharmonize review apply --workspace ws"]   # the export is found in ~/Downloads
     (ws.root / "review.json").write_text(json.dumps({"decisions": {"v1": {}}}))
     report = status.stages(ws, "ws")
     assert report[-2].detail == "decisions for 1 of 2 variables applied (review.json)"

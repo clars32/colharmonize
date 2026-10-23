@@ -12,6 +12,14 @@ FIXTURES = Path(__file__).parent / "fixtures"
 PINNED_EFO = Path(__file__).resolve().parents[2] / "efo-column-mapping" / "data" / "ontology"
 
 
+@pytest.fixture(autouse=True)
+def _no_user_defaults(tmp_path_factory, monkeypatch):
+    """Keep tests away from the real default ontology and ~/Downloads on this machine."""
+    home = tmp_path_factory.mktemp("home")
+    monkeypatch.setenv("COLHARMONIZE_HOME", str(home / "colharmonize"))
+    monkeypatch.setenv("HOME", str(home))
+
+
 @pytest.fixture(scope="session")
 def efo() -> Ontology:
     if not any(PINNED_EFO.glob("*index*.parquet")):

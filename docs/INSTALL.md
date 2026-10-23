@@ -9,11 +9,40 @@ Install both. The plugin can't install the command for you, because Claude
 Code plugins can't declare Python dependencies. The `/harmonize` skill checks
 for the command first and stops with instructions if it is missing.
 
+## Quickstart
+
+You need [uv](https://docs.astral.sh/uv/) and
+[Claude Code](https://code.claude.com/docs/en/setup), signed in (run `claude`
+once and type `/login`). Then:
+
+```bash
+uv tool install --python 3.13 git+https://github.com/clars32/colharmonize.git
+colharmonize ontology fetch
+claude plugin marketplace add clars32/colharmonize
+claude plugin install colharmonize@colharmonize
+```
+
+Then, in an empty folder:
+
+```bash
+claude --permission-mode acceptEdits
+```
+
+and in Claude Code:
+
+```
+/colharmonize:harmonize GSE12345 GSE67890
+```
+
+The sections below explain each step.
+
 ## Requirements
 
-- Python 3.13 (GEOmend requires it)
+- Python 3.13 (GEOmend requires it). uv installs it for colharmonize if you
+  don't have it.
 - Claude Code 2.1.271 or later (the agents use `omitClaudeMd`)
-- About 3 GB of disk for the Python environment (PyTorch, for embeddings)
+- About 1.5 GB of disk for the command and its dependencies (PyTorch, for
+  embeddings), and 200 MB for the ontology
 - Network access the first time, for packages, two small embedding models
   (`all-MiniLM-L6-v2`, `bge-small-en-v1.5`) and the EFO release file. After
   that, every stage runs offline unless you ask for `--remote` lookups or
@@ -24,9 +53,16 @@ for the command first and stops with instructions if it is missing.
 
 ## 1. Install the command
 
-Clone the repository, then make a Python 3.13 environment and install into
-it. Most machines don't have Python 3.13; [uv](https://docs.astral.sh/uv/)
-fetches it for you:
+```bash
+uv tool install --python 3.13 git+https://github.com/clars32/colharmonize.git
+```
+
+This makes its own Python 3.13 environment and puts `colharmonize` in
+`~/.local/bin`, which Claude Code's installer already adds to your `PATH`.
+Check with `colharmonize --help`. Update it later with
+`uv tool upgrade colharmonize`; remove it with `uv tool uninstall colharmonize`.
+
+To work on colharmonize itself, install a checkout in editable mode instead:
 
 ```bash
 git clone https://github.com/clars32/colharmonize.git
@@ -34,36 +70,33 @@ uv venv --python 3.13 ~/colharmonize-env
 uv pip install --python ~/colharmonize-env/bin/python -e ./colharmonize
 ```
 
-With a Python 3.13 already installed, `python3.13 -m venv ~/colharmonize-env`
-and `~/colharmonize-env/bin/pip install -e ./colharmonize` do the same.
-
-Claude Code must be able to find `colharmonize` on its `PATH`. Activate the
-environment before starting `claude`, or link the command onto your path:
-
-```bash
-ln -s ~/colharmonize-env/bin/colharmonize ~/.local/bin/colharmonize
-```
+Then put `~/colharmonize-env/bin` on your `PATH` before starting `claude`.
 
 ## 2. Pin the ontology
 
 ```bash
-colharmonize ontology fetch --tag v3.94.0 --out ontology/efo-v3.94.0
+colharmonize ontology fetch
 ```
 
 This downloads `efo.json` for EFO v3.94.0 from the EFO release on GitHub
-(about 170 MB). It checks the file's SHA-256 against the copy colharmonize
-was measured with, pins it in `ontology/efo-v3.94.0/`, and builds the GEOmend
-store beside it as `ontology/efo-v3.94.0.sqlite`. The download itself isn't
-kept; `version.tsv` in the pinned directory records its checksum. Running the
+(about 170 MB, a minute or so). It checks the file's SHA-256 against the copy
+colharmonize was measured with, pins it in
+`~/.local/share/colharmonize/ontology/efo-v3.94.0/`, and builds the GEOmend
+store beside it as `efo-v3.94.0.sqlite`. The download itself isn't kept;
+`version.tsv` in the pinned directory records its checksum. Running the
 command again does nothing.
+
+Every workspace uses this location unless told otherwise, so you're never
+asked for a path. To keep the ontology elsewhere, set `COLHARMONIZE_HOME`, or
+pass `--out DIR` here and `--ontology DIR --store DIR.sqlite` to
+`colharmonize preprocess`. A workspace records both paths the first time
+they're used.
 
 On a machine without network access, copy `efo.json` there and add
 `--url file:///path/to/efo.json`. The checksum is still checked.
 
 Every identifier colharmonize produces is validated against this pinned
-copy, never a live service. Keep the directory wherever you like and give its
-path when asked. A workspace records both paths the first time they're used,
-so later commands don't ask again.
+copy, never a live service.
 
 ## 3. Install the plugin
 
@@ -101,18 +134,28 @@ bumped. **Remove** with `claude plugin uninstall colharmonize@colharmonize`.
 
 ## 4. Run it
 
-Sign in to Claude Code first: run `claude`, type `/login` and finish in the
-browser. Then, in Claude Code, from the directory where you want the
-workspace:
+Make an empty folder for your runs, and start Claude Code there with file
+edits accepted:
+
+```bash
+mkdir ~/harmonize-runs && cd ~/harmonize-runs
+claude --permission-mode acceptEdits
+```
+
+The flag matters. The judgment stages are done by subagents, each writing one
+answer file in the workspace. Without it, Claude Code asks you to approve
+every one of those writes. The skill itself is allowed to run `colharmonize`
+commands without asking. Then, in Claude Code:
 
 ```
-/colharmonize:harmonize work/my-run /path/to/GSE12345_family.soft.gz /path/to/GSE67890_family.soft.gz
+/colharmonize:harmonize GSE12345 GSE67890
 ```
 
-or, to have the series downloaded from GEO:
+Give GSE accessions to have the series downloaded from GEO, or paths to SOFT
+files you already have:
 
 ```
-/colharmonize:harmonize work/my-run GSE12345 GSE67890
+/colharmonize:harmonize /path/to/GSE12345_family.soft.gz /path/to/GSE67890_family.soft.gz
 ```
 
 The skill runs every stage. It launches the plugin's agents for the judgment
@@ -120,9 +163,21 @@ batches:
 - `colharmonize:repairer` and `colharmonize:annotator` on Sonnet
 - `colharmonize:reconciler` on Opus
 
-The one human step is review: the skill builds `review.html` in the
-workspace, you review it in a browser and export your decisions, and it
-applies them before publishing.
+The one human step is review. The skill stops and gives you the path of
+`review.html`. Open it in a browser, review it starting with the manual tier,
+and press Export; the browser saves `review_harmonized.json` in Downloads.
+Then type the command with nothing after it to finish:
+
+```
+/colharmonize:harmonize
+```
+
+It applies your decisions from Downloads and publishes. The result is in
+`harmonized/published/`; start with `pooled_samples.tsv`.
+
+The run lives in the folder `harmonized`. A second run in the same directory
+goes to `harmonized-2`, and so on. To choose the name, put it before the
+accessions: `/colharmonize:harmonize ra-study GSE12345 GSE67890`.
 
 If a run stops partway, for example at a session limit, start the skill
 again with the same workspace. It runs `colharmonize status` first and
@@ -130,7 +185,7 @@ resumes at the stage that reports, without redoing finished work. You can
 run it yourself at any time:
 
 ```bash
-colharmonize status --workspace work/my-run
+colharmonize status
 ```
 
 What a run costs: the 16-series evaluation run used 41 subagent calls and
