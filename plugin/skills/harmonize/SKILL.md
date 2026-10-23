@@ -15,7 +15,10 @@ workspace's `tasks/` directory or its GEOmend project.
 Plain `colharmonize ...` commands are pre-approved while this skill runs, so
 the user isn't asked about each one. Run every command on its own line by its
 bare name: no `cd`, no shell variables, and no `;`, `&&` or pipes, which
-would need approval.
+would need approval. The pre-approval lasts only for this turn, so keep the
+whole run in it: launch every subagent in the foreground (never with
+`run_in_background`), all of a stage's batches in one message. They still run
+in parallel, and you continue when the last one returns.
 
 Arguments: `$ARGUMENTS`. The first argument is the workspace directory; any
 further arguments are SOFT files, tables or GSE accessions to ingest.
@@ -88,7 +91,8 @@ Only if the user names a different pinned directory, pass
 
 `status` prints one absolute batch path per line for every unanswered batch.
 For each path, launch the `colharmonize:repairer` subagent with a message that
-contains only that path. Launch all of them in one message so they run in
+contains only that path. Launch all of them in one message, in the
+foreground, so they run in
 parallel. Then validate:
 
     colharmonize tasks collect repair --workspace <workspace> --run 1
