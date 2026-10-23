@@ -52,26 +52,99 @@ def store_beside(pinned: str | Path) -> Path:
     return pinned.with_name(pinned.name + ".sqlite")
 
 
-def cmd_fetch(args: argparse.Namespace) -> int:
+def _tilde(path: str | Path) -> str:
+    """A path as people write it: ~ for the home directory."""
+    path, home = Path(path), Path.home()
+    return f"~/{path.relative_to(home)}" if path.is_relative_to(home) else str(path)
+
+
+class _Progress:
+    """Plain status lines on stdout; a download meter on stderr when it's a terminal."""
+
+    def __init__(self, indent: str = ""):
+        self.indent, self.tty, self.meter = indent, sys.stderr.isatty(), False
+
+    def say(self, message: str) -> None:
+        self._end_meter()
+        print(f"{self.indent}{message}", flush=True)
+
+    def download(self, done: int, total: int | None) -> None:
+        if not self.tty:
+            return
+        size = f"{done / 1e6:.0f} of {total / 1e6:.0f} MB" if total else f"{done / 1e6:.0f} MB"
+        print(f"\r{self.indent}  {size}", end="", file=sys.stderr, flush=True)
+        self.meter = True
+
+    def _end_meter(self) -> None:
+        if self.meter:
+            print(file=sys.stderr)
+            self.meter = False
+
+
+def _fetch_ontology(tag: str, out: str | Path, url: str | None, progress: _Progress) -> dict:
     """Pin a release and build its store, skipping whatever is already there."""
     import os
     from colharmonize.geomend_bridge import build_ontology_store
     from colharmonize.ontology import EFO_RELEASE_URL, fetch_release
-    from colharmonize.workspace import default_ontology_dir
-    args.out = args.out or str(default_ontology_dir(args.tag))
     try:
-        result = fetch_release(args.tag, args.out, url=args.url or EFO_RELEASE_URL)
+        result = fetch_release(tag, out, url=url or EFO_RELEASE_URL, say=progress.say, progress=progress.download)
     except (ValueError, OSError) as e:
         sys.exit(f"ontology fetch: {e}")
-    store = store_beside(args.out)
+    store = store_beside(out)
     if store.exists():
         result["store"] = {"status": "already built", "store": str(store)}
     else:
+        progress.say("Building the lookup store")
         part = store.with_name(store.name + ".part")   # renamed only once complete
-        result["store"] = {"status": "built", **build_ontology_store(_ontology(args.out), part)}
+        result["store"] = {"status": "built", **build_ontology_store(_ontology(out), part)}
         os.replace(part, store)
         result["store"]["store"] = str(store)
-    print(json.dumps(result, indent=2))
+    return result
+
+
+def _ontology_line(tag: str, out: str | Path, result: dict) -> str:
+    if result["status"] == "already pinned" and result["store"]["status"] == "already built":
+        return f"EFO {tag} is already set up in {_tilde(out)}"
+    terms = f" ({result['n_terms']:,} terms)" if "n_terms" in result else ""
+    return f"EFO {tag} is ready{terms} in {_tilde(out)}"
+
+
+class _Quiet(_Progress):
+    """No output, for --json."""
+
+    def say(self, message: str) -> None:
+        pass
+
+    def download(self, done: int, total: int | None) -> None:
+        pass
+
+
+def cmd_fetch(args: argparse.Namespace) -> int:
+    from colharmonize.workspace import default_ontology_dir
+    out = args.out or str(default_ontology_dir(args.tag))
+    result = _fetch_ontology(args.tag, out, args.url, _Quiet() if args.json else _Progress())
+    print(json.dumps(result, indent=2) if args.json else _ontology_line(args.tag, out, result))
+    return 0
+
+
+def cmd_setup(args: argparse.Namespace) -> int:
+    from colharmonize import claude_setup
+    from colharmonize.workspace import default_ontology_dir
+    out = default_ontology_dir(args.tag)
+    print("1/3 Ontology", flush=True)
+    result = _fetch_ontology(args.tag, out, args.url, _Progress(indent="    "))
+    print(f"    {_ontology_line(args.tag, out, result)}")
+    print("2/3 Claude Code plugin", flush=True)
+    print(f"    {'skipped (--no-plugin)' if args.no_plugin else claude_setup.install_plugin()}")
+    print("3/3 Claude Code permissions", flush=True)
+    if args.no_permissions:
+        print("    skipped (--no-permissions); Claude Code will ask before each colharmonize step")
+    else:
+        added = claude_setup.allow()
+        where = _tilde(claude_setup.settings_file())
+        print(f"    {'allowed' if added else 'already allowed'}: colharmonize commands and its subagents' "
+              f"answer files ({where})")
+    print("\nReady. In an empty folder, run `claude` and type:\n  /colharmonize:harmonize GSE12345 GSE67890")
     return 0
 
 
@@ -350,8 +423,11 @@ def cmd_review(args: argparse.Namespace) -> int:
     ws = Workspace(args.workspace)
     onto = Ontology.from_dir(ws.ontology_dir())
     if args.action == "page":
-        out = review.write_page(ws, onto, Path(args.out) if args.out else None)
-        print(f"wrote {out}")
+        out = review.write_page(ws, onto, Path(args.out) if args.out else None).resolve()
+        if not args.no_open:
+            import webbrowser
+            webbrowser.open(out.as_uri())
+        print(f"Review page: {out.as_uri()}")
         return 0
     if args.export:
         export = Path(args.export).expanduser()
@@ -432,35 +508,44 @@ DEFAULT_WORKSPACE = "harmonized"
 WORKSPACE = {"default": DEFAULT_WORKSPACE,
              "help": f"the run's folder (default: ./{DEFAULT_WORKSPACE}, the one /colharmonize:harmonize makes)"}
 
-OVERVIEW = """\
-colharmonize decides which sample-metadata columns of several GEO studies mean
-the same thing, pools them, and maps each to an EFO ontology term.
+HELP = """\
+colharmonize: pool and harmonize sample metadata across GEO studies.
 
-Most people don't type these commands: in Claude Code, run
-  /colharmonize:harmonize GSE12345 GSE67890
-and the plugin runs them for you, handing the judgment steps to subagents."""
+Get started:
+  colharmonize setup                      once: ontology, Claude Code plugin, permissions
+  claude                                  then, in Claude Code:
+  > /colharmonize:harmonize GSE12345 GSE67890
 
-PIPELINE = """\
-a run, in order (each step reads the folder the one before wrote):
-  setup     colharmonize ontology fetch          once per machine: download and pin EFO
-  1         colharmonize ingest --online GSE...  read the studies' sample metadata
-  2         colharmonize preprocess              lexical evidence from GEOmend
-  3         colharmonize tasks ... repair        Claude: recover columns hidden in titles
-  4         colharmonize candidates              shortlist ontology terms per column
-  5         colharmonize tasks ... annotate      Claude: pick a term per column (2 runs)
-  6         colharmonize tasks ... reconcile     Claude: group columns into variables (2 runs)
-  7         colharmonize score                   sort variables into review tiers
-  8         colharmonize review page / apply     you: review in the browser, export
-  9         colharmonize publish                 the pooled table and mappings
+Check on a run:
+  colharmonize status                     where ./harmonized stands, and what's next
 
-lost? `colharmonize status` says what's done and prints the next command.
-each command's own --help gives its options, e.g. `colharmonize ingest --help`."""
+The other commands are the steps /colharmonize:harmonize runs for you:
+  ingest, preprocess, tasks, repair, candidates, annotate, reconcile, score,
+  review, publish; and ontology, registry, geomend, columns, eval.
+  `colharmonize COMMAND --help` explains each one.
+"""
+
+
+class _HelpParser(argparse.ArgumentParser):
+    def format_help(self) -> str:
+        return HELP
 
 
 def build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(prog="colharmonize", description=OVERVIEW, epilog=PIPELINE,
-                                formatter_class=argparse.RawDescriptionHelpFormatter)
-    sub = p.add_subparsers(dest="command", required=True, metavar="COMMAND", title="commands")
+    p = _HelpParser(prog="colharmonize", usage="colharmonize COMMAND [options]")
+    sub = p.add_subparsers(dest="command", required=True, metavar="COMMAND", prog="colharmonize",
+                           parser_class=argparse.ArgumentParser)
+
+    su = sub.add_parser("setup", help="once per machine: ontology, Claude Code plugin and permissions",
+                        description="Get this machine ready, once: download and pin the EFO ontology, install "
+                                    "the Claude Code plugin, and let Claude Code run colharmonize without asking "
+                                    "at every step. Safe to run again; it skips what's already done.")
+    su.add_argument("--tag", default="v3.94.0", help="EFO release (default: v3.94.0, the one measured)")
+    su.add_argument("--url", help="download efo.json from here instead of the EFO release on GitHub")
+    su.add_argument("--no-plugin", action="store_true", help="don't install the Claude Code plugin")
+    su.add_argument("--no-permissions", action="store_true",
+                    help="don't add colharmonize to Claude Code's allowed commands (it will ask at each step)")
+    su.set_defaults(func=cmd_setup)
 
     ont = sub.add_parser("ontology", help="setup: download and pin the EFO release every term is checked against")
     osub = ont.add_subparsers(dest="ontology_command", required=True)
@@ -470,6 +555,7 @@ def build_parser() -> argparse.ArgumentParser:
                                      "(default: ~/.local/share/colharmonize/ontology/efo-TAG, "
                                      "under $COLHARMONIZE_HOME if set)")
     fetch.add_argument("--url", help="download from here instead of the EBISPOT/efo GitHub release ({tag} is filled in)")
+    fetch.add_argument("--json", action="store_true", help="print the full result as JSON, with no progress lines")
     fetch.set_defaults(func=cmd_fetch)
     pin = osub.add_parser("pin", help="flatten an OBO-graph JSON release into a pinned directory")
     pin.add_argument("--json", required=True)
@@ -563,6 +649,7 @@ def build_parser() -> argparse.ArgumentParser:
                                               "(default: ~/Downloads/review_<workspace name>.json)")
     rv.add_argument("--workspace", **WORKSPACE)
     rv.add_argument("--out", help="where to write the page (default: <workspace>/review.html)")
+    rv.add_argument("--no-open", action="store_true", help="don't open the page in the browser")
     rv.set_defaults(func=cmd_review)
 
     pb = sub.add_parser("publish", help="step 9: write the pooled sample table, variables, columns and SSSOM mappings")
@@ -602,6 +689,9 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> int:
+    if not (sys.argv[1:] if argv is None else argv):
+        print(HELP, end="")
+        return 0
     args = build_parser().parse_args(argv)
     return args.func(args)
 

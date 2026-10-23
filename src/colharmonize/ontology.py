@@ -304,17 +304,25 @@ def pinned_tag(out_dir: str | Path) -> str | None:
     return fields.get("release_tag", "")
 
 
-def _download(url: str, dest: Path) -> None:
+def _download(url: str, dest: Path, progress=None) -> None:
+    """Fetch `url` into `dest`, calling progress(bytes_so_far, total_or_None) as it goes."""
     import ssl
     import urllib.request
 
     import certifi   # installed with requests; python.org builds on macOS ship without CA certificates
     context = ssl.create_default_context(cafile=certifi.where())
     with urllib.request.urlopen(url, timeout=60, context=context) as response, dest.open("wb") as fh:
-        shutil.copyfileobj(response, fh, 1 << 20)
+        total = int(response.headers.get("Content-Length") or 0) or None
+        done = 0
+        while chunk := response.read(1 << 20):
+            fh.write(chunk)
+            done += len(chunk)
+            if progress:
+                progress(done, total)
 
 
-def fetch_release(release_tag: str, out_dir: str | Path, *, url: str = EFO_RELEASE_URL) -> dict[str, object]:
+def fetch_release(release_tag: str, out_dir: str | Path, *, url: str = EFO_RELEASE_URL,
+                  say=lambda message: None, progress=None) -> dict[str, object]:
     """Download a release's OBO-graph JSON and pin it into `out_dir`.
 
     Does nothing if `out_dir` is already pinned to this tag, and refuses a
@@ -331,11 +339,15 @@ def fetch_release(release_tag: str, out_dir: str | Path, *, url: str = EFO_RELEA
     out.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(dir=out.parent, prefix=f".{out.name}-download-") as tmp:
         src = Path(tmp) / "efo.json"
-        _download(url.format(tag=release_tag), src)
+        say(f"Downloading EFO {release_tag}")
+        _download(url.format(tag=release_tag), src, progress)
         digest = _sha256(src)
         expected = KNOWN_SHA256.get(release_tag)
         if expected and digest != expected:
             raise ValueError(f"efo.json for {release_tag} has SHA-256 {digest}, not the known {expected}; "
                              "nothing was pinned")
+        say("Checksum matches the release colharmonize was measured with" if expected
+            else f"Checksum recorded ({digest[:12]}...)")
+        say("Indexing terms")
         summary = pin_obograph(src, out, release_tag)
     return {"status": "pinned", "ontology": str(out), **summary}
