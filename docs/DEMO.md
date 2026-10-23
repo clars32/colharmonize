@@ -12,12 +12,12 @@ Rough timings (measured 2026-10-22, M3 MacBook Air, warm package cache):
 
 | Step | Time |
 |---|---|
-| Install the command | TIME_INSTALL |
+| Install the command | a few seconds (a few minutes the first time) |
 | Fetch the ontology | about 50 s |
 | Install the plugin | about 10 s |
-| Run up to review | TIME_RUN |
+| Run up to review | about 4 min |
 | Review | as long as you like |
-| Apply and publish | TIME_PUBLISH |
+| Apply and publish | about 20 s |
 
 On a machine that has never installed PyTorch, the first install downloads
 about 1 GB and takes a few minutes. Run step 1 before the audience arrives

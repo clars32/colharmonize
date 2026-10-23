@@ -1126,3 +1126,40 @@ reached the pooled table, and nothing said so (15.16).
   values (635 → 658 values, 23 multi-valued cells); its `variables.tsv`,
   `columns.tsv` and SSSOM are byte-identical. The genetic-syndromes demo has
   no repeated keys, and its pooled table doesn't change.
+
+### 15.18: Ready for an end-user demo: no paths, no prompts (2026-10-22)
+Goal: someone with only `uv` and Claude Code installs from GitHub and runs a
+harmonization in a plain `claude` session. `docs/DEMO.md` is the script.
+- **Install is `uv tool install` from GitHub.** It brings its own Python
+  3.13 and puts `colharmonize` in `~/.local/bin`, which Claude Code's
+  installer already puts on `PATH`. The package's data files come with it.
+- **Default locations replace paths.** `ontology fetch` pins to
+  `~/.local/share/colharmonize/ontology/efo-v3.94.0` (or under
+  `$COLHARMONIZE_HOME`), and a workspace with nothing recorded uses that.
+  `review apply` takes the newest export of this review from `~/Downloads`
+  (including the browser's " (1)" copies), ignoring any export older than
+  the page. `--workspace` defaults to `./harmonized`.
+- **No approval prompts.** Plugins can't ship permission settings (Claude
+  Code drops them), and plugin agents can't set a permission mode. What
+  works: the skill's `allowed-tools: Bash(colharmonize *)`, which covers the
+  turn that invoked it, plus `claude --permission-mode acceptEdits`, under
+  which subagents' answer-file writes need no approval. The first test hit
+  one prompt: the skill had launched annotators in the background, their
+  completion started a new turn, and the pre-approval had lapsed. The skill
+  now keeps every subagent in the foreground, all of a stage's batches in
+  one message. They still run in parallel.
+- **The slash command needs no workspace.** `/colharmonize:harmonize GSE...`
+  starts a run in `./harmonized` (then `-2`, `-3`); the bare command resumes
+  the run in the current directory. The skill no longer asks about a
+  registry. `colharmonize --help` explains the tool and lists the steps in
+  order.
+- **Tested headless, as the user's own `claude`, nothing pre-approved
+  beyond `acceptEdits`:** the demo's four series ran from the opening
+  command to the review page in about 4 minutes with no permission denials.
+  A stand-in export accepting every variable was placed in Downloads, and
+  the bare command applied it and published (105 samples × 11 variables, 610
+  values) in 22 s, again with no denials. A live interactive session wasn't
+  tested; the user rehearses that.
+- **Variation between runs:** the three runs of the same series gave 13, 10
+  and 11 variables. One repair run split GSE77298's two-value `disease
+  state` column. It never pooled anything it shouldn't.
