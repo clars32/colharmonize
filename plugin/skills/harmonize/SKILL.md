@@ -161,9 +161,9 @@ and the number of variables before reconciliation.
 
 ## 5. Reconcile (two independent runs)
 
-If the user keeps a registry of variables from earlier runs (ask once, if
-you don't know), point the workspace at it first, so columns can join
-variables that already exist:
+Only if the user has mentioned a registry of variables from earlier runs
+(don't ask about one, and don't bring it up in reports), point the workspace
+at it first, so columns can join variables that already exist:
 
     colharmonize registry use --workspace <workspace> <registry-dir>
 
