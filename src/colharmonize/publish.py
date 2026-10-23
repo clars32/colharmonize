@@ -153,7 +153,9 @@ def pool(values: pd.DataFrame, variables: pd.DataFrame, columns: pd.DataFrame,
     the raw value is kept beside it in the long table. Rejected variables are
     left out. Two columns of one variable may both hold a value for a sample
     only when the values agree (the co-occurrence rule); if they ever differ,
-    both are kept, joined with " | ", and counted as conflicts.
+    both are kept, joined with " | ", and counted as conflicts. A column with
+    several values for one sample (a key the study repeated) keeps them all,
+    joined the same way, and counts as a multi-valued cell, not a conflict.
 
     Returns (wide, long, report). Wide columns are named by variable, most
     widely pooled first; a name shared by two variables gets its id appended.
@@ -177,18 +179,20 @@ def pool(values: pd.DataFrame, variables: pd.DataFrame, columns: pd.DataFrame,
     order = (keep.sort_values(["n_studies", "n_columns", "name"], ascending=[False, False, True]).variable_id.tolist())
     counts = keep["name"].value_counts()
     header = {v: name[v] if counts[name[v]] == 1 else f"{name[v]} [{v}]" for v in order}
-    conflicts = 0
+    conflicts = multi = 0
     cells: dict[tuple[str, str], dict[str, str]] = {}
     for (study, sample, vid), g in long.groupby(["study_id", "sample_id", "variable_id"], sort=False):
         distinct = list(dict.fromkeys(g.value))
-        conflicts += len(distinct) > 1
+        per_column = {tuple(dict.fromkeys(c.value)) for _, c in g.groupby("source_column", sort=False)}
+        conflicts += len(per_column) > 1
+        multi += any(len(v) > 1 for v in per_column)
         cells.setdefault((study, sample), {})[header[vid]] = " | ".join(distinct)
     samples = sorted(set(zip(values.study_id, values.sample_id)))
     wide = pd.DataFrame([{"study_id": s, "sample_id": smp, "sample_title": (titles or {}).get((s, smp), ""),
                           **cells.get((s, smp), {})} for s, smp in samples],
                         columns=["study_id", "sample_id", "sample_title", *header.values()])
     report = {"samples": len(wide), "studies": wide.study_id.nunique(), "variables": len(header),
-              "values": len(long), "conflicting_cells": conflicts}
+              "values": len(long), "conflicting_cells": conflicts, "multi_valued_cells": multi}
     return wide, long, report
 
 
@@ -209,7 +213,7 @@ def publish(ws: Workspace, ontology, out: Path, mapping_set_id: str | None = Non
         from colharmonize import profile
         samples = pd.read_parquet(ws.samples) if ws.samples.exists() else pd.DataFrame()
         titles = dict(zip(zip(samples.study_id, samples.sample_id), samples.title)) if len(samples) else {}
-        wide, long, report = pool(profile.sample_values(ws), variables, columns, titles)
+        wide, long, report = pool(profile.sample_values(ws, all_values=True), variables, columns, titles)
         wide.to_csv(out / "pooled_samples.tsv", sep="\t", index=False)
         long.to_csv(out / "pooled_values.tsv", sep="\t", index=False)
         result["pooled"] = report

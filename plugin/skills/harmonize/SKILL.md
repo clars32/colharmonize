@@ -179,7 +179,9 @@ writes the pooled table: `pooled_samples.tsv`, with one row per sample across
 all studies and one column per variable, holding harmonized values. Its long
 form, `pooled_values.tsv`, keeps each value beside its raw value and source
 column. Tell the user about the pooled table first: for most people it is the
-product. Ask the
+product. If it reports multi-valued cells, a study repeated a key on its
+samples; every value is kept, joined with " | ", so say which variables have
+them. Ask the
 user for a license before publishing mappings they will share; without one,
 the SSSOM header records the license as unspecified. Report the count of
 variables per review status.

@@ -97,7 +97,7 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
     `~/.cache/colharmonize`. To reproduce the recorded workspaces' candidates
     (tuning, sealed, demo), pass `--cache work/cache`: its `remote.json`
     supplies the ZOOMA and OLS4 answers.
-- **Tests:** `./.venv/bin/python -m pytest -q` passes 133.
+- **Tests:** `./.venv/bin/python -m pytest -q` passes 135.
 
 ## Constraints: do not break these
 
@@ -218,8 +218,7 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
     2026-10-22 (decisions log 15.16): a clean install from GitHub, the real
     ontology download, plugin validation and install, and a run on 4 new
     series through review and publish. It found an ingest bug, now fixed,
-    and one open issue: a repeated characteristic key keeps only its first
-    value per sample (task 27).
+    and a data loss on repeated keys (task 27), since fixed.
 
 ### B. Make the evaluation trustworthy
 
@@ -346,8 +345,7 @@ Measure each on tuning first.
     - GEOmend's six merged `fix/*` branches, still local and on origin.
       Deleting the remote ones is outward-facing.
     - colharmonize's merged `usability/setup-and-resume` branch.
-27. **A repeated characteristic key loses its later values.**
-    `profile.sample_values` keeps ordinal 0 only, so GSE77298's second
-    `disease state` line ("synovium") never reaches the pooled table, and
-    nothing says so (decisions log 15.16). At minimum, publish should report
-    dropped values; better, keep them.
+27. ~~**A repeated characteristic key loses its later values.**~~ Fixed
+    2026-10-22 (decisions log 15.17): publish keeps every value, joined with
+    " | ", and reports `multi_valued_cells`. The judgment stages still see
+    the first value only.

@@ -1108,3 +1108,21 @@ gold.
 - **Running the user's `claude` from a desktop-app session** needs a clean
   environment: the session's `CLAUDE_CONFIG_DIR` points the child at the
   app's configuration, where it isn't signed in.
+
+### 15.17: The pooled table keeps every value of a repeated key (handoff task 27, 2026-10-22)
+A study can repeat a characteristic key on one sample. GSE77298 gives
+`disease state` twice: the disease, then "synovium". Only the first value
+reached the pooled table, and nothing said so (15.16).
+- **Publish keeps every value; the judgment stages still see the first.**
+  `profile.sample_values(ws, all_values=True)` is used only by publish.
+  Repair, profiling, co-occurrence and reconcile are unchanged, so no
+  recorded workspace's annotations, variables or review decisions change.
+  The cost: the co-occurrence rule still compares first values only.
+- **Repeated values are joined with " | " and counted as
+  `multi_valued_cells`, not as conflicts.** A conflict stays what it was:
+  two columns of one variable whose values differ on a sample. Each value
+  keeps its own row in `pooled_values.tsv`.
+- **Effect:** the acceptance run's table gains GSE77298's 23 "synovium"
+  values (635 → 658 values, 23 multi-valued cells); its `variables.tsv`,
+  `columns.tsv` and SSSOM are byte-identical. The genetic-syndromes demo has
+  no repeated keys, and its pooled table doesn't change.

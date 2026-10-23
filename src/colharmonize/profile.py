@@ -81,15 +81,19 @@ def annotation_columns(ws: Workspace) -> pd.DataFrame:
     return pd.concat([cols, pd.DataFrame(rows)], ignore_index=True)
 
 
-def sample_values(ws: Workspace) -> pd.DataFrame:
+def sample_values(ws: Workspace, all_values: bool = False) -> pd.DataFrame:
     """Per-sample values of every annotation column: study_id, sample_id, column, value.
 
-    Characteristics come from GEOmend (first value per sample); recovered
-    columns from repair. Split parents are dropped, as in annotation_columns.
+    Characteristics come from GEOmend; recovered columns from repair. Split
+    parents are dropped, as in annotation_columns. A key repeated on one
+    sample has several values; the judgment stages see the first, and
+    `all_values` keeps every one (one row each, in order) for publishing.
     """
     from colharmonize import geomend_bridge as gb
     chars = gb.sample_values(ws.geomend)
-    chars = chars[chars.ordinal == 0].rename(columns={"name": "column"})[["study_id", "sample_id", "column", "value"]]
+    if not all_values:
+        chars = chars[chars.ordinal == 0]
+    chars = chars.rename(columns={"name": "column"})[["study_id", "sample_id", "column", "value"]]
     keep = set(zip(*annotation_columns(ws)[["study_id", "column"]].T.values))
     parts = [chars[[(s, c) in keep for s, c in zip(chars.study_id, chars.column)]]]
     if ws.derived.exists():
