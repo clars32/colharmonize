@@ -1065,3 +1065,46 @@ stage's output changes. Four calls:
   workspace records it,** so a typo can't become the default for later
   commands. Recording the store moved from `preprocess.run()` to the
   command line, next to `--ontology`.
+
+### 15.16: The first real run, from a clean install (2026-10-22)
+Acceptance run for handoff task A12, in `~/colharmonize-acceptance`, outside
+this folder:
+- a fresh clone from GitHub, installed into a new Python 3.13 environment
+- the real `ontology fetch`
+- `claude plugin validate`, then the plugin installed from
+  `clars32/colharmonize`
+- `/colharmonize:harmonize` run by the user's own `claude`, headless
+
+The four series are rheumatoid arthritis synovium studies (GSE77298,
+GSE55457, GSE36700, GSE153015), chosen from a domain no corpus uses, so no
+future held-out set is spent. The run measures nothing, since there is no
+gold.
+- **Setup works.** The install took 75 s and 1.2 GB. `ontology fetch`
+  downloaded and verified the 169 MB file in under a minute; the pinned
+  tables equal the project's copy, and the store is projection-2.
+  Validation passed with `--strict`; the plugin directory would still want
+  a LICENSE (A3).
+- **The pipeline ran with no help.** Ingest gave 4 studies, 105 samples and
+  17 columns; repair recovered 7 more. Annotate runs agreed on 87.5%,
+  reconcile partitions 95.8%, and the tiers were 4 manual, 5 quick and 4
+  pre-accepted variables. Every answer validated first time. The run took
+  about 5 minutes to review. The user reviewed and accepted all 13
+  variables, and a resumed skill applied the export and published: 105
+  samples × 13 variables, 635 values, no conflicting cells. Sex, age,
+  tissue and disease each pool across 3–4 studies; tissue values such as
+  "synovial biopsies" and "synovial membrane" were recoded to `synovium`.
+- **Bug, fixed:** an offline ingest of uncached accessions reported 0
+  studies without failing, and the GEOmend project it left blocked the
+  `--online` retry. Ingest now fails if any source fails, says why, and
+  removes the project it made. The skill adds `--online` for accessions.
+- **INSTALL gaps, fixed:** it assumed `python3.13` was installed, and didn't
+  say to sign in to `claude`.
+- **Found, not fixed: a repeated key loses its later values.**
+  `profile.sample_values` keeps the first value per sample (ordinal 0).
+  GSE77298 has two `disease state` lines per sample, the disease and
+  "synovium". The second never reaches the pooled table. The column was
+  flagged ENCODES_TWO_THINGS and kept as its own variable, which is right,
+  but the dropped values are silent.
+- **Running the user's `claude` from a desktop-app session** needs a clean
+  environment: the session's `CLAUDE_CONFIG_DIR` points the child at the
+  app's configuration, where it isn't signed in.
