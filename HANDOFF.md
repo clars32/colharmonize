@@ -1,6 +1,6 @@
 # Handoff brief: colharmonize, iteration 3
 
-Written 2026-10-08 for a fresh Claude instance, updated 2026-10-13. Read
+Written 2026-10-08 for a fresh Claude instance, updated 2026-10-22. Read
 this first, then the root `../BRIEFING.md` for the stable background (settled
 decisions, environment, traps).
 
@@ -82,7 +82,22 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
     unreviewed (A11).
   - It has no gold, so it measures nothing. It can't become the next sealed
     corpus either, since the pipeline has already run on it.
-- **Tests:** `./.venv/bin/python -m pytest -q` passes 83.
+- **Setup and resume** (2026-10-14, decisions log 15.15; merged to
+  `master` as `62eb62a`):
+  - `colharmonize ontology fetch --tag v3.94.0 --out DIR` downloads
+    `efo.json`, pins it and builds the store as `DIR.sqlite` in one
+    command. For v3.94.0 it refuses a file with any other checksum. The
+    real download has been checked for size only, never run end to end.
+  - The workspace records the store and ontology, so `--store` and
+    `--ontology` are needed only once.
+  - `colharmonize status --workspace W` reports which stages are done and
+    prints the next command. It only reads files. The skill's step 0 runs
+    it, so an interrupted run resumes from the stage it names.
+  - The `candidates` cache now defaults to `$COLHARMONIZE_CACHE`, else
+    `~/.cache/colharmonize`. To reproduce the recorded workspaces' candidates
+    (tuning, sealed, demo), pass `--cache work/cache`: its `remote.json`
+    supplies the ZOOMA and OLS4 answers.
+- **Tests:** `./.venv/bin/python -m pytest -q` passes 131.
 
 ## Constraints: do not break these
 
@@ -196,6 +211,12 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
       They pass through unrecoded.
 
     Re-run `review apply` and `publish` after any new export.
+12. **Run the pipeline the real way, outside this folder.** Every run so
+    far used general-purpose stand-in agents in this checkout. On a machine
+    with the `claude` command: install from `docs/INSTALL.md`, run
+    `claude plugin validate ./plugin --strict`, then `/colharmonize:harmonize`
+    on 3–4 new series through publish, and write down what breaks. This is
+    also the first real test of `ontology fetch`'s 169 MB download.
 
 ### B. Make the evaluation trustworthy
 
@@ -312,11 +333,12 @@ Measure each on tuning first.
 
 ### E. Housekeeping
 
-25. **`tasks status` on a run that doesn't exist** prints a raw
-    `FileNotFoundError` traceback (`cli.py`, the `status` branch of
-    `cmd_tasks`). It should say the run has no tasks.
+25. ~~**`tasks status` on a run that doesn't exist.**~~ Fixed 2026-10-14
+    (`27f54ec`): `tasks status`, `collect` and `retry` now say the run has
+    no tasks yet and exit 1, instead of a traceback.
 26. **Stale files and branches**, each the user's call:
     - `../parallel-session-briefing.md`: everything in it is merged and
       written up (15.11, 15.12).
     - GEOmend's six merged `fix/*` branches, still local and on origin.
       Deleting the remote ones is outward-facing.
+    - colharmonize's merged `usability/setup-and-resume` branch.
