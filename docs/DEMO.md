@@ -13,8 +13,7 @@ Rough timings (measured 2026-10-22, M3 MacBook Air, warm package cache):
 | Step | Time |
 |---|---|
 | Install the command | a few seconds (a few minutes the first time) |
-| Fetch the ontology | about 50 s |
-| Install the plugin | about 10 s |
+| Set up (ontology, plugin, permissions) | about 1 min |
 | Run up to review | about 4 min |
 | Review | as long as you like |
 | Apply and publish | about 20 s |
@@ -62,6 +61,11 @@ uv --version
 
 Close every Claude window, so the demo uses only Terminal.
 
+`setup` will report the Claude Code permissions as "already allowed" if an
+earlier rehearsal added them. To show it adding them, remove the two
+`colharmonize` entries from `permissions.allow` in `~/.claude/settings.json`
+first.
+
 ## The demo
 
 ### 1. Install the command (say: "one command, its own Python")
@@ -74,38 +78,31 @@ uv tool install --python 3.13 git+https://github.com/clars32/colharmonize.git
 colharmonize --help
 ```
 
-### 2. Pin the ontology (say: "every term is checked against one fixed EFO release")
+### 2. Set up (say: "once per machine")
 
 ```bash
-colharmonize ontology fetch
+colharmonize setup
 ```
 
-It downloads EFO v3.94.0, checks its checksum and builds the lookup store.
+Three numbered steps scroll by:
+1. **Ontology:** downloads EFO v3.94.0, checks it against the release
+   colharmonize was measured with, and builds the lookup store. Say: "every
+   term is checked against one fixed EFO release."
+2. **Claude Code plugin:** installed from GitHub.
+3. **Claude Code permissions:** colharmonize may run its own commands
+   without asking at each step.
 
-### 3. Install the Claude Code plugin
-
-```bash
-claude plugin marketplace add clars32/colharmonize
-```
-
-```bash
-claude plugin install colharmonize@colharmonize
-```
-
-### 4. Start Claude Code in an empty folder
+### 3. Start Claude Code in an empty folder
 
 ```bash
 mkdir ~/harmonize-demo && cd ~/harmonize-demo
 ```
 
 ```bash
-claude --permission-mode acceptEdits
+claude
 ```
 
-The flag lets the subagents write their answer files without asking each
-time. The skill is already allowed to run `colharmonize` commands.
-
-### 5. Run it
+### 4. Run it
 
 In Claude Code, type:
 
@@ -113,22 +110,22 @@ In Claude Code, type:
 /colharmonize:harmonize GSE77298 GSE55457 GSE36700 GSE153015
 ```
 
-What the audience sees, stage by stage:
-- **Ingest:** 4 studies, 105 samples, 17 columns downloaded from GEO.
-- **Repair:** columns hidden in sample titles and source names are recovered,
-  such as subject and tissue.
+Claude prints one line per stage. What to say over each:
+- **Ingest:** the four studies are downloaded from GEO.
+- **Repair:** subagents recover columns hidden in sample titles and source
+  names, such as subject and tissue.
 - **Annotate:** two independent sets of subagents give each column an
-  ontology term. Their agreement is reported.
+  ontology term; their agreement is reported.
 - **Reconcile:** columns that mean the same thing are grouped into variables.
 - **Score:** each variable gets a review tier (manual, quick or
   pre-accepted).
 
-It stops at review and prints the path of `review.html`.
+At review, the page opens in the browser by itself, and Claude prints a link
+to it.
 
-### 6. Review (the human step)
+### 5. Review (the human step)
 
-Cmd-click the path, or open `~/harmonize-demo/harmonized/review.html` in a
-browser. Good things to show:
+If the page didn't open, cmd-click the link. Good things to show:
 - **Disease status** pools three studies' columns named `diagnosis`,
   `disease` and `clinical status`, with "normal control" recoded to
   `healthy control`.
@@ -141,7 +138,7 @@ browser. Good things to show:
 Accept or edit the variables, then press **Export**. The browser saves
 `review_harmonized.json` in Downloads.
 
-### 7. Finish
+### 6. Finish
 
 Back in Claude Code, type the command with nothing after it:
 
@@ -149,11 +146,11 @@ Back in Claude Code, type the command with nothing after it:
 /colharmonize:harmonize
 ```
 
-It applies your decisions from Downloads and publishes. Then show the
-result, in Terminal (type `!` first to run it from inside Claude Code):
+It applies your decisions from Downloads, publishes, and prints a link to
+the pooled table. Cmd-click it, or in Claude Code type:
 
-```bash
-open ~/harmonize-demo/harmonized/published/pooled_samples.tsv
+```
+!open harmonized/published/pooled_samples.tsv
 ```
 
 One row per sample across all four studies, one column per harmonized
@@ -162,20 +159,20 @@ harmonized one.
 
 ## If something goes wrong
 
-- **GEO or the network is down at step 5.** Use the copies of the four
+- **GEO or the network is down at step 4.** Use the copies of the four
   series saved in `~/colharmonize-demo-backup`:
 
   ```
   /colharmonize:harmonize ~/colharmonize-demo-backup/GSE77298_family.soft.gz ~/colharmonize-demo-backup/GSE55457_family.soft.gz ~/colharmonize-demo-backup/GSE36700_family.soft.gz ~/colharmonize-demo-backup/GSE153015_family.soft.gz
   ```
 
-- **Claude Code asks for approval.** Choose "Yes". A run should need none;
-  note which command asked.
+- **Claude Code asks for approval.** Choose "Yes, and don't ask again". A
+  run after `colharmonize setup` should need none; note which command asked.
 - **The run stops partway** (a session limit, or Claude Code closed). Type
   `/colharmonize:harmonize` again. It picks up at the stage where it
   stopped and redoes nothing.
-- **"no exported decisions" at step 7.** The export isn't in Downloads under
-  `review_harmonized.json`. Give its path:
-  `/colharmonize:harmonize` and then tell Claude where the file is.
+- **"no export of this review" at step 6.** Export wasn't pressed, or the
+  file went somewhere other than Downloads. Press Export again, or tell
+  Claude where the file is.
 - **`colharmonize: command not found`** in a Terminal tab opened before
   Claude Code was installed. Open a new tab, or run `source ~/.zshrc`.

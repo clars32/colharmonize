@@ -17,18 +17,10 @@ once and type `/login`). Then:
 
 ```bash
 uv tool install --python 3.13 git+https://github.com/clars32/colharmonize.git
-colharmonize ontology fetch
-claude plugin marketplace add clars32/colharmonize
-claude plugin install colharmonize@colharmonize
+colharmonize setup
 ```
 
-Then, in an empty folder:
-
-```bash
-claude --permission-mode acceptEdits
-```
-
-and in Claude Code:
+Then, in an empty folder, run `claude` and type:
 
 ```
 /colharmonize:harmonize GSE12345 GSE67890
@@ -72,80 +64,59 @@ uv pip install --python ~/colharmonize-env/bin/python -e ./colharmonize
 
 Then put `~/colharmonize-env/bin` on your `PATH` before starting `claude`.
 
-## 2. Pin the ontology
+## 2. Set up
 
 ```bash
-colharmonize ontology fetch
+colharmonize setup
 ```
 
-This downloads `efo.json` for EFO v3.94.0 from the EFO release on GitHub
-(about 170 MB, a minute or so). It checks the file's SHA-256 against the copy
-colharmonize was measured with, pins it in
-`~/.local/share/colharmonize/ontology/efo-v3.94.0/`, and builds the GEOmend
-store beside it as `efo-v3.94.0.sqlite`. The download itself isn't kept;
-`version.tsv` in the pinned directory records its checksum. Running the
-command again does nothing.
+Run it once per machine. It does three things, and skips whatever is
+already done, so it's safe to run again:
 
-Every workspace uses this location unless told otherwise, so you're never
-asked for a path. To keep the ontology elsewhere, set `COLHARMONIZE_HOME`, or
-pass `--out DIR` here and `--ontology DIR --store DIR.sqlite` to
-`colharmonize preprocess`. A workspace records both paths the first time
-they're used.
+1. **Pins the ontology.** It downloads `efo.json` for EFO v3.94.0 from the
+   EFO release on GitHub (about 170 MB, a minute or so), checks its SHA-256
+   against the copy colharmonize was measured with, pins it in
+   `~/.local/share/colharmonize/ontology/efo-v3.94.0/`, and builds the
+   GEOmend store beside it. Every identifier colharmonize produces is
+   validated against this pinned copy, never a live service.
+2. **Installs the Claude Code plugin** from `clars32/colharmonize`, with the
+   `claude` command. The repository is private, so you need access to it.
+3. **Lets Claude Code run colharmonize without asking.** It adds two rules to
+   `permissions.allow` in `~/.claude/settings.json` and changes nothing else
+   there: `Bash(colharmonize *)` for the commands, and
+   `Edit(**/tasks/*/run*/*.answer.json)` for the answer files the subagents
+   write. Claude Code ignores permissions shipped inside a plugin, which is
+   why this step exists. Without it, Claude Code asks before every step.
 
-On a machine without network access, copy `efo.json` there and add
-`--url file:///path/to/efo.json`. The checksum is still checked.
+Options: `--no-plugin` and `--no-permissions` skip those steps.
+`colharmonize ontology fetch` does step 1 alone; on a machine without network
+access, copy `efo.json` there and add `--url file:///path/to/efo.json`. To
+keep the ontology elsewhere, set `COLHARMONIZE_HOME`.
 
-Every identifier colharmonize produces is validated against this pinned
-copy, never a live service.
-
-## 3. Install the plugin
-
-The repository root is a plugin marketplace (`.claude-plugin/marketplace.json`),
-and the plugin is in `plugin/`. From a local checkout:
-
-```bash
-claude plugin marketplace add /path/to/colharmonize
-claude plugin install colharmonize@colharmonize
-```
-
-Inside a Claude Code session, the same thing is
-`/plugin marketplace add /path/to/colharmonize`, then
-`/plugin install colharmonize@colharmonize`.
-
-The repository is on GitHub at `clars32/colharmonize`, so others add it by
-name. It is private: ask the owner for access first. The install uses the
-machine's existing git credentials:
+To do steps 2 and 3 by hand instead:
 
 ```bash
 claude plugin marketplace add clars32/colharmonize
 claude plugin install colharmonize@colharmonize
 ```
 
-To check the plugin before sharing it:
+and add the two rules above to your Claude Code settings. **Update** the
+plugin with `claude plugin marketplace update colharmonize`, then
+`claude plugin update colharmonize@colharmonize`; **remove** it with
+`claude plugin uninstall colharmonize@colharmonize`. To check the plugin
+before sharing it, run `claude plugin validate ./plugin --strict` in a
+checkout.
 
-```bash
-claude plugin validate ./plugin --strict
-```
+## 3. Run it
 
-**Update** with `claude plugin marketplace update colharmonize`, then
-`claude plugin update colharmonize@colharmonize`. Git-hosted installs only
-pick up a release whose `plugin/.claude-plugin/plugin.json` version was
-bumped. **Remove** with `claude plugin uninstall colharmonize@colharmonize`.
-
-## 4. Run it
-
-Make an empty folder for your runs, and start Claude Code there with file
-edits accepted:
+In an empty folder, start Claude Code:
 
 ```bash
 mkdir ~/harmonize-runs && cd ~/harmonize-runs
-claude --permission-mode acceptEdits
+claude
 ```
 
-The flag matters. The judgment stages are done by subagents, each writing one
-answer file in the workspace. Without it, Claude Code asks you to approve
-every one of those writes. The skill itself is allowed to run `colharmonize`
-commands without asking. Then, in Claude Code:
+Then, in Claude Code:
 
 ```
 /colharmonize:harmonize GSE12345 GSE67890
@@ -163,10 +134,10 @@ batches:
 - `colharmonize:repairer` and `colharmonize:annotator` on Sonnet
 - `colharmonize:reconciler` on Opus
 
-The one human step is review. The skill stops and gives you the path of
-`review.html`. Open it in a browser, review it starting with the manual tier,
-and press Export; the browser saves `review_harmonized.json` in Downloads.
-Then type the command with nothing after it to finish:
+The one human step is review. The skill opens `review.html` in your browser
+and stops. Review it, starting with the manual tier, and press Export; the
+browser saves `review_harmonized.json` in Downloads. Then type the command
+with nothing after it to finish:
 
 ```
 /colharmonize:harmonize
