@@ -24,7 +24,8 @@ that `colharmonize setup` stops that.
 
 Keep it minimal. The user wants the result, not a log; they can ask for
 details. Use these messages and nothing more:
-- **Start:** `Harmonizing N studies in <workspace, as a full path>.`
+- **Start:** `Harmonizing N studies in <workspace, as a full path>.` When
+  coming back to a run: `Resuming the run in <workspace>.`
 - **After each stage:** one short line, such as `Ingest: 4 studies, 105
   samples, 17 columns.` No tables, no explanations, no lists.
 - **Only if something needs the user's attention** (a failed source, an
@@ -35,7 +36,8 @@ details. Use these messages and nothing more:
       Ready for review: [review.html](<file:// link>), opened in your browser.
       Check the manual tier first, press Export, then type `/colharmonize:harmonize` to finish.
 
-- **At the end:** one line, with a link to the pooled table:
+- **At the end:** this one line, with a link to the pooled table, and no
+  sentence before it:
 
       Done: [pooled_samples.tsv](<file:// link>), N samples × M variables from K studies.
 
