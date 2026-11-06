@@ -27,3 +27,25 @@ def test_rank_and_display_orders_by_agreement_then_rank():
     assert space == ["A:2", "A:1"]
     assert all(c["displayed"] for c in out)
     assert out[0]["n_sources"] == 3 and out[0]["best_rank"] == 1
+
+
+def test_encoder_loads_from_the_local_cache_before_the_network(monkeypatch):
+    import sys
+    import types
+
+    from colharmonize import candidates
+
+    calls = []
+
+    class FakeModel:
+        def __init__(self, repo, **kwargs):
+            calls.append((repo, kwargs))
+            if kwargs.get("local_files_only") and repo == "not/cached":
+                raise OSError("not in the local cache")
+
+    monkeypatch.setitem(sys.modules, "sentence_transformers", types.SimpleNamespace(SentenceTransformer=FakeModel))
+    candidates.load_encoder("cached/model")
+    assert calls == [("cached/model", {"local_files_only": True})]
+    calls.clear()
+    candidates.load_encoder("not/cached")
+    assert calls == [("not/cached", {"local_files_only": True}), ("not/cached", {})]

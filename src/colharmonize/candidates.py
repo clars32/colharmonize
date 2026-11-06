@@ -98,6 +98,18 @@ def unit_strings(column: str, unit: str | None) -> list[str]:
     return [u for u in dict.fromkeys(s.strip() for s in out) if u]
 
 
+def load_encoder(repo: str):
+    """A sentence-transformers model, from the local Hugging Face cache when it's there.
+
+    Loading by name alone re-checks every model file online, about 90 requests
+    and 5 s per run, even when the model is cached. Download only on a miss."""
+    from sentence_transformers import SentenceTransformer
+    try:
+        return SentenceTransformer(repo, local_files_only=True)
+    except OSError:
+        return SentenceTransformer(repo)
+
+
 class TermIndex:
     """Lexical and embedding lookup over one set of terms. Embeddings are cached on disk."""
 
@@ -125,8 +137,7 @@ class TermIndex:
 
     def _encoder(self, repo: str):
         if repo not in self._enc:
-            from sentence_transformers import SentenceTransformer
-            self._enc[repo] = SentenceTransformer(repo)
+            self._enc[repo] = load_encoder(repo)
         return self._enc[repo]
 
     def matrix(self, tag: str, repo: str) -> np.ndarray:
