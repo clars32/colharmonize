@@ -97,7 +97,15 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
     `~/.cache/colharmonize`. To reproduce the recorded workspaces' candidates
     (tuning, sealed, demo), pass `--cache work/cache`: its `remote.json`
     supplies the ZOOMA and OLS4 answers.
-- **Tests:** `./.venv/bin/python -m pytest -q` passes 148.
+- **Speedups, 2026-11-06.** On the demo corpus, ingest + preprocess +
+  candidates fell from about 80 s to 36 s with identical outputs:
+  - colharmonize (on `master`): ontology lookups through a dict, and
+    embedding models loaded from the local cache first.
+  - GEOmend (on `main`, **unreleased**): a field lookup no longer copies every
+    inventory, which was quadratic in the number of fields, and term text is
+    normalized once per discovery. colharmonize gets these only after a
+    GEOmend 0.0.10 release and a pin bump; the user's call.
+- **Tests:** `./.venv/bin/python -m pytest -q` passes 150.
 
 ## Constraints: do not break these
 
@@ -156,7 +164,7 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
 **GEOmend suite**
 - Run in `../GEOmend`: `npm run contracts` (with `.venv/bin` on PATH), then
   `.venv/bin/python -m pytest -o addopts="" -q -p no:cacheprovider`.
-- Baseline: 1,491 passed, 4 skipped on `main` at 0.0.9.
+- Baseline: 1,493 passed, 4 skipped on `main` (2026-11-06, after 0.0.9).
 
 **Data**
 - Tuning SOFT files: `../ds-metadata-harmonization/data/raw`, plus
