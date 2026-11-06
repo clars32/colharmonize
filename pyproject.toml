@@ -11,7 +11,7 @@ requires-python = ">=3.13"
 authors = [{ name = "Carter Larsen" }]
 dependencies = [
   # GEOmend prepares the data; colharmonize talks to it only through geomend_bridge.py.
-  "geomend==0.0.9",
+  "geomend==0.0.10",
   "pandas>=2.2",
   "pyarrow>=15",
   "numpy>=1.26",

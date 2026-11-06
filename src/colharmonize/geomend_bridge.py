@@ -12,7 +12,7 @@ values paged with `mappings.field`. Decisions go back only as provider
 proposals (`transformations.propose_provider`), which GEOmend validates
 against actual values and keeps pending its own review.
 
-Pinned against geomend==0.0.9.
+Pinned against geomend==0.0.10.
 """
 from __future__ import annotations
 
