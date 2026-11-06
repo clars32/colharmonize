@@ -339,12 +339,12 @@ Measure each on tuning first.
 25. ~~**`tasks status` on a run that doesn't exist.**~~ Fixed 2026-10-14
     (`27f54ec`): `tasks status`, `collect` and `retry` now say the run has
     no tasks yet and exit 1, instead of a traceback.
-26. **Stale files and branches**, each the user's call:
-    - `../parallel-session-briefing.md`: everything in it is merged and
-      written up (15.11, 15.12).
-    - GEOmend's six merged `fix/*` branches, still local and on origin.
-      Deleting the remote ones is outward-facing.
-    - colharmonize's merged `usability/setup-and-resume` branch.
+26. ~~**Stale files and branches.**~~ Done 2026-11-06: deleted
+    `../parallel-session-briefing.md`, GEOmend's six merged `fix/*` branches
+    (local and origin), colharmonize's `usability/setup-and-resume`, and the
+    unreferenced `work/e2e`, `work/repair-pilot`, `work/corpus` and
+    `work/geomend_*` notes. Unused imports and helpers removed in the same
+    pass.
 27. ~~**A repeated characteristic key loses its later values.**~~ Fixed
     2026-10-22 (decisions log 15.17): publish keeps every value, joined with
     " | ", and reports `multi_valued_cells`. The judgment stages still see
