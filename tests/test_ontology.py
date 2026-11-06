@@ -1,4 +1,6 @@
 """Regression tests for the validator, carried over from iteration 2's findings."""
+import pandas as pd
+
 from colharmonize import ontology as o
 
 
@@ -74,3 +76,18 @@ def test_pin_obograph_round_trip(tiny_dir, tiny):
     assert tiny.validate("EFO:0004308").reason == o.DEPRECATED
     assert tiny.parents("EFO:0000369") == ["EFO:0000727"]
     assert set(tiny.usable_terms().curie) == {"EFO:0000727", "EFO:0000369", "PATO:0000047"}
+
+
+def test_a_repeated_curie_resolves_to_one_term(tiny):
+    # EFO v3.94.0 gives definition:citation two IRIs. Lookups return the first
+    # row's values, not a pandas Series rendered as text.
+    terms = tiny.terms
+    row = terms[terms.curie == "EFO:0000369"].iloc[0]
+    twin = row.copy()
+    twin["iri"] = row["iri"] + "-twin"
+    twin["label"] = "a second label"
+    onto = o.Ontology(pd.concat([terms, twin.to_frame().T], ignore_index=True), tiny.edge_table, tiny.version)
+    assert onto.label("EFO:0000369") == row["label"]
+    assert onto.iri("EFO:0000369") == row["iri"]
+    verdict = onto.validate("EFO:0000369", row["label"])
+    assert (verdict.iri, verdict.label, verdict.reason) == (row["iri"], row["label"], o.OK)

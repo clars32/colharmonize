@@ -117,6 +117,14 @@ class Ontology:
         # one; collapsing on CURIE would merge every CURIE-less term into one.
         self._terms = index.drop_duplicates(subset="iri").reset_index(drop=True)
         self._index = self._terms[self._terms.curie != ""].set_index("curie", drop=False)
+        # Per-CURIE lookups go through a dict: the frame's index isn't unique (one
+        # CURIE, definition:citation, has two IRIs), which made every .at lookup
+        # take ~1 ms. On a repeated CURIE the first row wins.
+        first = self._index[~self._index.index.duplicated(keep="first")]
+        self._rows: dict[str, tuple[str, str, object, bool]] = {
+            c: (str(i), str(lab), d, bool(dep))
+            for c, i, lab, d, dep in zip(first.index, first.iri, first.label, first.definition, first.deprecated)
+        }
         self._edges = edges
         self.version = dict(version)
         self.allowed = frozenset(allowed)
@@ -162,20 +170,21 @@ class Ontology:
 
     def iri(self, curie: str) -> str:
         """Full IRI for a CURIE: the pinned one when present, else constructed."""
-        if curie in self._index.index:
-            return str(self._index.at[curie, "iri"])
+        if curie in self._rows:
+            return self._rows[curie][0]
         prefix, _, local = curie.partition(":")
         if not local:
             return ""
         return f"{EFO_BASE if prefix == 'EFO' else OBO_BASE}{prefix}_{local}"
 
     def label(self, curie: str) -> str:
-        return str(self._index.at[curie, "label"]) if curie in self._index.index else ""
+        row = self._rows.get(curie)
+        return row[1] if row else ""
 
     def definition(self, curie: str) -> str:
-        if curie not in self._index.index:
+        if curie not in self._rows:
             return ""
-        d = self._index.at[curie, "definition"]
+        d = self._rows[curie][2]
         return "" if d is None or (isinstance(d, float) and d != d) else str(d)
 
     def label_map(self) -> dict[str, str]:
@@ -199,13 +208,12 @@ class Ontology:
             return verdict(UNPARSEABLE)
         if prefix in self.rejected:
             return verdict(REJECTED_PREFIX)
-        if curie not in self._index.index:
+        if curie not in self._rows:
             return verdict(NOT_IN_PINNED_FILE)
-        row = self._index.loc[curie]
-        iri, label = str(row["iri"]), str(row["label"])
+        iri, label, _, deprecated = self._rows[curie]
         if prefix not in self.allowed:
             return verdict(OFF_ALLOWLIST, iri, label)
-        if bool(row["deprecated"]):
+        if deprecated:
             return verdict(DEPRECATED, iri, label)
         if expected_label is not None and normalise_key(expected_label) != normalise_key(label):
             return verdict(LABEL_MISMATCH, iri, label)
