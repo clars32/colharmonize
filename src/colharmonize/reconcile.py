@@ -34,7 +34,7 @@ import pandas as pd
 from pydantic import BaseModel, ConfigDict, Field
 
 from colharmonize import profile, registry
-from colharmonize.annotate import FLAGS, SLOTS, Qualifier, Resolver, Term, make_resolver, qualifiers_agree
+from colharmonize.annotate import FLAGS, Qualifier, Resolver, Term, make_resolver, qualifiers_agree
 from colharmonize.normalise import normalise_key
 from colharmonize.ontology import Ontology
 from colharmonize.text import same_meaning

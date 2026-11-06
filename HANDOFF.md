@@ -97,7 +97,7 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
     `~/.cache/colharmonize`. To reproduce the recorded workspaces' candidates
     (tuning, sealed, demo), pass `--cache work/cache`: its `remote.json`
     supplies the ZOOMA and OLS4 answers.
-- **Tests:** `./.venv/bin/python -m pytest -q` passes 149.
+- **Tests:** `./.venv/bin/python -m pytest -q` passes 148.
 
 ## Constraints: do not break these
 

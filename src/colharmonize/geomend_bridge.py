@@ -17,7 +17,7 @@ Pinned against geomend==0.0.9.
 from __future__ import annotations
 
 import json
-from collections import Counter, defaultdict
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable
@@ -33,7 +33,6 @@ from geomend.text import canonical_identifier, sha256_text, stable_json
 
 from colharmonize.ontology import Ontology
 
-GEOMEND_VERSION = "0.0.9"
 PAGE = 200   # GEOmend's largest page
 STORE_PARSER_VERSION = "colharmonize-pinned-index-projection-2"   # 2: nodes carry source IRIs
 
@@ -214,14 +213,6 @@ def sample_values(project: str | Path, namespaces: Iterable[str] = ("characteris
                              "namespace": f["namespace"], "name": f["name"], "ordinal": i,
                              "value": None if v is None else str(v)})
     return pd.DataFrame(rows, columns=["study_id", "sample_id", "field_id", "namespace", "name", "ordinal", "value"])
-
-
-def column_coverage(values: pd.DataFrame) -> dict[str, dict[str, set[str]]]:
-    """study -> field name -> set of samples with a value. Feeds the co-occurrence rule."""
-    cover: dict[str, dict[str, set[str]]] = defaultdict(lambda: defaultdict(set))
-    for row in values.itertuples(index=False):
-        cover[row.study_id][row.name].add(row.sample_id)
-    return {s: dict(f) for s, f in cover.items()}
 
 
 def namespace_counts(project: str | Path) -> Counter:

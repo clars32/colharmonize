@@ -39,7 +39,6 @@ from colharmonize.workspace import Workspace
 
 FORMAT = "colharmonize-review-1"
 ANNOTATION = ["variable_name", "predicate", "primary_curie", "qualifiers"]
-PREDICATES = ("exact", "broad", "indicator", "none")
 SLOTS = ("subject", "object_class", "event_time_anchor", "method", "unit")
 NEW = "new"
 

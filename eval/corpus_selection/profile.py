@@ -1,6 +1,6 @@
 """Fetch sample-level SOFT metadata (no data tables) for candidate series and profile characteristics keys."""
 from pathlib import Path
-import json, re, sys, time, urllib.request
+import json, time, urllib.request
 from collections import defaultdict, Counter
 
 CANDIDATES = {

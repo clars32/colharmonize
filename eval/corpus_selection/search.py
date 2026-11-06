@@ -1,6 +1,6 @@
 """Shortlist GEO series per disease area via NCBI E-utilities (read-only)."""
 from pathlib import Path
-import json, sys, time, urllib.parse, urllib.request
+import json, time, urllib.parse, urllib.request
 
 BASE = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
 AREAS = {

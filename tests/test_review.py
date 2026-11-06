@@ -98,7 +98,7 @@ def test_sssom_maps_predicates_and_skips_rejected():
     onto = type("O", (), {"release_tag": "v3.94.0", "version_iri": "http://www.ebi.ac.uk/efo/releases/v3.94.0/efo.owl"})()
     text = publish.sssom(variables, columns, onto, "urn:test")
     body = [l.split("\t") for l in text.splitlines() if not l.startswith("#")]
-    head, rows = body[0], [dict(zip(body[0], r)) for r in body[1:]]
+    rows = [dict(zip(body[0], r)) for r in body[1:]]
     assert "#  PATO: http://purl.obolibrary.org/obo/PATO_" in text and "#license: " in text
     assert [r["subject_id"] for r in rows] == ["col:GSE1/gender", "col:GSE1/batch%20%23"]
     assert rows[0]["predicate_id"] == "skos:exactMatch" and rows[0]["mapping_justification"] == "semapv:ManualMappingCuration"

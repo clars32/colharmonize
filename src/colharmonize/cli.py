@@ -290,7 +290,7 @@ def _ready(got, run: int, drop_failed: bool) -> bool:
 
 
 def cmd_repair_apply(args: argparse.Namespace) -> int:
-    from colharmonize import geomend_bridge as gb, repair, tasks
+    from colharmonize import geomend_bridge as gb, repair
     from colharmonize.workspace import Workspace
     ws = Workspace(args.workspace)
     got = _collect(ws, repair, args.run)
@@ -335,7 +335,7 @@ def cmd_candidates(args: argparse.Namespace) -> int:
 
 
 def cmd_annotate_apply(args: argparse.Namespace) -> int:
-    from colharmonize import annotate, tasks
+    from colharmonize import annotate
     from colharmonize.workspace import Workspace
     ws = Workspace(args.workspace)
     resolver = annotate.make_resolver(ws)
@@ -355,7 +355,7 @@ def cmd_annotate_apply(args: argparse.Namespace) -> int:
 
 def cmd_reconcile_apply(args: argparse.Namespace) -> int:
     import pandas as pd
-    from colharmonize import annotate, reconcile, tasks
+    from colharmonize import annotate, reconcile
     from colharmonize.workspace import Workspace
     ws = Workspace(args.workspace)
     resolver = annotate.make_resolver(ws)

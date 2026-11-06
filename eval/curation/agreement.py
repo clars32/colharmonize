@@ -14,7 +14,6 @@ agreement with Claude as much as correctness.
 """
 from __future__ import annotations
 
-import itertools
 import json
 import re
 import sys

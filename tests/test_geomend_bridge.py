@@ -60,12 +60,6 @@ def test_values_containing_na_are_not_nulled(project):
     assert {"polyA RNA", "RNA-Seq", "cDNA"} <= seen
 
 
-def test_coverage_supports_the_cooccurrence_rule(project):
-    cover = gb.column_coverage(gb.sample_values(project))
-    gse = cover["GSE128621"]
-    assert gse["Sex"] == gse["karyotype"] and len(gse["Sex"]) == 14
-
-
 def test_field_table_shape(project):
     t = gb.field_table(project)
     chars = t[(t.scope == "sample") & (t.namespace == "characteristic")]

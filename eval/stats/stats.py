@@ -15,7 +15,6 @@ column is never paired with its own copy.
 """
 from __future__ import annotations
 
-import itertools
 import json
 import math
 import sys
