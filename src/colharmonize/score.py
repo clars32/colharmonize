@@ -2,7 +2,7 @@
 
 Every column starts pre-accepted, and each failed check demotes it. A
 pre-accepted column is not auto-accepted: the review page lists it, and a
-reviewer can still change it (GEOmend's owner agreed to that state). The review
+reviewer can still change it (MetaMend's owner agreed to that state). The review
 unit is a variable, so a variable's tier is its worst member's.
 
 Checks fall into two tiers. A failed check sends the column to *manual* review

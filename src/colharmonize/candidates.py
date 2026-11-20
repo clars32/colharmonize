@@ -89,7 +89,7 @@ def name_forms(column: str) -> dict[str, str]:
 
 
 def unit_strings(column: str, unit: str | None) -> list[str]:
-    """Candidate unit spellings: GEOmend's detected unit, parentheticals, and text after a comma."""
+    """Candidate unit spellings: MetaMend's detected unit, parentheticals, and text after a comma."""
     out = [u for u in parenthetical(column)]
     if "," in column:
         out.append(column.rsplit(",", 1)[1].strip(" _"))
@@ -272,7 +272,7 @@ class Retriever:
     def for_column(self, column: str, values: list[str], unit: str | None, hints: dict | None = None) -> list[dict]:
         """All candidates for one column: dicts with curie, pool, sources {source: rank}.
 
-        `hints` is GEOmend preprocessing evidence for this column (decisions log
+        `hints` is MetaMend preprocessing evidence for this column (decisions log
         1.6): `terms`, its lexical candidates in rank order, and `units`."""
         found: dict[str, dict] = {}
         hints = hints or {}
@@ -350,7 +350,7 @@ def rank_and_display(cands: list[dict]) -> list[dict]:
 
 def generate(retriever: Retriever, columns: pd.DataFrame, hints: dict | None = None) -> pd.DataFrame:
     """Candidates for every row of a columns table (study_id, column, values json, unit).
-    `hints` maps (study_id, column) to GEOmend evidence (see `Retriever.for_column`)."""
+    `hints` maps (study_id, column) to MetaMend evidence (see `Retriever.for_column`)."""
     rows = []
     for r in columns.itertuples(index=False):
         values = [v for v, _ in json.loads(r.values)]

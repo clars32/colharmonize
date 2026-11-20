@@ -1,10 +1,10 @@
-"""Write harmonized variables back to the workspace's GEOmend project.
+"""Write harmonized variables back to the workspace's MetaMend project.
 
-colharmonize decides which columns pool and what they mean. GEOmend users
+colharmonize decides which columns pool and what they mean. MetaMend users
 who never run Claude can still use those decisions: each characteristic
-column in a published variable becomes a GEOmend provider proposal. The
+column in a published variable becomes a MetaMend provider proposal. The
 proposal names a target variable, carries the variable's ontology term and a
-complete value recode, and keeps colharmonize's provenance. GEOmend validates
+complete value recode, and keeps colharmonize's provenance. MetaMend validates
 it against the field's actual values and keeps it pending its own review. A
 proposal is never a reviewer vote, and nothing is selected unless asked
 (decisions log 1.2, 1.6).
@@ -12,7 +12,7 @@ proposal is never a reviewer vote, and nothing is selected unless asked
 Not written back:
 - rejected variables
 - columns repair recovered from titles, source names or split values, which
-  are not GEOmend fields
+  are not MetaMend fields
 """
 from __future__ import annotations
 
@@ -20,16 +20,16 @@ import json
 
 import pandas as pd
 
-from colharmonize import __version__, geomend_bridge as gb, publish
+from colharmonize import __version__, metamend_bridge as gb, publish
 from colharmonize.workspace import Workspace
 
 PROVIDER_VARIABLE_PREFIX = "colharmonize:"
 
 
 def value_mapping(recodes: object, distinct: list[str]) -> dict[str, str] | None:
-    """A complete recode for GEOmend, or None to copy values unchanged.
+    """A complete recode for MetaMend, or None to copy values unchanged.
 
-    GEOmend refuses an explicit recode that leaves any reported value out, so
+    MetaMend refuses an explicit recode that leaves any reported value out, so
     values colharmonize didn't recode map to themselves.
     """
     pairs = json.loads(recodes) if isinstance(recodes, str) and recodes else (recodes or [])
@@ -53,7 +53,7 @@ def proposals(ws: Workspace, ontology) -> tuple[list[dict], pd.DataFrame]:
     """(proposals to send, every published column with what happens to it)."""
     variables, columns, _ = publish.build(ws, ontology)
     vby = {r.variable_id: r for r in variables.itertuples(index=False)}
-    fields = gb.characteristic_fields(ws.geomend)
+    fields = gb.characteristic_fields(ws.metamend)
     out, rows = [], []
     for c in columns.itertuples(index=False):
         v = vby[c.variable_id]
@@ -62,7 +62,7 @@ def proposals(ws: Workspace, ontology) -> tuple[list[dict], pd.DataFrame]:
         if v.review_status == "rejected":
             row.update(action="skipped", reason="variable rejected in review")
         elif (c.study_id, c.column) not in fields:
-            row.update(action="skipped", reason="not a GEOmend characteristic field (recovered by repair)")
+            row.update(action="skipped", reason="not a MetaMend characteristic field (recovered by repair)")
         else:
             field_id, distinct = fields[(c.study_id, c.column)]
             row.update(field_id=field_id, action="propose")
@@ -85,7 +85,7 @@ def run(ws: Workspace, ontology, *, select: bool = False, dry_run: bool = False)
     """Send the proposals and return the per-column report (also written to published/)."""
     props, report = proposals(ws, ontology)
     if not dry_run and props:
-        results = {r["field_id"]: r for r in gb.propose_mappings(ws.geomend, props, select=select,
+        results = {r["field_id"]: r for r in gb.propose_mappings(ws.metamend, props, select=select,
                                                                 provider_version=__version__)}
         for i, r in report.iterrows():
             res = results.get(r.field_id)

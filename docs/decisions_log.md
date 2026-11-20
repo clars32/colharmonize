@@ -1194,3 +1194,21 @@ end), and no link to the review page, which didn't open either.
   deleted. Its 10 decisions had already been applied and survive in
   `~/harmonize-demo/harmonized/review.json`. Tests now need to check for an
   existing export before writing one.
+
+### 15.20: GEOmend is now MetaMend (branch `rename/metamend`, 2026-11-20)
+
+- **Why:** GEOmend gained ArrayExpress (MAGE-TAB) intake, so it is no longer
+  GEO-only. The user chose the name MetaMend.
+- **Renamed:** the dependency (`metamend`), the bridge module
+  (`metamend_bridge.py`), its imports, the `colharmonize metamend propose`
+  command, and the prose in the README, handoff and skill. Entries above keep
+  the name used at the time.
+- **Kept, because they are on disk:** the workspace's `geomend/` project
+  folder, the `geomend_store` setting, `geomend_evidence/`,
+  `geomend_proposals.tsv`, the `geomend` and `geomend_unit` candidate-source
+  labels in task and answer files, and MetaMend's own `geomend:` identifiers,
+  `.geomend/` caches and review-packet suffixes. Sealed eval outputs are
+  unchanged. `colharmonize geomend propose` still works as an alias.
+- **Install:** until MetaMend is published under its new name, colharmonize
+  installs it from the sibling checkout through `[tool.uv.sources]`. Pin a
+  release once one exists.

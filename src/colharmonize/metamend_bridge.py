@@ -1,18 +1,18 @@
-"""The one place colharmonize touches GEOmend.
+"""The one place colharmonize touches MetaMend.
 
-GEOmend prepares the data: it parses GEO SOFT files and local tables, profiles
-every field, and exports cohort tables. colharmonize reads what GEOmend
-produced and, later, writes decisions back through GEOmend's public commands.
-Every GEOmend import lives in this module, so a GEOmend upgrade changes one file
-and the contract tests in tests/test_geomend_bridge.py say what broke.
+MetaMend prepares the data: it parses GEO SOFT files, ArrayExpress MAGE-TAB and local tables, profiles
+every field, and exports cohort tables. colharmonize reads what MetaMend
+produced and, later, writes decisions back through MetaMend's public commands.
+Every MetaMend import lives in this module, so a MetaMend upgrade changes one file
+and the contract tests in tests/test_metamend_bridge.py say what broke.
 
-Projects are read only through GEOmend's public `ProjectClient`, never its
+Projects are read only through MetaMend's public `ProjectClient`, never its
 private engine: fields are listed with `mappings.fields` and their per-sample
 values paged with `mappings.field`. Decisions go back only as provider
-proposals (`transformations.propose_provider`), which GEOmend validates
+proposals (`transformations.propose_provider`), which MetaMend validates
 against actual values and keeps pending its own review.
 
-Pinned against geomend==0.0.10.
+Pinned against metamend 0.0.10 (formerly geomend).
 """
 from __future__ import annotations
 
@@ -23,17 +23,17 @@ from pathlib import Path
 from typing import Iterable
 
 import pandas as pd
-from geomend.cohort_models import CohortConfig, CohortVariable
-from geomend.cohort_transform import specification
-from geomend.geo_mapping import resolve_local_ontology
-from geomend.models import GraphEdge, GraphNode, OntologyRelease
-from geomend.ontology import OntologyStore
-from geomend.project import ProjectClient
-from geomend.text import canonical_identifier, sha256_text, stable_json
+from metamend.cohort_models import CohortConfig, CohortVariable
+from metamend.cohort_transform import specification
+from metamend.geo_mapping import resolve_local_ontology
+from metamend.models import GraphEdge, GraphNode, OntologyRelease
+from metamend.ontology import OntologyStore
+from metamend.project import ProjectClient
+from metamend.text import canonical_identifier, sha256_text, stable_json
 
 from colharmonize.ontology import Ontology
 
-PAGE = 200   # GEOmend's largest page
+PAGE = 200   # MetaMend's largest page
 STORE_PARSER_VERSION = "colharmonize-pinned-index-projection-2"   # 2: nodes carry source IRIs
 
 
@@ -44,15 +44,15 @@ def build_ontology_store(
     name: str = "efo",
     retrieved_at: datetime | None = None,
 ) -> dict[str, object]:
-    """Write the pinned ontology as a GEOmend OntologyStore (SQLite).
+    """Write the pinned ontology as a MetaMend OntologyStore (SQLite).
 
-    GEOmend reads OBO/OWL but not OBO-graph JSON, and defaults to EFO 3.70.0.
+    MetaMend reads OBO/OWL but not OBO-graph JSON, and defaults to EFO 3.70.0.
     Projecting the pinned index keeps both tools on exactly one release.
 
-    Stored: non-deprecated classes under GEOmend's lowercase CURIEs
+    Stored: non-deprecated classes under MetaMend's lowercase CURIEs
     (`efo:0000324`), exact and related synonyms (the store keeps no synonym
     scope), and edges whose two ends are both stored. Each node also carries
-    its full IRI from the pinned index (GEOmend 0.0.9), so GEOmend's concept
+    its full IRI from the pinned index (MetaMend 0.0.9), so MetaMend's concept
     interchange names real EFO IRIs instead of placeholders. The pinned index
     stays the authority for colharmonize's own output.
     """
@@ -126,7 +126,7 @@ def build_ontology_store(
 
 
 def store_node_count(store: str | Path, *, name: str = "efo", version: str) -> int:
-    """Open a store through GEOmend's own resolver; it refuses a wrong version."""
+    """Open a store through MetaMend's own resolver; it refuses a wrong version."""
     return len(resolve_local_ontology(Path(store), ontology_id=name, ontology_version=version).nodes)
 
 
@@ -138,10 +138,10 @@ def create_cohort(
     workers: int = 4,
     ontology_stores: Iterable[str | Path] = (),
 ) -> None:
-    """Create and run a GEOmend project from SOFT files, tables or accessions.
+    """Create and run a MetaMend project from SOFT files, tables or accessions.
 
     Local files are copied into the project, never modified in place.
-    GEOmend's own concept enrichment (lexical retrieval, optional hosted OLS4)
+    MetaMend's own concept enrichment (lexical retrieval, optional hosted OLS4)
     is switched off: matching is colharmonize's job, and hosted search would
     escape the pinned release.
     """
@@ -151,9 +151,9 @@ def create_cohort(
 
 
 def failed_sources(project: str | Path) -> list[dict]:
-    """Sources GEOmend could not read, each with its study_id, source and error.
+    """Sources MetaMend could not read, each with its study_id, source and error.
 
-    GEOmend finishes a cohort run even when sources fail (the job is 'partial'),
+    MetaMend finishes a cohort run even when sources fail (the job is 'partial'),
     so a caller that doesn't ask sees an empty or short cohort, not an error.
     """
     jobs = ProjectClient.open(project).inputs.jobs()
@@ -181,7 +181,7 @@ def _fields(project: str | Path, want=lambda field: True, *, with_values: bool =
         if with_values:
             for v in _pages(lambda o: client.mappings.field(f["field_id"], offset=o, limit=PAGE), "values"):
                 if v["total_values"] > len(v["values"]):
-                    raise ValueError(f"{f['field_id']}: GEOmend returned {len(v['values'])} of "
+                    raise ValueError(f"{f['field_id']}: MetaMend returned {len(v['values'])} of "
                                      f"{v['total_values']} values for {v['entity_id']}")
                 values[v["entity_id"]] = v["values"]
         out.append({**f, "values": values})
@@ -189,7 +189,7 @@ def _fields(project: str | Path, want=lambda field: True, *, with_values: bool =
 
 
 def field_table(project: str | Path) -> pd.DataFrame:
-    """One row per GEOmend field: study, field id, scope, namespace, name, unit, reported values."""
+    """One row per MetaMend field: study, field id, scope, namespace, name, unit, reported values."""
     rows = [{"study_id": f["study_id"], "field_id": f["field_id"], "scope": f["scope"],
              "namespace": f["namespace"], "channel": f.get("channel"), "name": f["name"], "unit": f.get("unit"),
              "n_reported": f.get("reported_count")}
@@ -201,7 +201,7 @@ def field_table(project: str | Path) -> pd.DataFrame:
 def sample_values(project: str | Path, namespaces: Iterable[str] = ("characteristic",)) -> pd.DataFrame:
     """Long table of sample-scope values: study, sample, field, name, ordinal, raw value.
 
-    Values are returned verbatim as GEOmend stored them. A field with several
+    Values are returned verbatim as MetaMend stored them. A field with several
     values for one sample yields one row per value (ordinal 0, 1, ...).
     """
     keep = set(namespaces)
@@ -235,11 +235,11 @@ def study_attributes(project: str | Path, names: Iterable[str] = ("title", "summ
 
 
 # ---------------------------------------------------------------------------
-# Preprocessing evidence (decisions log 1.6): what GEOmend can tell colharmonize
+# Preprocessing evidence (decisions log 1.6): what MetaMend can tell colharmonize
 # about a project. All offline, no model, ontology restricted to the pinned store.
 
 def store_ids(ontology: Ontology) -> dict[str, str]:
-    """GEOmend store node id (`efo:0004426`) -> pinned CURIE (`EFO:0004426`)."""
+    """MetaMend store node id (`efo:0004426`) -> pinned CURIE (`EFO:0004426`)."""
     out = {}
     for iri, curie in zip(ontology.terms.iri, ontology.terms.curie):
         if not curie:
@@ -252,9 +252,9 @@ def store_ids(ontology: Ontology) -> dict[str, str]:
 
 
 def enable_concepts(project: str | Path, store: str | Path, *, workers: int = 4) -> dict:
-    """Turn on GEOmend's lexical concept retrieval against the pinned store only, and run it.
+    """Turn on MetaMend's lexical concept retrieval against the pinned store only, and run it.
 
-    Offline and with no model: GEOmend then searches only the local store
+    Offline and with no model: MetaMend then searches only the local store
     (hosted OLS4 needs `offline=False`). `configure` replaces the whole config,
     so the settings colharmonize relies on are restated.
     """
@@ -265,9 +265,9 @@ def enable_concepts(project: str | Path, store: str | Path, *, workers: int = 4)
 
 
 def concept_candidates(project: str | Path) -> pd.DataFrame:
-    """Per sample characteristic field, GEOmend's lexical candidates with their evidence.
+    """Per sample characteristic field, MetaMend's lexical candidates with their evidence.
 
-    GEOmend's own `rank` mixes channels and ties, so the strongest evidence score
+    MetaMend's own `rank` mixes channels and ties, so the strongest evidence score
     is kept for ranking (5 exact label/synonym, 2.4 substring, 1 definition only).
     """
     client = ProjectClient.open(project)
@@ -286,7 +286,7 @@ def concept_candidates(project: str | Path) -> pd.DataFrame:
 
 
 def merge_suggestions(project: str | Path, *, max_pairs: int = 10000) -> pd.DataFrame:
-    """GEOmend's suggested joins between its variables, as pairs of sample characteristic fields."""
+    """MetaMend's suggested joins between its variables, as pairs of sample characteristic fields."""
     client = ProjectClient.open(project)
     chars = _fields(project, lambda f: f["scope"] == "sample" and f["namespace"] == "characteristic",
                     with_values=False)
@@ -329,7 +329,7 @@ def _units_in(spec: object, found: set[str]) -> None:
 
 
 def field_units(project: str | Path) -> pd.DataFrame:
-    """Per sample characteristic field, the units GEOmend found: on the field, its variable,
+    """Per sample characteristic field, the units MetaMend found: on the field, its variable,
     and in its mapping (unit conversion, per-value unit normalization)."""
     client = ProjectClient.open(project)
     rows = []
@@ -347,7 +347,7 @@ def field_units(project: str | Path) -> pd.DataFrame:
 
 
 def characteristic_fields(project: str | Path) -> dict[tuple[str, str], tuple[str, list[str]]]:
-    """(study_id, characteristic name) -> (GEOmend field id, distinct raw values) for sample fields."""
+    """(study_id, characteristic name) -> (MetaMend field id, distinct raw values) for sample fields."""
     out = {}
     for f in _fields(project, lambda f: f["scope"] == "sample" and f["namespace"] == "characteristic"):
         distinct = sorted({str(v) for vs in f["values"].values() for v in vs if v is not None})
@@ -357,16 +357,16 @@ def characteristic_fields(project: str | Path) -> dict[tuple[str, str], tuple[st
 
 def propose_mappings(project: str | Path, proposals: list[dict], *, provider_version: str,
                      select: bool = False) -> list[dict]:
-    """Send colharmonize variables to GEOmend as provider proposals, one per field.
+    """Send colharmonize variables to MetaMend as provider proposals, one per field.
 
     Each proposal dict has field_id, variable_id, label, definition,
     ontology_references, mappings (a complete value recode, or None to copy
     values unchanged), locator and rationale. Every proposal is previewed
-    against the field's actual values first. One GEOmend would refuse is not
+    against the field's actual values first. One MetaMend would refuse is not
     sent, so the project never collects invalid proposals; its result has
     valid False and the preview's reason. The target is an unconstrained string
     variable: colharmonize decides pooling and meaning, not value domains.
-    Nothing is selected unless `select`, and GEOmend never treats a provider
+    Nothing is selected unless `select`, and MetaMend never treats a provider
     proposal as a reviewer vote.
     """
     client = ProjectClient.open(project)

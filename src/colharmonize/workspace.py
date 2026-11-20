@@ -1,7 +1,7 @@
 """Where a colharmonize run keeps its files.
 
     <root>/
-      geomend/              the GEOmend cohort project (created by `ingest`)
+      geomend/              the MetaMend cohort project (folder keeps its pre-rename name) (created by `ingest`)
       columns.parquet       one row per (study, column): coverage, values, shape hint
       samples.parquet       per-sample title and source name
       studies.parquet       per-study title, summary, overall design
@@ -12,7 +12,7 @@
       variables.parquet     final variable per column after reconciliation, with confidence signals
       scored.parquet        variables plus review tier and the reasons for it
       predictions_*.tsv     the same, in the scorer's (accession, raw_key) format
-      workspace.json        settings recorded by earlier commands (pinned ontology directory, GEOmend store)
+      workspace.json        settings recorded by earlier commands (pinned ontology directory, MetaMend store)
 """
 from __future__ import annotations
 
@@ -40,7 +40,9 @@ class Workspace:
         object.__setattr__(self, "root", Path(self.root))
 
     @property
-    def geomend(self) -> Path:
+    def metamend(self) -> Path:
+        # The folder keeps the name it had before GEOmend became MetaMend, so
+        # existing workspaces still open.
         return self.root / "geomend"
 
     @property
@@ -105,7 +107,7 @@ _PATH_SETTINGS = {
     "ontology": ("--ontology", "pinned ontology directory",
                  "pass --ontology DIR to `colharmonize preprocess` or `candidates` "
                  "(`colharmonize ontology fetch` makes one)"),
-    "geomend_store": ("--store", "GEOmend ontology store",
+    "geomend_store": ("--store", "MetaMend ontology store",
                       "pass --store FILE to `colharmonize preprocess` "
                       "(`colharmonize ontology fetch` builds one beside the pinned directory)"),
 }

@@ -1,10 +1,10 @@
-"""Repair rules applied to real GEOmend output from the fixture SOFT files."""
+"""Repair rules applied to real MetaMend output from the fixture SOFT files."""
 from pathlib import Path
 
 import pandas as pd
 import pytest
 
-from colharmonize import geomend_bridge as gb, profile, repair
+from colharmonize import metamend_bridge as gb, profile, repair
 from colharmonize.workspace import Workspace
 
 SOFT = Path(__file__).parent / "fixtures" / "soft"
@@ -13,14 +13,14 @@ SOFT = Path(__file__).parent / "fixtures" / "soft"
 @pytest.fixture(scope="module")
 def ws(tmp_path_factory):
     ws = Workspace(tmp_path_factory.mktemp("ws"))
-    gb.create_cohort(ws.geomend, sorted(SOFT.glob("*.soft.gz")), workers=2)
+    gb.create_cohort(ws.metamend, sorted(SOFT.glob("*.soft.gz")), workers=2)
     profile.build(ws)
     return ws
 
 
 @pytest.fixture(scope="module")
 def values(ws):
-    return gb.sample_values(ws.geomend)
+    return gb.sample_values(ws.metamend)
 
 
 def test_profiles_and_items(ws):

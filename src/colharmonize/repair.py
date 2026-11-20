@@ -29,7 +29,7 @@ STAGE = "repair"
 PROMPT_VERSION = "repair-3"
 MAX_TITLES = 200
 MAX_CHAR_VALUES = 12
-# GEOmend's name for characteristics it could not split into key and value.
+# MetaMend's name for characteristics it could not split into key and value.
 UNRESOLVED = "unresolved characteristic"
 
 INSTRUCTIONS = """\
@@ -187,7 +187,7 @@ def check(answer: RepairAnswer, characteristic_names: set[str]) -> list[str]:
 def apply(ws: Workspace, answers: list[RepairAnswer], values: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, list[str]]:
     """Apply rules. Returns (derived long table, per-rule coverage report, problems).
 
-    `values` is the GEOmend characteristic long table (study_id, sample_id, name, ordinal, value).
+    `values` is the MetaMend characteristic long table (study_id, sample_id, name, ordinal, value).
     """
     samples = pd.read_parquet(ws.samples)
     chars = values[values.ordinal == 0]

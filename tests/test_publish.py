@@ -65,7 +65,7 @@ def test_pool_keeps_every_value_of_a_repeated_key():
 
 
 def test_sample_values_gives_every_value_only_when_asked(tmp_path, monkeypatch):
-    from colharmonize import geomend_bridge as gb
+    from colharmonize import metamend_bridge as gb
     from colharmonize import profile
     from colharmonize.workspace import Workspace
     ws = Workspace(tmp_path / "ws")

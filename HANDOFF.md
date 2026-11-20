@@ -13,7 +13,7 @@ studies, and what each means. Every column gets:
 - qualifiers: subject, object_class, event_time_anchor, method, unit
 
 Pipeline:
-1. ingest (through GEOmend)
+1. ingest (through MetaMend)
 2. preprocess
 3. repair
 4. candidates
@@ -24,9 +24,9 @@ Pipeline:
 9. publish (the pooled sample table, variables.tsv, columns.tsv, SSSOM)
 10. registry
 
-**GEOmend** (`../GEOmend`, v0.0.10) reads, profiles and exports GEO
+**MetaMend** (`../MetaMend`, v0.0.10) reads, profiles and exports GEO
 metadata. Preston Raab wrote it, and since 2026-10-12 the user owns it. colharmonize is a separate repository and reads
-GEOmend only through `src/colharmonize/geomend_bridge.py`.
+MetaMend only through `src/colharmonize/metamend_bridge.py`.
 
 Read these, in order:
 1. `README.md`
@@ -41,7 +41,7 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
 
 - **Sealed corpus**, 16 series, measured once at tag `sealed-run`:
   - pooling precision 100%, recall 70.9%, F1 83.0%
-  - baselines: identical names 53.8%, GEOmend `propose()` 45.8%
+  - baselines: identical names 53.8%, MetaMend `propose()` 45.8%
   - primary term 71.5%
   - qualifiers 28.9% / 37.9%
 - **Tuning set**, 13 series: pooling F1 82.6%, against 67.7% for iteration 2.
@@ -50,9 +50,9 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
   - qualifiers taken from what all member columns share (tuning qualifiers
     61.5/64.0 → 89.5/68.0)
   - a fix for the scorer's qualifier parser
-- **GEOmend 0.0.9** (released 2026-10-12): six fixes, including the
+- **MetaMend 0.0.9** (released 2026-10-12): six fixes, including the
   key-punctuation parser fix. colharmonize pins it, and its ontology store
-  now gives GEOmend real IRIs (decisions log 15.12).
+  now gives MetaMend real IRIs (decisions log 15.12).
 - **Evaluation checks, 2026-10-09** (decisions log 15; `eval/memorization`,
   `eval/stats`, `eval/robustness`, `eval/curation`):
   - no model recalls these series' metadata
@@ -101,7 +101,7 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
   candidates fell from about 80 s to 36 s with identical outputs:
   - colharmonize (on `master`): ontology lookups through a dict, and
     embedding models loaded from the local cache first.
-  - GEOmend 0.0.10 (released 2026-11-06, now pinned): a field lookup no
+  - MetaMend 0.0.10 (released 2026-11-06, now pinned): a field lookup no
     longer copies every inventory, which was quadratic in the number of
     fields, and term text is normalized once per discovery.
 - **Tests:** `./.venv/bin/python -m pytest -q` passes 150.
@@ -135,10 +135,10 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
     identical.
   - Assumed conventions are flagged, not hidden.
   - Recoding a value, such as "Down syndrome" → "Trisomy 21", is fine.
-- **GEOmend:** everything colharmonize takes from it is preprocessing, never
-  a final decision (agreed by the owners). The user owns GEOmend (handed over
+- **MetaMend:** everything colharmonize takes from it is preprocessing, never
+  a final decision (agreed by the owners). The user owns MetaMend (handed over
   by Preston on 2026-10-12):
-  - GEOmend branches may be pushed.
+  - MetaMend branches may be pushed.
   - Confirm with the user before merging to `main` or cutting a release.
   - Each change gets its own branch, with a test that fails without it.
 - **Tuning workspace (`work/ds-tuning`):**
@@ -153,15 +153,15 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
 
 **colharmonize**
 - Python: `./.venv` (Python 3.13). `uv` is at `./.venv/bin/uv`.
-- Pinned ontology: `work/ontology/efo-v3.94.0`, plus two GEOmend stores
+- Pinned ontology: `work/ontology/efo-v3.94.0`, plus two MetaMend stores
   built from the same EFO file:
   - `efo-v3.94.0-iri.sqlite`: projection-2, whose nodes carry IRIs (15.12).
     Use it for new workspaces; `work/demo-genetic` does.
   - `efo-v3.94.0.sqlite`: projection-1, CURIEs only. `work/ds-tuning` and
     `work/sealed` were run with it.
 
-**GEOmend suite**
-- Run in `../GEOmend`: `npm run contracts` (with `.venv/bin` on PATH), then
+**MetaMend suite**
+- Run in `../MetaMend`: `npm run contracts` (with `.venv/bin` on PATH), then
   `.venv/bin/python -m pytest -o addopts="" -q -p no:cacheprovider`.
 - Baseline: 1,493 passed, 4 skipped on `main` at 0.0.10.
 
@@ -183,7 +183,7 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
 
 ### A. Needs the user
 
-1. ~~**Open the GEOmend PR.**~~ Merged and released as GEOmend 0.0.9 on
+1. ~~**Open the MetaMend PR.**~~ Merged and released as MetaMend 0.0.9 on
    2026-10-12. The pin is bumped and the bridge tests pass. A re-ingest into
    new workspaces is in decisions log 15.12. **Still the user's call:**
    regenerating `work/ds-tuning` itself, which would mark review decisions
@@ -205,7 +205,7 @@ Plain-language overview for people: https://claude.ai/code/artifact/dd493462-a20
    third-party code.
 8. **Find a person to curate the next sealed corpus's gold** before any run
    (task 9).
-9. **GEOmend decisions:** whether to build changes 1–3 (task 23) and a
+9. **MetaMend decisions:** whether to build changes 1–3 (task 23) and a
    feature for derived fields (task 22).
 10. ~~**Host the plugin repository.**~~ Pushed 2026-10-22 to
     `https://github.com/clars32/colharmonize` (private). Still open: run
@@ -285,7 +285,7 @@ Measure each on tuning first.
     output tokens, with about 7 minutes of agent time on the critical path.
 17. ~~**Fill missing values (GEOMeta's QA1).**~~ Closed as not applicable
     (`docs/related-work.md`). colharmonize publishes column-level decisions,
-    not per-sample values. If anywhere, it belongs in GEOmend's export, as a
+    not per-sample values. If anywhere, it belongs in MetaMend's export, as a
     reviewable suggestion.
 
 ### D. Baselines, related work, product
@@ -318,19 +318,19 @@ Measure each on tuning first.
     rewritten for iteration 3; `../briefing.html` is generated from it by
     `../build_briefing.py`. Iteration 2's versions are archived in
     `../efo-column-mapping/docs/`.
-22. ~~**Write results back to GEOmend.**~~ Done 2026-10-12:
-    `colharmonize geomend propose` (decisions log 15.9). Proposals are
+22. ~~**Write results back to MetaMend.**~~ Done 2026-10-12:
+    `colharmonize metamend propose` (decisions log 15.9). Proposals are
     previewed, unselected and idempotent. Columns recovered by repair can't
-    be sent, because they aren't GEOmend fields. A GEOmend feature for
+    be sent, because they aren't MetaMend fields. A MetaMend feature for
     derived fields would close that gap; it is the user's call now.
-23. **The other planned GEOmend changes.** Mostly done in 0.0.9:
+23. **The other planned MetaMend changes.** Mostly done in 0.0.9:
     - fixes 1, 3, 5 and 6, plus a new scaled-unit bug
       (`1000/microliter` had read as `1/microliter`)
     - fix 4 is partly obsolete: header units already work, and scaled units
       would need a unit-model redesign
 
     Changes 1–3 (directed relations, qualifier slots, a pre-accepted review
-    state) are deferred to the user. They change GEOmend's data contract and
+    state) are deferred to the user. They change MetaMend's data contract and
     matter only once colharmonize writes concept decisions there.
 24. **Package the plugin.** Done 2026-10-12 locally: `docs/INSTALL.md`,
     with the plugin layout and commands checked against the Claude Code
@@ -347,7 +347,7 @@ Measure each on tuning first.
     (`27f54ec`): `tasks status`, `collect` and `retry` now say the run has
     no tasks yet and exit 1, instead of a traceback.
 26. ~~**Stale files and branches.**~~ Done 2026-11-06: deleted
-    `../parallel-session-briefing.md`, GEOmend's six merged `fix/*` branches
+    `../parallel-session-briefing.md`, MetaMend's six merged `fix/*` branches
     (local and origin), colharmonize's `usability/setup-and-resume`, and the
     unreferenced `work/e2e`, `work/repair-pilot`, `work/corpus` and
     `work/geomend_*` notes. Unused imports and helpers removed in the same
