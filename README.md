@@ -21,8 +21,8 @@ runs every stage. The only human step is review.
 
 | Stage | Command | Who judges |
 |---|---|---|
-| Ingest | `colharmonize ingest` | GEOmend parses and profiles (offline by default) |
-| Preprocess | `colharmonize preprocess` | GEOmend, offline and with no model: concept candidates, merge suggestions, units, kept as evidence |
+| Ingest | `colharmonize ingest` | MetaMend parses and profiles (offline by default) |
+| Preprocess | `colharmonize preprocess` | MetaMend, offline and with no model: concept candidates, merge suggestions, units, kept as evidence |
 | Repair | `tasks write repair`, then `repair apply` | One subagent run: variables hidden in titles, columns that encode two things |
 | Candidates | `colharmonize candidates` | Code: exact match, two embedding models, values-to-category, ZOOMA/OLS4 cache |
 | Annotate | `tasks write annotate` (runs 1 and 2), then `annotate apply` | Two independent subagent runs, one answer per column |
@@ -31,54 +31,54 @@ runs every stage. The only human step is review.
 | Review | `review page`, then `review apply EXPORT` | A person, on a local HTML page |
 | Publish | `colharmonize publish` | Code: the pooled sample table (`pooled_samples.tsv`, and `pooled_values.tsv` with raw values), plus `variables.tsv`, `columns.tsv` and `mappings.sssom.tsv`; review overlay applied last |
 | Registry | `registry use` before reconcile, `registry add` after review | Code: carries reviewed variables to later runs |
-| GEOmend write-back | `geomend propose` | Code: each published characteristic column becomes a GEOmend provider proposal, pending GEOmend's own review |
+| MetaMend write-back | `metamend propose` | Code: each published characteristic column becomes a MetaMend provider proposal, pending MetaMend's own review |
 
 Every identifier is validated against the pinned ontology file, never a live
 service. Answers are checked against a content hash of the batch they answer,
 so stale or misfiled answers are refused.
 
-## colharmonize and GEOmend are separate tools
+## colharmonize and MetaMend are separate tools
 
-[GEOmend](https://github.com/prestonraab/GEOmend) prepares the data;
+[MetaMend](https://github.com/prestonraab/MetaMend) prepares the data;
 colharmonize decides what the columns mean and which ones pool. Each must stay
 useful on its own.
 
-| | GEOmend | colharmonize |
+| | MetaMend | colharmonize |
 |---|---|---|
 | Purpose | Turn GEO series and local tables into profiled, reviewable, exportable cohort projects | Decide which columns pool across datasets and what they mean in the ontology |
 | Owns | SOFT/table parsing, profiling (types, units, missingness, reference events), unit normalization, lexical retrieval, the concept-decision data model, review packets, project export and replay | Claude task files and the Claude Code plugin, property-space retrieval (embeddings, ZOOMA, OLS4), annotation, cross-dataset reconciliation, scoring, the persistent variable registry, SSSOM/TSV export, evaluation |
 | Models | Optional, local and loopback-only (Ollama), off unless a model is configured. colharmonize ingests with it off | Claude, via Claude Code subagents |
-| Knows about the other | No | Reads GEOmend projects through `geomend.project.ProjectClient`; writes back only through GEOmend's public operations (`project concepts`, `project transformations` provider proposals, review packets) |
+| Knows about the other | No | Reads MetaMend projects through `metamend.project.ProjectClient`; writes back only through MetaMend's public operations (`project concepts`, `project transformations` provider proposals, review packets) |
 
-**Overlap since GEOmend 0.0.7.** With a local model configured, GEOmend's
+**Overlap since MetaMend 0.0.7.** With a local model configured, MetaMend's
 categorical inference proposes cross-study variables with value recodes. That
 is the decision colharmonize's reconcile stage makes with Claude. They differ:
-- GEOmend's is opt-in, runs once, and handles unitless fields with at most 32
+- MetaMend's is opt-in, runs once, and handles unitless fields with at most 32
   categories.
-- GEOmend treats co-occurring fields as evidence; colharmonize refuses to pool
+- MetaMend treats co-occurring fields as evidence; colharmonize refuses to pool
   them.
 
 Settled by the owners (decisions log 1.6): colharmonize stays separate and
-takes any help GEOmend offers, as preprocessing. GEOmend's output is evidence
+takes any help MetaMend offers, as preprocessing. MetaMend's output is evidence
 for colharmonize's stages. It never replaces their decisions.
 
-**Where a change belongs.** Would it help a GEOmend user who never runs Claude?
-Then it goes to GEOmend as a pull request: a parser fix, better unit detection,
+**Where a change belongs.** Would it help a MetaMend user who never runs Claude?
+Then it goes to MetaMend as a pull request: a parser fix, better unit detection,
 ID validation, a richer concept-relation model. Does it need Claude, agreement
 between independent runs, or memory across projects? Then it belongs here. colharmonize never edits
-GEOmend's files or databases directly, and nothing in GEOmend depends on
+MetaMend's files or databases directly, and nothing in MetaMend depends on
 colharmonize.
 
 ## Layout
 
 | Path | Contents |
 |---|---|
-| `src/colharmonize/` | The package. `ontology.py` holds the pinned release and validator, `geomend_bridge.py` the only GEOmend imports, `detect.py` value-shape hints, and `cli.py` the `colharmonize` command |
-| `tests/` | pytest suite: regression cases from iteration 2 and contract tests for the GEOmend boundary |
+| `src/colharmonize/` | The package. `ontology.py` holds the pinned release and validator, `metamend_bridge.py` the only MetaMend imports, `detect.py` value-shape hints, and `cli.py` the `colharmonize` command |
+| `tests/` | pytest suite: regression cases from iteration 2 and contract tests for the MetaMend boundary |
 | `plugin/` | The Claude Code plugin: the `/harmonize` skill and the repairer, annotator and reconciler agents |
-| `docs/` | The decisions log and proposed GEOmend changes |
+| `docs/` | The decisions log and proposed MetaMend changes |
 | `eval/` | Sealed evaluation corpora, gold standards and how they were selected. Self-contained so it can move to `geomend-research`. |
-| `work/` | Run workspaces and scratch projects (git-ignored; a GEOmend project is ~1.5 GB) |
+| `work/` | Run workspaces and scratch projects (git-ignored; a MetaMend project is ~1.5 GB) |
 
 ## Setup
 
@@ -94,7 +94,7 @@ below set up this repository for development.
 ./.venv/bin/colharmonize ontology fetch --tag v3.94.0 --out work/ontology/efo-v3.94.0
 ```
 
-GEOmend requires Python 3.13. The pinned ontology directory and the store are
+MetaMend requires Python 3.13. The pinned ontology directory and the store are
 regenerable and kept under `work/`. `colharmonize status --workspace DIR`
 shows how far a workspace has got.
 
@@ -111,7 +111,7 @@ disease areas is sealed for a single final measurement.
 
 On the sealed corpus (16 series, 137 gold columns, measured once), pooling
 precision is 100%, recall 70.9% and F1 83.0%. The baselines score 53.8%
-(identical names) and 45.8% (GEOmend's `propose()`). Primary-term accuracy is
+(identical names) and 45.8% (MetaMend's `propose()`). Primary-term accuracy is
 71.5%. Full results, including what didn't generalize, are in
 `eval/sealed/RESULTS.md`.
 

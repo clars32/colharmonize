@@ -19,7 +19,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
-from colharmonize import geomend_bridge as gb  # noqa: E402
+from colharmonize import metamend_bridge as gb  # noqa: E402
 from colharmonize.normalise import normalise_key  # noqa: E402
 from colharmonize.workspace import Workspace  # noqa: E402
 
@@ -27,7 +27,7 @@ from colharmonize.workspace import Workspace  # noqa: E402
 def main(workspace: str, out_dir: str) -> None:
     ws, out = Workspace(workspace), Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
-    fields = gb._fields(ws.geomend, lambda f: f["scope"] == "sample" and f["namespace"] == "characteristic",
+    fields = gb._fields(ws.metamend, lambda f: f["scope"] == "sample" and f["namespace"] == "characteristic",
                         with_values=False)
     propose = pd.DataFrame([{"accession": f["study_id"], "raw_key": f["name"],
                              "variable_id": (f.get("mapping") or {}).get("variable_id") or f"none:{f['field_id']}"}

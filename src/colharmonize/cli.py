@@ -1,18 +1,18 @@
 """Command line for colharmonize.
 
-    colharmonize ontology fetch --tag v3.94.0 --out DIR       download, pin, and build DIR.sqlite (the GEOmend store)
+    colharmonize ontology fetch --tag v3.94.0 --out DIR       download, pin, and build DIR.sqlite (the MetaMend store)
     colharmonize ontology pin   --json efo.json --tag v3.94.0 --out DIR
     colharmonize ontology store --ontology DIR --out efo.sqlite
     colharmonize ontology check --ontology DIR CURIE [--label LABEL]
     colharmonize status  --workspace DIR                    which stages are done, and the command to run next
-    colharmonize ingest  --workspace DIR SOURCE...          GEOmend project + column profiles
+    colharmonize ingest  --workspace DIR SOURCE...          MetaMend project + column profiles
     colharmonize columns --workspace DIR [--out TSV]
     colharmonize tasks write   STAGE --workspace DIR --run N [--batch-size K] [--seed S] [--studies ...]
     colharmonize tasks status  STAGE --workspace DIR --run N   pending batch files, one absolute path per line
     colharmonize tasks collect STAGE --workspace DIR --run N   validate answers, item by item
     colharmonize tasks retry   STAGE --workspace DIR --run N   a batch of just the failed items (at most 2 per item)
     colharmonize repair apply --workspace DIR --run N          apply validated repair rules
-    colharmonize preprocess --workspace DIR [--store SQLITE] [--ontology DIR]   GEOmend evidence: concepts, merges, units
+    colharmonize preprocess --workspace DIR [--store SQLITE] [--ontology DIR]   MetaMend evidence: concepts, merges, units
     colharmonize candidates --workspace DIR [--ontology DIR] [--cache DIR] [--remote]
     colharmonize annotate apply --workspace DIR --runs 1 2      resolve, combine runs, write annotations
     colharmonize reconcile apply --workspace DIR --runs 1 2     partition groups, write final variables
@@ -22,7 +22,7 @@
     colharmonize publish --workspace DIR [--out DIR] [--license URL] [--mapping-set-id URI]
     colharmonize registry use --workspace DIR REGISTRY          reconcile this workspace against a registry
     colharmonize registry add --workspace DIR [--registry DIR] [--include-pre-accepted]
-    colharmonize geomend propose --workspace DIR [--select] [--dry-run]   variables -> GEOmend provider proposals
+    colharmonize metamend propose --workspace DIR [--select] [--dry-run]   variables -> MetaMend provider proposals
     colharmonize eval    --gold-columns TSV --gold-variables TSV --predictions TSV [--report MD] [--json JSON]
 
 """
@@ -47,7 +47,7 @@ def cmd_pin(args: argparse.Namespace) -> int:
 
 
 def store_beside(pinned: str | Path) -> Path:
-    """Where `ontology fetch` puts the GEOmend store for a pinned directory: DIR.sqlite."""
+    """Where `ontology fetch` puts the MetaMend store for a pinned directory: DIR.sqlite."""
     pinned = Path(pinned)
     return pinned.with_name(pinned.name + ".sqlite")
 
@@ -84,7 +84,7 @@ class _Progress:
 def _fetch_ontology(tag: str, out: str | Path, url: str | None, progress: _Progress) -> dict:
     """Pin a release and build its store, skipping whatever is already there."""
     import os
-    from colharmonize.geomend_bridge import build_ontology_store
+    from colharmonize.metamend_bridge import build_ontology_store
     from colharmonize.ontology import EFO_RELEASE_URL, fetch_release
     try:
         result = fetch_release(tag, out, url=url or EFO_RELEASE_URL, say=progress.say, progress=progress.download)
@@ -149,7 +149,7 @@ def cmd_setup(args: argparse.Namespace) -> int:
 
 
 def cmd_store(args: argparse.Namespace) -> int:
-    from colharmonize.geomend_bridge import build_ontology_store
+    from colharmonize.metamend_bridge import build_ontology_store
     print(json.dumps(build_ontology_store(_ontology(args.ontology), args.out, name=args.name), indent=2))
     return 0
 
@@ -169,24 +169,24 @@ def cmd_status(args: argparse.Namespace) -> int:
 
 def cmd_ingest(args: argparse.Namespace) -> int:
     from colharmonize import profile
-    from colharmonize.geomend_bridge import create_cohort, failed_sources, namespace_counts
+    from colharmonize.metamend_bridge import create_cohort, failed_sources, namespace_counts
     from colharmonize.workspace import Workspace
     ws = Workspace(args.workspace)
     ws.root.mkdir(parents=True, exist_ok=True)
-    existed = ws.geomend.exists()
-    create_cohort(ws.geomend, args.sources, offline=not args.online, workers=args.workers)
-    failed = failed_sources(ws.geomend)
+    existed = ws.metamend.exists()
+    create_cohort(ws.metamend, args.sources, offline=not args.online, workers=args.workers)
+    failed = failed_sources(ws.metamend)
     if failed:
-        # All or nothing: a partial cohort would pass as done, and GEOmend refuses
+        # All or nothing: a partial cohort would pass as done, and MetaMend refuses
         # to create a project over it, so remove the one this call made.
         if not existed:
-            shutil.rmtree(ws.geomend)
+            shutil.rmtree(ws.metamend)
         for f in failed:
             print(f"{f['source']}: {f['error']}", file=sys.stderr)
         hint = "" if args.online else " Accessions not cached locally need --online."
         raise SystemExit(f"ingest failed for {len(failed)} of {len(args.sources)} sources; "
                          f"nothing was ingested.{hint}")
-    for (scope, ns), n in sorted(namespace_counts(ws.geomend).items()):
+    for (scope, ns), n in sorted(namespace_counts(ws.metamend).items()):
         print(f"{scope:9} {ns:15} {n}")
     print(json.dumps(profile.build(ws)))
     return 0
@@ -290,13 +290,13 @@ def _ready(got, run: int, drop_failed: bool) -> bool:
 
 
 def cmd_repair_apply(args: argparse.Namespace) -> int:
-    from colharmonize import geomend_bridge as gb, repair
+    from colharmonize import metamend_bridge as gb, repair
     from colharmonize.workspace import Workspace
     ws = Workspace(args.workspace)
     got = _collect(ws, repair, args.run)
     if not _ready(got, args.run, args.drop_failed):
         return 1
-    derived, report, problems = repair.apply(ws, got.answers, gb.sample_values(ws.geomend))
+    derived, report, problems = repair.apply(ws, got.answers, gb.sample_values(ws.metamend))
     derived.to_parquet(ws.derived, index=False)
     report.to_csv(ws.root / "repair_report.tsv", sep="\t", index=False)
     print(report[["study_id", "column", "expected", "matched", "eligible"]].to_string(index=False) if len(report) else "no rules")
@@ -454,7 +454,7 @@ def cmd_publish(args: argparse.Namespace) -> int:
     return 0
 
 
-def cmd_geomend_propose(args: argparse.Namespace) -> int:
+def cmd_metamend_propose(args: argparse.Namespace) -> int:
     from colharmonize import writeback
     from colharmonize.workspace import Workspace
     ws = Workspace(args.workspace)
@@ -521,7 +521,7 @@ Check on a run:
 
 The other commands are the steps /colharmonize:harmonize runs for you:
   ingest, preprocess, tasks, repair, candidates, annotate, reconcile, score,
-  review, publish; and ontology, registry, geomend, columns, eval.
+  review, publish; and ontology, registry, metamend, columns, eval.
   `colharmonize COMMAND --help` explains each one.
 """
 
@@ -549,7 +549,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     ont = sub.add_parser("ontology", help="setup: download and pin the EFO release every term is checked against")
     osub = ont.add_subparsers(dest="ontology_command", required=True)
-    fetch = osub.add_parser("fetch", help="download a release's efo.json, pin it, and build the GEOmend store beside it")
+    fetch = osub.add_parser("fetch", help="download a release's efo.json, pin it, and build the MetaMend store beside it")
     fetch.add_argument("--tag", default="v3.94.0", help="release tag (default: v3.94.0, the one measured)")
     fetch.add_argument("--out", help="pinned directory; the store is written as DIR.sqlite "
                                      "(default: ~/.local/share/colharmonize/ontology/efo-TAG, "
@@ -562,7 +562,7 @@ def build_parser() -> argparse.ArgumentParser:
     pin.add_argument("--tag", required=True, help="release tag, e.g. v3.94.0")
     pin.add_argument("--out", required=True)
     pin.set_defaults(func=cmd_pin)
-    store = osub.add_parser("store", help="write the pinned ontology as a GEOmend OntologyStore")
+    store = osub.add_parser("store", help="write the pinned ontology as a MetaMend OntologyStore")
     store.add_argument("--ontology", required=True)
     store.add_argument("--out", required=True)
     store.add_argument("--name", default="efo")
@@ -584,9 +584,9 @@ def build_parser() -> argparse.ArgumentParser:
     ing.add_argument("sources", nargs="+", metavar="SOURCE", help="GSE accessions (e.g. GSE12345) or paths to SOFT files or tables")
     ing.set_defaults(func=cmd_ingest)
 
-    pp = sub.add_parser("preprocess", help="step 2: collect GEOmend evidence (term candidates, likely merges, units)")
+    pp = sub.add_parser("preprocess", help="step 2: collect MetaMend evidence (term candidates, likely merges, units)")
     pp.add_argument("--workspace", **WORKSPACE)
-    pp.add_argument("--store", help="the pinned ontology as a GEOmend store (default: the one the workspace recorded)")
+    pp.add_argument("--store", help="the pinned ontology as a MetaMend store (default: the one the workspace recorded)")
     pp.add_argument("--ontology", help="pinned ontology directory (default: the one the workspace recorded)")
     pp.set_defaults(func=cmd_preprocess)
 
@@ -669,13 +669,14 @@ def build_parser() -> argparse.ArgumentParser:
                     help="also register variables no one has reviewed but every check passed")
     rg.set_defaults(func=cmd_registry)
 
-    gm = sub.add_parser("geomend", help="optional: send the variables back to the run's GEOmend project")
+    # "geomend" is the name before MetaMend; kept so existing scripts still run.
+    gm = sub.add_parser("metamend", aliases=["geomend"], help="optional: send the variables back to the run's MetaMend project")
     gm.add_argument("action", choices=["propose"])
     gm.add_argument("--workspace", **WORKSPACE)
     gm.add_argument("--select", action="store_true",
                     help="also select each valid proposal as the field's mapping (still no reviewer vote)")
-    gm.add_argument("--dry-run", action="store_true", help="write the report without changing the GEOmend project")
-    gm.set_defaults(func=cmd_geomend_propose)
+    gm.add_argument("--dry-run", action="store_true", help="write the report without changing the MetaMend project")
+    gm.set_defaults(func=cmd_metamend_propose)
 
     ev = sub.add_parser("eval", help="evaluation: score a run against a gold standard")
     ev.add_argument("--gold-columns", required=True)

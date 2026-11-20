@@ -127,7 +127,7 @@ def stages(ws: Workspace, w: str | None = None) -> list[Stage]:
         ingest.then = "SOURCE: SOFT files, tables or GSE accessions."
     preprocess = _file_stage(
         "preprocess", (root / "geomend_evidence" / "units.parquet").exists(),
-        lambda: "GEOmend evidence in geomend_evidence/",
+        lambda: "MetaMend evidence in geomend_evidence/",
         _cmd("preprocess", "--workspace", w, *flags("geomend_store", "ontology")))
     repair = _judgment(
         ws, w, "repair", ws.derived,

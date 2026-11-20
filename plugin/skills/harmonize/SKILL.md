@@ -10,7 +10,7 @@ colharmonize decides which metadata columns pool across datasets and what they
 mean in the ontology. The `colharmonize` command does all the deterministic
 work. Your job is to run it and to hand each judgment batch to the right
 subagent. Never answer a batch yourself, and never edit files under a
-workspace's `tasks/` directory or its GEOmend project.
+workspace's `tasks/` directory or its MetaMend project.
 
 `colharmonize setup` lets Claude Code run plain `colharmonize ...` commands
 without asking. Run every command on its own line by its bare name: no `cd`,
@@ -42,7 +42,7 @@ details. Use these messages and nothing more:
       Done: [pooled_samples.tsv](<file:// link>), N samples × M variables from K studies.
 
   Add a second line only if publish reports multi-valued cells or rejected
-  variables. Don't offer licenses, registries or GEOmend unless asked.
+  variables. Don't offer licenses, registries or MetaMend unless asked.
 
 Arguments: `$ARGUMENTS`. Read them loosely; the user may type a plain
 request such as "harmonize GSE77298 and GSE55457".
@@ -103,14 +103,14 @@ Skip this step unless `status` named it. Otherwise run:
 It reads offline by default. If the user gave GSE accessions rather than
 files, add `--online` so they are downloaded; they are cached in the
 workspace. If any source can't be read, ingest stops, names each failing
-source and why, and leaves no GEOmend project behind, so correct the sources
+source and why, and leaves no MetaMend project behind, so correct the sources
 and run it again.
 
-## 1b. Preprocess (GEOmend evidence)
+## 1b. Preprocess (MetaMend evidence)
 
     colharmonize preprocess --workspace <workspace>
 
-This collects what GEOmend can tell colharmonize, offline and with no model:
+This collects what MetaMend can tell colharmonize, offline and with no model:
 lexical concept candidates from the pinned store, suggested merges between
 columns, and units. It is evidence only; later stages decide. The workspace
 records both paths, so later commands don't need them. With no options it
@@ -256,17 +256,17 @@ variables so later runs can join them:
 Only accepted and edited variables are registered unless the user asks for
 `--include-pre-accepted`.
 
-## 9. Write back to GEOmend (optional)
+## 9. Write back to MetaMend (optional)
 
-Only if the user asks to send the variables to the workspace's GEOmend
+Only if the user asks to send the variables to the workspace's MetaMend
 project:
 
-    colharmonize geomend propose --workspace <workspace>
+    colharmonize metamend propose --workspace <workspace>
 
 Each characteristic column of a variable that review didn't reject becomes a
-GEOmend provider proposal, with the variable's term and a complete value
-recode. GEOmend validates it against the actual values and keeps it pending
-its own review. Columns recovered by repair aren't GEOmend fields, so they
+MetaMend provider proposal, with the variable's term and a complete value
+recode. MetaMend validates it against the actual values and keeps it pending
+its own review. Columns recovered by repair aren't MetaMend fields, so they
 aren't sent. The report lists every column and what happened to it. Add
 `--select` only if the user asks for the proposals to become the fields'
 current mappings. Even then they are not reviewer votes.

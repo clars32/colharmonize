@@ -6,7 +6,7 @@ from colharmonize.writeback import definition, value_mapping
 def test_value_mapping_is_complete_or_absent():
     assert value_mapping("[]", ["a", "b"]) is None
     assert value_mapping(None, ["a"]) is None
-    # GEOmend refuses a recode that leaves a reported value out: unrecoded values map to themselves.
+    # MetaMend refuses a recode that leaves a reported value out: unrecoded values map to themselves.
     assert value_mapping('[["DS", "Down syndrome"]]', ["DS", "control"]) == {"DS": "Down syndrome",
                                                                           "control": "control"}
 

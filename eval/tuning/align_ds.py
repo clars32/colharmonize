@@ -24,7 +24,7 @@ from pathlib import Path
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
-from colharmonize import geomend_bridge as gb, profile  # noqa: E402
+from colharmonize import metamend_bridge as gb, profile  # noqa: E402
 from colharmonize.workspace import Workspace  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -58,7 +58,7 @@ def gold_values() -> pd.DataFrame:
 
 
 def run_values(ws: Workspace) -> pd.DataFrame:
-    chars = gb.sample_values(ws.geomend)[["study_id", "sample_id", "name", "value"]]
+    chars = gb.sample_values(ws.metamend)[["study_id", "sample_id", "name", "value"]]
     chars = chars.rename(columns={"name": "column"})
     parts = [chars]
     if ws.derived.exists():

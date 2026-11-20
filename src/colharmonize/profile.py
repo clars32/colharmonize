@@ -1,6 +1,6 @@
 """Column profiles: what every downstream stage, and every prompt, sees about a column.
 
-Built from the GEOmend project. Values are kept verbatim; profiling only counts.
+Built from the MetaMend project. Values are kept verbatim; profiling only counts.
 """
 from __future__ import annotations
 
@@ -9,7 +9,7 @@ from collections import Counter
 
 import pandas as pd
 
-from colharmonize import geomend_bridge as gb
+from colharmonize import metamend_bridge as gb
 from colharmonize.detect import shape_hint
 from colharmonize.workspace import Workspace
 
@@ -23,11 +23,11 @@ def value_counts(values: pd.Series) -> list[list]:
 
 
 def build(ws: Workspace) -> dict[str, int]:
-    """Write columns, samples and studies tables for a workspace whose GEOmend project exists."""
-    values = gb.sample_values(ws.geomend, namespaces=("characteristic", "attribute"))
+    """Write columns, samples and studies tables for a workspace whose MetaMend project exists."""
+    values = gb.sample_values(ws.metamend, namespaces=("characteristic", "attribute"))
     chars = values[values.namespace == "characteristic"]
     attrs = values[values.namespace == "attribute"]
-    fields = gb.field_table(ws.geomend)
+    fields = gb.field_table(ws.metamend)
     units = {(r.study_id, r.name): r.unit for r in fields.itertuples(index=False)
              if r.namespace == "characteristic" and r.scope == "sample"}
     n_study = values.groupby("study_id").sample_id.nunique().to_dict()
@@ -51,7 +51,7 @@ def build(ws: Workspace) -> dict[str, int]:
     samples = pd.concat({"title": first(attrs, "title"), "source_name": first(attrs, "source_name")}, axis=1).reset_index()
     samples.to_parquet(ws.samples, index=False)
 
-    studies = gb.study_attributes(ws.geomend)
+    studies = gb.study_attributes(ws.metamend)
     studies["n_samples"] = studies.study_id.map(n_study).fillna(0).astype(int)
     studies.to_parquet(ws.studies, index=False)
     return {"studies": len(studies), "samples": len(samples), "columns": len(columns)}
@@ -84,13 +84,13 @@ def annotation_columns(ws: Workspace) -> pd.DataFrame:
 def sample_values(ws: Workspace, all_values: bool = False) -> pd.DataFrame:
     """Per-sample values of every annotation column: study_id, sample_id, column, value.
 
-    Characteristics come from GEOmend; recovered columns from repair. Split
+    Characteristics come from MetaMend; recovered columns from repair. Split
     parents are dropped, as in annotation_columns. A key repeated on one
     sample has several values; the judgment stages see the first, and
     `all_values` keeps every one (one row each, in order) for publishing.
     """
-    from colharmonize import geomend_bridge as gb
-    chars = gb.sample_values(ws.geomend)
+    from colharmonize import metamend_bridge as gb
+    chars = gb.sample_values(ws.metamend)
     if not all_values:
         chars = chars[chars.ordinal == 0]
     chars = chars.rename(columns={"name": "column"})[["study_id", "sample_id", "column", "value"]]

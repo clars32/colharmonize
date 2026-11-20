@@ -1,10 +1,10 @@
-"""Contract tests for the GEOmend boundary. If GEOmend changes, these say where."""
+"""Contract tests for the MetaMend boundary. If MetaMend changes, these say where."""
 import hashlib
 from pathlib import Path
 
 import pytest
 
-from colharmonize import geomend_bridge as gb
+from colharmonize import metamend_bridge as gb
 
 SOFT = Path(__file__).parent / "fixtures" / "soft"
 # Sample counts verified independently in iteration 2's harvest.
@@ -15,16 +15,16 @@ def _digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def test_ontology_store_opens_through_geomend(tiny, tmp_path):
+def test_ontology_store_opens_through_metamend(tiny, tmp_path):
     out = tmp_path / "tiny.sqlite"
     report = gb.build_ontology_store(tiny, out, name="tiny")
     assert report["nodes"] == 7          # 8 terms, one deprecated; CURIE-less terms included
     assert report["edges"] == 1
     assert gb.store_node_count(out, name="tiny", version="1.0") == 7
-    from geomend.ontology import OntologyStore
+    from metamend.ontology import OntologyStore
     nodes = list(OntologyStore(out).nodes())
-    assert nodes and all(n.iri and n.iri.startswith("http") for n in nodes)   # GEOmend 0.0.9 keeps source IRIs
-    with pytest.raises(ValueError):      # GEOmend refuses the wrong release
+    assert nodes and all(n.iri and n.iri.startswith("http") for n in nodes)   # MetaMend 0.0.9 keeps source IRIs
+    with pytest.raises(ValueError):      # MetaMend refuses the wrong release
         gb.store_node_count(out, name="tiny", version="2.0")
 
 
@@ -54,7 +54,7 @@ def test_characteristics_keep_raw_spelling_and_values(project):
 
 def test_values_containing_na_are_not_nulled(project):
     # TidyGEO replaced any value containing "NA" with NA (str_replace_all),
-    # wiping "RNA-Seq" and "cDNA". GEOmend must keep them verbatim.
+    # wiping "RNA-Seq" and "cDNA". MetaMend must keep them verbatim.
     attrs = gb.sample_values(project, namespaces=("attribute",))
     seen = set(attrs[attrs.study_id == "GSE128621"].value.dropna())
     assert {"polyA RNA", "RNA-Seq", "cDNA"} <= seen
@@ -77,7 +77,7 @@ def test_characteristic_fields_give_ids_and_distinct_values(project):
 
 def test_provider_proposals_are_validated_and_never_selected(project, tmp_path):
     import shutil
-    from geomend.project import ProjectClient
+    from metamend.project import ProjectClient
 
     proj = tmp_path / "project"
     shutil.copytree(project, proj)

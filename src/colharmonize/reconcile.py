@@ -170,7 +170,7 @@ def candidate_groups(annotations: pd.DataFrame, ontology: Ontology,
                      links: list[tuple[str, str]] | None = None) -> list[list[str]]:
     """Connected components (size >= 2) of columns that might pool. Members are 'study::column'.
     `values` maps a member to its distinctive values (see `distinctive`); `links` are
-    extra member pairs to join, such as GEOmend's merge suggestions (`extra_links`)."""
+    extra member pairs to join, such as MetaMend's merge suggestions (`extra_links`)."""
     parents = _parents(ontology)
     ids = [f"{s}::{c}" for s, c in zip(annotations.study_id, annotations.column)]
     root = {i: i for i in ids}
@@ -230,7 +230,7 @@ def candidate_groups(annotations: pd.DataFrame, ontology: Ontology,
 
 
 def extra_links(ws: Workspace) -> list[tuple[str, str]]:
-    """GEOmend's merge suggestions between characteristics, as member pairs (preprocessing evidence)."""
+    """MetaMend's merge suggestions between characteristics, as member pairs (preprocessing evidence)."""
     from colharmonize import preprocess
     merges = preprocess.load(ws, "merges") if preprocess.USE_MERGES else None
     if merges is None:

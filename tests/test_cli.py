@@ -8,7 +8,7 @@ from pathlib import Path
 import pytest
 
 from colharmonize import candidates, cli, preprocess, property_space
-from colharmonize import geomend_bridge as gb
+from colharmonize import metamend_bridge as gb
 from colharmonize.ontology import Ontology
 
 TINY = Path(__file__).parent / "fixtures" / "tiny_obograph.json"
@@ -92,7 +92,7 @@ def test_unknown_settings_are_a_clear_error(tmp_path, tiny_dir):
     ws.mkdir()
     with pytest.raises(SystemExit, match="no pinned ontology directory recorded.*--ontology DIR"):
         cli.main(["candidates", "--workspace", str(ws)])
-    with pytest.raises(SystemExit, match="no GEOmend ontology store recorded.*--store FILE"):
+    with pytest.raises(SystemExit, match="no MetaMend ontology store recorded.*--store FILE"):
         cli.main(["preprocess", "--workspace", str(ws), "--ontology", str(tiny_dir)])
     with pytest.raises(SystemExit, match="no such file"):
         cli.main(["preprocess", "--workspace", str(ws), "--store", str(tmp_path / "typo.sqlite")])
@@ -146,7 +146,7 @@ def test_ingest_that_cannot_read_a_source_fails_and_leaves_nothing(tmp_path, cap
     assert f"ingest failed for 1 of {len(sources)} sources" in str(got.value.code)
     assert "need --online" in str(got.value.code)
     assert "GSE1: " in capsys.readouterr().err                   # each failure says why
-    assert not ws.geomend.exists()                                # so a retry with --online isn't refused
+    assert not ws.metamend.exists()                                # so a retry with --online isn't refused
     assert {s.name: s.state for s in status.stages(ws)}["ingest"] == "not started"
 
 

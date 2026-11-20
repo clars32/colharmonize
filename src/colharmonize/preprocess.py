@@ -1,15 +1,15 @@
-"""Preprocess: collect what GEOmend can tell colharmonize about a project, as evidence.
+"""Preprocess: collect what MetaMend can tell colharmonize about a project, as evidence.
 
-The owners decided colharmonize takes any help GEOmend offers, as
+The owners decided colharmonize takes any help MetaMend offers, as
 preprocessing (decisions log 1.6). Nothing here decides anything. It records
-three kinds of GEOmend evidence in `<workspace>/geomend_evidence/` for later
+three kinds of MetaMend evidence in `<workspace>/geomend_evidence/` for later
 stages to weigh:
 
   concepts.parquet   lexical ontology candidates per characteristic, from the
                      pinned store only (a candidate source for annotation)
-  merges.parquet     GEOmend's suggested joins between characteristics (extra
+  merges.parquet     MetaMend's suggested joins between characteristics (extra
                      links for reconciliation's candidate groups)
-  units.parquet      units GEOmend found per characteristic (unit hints)
+  units.parquet      units MetaMend found per characteristic (unit hints)
 
 Everything runs offline with no model.
 """
@@ -19,7 +19,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from colharmonize import geomend_bridge as gb
+from colharmonize import metamend_bridge as gb
 from colharmonize.ontology import Ontology
 from colharmonize.workspace import Workspace
 
@@ -31,14 +31,14 @@ def evidence_dir(ws: Workspace) -> Path:
 def run(ws: Workspace, store: str | Path, ontology: Ontology) -> dict:
     out = evidence_dir(ws)
     out.mkdir(exist_ok=True)
-    enrich = gb.enable_concepts(ws.geomend, store)
+    enrich = gb.enable_concepts(ws.metamend, store)
     ids = gb.store_ids(ontology)
-    concepts = gb.concept_candidates(ws.geomend)
+    concepts = gb.concept_candidates(ws.metamend)
     concepts["curie"] = concepts.concept_id.map(ids).fillna("")
     concepts.to_parquet(out / "concepts.parquet", index=False)
-    merges = gb.merge_suggestions(ws.geomend)
+    merges = gb.merge_suggestions(ws.metamend)
     merges.to_parquet(out / "merges.parquet", index=False)
-    units = gb.field_units(ws.geomend)
+    units = gb.field_units(ws.metamend)
     units.to_parquet(out / "units.parquet", index=False)
     return {"concept_candidates": len(concepts), "unmapped_concepts": int((concepts.curie == "").sum()),
             "merge_pairs": len(merges), "fields_with_units": int((units.units != "[]").sum()),
@@ -56,7 +56,7 @@ USE_CONCEPTS = False   # added no gold term; substring matches crowded the displ
 USE_UNITS = False      # only units colharmonize already finds
 USE_MERGES = True      # reconcile precision and run agreement up, recall unchanged
 
-# GEOmend evidence scores: 5 exact label or synonym of the field name, 4 exact
+# MetaMend evidence scores: 5 exact label or synonym of the field name, 4 exact
 # match of a value, 2.4 substring, 1 or less definition-only.
 MIN_CONCEPT_SCORE = 4.0
 
