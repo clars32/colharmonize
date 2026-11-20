@@ -12,7 +12,7 @@ values paged with `mappings.field`. Decisions go back only as provider
 proposals (`transformations.propose_provider`), which MetaMend validates
 against actual values and keeps pending its own review.
 
-Pinned against metamend 0.0.10 (formerly geomend).
+Pinned against metamend==0.1.0 (formerly geomend).
 """
 from __future__ import annotations
 

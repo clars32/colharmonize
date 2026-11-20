@@ -1209,6 +1209,6 @@ end), and no link to the review page, which didn't open either.
   labels in task and answer files, and MetaMend's own `geomend:` identifiers,
   `.geomend/` caches and review-packet suffixes. Sealed eval outputs are
   unchanged. `colharmonize geomend propose` still works as an alias.
-- **Install:** until MetaMend is published under its new name, colharmonize
-  installs it from the sibling checkout through `[tool.uv.sources]`. Pin a
-  release once one exists.
+- **Install:** pinned to `metamend==0.1.0`, the first release under the new
+  name, published from the user's PyPI account. It also carries GEOmend's
+  ArrayExpress intake and Preston Raab's assignment changes since 0.0.10.
